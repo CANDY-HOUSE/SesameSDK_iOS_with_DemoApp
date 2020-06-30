@@ -40,6 +40,10 @@ with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ 
 3. Get the API Key from CANDY HOUSE in order to register Sesame device and access the history. 
 4. Create a plist file names `CHConfiguration.plist` and add a key `CHAPIKey` with the **API key** as `String` value.
 
+<p align="center" >
+  <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/RegisterSesameDevice.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
+</p>
+
 # Register Sesame device
 
 ### Scan for Sesame devices
@@ -107,6 +111,10 @@ class SomeClass: CHSesameBleDeviceDelegate {
 ```
 # Control Sesame device
 After successfully registering Sesame device with `device.registerSesame`, you can operate the Sesame device. The following examples demonstrate how to operate the Sesame device.
+
+<p align="center" >
+  <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/ControlSesameDevice.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
+</p>
 
 ### Retrieve Sesame
 Every registered Sesame device can be retrieved via `CHBleManager.shared.getMyDevices()`.
