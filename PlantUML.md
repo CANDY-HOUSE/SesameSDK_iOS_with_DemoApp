@@ -32,3 +32,31 @@ SesameSDK --> あなたのアプリ : [19] JSON_Objectという形のセサミ�
 end
 @enduml
 ```
+
+
+```
+@startuml
+group 操作
+participant Sesame2
+participant SesameSDK
+participant あなたのアプリ
+participant あなたのユーザー
+participant あなたのサーバー
+|||
+あなたのアプリ -> SesameSDK: [1] "SDKを利用する為の API Key" を plistファイルの中に書き込む
+あなたのユーザー -> あなたのアプリ: [2] ユーザーログイン（ID, Passwordなど）
+あなたのアプリ -> あなたのサーバー : [3] ログイン手続き
+あなたのサーバー --> あなたのアプリ : [4] OK、"JSON_Objectという形のセサミの鍵"
+あなたのアプリ -> SesameSDK: [5] 指令（"JSON_Objectという形のセサミの鍵" を伝達）
+あなたのアプリ -> SesameSDK: [6] 指令（セサミデバイスと接続して）
+SesameSDK -> Sesame2: [7] BLE指令（セサミの鍵の適合確認）
+Sesame2 --> SesameSDK: [8] BLE_Response（問題ない）
+SesameSDK --> あなたのアプリ : [9] 状態、結果など
+あなたのアプリ -> SesameSDK: [10] 指令（開閉、設定など）
+SesameSDK -> Sesame2: [11] BLE指令（開閉、設定など）
+Sesame2 --> SesameSDK: [12] BLE_Response（状態、結果など）
+SesameSDK --> あなたのアプリ : [13] 状態、結果など
+|||
+end
+@enduml
+```
