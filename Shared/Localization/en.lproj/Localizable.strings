@@ -1,0 +1,29 @@
+"Menu_Scan_Friend" = "Add Contacts";
+"Menu_Scan_Devices" = "New Sesame";
+"autolock" = "Auto Lock";
+"manualOperated" = "Movement in Thumbturn";
+"manualLock" = "Manually Locked";
+"manualUnlock" = "Manually Unlocked";
+"Change Sesame Name" = "Change Sesame Name";
+"Cancel" = "Cancel";
+"DeleteFriend" = "Delete the Contact";
+"sesame_2" = "Sesame 2";
+
+"forgetpassword" = "Forgot Password";
+"change sucess" = "Successfully Changed";
+
+"co.candyhouse.sesame-sdk-test-app.locker.resignIn" = "Please go Sesame app and login again";
+"co.candyhouse.sesame-sdk-test-app.locker.noDeviceFound" = "No Devices";
+
+"co.candyhouse.sesame2app.back" = "Back";
+
+// SesameWatchKit
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.notSupport" = "Your system does not support Sesame lock.";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.openYourSesame" = "Please open your Sesame App to sync your devices.";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.receivedFile" = "Received file";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.updatingFile" = "Updating file";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady" = "Sesame is ready";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.updateDeviceFailed" = "Update devices failed %@";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.noSesameOrNotLoggedIn" = "No Sesame device or not logged in";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.lock" = "Lock";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.unlock" = "Unlock";

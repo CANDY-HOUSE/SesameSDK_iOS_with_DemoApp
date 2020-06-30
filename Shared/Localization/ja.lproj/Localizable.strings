@@ -1,0 +1,85 @@
+"Add Contacts" = "連絡先の追加";
+"New Sesame" = "新規セサミ";
+"Sesame" = "セサミ";
+"Contacts" = "連絡先";
+"Me" = "自分";
+"Log Out" = "ログアウト";
+"Log In" = "ログイン";
+"Full Name" = "お名前";
+"Password" = "パスワード";
+"Sign up" = "登録";
+"Configure Angles" = "角度の設定";
+"Delete this Sesame" = "セサミを削除";
+"autolock" = "オートロック";
+"manualOperated" = "サムターンに動きあり";
+"manualLock" = "手動施錠";
+"manualUnlock" = "手動解錠";
+"Set Locked Position" = "施錠の位置を固定する";
+"Set Unlocked Position" = "解錠の位置を固定する";
+"Change Sesame Name" = "セサミの名前を変更";
+"Cancel" = "キャンセル";
+"DeleteFriend" = "連絡先を削除";
+"sesame_2" = "セサミ2";
+"Email" = "Eメール";
+"First Name" = "名";
+"Last Name" = "姓";
+"Verification code" = "認証";
+"Verification" = "認証する";
+
+"Forgot password" = "パスワードをお忘れですか？";
+"Re-send verification code" = "認証コードを再送信する";
+"Send verification code" = "認証コードを送信する";
+
+"New Password" = "新しいパスワード";
+"Successfully Changed" = "変更成功";
+"No New Devices" = "デバイスなし";
+"No Contacts" = "連絡先なし";
+"Scan in the Frame" = "スキャンする";
+"DEVICE_NOT_FOUND" = "DEVICE_NOT_FOUND ";
+"User is not confirmed." = "User is not confirmed.";
+"An account with the given email already exists." = "An account with the given email already exists.";
+"OK" = "OK";
+"sec" = "秒後";// After X sec  ->  _ X 秒後
+"After" = "";
+"Too Close" = "近すぎる";
+"Sesame Name" = "セサミの名前";
+"You have successfully changed the password" = "パスワードの変更完了しました";
+"No Devices" = "登録デバイスなし";
+"Scan the QR code" = "QRコードをスキャンする";
+"Assign Name to Sesame" = "名前をつける";
+"Give Sesame a cooool name! 😎" = "かっこいい名前をつけてあげてね！😎";
+"Members" = "メンバー";
+"Add Member" = "メンバーに追加";
+
+"Edit Name" = "名前を変更";
+"Delete the Member" = "メンバーを削除";
+"Pull to refresh" = "スクロールで更新";
+"Scan this QR code to add me on your contact" = "QRコードをスキャンして連絡先へ追加してください";
+
+"Enter Sesame name" = "名前未入力";
+"Completely Set" = "設定完了";
+
+
+// "DEVICE NOT FOUND" = "セサミが見つかりません";
+// "User has not been yet confirmed. Please enter the verification code in order to complete confirmation." = "認証コードを入力してアカウントの認証行なってください。";
+// "An account already exists with this email address." = "もう既にこのメールアドレスでアカウント登録済みです"
+
+
+"SesameOS Update" = "SesameOSをアップデート";
+"Starting soon…" = "間もなく開始する…";
+"Close" = "閉じる";
+"Initializing…" = "初期化中…";
+"Start" = "スタート";
+"Succeeded" = "完了";
+"Error" = "エラー";
+"Please configure Locked/Unlocked Angle." = "施錠・解錠位置を設定してください。";
+
+"Please completely lock/unlock Sesame, and press the buttons below to configure locked/unlocked positions respectively." = "セサミを完全に施錠・解錠した状態まで回し、画面の設定ボタンをそれぞれタップしてください";
+
+
+"Transfer ownership to this member" = "オーナー権限をこのメンバーへ譲渡";
+
+"co.candyhouse.sesame-sdk-test-app.locker.resignIn" = "セサミアプリにて再度ログインしてください";
+"co.candyhouse.sesame-sdk-test-app.locker.noDeviceFound" = "登録デバイスなし";
+
+"co.candyhouse.sesame2app.back" = "Back";
