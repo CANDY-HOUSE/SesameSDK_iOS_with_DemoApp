@@ -2,7 +2,7 @@
 <img src="https://img.shields.io/badge/Xcode-11.5-blue" /> <img src="https://img.shields.io/badge/Swift-5.2.4-orange" /> <img src="https://img.shields.io/badge/iOS-11-black" /> <img src="https://img.shields.io/badge/Bluetooth-4.0LE-lightblue" />
 <br/>
 <p align="center" >
-  <img src="https://github.com/CANDY-HOUSE/SDK_iOS_Sesame_Demo/raw/master/assets/SesameSDK_Swift.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
+  <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/SesameSDK_Swift.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
 </p>
 
 - [Introduction](#Introduction)
