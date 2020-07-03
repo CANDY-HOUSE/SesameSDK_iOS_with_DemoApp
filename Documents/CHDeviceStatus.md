@@ -31,8 +31,8 @@
 |  connect      |           | connecting  |             |          |                 |            |            |
 |  connecting   |           |             | waitgatt    |          |                 |            |            |
 |  waitgatt     |           |             |             | logining |                 |            |            |
-|  logining     |           |             |             |         | |locked/unlocked/nosetting    |            |           
-|  lock         |           |             |             |         |                 | unlocked         |nosetting   |
-|  unlock       |           |             |           |        |                 | locked         |nosetting   |
-|  toggle       |           |             |           |        |                 | unlocked/locked   |nosetting   |
+|  logining     |           |             |             |         | locked/unlocked/nosetting |    |            |           
+|  lock         |           |             |             |         |                 | unlocked         |   |
+|  unlock       |           |             |           |        |                 | locked         |  |
+|  toggle       |           |             |           |        |                 | unlocked/locked   |  |
 |  disconnect   |            |            |           |          | noSignal   |noSignal   |noSignal   |
