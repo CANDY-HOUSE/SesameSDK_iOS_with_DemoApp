@@ -14,7 +14,7 @@ public final class LockAngleSettingViewModel: ViewModel {
         case tooClose
     }
     
-    var ssm: CHSesameBleInterface
+    var ssm: CHSesame2
     private let id = UUID()
     private var lockDegree: Int16 = 0
     private var unlockDegree: Int16 = 0
@@ -30,11 +30,8 @@ public final class LockAngleSettingViewModel: ViewModel {
     public private(set) var setLockButtonTitle = "Set Locked Position".localStr
     public private(set) var setUnlockButtonTitle = "Set Unlocked Position".localStr
     
-    init(ssm: CHSesameBleInterface) {
+    init(ssm: CHSesame2) {
         self.ssm = ssm
-//        ssm.updateObserver(self)
-//        ssm.updateObserver(self, forKey: id.uuidString)
-
     }
     
     public func viewWillAppear() {
@@ -49,12 +46,14 @@ public final class LockAngleSettingViewModel: ViewModel {
         if unlockDegree == -32768 {
             unlockDegree = 0
         }
-        var config = CHSesameLockPositionConfiguration(lockTarget: lockDegree, unlockTarget: unlockDegree)
+//        var config = CHSesameLockPositionConfiguration(lockTarget: lockDegree, unlockTarget: unlockDegree)
         if abs(lockDegree - unlockDegree) < 50 {
             statusUpdated?(.finished(.failure(LockAngleError.tooClose)))
             return
         }
-        ssm.configureLockPosition(configure: &config)
+        ssm.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
+
+         }
         statusUpdated?(.finished(.success("")))
     }
     
@@ -67,12 +66,13 @@ public final class LockAngleSettingViewModel: ViewModel {
             unlockDegree = 0
         }
 
-        var config = CHSesameLockPositionConfiguration(lockTarget: lockDegree, unlockTarget: unlockDegree)
         if abs(lockDegree - unlockDegree) < 50 {
             statusUpdated?(.finished(.failure(LockAngleError.tooClose)))
             return
         }
-        ssm.configureLockPosition(configure: &config)
+          ssm.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
+
+         }
         statusUpdated?(.finished(.success("")))
     }
     
@@ -96,15 +96,14 @@ public final class LockAngleSettingViewModel: ViewModel {
             lockDegree = Int16(setting.getLockPosition()!)
             unlockDegree = Int16(setting.getUnlockPosition()!)
             
-            if setting.isConfigured() {
-                L.d("已經設定過")
-            } else {
-                L.d("沒設定過")
-                var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0)
-                ssm.configureLockPosition(configure: &config)
+            if !setting.isConfigured() {
+//                var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0){res in}
+                ssm.configureLockPosition(lockTarget: 1024/4, unlockTarget: 0){res in}
             }
+            
         } else {
-            L.d("設定讀取失敗")
+            let error = NSError(domain: "co.candyhouse.sesame-sdk-test-app", code: 0, userInfo: ["Description": "Get sesame setting failed."])
+            statusUpdated?(.finished(.failure(error)))
         }
         
         guard let status = ssm.mechStatus else {
@@ -116,17 +115,16 @@ public final class LockAngleSettingViewModel: ViewModel {
 }
 
 // MARK: - Delegate
-extension LockAngleSettingViewModel: CHSesameBleDeviceDelegate {
-    public func onBleDeviceStatusChanged(device: CHSesameBleInterface,
+extension LockAngleSettingViewModel: CHSesameDelegate {
+    public func onBleDeviceStatusChanged(device: CHSesame2,
                                          status: CHDeviceStatus) {
         if device.deviceId == ssm.deviceId,
             status == .receiveBle {
             ssm.connect()
         }
-//        statusUpdated?(.received)
     }
     
-    public func onMechStatusChanged(device: CHSesameBleInterface,
+    public func onMechStatusChanged(device: CHSesame2,
                                     status: CHSesameMechStatus,
                                     intention: CHSesameIntention) {
         guard let status = device.mechStatus else {

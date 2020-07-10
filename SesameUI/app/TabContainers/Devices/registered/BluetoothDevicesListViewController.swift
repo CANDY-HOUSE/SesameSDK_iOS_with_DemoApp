@@ -103,13 +103,7 @@ public class BluetoothDevicesListViewController: CHBaseViewController, UITableVi
                 self.programmaticallyRefreshing()
             }
         }
-
-
-        self.deviceTableView.reloadData()
-
-        L.d("列表頁面 viewWillAppear")
-
-
+        viewModel.loadLocalDevices()
     }
     
     
@@ -140,42 +134,43 @@ public class BluetoothDevicesListViewController: CHBaseViewController, UITableVi
     }
     
     private func showMoreMenu() {
-        //        refleshRoomBackTitle(name: "")
         popUpMenuControl.show(in: self.view)
     }
 }
 
 extension BluetoothDevicesListViewController: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.numberOfSections
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        L.d("!@#: \(viewModel.numberOfRows)")
-        return viewModel.numberOfRows
+        viewModel.numberOfRowsInSection(section)
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "SSMCell", for: indexPath) as! BluetoothDevicesCell
-        let cellViewModel = viewModel.cellViewModelAt(indexPath)
-        
-        cell.viewModel = cellViewModel
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
+        configureCell(cell, atIndexPath: indexPath)
         return cell
     }
     
+    func configureCell(_ cell: BluetoothDevicesCell, atIndexPath indexPath: IndexPath) {
+        let cellViewModel = viewModel.cellViewModelAt(indexPath)
+        cell.viewModel = cellViewModel
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        L.d("didSelectRowAt !@#: \(indexPath)")
         viewModel.didSelectRowAt(indexPath)
     }
 }
-
-
 
 extension BluetoothDevicesListViewController {
 
     func notifyTable()  {
         DispatchQueue.main.async {
             self.deviceTableView.reloadData()
-            if self.viewModel.numberOfRows == 0 {
+            
+            if self.viewModel.numberOfRowsInSection(0) == 0 {
                 self.deviceTableView.setEmptyMessage("No Devices".localStr)
             } else {
                 self.deviceTableView.restore()

@@ -18,8 +18,6 @@ public struct PopUpMenuItem {
     enum MoreItemType {
         case addDevices
         case addFriends
-//        case scan
-//        case money
     }
 }
 
@@ -56,13 +54,11 @@ class PopUpMenu: UIView {
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
             button.frame = CGRect(x: 0, y: itemHeight * CGFloat(index), width: itemWidth, height: itemHeight)
             button.tintColor = .white
-//            button.setTitleColor(<#T##color: UIColor?##UIColor?#>, for: .selected)
             button.setImage(menuIcon, for: .normal)
             button.setImage(menuIcon, for: .highlighted)
             button.layer.cornerRadius = 4
             button.layer.masksToBounds = true
             button.setBackgroundImage(UIImage(color: UIColor(hexString: "#28aeb1", alpha: 1)), for: .highlighted)
-//            button.setBackgroundImage(UIImage(color: UIColor(hexString: "#28aeb1", alpha: 1)), for: .normal)
 
             button.setTitle(menu.title, for: .normal)
             button.setTitleColor(UIColor.white, for: .normal)

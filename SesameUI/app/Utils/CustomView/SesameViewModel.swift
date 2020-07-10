@@ -11,10 +11,10 @@ import SesameSDK
 
 public final class SesameViewModel: ViewModel {
 
-    private var ssm: CHSesameBleInterface
+    private var ssm: CHSesame2
     public var statusUpdated: ViewStatusHandler?
     
-    init(ssm: CHSesameBleInterface) {
+    init(ssm: CHSesame2) {
         self.ssm = ssm
     }
     

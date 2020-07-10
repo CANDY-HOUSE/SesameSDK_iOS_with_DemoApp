@@ -18,7 +18,7 @@ enum CHQRKey: String {
     case QRValue = "invite"
 }
 
-extension CHSesameBleInterface {
+extension CHSesame2 {
     public func ssmQRCodeURL() -> String? {
         guard let deviceKey = getKey() else {
                 return nil

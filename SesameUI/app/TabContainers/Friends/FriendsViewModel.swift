@@ -32,18 +32,7 @@ public final class FriendsViewModel: ViewModel {
     private(set) var pullToRefreshTitle = "Pull to refresh".localStr
     
     public init() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(refresh),
-                                               name: .UserLoggedIn,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(refresh),
-                                               name: .AddedFriends,
-                                               object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+
     }
     
     @objc
@@ -65,7 +54,7 @@ public final class FriendsViewModel: ViewModel {
     }
     
     func tableViewDidSelectRowAt(_ row: Int) {
-        let uuid = friends[row].id.uuidString
+//        let uuid = friends[row].id.uuidString
 //        CHAccountManager.shared.unfriend(fdId: uuid) { result in
 //            switch result {
 //            case .success(_):

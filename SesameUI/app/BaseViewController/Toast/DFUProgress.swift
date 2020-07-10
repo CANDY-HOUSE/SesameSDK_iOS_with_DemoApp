@@ -28,8 +28,6 @@ class TemporaryFirmwareUpdateClass: CHFirmwareUpdateInterface {
         abortFunc = nil
         alertView = UIAlertController(title: "SesameOS Update".localStr, message: "Starting soon…".localStr, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Close".localStr, style: .default, handler: self.onAbortClick))
-//                alertView.popoverPresentationController?.sourceView = mainView
-//                alertView.popoverPresentationController?.sourceRect = mainView.frame
         mainView.present(self.alertView, animated: true, completion: nil)
     }
 

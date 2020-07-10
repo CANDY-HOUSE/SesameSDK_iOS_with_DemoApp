@@ -16,7 +16,7 @@ public protocol RegisterDeviceListViewModelDelegate: class {
 public final class RegisterDeviceListViewModel: ViewModel {
     private let id = UUID()
 //    private var ssmMap = [String: CHSesameBleInterface]()
-    private var ssms: [CHSesameBleInterface] = [] {
+    private var ssms: [CHSesame2] = [] {
         didSet {
             for ssm in ssms {
                 ssm.connect()
@@ -26,6 +26,7 @@ public final class RegisterDeviceListViewModel: ViewModel {
     
     public private(set) var emptyMessage = "No New Devices".localStr
     public private(set) var backButtonImage = "icons_filled_close"
+    private(set) var mySesameText = "My Sesame".localStr
     
     public var statusUpdated: ViewStatusHandler?
     public var delegate: RegisterDeviceListViewModelDelegate?
@@ -52,7 +53,7 @@ public final class RegisterDeviceListViewModel: ViewModel {
         statusUpdated?(.loading)
     }
     
-    private func registerSSM(_ ssm: CHSesameBleInterface) {
+    private func registerSSM(_ ssm: CHSesame2) {
         
         ssm.registerSesame( { result in
             switch result {
@@ -61,23 +62,35 @@ public final class RegisterDeviceListViewModel: ViewModel {
                 defer {
                     self.statusUpdated?(.received)
                     self.delegate?.registerSSMSucceed()
-                    NotificationCenter.default.post(name: .SesameRegistered, object: nil)
                 }
                 
                 L.d("註冊成功", "configureLockPosition")
-                var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0)
-                ssm.configureLockPosition(configure: &config)
-                
-                let historyTag = "history test2"
-                guard let encodedHistoryTag = historyTag.data(using: .utf8) else {
+//                var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0)
+                ssm.configureLockPosition(lockTarget: 1024/4, unlockTarget: 0){ result in
+                    switch result {
+                    case .success(_):
+                        break
+                    case .failure(let error):
+                        self.statusUpdated?(.finished(.failure(error)))
+                    }
+                }
+
+                guard let encodedHistoryTag = self.mySesameText.data(using: .utf8) else {
                     assertionFailure("Encode historyTag failed")
                     return
                 }
-                L.d("註冊成功", "setHistoryTag", historyTag)
-                ssm.setHistoryTag(encodedHistoryTag)
+                L.d("註冊成功", "setHistoryTag", self.mySesameText)
+                ssm.setHistoryTag(encodedHistoryTag) { result in
+                    switch result {
+                    case .success(_):
+                        break
+                    case .failure(let error):
+                        self.statusUpdated?(.finished(.failure(error)))
+                    }
+                }
                 
             case .failure(let error):
-                L.d(ErrorMessage.descriptionFromError(error: error))
+                L.d(error.errorDescription())
                 self.statusUpdated?(.finished(.failure(error)))
             }
         })
@@ -88,18 +101,14 @@ public final class RegisterDeviceListViewModel: ViewModel {
     }
 }
 
-extension RegisterDeviceListViewModel: CHBleManagerDelegate, CHSesameBleDeviceDelegate {
+extension RegisterDeviceListViewModel: CHBleManagerDelegate, CHSesameDelegate {
 
-    public func didDiscoverUnRegisteredSesames(sesames: [CHSesameBleInterface]) {
+    public func didDiscoverUnRegisteredSesames(sesames: [CHSesame2]) {
         ssms = sesames.sorted(by: { $0.rssi.intValue > $1.rssi.intValue })
         statusUpdated?(.received)
     }
 
-//    public func didDiscoverUnRegisteredSesame(sesame: CHSesameBleInterface) {
-//        
-//    }
-    
-    public func onBleDeviceStatusChanged(device: CHSesameBleInterface, status: CHDeviceStatus) {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHDeviceStatus) {
         if status == .readytoRegister {
             registerSSM(device)
         }

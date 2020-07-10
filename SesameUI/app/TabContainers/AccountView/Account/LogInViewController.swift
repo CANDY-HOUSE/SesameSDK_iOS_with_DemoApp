@@ -99,7 +99,7 @@ public class LogInViewController: CHBaseViewController {
                         if strongSelf.viewModel.signUpType == .unconfirmedUser {
                             strongSelf.didPressSignupOrForgotPassword("")
                         } else {
-                            strongSelf.view.makeToast(ErrorMessage.descriptionFromError(error: error))
+                            strongSelf.view.makeToast(error.errorDescription())
                         }
                     }
                 }
@@ -232,29 +232,15 @@ public class LogInViewController: CHBaseViewController {
 //    }
     
     @IBAction func forgetPassword(_ sender: Any) {
-//        self.performSegue(withIdentifier:  "forget", sender: nil)
         viewModel.forgotPasswordTapped(email: (userName?.text)!.toMail())
     }
+    
     @IBAction func didPressSignupOrForgotPassword(_ sender: Any) {
-//        self.performSegue(withIdentifier:  "sign", sender: nil)
         viewModel.signUpTapped(email: (userName?.text)!.toMail(),
                                password: (self.password?.text!)!)
     }
     
     @objc func dismissSelf() {
-//        self.dismiss(animated: true, completion:nil)
         viewModel.dismissTapped()
-    }
-}
-
-extension LogInViewController{
-
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let controller = segue.destination as? SignUpViewController {
-//            controller.loginVC = self
-//        }
-//        if let controller = segue.destination as? ForgotPasswordViewController {
-//            controller.loginVC = self
-//        }
     }
 }

@@ -23,7 +23,6 @@ class ViewHelper: NSObject {
         DispatchQueue.main.async {
             let loadingView = UIView(frame: view!.bounds)
             loadingView.tag = loadingViewTag
-            //        loadingView.backgroundColor = UIColor.init(white: 1, alpha: 0.6)
             let indicator = UIActivityIndicatorView(style: .gray)
             indicator.center = loadingView.center
             indicator.startAnimating()

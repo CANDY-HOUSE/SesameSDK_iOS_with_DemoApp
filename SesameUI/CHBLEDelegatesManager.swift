@@ -26,7 +26,7 @@ public final class CHBLEDelegatesManager: CHBleManagerDelegate {
         bleObservers.remove(observer)
     }
     
-    public func didDiscoverUnRegisteredSesames(sesames : [CHSesameBleInterface]) {
+    public func didDiscoverUnRegisteredSesames(sesames : [CHSesame2]) {
         bleObservers.objectEnumerator().forEach({ observer in
             if let observer = observer as? CHBleManagerDelegate {
                 observer.didDiscoverUnRegisteredSesames(sesames: sesames)
@@ -34,7 +34,7 @@ public final class CHBLEDelegatesManager: CHBleManagerDelegate {
         })
     }
     
-    public func didDiscoverUnRegisteredSesame(sesame: CHSesameBleInterface) {
+    public func didDiscoverUnRegisteredSesame(sesame: CHSesame2) {
         bleObservers.objectEnumerator().forEach({ observer in
             if let observer = observer as? CHBleManagerDelegate {
                 observer.didDiscoverUnRegisteredSesame(sesame: sesame)

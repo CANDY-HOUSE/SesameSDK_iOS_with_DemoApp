@@ -58,7 +58,7 @@ class Knob: UIControl {
         renderer.setPointerAngle(angleValue, animated: animated )
     }
 
-    func setLock(_ ssm:CHSesameBleInterface)  {
+    func setLock(_ ssm:CHSesame2)  {
 //        DispatchQueue.main.async {
 
         guard let setting = ssm.mechSetting else {

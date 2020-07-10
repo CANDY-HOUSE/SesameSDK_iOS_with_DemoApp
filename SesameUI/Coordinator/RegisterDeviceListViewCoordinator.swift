@@ -10,7 +10,13 @@ import UIKit
 import SesameSDK
 
 public final class RegisterDeviceListViewCoordinator: Coordinator {
+    public enum DismissReason: String {
+        static let key = "DismissReason"
+        case cancel, registerSucceeded
+    }
+    
     public var childCoordinators: [String : Coordinator] = [:]
+    public var parentCoordinator: Coordinator?
     
     public weak var presentedViewController: UIViewController?
     
@@ -38,6 +44,7 @@ public final class RegisterDeviceListViewCoordinator: Coordinator {
 
 extension RegisterDeviceListViewCoordinator: RegisterDeviceListViewModelDelegate {
     public func registerSSMSucceed() {
+        parentCoordinator?.childCoordinatorDismissed(self, userInfo: [DismissReason.key: DismissReason.registerSucceeded])
         presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }

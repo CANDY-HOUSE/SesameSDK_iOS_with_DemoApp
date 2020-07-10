@@ -12,7 +12,7 @@ import CoreBluetooth
 import UIKit.UIColor
 
 public protocol BluetoothDeviceCellViewModelDelegate {
-    func enterTestModeTapped(ssm: CHSesameBleInterface)
+    func enterTestModeTapped(ssm: CHSesame2)
 }
 
 public final class BluetoothDeviceCellViewModel: ViewModel {
@@ -20,40 +20,25 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     public var statusUpdated: ViewStatusHandler?
     
     var delegate: BluetoothDeviceCellViewModelDelegate?
-    private let id = UUID()
-    var ssm: CHSesameBleInterface
+    var ssm: CHSesame2
     
-    public init(ssm: CHSesameBleInterface) {
+    public init(ssm: CHSesame2) {
         self.ssm = ssm
-//        ssm.updateObserver(self, forKey: id.uuidString)
-//        ssm.updateObserver(self)
         ssm.connect()
         ssm.delegate = self
     }
-    
-//    public func viewWillAppear() {
-//        ssm.delegate = self
-//    }
-    
+
     public var name: String {
-//        let storage = AnyObjectStore<SSMProperty>()
-//        return storage.valueForKey(ssm.deviceId!.uuidString)?.ssmName ?? ssm.deviceId!.uuidString
-        if let device = SSMStore.shared.getPropertyForDevice(ssm) {
-            return device.name ?? device.uuid!.uuidString
-        } else {
-            return ssm.deviceId.uuidString
-        }
+        let device = SSMStore.shared.getPropertyForDevice(ssm)
+        return device.name ?? device.deviceID!.uuidString
     }
     
     public var ownerNameLabel: String {
-//        ssm.deviceId!.uuidString
         ""
     }
     
     public var isHideOwnerNameLabel: Bool {
-        guard let device = SSMStore.shared.getPropertyForDevice(ssm) else {
-            return true
-        }
+        let device = SSMStore.shared.getPropertyForDevice(ssm)
         return ssm.deviceId.uuidString == device.name
     }
     
@@ -63,6 +48,10 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     
     public var lockColor: UIColor {
         ssm.lockColor()
+    }
+    
+    public var isInLockRange: Bool? {
+        ssm.mechStatus?.isInLockRange()
     }
     
     public func toggleTapped() {
@@ -90,17 +79,13 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
         return angle2degree(angle: Int16(currentAngle))
     }
     
-    public var isInLockRange: Bool? {
-        ssm.mechStatus?.isInLockRange()
-    }
-    
     deinit {
-//        ssm.removeObserver(forKey: id.uuidString)
+//        L.d("BluetoothDeviceCellViewModel")
     }
 }
 
-extension BluetoothDeviceCellViewModel: CHSesameBleDeviceDelegate {
-    public func onBleDeviceStatusChanged(device: CHSesameBleInterface, status: CHDeviceStatus) {
+extension BluetoothDeviceCellViewModel: CHSesameDelegate {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHDeviceStatus) {
         if device.deviceId == ssm.deviceId,
             status == .receiveBle {
             ssm.connect()

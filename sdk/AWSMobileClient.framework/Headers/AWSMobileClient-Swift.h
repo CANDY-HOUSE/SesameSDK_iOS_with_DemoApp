@@ -209,6 +209,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class AWSServiceConfiguration;
 @protocol AWSIdentityProviderManager;
 @protocol AWSCognitoCredentialsProviderHelper;
 
@@ -238,12 +239,15 @@ SWIFT_CLASS("_TtC15AWSMobileClient15AWSMobileClient")
 + (AWSMobileClient * _Nonnull)default SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithConfiguration:(NSDictionary<NSString *, id> * _Nonnull)config OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId identityPoolConfiguration:(AWSServiceConfiguration * _Nonnull)configuration OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId identityProviderManager:(id <AWSIdentityProviderManager> _Nullable)identityProviderManager OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityProvider:(id <AWSCognitoCredentialsProviderHelper> _Nonnull)identityProvider OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType unauthRoleArn:(NSString * _Nullable)unauthRoleArn authRoleArn:(NSString * _Nullable)authRoleArn identityProvider:(id <AWSCognitoCredentialsProviderHelper> _Nonnull)identityProvider OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId unauthRoleArn:(NSString * _Nullable)unauthRoleArn authRoleArn:(NSString * _Nullable)authRoleArn identityProviderManager:(id <AWSIdentityProviderManager> _Nullable)identityProviderManager OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 @class NSDictionary;
 
@@ -528,6 +532,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class AWSServiceConfiguration;
 @protocol AWSIdentityProviderManager;
 @protocol AWSCognitoCredentialsProviderHelper;
 
@@ -557,12 +562,15 @@ SWIFT_CLASS("_TtC15AWSMobileClient15AWSMobileClient")
 + (AWSMobileClient * _Nonnull)default SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithConfiguration:(NSDictionary<NSString *, id> * _Nonnull)config OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId identityPoolConfiguration:(AWSServiceConfiguration * _Nonnull)configuration OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId identityProviderManager:(id <AWSIdentityProviderManager> _Nullable)identityProviderManager OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityProvider:(id <AWSCognitoCredentialsProviderHelper> _Nonnull)identityProvider OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType unauthRoleArn:(NSString * _Nullable)unauthRoleArn authRoleArn:(NSString * _Nullable)authRoleArn identityProvider:(id <AWSCognitoCredentialsProviderHelper> _Nonnull)identityProvider OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRegionType:(AWSRegionType)regionType identityPoolId:(NSString * _Nonnull)identityPoolId unauthRoleArn:(NSString * _Nullable)unauthRoleArn authRoleArn:(NSString * _Nullable)authRoleArn identityProviderManager:(id <AWSIdentityProviderManager> _Nullable)identityProviderManager OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 @class NSDictionary;
 

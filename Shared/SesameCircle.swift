@@ -6,6 +6,7 @@
 //  Copyright © 2019 Cerberus. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 class SesameCircle: UIControl {
@@ -90,3 +91,4 @@ private class KnobRenderer {
         unlockImgLyer.add(fillColorAnimation, forKey: "fillColorAnimation")
     }
 }
+#endif

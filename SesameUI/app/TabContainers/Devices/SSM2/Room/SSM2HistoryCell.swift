@@ -15,7 +15,6 @@ class SSM2HistoryCell: UITableViewCell {
     var viewModel: SSM2HistoryCellViewModel! {
         didSet {
             timeLabel.text = viewModel.timeLabelText()
-//            eventImage.image = UIImage(named: viewModel.eventImage)
             eventImage.isHidden = true
             userLabel.text = viewModel.userLabelText
             avatarImage.image = UIImage.SVGImage(named: viewModel.avatarImage)
@@ -26,15 +25,4 @@ class SSM2HistoryCell: UITableViewCell {
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
-}
-
-
-class SSM2HistoryHeaderCell: UITableViewCell {
-    @IBOutlet weak var userLabel: UILabel!
-    
-    var viewModel: SSM2HistoryHeaderCellViewModel! {
-        didSet {
-            userLabel.text = viewModel.userLabelText()
-        }
-    }
 }

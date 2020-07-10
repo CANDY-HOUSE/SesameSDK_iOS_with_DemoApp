@@ -11,9 +11,8 @@ import SesameSDK
 import AWSMobileClient
 
 public final class SSM2SettingViewModel: ViewModel {
-    private let id = UUID()
     // Data
-    private var ssm: CHSesameBleInterface
+    private var ssm: CHSesame2
     // Display
     private var delay = 0
     private var version = ""
@@ -46,20 +45,12 @@ public final class SSM2SettingViewModel: ViewModel {
     private(set) var autoLockLabel3Text = "sec".localStr
     private(set) var arrowImg = "arrow"
     private(set) var uuidTitleText = "UUID".localStr
+    private(set) var modifyHistoryTagText = "Modify History Tag".localStr
+    private(set) var mySesameText = "My Sesame".localStr
     
     var title: String {
-//        let storage = AnyObjectStore<SSMProperty>()
-//        guard let storedSSM = storage.valueForKey(ssm.deviceId!.uuidString),
-//            let deviceName = storedSSM.ssmName else {
-//                return ssm.deviceId!.uuidString
-//        }
-//        return deviceName
-        
-        if let device = SSMStore.shared.getPropertyForDevice(ssm) {
-            return device.name ?? device.uuid!.uuidString
-        } else {
-            return ssm.deviceId.uuidString
-        }
+        let device = SSMStore.shared.getPropertyForDevice(ssm)
+        return device.name ?? device.deviceID!.uuidString
     }
     
     var uuidValueText: String {
@@ -106,17 +97,9 @@ public final class SSM2SettingViewModel: ViewModel {
         String(delay)
     }
     
-    init(ssm: CHSesameBleInterface) {
+    init(ssm: CHSesame2) {
         self.ssm = ssm
-//        self.ssm.updateObserver(self)
-//        self.ssm.updateObserver(self, forKey: id.uuidString)
-
         self.ssm.connect()
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateUI),
-                                               name: .SesamePropertyChanged,
-                                               object: nil)
     }
 
     // MARK: - User interaction
@@ -141,7 +124,7 @@ public final class SSM2SettingViewModel: ViewModel {
     
     @objc func autoLockSwitchChanged(sender: UISwitch) {
         if !sender.isOn {
-            ssm.disableAutolock() { [weak self] (delay) -> Void in
+            ssm.disableAutolock() { [weak self] (result) -> Void in
                 guard let strongSelf = self else {
                     return
                 }
@@ -158,21 +141,34 @@ public final class SSM2SettingViewModel: ViewModel {
     // MARK: - Business logic
     
     private func getAutoLockSetting() {
-        ssm.getAutolockSetting { [weak self] autolock in
+        ssm.getAutolockSetting { [weak self] result  in
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.switchIsOn = autolock != 0
+            switch result {
+            case .success(let delay):
+                strongSelf.switchIsOn = delay.data != 0
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
     
     private func getVersionTag() {
-        ssm.getVersionTag { [weak self] (version, _) -> Void in
+        ssm.getVersionTag { [weak self]  result in
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.version = version
-            strongSelf.statusUpdated?(.received)
+            
+            switch result {
+            case .success(let status):
+                strongSelf.version = status.data
+                strongSelf.statusUpdated?(.received)
+            case .failure(let error):
+                strongSelf.statusUpdated?(.finished(.failure(error)))
+            }
+            
         }
     }
     
@@ -182,8 +178,8 @@ public final class SSM2SettingViewModel: ViewModel {
 }
 
 // MARK: - Delegate
-extension SSM2SettingViewModel: CHSesameBleDeviceDelegate {
-    public func onBleDeviceStatusChanged(device: CHSesameBleInterface,
+extension SSM2SettingViewModel: CHSesameDelegate {
+    public func onBleDeviceStatusChanged(device: CHSesame2,
                                          status: CHDeviceStatus) {
         if device.deviceId == ssm.deviceId,
             status == .receiveBle {
@@ -226,17 +222,24 @@ extension SSM2SettingViewModel {
     }
     
     func pickerDidSelectRow(_ row: Int) {
-//        L.d(String(row)+"-"+String(component))
-        ssm.enableAutolock(delay: second[row]) { [weak self] (delay) -> Void in
+
+        ssm.enableAutolock(delay: second[row]) { [weak self] result  in
             guard let strongSelf = self else {
                 return
             }
-            DispatchQueue.main.async {
-                strongSelf.delay = delay
-                strongSelf.isHiddenAutoLockDisplay = delay > 0 ? false : true
-                strongSelf.isHiddenPicker = true
-                strongSelf.statusUpdated?(.received)
+            switch result {
+            case .success(let delay):
+                DispatchQueue.main.async {
+                    strongSelf.delay = delay.data
+                    strongSelf.isHiddenAutoLockDisplay = delay.data > 0 ? false : true
+                    strongSelf.isHiddenPicker = true
+                    strongSelf.statusUpdated?(.received)
+                }
+            case .failure(let error):
+                L.d(error.errorDescription())
+                strongSelf.statusUpdated?(.finished(.failure(error)))
             }
+
         }
     }
 }
@@ -271,7 +274,7 @@ extension SSM2SettingViewModel {
                 strongSelf.dfuHelper?.observer = observer
                 strongSelf.dfuHelper?.start()
             case .failure(let error):
-                L.d(ErrorMessage.descriptionFromError(error: error))
+                L.d(error.errorDescription())
                 strongSelf.statusUpdated?(.finished(.failure(error)))
             }
             
@@ -287,16 +290,38 @@ extension SSM2SettingViewModel {
 // MARK: - Rename
 extension SSM2SettingViewModel {
     func renamePlaceholder() -> String {
-        if let device = SSMStore.shared.getPropertyForDevice(ssm) {
-            return device.name ?? device.uuid!.uuidString
-        } else {
-            return ssm.deviceId.uuidString
-        }
+        let device = SSMStore.shared.getPropertyForDevice(ssm)
+        return device.name ?? device.deviceID!.uuidString
     }
     
     func rename(_ name: String) {
-        SSMStore.shared.savePropertyForDevice(ssm, withName: name)
-        NotificationCenter.default.post(name: .SesamePropertyChanged, object: nil)
+        SSMStore.shared.savePropertyForDevice(ssm, withProperties: ["name": name])
+    }
+    
+    func historyTagPlaceholder() -> String {
+        guard let historyTag = ssm.getHistoryTag() else {
+            return mySesameText
+        }
+        return String(data: historyTag, encoding: .utf8) ?? mySesameText
+    }
+    
+    func modifyHistoryTag(_ historyTag: String) {
+        guard let encodedHistoryTag = historyTag.data(using: .utf8) else {
+            let error = NSError(domain: "", code: 0, userInfo: ["message":"Unsupported format"])
+            statusUpdated?(.finished(.failure(error)))
+            return
+        }
+        ssm.setHistoryTag(encodedHistoryTag) { [weak self] result in
+            guard let strongSelf = self else {
+                return
+            }
+            switch result {
+            case .success(_):
+                strongSelf.statusUpdated?(.finished(.success(true)))
+            case .failure(let error):
+                strongSelf.statusUpdated?(.finished(.failure(error)))
+            }
+        }
     }
 }
 
@@ -309,36 +334,56 @@ extension SSM2SettingViewModel {
     
     public func deleteSeesameAction() {
         statusUpdated?(.loading)
+        let ssm = self.ssm
         let deleteComplete = {
-            SSMStore.shared.deletePropertyForDevice(self.ssm)
-            self.delegate?.sesameDeleted()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                NotificationCenter.default.post(name: .SesameDeleted, object: nil)
+            SSMStore.shared.deletePropertyForDevice(ssm)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.delegate?.sesameDeleted()
             }
         }
         
         guard AWSMobileClient.default().isSignedIn == true else {
-            ssm.resetSesame()
-            deleteComplete()
+            ssm.resetSesame() { [weak self] result in
+                guard let strongSelf = self else {
+                    return
+                }
+                switch result {
+                case .success(_):
+                    deleteComplete()
+                case .failure(let error):
+                    strongSelf.statusUpdated?(.finished(.failure(error)))
+                }
+            }
             return
         }
-        ssm.resetSesame()
-        deleteComplete()
+        
+        ssm.resetSesame() { [weak self] result in
+            guard let strongSelf = self else {
+                return
+            }
+            switch result {
+            case .success(_):
+                deleteComplete()
+            case .failure(let error):
+                strongSelf.statusUpdated?(.finished(.failure(error)))
+            }
+        }
     }
     
     func dropKey() {
+        statusUpdated?(.loading)
         SSMStore.shared.deletePropertyForDevice(self.ssm)
         ssm.dropKey()
-        delegate?.sesameDeleted()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            NotificationCenter.default.post(name: .SesameDeleted, object: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            SSMStore.shared.deletePropertyForDevice(self.ssm)
+            self.delegate?.sesameDeleted()
         }
     }
 }
 
 public protocol SSM2SettingViewModelDelegate {
-    func setAngleForSSM(_ ssm: CHSesameBleInterface)
-    func shareSSMTapped(_ ssm: CHSesameBleInterface)
+    func setAngleForSSM(_ ssm: CHSesame2)
+    func shareSSMTapped(_ ssm: CHSesame2)
     func sesameDeleted()
 }
 

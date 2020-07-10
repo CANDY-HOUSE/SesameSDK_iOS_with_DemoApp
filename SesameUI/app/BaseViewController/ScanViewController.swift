@@ -23,6 +23,8 @@ class ScanViewController: CHBaseViewController {
     @IBOutlet weak var scanViewSp: ScanView!
 
     @IBOutlet weak var back: UIButton!
+    
+    var viewModel: ScanViewModel!
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -47,9 +49,36 @@ class ScanViewController: CHBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        assert(viewModel != nil, "ScanViewModel should not be nil")
+        
+        viewModel.statusUpdated = { [weak self] status in
+            guard let strongSelf = self else {
+                return
+            }
+            executeOnMainThread {
+                switch status {
+                case .loading:
+                    break
+                case .received:
+                    break
+                case .finished(let result):
+                    switch result {
+                    case .success(_):
+                        break
+                    case .failure(let error):
+                        strongSelf.view.makeToast(error.errorDescription())
+                    }
+                }
+            }
+        }
+        
         scanViewSp.scanAnimationImage = UIImage.CHUIImage(named: "ScanLine")!
         hintLb.text = "Scan the QR code".localStr
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedCamera), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(rotatedCamera),
+                                               name: UIDevice.orientationDidChangeNotification,
+                                               object: nil)
         rotatedCamera()
         back.setImage( UIImage.SVGImage(named: "icons_filled_close_b"), for: .normal)
     }
@@ -108,9 +137,7 @@ class ScanViewController: CHBaseViewController {
         else if (authStatus == .notDetermined) {
             L.d("掃描未決定授權")
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (statusFirst) in
-                //                if statusFirst {
-                //                } else {
-                //                }
+                
             })
         }
     }
@@ -156,29 +183,28 @@ extension ScanViewController: QRScannerViewDelegate {
 
     func qrScanningSucceededWithCode(_ qrCode: String?) {
         playSound()
-
-        guard let urlString = qrCode,
-            let scanSchema = URL(string: urlString),
-            let ssm2Key = scanSchema.ssmKey() else {
-                let error = NSError(domain: "", code: 0, userInfo: ["error message": "Parse qr code url failed"])
-                L.d(ErrorMessage.descriptionFromError(error: error))
-                DispatchQueue.main.async {
-                    self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-                }
-                return
-        }
-
-        CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
-            switch result {
-            case .success(_):
-                NotificationCenter.default.post(name: .SesameRegistered, object: nil)
-                self.dismiss(animated: true, completion: nil)
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-                }
-            }
-        }
+        viewModel.receivedQRCode(qrCode)
+//        guard let urlString = qrCode,
+//            let scanSchema = URL(string: urlString),
+//            let ssm2Key = scanSchema.ssmKey() else {
+//                let error = NSError(domain: "", code: 0, userInfo: ["error message": "Parse qr code url failed"])
+//                L.d(error.errorDescription())
+//                DispatchQueue.main.async {
+//                    self.view.makeToast(error.errorDescription())
+//                }
+//                return
+//        }
+//
+//        CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
+//            switch result {
+//            case .success(_):
+//                self.dismiss(animated: true, completion: nil)
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    self.view.makeToast(error.errorDescription())
+//                }
+//            }
+//        }
     }
     
     func playSound() {

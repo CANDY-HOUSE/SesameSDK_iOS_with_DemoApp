@@ -69,7 +69,7 @@ public final class LogInViewModel: ViewModel {
             AWSMobileClient.default().getUserAttributes { userAttributes, error in
 
                 if let error = error {
-                    L.d(ErrorMessage.descriptionFromError(error: error))
+                    L.d(error.errorDescription())
                 } else if let userAttributes = userAttributes {
                     do {
                         let user = try User.userFromAttributes(userAttributes)
@@ -87,7 +87,7 @@ public final class LogInViewModel: ViewModel {
 //                            }
 //                        }
                     } catch {
-                        L.d(ErrorMessage.descriptionFromError(error: error))
+                        L.d(error.errorDescription())
                         self.statusUpdated?(.finished(.failure(error)))
                     }
                 } else {

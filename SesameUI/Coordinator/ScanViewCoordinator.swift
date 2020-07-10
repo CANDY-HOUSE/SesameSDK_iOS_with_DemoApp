@@ -9,8 +9,13 @@
 import UIKit
 
 public final class ScanViewCoordinator: Coordinator {
-    public var childCoordinators: [String : Coordinator] = [:]
+    public enum DismissReason: String {
+        static let key = "DismissReason"
+        case cancel, registerSucceeded
+    }
     
+    public var childCoordinators: [String : Coordinator] = [:]
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     private var navigationController: UINavigationController
     
@@ -22,6 +27,17 @@ public final class ScanViewCoordinator: Coordinator {
         guard let scanViewController = UIStoryboard.viewControllers.scanViewController else {
             return
         }
+        let viewModel = ScanViewModel()
+        viewModel.delegate = self
+        scanViewController.viewModel = viewModel
+        presentedViewController = scanViewController
         navigationController.present(scanViewController, animated: true, completion: nil)
+    }
+}
+
+extension ScanViewCoordinator: ScanViewModelDelegate {
+    func receivedSSM() {
+        presentedViewController?.dismiss(animated: true, completion: nil)
+        parentCoordinator?.childCoordinatorDismissed(self, userInfo: [DismissReason.key: DismissReason.registerSucceeded])
     }
 }

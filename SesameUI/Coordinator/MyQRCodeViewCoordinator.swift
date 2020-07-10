@@ -11,11 +11,12 @@ import SesameSDK
 
 public final class MyQRCodeViewCoordinator: Coordinator {
     public var childCoordinators: [String : Coordinator] = [:]
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     var navigationController: UINavigationController
-    private var ssm: CHSesameBleInterface
+    private var ssm: CHSesame2
     
-    init(navigationController: UINavigationController, ssm: CHSesameBleInterface) {
+    init(navigationController: UINavigationController, ssm: CHSesame2) {
         self.navigationController = navigationController
         self.ssm = ssm
     }

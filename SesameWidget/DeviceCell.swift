@@ -32,7 +32,7 @@ public class DeviceCell: UITableViewCell {
         ssm?.toggleWithHaptic(interval: 1.5)
     }
     @IBOutlet weak var circle: SesameCircle!
-    public var ssm: CHSesameBleInterface?{
+    public var ssm: CHSesame2?{
         didSet{
             ssm?.delegate = self
             updateUI()
@@ -40,11 +40,8 @@ public class DeviceCell: UITableViewCell {
             ownerName.isHidden = true
             ownerName.text = ""
             
-            if let device = SSMStore.shared.getPropertyForDevice(ssm!) {
-                deviceName.text = device.name ?? device.uuid!.uuidString
-            } else {
-                deviceName.text = ssm!.deviceId.uuidString
-            }
+            let device = SSMStore.shared.getPropertyForDevice(ssm!)
+            deviceName.text = device.name ?? device.deviceID!.uuidString
             
             if #available(iOSApplicationExtension 13.0, *) {
                 ownerName.textColor = UIColor.placeholderText
@@ -70,9 +67,9 @@ public class DeviceCell: UITableViewCell {
     }
 }
 
-extension DeviceCell:CHSesameBleDeviceDelegate{
+extension DeviceCell:CHSesameDelegate{
 
-    public func onBleDeviceStatusChanged(device: CHSesameBleInterface, status: CHDeviceStatus) {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHDeviceStatus) {
         if device.deviceId == ssm?.deviceId,
             status == .receiveBle {
             device.connect()

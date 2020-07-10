@@ -18,15 +18,9 @@ public class MyQRCodeViewController: CHBaseViewController {
     @IBOutlet weak var mailLabel: UILabel!
     @IBOutlet weak var qrImg: UIImageView!
     
-//    var qrCodeType: QRcodeType?
-    
     var viewModel: MyQRViewModel!
-
-//    var familyName:String?
-//    var givenName:String?
-//    var mail:String?
     
-    var ssm: CHSesameBleInterface?
+    var ssm: CHSesame2?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,23 +70,5 @@ public class MyQRCodeViewController: CHBaseViewController {
         DispatchQueue.main.async {
             ViewHelper.showLoadingInView(view: self.view)
         }
-        
-//        CHAccountManager.shared.getInvitation() { result in
-//            DispatchQueue.main.async {
-//                ViewHelper.hideLoadingView(view: self.view)
-//            }
-//            
-//            switch result {
-//            case .success(let invitation):
-//                DispatchQueue.main.async {
-//                    self.qrImg.image = UIImage.generateQRCode(invitation.data.absoluteString, UIImage.makeLetterAvatar(withUsername: self.viewModel.givenName ?? ""), .black)
-//                }
-//            case .failure(let error):
-//                L.d(ErrorMessage.descriptionFromError(error: error))
-//                DispatchQueue.main.async {
-//                    self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-//                }
-//            }
-//        }
     }
 }

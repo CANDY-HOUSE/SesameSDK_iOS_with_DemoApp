@@ -51,6 +51,98 @@ public class SSM2SettingViewController: CHBaseViewController {
     @IBOutlet weak var secondPicker: UIPickerView!
     @IBOutlet weak var sharingButtonContainer: UIView!
     @IBOutlet weak var sharingButton: UIButton!
+    @IBOutlet weak var modifyHistoryTagLabel: UILabel!
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        assert(viewModel != nil, "SSM2SettingViewModel should not be nil.")
+        
+        viewModel.statusUpdated = { [weak self] status in
+            guard let strongSelf = self else {
+                return
+            }
+            switch status {
+            case .loading:
+                executeOnMainThread {
+                    ViewHelper.showLoadingInView(view: strongSelf.view)
+                }
+            case .received:
+                executeOnMainThread {
+                    strongSelf.refreshUI()
+                    ViewHelper.hideLoadingView(view: strongSelf.view)
+                }
+            case .finished(let result):
+                executeOnMainThread {
+                    switch result {
+                    case .success(_):
+                        strongSelf.view.makeToast("Completely Set".localStr)
+                        ViewHelper.hideLoadingView(view: strongSelf.view)
+                    case .failure(let error):
+                        switch error {
+                        case LockAngleSettingViewModel.LockAngleError.tooClose:
+                            strongSelf.view.makeToast("Too close")
+                        default:
+                            strongSelf.view.makeToast(error.errorDescription())
+                        }
+                        ViewHelper.hideLoadingView(view: strongSelf.view)
+                    }
+                }
+            }
+        }
+        
+        autoLockSwitch.addTarget(viewModel, action: #selector(SSM2SettingViewModel.autoLockSwitchChanged(sender:)), for: .valueChanged)
+
+        refreshUI()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.viewWillAppear()
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.title = viewModel.title
+    }
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.viewDidDisappear()
+    }
+    
+    func refreshUI()  {
+        navigationItem.title = viewModel.title
+        autoLockSwitch.isOn = viewModel.isAutoLockSwitchOn
+        autoLockSwitch.isEnabled = viewModel.autolockSwitchIsEnabled
+        
+        autoLockLabel1.isHidden = viewModel.isAutoLockLabel1Hidden
+        autoLockLabel2.isHidden = viewModel.isAutoLockLabel2Hidden
+        autoLockLabel3.isHidden = viewModel.isAutoLockLabel3Hidden
+        autoLockSecond.isHidden = viewModel.isAutoLockSecondHidden
+        
+        changenameLb.text = viewModel.changeNameIndicator
+        angleLabel.text = viewModel.angleIndicator
+        dfuLabel.text = viewModel.dfuIndicator
+        
+        autoLockLabel1.text = viewModel.autoLockLabel1Text
+        autoLockLabel2.text = viewModel.autoLockLabel2Text
+        autoLockLabel3.text = viewModel.autoLockLabel3Text
+        autoLockSecond.text = viewModel.autoLockSecondText
+        
+        resetSesameButton.setTitle(viewModel.removeSesameText, for: .normal)
+        dropKeyButton.setTitle(viewModel.dropKeyText, for: .normal)
+        
+        arrowImg.image = UIImage.SVGImage(named: viewModel.arrowImg)
+        secondPicker.isHidden = viewModel.secondPickerIsHidden
+        
+        version.text = viewModel.ssmVersionText
+        
+        uuidTitleLabel.text = viewModel.uuidTitleText
+        uuidValueLabel.text = viewModel.uuidValueText
+        
+        modifyHistoryTagLabel.text = viewModel.modifyHistoryTagText
+    }
     
     @IBAction func AutolockSwitch(_ sender: UISwitch) {
     }
@@ -109,103 +201,31 @@ public class SSM2SettingViewController: CHBaseViewController {
                 return
             }
             self.viewModel.rename(name)
+            DispatchQueue.main.async {
+                self.refreshUI()
+            }
         }
     }
+    
+    @IBAction func modifyHistoryTag(_ sender: Any) {
+        CHSSMChangeNameDialog.show(viewModel.historyTagPlaceholder()) { historyTag in
+            if historyTag == "" {
+                self.view.makeToast(self.viewModel.enterSesameName)
+                return
+            }
+            self.viewModel.modifyHistoryTag(historyTag)
+            DispatchQueue.main.async {
+                self.refreshUI()
+            }
+        }
+    }
+    
     
     @IBAction func sharing(_ sender: Any) {
         viewModel.shareSSMTapped()
     }
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        assert(viewModel != nil, "SSM2SettingViewModel should not be nil.")
-        
-        viewModel.statusUpdated = { [weak self] status in
-            guard let strongSelf = self else {
-                return
-            }
-            switch status {
-            case .loading:
-                executeOnMainThread {
-                    ViewHelper.showLoadingInView(view: strongSelf.view)
-                }
-            case .received:
-                executeOnMainThread {
-                    strongSelf.refreshUI()
-                    ViewHelper.hideLoadingView(view: strongSelf.view)
-                }
-            case .finished(let result):
-                executeOnMainThread {
-                    switch result {
-                    case .success(_):
-                        strongSelf.view.makeToast("Completely Set".localStr)
-                        ViewHelper.hideLoadingView(view: strongSelf.view)
-                    case .failure(let error):
-                        switch error {
-                        case LockAngleSettingViewModel.LockAngleError.tooClose:
-                            strongSelf.view.makeToast("Too close")
-                        default:
-                            strongSelf.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-                        }
-                        ViewHelper.hideLoadingView(view: strongSelf.view)
-                    }
-                }
-            }
-        }
-        
-        autoLockSwitch.addTarget(viewModel, action: #selector(SSM2SettingViewModel.autoLockSwitchChanged(sender:)), for: .valueChanged)
-
-        refreshUI()
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.viewWillAppear()
-    }
-    
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationItem.title = viewModel.title
-    }
-    
-    public override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        viewModel.viewDidDisappear()
-    }
-    
-    func refreshUI()  {
-        navigationItem.title = viewModel.title
-        autoLockSwitch.isOn = viewModel.isAutoLockSwitchOn
-        autoLockSwitch.isEnabled = viewModel.autolockSwitchIsEnabled
-        
-        autoLockLabel1.isHidden = viewModel.isAutoLockLabel1Hidden
-        autoLockLabel2.isHidden = viewModel.isAutoLockLabel2Hidden
-        autoLockLabel3.isHidden = viewModel.isAutoLockLabel3Hidden
-        autoLockSecond.isHidden = viewModel.isAutoLockSecondHidden
-        
-        changenameLb.text = viewModel.changeNameIndicator
-        angleLabel.text = viewModel.angleIndicator
-        dfuLabel.text = viewModel.dfuIndicator
-        
-        autoLockLabel1.text = viewModel.autoLockLabel1Text
-        autoLockLabel2.text = viewModel.autoLockLabel2Text
-        autoLockLabel3.text = viewModel.autoLockLabel3Text
-        autoLockSecond.text = viewModel.autoLockSecondText
-        
-        resetSesameButton.setTitle(viewModel.removeSesameText, for: .normal)
-        dropKeyButton.setTitle(viewModel.dropKeyText, for: .normal)
-        
-        arrowImg.image = UIImage.SVGImage(named: viewModel.arrowImg)
-        secondPicker.isHidden = viewModel.secondPickerIsHidden
-        
-        version.text = viewModel.ssmVersionText
-        
-        uuidTitleLabel.text = viewModel.uuidTitleText
-        uuidValueLabel.text = viewModel.uuidValueText
-    }
-    
     deinit {
-        L.d("SSM2SettingViewController deinit")
+//        L.d("SSM2SettingViewController deinit")
     }
 }

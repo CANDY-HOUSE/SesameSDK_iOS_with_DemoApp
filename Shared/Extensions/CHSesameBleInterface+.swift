@@ -15,7 +15,7 @@ import WatchKit
 import SesameWatchKitSDK
 #endif
 
-extension CHSesameBleInterface {
+extension CHSesame2 {
     
     func toggleWithHaptic(interval: TimeInterval) {
         #if os(iOS)

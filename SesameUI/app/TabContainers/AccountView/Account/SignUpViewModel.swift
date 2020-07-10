@@ -88,7 +88,7 @@ public final class SignUpViewModel: ViewModel {
                     password: password,
                     userAttributes: userAttributes) { result, error in
                             if let error = error as? AWSMobileClientError {
-                                L.d(ErrorMessage.descriptionFromError(error: error))
+                                L.d(error.errorDescription())
                                 self.statusUpdated?(.finished(.failure(error)))
                             } else if let result = result {
                                 self.signUpResult = result

@@ -41,16 +41,11 @@ class PopUpMenuControl: UIButton {
 
 
         menus = [groupChatMenu, addFriendMenu]
-//        menus = [groupChatMenu, addFriendMenu, scanMenu, payMenu]
-
-//        menus.sorted(by: { $0.title > $1.title }).first!.title
 
         let menuView = PopUpMenu(itemHeight: menuHeight, itemWidth: menuWidth, menus: menus)
         menuView.frame.origin = CGPoint(x: frame.width - menuWidth - paddingRight, y: paddingTop)
         menuView.transform = .identity
         menuView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        menuView.hi
-//        menuView.backgroundColor = Colors.black
         addSubview(menuView)
         
         self.menuViewFrame = menuView.frame

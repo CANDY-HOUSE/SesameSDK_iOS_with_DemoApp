@@ -183,7 +183,7 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
                         }
                     }
                 case .failure(let error):
-                    strongSelf.view.makeToast(ErrorMessage.descriptionFromError(error: error))
+                    strongSelf.view.makeToast(error.errorDescription())
                 }
             }
         }

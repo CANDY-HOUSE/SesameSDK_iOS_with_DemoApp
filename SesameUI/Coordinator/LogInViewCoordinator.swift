@@ -10,7 +10,7 @@ import UIKit
 
 public final class LogInViewCoordinator: Coordinator {
     public var childCoordinators: [String : Coordinator] = [:]
-    
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     public var navigationController: UINavigationController
     

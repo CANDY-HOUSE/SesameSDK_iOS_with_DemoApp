@@ -11,12 +11,13 @@ import SesameSDK
 
 public final class SSM2RoomMainViewCoordinator: Coordinator {
     public var childCoordinators: [String : Coordinator] = [:]
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
-    private let ssm: CHSesameBleInterface
+    private let ssm: CHSesame2
     
     let navigationController: UINavigationController
     
-    public init(navigationController: UINavigationController, ssm: CHSesameBleInterface) {
+    public init(navigationController: UINavigationController, ssm: CHSesame2) {
         self.navigationController = navigationController
         self.ssm = ssm
     }
@@ -41,7 +42,7 @@ public final class SSM2RoomMainViewCoordinator: Coordinator {
 }
 
 extension SSM2RoomMainViewCoordinator: SSM2RoomMainViewModelDelegate {
-    public func rightButtonTappedWithSSM(_ ssm: CHSesameBleInterface) {
+    public func rightButtonTappedWithSSM(_ ssm: CHSesame2) {
         let ssm2SettingViewCoordinator = SSM2SettingViewControllerCoordinator(navigationController: navigationController,
                                                                               ssm: ssm)
         ssm2SettingViewCoordinator.start()

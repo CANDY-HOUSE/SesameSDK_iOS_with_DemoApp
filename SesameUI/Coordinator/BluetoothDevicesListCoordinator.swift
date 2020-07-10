@@ -11,6 +11,7 @@ import SesameSDK
 
 public final class BluetoothDevicesListCoordinator: Coordinator {
     public var childCoordinators: [String: Coordinator] = [:]
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     public let navigationController: UINavigationController
     
@@ -29,10 +30,22 @@ public final class BluetoothDevicesListCoordinator: Coordinator {
         }
         navigationController.pushViewController(presentingViewController, animated: false)
     }
+    
+    public func childCoordinatorDismissed(_ coordinator: Coordinator, userInfo: [String: Any]) {
+        if let _ = coordinator as? RegisterDeviceListViewCoordinator,
+            let dismissReason = userInfo[RegisterDeviceListViewCoordinator.DismissReason.key] as? RegisterDeviceListViewCoordinator.DismissReason,
+            dismissReason == RegisterDeviceListViewCoordinator.DismissReason.registerSucceeded {
+            presentedViewController?.viewWillAppear(true)
+        } else if let _ = coordinator as? ScanViewCoordinator,
+            let dismissReason = userInfo[ScanViewCoordinator.DismissReason.key] as? ScanViewCoordinator.DismissReason,
+            dismissReason == ScanViewCoordinator.DismissReason.registerSucceeded {
+            presentedViewController?.viewWillAppear(true)
+        }
+    }
 }
 
 extension BluetoothDevicesListCoordinator: BluetoothDevicesListViewModelDelegate {
-    public func enterTestMode(ssm: CHSesameBleInterface) {
+    public func enterTestMode(ssm: CHSesame2) {
         guard let bluetoothSesameControlViewController = UIStoryboard.viewControllers.bluetoothSesameControlViewController else {
             return
         }
@@ -42,15 +55,17 @@ extension BluetoothDevicesListCoordinator: BluetoothDevicesListViewModelDelegate
     
     public func scanViewTapped() {
         let scanViewCoordinator = ScanViewCoordinator(navigationController: navigationController)
+        scanViewCoordinator.parentCoordinator = self
         scanViewCoordinator.start()
     }
     
     public func newSesameTapped() {
         let registerDeviceViewCoordinator = RegisterDeviceListViewCoordinator(navigationController: navigationController)
+        registerDeviceViewCoordinator.parentCoordinator = self
         registerDeviceViewCoordinator.start()
     }
     
-    public func bluetootheDevicesListViewDidTappedSSM(_ ssm: CHSesameBleInterface) {
+    public func bluetootheDevicesListViewDidTappedSSM(_ ssm: CHSesame2) {
         let ssm2RoomMainCoordinator = SSM2RoomMainViewCoordinator(navigationController: navigationController,
                                                                 ssm: ssm)
         ssm2RoomMainCoordinator.start()

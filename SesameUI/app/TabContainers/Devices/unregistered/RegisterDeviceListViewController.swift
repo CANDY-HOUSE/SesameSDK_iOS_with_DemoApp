@@ -46,8 +46,8 @@ public final class RegisterDeviceListViewController: CHBaseViewController  {
                     switch result {
                     case .success(_):
                         strongSelf.deviceTableView.reloadData()
-                    case .failure(_):
-                        break
+                    case .failure(let error):
+                        strongSelf.view.makeToast(error.errorDescription())
                     }
                 }
             }

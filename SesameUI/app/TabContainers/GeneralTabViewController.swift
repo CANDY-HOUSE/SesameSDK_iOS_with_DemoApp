@@ -36,18 +36,6 @@ public class GeneralTabViewController: UITabBarController {
             L.d("🧕","StateListen",userState)
             self.userStateChangeAction(userState)
         }
-        
-        NotificationCenter
-            .default
-            .addObserver(forName: .SesameRegistered,
-                         object: nil,
-                         queue: OperationQueue.main) { [weak self] _ in
-                            guard let strongSelf = self else {
-                                    return
-                            }
-                            strongSelf.selectedIndex = 0
-                            
-        }
     }
     
     func userStateChangeAction(_ userState:UserState?) {
@@ -56,15 +44,7 @@ public class GeneralTabViewController: UITabBarController {
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
             }
-            DispatchQueue.main.async {
-                L.d("登入成功刷新個頁面狀態")
-                NotificationCenter.default.post(name: .UserLoggedIn, object: nil)
-            }
         }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 

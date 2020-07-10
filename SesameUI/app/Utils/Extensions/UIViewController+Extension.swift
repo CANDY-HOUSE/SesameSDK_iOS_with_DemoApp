@@ -63,23 +63,3 @@ extension Sequence {
         return Dictionary.init(grouping: self, by: key)
     }
 }
-
-extension Date {
-    func toYMD() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        let strDate = dateFormatter.string(from: self)
-        return strDate
-    }
-    
-    func toJPtime() -> String {
-           let dateFormatter = DateFormatter()
-           dateFormatter.timeZone = TimeZone.current
-           dateFormatter.locale = NSLocale.current
-           dateFormatter.dateFormat = "MM/dd HH:mm:ss"
-           let strDate = dateFormatter.string(from: self)
-           return strDate
-       }
-}

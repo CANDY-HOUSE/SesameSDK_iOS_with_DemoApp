@@ -75,15 +75,11 @@ class MeViewController: CHBaseViewController {
         }
         
         setContentWithIsLoggedIn(viewModel.isSignedIn)
-        
-//        (tabBarController as? GeneralTabViewController)?.delegateMe = self
        
         logoutBtn.setTitle(viewModel.logoutButtonTitle, for: .normal)
         changeAccountName.text = viewModel.changeAccountNameText
 
         email.adjustsFontSizeToFitWidth = true
-        
-//        setLoginName()
 
         let rightButtonItem = UIBarButtonItem(image: UIImage.SVGImage(named: viewModel.rightButtonImage),
                                               style: .done,
@@ -94,7 +90,7 @@ class MeViewController: CHBaseViewController {
         
         let versionLabel = VersionLabel()
         view.addSubview(versionLabel)
-        //view.safeAreaLayoutGuide
+
         let constraints = [
             versionLabel.centerXAnchor.constraint(equalTo: logoutBtn.centerXAnchor),
             versionLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor,

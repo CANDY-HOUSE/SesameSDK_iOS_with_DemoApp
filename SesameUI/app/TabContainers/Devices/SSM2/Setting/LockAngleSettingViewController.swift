@@ -54,7 +54,7 @@ class LockAngleSettingViewController: CHBaseViewController  {
                 switch result {
                 case .success(_):
                     break
-                case .failure(let error):
+                case .failure(_):
                     break
                 }
                 break
@@ -86,7 +86,7 @@ class LockAngleSettingViewController: CHBaseViewController  {
     }
     
     deinit {
-        L.d("LockAngleSettingViewController")
+//        L.d("LockAngleSettingViewController")
     }
 }
 

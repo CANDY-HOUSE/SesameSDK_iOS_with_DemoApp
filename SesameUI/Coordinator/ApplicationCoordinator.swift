@@ -10,6 +10,7 @@ import UIKit
 
 public class ApplicationCoordinator: Coordinator {
     public var childCoordinators: [String: Coordinator] = [:]
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     
     let window: UIWindow

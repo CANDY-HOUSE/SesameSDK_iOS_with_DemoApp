@@ -10,6 +10,7 @@ import UIKit
 
 public class GeneralTabViewCoordinator: Coordinator {
     public var childCoordinators: [String: Coordinator] = [:]
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     
     let navigationController: UINavigationController
@@ -20,12 +21,15 @@ public class GeneralTabViewCoordinator: Coordinator {
     
     public func start() {
         let bluetoothListCoordinator = BluetoothDevicesListCoordinator(navigationViewController: UINavigationController())
+        bluetoothListCoordinator.parentCoordinator = self
         bluetoothListCoordinator.start()
         
         let friendsViewControllerCoordinator = FriendsViewControllerCoordinator(navigationController: UINavigationController())
+        friendsViewControllerCoordinator.parentCoordinator = self
         friendsViewControllerCoordinator.start()
         
         let meViewCoordinator = MeViewCoordinator(navigationController: UINavigationController())
+        meViewCoordinator.parentCoordinator = self
         meViewCoordinator.start()
         
         guard let entryViewController = UIStoryboard.viewControllers.generalTabViewController,
@@ -59,5 +63,13 @@ public class GeneralTabViewCoordinator: Coordinator {
         
         navigationController.pushViewController(entryViewController, animated: false)
         presentedViewController = entryViewController
+    }
+    
+    public func childCoordinatorDismissed(_ coordinator: Coordinator, userInfo: [String: Any]) {
+        if (coordinator as? BluetoothDevicesListCoordinator) != nil ||
+            (coordinator as? FriendsViewControllerCoordinator) != nil ||
+            (coordinator as? MeViewCoordinator) != nil {
+            (presentedViewController as? UITabBarController)?.selectedIndex = 0
+        }
     }
 }

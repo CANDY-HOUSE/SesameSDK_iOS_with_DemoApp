@@ -10,7 +10,7 @@ import UIKit
 
 public final class ForgotPasswordViewCoordinator: Coordinator {
     public var childCoordinators: [String : Coordinator] = [:]
-    
+    public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     public var presentingViewController: UIViewController
     

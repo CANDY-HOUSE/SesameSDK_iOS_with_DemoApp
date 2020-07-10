@@ -44,7 +44,7 @@ class ForgotPasswordViewController: CHBaseViewController {
             .forgotPassword(username: emailTextField.text!.toMail()) { forgotPasswordResult, error in
                 DispatchQueue.main.async {
                     if let error = error {
-                        self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
+                        self.view.makeToast(error.errorDescription())
                     } else if let result = forgotPasswordResult {
                         let alertController = UIAlertController(title: "Code Sent",
                                                                 message: "Code sent to \(result.codeDeliveryDetails?.destination ?? "no message")",
@@ -121,7 +121,7 @@ class ForgotPasswordViewController: CHBaseViewController {
                         }
                     }
                 case .failure(let error):
-                    strongSelf.view.makeToast(ErrorMessage.descriptionFromError(error: error))
+                    strongSelf.view.makeToast(error.errorDescription())
                 }
             }
         }

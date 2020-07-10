@@ -123,7 +123,7 @@ extension MeViewModel {
             AWSMobileClient.default().getUserAttributes { userAttributes, error in
 
                 if let error = error {
-                    L.d(ErrorMessage.descriptionFromError(error: error))
+                    L.d(error.errorDescription())
                     self.statusUpdated?(.finished(.failure(error)))
                 } else if let userAttributes = userAttributes {
                     do {
@@ -158,7 +158,7 @@ extension MeViewModel {
                     
                     } catch {
                         self.statusUpdated?(.finished(.failure(error)))
-                        L.d(ErrorMessage.descriptionFromError(error: error))
+                        L.d(error.errorDescription())
                     }
                 } else {
                     L.d("All Null")

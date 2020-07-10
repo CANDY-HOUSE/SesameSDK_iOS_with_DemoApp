@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             WCSession.default.delegate = WCSession.default
             WCSession.default.activate()
         }
+        
+        CHConfiguration.shared.setAPIKey("SNUrRpqs9P8fFQJfmX94e1if1XriRw7G3uLVMqkK")
+        CHConfiguration.shared.setIdentityPoolId("ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae")
 
         return true
     }
@@ -55,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {//退出
         CHBleManager.shared.disableScan()
         CHBleManager.shared.disConnectAll()
+        SSMStore.shared.saveIfNeeded()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {//進入
@@ -66,14 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate:UNUserNotificationCenterDelegate{
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        //        L.d("收到遠端通知==>",(application.applicationState == .active))
-        //        L.d("收到遠端通知==>", userInfo,(application.applicationState == .active))
-
         if let sessions = userInfo["aps"] as? [String: Any]{
             if  let action:String = sessions["action"] as? String {
                 if action == "KEYCHAIN_FLUSH" {
                     L.d("我收到請求刷新")
-                    NotificationCenter.default.post(name: .SesameRegistered, object: nil)
                 }
             }
         }
@@ -120,6 +120,6 @@ extension WCSession: WCSessionDelegate {
     }
     
     public func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        NotificationCenter.default.post(name: .WCSessioinDidReceiveMessage, object: message)
+//        NotificationCenter.default.post(name: .WCSessioinDidReceiveMessage, object: message)
     }
 }

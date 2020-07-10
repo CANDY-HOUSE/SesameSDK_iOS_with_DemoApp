@@ -215,6 +215,8 @@ SWIFT_CLASS("_TtC9SesameSDK12CHBleManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
 @class CBCentralManager;
 
 @interface CHBleManager (SWIFT_EXTENSION(SesameSDK)) <CBCentralManagerDelegate>
@@ -240,16 +242,6 @@ SWIFT_CLASS_NAMED("CHDevice")
 
 
 
-@class SSMHistory;
-@class NSSet;
-
-@interface CHDevice (SWIFT_EXTENSION(SesameSDK))
-- (void)addHistoryObject:(SSMHistory * _Nonnull)value;
-- (void)removeHistoryObject:(SSMHistory * _Nonnull)value;
-- (void)addHistory:(NSSet * _Nonnull)values;
-- (void)removeHistory:(NSSet * _Nonnull)values;
-@end
-
 
 @interface CHDevice (SWIFT_EXTENSION(SesameSDK))
 @property (nonatomic, copy) NSString * _Nullable deviceModel;
@@ -258,7 +250,6 @@ SWIFT_CLASS_NAMED("CHDevice")
 @property (nonatomic, copy) NSString * _Nullable keyIndex;
 @property (nonatomic, copy) NSString * _Nullable secretKey;
 @property (nonatomic, copy) NSString * _Nullable ss2PublicKey;
-@property (nonatomic, strong) NSSet * _Nullable history;
 @end
 
 
@@ -266,18 +257,6 @@ SWIFT_CLASS_NAMED("CHDevice")
 
 
 
-SWIFT_CLASS_NAMED("SSMHistory")
-@interface SSMHistory : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface SSMHistory (SWIFT_EXTENSION(SesameSDK))
-@property (nonatomic, copy) NSString * _Nullable event;
-@property (nonatomic, copy) NSDate * _Nullable ingestionAt;
-@property (nonatomic, copy) NSDate * _Nullable timestamp;
-@property (nonatomic, strong) CHDevice * _Nullable chDevice;
-@end
 
 
 

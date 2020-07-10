@@ -10,9 +10,9 @@ import Foundation
 import SesameSDK
 
 public final class RegisterCellModel {
-    private var ssm: CHSesameBleInterface
+    private var ssm: CHSesame2
     
-    public init(ssm: CHSesameBleInterface) {
+    public init(ssm: CHSesame2) {
         self.ssm = ssm
     }
     

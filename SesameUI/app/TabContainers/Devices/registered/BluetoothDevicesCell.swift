@@ -14,12 +14,8 @@ import CoreBluetooth
 class BluetoothDevicesCell: UITableViewCell {
     
     @IBAction func test(_ sender: UIButton) {
-        // TODO: Fix test view
-//        vc?.performSegue(withIdentifier:  "toDeviceDetail", sender: ssm)
         viewModel.enterTestModeTapped()
     }
-//    public var vc:UIViewController?
-
 
     @IBOutlet weak var batteryImage: UIImageView!
     @IBOutlet weak var powerLabel: UILabel!
@@ -45,7 +41,6 @@ class BluetoothDevicesCell: UITableViewCell {
                         break
                     case .received:
                         strongSelf.updateSSMStatus()
-//                        strongSelf.updateUI()
                     case .finished(let result):
                         switch result {
                         case .success(_):
@@ -99,12 +94,7 @@ class BluetoothDevicesCell: UITableViewCell {
         batteryImage.image = UIImage.CHUIImage(named: viewModel?.batteryImage() ?? "")
     }
     
-//    func viewWillAppear() {
-//        viewModel.viewWillAppear()
-//        updateUI()
-//    }
-    
     deinit {
-        L.d("BluetoothDevicesCell deinit")
+//        L.d("BluetoothDevicesCell deinit")
     }
 }
