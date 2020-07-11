@@ -102,7 +102,7 @@ public final class LockAngleSettingViewModel: ViewModel {
             }
             
         } else {
-            let error = NSError(domain: "co.candyhouse.sesame-sdk-test-app", code: 0, userInfo: ["Description": "Get sesame setting failed."])
+            let error = NSError(domain: "co.candyhouse.sesame-sdk-test-app", code: 0, userInfo: ["message": "Get sesame setting failed."])
             statusUpdated?(.finished(.failure(error)))
         }
         
@@ -117,10 +117,10 @@ public final class LockAngleSettingViewModel: ViewModel {
 // MARK: - Delegate
 extension LockAngleSettingViewModel: CHSesameDelegate {
     public func onBleDeviceStatusChanged(device: CHSesame2,
-                                         status: CHDeviceStatus) {
+                                         status: CHSesameStatus) {
         if device.deviceId == ssm.deviceId,
             status == .receiveBle {
-            ssm.connect()
+            ssm.connect(){_ in}
         }
     }
     

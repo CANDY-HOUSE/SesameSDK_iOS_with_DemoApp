@@ -193,32 +193,6 @@
 		BE30814A248E3CA800152D66 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308148248E3CA800152D66 /* Array+.swift */; };
 		BE30814D248E3CCF00152D66 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30814C248E3CCF00152D66 /* String+.swift */; };
 		BE30814E248E3CCF00152D66 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30814C248E3CCF00152D66 /* String+.swift */; };
-		BE43699524B8799F00621A47 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698924B8798A00621A47 /* AWSAPIGateway.framework */; };
-		BE43699624B8799F00621A47 /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698924B8798A00621A47 /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE43699724B8799F00621A47 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698A24B8798A00621A47 /* SVGKit.framework */; };
-		BE43699824B8799F00621A47 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698A24B8798A00621A47 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE43699924B8799F00621A47 /* AWSCognitoIdentityProviderASF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698B24B8798A00621A47 /* AWSCognitoIdentityProviderASF.framework */; };
-		BE43699A24B8799F00621A47 /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698B24B8798A00621A47 /* AWSCognitoIdentityProviderASF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE43699B24B8799F00621A47 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698C24B8798A00621A47 /* KeychainSwift.framework */; };
-		BE43699C24B8799F00621A47 /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698C24B8798A00621A47 /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE43699D24B8799F00621A47 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698D24B8798A00621A47 /* ZIPFoundation.framework */; };
-		BE43699E24B8799F00621A47 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698D24B8798A00621A47 /* ZIPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE43699F24B8799F00621A47 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698E24B8798A00621A47 /* AWSCognitoIdentityProvider.framework */; };
-		BE4369A024B8799F00621A47 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698E24B8798A00621A47 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE4369A124B8799F00621A47 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698F24B8798A00621A47 /* AWSCore.framework */; };
-		BE4369A224B8799F00621A47 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698F24B8798A00621A47 /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE4369A324B8799F00621A47 /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699024B8798A00621A47 /* SesameSDK.framework */; };
-		BE4369A424B8799F00621A47 /* SesameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699024B8798A00621A47 /* SesameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE4369A524B8799F00621A47 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699124B8798A00621A47 /* CocoaLumberjack.framework */; };
-		BE4369A624B8799F00621A47 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699124B8798A00621A47 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE4369A724B8799F00621A47 /* AWSMobileClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699224B8798A00621A47 /* AWSMobileClient.framework */; };
-		BE4369A824B8799F00621A47 /* AWSMobileClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699224B8798A00621A47 /* AWSMobileClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE4369A924B8799F00621A47 /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699324B8798A00621A47 /* iOSDFULibrary.framework */; };
-		BE4369AA24B8799F00621A47 /* iOSDFULibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699324B8798A00621A47 /* iOSDFULibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE4369AB24B8799F00621A47 /* AWSAuthCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699424B8798A00621A47 /* AWSAuthCore.framework */; };
-		BE4369AC24B879A000621A47 /* AWSAuthCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699424B8798A00621A47 /* AWSAuthCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE4369AE24B879C300621A47 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43698924B8798A00621A47 /* AWSAPIGateway.framework */; };
-		BE4369B024B879C400621A47 /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE43699024B8798A00621A47 /* SesameSDK.framework */; };
 		BE46A7AA24A1B1EB00700F27 /* SignUpViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46A7A924A1B1EB00700F27 /* SignUpViewCoordinator.swift */; };
 		BE46A7AC24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46A7AB24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift */; };
 		BE46A7AE24A1B3CC00700F27 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46A7AD24A1B3CC00700F27 /* SignUpViewModel.swift */; };
@@ -240,11 +214,7 @@
 		BE9C6C9724B3378B00C7318B /* SSMStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6C9624B3378B00C7318B /* SSMStore.swift */; };
 		BE9C6CA524B3394000C7318B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6CA424B3394000C7318B /* Date+.swift */; };
 		BE9C6CA624B3394000C7318B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6CA424B3394000C7318B /* Date+.swift */; };
-		BE9C6CAF24B410BA00C7318B /* SSMHistoryMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6CAE24B410BA00C7318B /* SSMHistoryMO+CoreDataClass.swift */; };
-		BE9C6CB324B410C900C7318B /* SSMHistoryMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6CB224B410C900C7318B /* SSMHistoryMO+CoreDataProperties.swift */; };
-		BE9C6CB424B410CA00C7318B /* SSMHistoryMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6CB224B410C900C7318B /* SSMHistoryMO+CoreDataProperties.swift */; };
 		BE9C6CB724B448EB00C7318B /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6CB624B448EB00C7318B /* ScanViewModel.swift */; };
-		BE9C6CB824B48BAD00C7318B /* SSMHistoryMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6CAE24B410BA00C7318B /* SSMHistoryMO+CoreDataClass.swift */; };
 		BE9C6CBA24B48BB200C7318B /* SSMStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6C9624B3378B00C7318B /* SSMStore.swift */; };
 		BEB1E71B248949700039CD7B /* CHSesameBleInterface+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1E71A248949700039CD7B /* CHSesameBleInterface+.swift */; };
 		BEB1E71C248949700039CD7B /* CHSesameBleInterface+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1E71A248949700039CD7B /* CHSesameBleInterface+.swift */; };
@@ -265,6 +235,34 @@
 		BEB7F49E24A4EBBF00D04651 /* SesameUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F49C24A4EBBF00D04651 /* SesameUI.xcdatamodeld */; };
 		BEC0908624A9F281006E188E /* CHSesameBleInterface+QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0908524A9F281006E188E /* CHSesameBleInterface+QRCode.swift */; };
 		BEC9D0EC2499CE6F001AE8EE /* SesameWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 41E68508235597380042B159 /* SesameWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BEF25CDF24B9BCC500E958A5 /* iconfinder_9_3898370.svg in Resources */ = {isa = PBXBuildFile; fileRef = BEF25CDE24B9BCC400E958A5 /* iconfinder_9_3898370.svg */; };
+		BEF25CE024B9BCC500E958A5 /* iconfinder_9_3898370.svg in Resources */ = {isa = PBXBuildFile; fileRef = BEF25CDE24B9BCC400E958A5 /* iconfinder_9_3898370.svg */; };
+		BEF25D4424B9F82100E958A5 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3824B9F7FF00E958A5 /* AWSAPIGateway.framework */; };
+		BEF25D4524B9F82100E958A5 /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3824B9F7FF00E958A5 /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D4624B9F82100E958A5 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3924B9F7FF00E958A5 /* SVGKit.framework */; };
+		BEF25D4724B9F82100E958A5 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3924B9F7FF00E958A5 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D4824B9F82100E958A5 /* AWSCognitoIdentityProviderASF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3A24B9F7FF00E958A5 /* AWSCognitoIdentityProviderASF.framework */; };
+		BEF25D4924B9F82100E958A5 /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3A24B9F7FF00E958A5 /* AWSCognitoIdentityProviderASF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D4A24B9F82100E958A5 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3B24B9F7FF00E958A5 /* KeychainSwift.framework */; };
+		BEF25D4B24B9F82100E958A5 /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3B24B9F7FF00E958A5 /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D4C24B9F82100E958A5 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3C24B9F7FF00E958A5 /* ZIPFoundation.framework */; };
+		BEF25D4D24B9F82100E958A5 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3C24B9F7FF00E958A5 /* ZIPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D4E24B9F82100E958A5 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3D24B9F7FF00E958A5 /* AWSCognitoIdentityProvider.framework */; };
+		BEF25D4F24B9F82100E958A5 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3D24B9F7FF00E958A5 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D5024B9F82100E958A5 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3E24B9F7FF00E958A5 /* AWSCore.framework */; };
+		BEF25D5124B9F82100E958A5 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3E24B9F7FF00E958A5 /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D5224B9F82100E958A5 /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3F24B9F7FF00E958A5 /* SesameSDK.framework */; };
+		BEF25D5324B9F82100E958A5 /* SesameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3F24B9F7FF00E958A5 /* SesameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D5424B9F82100E958A5 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4024B9F7FF00E958A5 /* CocoaLumberjack.framework */; };
+		BEF25D5524B9F82100E958A5 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4024B9F7FF00E958A5 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D5624B9F82100E958A5 /* AWSMobileClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4124B9F7FF00E958A5 /* AWSMobileClient.framework */; };
+		BEF25D5724B9F82100E958A5 /* AWSMobileClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4124B9F7FF00E958A5 /* AWSMobileClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D5824B9F82100E958A5 /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4224B9F7FF00E958A5 /* iOSDFULibrary.framework */; };
+		BEF25D5924B9F82100E958A5 /* iOSDFULibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4224B9F7FF00E958A5 /* iOSDFULibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D5A24B9F82100E958A5 /* AWSAuthCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4324B9F7FF00E958A5 /* AWSAuthCore.framework */; };
+		BEF25D5B24B9F82100E958A5 /* AWSAuthCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D4324B9F7FF00E958A5 /* AWSAuthCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF25D5C24B9F82C00E958A5 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3824B9F7FF00E958A5 /* AWSAPIGateway.framework */; };
+		BEF25D5E24B9F82C00E958A5 /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF25D3F24B9F7FF00E958A5 /* SesameSDK.framework */; };
 		BEFF263B249FBA4D00E4E80F /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF263A249FBA4D00E4E80F /* Notification+.swift */; };
 		BEFF263C249FBA4D00E4E80F /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF263A249FBA4D00E4E80F /* Notification+.swift */; };
 		BEFF263E24A03F8800E4E80F /* RegisterDeviceListViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF263D24A03F8800E4E80F /* RegisterDeviceListViewCoordinator.swift */; };
@@ -297,24 +295,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BE4369AD24B879A000621A47 /* Embed Frameworks */ = {
+		BE3DD9B024829E0100EEA3B1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEBBF9B82499C3F300E1147E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BE43699C24B8799F00621A47 /* KeychainSwift.framework in Embed Frameworks */,
-				BE4369A624B8799F00621A47 /* CocoaLumberjack.framework in Embed Frameworks */,
-				BE4369A224B8799F00621A47 /* AWSCore.framework in Embed Frameworks */,
-				BE4369AC24B879A000621A47 /* AWSAuthCore.framework in Embed Frameworks */,
-				BE4369A824B8799F00621A47 /* AWSMobileClient.framework in Embed Frameworks */,
-				BE4369A024B8799F00621A47 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
-				BE43699A24B8799F00621A47 /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */,
-				BE43699824B8799F00621A47 /* SVGKit.framework in Embed Frameworks */,
-				BE43699624B8799F00621A47 /* AWSAPIGateway.framework in Embed Frameworks */,
-				BE43699E24B8799F00621A47 /* ZIPFoundation.framework in Embed Frameworks */,
-				BE4369A424B8799F00621A47 /* SesameSDK.framework in Embed Frameworks */,
-				BE4369AA24B8799F00621A47 /* iOSDFULibrary.framework in Embed Frameworks */,
+				BEF25D4B24B9F82100E958A5 /* KeychainSwift.framework in Embed Frameworks */,
+				BEF25D5524B9F82100E958A5 /* CocoaLumberjack.framework in Embed Frameworks */,
+				BEF25D5124B9F82100E958A5 /* AWSCore.framework in Embed Frameworks */,
+				BEF25D5B24B9F82100E958A5 /* AWSAuthCore.framework in Embed Frameworks */,
+				BEF25D5724B9F82100E958A5 /* AWSMobileClient.framework in Embed Frameworks */,
+				BEF25D4F24B9F82100E958A5 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
+				BEF25D4924B9F82100E958A5 /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */,
+				BEF25D4724B9F82100E958A5 /* SVGKit.framework in Embed Frameworks */,
+				BEF25D4524B9F82100E958A5 /* AWSAPIGateway.framework in Embed Frameworks */,
+				BEF25D4D24B9F82100E958A5 /* ZIPFoundation.framework in Embed Frameworks */,
+				BEF25D5324B9F82100E958A5 /* SesameSDK.framework in Embed Frameworks */,
+				BEF25D5924B9F82100E958A5 /* iOSDFULibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,24 +494,18 @@
 		41ED3BD42376A98700CBC5D0 /* RegisterDeviceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceListViewController.swift; sourceTree = "<group>"; };
 		41F1CC31234D8ABD00652D12 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		41F1CC33234DB66E00652D12 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		9181B5635841E19FF8B09B1C /* Pods_SesameWatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SesameWatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A13A7BAEBBF3A077C7E31575 /* Pods_SesameApp_SesameUIApp_SesameWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SesameApp_SesameUIApp_SesameWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7650CB45E72235D55EB073E /* Pods_SesameApp_SesameUIApp_SesameUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SesameApp_SesameUIApp_SesameUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B052D5F8249E212F00AEA645 /* LockAngleSettingViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAngleSettingViewCoordinator.swift; sourceTree = "<group>"; };
 		B052D5FA249E222100AEA645 /* LockAngleSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAngleSettingViewModel.swift; sourceTree = "<group>"; };
 		B08C5344245EA84000252F00 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B08C5346245EC30000252F00 /* NSError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+.swift"; sourceTree = "<group>"; };
 		B0A6138F247680FD00A797E5 /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
 		B13664502320DCBE00B88EFE /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		B142943F231F8EFA006AA64C /* SesameSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B179690722F7CE9300E91996 /* Sesame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sesame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B179690A22F7CE9300E91996 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B179690F22F7CE9300E91996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B179691122F7CE9400E91996 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B179691422F7CE9400E91996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B179691622F7CE9400E91996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BE037A882469427C00ED2611 /* AWSMobileClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE037A8C246942BA00ED2611 /* AWSMobileClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE037A90246981DB00ED2611 /* DFUHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFUHelper.swift; sourceTree = "<group>"; };
 		BE166B8724912755007CDC29 /* Storyboard+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+.swift"; sourceTree = "<group>"; };
 		BE166B8924913A17007CDC29 /* QRCodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeType.swift; sourceTree = "<group>"; };
@@ -515,25 +517,10 @@
 		BE308144248E3C8C00152D66 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		BE308148248E3CA800152D66 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		BE30814C248E3CCF00152D66 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		BE43698924B8798A00621A47 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAPIGateway.framework; sourceTree = "<group>"; };
-		BE43698A24B8798A00621A47 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
-		BE43698B24B8798A00621A47 /* AWSCognitoIdentityProviderASF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProviderASF.framework; sourceTree = "<group>"; };
-		BE43698C24B8798A00621A47 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeychainSwift.framework; sourceTree = "<group>"; };
-		BE43698D24B8798A00621A47 /* ZIPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZIPFoundation.framework; sourceTree = "<group>"; };
-		BE43698E24B8798A00621A47 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
-		BE43698F24B8798A00621A47 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
-		BE43699024B8798A00621A47 /* SesameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameSDK.framework; sourceTree = "<group>"; };
-		BE43699124B8798A00621A47 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
-		BE43699224B8798A00621A47 /* AWSMobileClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = "<group>"; };
-		BE43699324B8798A00621A47 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = "<group>"; };
-		BE43699424B8798A00621A47 /* AWSAuthCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAuthCore.framework; sourceTree = "<group>"; };
 		BE46A7A924A1B1EB00700F27 /* SignUpViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewCoordinator.swift; sourceTree = "<group>"; };
 		BE46A7AB24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewCoordinator.swift; sourceTree = "<group>"; };
 		BE46A7AD24A1B3CC00700F27 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		BE46A7AF24A1E3CE00700F27 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
-		BE53F4F124877AB7006C6679 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE53F4F524877C1F006C6679 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE53F4FC24877C7C006C6679 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6978DC2483E30F0089141E /* ToastUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
 		BE6978E02483E37D0089141E /* DFUProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DFUProgress.swift; sourceTree = "<group>"; };
 		BE6978E12483E37D0089141E /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -541,18 +528,12 @@
 		BE6978E42483E37D0089141E /* ArrayChoiceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayChoiceTableViewController.swift; sourceTree = "<group>"; };
 		BE6978E52483E37D0089141E /* AlwaysShowPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysShowPopup.swift; sourceTree = "<group>"; };
 		BE6978E62483E37D0089141E /* ViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
-		BE6978F22483E56B0089141E /* AWSAuthCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSAuthCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE6978F62483E5900089141E /* AWSAPIGateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSAPIGateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE6978F72483E5900089141E /* AWSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE6C97AC24863C8D009EED3D /* SesameSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE75139124A35B85003CDB9C /* CHBLEDelegatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBLEDelegatesManager.swift; sourceTree = "<group>"; };
 		BE8D0B572494A2F900B99987 /* CHConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CHConfiguration.plist; sourceTree = "<group>"; };
 		BE8D0B5E2494A44C00B99987 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		BE974C6A24656F6C002F6249 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BE9C6C9624B3378B00C7318B /* SSMStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSMStore.swift; sourceTree = "<group>"; };
 		BE9C6CA424B3394000C7318B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
-		BE9C6CAE24B410BA00C7318B /* SSMHistoryMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSMHistoryMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BE9C6CB224B410C900C7318B /* SSMHistoryMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSMHistoryMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BE9C6CB624B448EB00C7318B /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		BEB1E71A248949700039CD7B /* CHSesameBleInterface+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBleInterface+.swift"; sourceTree = "<group>"; };
 		BEB4A0B2249B3B32008CD1FD /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -571,13 +552,19 @@
 		BEB4A159249F7ECD008CD1FD /* MyQRCodeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewCoordinator.swift; sourceTree = "<group>"; };
 		BEB7F49D24A4EBBF00D04651 /* SesameUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SesameUI.xcdatamodel; sourceTree = "<group>"; };
 		BEC0908524A9F281006E188E /* CHSesameBleInterface+QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBleInterface+QRCode.swift"; sourceTree = "<group>"; };
-		BECA5F2E24877C9C00D68C5E /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEEFA89B24664FA0001DC382 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSAPIGateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEEFA89C24664FA0001DC382 /* AWSAuthCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSAuthCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEEFA89D24664FA0001DC382 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSCognitoIdentityProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEEFA89E24664FA0001DC382 /* AWSCognitoIdentityProviderASF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSCognitoIdentityProviderASF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEEFA89F24664FA0001DC382 /* AWSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEEFA8A024664FA0001DC382 /* AWSMobileClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEF25CDE24B9BCC400E958A5 /* iconfinder_9_3898370.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = iconfinder_9_3898370.svg; sourceTree = "<group>"; };
+		BEF25D3824B9F7FF00E958A5 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAPIGateway.framework; sourceTree = "<group>"; };
+		BEF25D3924B9F7FF00E958A5 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
+		BEF25D3A24B9F7FF00E958A5 /* AWSCognitoIdentityProviderASF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProviderASF.framework; sourceTree = "<group>"; };
+		BEF25D3B24B9F7FF00E958A5 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeychainSwift.framework; sourceTree = "<group>"; };
+		BEF25D3C24B9F7FF00E958A5 /* ZIPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZIPFoundation.framework; sourceTree = "<group>"; };
+		BEF25D3D24B9F7FF00E958A5 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
+		BEF25D3E24B9F7FF00E958A5 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
+		BEF25D3F24B9F7FF00E958A5 /* SesameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameSDK.framework; sourceTree = "<group>"; };
+		BEF25D4024B9F7FF00E958A5 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
+		BEF25D4124B9F7FF00E958A5 /* AWSMobileClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = "<group>"; };
+		BEF25D4224B9F7FF00E958A5 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = "<group>"; };
+		BEF25D4324B9F7FF00E958A5 /* AWSAuthCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAuthCore.framework; sourceTree = "<group>"; };
 		BEFF263A249FBA4D00E4E80F /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		BEFF263D24A03F8800E4E80F /* RegisterDeviceListViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceListViewCoordinator.swift; sourceTree = "<group>"; };
 		BEFF263F24A049F100E4E80F /* RegisterDeviceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceListViewModel.swift; sourceTree = "<group>"; };
@@ -603,8 +590,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE4369AE24B879C300621A47 /* AWSAPIGateway.framework in Frameworks */,
-				BE4369B024B879C400621A47 /* SesameSDK.framework in Frameworks */,
+				BEF25D5C24B9F82C00E958A5 /* AWSAPIGateway.framework in Frameworks */,
+				BEF25D5E24B9F82C00E958A5 /* SesameSDK.framework in Frameworks */,
 				41E6850A235597380042B159 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,18 +600,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE43699B24B8799F00621A47 /* KeychainSwift.framework in Frameworks */,
-				BE4369A524B8799F00621A47 /* CocoaLumberjack.framework in Frameworks */,
-				BE4369A124B8799F00621A47 /* AWSCore.framework in Frameworks */,
-				BE4369AB24B8799F00621A47 /* AWSAuthCore.framework in Frameworks */,
-				BE4369A724B8799F00621A47 /* AWSMobileClient.framework in Frameworks */,
-				BE43699F24B8799F00621A47 /* AWSCognitoIdentityProvider.framework in Frameworks */,
-				BE43699924B8799F00621A47 /* AWSCognitoIdentityProviderASF.framework in Frameworks */,
-				BE43699724B8799F00621A47 /* SVGKit.framework in Frameworks */,
-				BE43699524B8799F00621A47 /* AWSAPIGateway.framework in Frameworks */,
-				BE43699D24B8799F00621A47 /* ZIPFoundation.framework in Frameworks */,
-				BE4369A324B8799F00621A47 /* SesameSDK.framework in Frameworks */,
-				BE4369A924B8799F00621A47 /* iOSDFULibrary.framework in Frameworks */,
+				BEF25D4A24B9F82100E958A5 /* KeychainSwift.framework in Frameworks */,
+				BEF25D5424B9F82100E958A5 /* CocoaLumberjack.framework in Frameworks */,
+				BEF25D5024B9F82100E958A5 /* AWSCore.framework in Frameworks */,
+				BEF25D5A24B9F82100E958A5 /* AWSAuthCore.framework in Frameworks */,
+				BEF25D5624B9F82100E958A5 /* AWSMobileClient.framework in Frameworks */,
+				BEF25D4E24B9F82100E958A5 /* AWSCognitoIdentityProvider.framework in Frameworks */,
+				BEF25D4824B9F82100E958A5 /* AWSCognitoIdentityProviderASF.framework in Frameworks */,
+				BEF25D4624B9F82100E958A5 /* SVGKit.framework in Frameworks */,
+				BEF25D4424B9F82100E958A5 /* AWSAPIGateway.framework in Frameworks */,
+				BEF25D4C24B9F82100E958A5 /* ZIPFoundation.framework in Frameworks */,
+				BEF25D5224B9F82100E958A5 /* SesameSDK.framework in Frameworks */,
+				BEF25D5824B9F82100E958A5 /* iOSDFULibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +621,7 @@
 		410303262379012500785311 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				BEF25CDE24B9BCC400E958A5 /* iconfinder_9_3898370.svg */,
 				41BBE7D22428A22D009C8CC5 /* owner_king.svg */,
 				4148D49423CDC7080055E337 /* bt0.svg */,
 				4148D48A23CDA9DF0055E337 /* bt100.svg */,
@@ -1065,7 +1053,7 @@
 				41E6850B235597380042B159 /* SesameWidget */,
 				B179690822F7CE9300E91996 /* Products */,
 				B179693822F7CEA500E91996 /* Frameworks */,
-				BE43698824B8798A00621A47 /* sdk */,
+				BEF25D3724B9F7FF00E958A5 /* sdk */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1099,27 +1087,7 @@
 		B179693822F7CEA500E91996 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BECA5F2E24877C9C00D68C5E /* SesameWatchKitSDK.framework */,
-				BE53F4FC24877C7C006C6679 /* SesameWatchKitSDK.framework */,
-				BE6978F22483E56B0089141E /* AWSAuthCore.framework */,
-				BE53F4F124877AB7006C6679 /* SesameWatchKitSDK.framework */,
-				BE53F4F524877C1F006C6679 /* SesameWatchKitSDK.framework */,
-				BE6C97AC24863C8D009EED3D /* SesameSDK.framework */,
-				BE6978F62483E5900089141E /* AWSAPIGateway.framework */,
-				BE6978F72483E5900089141E /* AWSCore.framework */,
-				BE037A8C246942BA00ED2611 /* AWSMobileClient.framework */,
-				BE037A882469427C00ED2611 /* AWSMobileClient.framework */,
-				BEEFA89B24664FA0001DC382 /* AWSAPIGateway.framework */,
-				BEEFA89C24664FA0001DC382 /* AWSAuthCore.framework */,
-				BEEFA89D24664FA0001DC382 /* AWSCognitoIdentityProvider.framework */,
-				BEEFA89E24664FA0001DC382 /* AWSCognitoIdentityProviderASF.framework */,
-				BEEFA89F24664FA0001DC382 /* AWSCore.framework */,
-				BEEFA8A024664FA0001DC382 /* AWSMobileClient.framework */,
-				B142943F231F8EFA006AA64C /* SesameSDK.framework */,
 				41E68509235597380042B159 /* NotificationCenter.framework */,
-				A7650CB45E72235D55EB073E /* Pods_SesameApp_SesameUIApp_SesameUI.framework */,
-				A13A7BAEBBF3A077C7E31575 /* Pods_SesameApp_SesameUIApp_SesameWidget.framework */,
-				9181B5635841E19FF8B09B1C /* Pods_SesameWatchKit_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1152,25 +1120,6 @@
 				BE9C6CA424B3394000C7318B /* Date+.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		BE43698824B8798A00621A47 /* sdk */ = {
-			isa = PBXGroup;
-			children = (
-				BE43698924B8798A00621A47 /* AWSAPIGateway.framework */,
-				BE43698A24B8798A00621A47 /* SVGKit.framework */,
-				BE43698B24B8798A00621A47 /* AWSCognitoIdentityProviderASF.framework */,
-				BE43698C24B8798A00621A47 /* KeychainSwift.framework */,
-				BE43698D24B8798A00621A47 /* ZIPFoundation.framework */,
-				BE43698E24B8798A00621A47 /* AWSCognitoIdentityProvider.framework */,
-				BE43698F24B8798A00621A47 /* AWSCore.framework */,
-				BE43699024B8798A00621A47 /* SesameSDK.framework */,
-				BE43699124B8798A00621A47 /* CocoaLumberjack.framework */,
-				BE43699224B8798A00621A47 /* AWSMobileClient.framework */,
-				BE43699324B8798A00621A47 /* iOSDFULibrary.framework */,
-				BE43699424B8798A00621A47 /* AWSAuthCore.framework */,
-			);
-			path = sdk;
 			sourceTree = "<group>";
 		};
 		BE46A7B324A2060200700F27 /* Coordinator */ = {
@@ -1236,12 +1185,29 @@
 				BE8D0B5E2494A44C00B99987 /* Functions.swift */,
 				418FA1E7237BD2C100C7C408 /* SesameCircle.swift */,
 				BE9C6C9624B3378B00C7318B /* SSMStore.swift */,
-				BE9C6CAE24B410BA00C7318B /* SSMHistoryMO+CoreDataClass.swift */,
-				BE9C6CB224B410C900C7318B /* SSMHistoryMO+CoreDataProperties.swift */,
 				BE8D0B572494A2F900B99987 /* CHConfiguration.plist */,
 				BEB7F49C24A4EBBF00D04651 /* SesameUI.xcdatamodeld */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		BEF25D3724B9F7FF00E958A5 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				BEF25D3824B9F7FF00E958A5 /* AWSAPIGateway.framework */,
+				BEF25D3924B9F7FF00E958A5 /* SVGKit.framework */,
+				BEF25D3A24B9F7FF00E958A5 /* AWSCognitoIdentityProviderASF.framework */,
+				BEF25D3B24B9F7FF00E958A5 /* KeychainSwift.framework */,
+				BEF25D3C24B9F7FF00E958A5 /* ZIPFoundation.framework */,
+				BEF25D3D24B9F7FF00E958A5 /* AWSCognitoIdentityProvider.framework */,
+				BEF25D3E24B9F7FF00E958A5 /* AWSCore.framework */,
+				BEF25D3F24B9F7FF00E958A5 /* SesameSDK.framework */,
+				BEF25D4024B9F7FF00E958A5 /* CocoaLumberjack.framework */,
+				BEF25D4124B9F7FF00E958A5 /* AWSMobileClient.framework */,
+				BEF25D4224B9F7FF00E958A5 /* iOSDFULibrary.framework */,
+				BEF25D4324B9F7FF00E958A5 /* AWSAuthCore.framework */,
+			);
+			path = sdk;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1272,9 +1238,10 @@
 				B179690322F7CE9300E91996 /* Sources */,
 				B179690422F7CE9300E91996 /* Frameworks */,
 				B179690522F7CE9300E91996 /* Resources */,
+				BE3DD9B024829E0100EEA3B1 /* Embed Watch Content */,
+				BEBBF9B82499C3F300E1147E /* Embed Frameworks */,
 				BEC9D0EF2499CE6F001AE8EE /* Embed App Extensions */,
 				BED74BCD24AB0A010052F04D /* ShellScript */,
-				BE4369AD24B879A000621A47 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1332,6 +1299,7 @@
 			files = (
 				BE8D0B592494A2F900B99987 /* CHConfiguration.plist in Resources */,
 				412D23702355E4F700D1B51B /* Assets.xcassets in Resources */,
+				BEF25CE024B9BCC500E958A5 /* iconfinder_9_3898370.svg in Resources */,
 				4148D49623CDC7080055E337 /* bt0.svg in Resources */,
 				BE2B4B792463FA8900B9ACF4 /* awsconfiguration.json in Resources */,
 				BE037A94246A750A00ED2611 /* Localizable.strings in Resources */,
@@ -1436,6 +1404,7 @@
 				41B9C03123C7359300E57F58 /* loginsubhint.svg in Resources */,
 				4103048023791AE100785311 /* icons_outlined_contacts.svg in Resources */,
 				4103044523791AE100785311 /* icons_outlined_share.svg in Resources */,
+				BEF25CDF24B9BCC500E958A5 /* iconfinder_9_3898370.svg in Resources */,
 				4103046723791AE100785311 /* icons_outlined_setting.svg in Resources */,
 				4103044723791AE100785311 /* icons_outlined_nearby.svg in Resources */,
 				4103046D23791AE100785311 /* icons_outlined_discover.svg in Resources */,
@@ -1497,12 +1466,10 @@
 				412D236F2355DAD800D1B51B /* DeviceCell.swift in Sources */,
 				412D23712355E75000D1B51B /* Knob.swift in Sources */,
 				BEB1E71C248949700039CD7B /* CHSesameBleInterface+.swift in Sources */,
-				BE9C6CB824B48BAD00C7318B /* SSMHistoryMO+CoreDataClass.swift in Sources */,
 				BE30813A248E3BEE00152D66 /* UIImage+.swift in Sources */,
 				BE308136248E3B8D00152D66 /* Math+.swift in Sources */,
 				BE9C6CA624B3394000C7318B /* Date+.swift in Sources */,
 				BE8D0B602494A44C00B99987 /* Functions.swift in Sources */,
-				BE9C6CB424B410CA00C7318B /* SSMHistoryMO+CoreDataProperties.swift in Sources */,
 				412D23722355E81A00D1B51B /* Logger.swift in Sources */,
 				BE14F7D224A88330005130F6 /* SesameCircle.swift in Sources */,
 				BE308146248E3C8C00152D66 /* Data+.swift in Sources */,
@@ -1628,7 +1595,6 @@
 				BEFF263B249FBA4D00E4E80F /* Notification+.swift in Sources */,
 				BEB4A0BD249B7661008CD1FD /* BluetoothDeviceCellViewModel.swift in Sources */,
 				BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */,
-				BE9C6CAF24B410BA00C7318B /* SSMHistoryMO+CoreDataClass.swift in Sources */,
 				418D73B823540EBD00278380 /* SSM2RoomMainViewController.swift in Sources */,
 				BEFF265A24A0F82F00E4E80F /* MeViewCoordinator.swift in Sources */,
 				BE75139224A35B85003CDB9C /* CHBLEDelegatesManager.swift in Sources */,
@@ -1636,7 +1602,6 @@
 				41D0C59623CFF892001EC085 /* EmptyDataSetView.swift in Sources */,
 				41AB857D23B1B982006DBD37 /* UITableView+Exten.swift in Sources */,
 				4152907F23224C2300F7E0E5 /* BluetoothDevicesListViewController.swift in Sources */,
-				BE9C6CB324B410C900C7318B /* SSMHistoryMO+CoreDataProperties.swift in Sources */,
 				41D0C59323CFF892001EC085 /* EmptyDataSetSource.swift in Sources */,
 				41CD2A2D235731E80050C42D /* String+LetterAvatarKit.swift in Sources */,
 				41A57CEF2328D13600FEFF60 /* QRScannerView.swift in Sources */,
@@ -1720,7 +1685,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameWidget/SesameWidget.Debug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1749,7 +1714,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameWidget/SesameWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1903,7 +1868,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameUI/SesameUI.Debug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1933,7 +1898,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameUI/SesameUI.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

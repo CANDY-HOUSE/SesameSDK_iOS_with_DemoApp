@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             WCSession.default.delegate = WCSession.default
             WCSession.default.activate()
         }
-        
         CHConfiguration.shared.setAPIKey("SNUrRpqs9P8fFQJfmX94e1if1XriRw7G3uLVMqkK")
         CHConfiguration.shared.setIdentityPoolId("ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae")
 
@@ -56,13 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {//退出
-        CHBleManager.shared.disableScan()
-        CHBleManager.shared.disConnectAll()
+        CHBleManager.shared.disableScan(){res in}
+        CHBleManager.shared.disConnectAll(){res in}
         SSMStore.shared.saveIfNeeded()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {//進入
-        CHBleManager.shared.enableScan()
+        CHBleManager.shared.enableScan(){ res in
+
+        }
     }
 
 }

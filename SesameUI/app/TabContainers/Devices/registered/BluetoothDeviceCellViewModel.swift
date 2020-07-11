@@ -24,7 +24,7 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     
     public init(ssm: CHSesame2) {
         self.ssm = ssm
-        ssm.connect()
+        ssm.connect(){res in }
         ssm.delegate = self
     }
 
@@ -85,10 +85,10 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
 }
 
 extension BluetoothDeviceCellViewModel: CHSesameDelegate {
-    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHDeviceStatus) {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesameStatus) {
         if device.deviceId == ssm.deviceId,
             status == .receiveBle {
-            ssm.connect()
+            ssm.connect(){_ in}
         }
         statusUpdated?(.received)
     }

@@ -74,7 +74,7 @@ class SSMStore: NSObject, NSFetchedResultsControllerDelegate {
     fileprivate func FRCOfSSMHistory(_ ssm: CHSesame2) -> NSFetchedResultsController<NSFetchRequestResult> {
         let request: NSFetchRequest<SSMHistoryMO> = SSMHistoryMO.fetchRequest()
         request.predicate = NSPredicate(format: "deviceID == %@", ssm.deviceId as CVarArg)
-        let sortByName = NSSortDescriptor(key: "timeStamp", ascending: true)
+        let sortByName = NSSortDescriptor(key: "recordID", ascending: true)
         let sortByIdentity = NSSortDescriptor(key: "sectionIdentifier", ascending: true)
         request.sortDescriptors = [sortByIdentity, sortByName]
         
@@ -97,6 +97,7 @@ class SSMStore: NSObject, NSFetchedResultsControllerDelegate {
             newHistory.timeStamp = timeStamp
             newHistory.historyType = Int64(history.type.rawValue)
             newHistory.enableCount = Int64(history.enableCount ?? -1)
+            newHistory.recordID = history.recordID
             newHistory.sectionIdentifier = Date(timeIntervalSince1970: TimeInterval(timeStamp)).toYMD()
             property.addToHistorys(newHistory)
         }

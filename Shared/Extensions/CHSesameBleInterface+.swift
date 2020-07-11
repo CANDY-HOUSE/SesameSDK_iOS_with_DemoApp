@@ -30,9 +30,12 @@ extension CHSesame2 {
                 notificationFeedbackGenerator.prepare()
                 
                 switch result {
-                case .success(_):
+                case .success(let sdsdsd):
+                    L.d("sdsdsd" , sdsdsd,sdsdsd.data)
+
                     notificationFeedbackGenerator.notificationOccurred(.success)
-                case .failure(_):
+                case .failure(let error):
+                    L.d("error",error)
                     notificationFeedbackGenerator.notificationOccurred(.error)
                 }
             })

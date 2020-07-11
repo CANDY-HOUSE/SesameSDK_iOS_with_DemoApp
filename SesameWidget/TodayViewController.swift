@@ -29,15 +29,17 @@ public class TodayViewController: UIViewController, NCWidgetProviding {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         L.d("viewWillAppear")
-        CHBleManager.shared.enableScan()
+        CHBleManager.shared.enableScan(){res in
+
+        }
         loadLocalDevices()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         L.d("離開widget")
-        CHBleManager.shared.disableScan()
-        CHBleManager.shared.disConnectAll()
+        CHBleManager.shared.disableScan(){res in}
+        CHBleManager.shared.disConnectAll{res in}
     }
     
     public func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {

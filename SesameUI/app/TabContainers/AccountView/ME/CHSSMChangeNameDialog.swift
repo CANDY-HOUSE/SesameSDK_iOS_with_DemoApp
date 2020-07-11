@@ -23,6 +23,9 @@ public class CHSSMChangeNameDialog: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var cancelBTN: UIButton!
     @IBOutlet weak var okBTN: UIButton!
+    
+    var titleLBText: String = "Change Sesame Name".localStr
+    var firstHintLBText: String = "Give Sesame a cooool name! 😎".localStr
 
     @IBAction func onOKCLick(_ sender: Any) {
         if let first = nameTF.text {
@@ -43,8 +46,8 @@ public class CHSSMChangeNameDialog: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        firstHintLB.text = "Give Sesame a cooool name! 😎".localStr
-        titleLB.text = "Change Sesame Name".localStr
+        firstHintLB.text = firstHintLBText
+        titleLB.text = titleLBText
         cancelBTN.setTitle("Cancel".localStr, for: .normal)
         okBTN.setTitle("OK".localStr, for: .normal)
         titleLB.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
@@ -54,10 +57,28 @@ public class CHSSMChangeNameDialog: UIViewController {
 
         nameTF.text = ssmName
     }
+    
     static func show(_ name: String, callBack:@escaping (_ first:String)->Void){
         let storyboard = Constant.storyboard
         let myAlert = storyboard.instantiateViewController(withIdentifier: "ssmalert") as! CHSSMChangeNameDialog
+        
+        myAlert.callBack = callBack
+        myAlert.ssmName = name
 
+        myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+            rootViewController.present(myAlert, animated: true, completion: nil)
+        } else {
+            UIApplication.shared.delegate?.window??.rootViewController?.present(myAlert, animated: true, completion: nil)
+        }
+    }
+    
+    static func show(_ name: String, title: String, hint: String, callBack:@escaping (_ first:String)->Void){
+        let storyboard = Constant.storyboard
+        let myAlert = storyboard.instantiateViewController(withIdentifier: "ssmalert") as! CHSSMChangeNameDialog
+        myAlert.titleLBText = title
+        myAlert.firstHintLBText = hint
         myAlert.callBack = callBack
         myAlert.ssmName = name
 

@@ -19,14 +19,14 @@ public final class RegisterDeviceListViewModel: ViewModel {
     private var ssms: [CHSesame2] = [] {
         didSet {
             for ssm in ssms {
-                ssm.connect()
+                ssm.connect(){_ in}
             }
         }
     }
     
     public private(set) var emptyMessage = "No New Devices".localStr
     public private(set) var backButtonImage = "icons_filled_close"
-    private(set) var mySesameText = "My Sesame".localStr
+    private(set) var mySesameText = "ドラえもん".localStr
     
     public var statusUpdated: ViewStatusHandler?
     public var delegate: RegisterDeviceListViewModelDelegate?
@@ -108,7 +108,7 @@ extension RegisterDeviceListViewModel: CHBleManagerDelegate, CHSesameDelegate {
         statusUpdated?(.received)
     }
 
-    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHDeviceStatus) {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesameStatus) {
         if status == .readytoRegister {
             registerSSM(device)
         }

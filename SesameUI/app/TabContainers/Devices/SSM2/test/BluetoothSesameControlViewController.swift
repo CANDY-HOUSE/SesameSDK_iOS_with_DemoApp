@@ -256,11 +256,11 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
     }
     
     @IBAction func connectClick(_ sender: UIButton) {
-        sesame!.connect()
+        sesame!.connect(){res in}
     }
     
     @IBAction func disConnect(_ sender: Any) {
-        sesame!.disconnect()
+        sesame!.disconnect(){res in}
     }
     
     @IBAction func registerBtn(_ sender: Any) {
@@ -324,7 +324,7 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
         }
     }
     
-    var deviceStatus: CHDeviceStatus = CHDeviceStatus.noSignal {
+    var deviceStatus: CHSesameStatus = CHSesameStatus.noSignal {
         didSet {
             DispatchQueue.main.async(execute: {
                 self.gattStatusLB.text = "\(self.deviceStatus.description())"
@@ -360,12 +360,12 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
     }
     
     
-    func onBleDeviceStatusChanged(device: CHSesame2, status: CHDeviceStatus) {
+    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesameStatus) {
 //        L.d("test",status.description())
         deviceStatus = status
 
         if(deviceStatus == .receiveBle){
-            device.connect()
+            device.connect(){_ in}
         }
         
         
@@ -444,7 +444,7 @@ extension BluetoothSesameControlViewController {
         //        if(self.sesame!.accessLevel == .manager  || self.sesame!.accessLevel == .owner   ){
         self.refreshUserList(self)
         //        }
-        sesame!.connect()
+        sesame!.connect(){_ in}
     }
     
     func issueAnQRCodeKey(imgv:UIImageView , level:CHDeviceAccessLevel) {

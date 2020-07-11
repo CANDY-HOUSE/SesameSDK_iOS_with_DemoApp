@@ -43,12 +43,20 @@ class SSM2RoomMainViewController: CHBaseViewController {
                 executeOnMainThread {
                     strongSelf.updataSSMUI()
                 }
-            case .finished(_):
-                executeOnMainThread {
-                    strongSelf.historyTable.reloadData()
-                    strongSelf.hideLoadingIndicator()
-                    strongSelf.refreshControl.stopAnimating()
+            case .finished(let result):
+                switch result {
+                case .success(_):
+                    executeOnMainThread {
+                        strongSelf.historyTable.reloadData()
+                        strongSelf.hideLoadingIndicator()
+                        strongSelf.refreshControl.stopAnimating()
+                    }
+                case .failure(let error):
+                    executeOnMainThread {
+                        strongSelf.view.makeToast(error.errorDescription())
+                    }
                 }
+                
             }
         }
 

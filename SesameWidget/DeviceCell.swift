@@ -69,10 +69,10 @@ public class DeviceCell: UITableViewCell {
 
 extension DeviceCell:CHSesameDelegate{
 
-    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHDeviceStatus) {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesameStatus) {
         if device.deviceId == ssm?.deviceId,
             status == .receiveBle {
-            device.connect()
+            device.connect(){res in}
         }
         updateUI()
     }

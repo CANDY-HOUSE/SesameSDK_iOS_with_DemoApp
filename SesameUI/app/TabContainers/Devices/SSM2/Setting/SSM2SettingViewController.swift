@@ -16,6 +16,7 @@ public class SSM2SettingViewController: CHBaseViewController {
     var viewModel: SSM2SettingViewModel!
     @IBOutlet weak var uuidTitleLabel: UILabel!
     @IBOutlet weak var uuidValueLabel: UILabel!
+    @IBOutlet weak var historyTagValueLabel: UILabel!
     
     @IBOutlet weak var memberCollectionViewContainerHeight: NSLayoutConstraint! {
         didSet {
@@ -132,6 +133,11 @@ public class SSM2SettingViewController: CHBaseViewController {
         
         resetSesameButton.setTitle(viewModel.removeSesameText, for: .normal)
         dropKeyButton.setTitle(viewModel.dropKeyText, for: .normal)
+        sharingButton.setTitle(viewModel.share, for: .normal)
+        
+        resetSesameButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        dropKeyButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        sharingButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         
         arrowImg.image = UIImage.SVGImage(named: viewModel.arrowImg)
         secondPicker.isHidden = viewModel.secondPickerIsHidden
@@ -140,6 +146,7 @@ public class SSM2SettingViewController: CHBaseViewController {
         
         uuidTitleLabel.text = viewModel.uuidTitleText
         uuidValueLabel.text = viewModel.uuidValueText
+        historyTagValueLabel.text = viewModel.historyTagPlaceholder()
         
         modifyHistoryTagLabel.text = viewModel.modifyHistoryTagText
     }
@@ -208,7 +215,7 @@ public class SSM2SettingViewController: CHBaseViewController {
     }
     
     @IBAction func modifyHistoryTag(_ sender: Any) {
-        CHSSMChangeNameDialog.show(viewModel.historyTagPlaceholder()) { historyTag in
+        CHSSMChangeNameDialog.show(viewModel.historyTagPlaceholder(), title: "Change History Tag".localStr, hint: "") { historyTag in
             if historyTag == "" {
                 self.view.makeToast(self.viewModel.enterSesameName)
                 return

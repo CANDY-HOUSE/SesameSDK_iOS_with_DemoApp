@@ -9,7 +9,7 @@
 "Password" = "パスワード";
 "Sign up" = "登録";
 "Configure Angles" = "角度の設定";
-"Delete this Sesame" = "セサミを削除";
+"Reset this Sesame" = "セサミを削除";
 "autolock" = "オートロック";
 "manualOperated" = "サムターンに動きあり";
 "manualLock" = "手動施錠";
@@ -25,6 +25,9 @@
 "Last Name" = "姓";
 "Verification code" = "認証";
 "Verification" = "認証する";
+"Reset the Sesame and discard the key" = "このセサミを初期化、そしてこのセサミの鍵を捨てる";
+"Discard the key of the Sesame" = "このセサミの鍵を捨てる";
+"Share the key of the Sesame" = "このセサミの鍵をシェア";
 
 "Forgot password" = "パスワードをお忘れですか？";
 "Re-send verification code" = "認証コードを再送信する";

@@ -38,15 +38,16 @@ public final class SSM2SettingViewModel: ViewModel {
     private(set) var enterSesameName = "Enter Sesame name".localStr
     private(set) var angleIndicator = "Configure Angles".localStr
     private(set) var dfuIndicator = "SesameOS Update".localStr
-    private(set) var removeSesameText = "Delete this Sesame".localStr
-    private(set) var dropKeyText = "Drop key".localStr
+    private(set) var removeSesameText = "Reset the Sesame and discard the key".localStr
+    private(set) var dropKeyText = "Discard the key of the Sesame".localStr
     private(set) var autoLockLabel1Text = "autolock".localStr
     private(set) var autoLockLabel2Text = "After".localStr
     private(set) var autoLockLabel3Text = "sec".localStr
     private(set) var arrowImg = "arrow"
     private(set) var uuidTitleText = "UUID".localStr
-    private(set) var modifyHistoryTagText = "Modify History Tag".localStr
-    private(set) var mySesameText = "My Sesame".localStr
+    private(set) var modifyHistoryTagText = "History Tag".localStr
+    private(set) var mySesameText = "ドラえもん".localStr
+    private(set) var share = "Share the key of the Sesame".localStr
     
     var title: String {
         let device = SSMStore.shared.getPropertyForDevice(ssm)
@@ -99,7 +100,7 @@ public final class SSM2SettingViewModel: ViewModel {
     
     init(ssm: CHSesame2) {
         self.ssm = ssm
-        self.ssm.connect()
+        self.ssm.connect(){_ in}
     }
 
     // MARK: - User interaction
@@ -180,10 +181,10 @@ public final class SSM2SettingViewModel: ViewModel {
 // MARK: - Delegate
 extension SSM2SettingViewModel: CHSesameDelegate {
     public func onBleDeviceStatusChanged(device: CHSesame2,
-                                         status: CHDeviceStatus) {
+                                         status: CHSesameStatus) {
         if device.deviceId == ssm.deviceId,
             status == .receiveBle {
-            device.connect()
+            device.connect(){_ in}
         }
     }
 }
@@ -329,7 +330,7 @@ extension SSM2SettingViewModel {
 extension SSM2SettingViewModel {
     
     public func deleteSesameTitle() -> String {
-        "Delete this Sesame".localStr
+        "Reset the Sesame and discard the key".localStr
     }
     
     public func deleteSeesameAction() {

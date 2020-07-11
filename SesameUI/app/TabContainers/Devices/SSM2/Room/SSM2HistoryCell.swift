@@ -18,6 +18,7 @@ class SSM2HistoryCell: UITableViewCell {
             eventImage.isHidden = true
             userLabel.text = viewModel.userLabelText
             avatarImage.image = UIImage.SVGImage(named: viewModel.avatarImage)
+            eventLabel.text = viewModel.historyEvent
         }
     }
     
@@ -25,4 +26,5 @@ class SSM2HistoryCell: UITableViewCell {
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var eventLabel: UILabel!
 }

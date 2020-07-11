@@ -26,9 +26,22 @@ final class ScanViewModel: ViewModel {
                 return
         }
         
+        let encodedHistoryTag = "のび太".data(using: .utf8)!
+        
+        let tokenFetchLock = DispatchGroup()
+        
         CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
             switch result {
-            case .success(_):
+            case .success(let ssms):
+
+                for ssm in ssms {
+                    tokenFetchLock.enter()
+                    ssm.setHistoryTag(encodedHistoryTag) {_ in
+                        tokenFetchLock.leave()
+                    }
+                }
+
+                tokenFetchLock.wait()
                 self.delegate?.receivedSSM()
             case .failure(let error):
                 self.statusUpdated?(.finished(.failure(error)))
