@@ -1,0 +1,3 @@
+```Swift
+public class CHEmpty {}
+```
