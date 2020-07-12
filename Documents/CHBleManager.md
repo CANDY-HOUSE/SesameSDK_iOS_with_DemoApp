@@ -5,7 +5,7 @@ CHBleManager.shared.receiveKey(ssm2Keys: String...,completionHandler: @escaping 
 CHBleManager.shared.getSesames(completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void)
 //スマホのローカルのデータベースから自分が所有しているセサミというObjectのlistを取得します。
 
-CHBleManager.shared.enableScan(result: @escaping (CHResult<CHEmpty>))　//BLEスキャンのスイッチをオンする
-CHBleManager.shared.disableScan(result: @escaping (CHResult<CHEmpty>))　//BLEスキャンのスイッチをオフする
-CHBleManager.shared.disConnectAll(result: @escaping (CHResult<CHEmpty>))
+CHBleManager.shared.enableScan(result: @escaping (CHResult<CHEmpty>))　   //BLEスキャンのスイッチをオンする
+CHBleManager.shared.disableScan(result: @escaping (CHResult<CHEmpty>))　  //BLEスキャンのスイッチをオフする
+CHBleManager.shared.disConnectAll(result: @escaping (CHResult<CHEmpty>))  //すべてのセサミデバイスとの接続を切る
 ```
