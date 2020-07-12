@@ -1,6 +1,7 @@
 
-# [CHResult pattern](https://developer.apple.com/documentation/swift/result)
-1. typealias CHResult<T> = (Result<CHResultState<T>, Error >) ->  ()
+# CHResult pattern
+1. [https://developer.apple.com/documentation/swift/result](https://developer.apple.com/documentation/swift/result)
+2. typealias CHResult<T> = (Result<CHResultState<T>, Error >) ->  ()
 
 ## CHResultState
 1. CHResultStateCache: Values from coredata(iOS database)
