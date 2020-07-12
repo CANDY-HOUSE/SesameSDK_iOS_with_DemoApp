@@ -37,15 +37,15 @@ with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ 
 # Configure the SDK
 1. Download SesameSDK and play with the included iPhone Demo app.
 2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
-3. Get the **APIKey** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history. 
-4. Create the configuration file, and setup the **APIKey** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
+3. Get the **API Key** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history. 
+4. Create the configuration file, and setup the **API Key** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
 ```swift
 import SesameSDK
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
 ...
-    CHConfiguration.shared.setAPIKey("API KEY")
-    CHConfiguration.shared.setIdentityPoolId("IDENTITY POOL ID")
+    CHConfiguration.shared.setAPIKey("API_KEY")
+    CHConfiguration.shared.setIdentityPoolId("IDENTITY_POOL_ID")
 ...
 }
 ```
