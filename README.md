@@ -190,7 +190,7 @@ ssm.disableAutolock() { (delay) -> Void in
 }
 ```
 3. Drop Key:     
-This command will clear the Sesame keys saved in SesameSDK. This means you will not able to retrieve the Sesame device via `CHBleManager.shared.getMyDevices()`.
+This command will clear the Sesame keys saved in SesameSDK. This means you will not able to retrieve the Sesame device via `CHBleManager.shared.getSesames()`.
 ```swift
 ssm.dropKey()
 ```
@@ -227,7 +227,7 @@ SesameSDK can export keys(Base64 encoded JSON objects) to you, and you can share
 ssm.getKey()
 ```
 2. Import Sesame keys:     
-Once you imported keys(Base64 encoded JSON objects) successfully, you can retrieve the device via `CHBleManager.shared.getMyDevices()`.
+Once you imported keys(Base64 encoded JSON objects) successfully, you can retrieve the device via `CHBleManager.shared.getSesames()`.
 ```swift
 // ssm2Key is the key data(Base64 encoded JSON objects) that you can get from `ssm.getKey()`
 CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
