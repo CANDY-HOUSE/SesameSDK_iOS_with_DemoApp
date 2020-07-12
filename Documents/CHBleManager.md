@@ -1,9 +1,11 @@
 ```Swift
-CHBleManager.shared.delegate  //このメソッドを使用するとセサミのBLE電波が現れたらSDKからアプリ内部に通知します
-CHBleManager.shared.receiveKey(ssm2Keys: [String],completionHandler: @escaping SendValueClosure)
-CHBleManager.shared getMyDevices(completionHandler: @escaping (Result<[CHSesameBleInterface], Error>) -> Void)
+CHBleManager.shared.delegate  //このメソッドを使用するとセサミのBLE電波が変動や現れたらSDKからアプリUIにイベントを送る
+CHBleManager.shared.receiveKey(ssm2Keys: [String],completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void))
+CHBleManager.shared.receiveKey(ssm2Keys: String...,completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void))
+CHBleManager.shared.getSesames(completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void)
 //スマホのローカルのデータベースから自分が所有しているセサミというObjectのlistを取得します。
 
-CHBleManager.shared.enableScan()　//BLEスキャンのスイッチをオンする
-CHBleManager.shared.disableScan()　//BLEスキャンのスイッチをオフする
+CHBleManager.shared.enableScan(result: @escaping (CHResult<CHEmpty>))　//BLEスキャンのスイッチをオンする
+CHBleManager.shared.disableScan(result: @escaping (CHResult<CHEmpty>))　//BLEスキャンのスイッチをオフする
+CHBleManager.shared.disConnectAll(result: @escaping (CHResult<CHEmpty>))
 ```
