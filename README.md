@@ -29,8 +29,8 @@ SesameSDK on iOS is a delightful Bluetooth library for your iOS app. The officia
 - Configure Auto-lock
 - Configure angles
 - Get the statuses such battery status
-- iOS Widget
-- Apple Watch
+- iOS/iPadOS Widget
+- Apple Watch app
 
 with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ series or Sesame 1 that runs ___SesameOS 2___ which will be available in late 2020.
 
