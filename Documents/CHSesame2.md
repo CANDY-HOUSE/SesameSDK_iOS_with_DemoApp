@@ -25,7 +25,7 @@ public protocol CHSesame2: class {
     ///   - completion: `CHResult<Any>`
     func registerSesame( _ completion: @escaping CHResult<CHDeviceKey>)
     
-    /// セサミを初期化（リセット）
+    /// セサミデバイスを初期化（リセット）
     func resetSesame(result: @escaping (CHResult<CHEmpty>))
     
     /// Set sesame devices's lock position. 施解錠の回転位置設定
