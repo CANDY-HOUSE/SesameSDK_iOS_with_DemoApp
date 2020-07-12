@@ -1,11 +1,11 @@
 ```Swift
-public protocol CHSesameBleInterface: class {
+public protocol CHSesame2: class {
     var deviceId: UUID! { get } // UUID for each Sesame device, never changes
 
     typealias AutolockSettingCallback = (_ delay: Int) -> Void
     
     var delegate: CHSesameBleDeviceDelegate? { get set }　
-    //このメソッドを使用するとCHDeviceStatus/CHSesameMechStatus/CHSesameMechSettingsの変化があればSDKからアプリ内部に通知します
+    //このメソッドを使用するとCHDeviceStatus/CHSesameMechStatus/CHSesameMechSettingsの変化があればSDKからアプリUIにイベントを送る
 
     var rssi: NSNumber { get } //セサミのBluetooth電波の強さ
     var model: CHDeviceModel { get } //Sesame2, Sesame2 mini, Sesame1, Sesame1 mini, WiFi Access Point 2 , WiFi Access Point 1
@@ -13,10 +13,10 @@ public protocol CHSesameBleInterface: class {
     var deviceStatus: CHDeviceStatus { get } //BLE接続状況：セサミ発見->接続中->認証済->接続成功
     var mechStatus: CHSesameMechStatus? { get } //電池の電圧の取得、セサミのリアルタイムの角度の取得、施解錠範囲であるか否かの確認
     var mechSetting: CHSesameMechSettings? { get } //セサミの解錠・施錠の角度
-    var intention: CHSesameIntention { get }
+    var intention: CHSesameIntention { get } // locking：現在締めようとしている途中 ; unlocking：現在開けようとしている途中
 
-    func connect() //このセサミデバイスとアプリとの間のBluetooth接続を築く
-    func disconnect() //このセサミデバイスとアプリとの間のBluetooth接続を切断。
+    func connect(result: @escaping (CHResult<CHEmpty>)) //このセサミデバイスとアプリとの間のBluetooth接続を築く
+    func disconnect(result: @escaping (CHResult<CHEmpty>)) //このセサミデバイスとアプリとの間のBluetooth接続を切断。
     func disConnectAll() //全てのセサミデバイスとアプリとの間のBluetooth接続を切断。
     // disconnect() や disConnectAll()を叩かないと、アプリをバックグラウンドに送った時にセサミデバイスとアプリとの間のBluetooth接続がされたのままなので、セサミデバイスとWidgetとの間のBluetooth接続に切り替えできない。逆に、叩かないとWidgetをバックグラウンドに送った時に、セサミデバイスとアプリとの間のBluetooth接続への切り替えができない。
     
