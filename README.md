@@ -38,8 +38,7 @@ with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ 
 1. Download SesameSDK and play with the included iPhone Demo app.
 2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
 3. Get the **APIKey** and the **Cognito Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history. 
-4. Create the configuration file:     
-  i. Setup the **APIKey** and the **Cognito Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
+4. Create the configuration file, and setup the **APIKey** and the **Cognito Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
 ```swift
 import SesameSDK
 
