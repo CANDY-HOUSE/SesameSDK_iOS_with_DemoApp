@@ -17,7 +17,6 @@ public protocol CHSesame2: class {
 
     func connect(result: @escaping (CHResult<CHEmpty>)) //このセサミデバイスとアプリとの間のBluetooth接続を築く
     func disconnect(result: @escaping (CHResult<CHEmpty>)) //このセサミデバイスとアプリとの間のBluetooth接続を切断。
-    func disConnectAll(result: @escaping (CHResult<CHEmpty>)) //全てのセサミデバイスとアプリとの間のBluetooth接続を切断。
     // disconnect() や disConnectAll()を叩かないと、アプリをバックグラウンドに送った時にセサミデバイスとアプリとの間のBluetooth接続がされたのままなので、セサミデバイスとWidgetとの間のBluetooth接続に切り替えできない。逆に、叩かないとWidgetをバックグラウンドに送った時に、セサミデバイスとアプリとの間のBluetooth接続への切り替えができない。
     
     // Register this device.　CANDY HOUSEサーバーへセサミの登録
