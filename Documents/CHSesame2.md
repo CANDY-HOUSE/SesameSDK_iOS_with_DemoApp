@@ -26,40 +26,39 @@ public protocol CHSesame2: class {
     func registerSesame( _ completion: @escaping CHResult<CHDeviceKey>)
     
     /// セサミを初期化（リセット）
-    func resetSesame()
+    func resetSesame(result: @escaping (CHResult<CHEmpty>))
     
     /// Set sesame devices's lock position. 施解錠の回転位置設定
     /// - Parameter configure: `CHSesameLockPositionConfiguration`
-    func configureLockPosition(configure: inout CHSesameLockPositionConfiguration) 
+    func configureLockPosition(lockTarget: Int16, unlockTarget: Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.BLECmdResultCode>)) 
     
     /// Move lock to the lock position.　施錠
-    //    func lock() 
-    func lock(result: @escaping (CHResult<SSM2CmdResultCode>))
+    func lock(result: @escaping (CHResult<CHEmpty>))
     
     /// Move lock to the unlock position.　解錠
-    //    func unlock() 
-    func unlock(result: @escaping (CHResult<SSM2CmdResultCode>))
+    func unlock(result: @escaping (CHResult<CHEmpty>))
 
     /// Perform `lock`/`unlock`
-    //    func toggle()
-    func toggle(result: @escaping (CHResult<SSM2CmdResultCode>))
+    func toggle(result: @escaping (CHResult<CHEmpty>))
     
     /// Get the period of time for autolock setting.　オートロック機能の状態を取得
-    /// - Parameter completion: `AutolockSettingCallback`
-    func getAutolockSetting(completion: @escaping AutolockSettingCallback)
+    func getAutolockSetting(result: @escaping (CHResult<Int>))
     
     /// Lock automatically after a period of time whenever unlocked.　オートロック機能の秒数を入力しオン
     /// - Parameters:
-    ///   - delay: Autolock in specific second.
-    ///   - completion: `AutolockSettingCallback`
-    func enableAutolock(delay: Int, completion: @escaping AutolockSettingCallback)
+    ///   - delay: オートロック機能の秒数
+    func enableAutolock(delay: Int, result: @escaping (CHResult<Int>))
     
     /// Disable sesame device autolock.　オートロック機能をオフ
-    /// - Parameter completion: `AutolockSettingCallback`
-    func disableAutolock(completion: @escaping AutolockSettingCallback)
+    func disableAutolock(result: @escaping (CHResult<Int>))
+
+    func setHistoryTag( _ tag:Data,result: @escaping (CHResult<Data>))
+    func getHistoryTag() -> Data?
    
     func dropKey() //SesameSDKからこのセサミの鍵を削除
     func getKey() -> String?
+    
+    func getHistorys(page:Int, pageLength: Int, _ callback: @escaping CHResult<[Sesame2History]>)
 
 }
 ```
