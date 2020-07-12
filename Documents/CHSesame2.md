@@ -29,7 +29,6 @@ public protocol CHSesame2: class {
     func resetSesame(result: @escaping (CHResult<CHEmpty>))
     
     /// Set sesame devices's lock position. 施解錠の回転位置設定
-    /// - Parameter configure: `CHSesameLockPositionConfiguration`
     func configureLockPosition(lockTarget: Int16, unlockTarget: Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.BLECmdResultCode>)) 
     
     /// Move lock to the lock position.　施錠
