@@ -8,7 +8,7 @@ participant あなたのアプリ
 participant あなたのユーザー
 participant あなたのサーバー
 |||
-あなたのアプリ -> SesameSDK : [1] "SDKを利用する為の API Key" を plistファイルの中に書き込む
+あなたのアプリ -> SesameSDK : [1] "SDKを利用する為の API Key/ID" を コードの中に書き込む
 あなたのユーザー -> あなたのアプリ: [2] ユーザー登録（ID, Passwordなど）
 あなたのアプリ -> あなたのサーバー : [3] 登録手続き
 あなたのサーバー --> あなたのアプリ : [4] ok
@@ -45,7 +45,7 @@ participant あなたのアプリ
 participant あなたのユーザー
 participant あなたのサーバー
 |||
-あなたのアプリ -> SesameSDK: [1] "SDKを利用する為の API Key" を plistファイルの中に書き込む
+あなたのアプリ -> SesameSDK: [1] "SDKを利用する為の API Key/ID" を コードの中に書き込む
 あなたのユーザー -> あなたのアプリ: [2] ユーザーログイン（ID, Passwordなど）
 あなたのアプリ -> あなたのサーバー : [3] ログイン手続き
 あなたのサーバー --> あなたのアプリ : [4] OK、"JSON_Objectという形のセサミの鍵"
