@@ -48,12 +48,13 @@ public protocol CHSesame2: class {
     // Disable sesame device autolock.　オートロック機能をオフ
     func disableAutolock(result: @escaping (CHResult<Int>))
 
-    func setHistoryTag( _ tag:Data,result: @escaping (CHResult<Data>))
-    func getHistoryTag() -> Data?
+    func setHistoryTag( _ tag:Data,result: @escaping (CHResult<Data>)) //履歴にタグやメモをつける
+    func getHistoryTag() -> Data?　//履歴に付いてるタグやメモを取得
    
     func dropKey() //SesameSDKからこのセサミの鍵を削除
     func getKey() -> String?
     
+    // SDKを経由して、履歴を取得する
     func getHistorys(page:Int, pageLength: Int, _ callback: @escaping CHResult<[Sesame2History]>)
 
 }
