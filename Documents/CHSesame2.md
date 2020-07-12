@@ -21,8 +21,6 @@ public protocol CHSesame2: class {
     // disconnect() や disConnectAll()を叩かないと、アプリをバックグラウンドに送った時にセサミデバイスとアプリとの間のBluetooth接続がされたのままなので、セサミデバイスとWidgetとの間のBluetooth接続に切り替えできない。逆に、叩かないとWidgetをバックグラウンドに送った時に、セサミデバイスとアプリとの間のBluetooth接続への切り替えができない。
     
     /// Register this device.　CANDY HOUSEサーバーへセサミの登録
-    /// - Parameters:
-    ///   - completion: `CHResult<Any>`
     func registerSesame( _ completion: @escaping CHResult<CHDeviceKey>)
     
     /// セサミデバイスを初期化（リセット）
