@@ -126,11 +126,11 @@ After successfully registering Sesame device with `device.registerSesame`, you c
 </p>
 
 ### Retrieve Sesame
-Every registered Sesame device can be retrieved via `CHBleManager.shared.getMyDevices()`.
+Every registered Sesame device can be retrieved via `CHBleManager.shared.getSesames()`.
 ```swift
-CHBleManager.shared.getMyDevices() { result in
+CHBleManager.shared.getSesames() { result in
     switch result {
-        case .success(let devices):
+        case .success(let ssms):
             // Success handle
         case .failure(let error):
             // Error handle
