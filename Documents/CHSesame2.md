@@ -20,32 +20,32 @@ public protocol CHSesame2: class {
     func disConnectAll() //全てのセサミデバイスとアプリとの間のBluetooth接続を切断。
     // disconnect() や disConnectAll()を叩かないと、アプリをバックグラウンドに送った時にセサミデバイスとアプリとの間のBluetooth接続がされたのままなので、セサミデバイスとWidgetとの間のBluetooth接続に切り替えできない。逆に、叩かないとWidgetをバックグラウンドに送った時に、セサミデバイスとアプリとの間のBluetooth接続への切り替えができない。
     
-    /// Register this device.　CANDY HOUSEサーバーへセサミの登録
+    // Register this device.　CANDY HOUSEサーバーへセサミの登録
     func registerSesame( _ completion: @escaping CHResult<CHDeviceKey>)
     
-    /// セサミデバイスを初期化（リセット）
+    // セサミデバイスを初期化（リセット）
     func resetSesame(result: @escaping (CHResult<CHEmpty>))
     
-    /// Set sesame devices's lock position. 施解錠の回転位置設定
+    // Set sesame devices's lock position. 施解錠の回転位置設定
     func configureLockPosition(lockTarget: Int16, unlockTarget: Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.BLECmdResultCode>)) 
     
-    /// Move lock to the lock position.　施錠
+    // Move lock to the lock position.　施錠
     func lock(result: @escaping (CHResult<CHEmpty>))
     
-    /// Move lock to the unlock position.　解錠
+    // Move lock to the unlock position.　解錠
     func unlock(result: @escaping (CHResult<CHEmpty>))
 
-    /// Perform `lock`/`unlock`
+    // Perform `lock`/`unlock`
     func toggle(result: @escaping (CHResult<CHEmpty>))
     
-    /// Get the period of time for autolock setting.　オートロック機能の状態を取得
+    // Get the period of time for autolock setting.　オートロック機能の状態を取得
     func getAutolockSetting(result: @escaping (CHResult<Int>))
     
-    /// Lock automatically after a period of time whenever unlocked.　オートロック機能の秒数を入力しオン
-    /// - delay: オートロック機能の秒数
+    // Lock automatically after a period of time whenever unlocked.　オートロック機能の秒数を入力しオン
+    // - delay: オートロック機能の秒数
     func enableAutolock(delay: Int, result: @escaping (CHResult<Int>))
     
-    /// Disable sesame device autolock.　オートロック機能をオフ
+    // Disable sesame device autolock.　オートロック機能をオフ
     func disableAutolock(result: @escaping (CHResult<Int>))
 
     func setHistoryTag( _ tag:Data,result: @escaping (CHResult<Data>))
