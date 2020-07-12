@@ -1,4 +1,4 @@
-# CHDeviceStatus
+# CHSesameStatus
 ```Swift
     noSignal      
     receiveBle
@@ -12,7 +12,7 @@
     moved
     nosetting
 ```
-## unregistered
+## if unregistered
 
 
 | action/status | noSignal  | receiveBle  | connecting    | readytoRegister | nosetting  |
@@ -21,10 +21,10 @@
 |  connect      |           | connecting  |               |                 |            |
 |  connecting   |           |             |readytoRegister|                 |            |
 |  register     |           |             |               | nosetting       |            |
-|  configureLockPosition    |    |        |               | nosetting       | locked/unlocked(registered)|
+|  configureLockPosition    |    |        |               |         | locked/unlocked(registered)|
 |  disconnect   |           |             |            |    noSignal     | noSignal   |
 
-## registered
+## if registered
 | action/status | noSignal  | receiveBle  | connecting  | waitgatt | logining | locked/unlocked  |nosetting  |
 |:-------------:|:---------:|:-----------:|:-----------:|:--------:|:---------------:|:----------:|:----------:|
 |  close to ssm |receiveBle |             |             |          |                 |            |            |

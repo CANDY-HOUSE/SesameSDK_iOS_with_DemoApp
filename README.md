@@ -29,16 +29,26 @@ SesameSDK on iOS is a delightful Bluetooth library for your iOS app. The officia
 - Configure Auto-lock
 - Configure angles
 - Get the statuses such battery status
-- iOS Widget
-- Apple Watch
+- iOS/iPadOS Widget
+- Apple Watch app
 
 with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ series or Sesame 1 that runs ___SesameOS 2___ which will be available in late 2020.
 
 # Configure the SDK
 1. Download SesameSDK and play with the included iPhone Demo app.
 2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
-3. Get the API Key from CANDY HOUSE in order to register Sesame device and access the history. 
-4. Create a plist file names `CHConfiguration.plist` and add a key `CHAPIKey` with the **API key** as `String` value.
+3. Get the **API Key** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history. 
+4. Setup the **API Key** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
+```swift
+import SesameSDK
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+...
+    CHConfiguration.shared.setAPIKey("API_KEY")
+    CHConfiguration.shared.setIdentityPoolId("IDENTITY_POOL_ID")
+...
+}
+```
 
 # Register Sesame device
 <p align="center" >
@@ -116,11 +126,11 @@ After successfully registering Sesame device with `device.registerSesame`, you c
 </p>
 
 ### Retrieve Sesame
-Every registered Sesame device can be retrieved via `CHBleManager.shared.getMyDevices()`.
+Every registered Sesame device can be retrieved via `CHBleManager.shared.getSesames()`.
 ```swift
-CHBleManager.shared.getMyDevices() { result in
+CHBleManager.shared.getSesames() { result in
     switch result {
-        case .success(let devices):
+        case .success(let ssms):
             // Success handle
         case .failure(let error):
             // Error handle
@@ -180,7 +190,7 @@ ssm.disableAutolock() { (delay) -> Void in
 }
 ```
 3. Drop Key:     
-This command will clear the Sesame keys saved in SesameSDK. This means you will not able to retrieve the Sesame device via `CHBleManager.shared.getMyDevices()`.
+This command will clear the Sesame keys saved in SesameSDK. This means you will not able to retrieve the Sesame device via `CHBleManager.shared.getSesames()`.
 ```swift
 ssm.dropKey()
 ```
@@ -217,7 +227,7 @@ SesameSDK can export keys(Base64 encoded JSON objects) to you, and you can share
 ssm.getKey()
 ```
 2. Import Sesame keys:     
-Once you imported keys(Base64 encoded JSON objects) successfully, you can retrieve the device via `CHBleManager.shared.getMyDevices()`.
+Once you imported keys(Base64 encoded JSON objects) successfully, you can retrieve the device via `CHBleManager.shared.getSesames()`.
 ```swift
 // ssm2Key is the key data(Base64 encoded JSON objects) that you can get from `ssm.getKey()`
 CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
