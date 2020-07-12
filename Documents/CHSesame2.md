@@ -42,8 +42,7 @@ public protocol CHSesame2: class {
     func getAutolockSetting(result: @escaping (CHResult<Int>))
     
     /// Lock automatically after a period of time whenever unlocked.　オートロック機能の秒数を入力しオン
-    /// - Parameters:
-    ///   - delay: オートロック機能の秒数
+    /// - delay: オートロック機能の秒数
     func enableAutolock(delay: Int, result: @escaping (CHResult<Int>))
     
     /// Disable sesame device autolock.　オートロック機能をオフ
