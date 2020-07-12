@@ -21,7 +21,7 @@
 |  connect      |           | connecting  |               |                 |            |
 |  connecting   |           |             |readytoRegister|                 |            |
 |  register     |           |             |               | nosetting       |            |
-|  configureLockPosition    |    |        |               | nosetting       | locked/unlocked(registered)|
+|  configureLockPosition    |    |        |               |         | locked/unlocked(registered)|
 |  disconnect   |           |             |            |    noSignal     | noSignal   |
 
 ## if registered
