@@ -50,8 +50,8 @@ public protocol CHSesame2: class {
     func setHistoryTag( _ tag:Data,result: @escaping (CHResult<Data>)) //履歴にタグやメモをつける
     func getHistoryTag() -> Data?　//履歴に付いてるタグやメモを取得
    
-    func dropKey() //SesameSDKからこのセサミの鍵を削除
-    func getKey() -> String? //SesameSDKからこのセサミデバイスの 「Base64 encoded 鍵」 を取り出す
+    func dropKey() //SesameSDKの内部データベースに保存されてるこのセサミの鍵を削除
+    func getKey() -> String? //SesameSDKの内部データベースに保存されてるこのセサミデバイスの 「Base64 encoded 鍵」 を取り出す
     
     func getHistorys(page:Int, pageLength: Int, _ callback: @escaping CHResult<[Sesame2History]>)
     // SDKを経由して、履歴を取得する
