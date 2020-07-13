@@ -14,7 +14,7 @@
   - [Retrieve Sesame](#Retrieve-Sesame)
   - [Configure Sesame](#Configure-Sesame)
   - [Get Sesame Information](#Get-Sesame-Information)
-  - [Lock/Unlock Sesame](#Lock/Unlock-Sesame)
+  - [Lock/Unlock Sesame](#Lockunlock-Sesame)
   - [Share Sesames' Keys](#Share-Sesame-Keys)
 
 # Introduction
@@ -35,7 +35,7 @@ SesameSDK on iOS is a delightful Bluetooth library for your iOS app. The officia
 with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ series or Sesame 1 that runs ___SesameOS 2___ which will be available in late 2020.
 
 # Configure the SDK
-1. Download SesameSDK and play with the included iPhone Demo app.
+1. Download SesameSDK and play with the included iPhone Demo app(https://testflight.apple.com/join/mK4OadTW).
 2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
 3. Get the **API Key** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history. 
 4. Setup the **API Key** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
