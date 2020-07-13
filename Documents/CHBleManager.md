@@ -1,5 +1,7 @@
 ```Swift
-CHBleManager.shared.delegate  //このメソッドを使用するとセサミのBLE電波が変動や現れたらSDKからアプリUIにイベントを送る
+CHBleManager.shared.delegate  
+//このメソッドを使用するとセサミのBLE電波が変動や現れたらSDKからアプリUIにイベントを送る。アプリUIが通知されたら、セサミデバイスとのオブジェクトが取得でき、オブジェクトにはセサミデバイスのUUIDが含まれている。
+
 CHBleManager.shared.enableScan(result: @escaping (CHResult<CHEmpty>))　   //BLEスキャンのスイッチをオンする
 CHBleManager.shared.disableScan(result: @escaping (CHResult<CHEmpty>))　  //BLEスキャンのスイッチをオフする
 CHBleManager.shared.disConnectAll(result: @escaping (CHResult<CHEmpty>))  //全てのBLEデバイスとアプリとの間のBluetooth接続を切断。
@@ -8,5 +10,5 @@ CHBleManager.shared.getSesames(completionHandler: @escaping (Result<[CHSesame2],
 
 CHBleManager.shared.receiveKey(ssm2Keys: [String],completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void))
 CHBleManager.shared.receiveKey(ssm2Keys: String...,completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void))
-// 「Base64 encoded 鍵」 をSesameSDKに伝達する/入力する/入れる
+// このセサミデバイスの 「Base64 encoded 鍵」 をSesameSDKの内部データベースに伝達する/入力する/入れる/渡す
 ```
