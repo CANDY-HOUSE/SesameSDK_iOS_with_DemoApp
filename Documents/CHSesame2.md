@@ -23,7 +23,7 @@ public protocol CHSesame2: class {
     // Register this device.　CANDY HOUSEサーバーへセサミの登録
     
     func resetSesame(result: @escaping (CHResult<CHEmpty>))
-    // セサミデバイスを初期化（リセット）    
+    // セサミデバイスを初期化（リセット）し、そしてSesameSDKの内部データベースに保存されてるこのセサミの鍵を削除する。何処かから同じ鍵を取って来ても再度使えない。
     
     func configureLockPosition(lockTarget: Int16, unlockTarget: Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.BLECmdResultCode>)) 
     // Set sesame devices's lock position. 施解錠の回転位置設定   
