@@ -8,5 +8,5 @@ CHBleManager.shared.getSesames(completionHandler: @escaping (Result<[CHSesame2],
 
 CHBleManager.shared.receiveKey(ssm2Keys: [String],completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void))
 CHBleManager.shared.receiveKey(ssm2Keys: String...,completionHandler: @escaping (Result<[CHSesame2], Error>) -> Void))
-// このセサミデバイスの 「Base64 encoded 鍵」 をSesameSDKの内部データベースに伝達する/入力する/入れる1/渡す
+// このセサミデバイスの 「Base64 encoded 鍵」 をSesameSDKの内部データベースに伝達する/入力する/入れる/渡す
 ```
