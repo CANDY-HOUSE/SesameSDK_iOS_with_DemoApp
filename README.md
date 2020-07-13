@@ -14,7 +14,7 @@
   - [Retrieve Sesame](#Retrieve-Sesame)
   - [Configure Sesame](#Configure-Sesame)
   - [Get Sesame Information](#Get-Sesame-Information)
-  - [Lock/Unlock Sesame](#Lock/Unlock-Sesame)
+  - [Lock/Unlock Sesame](#lockunlock-sesame)
   - [Share Sesames' Keys](#Share-Sesame-Keys)
 
 # Introduction
