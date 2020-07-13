@@ -18,9 +18,6 @@
   - [Share Sesames' Keys](#Share-Sesame-Keys)
 
 # Introduction
-CANDY HOUSEはB2Cのコンシューマーユーザー様に、一番安くて、一番使い易い物と、ベストなサービスを提供する事を使命としております。
-弊社には賃貸管理、オフィスシェアリング、バイクシェアリングやスマートハウス、家事代行などを提供されている素晴らしい企業様から多くのお問合せを頂いております。弊社は決してそのようなサービスを提供されていらっしゃる企業様と競争するのではなく、むしろそのような企業様に協力させて頂くことで、B2Cだけでなく、B2Bも含めてより日本社会に必要とされることができたら弊社として本望でございます。
-このSDKはまだまだ未熟な部分はあるかと思いますが、皆様からのご意見やご指導を頂きましてより洗練したものにさせて頂きたく、何卒ご鞭撻のほど宜しくお願いいたします。  
 SesameSDK on iOS is a delightful Bluetooth/IoT(Internet of Things) library for your iOS app. The official Sesame app is built on this SesameSDK. By using SesameSDK, your app will have **ALL** functions and features that Sesame app has, which means, you will be able to
 
 - Register Sesame
