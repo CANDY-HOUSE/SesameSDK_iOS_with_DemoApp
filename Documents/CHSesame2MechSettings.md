@@ -1,9 +1,9 @@
 ```Swift
-public protocol CHSesameMechSettings {
+public protocol CHSesame2MechSettings {
     
     func getLockPosition() -> Int64?
     // Get the specific value of lock position.
-
+    
     func getUnlockPosition() -> Int64?
     // Get the specific value of unlock position.
    
