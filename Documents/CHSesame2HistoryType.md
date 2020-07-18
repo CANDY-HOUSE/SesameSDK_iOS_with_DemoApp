@@ -1,5 +1,5 @@
 ```swift
-public enum SSM2HistoryType:UInt8
+public enum CHSesame2HistoryType:UInt8
 {
     case NONE = 0                 // 何らの原因で紛失した履歴タイプ
     case BLE_LOCK = 1             // コマンドによる施錠
