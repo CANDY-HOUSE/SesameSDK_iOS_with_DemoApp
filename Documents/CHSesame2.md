@@ -20,8 +20,8 @@ public protocol CHSesame2: class {
     
     func resetSesame(result: @escaping (CHResult<CHEmpty>))
     /* CANDY HOUSEのサーバーと関係なく、
-      BLE接続ある場合に叩くと　：セサミデバイスを初期化（リセット）し、そしてSesameSDKの内部データベースに保存されてるこのセサミの鍵を削除する。何処かから同じ鍵を取って来ても再度使えない。ユーザは新規登録のみできる。
-      BLE接続ない場合に叩くと　：SesameSDKの内部データベースに保存されてるこのセサミの鍵を削除する。再度何処かから同じ鍵を取ってこれば再度使える状態になる。
+     セサミデバイスと接続済のみに使う。セサミデバイスを初期化（リセット）し、そしてSesameSDKの内部データベースに保存されてるこのセサミの鍵を削除する。
+    　何処かから同じ鍵を取って来ても再度使えない。ユーザは新規登録のみできる。
     */
     
     func configureLockPosition(lockTarget: Int16, unlockTarget: Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.BLECmdResultCode>)) 
