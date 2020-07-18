@@ -19,8 +19,8 @@ public protocol CHSesame2: class {
     // Register this device.　CANDY HOUSEサーバーへセサミの登録
     
     func resetSesame(result: @escaping (CHResult<CHEmpty>))
-    /* CANDY HOUSEのサーバーと関係なく、
-     セサミデバイスと接続済のみに使う。セサミデバイスを初期化（リセット）し、そしてSesameSDKの内部データベースに保存されてるこのセサミの鍵を削除する。
+    /* CANDY HOUSEのサーバーと関係なく、セサミデバイスと接続済のみに使う。
+     セサミデバイスを初期化（リセット）し、そしてSesameSDKの内部データベースに保存されてるこのセサミの鍵を削除する。
     　何処かから同じ鍵を取って来ても再度使えない。ユーザは新規登録のみできる。
     */
     
