@@ -7,7 +7,7 @@ Under Project setting.
 2. Add your group identifier. e.g. group.candyhouse.widget
 3. Choose **Widget target** > **Signing & Capabilities** > + Capability (**App Groups**)
 4. Add as the same group identifier as the App target. e.g. group.candyhouse.widget
-5. Create a .plist file named **CHConfiguration.plist** and add an attribute **CHAppGroupApp** as String type and set your group ID as Value. Make sure the Target Membership is checked for both `App` and the `Widget`.
+5. ⚠️ Create a .plist file named **CHConfiguration.plist** and add an attribute **CHAppGroupApp** as String type and set your group ID as Value. Make sure the Target Membership is checked for both `App` and the `Widget`.
 
 # 2. Adopt SesameSDK to your App and Widget
 [SesameSDK](https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/blob/master/README.md)
