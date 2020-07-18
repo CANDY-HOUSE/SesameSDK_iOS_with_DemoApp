@@ -1,4 +1,4 @@
-# IOS
+# iOS
 
 ```Swift
 public protocol CHSesame2: class {
