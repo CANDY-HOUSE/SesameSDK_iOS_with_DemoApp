@@ -1,3 +1,4 @@
+# IOS
 ```Swift
 public protocol CHSesame2: class {
     var deviceId: UUID! { get } // UUID for each Sesame device, never changes    
@@ -54,5 +55,46 @@ public protocol CHSesame2: class {
     
     func getHistorys(page:Int, pageLength: Int, _ callback: @escaping CHResult<[Sesame2History]>)
     // SDKを経由して、履歴を取得する
+}
+```
+
+# Android
+```kotlin
+public interface CHSesame2 {
+    var deviceId: UUID?
+    var delegate: CHSesame2Delegate?
+    var rssi: Int
+    var isRegistered: Boolean
+    var deviceStatus: CHSesame2Status
+
+    var mechStatus: CHSesame2MechStatus?
+    var mechSetting: CHSesame2MechSettings?
+    var intention: CHSesame2Intention
+
+    fun lock(result: CHResult<CHEmpty>)
+    fun unlock(result: CHResult<CHEmpty>)
+    fun toggle(result: CHResult<CHEmpty>)
+
+    fun connnect(result: CHResult<CHEmpty>)
+    fun disconnect(result: CHResult<CHEmpty>)
+
+    fun registerSesame(result: CHResult<CHEmpty>)
+    fun resetSesame(result: CHResult<CHEmpty>)
+
+    fun configureLockPosition(lockTarget: Short, unlockTarget: Short, result: CHResult<CHEmpty>)
+
+    fun getAutolockSetting(result: CHResult<UShort>)
+    fun enableAutolock(delay: Int, result: CHResult<UShort>)
+    fun disableAutolock(result: CHResult<UShort>)
+
+    fun updateFirmware(onResponse: CHResult<BluetoothDevice>)
+    fun getVersionTag(result: CHResult<String>)
+
+    fun setHistoryTag(tag: ByteArray, result: CHResult<CHEmpty>)
+    fun getHistoryTag(): ByteArray?
+
+    fun dropKey()
+    fun getKey(): String
+
 }
 ```
