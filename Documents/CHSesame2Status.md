@@ -1,6 +1,3 @@
-
-
-
 # CHSesame2Status
 ```Swift
     noSignal      
