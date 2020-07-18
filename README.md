@@ -34,6 +34,12 @@ SesameSDK on iOS is a delightful Bluetooth/IoT(Internet of Things) library for y
 
 with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ series or Sesame 1 that runs ___SesameOS 2___ which will be available in late 2020.
 
+# Requirements
+
+| Minimum iOS Target | Minimum Bluetooth Target | Minimum IDE |
+|:------------------:|:------------------------:|:-----------:|
+| iOS 11 | Bluetooth 4.0 LE | Xcode 11.5 | 
+
 # Configure the SDK
 1. Download SesameSDK and play with the included iPhone Demo app. または Apple TestFlight( https://testflight.apple.com/join/mK4OadTW )からダウンロードする。
 2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
