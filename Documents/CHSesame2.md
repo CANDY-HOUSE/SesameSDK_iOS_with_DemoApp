@@ -1,12 +1,8 @@
 ```Swift
 public protocol CHSesame2: class {
-    var deviceId: UUID! { get } // UUID for each Sesame device, never changes
-
-    typealias AutolockSettingCallback = (_ delay: Int) -> Void
-    
+    var deviceId: UUID! { get } // UUID for each Sesame device, never changes    
     var delegate: CHSesameBleDeviceDelegate? { get set }　
     //このメソッドを使用するとCHDeviceStatus/CHSesameMechStatus/CHSesameMechSettingsの変化があればSDKからアプリUIにイベントを送る
-
     var rssi: NSNumber { get } //セサミのBluetooth電波の強さ
     var model: CHDeviceModel { get } //Sesame2, Sesame2 mini, Sesame1, Sesame1 mini, WiFi Access Point 2 , WiFi Access Point 1
     var isRegistered: Bool { get } //既に登録済みか否か
