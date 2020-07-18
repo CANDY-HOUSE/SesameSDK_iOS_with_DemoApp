@@ -36,7 +36,7 @@
 
 
 1. [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (For reference)
-2. [cbmanagerstate](https://developer.apple.com/documentation/corebluetooth/cbmanagerstate)
+2. [CBManagerState](https://developer.apple.com/documentation/corebluetooth/cbmanagerstate)
 
 # example
 
