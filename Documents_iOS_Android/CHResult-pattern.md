@@ -11,6 +11,9 @@
 
 ## NSError table
 
+1. [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (For reference)
+2. [CBManagerState](https://developer.apple.com/documentation/corebluetooth/cbmanagerstate)
+
 | Timing/error   |  domain | code       |Message       |
 |:---------------------:|:-------------------:|:-----------:|:-----------:|
 |  No network                |  SesameSDK     |   -1009       |The Internet connection appears to be offline. | 
@@ -35,9 +38,6 @@
 |    cmd lock/unlock         |  SesameSDK      |   7          | busy| 
 |    cmd lock/unlock         |  SesameSDK      |   8          | invalid Param| 
 
-
-1. [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (For reference)
-2. [CBManagerState](https://developer.apple.com/documentation/corebluetooth/cbmanagerstate)
 
 # example
 
