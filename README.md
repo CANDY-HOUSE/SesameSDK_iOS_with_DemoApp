@@ -40,6 +40,9 @@ with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ 
 |:------------------:|:------------------------:|:-----------:|
 | iOS 11 | Bluetooth 4.0 LE | Xcode 11.5 | 
 
+# Dependencies
+- AWSAPIGateway.framework
+
 # Configure the SDK
 1. Download SesameSDK and play with the included iPhone Demo app. または Apple TestFlight( https://testflight.apple.com/join/mK4OadTW )からダウンロードする。
 2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
