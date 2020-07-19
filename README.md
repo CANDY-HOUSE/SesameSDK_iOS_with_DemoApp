@@ -153,80 +153,73 @@ ssm.connect()
 ```
 2. `delegate` to the Sesame device if you would like to receive the Sesame device's status updates.
 ```swift
-ssm.delegate = self
+sesame2.delegate = self
 
 
-class SomeClass: CHSesameBleDeviceDelegate {
+class SomeClass: CHSesame2Delegate {
     
-    /// Will be invoked whenever the Sesame device interaction status changes.
+    /// Will be invoked whenever sesame device interaction status changed.
     /// - Parameters:
     ///   - device: Sesame device.
     ///   - status: `CHDeviceStatus`
-    func onBleDeviceStatusChanged(device: CHSesameBleInterface, status: CHDeviceStatus)
-    
-    /// Will be invoked whenever command result from the Sesame device was back.
-    /// - Parameters:
-    ///   - device: Sesame device.
-    ///   - command: `SSM2ItemCode`
-    ///   - returnCode: `SSM2CmdResultCode`
-    func onBleCommandResult(device: CHSesameBleInterface, command: SSM2ItemCode, returnCode: SSM2CmdResultCode)
-    
-    /// Will be invoked whenever Sesame device status changes.
+    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status)
+
+    /// Will be invoked whenever sesame device status has changed.
     /// - Parameters:
     ///   - device: Sesame device.
     ///   - status: `CHSesameMechStatus`
     ///   - intention: `CHSesameIntention`
-    func onMechStatusChanged(device: CHSesameBleInterface, status: CHSesameMechStatus, intention: CHSesameIntention)
+    func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention)
 }
 ```
 
 ### Configure Sesame
 
-1. Lock/Unlock angle adjustment:
+1. Locked/Unlocked angle adjustment:
 ```swift
 // Lock: 90°, Unlock: 0°
 var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0)
-ssm.configureLockPosition(configure: &config)
+sesame2.configureLockPosition(configure: &config)
 ```
 2. Enable/Disable auto-lock:
 ```swift
-ssm.enableAutolock(delay: second[row]) { (delay) -> Void in
+sesame2.enableAutolock(delay: second[row]) { (delay) -> Void in
     // Complete handler
 }
 ```
 ```swift
-ssm.disableAutolock() { (delay) -> Void in
+sesame2.disableAutolock() { (delay) -> Void in
     // Complete handler
 }
 ```
 3. Drop Key:     
 This command will clear the Sesame keys saved in SesameSDK. This means you will not able to retrieve the Sesame device via `CHBleManager.shared.getSesames()`.
 ```swift
-ssm.dropKey()
+sesame2.dropKey()
 ```
 4. Reset Sesame:     
 This command will reset the Sesame device and clear the Sesame keys saved in SesameSDK.
 ```swift
-ssm.resetSesame()
+sesame2.resetSesame()
 ```
 ### Get Sesame Information
 
 1. UUID:     
 Every Sesame device has a unique identifier.
 ```swift
-ssm.deviceId
+sesame2.deviceId
 ```
-2. Sesame device status (`noSignal`, `receiveBle`, `connecting`, `loginStatus`, etc.) Please see Documents/CHDeviceStatus.md
+2. Sesame device status (`noSignal`, `receiveBle`, `connecting`, `loginStatus`, etc.) Please see Documents/CHSesame2Status.md
 ```swift
-ssm.deviceStatus 
+sesame2.deviceStatus 
 ```
-3. Sesame mechanical status (lock position, battery, etc) Please see Documents/CHSesameMechStatus.md
+3. Sesame mechanical status (angle position, battery status, etc) Please see Documents/CHSesame2MechStatus.md
 ```swift
-ssm.mechStatus
+sesame2.mechStatus
 ```
 ### Lock/Unlock Sesame
 ```swift
-ssm.toggle { result in
+sesame2.toggle { result in
     // Completion handler
 }
 ```
@@ -234,13 +227,12 @@ ssm.toggle { result in
 SesameSDK can export keys(Base64 encoded JSON objects) to you, and you can share the keys with other people in many ways.
 1. Export Sesame keys:
 ```swift
-ssm.getKey()
+sesame2.getKey()
 ```
 2. Import Sesame keys:     
 Once you imported keys(Base64 encoded JSON objects) successfully, you can retrieve the device via `CHBleManager.shared.getSesames()`.
 ```swift
-// ssm2Key is the key data(Base64 encoded JSON objects) that you can get from `ssm.getKey()`
-CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
+CHDeviceManager.shared.receiveSesame2Keys(sesame2Keys: [String]) { result in
     switch result {
         case .success(_):
             // Success handler
