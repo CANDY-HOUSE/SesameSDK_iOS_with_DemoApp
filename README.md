@@ -85,10 +85,10 @@ CHBleManager.shared.delegate = self
 Once you delegate to `CHBleManager` and also adopted the `CHBleManagerDelegate` protocol, you will recevie unregistered Sesame devices in the following methods.
 ```swift
 class SomeClass: CHBleManagerDelegate {
-    public func didDiscoverUnRegisteredSesames(sesames: [CHSesameBleInterface]) {
+    public func didDiscoverUnRegisteredSesames(sesames: [CHSesame2]) {
         // Your implementation
     }
-    public func didDiscoverUnRegisteredSesame(sesame: CHSesameBleInterface) {
+    public func didDiscoverUnRegisteredSesame(sesame: CHSesame2) {
         // Your implementation
     }
 }
@@ -96,29 +96,29 @@ class SomeClass: CHBleManagerDelegate {
 2. Connect unregistered Sesame devices.     
 Before registering a Sesame device, you have to connect to it in order to send commands to it. 
 ```swift
-public func didDiscoverUnRegisteredSesames(sesames: [CHSesameBleInterface]) {
-    for ssm in sesames {
-        ssm.connect()
+public func didDiscoverUnRegisteredSesames(sesames: [CHSesame2]) {
+    for sesame2 in sesame2s {
+        sesame2.connect()
     }
 }
 ```
 When you are ready to register the Sesame device, you can send the register command as long as the device's status is `.readytoRegister`, otherwise, you may want to delegate to the device so you can monitor the status updates of the Sesame device, and be able to connect to it once the status becomes `.readytoRegister`.
 
 ```swift
-class SomeClass: CHSesameBleDeviceDelegate {
+class SomeClass: CHSesame2Delegate {
     func register() {
         // Resiger the device if it is ready.
-        if ssm.deviceStatus == .readytoRegister {
-            ssm.registerSesame( { result in
+        if sesame2.deviceStatus == .readytoRegister {
+            sesame2.registerSesame( { result in
                 // Completion handler
             })
         } else {
         // Otherwise monitor the status until it is ready.
-            ssm.delegate = self as CHSesameBleDeviceDelegate
+            sesame2.delegate = self as CHSesame2Delegate
         }
     }
 
-    func onBleDeviceStatusChanged(device: CHSesameBleInterface, status: CHDeviceStatus) {
+    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
         if status == .readytoRegister {
             device.registerSesame( { result in
                 // Completion handler
