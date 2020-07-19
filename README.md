@@ -1,4 +1,3 @@
-# SesameSDK iOS
 <img src="https://img.shields.io/badge/Xcode-11.5-blue" /> <img src="https://img.shields.io/badge/Swift-5.2.4-orange" /> <img src="https://img.shields.io/badge/iOS-11-black" /> <img src="https://img.shields.io/badge/Bluetooth-4.0LE-lightblue" />
 <br/>
 <p align="center" >
@@ -18,7 +17,7 @@
   - [Share Sesames' Keys](#Share-Sesame-Keys)
 
 # Introduction
-SesameSDK on iOS is a delightful Bluetooth/IoT(Internet of Things) library for your iOS app. The official Sesame app is built on this SesameSDK. By using SesameSDK, your app will have **ALL** functions and features that Sesame app has, which means, you will be able to
+SesameSDK on iOS/Android is a delightful Bluetooth/IoT(Internet of Things) library for your iOS app. The official Sesame app is built on this SesameSDK. By using SesameSDK, your app will have **ALL** functions and features that Sesame app has, which means, you will be able to
 
 - Register Sesame
 - Lock door
