@@ -35,7 +35,7 @@ with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ 
 
 # Requirements
 
-| Minimum iOS Target | Minimum Bluetooth Target | Minimum IDE |
+| Minimum Targets | Minimum Bluetooth Target | Minimum IDEs |
 |:------------------:|:------------------------:|:-----------:|
 | iOS 11 | Bluetooth 4.0 LE | Xcode 11.5 | 
 
