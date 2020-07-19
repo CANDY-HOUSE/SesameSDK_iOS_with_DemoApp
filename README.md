@@ -149,7 +149,7 @@ CHBleManager.shared.getSesames() { result in
 ```
 1. You may want to `connect()` the device before sending any command.
 ```swift
-ssm.connect()
+sesame2.connect()
 ```
 2. `delegate` to the Sesame device if you would like to receive the Sesame device's status updates.
 ```swift
