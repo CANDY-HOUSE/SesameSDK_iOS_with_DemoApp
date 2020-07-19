@@ -11,15 +11,15 @@ import SesameSDK
 
 public final class SesameViewModel: ViewModel {
 
-    private var ssm: CHSesame2
+    private var sesame2: CHSesame2
     public var statusUpdated: ViewStatusHandler?
     
-    init(ssm: CHSesame2) {
-        self.ssm = ssm
+    init(sesame2: CHSesame2) {
+        self.sesame2 = sesame2
     }
     
     public func currentDegree() -> Float? {
-        guard let status = ssm.mechStatus,
+        guard let status = sesame2.mechStatus,
             let currentAngle = status.getPosition() else {
             return nil
         }
@@ -27,7 +27,7 @@ public final class SesameViewModel: ViewModel {
     }
     
     public func lockPositions() -> (lockPosition: Float?, unlockPosition: Float?) {
-        guard let setting = ssm.mechSetting,
+        guard let setting = sesame2.mechSetting,
             let lockDegree = setting.getLockPosition(),
             let unlockDegree = setting.getUnlockPosition() else {
                 return (nil, nil)

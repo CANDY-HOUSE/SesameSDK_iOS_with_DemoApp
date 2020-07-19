@@ -12,7 +12,7 @@ import SesameSDK
 public final class MyQRViewModel: ViewModel {
     public var statusUpdated: ViewStatusHandler?
 
-    private var ssm: CHSesame2?
+    private var sesame2: CHSesame2?
     private(set) var familyName: String?
     private(set) var givenName: String?
     private(set) var mail: String?
@@ -23,20 +23,20 @@ public final class MyQRViewModel: ViewModel {
     public init(familyName: String? = nil,
                 givenName: String? = nil,
                 mail: String? = nil,
-                ssm: CHSesame2?,
+                sesame2: CHSesame2?,
                 qrCodeType: QRcodeType) {
         self.familyName = familyName
         self.givenName = givenName
         self.mail = mail
-        self.ssm = ssm
+        self.sesame2 = sesame2
         self.qrCodeType = qrCodeType
     }
     
-    public var ssmQRCode: String? {
-        ssm?.ssmQRCodeURL()
+    public var sesame2QRCode: String? {
+        sesame2?.sesame2QRCodeURL()
     }
     
     public var deviceName: String? {
-        ssm?.deviceId!.uuidString
+        sesame2?.deviceId!.uuidString
     }
 }

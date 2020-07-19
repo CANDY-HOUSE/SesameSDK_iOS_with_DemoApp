@@ -19,7 +19,7 @@ class BluetoothDevicesCell: UITableViewCell {
 
     @IBOutlet weak var batteryImage: UIImageView!
     @IBOutlet weak var powerLabel: UILabel!
-    @IBOutlet weak var ssmCircle: SesameCircle!
+    @IBOutlet weak var sesame2Circle: Sesame2Circle!
     @IBOutlet weak private var testButton: UIButton! {
         didSet {
             testButton.isHidden = true
@@ -40,7 +40,7 @@ class BluetoothDevicesCell: UITableViewCell {
                     case .loading:
                         break
                     case .received:
-                        strongSelf.updateSSMStatus()
+                        strongSelf.updateSesame2Status()
                     case .finished(let result):
                         switch result {
                         case .success(_):
@@ -64,10 +64,10 @@ class BluetoothDevicesCell: UITableViewCell {
     func updateUI()  {
 
         if let currentDegree = viewModel.currentDegree() {
-            ssmCircle.refreshUI(newPointerAngle: CGFloat(currentDegree),
+            sesame2Circle.refreshUI(newPointerAngle: CGFloat(currentDegree),
                                 lockColor: viewModel.lockColor)
         } else {
-            ssmCircle.refreshUI(newPointerAngle: CGFloat(0.0),
+            sesame2Circle.refreshUI(newPointerAngle: CGFloat(0.0),
                                 lockColor: viewModel.lockColor)
         }
         
@@ -79,13 +79,13 @@ class BluetoothDevicesCell: UITableViewCell {
         ownerNameLabel.isHidden = viewModel?.isHideOwnerNameLabel ?? true
         testButton.isHidden = viewModel?.isHideTestButton ?? true
     }
-    func updateSSMStatus()  {
+    func updateSesame2Status()  {
 
         if let currentDegree = viewModel.currentDegree() {
-            ssmCircle.refreshUI(newPointerAngle: CGFloat(currentDegree),
+            sesame2Circle.refreshUI(newPointerAngle: CGFloat(currentDegree),
                                 lockColor: viewModel.lockColor)
         } else {
-            ssmCircle.refreshUI(newPointerAngle: CGFloat(0.0),
+            sesame2Circle.refreshUI(newPointerAngle: CGFloat(0.0),
                                 lockColor: viewModel.lockColor)
         }
 

@@ -25,5 +25,5 @@ extension Date {
            dateFormatter.dateFormat = "MM/dd HH:mm:ss"
            let strDate = dateFormatter.string(from: self)
            return strDate
-       }
+    }
 }

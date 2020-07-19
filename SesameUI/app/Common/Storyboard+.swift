@@ -12,11 +12,11 @@ import UIKit
 public extension UIStoryboard {
     enum viewControllers {
         static var myQRCodeViewController: MyQRCodeViewController? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "MyQrVC") as? MyQRCodeViewController
+            Constant.storyboard.instantiateViewController(withIdentifier: "MyQRCodeViewController") as? MyQRCodeViewController
         }
         
-        static var ssm2RoomMainVC: SSM2RoomMainViewController? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "SSM2RoomMainVC") as? SSM2RoomMainViewController
+        static var sesame2RoomMainVC: Sesame2RoomMainViewController? {
+            Constant.storyboard.instantiateViewController(withIdentifier: "Sesame2RoomMainViewController") as? Sesame2RoomMainViewController
         }
         
         static var bluetoothDevicesListViewController: BluetoothDevicesListViewController? {
@@ -35,16 +35,16 @@ public extension UIStoryboard {
             Constant.storyboard.instantiateViewController(withIdentifier: "GeneralTabViewController") as? GeneralTabViewController
         }
         
-        static var ssm2SettingVC: SSM2SettingViewController? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "SSM2SettingVC") as? SSM2SettingViewController
+        static var sesame2SettingVC: Sesame2SettingViewController? {
+            Constant.storyboard.instantiateViewController(withIdentifier: "Sesame2SettingViewController") as? Sesame2SettingViewController
         }
         
         static var chTFDialogVC: CHTFDialogViewController? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "alert") as? CHTFDialogViewController
+            Constant.storyboard.instantiateViewController(withIdentifier: "CHTFDialogViewController") as? CHTFDialogViewController
         }
         
-        static var chSSMChangeNameDialog: CHSSMChangeNameDialog? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "ssmalert") as? CHSSMChangeNameDialog
+        static var chSesame2ChangeNameDialog: CHSesame2ChangeNameDialog? {
+            Constant.storyboard.instantiateViewController(withIdentifier: "CHSesame2ChangeNameDialog") as? CHSesame2ChangeNameDialog
         }
         
         static var loginViewController: LogInViewController? {
@@ -68,7 +68,7 @@ public extension UIStoryboard {
         }
         
         static var registerDeviceListVC: RegisterDeviceListViewController? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "RegisterDeviceListVC") as? RegisterDeviceListViewController
+            Constant.storyboard.instantiateViewController(withIdentifier: "RegisterDeviceListViewController") as? RegisterDeviceListViewController
         }
         
 //        static var addFriendViewController: AddFriendViewController? {
@@ -79,8 +79,8 @@ public extension UIStoryboard {
 //            Constant.storyboard.instantiateViewController(withIdentifier: "DeleteFriendVC") as? DeleteFriendViewController
 //        }
         
-        static var bluetoothSesameControlViewController: BluetoothSesameControlViewController? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "BluetoothSesameControlViewController") as? BluetoothSesameControlViewController
+        static var bluetoothSesameControlViewController: BluetoothSesame2ControlViewController? {
+            Constant.storyboard.instantiateViewController(withIdentifier: "BluetoothSesame2ControlViewController") as? BluetoothSesame2ControlViewController
         }
     }
 }

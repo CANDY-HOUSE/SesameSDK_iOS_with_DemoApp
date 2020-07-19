@@ -16,7 +16,7 @@ import SesameSDK
 //public final class AddFriendViewModel: ViewModel {
 //    
 //    private var newFriends = [Friend]()
-//    private var currentFriends: [SSMOperator]
+//    private var currentFriends: [Sesame2Operator]
 //    
 //    public var delegate: AddFriendViewModelDelegate?
 //    
@@ -27,7 +27,7 @@ import SesameSDK
 //    public private(set) var rightButtonItemImage = "icons_filled_add-friends"
 //    public private(set) var emptyMessage = "No Contacts".localStr
 //    
-//    public init(currentFriends: [SSMOperator]) {
+//    public init(currentFriends: [Sesame2Operator]) {
 //        self.currentFriends = currentFriends
 //    }
 //    

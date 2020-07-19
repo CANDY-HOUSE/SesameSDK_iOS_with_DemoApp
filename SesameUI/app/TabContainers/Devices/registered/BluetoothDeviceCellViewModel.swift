@@ -12,7 +12,7 @@ import CoreBluetooth
 import UIKit.UIColor
 
 public protocol BluetoothDeviceCellViewModelDelegate {
-    func enterTestModeTapped(ssm: CHSesame2)
+    func enterTestModeTapped(sesame2: CHSesame2)
 }
 
 public final class BluetoothDeviceCellViewModel: ViewModel {
@@ -20,16 +20,16 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     public var statusUpdated: ViewStatusHandler?
     
     var delegate: BluetoothDeviceCellViewModelDelegate?
-    var ssm: CHSesame2
+    var sesame2: CHSesame2
     
-    public init(ssm: CHSesame2) {
-        self.ssm = ssm
-        ssm.connect(){res in }
-        ssm.delegate = self
+    public init(sesame2: CHSesame2) {
+        self.sesame2 = sesame2
+        sesame2.connect(){res in }
+        sesame2.delegate = self
     }
 
     public var name: String {
-        let device = SSMStore.shared.getPropertyForDevice(ssm)
+        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
         return device.name ?? device.deviceID!.uuidString
     }
     
@@ -38,41 +38,41 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     }
     
     public var isHideOwnerNameLabel: Bool {
-        let device = SSMStore.shared.getPropertyForDevice(ssm)
-        return ssm.deviceId.uuidString == device.name
+        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
+        return sesame2.deviceId.uuidString == device.name
     }
     
     public var isShowContent: Bool {
-        ssm.deviceStatus.loginStatus() == .unlogin
+        sesame2.deviceStatus.loginStatus() == .unlogin
     }
     
     public var lockColor: UIColor {
-        ssm.lockColor()
+        sesame2.lockColor()
     }
     
     public var isInLockRange: Bool? {
-        ssm.mechStatus?.isInLockRange()
+        sesame2.mechStatus?.isInLockRange()
     }
     
     public func toggleTapped() {
-        ssm.toggleWithHaptic(interval: 1.5)
+        sesame2.toggleWithHaptic(interval: 1.5)
     }
     
     public func lockBackgroundImage() -> String {
-        ssm.currentStatusImage()
+        sesame2.currentStatusImage()
     }
     
     func powerPercentate() -> String {
-        let powPercent = ssm.batteryPrecentage() ?? 0
+        let powPercent = sesame2.batteryPrecentage() ?? 0
         return "\(powPercent)"
     }
     
     public func batteryImage() -> String {
-        return ssm.batteryImage() ?? "bt0"
+        return sesame2.batteryImage() ?? "bt0"
     }
     
     public func currentDegree() -> Float? {
-        guard let status = ssm.mechStatus,
+        guard let status = sesame2.mechStatus,
             let currentAngle = status.getPosition() else {
             return nil
         }
@@ -84,11 +84,11 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     }
 }
 
-extension BluetoothDeviceCellViewModel: CHSesameDelegate {
-    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesameStatus) {
-        if device.deviceId == ssm.deviceId,
+extension BluetoothDeviceCellViewModel: CHSesame2Delegate {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
+        if device.deviceId == sesame2.deviceId,
             status == .receiveBle {
-            ssm.connect(){_ in}
+            sesame2.connect(){_ in}
         }
         statusUpdated?(.received)
     }
@@ -101,6 +101,6 @@ extension BluetoothDeviceCellViewModel {
     }
     
     public func enterTestModeTapped() {
-        delegate?.enterTestModeTapped(ssm: ssm)
+        delegate?.enterTestModeTapped(sesame2: sesame2)
     }
 }

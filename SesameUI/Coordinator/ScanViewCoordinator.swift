@@ -36,7 +36,7 @@ public final class ScanViewCoordinator: Coordinator {
 }
 
 extension ScanViewCoordinator: ScanViewModelDelegate {
-    func receivedSSM() {
+    func receivedSesame2() {
         presentedViewController?.dismiss(animated: true, completion: nil)
         parentCoordinator?.childCoordinatorDismissed(self, userInfo: [DismissReason.key: DismissReason.registerSucceeded])
     }

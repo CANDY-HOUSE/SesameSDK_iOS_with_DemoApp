@@ -45,11 +45,11 @@ public class GeneralTabViewCoordinator: Coordinator {
         
         let contactItem = UITabBarItem(title: "Contacts".localStr,
                                        image: UIImage.SVGImage(named:"icons_outlined_contacts",fillColor: UIColor.gray),
-                                       selectedImage: UIImage.SVGImage(named:"icons_filled_contacts",fillColor: .sesameGreen))
+                                       selectedImage: UIImage.SVGImage(named:"icons_filled_contacts",fillColor: .sesame2Green))
         
         let meItem = UITabBarItem(title: "Me".localStr,
                                   image: UIImage.SVGImage(named:"icons_outlined_me",fillColor: UIColor.gray),
-                                  selectedImage: UIImage.SVGImage(named:"icons_filled_official-accounts",fillColor: .sesameGreen))
+                                  selectedImage: UIImage.SVGImage(named:"icons_filled_official-accounts",fillColor: .sesame2Green))
         
         
         deviceListViewController.tabBarItem = deviceListItem

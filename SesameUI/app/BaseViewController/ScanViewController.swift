@@ -186,7 +186,7 @@ extension ScanViewController: QRScannerViewDelegate {
         viewModel.receivedQRCode(qrCode)
 //        guard let urlString = qrCode,
 //            let scanSchema = URL(string: urlString),
-//            let ssm2Key = scanSchema.ssmKey() else {
+//            let sesame2Key = scanSchema.sesame2Key() else {
 //                let error = NSError(domain: "", code: 0, userInfo: ["error message": "Parse qr code url failed"])
 //                L.d(error.errorDescription())
 //                DispatchQueue.main.async {
@@ -195,7 +195,7 @@ extension ScanViewController: QRScannerViewDelegate {
 //                return
 //        }
 //
-//        CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
+//        CHBleManager.shared.receiveKey(sesame2Keys: [sesame2Key]) { result in
 //            switch result {
 //            case .success(_):
 //                self.dismiss(animated: true, completion: nil)

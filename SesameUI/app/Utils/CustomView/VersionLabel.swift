@@ -31,7 +31,7 @@ final class VersionLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         textAlignment = .center
         font = UIFont(name: "TrebuchetMS", size: 15)
-        textColor = UIColor.sesameLightGray
+        textColor = UIColor.sesame2LightGray
         sizeToFit()
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
         let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""

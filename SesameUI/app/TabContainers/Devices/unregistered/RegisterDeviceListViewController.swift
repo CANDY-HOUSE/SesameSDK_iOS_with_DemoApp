@@ -11,7 +11,7 @@ import UIKit
 import CoreBluetooth
 import SesameSDK
 
-public final class RegisterDeviceListViewController: CHBaseViewController  {
+public final class RegisterDeviceListViewController: CHBaseViewController {
 
     var viewModel: RegisterDeviceListViewModel!
     
@@ -23,8 +23,9 @@ public final class RegisterDeviceListViewController: CHBaseViewController  {
         }
     }
 
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.viewDidDisappear()
     }
 
     public override func viewDidLoad() {
@@ -79,13 +80,41 @@ extension RegisterDeviceListViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SSMCellR", for: indexPath) as! RegisterCell
-        cell.viewModel = viewModel.registerCellModelForRow(indexPath.row)
-        cell.ssi.textColor = (indexPath.row == 0) ? .sesameGreen : .gray
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RegisterCell", for: indexPath) as! RegisterCell
+        let cellViewModel = viewModel.registerCellModelForRow(indexPath.row)
+        cell.viewModel = cellViewModel
+        cell.ssi.textColor = (indexPath.row == 0) ? .sesame2Green : .gray
+        cell.statusLabel.text = cellViewModel.currentStatus()
+//        cell.delegate = self
+//        cell.dfuButton.setTitle(viewModel.dfuActionText, for: .normal)
+//        cell.firmwareVersionLabel.text = viewModel.firmwareVersionForDeviceAtIndexPath(indexPath)
         return cell
     }
     
+}
+
+extension RegisterDeviceListViewController: RegisterCellDelegate {
+    
+    func dfuForCell(_ cell: UITableViewCell) {
+//        guard let indexPath = deviceTableView.indexPath(for: cell) else {
+//            return
+//        }
+//
+//        let check = UIAlertAction
+//                   .addAction(title: viewModel.dfuActionText,
+//                              style: .destructive) { (action) in
+//                               let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
+//
+//                               }
+//                               progressIndicator.dfuInitialized {
+//                                   self.viewModel.cancelDFU()
+//                               }
+//                                self.viewModel.dfuDeviceAtIndexPath(indexPath, observer: progressIndicator)
+//               }
+//        UIAlertController.showAlertController(view,
+//                                              style: .actionSheet,
+//                                              actions: [check])
+    }
 }
 
 extension RegisterDeviceListViewController: UITableViewDelegate {

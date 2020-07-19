@@ -10,8 +10,7 @@ import UIKit
 import SesameSDK
 import CoreBluetooth
 
-class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelegate {
-    
+class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Delegate {    
     var sesame: CHSesame2?
 
     var timer: Timer?
@@ -298,7 +297,7 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
         self.present(alert, animated: true)
     }
     
-    var mechStatus: CHSesameMechStatus? {
+    var mechStatus: CHSesame2MechStatus? {
         didSet {
             guard let status = mechStatus else {
                 return
@@ -310,7 +309,7 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
         }
     }
     
-    var mechSetting: CHSesameMechSettings? {
+    var mechSetting: CHSesame2MechSettings? {
         didSet {
             guard let setting = mechSetting else {
                 return
@@ -320,11 +319,11 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
             lockSetBtn.setTitle("\(setting.getLockPosition()!)", for: .normal)
             unlockSetBtn.setTitle("\(setting.getUnlockPosition()!)", for: .normal)
             lockCircle.setLock(self.sesame!)
-            fwVersionLB.text = "\(self.sesame!.fwVersion)"
+//            fwVersionLB.text = "\(self.sesame!.fwVersion)"
         }
     }
     
-    var deviceStatus: CHSesameStatus = CHSesameStatus.noSignal {
+    var deviceStatus: CHSesame2Status = CHSesame2Status.noSignal {
         didSet {
             DispatchQueue.main.async(execute: {
                 self.gattStatusLB.text = "\(self.deviceStatus.description())"
@@ -360,7 +359,7 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
     }
     
     
-    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesameStatus) {
+    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
 //        L.d("test",status.description())
         deviceStatus = status
 
@@ -378,14 +377,14 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
     }
     
     
-    func onMechStatusChanged(device: CHSesame2, status: CHSesameMechStatus, intention: CHSesameIntention) {
+    func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
         DispatchQueue.main.async {
             self.mechStatus = status
             self.lockIntention.text = intention.description
         }
     }
     
-//    func onBleCommandResult(device: CHSesame2, command: SSM2ItemCode, returnCode: BLECmdResultCode){
+//    func onBleCommandResult(device: CHSesame2, command: Sesame22ItemCode, returnCode: BLECmdResultCode){
 //        DispatchQueue.main.async {
 //            self.resultLB.text = "\(command.plainName),\(returnCode)"
 //            
@@ -400,7 +399,7 @@ class BluetoothSesameControlViewController: CHBaseViewController, CHSesameDelega
 //    }
 }
 
-extension BluetoothSesameControlViewController: UITableViewDataSource {
+extension BluetoothSesame2ControlViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
@@ -418,7 +417,7 @@ extension BluetoothSesameControlViewController: UITableViewDataSource {
     }
 }
 
-extension BluetoothSesameControlViewController {
+extension BluetoothSesame2ControlViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sesame?.delegate = self

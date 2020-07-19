@@ -1,5 +1,5 @@
 //
-//  SSM2SettingVC.swift
+//  Sesame2SettingVC.swift
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/10/14.
@@ -11,9 +11,9 @@ import CoreBluetooth
 import SesameSDK
 import iOSDFULibrary
 
-public class SSM2SettingViewController: CHBaseViewController {
+public class Sesame2SettingViewController: CHBaseViewController {
     private var dfuHelper: DFUHelper?
-    var viewModel: SSM2SettingViewModel!
+    var viewModel: Sesame2SettingViewModel!
     @IBOutlet weak var uuidTitleLabel: UILabel!
     @IBOutlet weak var uuidValueLabel: UILabel!
     @IBOutlet weak var historyTagValueLabel: UILabel!
@@ -57,7 +57,7 @@ public class SSM2SettingViewController: CHBaseViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(viewModel != nil, "SSM2SettingViewModel should not be nil.")
+        assert(viewModel != nil, "Sesame2SettingViewModel should not be nil.")
         
         viewModel.statusUpdated = { [weak self] status in
             guard let strongSelf = self else {
@@ -92,7 +92,7 @@ public class SSM2SettingViewController: CHBaseViewController {
             }
         }
         
-        autoLockSwitch.addTarget(viewModel, action: #selector(SSM2SettingViewModel.autoLockSwitchChanged(sender:)), for: .valueChanged)
+        autoLockSwitch.addTarget(viewModel, action: #selector(Sesame2SettingViewModel.autoLockSwitchChanged(sender:)), for: .valueChanged)
 
         refreshUI()
     }
@@ -142,16 +142,17 @@ public class SSM2SettingViewController: CHBaseViewController {
         arrowImg.image = UIImage.SVGImage(named: viewModel.arrowImg)
         secondPicker.isHidden = viewModel.secondPickerIsHidden
         
-        version.text = viewModel.ssmVersionText
+        version.text = viewModel.sesame2VersionText
         
         uuidTitleLabel.text = viewModel.uuidTitleText
         uuidValueLabel.text = viewModel.uuidValueText
         historyTagValueLabel.text = viewModel.historyTagPlaceholder()
         
         modifyHistoryTagLabel.text = viewModel.modifyHistoryTagText
+        autoLockSwitch.onTintColor = viewModel.autoLockSwitchColor
     }
     
-    @IBAction func AutolockSwitch(_ sender: UISwitch) {
+    @IBAction func autolockSwitch(_ sender: UISwitch) {
     }
     
     @IBAction func DFU(_ sender: Any) {
@@ -202,7 +203,7 @@ public class SSM2SettingViewController: CHBaseViewController {
     
     @IBAction func changeName(_ sender: UIButton) {
 
-        CHSSMChangeNameDialog.show(viewModel.renamePlaceholder()) { name in
+        CHSesame2ChangeNameDialog.show(viewModel.renamePlaceholder()) { name in
             if name == "" {
                 self.view.makeToast(self.viewModel.enterSesameName)
                 return
@@ -215,7 +216,7 @@ public class SSM2SettingViewController: CHBaseViewController {
     }
     
     @IBAction func modifyHistoryTag(_ sender: Any) {
-        CHSSMChangeNameDialog.show(viewModel.historyTagPlaceholder(), title: "Change History Tag".localStr, hint: "") { historyTag in
+        CHSesame2ChangeNameDialog.show(viewModel.historyTagPlaceholder(), title: "Change History Tag".localStr, hint: "") { historyTag in
             if historyTag == "" {
                 self.view.makeToast(self.viewModel.enterSesameName)
                 return
@@ -229,10 +230,10 @@ public class SSM2SettingViewController: CHBaseViewController {
     
     
     @IBAction func sharing(_ sender: Any) {
-        viewModel.shareSSMTapped()
+        viewModel.shareSesame2Tapped()
     }
     
     deinit {
-//        L.d("SSM2SettingViewController deinit")
+//        L.d("Sesame2SettingViewController deinit")
     }
 }

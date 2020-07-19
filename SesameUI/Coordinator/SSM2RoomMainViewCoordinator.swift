@@ -9,27 +9,27 @@
 import UIKit
 import SesameSDK
 
-public final class SSM2RoomMainViewCoordinator: Coordinator {
+public final class Sesame2RoomMainViewCoordinator: Coordinator {
     public var childCoordinators: [String : Coordinator] = [:]
     public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
-    private let ssm: CHSesame2
+    private let sesame2: CHSesame2
     
     let navigationController: UINavigationController
     
-    public init(navigationController: UINavigationController, ssm: CHSesame2) {
+    public init(navigationController: UINavigationController, sesame2: CHSesame2) {
         self.navigationController = navigationController
-        self.ssm = ssm
+        self.sesame2 = sesame2
     }
     
     public func start() {
-        guard let ssm2RoomMainViewController = UIStoryboard.viewControllers.ssm2RoomMainVC else {
+        guard let ssm2RoomMainViewController = UIStoryboard.viewControllers.sesame2RoomMainVC else {
             return
         }
         navigationController.navigationItem.backBarButtonItem?.setBackgroundImage(
             UIImage.SVGImage(named: "icons_outlined_addoutline")
             , for: .normal, barMetrics: .default)
-        let viewModel = SSM2RoomMainViewModel(ssm: ssm)
+        let viewModel = Sesame2RoomMainViewModel(sesame2: sesame2)
         viewModel.delegate = self
         ssm2RoomMainViewController.viewModel = viewModel
         navigationController.pushViewController(ssm2RoomMainViewController, animated: true)
@@ -41,10 +41,10 @@ public final class SSM2RoomMainViewCoordinator: Coordinator {
     }
 }
 
-extension SSM2RoomMainViewCoordinator: SSM2RoomMainViewModelDelegate {
-    public func rightButtonTappedWithSSM(_ ssm: CHSesame2) {
-        let ssm2SettingViewCoordinator = SSM2SettingViewControllerCoordinator(navigationController: navigationController,
-                                                                              ssm: ssm)
-        ssm2SettingViewCoordinator.start()
+extension Sesame2RoomMainViewCoordinator: Sesame2RoomMainViewModelDelegate {
+    public func rightButtonTappedWithSesame2(_ sesame2: CHSesame2) {
+        let sesame2SettingViewCoordinator = SSM2SettingViewControllerCoordinator(navigationController: navigationController,
+                                                                              sesame2: sesame2)
+        sesame2SettingViewCoordinator.start()
     }
 }

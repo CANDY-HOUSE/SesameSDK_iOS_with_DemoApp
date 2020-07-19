@@ -1,5 +1,5 @@
 //
-//  SSM2SettingViewModel.swift
+//  Sesame2SettingViewModel.swift
 //  SesameUI
 //
 //  Created by YuHan Hsiao on 2020/6/19.
@@ -10,9 +10,9 @@ import UIKit
 import SesameSDK
 import AWSMobileClient
 
-public final class SSM2SettingViewModel: ViewModel {
+public final class Sesame2SettingViewModel: ViewModel {
     // Data
-    private var ssm: CHSesame2
+    private var sesame2: CHSesame2
     // Display
     private var delay = 0
     private var version = ""
@@ -31,15 +31,15 @@ public final class SSM2SettingViewModel: ViewModel {
     
     private var dfuHelper: DFUHelper?
     
-    var delegate: SSM2SettingViewModelDelegate?
+    var delegate: Sesame2SettingViewModelDelegate?
     
     // MARK: - Properties
     private(set) var changeNameIndicator = "Change Sesame Name".localStr
     private(set) var enterSesameName = "Enter Sesame name".localStr
     private(set) var angleIndicator = "Configure Angles".localStr
     private(set) var dfuIndicator = "SesameOS Update".localStr
-    private(set) var removeSesameText = "Reset the Sesame and discard the key".localStr
-    private(set) var dropKeyText = "Discard the key of the Sesame".localStr
+    private(set) var removeSesameText = "Reset the Sesame and trash the key".localStr
+    private(set) var dropKeyText = "Trash the key of the Sesame".localStr
     private(set) var autoLockLabel1Text = "autolock".localStr
     private(set) var autoLockLabel2Text = "After".localStr
     private(set) var autoLockLabel3Text = "sec".localStr
@@ -48,18 +48,19 @@ public final class SSM2SettingViewModel: ViewModel {
     private(set) var modifyHistoryTagText = "History Tag".localStr
     private(set) var mySesameText = "ドラえもん".localStr
     private(set) var share = "Share the key of the Sesame".localStr
+    private(set) var autoLockSwitchColor = UIColor.sesame2Green
     
     var title: String {
-        let device = SSMStore.shared.getPropertyForDevice(ssm)
+        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
         return device.name ?? device.deviceID!.uuidString
     }
     
     var uuidValueText: String {
-        ssm.deviceId.uuidString
+        sesame2.deviceId.uuidString
     }
     
     var autolockSwitchIsEnabled: Bool {
-        ssm.deviceStatus.loginStatus() == .login
+        sesame2.deviceStatus.loginStatus() == .login
     }
     
     var isAutoLockSwitchOn: Bool {
@@ -90,7 +91,7 @@ public final class SSM2SettingViewModel: ViewModel {
         isHiddenPicker
     }
     
-    var ssmVersionText: String {
+    var sesame2VersionText: String {
         version
     }
 
@@ -98,9 +99,9 @@ public final class SSM2SettingViewModel: ViewModel {
         String(delay)
     }
     
-    init(ssm: CHSesame2) {
-        self.ssm = ssm
-        self.ssm.connect(){_ in}
+    init(sesame2: CHSesame2) {
+        self.sesame2 = sesame2
+        self.sesame2.connect(){_ in}
     }
 
     // MARK: - User interaction
@@ -109,7 +110,7 @@ public final class SSM2SettingViewModel: ViewModel {
         getAutoLockSetting()
         getVersionTag()
         isHiddenPicker = true
-        ssm.delegate = self
+        sesame2.delegate = self
     }
     
     public func viewDidDisappear() {
@@ -125,7 +126,7 @@ public final class SSM2SettingViewModel: ViewModel {
     
     @objc func autoLockSwitchChanged(sender: UISwitch) {
         if !sender.isOn {
-            ssm.disableAutolock() { [weak self] (result) -> Void in
+            sesame2.disableAutolock() { [weak self] (result) -> Void in
                 guard let strongSelf = self else {
                     return
                 }
@@ -142,7 +143,7 @@ public final class SSM2SettingViewModel: ViewModel {
     // MARK: - Business logic
     
     private func getAutoLockSetting() {
-        ssm.getAutolockSetting { [weak self] result  in
+        sesame2.getAutolockSetting { [weak self] result  in
             guard let strongSelf = self else {
                 return
             }
@@ -157,7 +158,7 @@ public final class SSM2SettingViewModel: ViewModel {
     }
     
     private func getVersionTag() {
-        ssm.getVersionTag { [weak self]  result in
+        sesame2.getVersionTag { [weak self]  result in
             guard let strongSelf = self else {
                 return
             }
@@ -174,15 +175,15 @@ public final class SSM2SettingViewModel: ViewModel {
     }
     
     deinit {
-        L.d("SSM2SettingViewModel deinit")
+        L.d("Sesame2SettingViewModel deinit")
     }
 }
 
 // MARK: - Delegate
-extension SSM2SettingViewModel: CHSesameDelegate {
+extension Sesame2SettingViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2,
-                                         status: CHSesameStatus) {
-        if device.deviceId == ssm.deviceId,
+                                         status: CHSesame2Status) {
+        if device.deviceId == sesame2.deviceId,
             status == .receiveBle {
             device.connect(){_ in}
         }
@@ -190,7 +191,7 @@ extension SSM2SettingViewModel: CHSesameDelegate {
 }
 
 // MARK: - AutoLock
-extension SSM2SettingViewModel {
+extension Sesame2SettingViewModel {
     var second: [Int] {
         [1,2,3,4,5,6,7,8,9,10,11,12,13]
     }
@@ -224,7 +225,7 @@ extension SSM2SettingViewModel {
     
     func pickerDidSelectRow(_ row: Int) {
 
-        ssm.enableAutolock(delay: second[row]) { [weak self] result  in
+        sesame2.enableAutolock(delay: second[row]) { [weak self] result  in
             guard let strongSelf = self else {
                 return
             }
@@ -246,7 +247,7 @@ extension SSM2SettingViewModel {
 }
 
 // MARK: - DFU
-extension SSM2SettingViewModel {
+extension Sesame2SettingViewModel {
     public func dfuActionText() -> String {
         "SesameOS Update".localStr
     }
@@ -260,7 +261,7 @@ extension SSM2SettingViewModel {
                 return
         }
         
-        ssm.updateFirmware { [weak self] result in
+        sesame2.updateFirmware { [weak self] result in
             guard let strongSelf = self else {
                 return
             }
@@ -289,18 +290,18 @@ extension SSM2SettingViewModel {
 }
 
 // MARK: - Rename
-extension SSM2SettingViewModel {
+extension Sesame2SettingViewModel {
     func renamePlaceholder() -> String {
-        let device = SSMStore.shared.getPropertyForDevice(ssm)
+        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
         return device.name ?? device.deviceID!.uuidString
     }
     
     func rename(_ name: String) {
-        SSMStore.shared.savePropertyForDevice(ssm, withProperties: ["name": name])
+        Sesame2Store.shared.savePropertyForDevice(sesame2, withProperties: ["name": name])
     }
     
     func historyTagPlaceholder() -> String {
-        guard let historyTag = ssm.getHistoryTag() else {
+        guard let historyTag = sesame2.getHistoryTag() else {
             return mySesameText
         }
         return String(data: historyTag, encoding: .utf8) ?? mySesameText
@@ -312,7 +313,7 @@ extension SSM2SettingViewModel {
             statusUpdated?(.finished(.failure(error)))
             return
         }
-        ssm.setHistoryTag(encodedHistoryTag) { [weak self] result in
+        sesame2.setHistoryTag(encodedHistoryTag) { [weak self] result in
             guard let strongSelf = self else {
                 return
             }
@@ -327,24 +328,24 @@ extension SSM2SettingViewModel {
 }
 
 // MARK: - Friends
-extension SSM2SettingViewModel {
+extension Sesame2SettingViewModel {
     
     public func deleteSesameTitle() -> String {
-        "Reset the Sesame and discard the key".localStr
+        "Reset the Sesame and trash the key".localStr
     }
     
     public func deleteSeesameAction() {
         statusUpdated?(.loading)
-        let ssm = self.ssm
+        let sesame2 = self.sesame2
         let deleteComplete = {
-            SSMStore.shared.deletePropertyForDevice(ssm)
+            Sesame2Store.shared.deletePropertyForDevice(sesame2)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.delegate?.sesameDeleted()
+                self.delegate?.sesame2Deleted()
             }
         }
         
         guard AWSMobileClient.default().isSignedIn == true else {
-            ssm.resetSesame() { [weak self] result in
+            sesame2.resetSesame() { [weak self] result in
                 guard let strongSelf = self else {
                     return
                 }
@@ -358,7 +359,7 @@ extension SSM2SettingViewModel {
             return
         }
         
-        ssm.resetSesame() { [weak self] result in
+        sesame2.resetSesame() { [weak self] result in
             guard let strongSelf = self else {
                 return
             }
@@ -373,28 +374,28 @@ extension SSM2SettingViewModel {
     
     func dropKey() {
         statusUpdated?(.loading)
-        SSMStore.shared.deletePropertyForDevice(self.ssm)
-        ssm.dropKey()
+        Sesame2Store.shared.deletePropertyForDevice(self.sesame2)
+        sesame2.dropKey()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            SSMStore.shared.deletePropertyForDevice(self.ssm)
-            self.delegate?.sesameDeleted()
+            Sesame2Store.shared.deletePropertyForDevice(self.sesame2)
+            self.delegate?.sesame2Deleted()
         }
     }
 }
 
-public protocol SSM2SettingViewModelDelegate {
-    func setAngleForSSM(_ ssm: CHSesame2)
-    func shareSSMTapped(_ ssm: CHSesame2)
-    func sesameDeleted()
+public protocol Sesame2SettingViewModelDelegate {
+    func setAngleForSesame2(_ sesame2: CHSesame2)
+    func shareSesame2Tapped(_ sesame2: CHSesame2)
+    func sesame2Deleted()
 }
 
 // MARK: - Navigation
-extension SSM2SettingViewModel {
+extension Sesame2SettingViewModel {
     func setAngleTapped() {
-        delegate?.setAngleForSSM(ssm)
+        delegate?.setAngleForSesame2(sesame2)
     }
     
-    func shareSSMTapped() {
-        delegate?.shareSSMTapped(ssm)
+    func shareSesame2Tapped() {
+        delegate?.shareSesame2Tapped(sesame2)
     }
 }

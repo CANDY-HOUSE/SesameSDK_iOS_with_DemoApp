@@ -14,18 +14,18 @@ import WatchKit
 #endif
 
 extension UIColor {
-    public static let sesameGreen = UIColor(hexString: "#28aeb1")
-    public static let sesameGray = rgba(red: 242, green: 242, blue: 247, alpha: 1)
-    public static let sesameLightGray = UIColor(hexString: "#CCCCCC")
+    public static let sesame2Green = UIColor(hexString: "#28aeb1")
+    public static let sesame2Gray = rgba(red: 242, green: 242, blue: 247, alpha: 1)
+    public static let sesame2LightGray = UIColor(hexString: "#CCCCCC")
     public static let lockYellow = UIColor(rgb: 0xf9e074)
     public static let lockRed = UIColor(rgb: 0xcc4a44)
-    public static let lockGreen = UIColor.sesameGreen
+    public static let lockGreen = UIColor.sesame2Green
     public static let lockGray = UIColor(rgb: 0xe4e3e3)
     
     #if os(iOS)
-    public static let sesameDarkText = UIColor.darkText
+    public static let sesame2DarkText = UIColor.darkText
     #elseif os(watchOS)
-    public static let sesameDarkText = UIColor.black
+    public static let sesame2DarkText = UIColor.black
     #endif
     
     convenience init(red: Int, green: Int, blue: Int) {

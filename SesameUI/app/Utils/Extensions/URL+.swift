@@ -35,7 +35,7 @@ extension URL {
         return components.url
     }
     
-    public func ssmKey() -> String? {
+    public func sesame2Key() -> String? {
         
         let qreventType = getQuery(name: CHQRKey.QREventType.rawValue)
         guard qreventType == CHQREvent.sharedKey.rawValue else {

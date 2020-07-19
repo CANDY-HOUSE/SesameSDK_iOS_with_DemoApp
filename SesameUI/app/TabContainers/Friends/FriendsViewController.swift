@@ -98,7 +98,7 @@ extension FriendsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FRCell", for: indexPath) as! FriendCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
         let cellModel = viewModel.friendCellModelForRow(indexPath.row)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.nameLb.text = cellModel.name()

@@ -1,5 +1,6 @@
 "Menu_Scan_Friend" = "Add Contacts";
 "Menu_Scan_Devices" = "New Sesame";
+"co.candyhouse.sesame-sdk-test-app.scanQRCode" = "Scan QR Code";
 "autolock" = "Auto Lock";
 "manualOperated" = "Movement in Thumbturn";
 "manualLock" = "Manually Locked";
@@ -27,3 +28,15 @@
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.noSesameOrNotLoggedIn" = "No Sesame device or not logged in";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.lock" = "Lock";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.unlock" = "Unlock";
+
+"co.candyhouse.sesame-sdk-test-app.reset" = "Reset";
+"co.candyhouse.sesame-sdk-test-app.noSignal" = "No signal";
+"co.candyhouse.sesame-sdk-test-app.receiveBle" = "Receive Ble";
+"co.candyhouse.sesame-sdk-test-app.connecting" = "Connecting";
+"co.candyhouse.sesame-sdk-test-app.waitgatt" = "Wait gatt";
+"co.candyhouse.sesame-sdk-test-app.logining" = "Logining";
+"co.candyhouse.sesame-sdk-test-app.readytoRegister" = "Ready to register";
+"co.candyhouse.sesame-sdk-test-app.locked" = "Locked";
+"co.candyhouse.sesame-sdk-test-app.unlocked" = "Unlocked";
+"co.candyhouse.sesame-sdk-test-app.nosetting" = "No setting";
+"co.candyhouse.sesame-sdk-test-app.moved" = "Moved";

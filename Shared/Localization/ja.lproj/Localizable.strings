@@ -1,5 +1,6 @@
 "Add Contacts" = "連絡先の追加";
 "New Sesame" = "新規セサミ";
+"co.candyhouse.sesame-sdk-test-app.scanQRCode" = "QRコードのスキャン";
 "Sesame" = "セサミ";
 "Contacts" = "連絡先";
 "Me" = "自分";
@@ -25,8 +26,8 @@
 "Last Name" = "姓";
 "Verification code" = "認証";
 "Verification" = "認証する";
-"Reset the Sesame and discard the key" = "このセサミを初期化、そしてこのセサミの鍵を捨てる";
-"Discard the key of the Sesame" = "このセサミの鍵を捨てる";
+"Reset the Sesame and trash the key" = "このセサミを初期化、そしてこのセサミの鍵を捨てる";
+"Trash the key of the Sesame" = "このセサミの鍵を捨てる";
 "Share the key of the Sesame" = "このセサミの鍵をシェア";
 
 "Forgot password" = "パスワードをお忘れですか？";
@@ -86,3 +87,15 @@
 "co.candyhouse.sesame-sdk-test-app.locker.noDeviceFound" = "登録デバイスなし";
 
 "co.candyhouse.sesame2app.back" = "Back";
+
+"co.candyhouse.sesame-sdk-test-app.reset" = "Reset";
+"co.candyhouse.sesame-sdk-test-app.noSignal" = "No signal";
+"co.candyhouse.sesame-sdk-test-app.receiveBle" = "Receive Ble";
+"co.candyhouse.sesame-sdk-test-app.connecting" = "Connecting";
+"co.candyhouse.sesame-sdk-test-app.waitgatt" = "Wait gatt";
+"co.candyhouse.sesame-sdk-test-app.logining" = "Logining";
+"co.candyhouse.sesame-sdk-test-app.readytoRegister" = "Ready to register";
+"co.candyhouse.sesame-sdk-test-app.locked" = "Locked";
+"co.candyhouse.sesame-sdk-test-app.unlocked" = "Unlocked";
+"co.candyhouse.sesame-sdk-test-app.nosetting" = "No setting";
+"co.candyhouse.sesame-sdk-test-app.moved" = "Moved";

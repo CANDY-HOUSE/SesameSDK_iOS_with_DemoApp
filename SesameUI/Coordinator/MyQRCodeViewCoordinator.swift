@@ -14,18 +14,18 @@ public final class MyQRCodeViewCoordinator: Coordinator {
     public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
     var navigationController: UINavigationController
-    private var ssm: CHSesame2
+    private var sesame2: CHSesame2
     
-    init(navigationController: UINavigationController, ssm: CHSesame2) {
+    init(navigationController: UINavigationController, sesame2: CHSesame2) {
         self.navigationController = navigationController
-        self.ssm = ssm
+        self.sesame2 = sesame2
     }
     
     public func start() {
         guard let myQRCodeViewController = UIStoryboard.viewControllers.myQRCodeViewController else {
             return
         }
-        let viewModel = MyQRViewModel(ssm: ssm, qrCodeType: .shareKey)
+        let viewModel = MyQRViewModel(sesame2: sesame2, qrCodeType: .shareKey)
         myQRCodeViewController.viewModel = viewModel
         navigationController.pushViewController(myQRCodeViewController, animated: true)
     }

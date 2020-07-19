@@ -43,7 +43,7 @@ public final class RegisterDeviceListViewCoordinator: Coordinator {
 }
 
 extension RegisterDeviceListViewCoordinator: RegisterDeviceListViewModelDelegate {
-    public func registerSSMSucceed() {
+    public func registerSesame2Succeed() {
         parentCoordinator?.childCoordinatorDismissed(self, userInfo: [DismissReason.key: DismissReason.registerSucceeded])
         presentedViewController?.dismiss(animated: true, completion: nil)
     }

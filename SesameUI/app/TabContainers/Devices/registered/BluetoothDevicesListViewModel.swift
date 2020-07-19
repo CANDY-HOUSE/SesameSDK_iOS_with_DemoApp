@@ -11,10 +11,10 @@ import SesameSDK
 import WatchConnectivity
 
 public protocol BluetoothDevicesListViewModelDelegate: class {
-    func bluetootheDevicesListViewDidTappedSSM(_ ssm: CHSesame2)
+    func bluetootheDevicesListViewDidTappedSesame2(_ sesame2: CHSesame2)
     func newSesameTapped()
     func scanViewTapped()
-    func enterTestMode(ssm: CHSesame2)
+    func enterTestMode(sesame2: CHSesame2)
 }
 
 final class BluetoothDevicesListViewModel: ViewModel {
@@ -37,27 +37,27 @@ final class BluetoothDevicesListViewModel: ViewModel {
     }
     
     public func cellViewModelAt(_ indexPath: IndexPath) -> BluetoothDeviceCellViewModel {
-        let bluetoothDeviceCellViewModel = BluetoothDeviceCellViewModel(ssm: sesameDevices[indexPath.row])
+        let bluetoothDeviceCellViewModel = BluetoothDeviceCellViewModel(sesame2: sesameDevices[indexPath.row])
         bluetoothDeviceCellViewModel.delegate = self
         return bluetoothDeviceCellViewModel
     }
     
     public func didSelectRowAt(_ indexPath: IndexPath) {
-        delegate?.bluetootheDevicesListViewDidTappedSSM(sesameDevices[indexPath.row])
+        delegate?.bluetootheDevicesListViewDidTappedSesame2(sesameDevices[indexPath.row])
     }
 
     @objc
     public func loadLocalDevices() {
         self.statusUpdated?(.loading)
         
-        CHBleManager.shared.getSesames() { result in
+        CHDeviceManager.shared.getSesame2s() { result in
             switch result {
-            case .success(let ssms):
-                self.sesameDevices = ssms
+            case .success(let sesame2s):
+                self.sesameDevices = sesame2s
                 var keys = [String: Any]()
-                for ssm in ssms {
-                    if let key = ssm.getKey() {
-                        keys[ssm.deviceId.uuidString] = key
+                for sesame in sesame2s {
+                    if let key = sesame.getKey() {
+                        keys[sesame.deviceId.uuidString] = key
                     }
                 }
                 WCSession.default.sendMessage(keys, replyHandler: nil, errorHandler: nil)
@@ -66,11 +66,11 @@ final class BluetoothDevicesListViewModel: ViewModel {
 //                }
 //                WCSession.default.transferFile(storeURL, metadata: nil)
                 
-//                guard let ssmStoreURL = try? SSMStore.shared.backupStoreURL() else {
+//                guard let sesame2StoreURL = try? Sesame2Store.shared.backupStoreURL() else {
 //                    return
 //                }
-//                WCSession.default.transferFile(ssmStoreURL, metadata: nil)
-                L.d("Retrieved \(ssms.count) devices, sent db to watch.")
+//                WCSession.default.transferFile(sesame2StoreURL, metadata: nil)
+                L.d("Retrieved \(sesame2s.count) devices, sent db to watch.")
                 self.statusUpdated?(.received)
             case .failure(let error):
                 self.statusUpdated?(.finished(.failure(error)))
@@ -81,9 +81,11 @@ final class BluetoothDevicesListViewModel: ViewModel {
     public func popUpMenuTappedOnItem(_ item: PopUpMenuItem) {
         switch item.type {
         case .addFriends:
-            delegate?.scanViewTapped()
+            break
         case .addDevices:
             delegate?.newSesameTapped()
+        case .receiveKey:
+            delegate?.scanViewTapped()
         }
     }
     
@@ -94,8 +96,8 @@ final class BluetoothDevicesListViewModel: ViewModel {
 
 // MARK: - Test mode
 extension BluetoothDevicesListViewModel: BluetoothDeviceCellViewModelDelegate {
-    func enterTestModeTapped(ssm: CHSesame2) {
-        delegate?.enterTestMode(ssm: ssm)
+    func enterTestModeTapped(sesame2: CHSesame2) {
+        delegate?.enterTestMode(sesame2: sesame2)
     }
     
     func testSwitchToggled(isOn: Bool) {

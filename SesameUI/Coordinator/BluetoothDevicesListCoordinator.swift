@@ -45,11 +45,11 @@ public final class BluetoothDevicesListCoordinator: Coordinator {
 }
 
 extension BluetoothDevicesListCoordinator: BluetoothDevicesListViewModelDelegate {
-    public func enterTestMode(ssm: CHSesame2) {
+    public func enterTestMode(sesame2: CHSesame2) {
         guard let bluetoothSesameControlViewController = UIStoryboard.viewControllers.bluetoothSesameControlViewController else {
             return
         }
-        bluetoothSesameControlViewController.sesame = ssm
+        bluetoothSesameControlViewController.sesame = sesame2
         navigationController.pushViewController(bluetoothSesameControlViewController, animated: true)
     }
     
@@ -65,9 +65,9 @@ extension BluetoothDevicesListCoordinator: BluetoothDevicesListViewModelDelegate
         registerDeviceViewCoordinator.start()
     }
     
-    public func bluetootheDevicesListViewDidTappedSSM(_ ssm: CHSesame2) {
-        let ssm2RoomMainCoordinator = SSM2RoomMainViewCoordinator(navigationController: navigationController,
-                                                                ssm: ssm)
-        ssm2RoomMainCoordinator.start()
+    public func bluetootheDevicesListViewDidTappedSesame2(_ sesame2: CHSesame2) {
+        let sesame2RoomMainCoordinator = Sesame2RoomMainViewCoordinator(navigationController: navigationController,
+                                                                sesame2: sesame2)
+        sesame2RoomMainCoordinator.start()
     }
 }

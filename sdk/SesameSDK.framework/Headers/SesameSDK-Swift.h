@@ -215,8 +215,6 @@ SWIFT_CLASS("_TtC9SesameSDK12CHBleManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-
-
 @class CBCentralManager;
 
 @interface CHBleManager (SWIFT_EXTENSION(SesameSDK)) <CBCentralManagerDelegate>
@@ -249,7 +247,13 @@ SWIFT_CLASS_NAMED("CHDevice")
 @property (nonatomic, copy) NSData * _Nullable historyTag;
 @property (nonatomic, copy) NSString * _Nullable keyIndex;
 @property (nonatomic, copy) NSString * _Nullable secretKey;
-@property (nonatomic, copy) NSString * _Nullable ss2PublicKey;
+@property (nonatomic, copy) NSString * _Nullable sesame2PublicKey;
+@end
+
+
+SWIFT_CLASS("_TtC9SesameSDK15CHDeviceManager")
+@interface CHDeviceManager : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 

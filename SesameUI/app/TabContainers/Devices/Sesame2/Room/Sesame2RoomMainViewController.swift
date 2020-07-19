@@ -1,5 +1,5 @@
 //
-//  SSM2RoomMainViewController.swift
+//  Sesame2RoomMainViewController.swift
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/10/14.
@@ -12,22 +12,21 @@ import SesameSDK
 import CoreBluetooth
 import CoreData
 
-class SSM2RoomMainViewController: CHBaseViewController {
-    
-    var viewModel: SSM2RoomMainViewModel!
-
+class Sesame2RoomMainViewController: CHBaseViewController {
+    // MARK: - ViewModel
+    var viewModel: Sesame2RoomMainViewModel!
+    // MARK: - UI Components
     @IBOutlet weak var historyTable: UITableView!
-    @IBOutlet weak var sesameCircle: SesameCircle!
+    @IBOutlet weak var sesameCircle: Sesame2Circle!
     @IBOutlet weak var Locker: UIButton!
     var refreshControl = UIActivityIndicatorView(style: .gray)
-    
-    @IBAction func lockButtonTapped(_ sender: UIButton) {
-        viewModel.lockButtonTapped()
-    }
-    
+    var isJustEnterTheView = true
+    // MARK: - Flag
+    private var canRefresh = true
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super .viewDidLoad()
-        assert(viewModel != nil, "SSM2RoomMainViewModel should not be nil.")
+        assert(viewModel != nil, "Sesame2RoomMainViewModel should not be nil.")
         
         let rightButtonItem = UIBarButtonItem(image: UIImage.SVGImage(named: "icons_filled_more"), style: .done, target: self, action: #selector(handleRightBarButtonTapped(_:)))
               navigationItem.rightBarButtonItem = rightButtonItem
@@ -41,15 +40,17 @@ class SSM2RoomMainViewController: CHBaseViewController {
                 strongSelf.refreshControl.startAnimating()
             case .received:
                 executeOnMainThread {
-                    strongSelf.updataSSMUI()
+                    strongSelf.updataSesame2UI()
                 }
             case .finished(let result):
                 switch result {
                 case .success(_):
                     executeOnMainThread {
-                        strongSelf.historyTable.reloadData()
-                        strongSelf.hideLoadingIndicator()
-                        strongSelf.refreshControl.stopAnimating()
+                        strongSelf.canRefresh = strongSelf.viewModel.hasMoreData
+                        if strongSelf.refreshControl.isAnimating {
+                            strongSelf.hideLoadingIndicator()
+                            strongSelf.refreshControl.stopAnimating()
+                        }
                     }
                 case .failure(let error):
                     executeOnMainThread {
@@ -72,33 +73,36 @@ class SSM2RoomMainViewController: CHBaseViewController {
             refreshControl.heightAnchor.constraint(equalToConstant: 20)
         ]
         NSLayoutConstraint.activate(constraints)
-
-        viewModel.setFetchedResultsControllerDelegate(self)
-        
         historyTable.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
+        viewModel.setFetchedResultsControllerDelegate(self)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        scrollToBottomWithAnimation(!isJustEnterTheView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
-        updataSSMUI()
-        historyTable.reloadData()
-        viewModel.pullDown()
+        super.viewWillAppear(animated)
+        updataSesame2UI()
         viewModel.viewWillAppear()
+        viewModel.pullDown()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         title = viewModel.title
-        scrollToBottom()
+        isJustEnterTheView = false
     }
     
-    fileprivate func scrollToBottom() {
+    // MARK: Methods
+    fileprivate func scrollToBottomWithAnimation(_ animation: Bool = true) {
         executeOnMainThread {
             let lastSections = self.historyTable.numberOfSections - 1
             guard lastSections >= 0 else {
                 self.historyTable.setContentOffset(CGPoint(x: 0,
                                                            y: self.historyTable.contentSize.height),
-                                                   animated: true)
+                                                   animated: animation)
                 return
             }
             
@@ -106,16 +110,16 @@ class SSM2RoomMainViewController: CHBaseViewController {
             guard lastRow >= 0 else {
                 self.historyTable.setContentOffset(CGPoint(x: 0,
                                                            y: self.historyTable.contentSize.height),
-                                                   animated: true)
+                                                   animated: animation)
                 return
             }
             
             let indexPath = IndexPath(row: lastRow, section: lastSections)
-            self.historyTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            self.historyTable.scrollToRow(at: indexPath, at: .top, animated: animation)
         }
     }
     
-    func updataSSMUI()  {
+    func updataSesame2UI()  {
         if let currentDegree = viewModel.currentDegree() {
             sesameCircle.refreshUI(newPointerAngle: CGFloat(currentDegree),
                                    lockColor: viewModel.lockColor)
@@ -134,12 +138,17 @@ class SSM2RoomMainViewController: CHBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func lockButtonTapped(_ sender: UIButton) {
+        viewModel.lockButtonTapped()
+    }
+    
     deinit {
-        L.d("SSM2RoomMainViewController deinit")
+        L.d("Sesame22RoomMainViewController deinit")
     }
 }
 
-extension SSM2RoomMainViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: - TableView DataSource Delegate
+extension Sesame2RoomMainViewController: UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.numberOfSections
@@ -150,21 +159,27 @@ extension SSM2RoomMainViewController: UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! SSM2HistoryCell
-        configureCell(cell, atIndexPath: indexPath)
+        let identifier = viewModel.cellIdentifierForIndexPath(indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        if let historyCell = cell as? Sesame2HistoryCell {
+            configureCell(historyCell, atIndexPath: indexPath)
+            return historyCell
+        }
         return cell
     }
     
-    func configureCell(_ cell: SSM2HistoryCell, atIndexPath indexPath: IndexPath) {
-        let cellViewModel = viewModel.cellViewModelForIndexPath(indexPath)
-        cell.viewModel = cellViewModel
+    func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+        if cell as? Sesame2HistoryCell != nil {
+            let cellViewModel = self.viewModel.cellViewModelForIndexPath(indexPath)
+            (cell as! Sesame2HistoryCell).viewModel = cellViewModel
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") else {
             return UITableViewHeaderFooterView()
         }
-        headerView.tintColor = UIColor.sesameGray
+        headerView.tintColor = UIColor.sesame2Gray
 
         if let label = headerView.subviews.filter({ $0.accessibilityIdentifier == "header label" }).first as? UILabel {
             label.text = viewModel.titleForHeaderInSection(section)
@@ -196,7 +211,8 @@ extension SSM2RoomMainViewController: UITableViewDataSource, UITableViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < -25,
-            !refreshControl.isAnimating {
+            !refreshControl.isAnimating && canRefresh {
+            canRefresh = false
             refreshControl.startAnimating()
             showLoadingIndicator()
             refresh(self)
@@ -223,7 +239,8 @@ extension SSM2RoomMainViewController: UITableViewDataSource, UITableViewDelegate
     }
 }
 
-extension SSM2RoomMainViewController: NSFetchedResultsControllerDelegate {
+// MARK: - FRC Delegate
+extension Sesame2RoomMainViewController: NSFetchedResultsControllerDelegate {
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         executeOnMainThread {
             self.historyTable.beginUpdates()
@@ -233,7 +250,7 @@ extension SSM2RoomMainViewController: NSFetchedResultsControllerDelegate {
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         executeOnMainThread {
             self.historyTable.endUpdates()
-            self.scrollToBottom()
+            self.scrollToBottomWithAnimation(!self.isJustEnterTheView)
         }
     }
     
@@ -273,7 +290,7 @@ extension SSM2RoomMainViewController: NSFetchedResultsControllerDelegate {
                 }
             case .update:
                 if let indexPath = indexPath as IndexPath? {
-                    if let cell = self.historyTable.cellForRow(at: indexPath) as? SSM2HistoryCell {
+                    if let cell = self.historyTable.cellForRow(at: indexPath) as? Sesame2HistoryCell {
                         self.configureCell(cell, atIndexPath: indexPath)
                     }
                 }

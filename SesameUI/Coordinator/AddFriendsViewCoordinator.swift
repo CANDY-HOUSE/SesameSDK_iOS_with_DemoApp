@@ -14,10 +14,10 @@ import SesameSDK
 //    
 //    public weak var presentedViewController: UIViewController?
 //    private var navigationController: UINavigationController
-//    private var friends: [SSMOperator]
+//    private var friends: [Sesame2Operator]
 //    
 //    public init(navigationController: UINavigationController,
-//                friends: [SSMOperator]) {
+//                friends: [Sesame2Operator]) {
 //        self.navigationController = navigationController
 //        self.friends = friends
 //    }

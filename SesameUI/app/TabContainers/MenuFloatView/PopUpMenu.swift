@@ -17,6 +17,7 @@ public struct PopUpMenuItem {
     
     enum MoreItemType {
         case addDevices
+        case receiveKey
         case addFriends
     }
 }

@@ -15,7 +15,7 @@ import UIKit
 //    
 //    @IBOutlet weak var friendTable: UITableView!
 //    var refreshControl:UIRefreshControl = UIRefreshControl()
-//    var memberList = [SSMOperator]()
+//    var memberList = [Sesame2Operator]()
 //    
 //    override func viewDidLoad() {
 //        super.viewDidLoad()

@@ -60,6 +60,33 @@ extension CHSesame2 {
         #endif
     }
     
+    public func localizedDescription() -> String {
+        switch deviceStatus {
+        case .reset:
+            return "co.candyhouse.sesame-sdk-test-app.reset".localStr
+        case .noSignal:
+            return "co.candyhouse.sesame-sdk-test-app.noSignal".localStr
+        case .receiveBle:
+            return "co.candyhouse.sesame-sdk-test-app.receiveBle".localStr
+        case .connecting:
+            return "co.candyhouse.sesame-sdk-test-app.connecting".localStr
+        case .waitgatt:
+            return "co.candyhouse.sesame-sdk-test-app.waitgatt".localStr
+        case .logining:
+            return "co.candyhouse.sesame-sdk-test-app.logining".localStr
+        case .readytoRegister:
+            return "co.candyhouse.sesame-sdk-test-app.readytoRegister".localStr
+        case .locked:
+            return "co.candyhouse.sesame-sdk-test-app.locked".localStr
+        case .unlocked:
+            return "co.candyhouse.sesame-sdk-test-app.unlocked".localStr
+        case .nosetting:
+            return "co.candyhouse.sesame-sdk-test-app.nosetting".localStr
+        case .moved:
+            return "co.candyhouse.sesame-sdk-test-app.moved".localStr
+        }
+    }
+    
     func lockColor() -> UIColor {
         switch deviceStatus {
         case .reset:

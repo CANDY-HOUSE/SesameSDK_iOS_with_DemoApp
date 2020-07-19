@@ -20,7 +20,7 @@ class PopUpMenuControl: UIButton {
     
     private var menus: [PopUpMenuItem] = []
     
-    let menuWidth: CGFloat = 175.0
+    let menuWidth: CGFloat = 225.0
     let menuHeight: CGFloat = 56.0
     let paddingTop: CGFloat = 0.0
     let paddingRight: CGFloat = 8.0
@@ -29,18 +29,20 @@ class PopUpMenuControl: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
-        
-        let groupChatMenu = PopUpMenuItem(type: .addFriends,
+        let addFriend = PopUpMenuItem(type: .addFriends,
                                             title: LocalizedString("Add Contacts"),
                                             icon: "icons_filled_add-friends")
 
-        let addFriendMenu = PopUpMenuItem(type: .addDevices,
+        let addDevices = PopUpMenuItem(type: .addDevices,
                                             title: LocalizedString("New Sesame"),
                                             icon: "icons_filled_favorites")
+        
+        let scanDeviceQRCode = PopUpMenuItem(type: .receiveKey,
+                                             title: "co.candyhouse.sesame-sdk-test-app.scanQRCode".localStr,
+                                          icon: "icons_filled_scan")
 
 
-        menus = [groupChatMenu, addFriendMenu]
+        menus = [addDevices, addFriend, scanDeviceQRCode]
 
         let menuView = PopUpMenu(itemHeight: menuHeight, itemWidth: menuWidth, menus: menus)
         menuView.frame.origin = CGPoint(x: frame.width - menuWidth - paddingRight, y: paddingTop)

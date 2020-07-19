@@ -58,10 +58,10 @@ class Knob: UIControl {
         renderer.setPointerAngle(angleValue, animated: animated )
     }
 
-    func setLock(_ ssm:CHSesame2)  {
+    func setLock(_ sesame2:CHSesame2)  {
 //        DispatchQueue.main.async {
 
-        guard let setting = ssm.mechSetting else {
+        guard let setting = sesame2.mechSetting else {
             let lockDegree = Int16(0)
             let unlockDegree = Int16(0)
             let  nowDegree = Int16(0)
@@ -76,7 +76,7 @@ class Knob: UIControl {
 
 
         self.setLockValue(angle2degree(angle: lockDegree), angle2degree(angle: unlockDegree))
-        guard let status = ssm.mechStatus else {
+        guard let status = sesame2.mechStatus else {
             return
         }
 

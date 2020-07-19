@@ -1,5 +1,5 @@
 //
-//  SSM2QRCode.swift
+//  Sesame2QRCode.swift
 //  SesameUI
 //
 //  Created by YuHan Hsiao on 2020/6/29.
@@ -19,7 +19,7 @@ enum CHQRKey: String {
 }
 
 extension CHSesame2 {
-    public func ssmQRCodeURL() -> String? {
+    public func sesame2QRCodeURL() -> String? {
         guard let deviceKey = getKey() else {
                 return nil
         }

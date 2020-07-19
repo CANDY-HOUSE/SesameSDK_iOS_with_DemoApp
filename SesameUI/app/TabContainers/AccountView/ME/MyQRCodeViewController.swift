@@ -20,7 +20,7 @@ public class MyQRCodeViewController: CHBaseViewController {
     
     var viewModel: MyQRViewModel!
     
-    var ssm: CHSesame2?
+    var sesame2: CHSesame2?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +56,8 @@ public class MyQRCodeViewController: CHBaseViewController {
     }
     
     public func generateShareKeyCode() {
-        //todo  let qrCode = ssm.getkey()
-        guard let qrCode = viewModel.ssmQRCode
+        //todo  let qrCode = sesame2.getkey()
+        guard let qrCode = viewModel.sesame2QRCode
             else {
                 return
         }

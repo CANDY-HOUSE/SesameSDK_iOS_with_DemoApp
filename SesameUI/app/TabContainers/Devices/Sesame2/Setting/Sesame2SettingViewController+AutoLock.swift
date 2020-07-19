@@ -1,5 +1,5 @@
 //
-//  SSM2AutoLock.swift
+//  Sesame2AutoLock.swift
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/11/12.
@@ -11,7 +11,7 @@ import UIKit
 import CoreBluetooth
 import SesameSDK
 
-extension SSM2SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension Sesame2SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         viewModel.numberOfComponents()
     }

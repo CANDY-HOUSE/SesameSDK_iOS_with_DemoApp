@@ -9,15 +9,16 @@
 import Foundation
 import SesameSDK
 
-public final class RegisterCellModel {
-    private var ssm: CHSesame2
+public final class RegisterCellModel: ViewModel {
+    public var statusUpdated: ViewStatusHandler?
+    private var sesame2: CHSesame2
     
-    public init(ssm: CHSesame2) {
-        self.ssm = ssm
+    public init(sesame2: CHSesame2) {
+        self.sesame2 = sesame2
     }
     
     public func ssiText() -> String {
-        "\(ssm.rssi.intValue + 130)%"
+        "\(sesame2.rssi.intValue + 130)%"
     }
     
     public func bluetoothImage() -> String {
@@ -25,6 +26,10 @@ public final class RegisterCellModel {
     }
     
     public func modelLabelText() -> String {
-        ssm.model.rawValue.localStr
+        sesame2.deviceId.uuidString
+    }
+    
+    public func currentStatus() -> String {
+        sesame2.localizedDescription()
     }
 }

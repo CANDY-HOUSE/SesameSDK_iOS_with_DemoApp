@@ -148,7 +148,7 @@ extension BluetoothDevicesListViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SSMCell", for: indexPath) as! BluetoothDevicesCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BluetoothDevicesCell", for: indexPath) as! BluetoothDevicesCell
         configureCell(cell, atIndexPath: indexPath)
         return cell
     }

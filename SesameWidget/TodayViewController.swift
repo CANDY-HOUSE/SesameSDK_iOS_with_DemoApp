@@ -58,13 +58,13 @@ public class TodayViewController: UIViewController, NCWidgetProviding {
     func loadLocalDevices()  {
             L.d("Load local devices.")
             DispatchQueue.main.async {
-                CHBleManager.shared.getSesames(){ result in
-                    if case .success(let ssms) = result {
-                        self.devices = ssms
+                CHDeviceManager.shared.getSesame2s(){ result in
+                    if case .success(let sesame2) = result {
+                        self.devices = sesame2
                         self.devices
                             .sort(by: {
-                                let name1 = SSMStore.shared.getPropertyForDevice($0).name ?? $0.deviceId.uuidString
-                                let name2 = SSMStore.shared.getPropertyForDevice($1).name ?? $1.deviceId.uuidString
+                                let name1 = Sesame2Store.shared.getPropertyForDevice($0).name ?? $0.deviceId.uuidString
+                                let name2 = Sesame2Store.shared.getPropertyForDevice($1).name ?? $1.deviceId.uuidString
                                 return name1 < name2
                             })
                     }
@@ -90,8 +90,8 @@ extension TodayViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if devices.count > 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SSMCell", for: indexPath) as! DeviceCell
-            cell.ssm = devices[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceCell", for: indexPath) as! DeviceCell
+            cell.sesame2 = devices[indexPath.row]
             return  cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "information", for: indexPath)

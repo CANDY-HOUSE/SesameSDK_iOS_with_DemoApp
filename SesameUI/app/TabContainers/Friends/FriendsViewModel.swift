@@ -73,9 +73,11 @@ public final class FriendsViewModel: ViewModel {
     public func popUpMenuTappedOnItem(_ item: PopUpMenuItem) {
         switch item.type {
         case .addFriends:
-            delegate?.scanViewTapped()
+            break
         case .addDevices:
             delegate?.newSesameTapped()
+        case .receiveKey:
+            delegate?.scanViewTapped()
         }
     }
 }

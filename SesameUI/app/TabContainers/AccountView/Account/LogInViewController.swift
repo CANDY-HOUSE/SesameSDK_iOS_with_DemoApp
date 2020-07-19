@@ -136,7 +136,7 @@ public class LogInViewController: CHBaseViewController {
         NSLayoutConstraint.activate(constraints)
 
         let closeImage = UIImage.SVGImage(named: viewModel.closeImage,
-                                          fillColor: UIColor.sesameLightGray)
+                                          fillColor: UIColor.sesame2LightGray)
         let closeButton = UIButton(type: .custom)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.setImage(closeImage, for: .normal)

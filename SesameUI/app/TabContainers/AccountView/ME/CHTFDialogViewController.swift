@@ -66,11 +66,8 @@ public class CHTFDialogViewController: UIViewController {
 
     }
     static func show(callBack:@escaping (_ first:String,_ second:String)->Void){
-        let storyboard = Constant.storyboard
-        let myAlert = storyboard.instantiateViewController(withIdentifier: "alert") as! CHTFDialogViewController
-
+        let myAlert = UIStoryboard.viewControllers.chTFDialogVC!
         myAlert.callBack = callBack
-
         myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         

@@ -26,10 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             granted,error in
         })
         
-        UITextField.appearance().tintColor = .sesameGreen
-        UINavigationBar.appearance().barTintColor = .sesameDarkText
-        UINavigationBar.appearance().tintColor = .sesameDarkText
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.sesameDarkText]
+        UITextField.appearance().tintColor = .sesame2Green
+        UINavigationBar.appearance().barTintColor = .sesame2DarkText
+        UINavigationBar.appearance().tintColor = .sesame2DarkText
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.sesame2DarkText]
 
         window = UIWindow(frame: UIScreen.main.bounds)
         let applicationCoordinator = ApplicationCoordinator(window: window!)
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {//退出
         CHBleManager.shared.disableScan(){res in}
         CHBleManager.shared.disConnectAll(){res in}
-        SSMStore.shared.saveIfNeeded()
+        Sesame2Store.shared.saveIfNeeded()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {//進入

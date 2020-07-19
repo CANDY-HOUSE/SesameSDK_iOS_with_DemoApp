@@ -15,18 +15,18 @@ public final class LockAngleSettingViewCoordinator: Coordinator {
     public weak var presentedViewController: UIViewController?
     
     private var navigationController: UINavigationController
-    private var ssm: CHSesame2
+    private var sesame2: CHSesame2
     
-    init(navigationController: UINavigationController, ssm: CHSesame2) {
+    init(navigationController: UINavigationController, sesame2: CHSesame2) {
         self.navigationController = navigationController
-        self.ssm = ssm
+        self.sesame2 = sesame2
     }
     
     public func start() {
         guard let lockAngleSettingViewController = UIStoryboard.viewControllers.lockAngleSettingViewController else {
             return
         }
-        let viewModel = LockAngleSettingViewModel(ssm: ssm)
+        let viewModel = LockAngleSettingViewModel(sesame2: sesame2)
         lockAngleSettingViewController.viewModel = viewModel
         navigationController.pushViewController(lockAngleSettingViewController, animated: true)
     }

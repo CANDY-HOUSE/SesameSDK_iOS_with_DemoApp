@@ -18,7 +18,7 @@ public class CHBaseViewController: UIViewController {
         let previous: UIColor
         let current: UIColor
         
-        init (current: UIColor = .sesameGray, previous: UIColor) {
+        init (current: UIColor = .sesame2Gray, previous: UIColor) {
             self.current = current
             self.previous = previous
         }

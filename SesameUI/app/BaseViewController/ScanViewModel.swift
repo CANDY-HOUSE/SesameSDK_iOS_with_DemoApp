@@ -10,7 +10,7 @@ import Foundation
 import SesameSDK
 
 protocol ScanViewModelDelegate {
-    func receivedSSM()
+    func receivedSesame2()
 }
 
 final class ScanViewModel: ViewModel {
@@ -20,7 +20,7 @@ final class ScanViewModel: ViewModel {
     func receivedQRCode(_ qrCodeURL: String?) {
         guard let urlString = qrCodeURL,
             let scanSchema = URL(string: urlString),
-            let ssm2Key = scanSchema.ssmKey() else {
+            let sesame2Key = scanSchema.sesame2Key() else {
                 let error = NSError(domain: "", code: 0, userInfo: ["error message": "Parse qr code url failed"])
                 statusUpdated?(.finished(.failure(error)))
                 return
@@ -30,26 +30,26 @@ final class ScanViewModel: ViewModel {
         
         let tokenFetchLock = DispatchGroup()
         
-        CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
+        CHDeviceManager.shared.receiveSesame2Keys(sesame2Keys: [sesame2Key]) { result in
             switch result {
-            case .success(let ssms):
+            case .success(let sesame2):
 
-                for ssm in ssms {
+                for sesame in sesame2 {
                     tokenFetchLock.enter()
-                    ssm.setHistoryTag(encodedHistoryTag) {_ in
+                    sesame.setHistoryTag(encodedHistoryTag) {_ in
                         tokenFetchLock.leave()
                     }
                 }
 
                 tokenFetchLock.wait()
-                self.delegate?.receivedSSM()
+                self.delegate?.receivedSesame2()
             case .failure(let error):
                 self.statusUpdated?(.finished(.failure(error)))
             }
         }
     }
     
-    func receivedSSM() {
-        delegate?.receivedSSM()
+    func receivedSesame2() {
+        delegate?.receivedSesame2()
     }
 }

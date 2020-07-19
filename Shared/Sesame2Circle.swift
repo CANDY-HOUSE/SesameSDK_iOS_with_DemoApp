@@ -9,7 +9,7 @@
 #if os(iOS)
 import UIKit
 
-class SesameCircle: UIControl {
+class Sesame2Circle: UIControl {
     
     private let renderer = KnobRenderer()
 

@@ -13,7 +13,7 @@ public class ScanView: UIView {
     public lazy var cornerLocation: CornerLocation = .default
     public lazy var borderColor: UIColor = .white
     public lazy var borderLineWidth:CGFloat = 0.2
-    public lazy var cornerColor: UIColor = .sesameGreen
+    public lazy var cornerColor: UIColor = .sesame2Green
     public lazy var cornerWidth:CGFloat = 0.0
     public lazy var backgroundAlpha:CGFloat = 0.6
     lazy var scanBorderWidth = 0.6 * screenWidth

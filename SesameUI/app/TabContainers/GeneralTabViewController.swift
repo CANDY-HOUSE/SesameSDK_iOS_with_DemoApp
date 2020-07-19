@@ -22,7 +22,7 @@ public class GeneralTabViewController: UITabBarController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        tabBar.tintColor = .sesameGreen
+        tabBar.tintColor = .sesame2Green
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
         tabBar.layer.borderWidth = 0

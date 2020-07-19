@@ -1,5 +1,5 @@
 //
-//  CHSSMChangeNameDialog.swift
+//  CHSesame2ChangeNameDialog.swift
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2020/1/13.
@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-public class CHSSMChangeNameDialog: UIViewController {
+public class CHSesame2ChangeNameDialog: UIViewController {
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     var callBack:(_ first:String)->Void = {f in
         L.d("test 閉包")
     }
-    var ssmName:String =  ""
+    var sesame2Name:String =  ""
 
     @IBOutlet weak var firstHintLB: UILabel!
     @IBOutlet weak var titleLB: UILabel!
@@ -55,15 +55,13 @@ public class CHSSMChangeNameDialog: UIViewController {
         cancelBTN.titleLabel?.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
 
 
-        nameTF.text = ssmName
+        nameTF.text = sesame2Name
     }
     
     static func show(_ name: String, callBack:@escaping (_ first:String)->Void){
-        let storyboard = Constant.storyboard
-        let myAlert = storyboard.instantiateViewController(withIdentifier: "ssmalert") as! CHSSMChangeNameDialog
-        
+        let myAlert = UIStoryboard.viewControllers.chSesame2ChangeNameDialog!
         myAlert.callBack = callBack
-        myAlert.ssmName = name
+        myAlert.sesame2Name = name
 
         myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
@@ -75,12 +73,11 @@ public class CHSSMChangeNameDialog: UIViewController {
     }
     
     static func show(_ name: String, title: String, hint: String, callBack:@escaping (_ first:String)->Void){
-        let storyboard = Constant.storyboard
-        let myAlert = storyboard.instantiateViewController(withIdentifier: "ssmalert") as! CHSSMChangeNameDialog
+        let myAlert = UIStoryboard.viewControllers.chSesame2ChangeNameDialog!
         myAlert.titleLBText = title
         myAlert.firstHintLBText = hint
         myAlert.callBack = callBack
-        myAlert.ssmName = name
+        myAlert.sesame2Name = name
 
         myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve

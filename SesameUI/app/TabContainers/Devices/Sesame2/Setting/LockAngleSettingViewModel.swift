@@ -14,7 +14,7 @@ public final class LockAngleSettingViewModel: ViewModel {
         case tooClose
     }
     
-    var ssm: CHSesame2
+    var sesame2: CHSesame2
     private let id = UUID()
     private var lockDegree: Int16 = 0
     private var unlockDegree: Int16 = 0
@@ -30,12 +30,12 @@ public final class LockAngleSettingViewModel: ViewModel {
     public private(set) var setLockButtonTitle = "Set Locked Position".localStr
     public private(set) var setUnlockButtonTitle = "Set Unlocked Position".localStr
     
-    init(ssm: CHSesame2) {
-        self.ssm = ssm
+    init(sesame2: CHSesame2) {
+        self.sesame2 = sesame2
     }
     
     public func viewWillAppear() {
-        ssm.delegate = self
+        sesame2.delegate = self
     }
     
     public func setLock() {
@@ -51,7 +51,7 @@ public final class LockAngleSettingViewModel: ViewModel {
             statusUpdated?(.finished(.failure(LockAngleError.tooClose)))
             return
         }
-        ssm.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
+        sesame2.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
 
          }
         statusUpdated?(.finished(.success("")))
@@ -70,14 +70,14 @@ public final class LockAngleSettingViewModel: ViewModel {
             statusUpdated?(.finished(.failure(LockAngleError.tooClose)))
             return
         }
-          ssm.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
+          sesame2.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
 
          }
         statusUpdated?(.finished(.success("")))
     }
     
     public func sesameTapped() {
-        ssm.toggle { [weak self] result in
+        sesame2.toggle { [weak self] result in
             guard let strongSelf = self else {
                 return
             }
@@ -91,14 +91,14 @@ public final class LockAngleSettingViewModel: ViewModel {
     }
     
     public func viewDidLoad() {
-        if let setting = ssm.mechSetting {
+        if let setting = sesame2.mechSetting {
 
             lockDegree = Int16(setting.getLockPosition()!)
             unlockDegree = Int16(setting.getUnlockPosition()!)
             
             if !setting.isConfigured() {
 //                var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0){res in}
-                ssm.configureLockPosition(lockTarget: 1024/4, unlockTarget: 0){res in}
+                sesame2.configureLockPosition(lockTarget: 1024/4, unlockTarget: 0){res in}
             }
             
         } else {
@@ -106,7 +106,7 @@ public final class LockAngleSettingViewModel: ViewModel {
             statusUpdated?(.finished(.failure(error)))
         }
         
-        guard let status = ssm.mechStatus else {
+        guard let status = sesame2.mechStatus else {
             return
         }
         currentDegree = Int16(status.getPosition()!)
@@ -115,18 +115,18 @@ public final class LockAngleSettingViewModel: ViewModel {
 }
 
 // MARK: - Delegate
-extension LockAngleSettingViewModel: CHSesameDelegate {
+extension LockAngleSettingViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2,
-                                         status: CHSesameStatus) {
-        if device.deviceId == ssm.deviceId,
+                                         status: CHSesame2Status) {
+        if device.deviceId == sesame2.deviceId,
             status == .receiveBle {
-            ssm.connect(){_ in}
+            sesame2.connect(){_ in}
         }
     }
     
     public func onMechStatusChanged(device: CHSesame2,
-                                    status: CHSesameMechStatus,
-                                    intention: CHSesameIntention) {
+                                    status: CHSesame2MechStatus,
+                                    intention: CHSesame2Intention) {
         guard let status = device.mechStatus else {
             return
         }
@@ -137,6 +137,6 @@ extension LockAngleSettingViewModel: CHSesameDelegate {
 
 extension LockAngleSettingViewModel {
     public func sesameViewModel() -> SesameViewModel {
-        SesameViewModel(ssm: ssm)
+        SesameViewModel(sesame2: sesame2)
     }
 }
