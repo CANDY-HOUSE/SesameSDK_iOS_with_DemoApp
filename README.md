@@ -1,5 +1,4 @@
-# SesameSDK iOS
-<img src="https://img.shields.io/badge/Xcode-11.5-blue" /> <img src="https://img.shields.io/badge/Swift-5.2.4-orange" /> <img src="https://img.shields.io/badge/iOS-11-black" /> <img src="https://img.shields.io/badge/Bluetooth-4.0LE-lightblue" />
+<img src="https://img.shields.io/badge/Bluetooth-4.0LE-lightblue" /> <img src="https://img.shields.io/badge/iOS-11-black" /> <img src="https://img.shields.io/badge/Android-5.0-black" /> <img src="https://img.shields.io/badge/Xcode-11.5-blue" /> <img src="https://img.shields.io/badge/Android Studio-4.0-blue" /> <img src="https://img.shields.io/badge/Swift-5.2.4-orange" /> <img src="https://img.shields.io/badge/Kotlin-1.3-orange" />
 <br/>
 <p align="center" >
   <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/SesameSDK_Swift.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
@@ -18,7 +17,7 @@
   - [Share Sesames' Keys](#Share-Sesame-Keys)
 
 # Introduction
-SesameSDK on iOS is a delightful Bluetooth/IoT(Internet of Things) library for your iOS app. The official Sesame app is built on this SesameSDK. By using SesameSDK, your app will have **ALL** functions and features that Sesame app has, which means, you will be able to
+SesameSDK on iOS/Android is a delightful Bluetooth/IoT(Internet of Things) library for your iOS/Android app. The official Sesame app is built on this SesameSDK. By using SesameSDK, your app will have **ALL** functions and features that Sesame app has, which means, you will be able to
 
 - Register Sesame
 - Lock door
@@ -33,6 +32,17 @@ SesameSDK on iOS is a delightful Bluetooth/IoT(Internet of Things) library for y
 - Apple Watch app
 
 with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ series or Sesame 1 that runs ___SesameOS 2___ which will be available in late 2020.
+
+# Requirements
+
+| Minimum Targets | Minimum Bluetooth Target | Minimum IDEs |
+|:------------------:|:------------------------:|:-----------:|
+| iOS 11 <br> iPadOS 13.1 | Bluetooth 4.0 LE | Xcode 11.5 | 
+| Android 5.0 | Bluetooth 4.0 LE | Android Studio 4.0 | 
+
+# Essential dependencies
+- SesameSDK.framework
+- AWSAPIGateway.framework
 
 # Configure the SDK
 1. Download SesameSDK and play with the included iPhone Demo app. または Apple TestFlight( https://testflight.apple.com/join/mK4OadTW )からダウンロードする。
@@ -75,10 +85,10 @@ CHBleManager.shared.delegate = self
 Once you delegate to `CHBleManager` and also adopted the `CHBleManagerDelegate` protocol, you will recevie unregistered Sesame devices in the following methods.
 ```swift
 class SomeClass: CHBleManagerDelegate {
-    public func didDiscoverUnRegisteredSesames(sesames: [CHSesameBleInterface]) {
+    public func didDiscoverUnRegisteredSesames(sesames: [CHSesame2]) {
         // Your implementation
     }
-    public func didDiscoverUnRegisteredSesame(sesame: CHSesameBleInterface) {
+    public func didDiscoverUnRegisteredSesame(sesame: CHSesame2) {
         // Your implementation
     }
 }
@@ -86,29 +96,29 @@ class SomeClass: CHBleManagerDelegate {
 2. Connect unregistered Sesame devices.     
 Before registering a Sesame device, you have to connect to it in order to send commands to it. 
 ```swift
-public func didDiscoverUnRegisteredSesames(sesames: [CHSesameBleInterface]) {
-    for ssm in sesames {
-        ssm.connect()
+public func didDiscoverUnRegisteredSesames(sesames: [CHSesame2]) {
+    for sesame2 in sesame2s {
+        sesame2.connect()
     }
 }
 ```
 When you are ready to register the Sesame device, you can send the register command as long as the device's status is `.readytoRegister`, otherwise, you may want to delegate to the device so you can monitor the status updates of the Sesame device, and be able to connect to it once the status becomes `.readytoRegister`.
 
 ```swift
-class SomeClass: CHSesameBleDeviceDelegate {
+class SomeClass: CHSesame2Delegate {
     func register() {
         // Resiger the device if it is ready.
-        if ssm.deviceStatus == .readytoRegister {
-            ssm.registerSesame( { result in
+        if sesame2.deviceStatus == .readytoRegister {
+            sesame2.registerSesame( { result in
                 // Completion handler
             })
         } else {
         // Otherwise monitor the status until it is ready.
-            ssm.delegate = self as CHSesameBleDeviceDelegate
+            sesame2.delegate = self as CHSesame2Delegate
         }
     }
 
-    func onBleDeviceStatusChanged(device: CHSesameBleInterface, status: CHDeviceStatus) {
+    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
         if status == .readytoRegister {
             device.registerSesame( { result in
                 // Completion handler
@@ -139,84 +149,77 @@ CHBleManager.shared.getSesames() { result in
 ```
 1. You may want to `connect()` the device before sending any command.
 ```swift
-ssm.connect()
+sesame2.connect()
 ```
 2. `delegate` to the Sesame device if you would like to receive the Sesame device's status updates.
 ```swift
-ssm.delegate = self
+sesame2.delegate = self
 
 
-class SomeClass: CHSesameBleDeviceDelegate {
+class SomeClass: CHSesame2Delegate {
     
-    /// Will be invoked whenever the Sesame device interaction status changes.
+    /// Will be invoked whenever sesame device interaction status changed.
     /// - Parameters:
     ///   - device: Sesame device.
     ///   - status: `CHDeviceStatus`
-    func onBleDeviceStatusChanged(device: CHSesameBleInterface, status: CHDeviceStatus)
-    
-    /// Will be invoked whenever command result from the Sesame device was back.
-    /// - Parameters:
-    ///   - device: Sesame device.
-    ///   - command: `SSM2ItemCode`
-    ///   - returnCode: `SSM2CmdResultCode`
-    func onBleCommandResult(device: CHSesameBleInterface, command: SSM2ItemCode, returnCode: SSM2CmdResultCode)
-    
-    /// Will be invoked whenever Sesame device status changes.
+    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status)
+
+    /// Will be invoked whenever sesame device status has changed.
     /// - Parameters:
     ///   - device: Sesame device.
     ///   - status: `CHSesameMechStatus`
     ///   - intention: `CHSesameIntention`
-    func onMechStatusChanged(device: CHSesameBleInterface, status: CHSesameMechStatus, intention: CHSesameIntention)
+    func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention)
 }
 ```
 
 ### Configure Sesame
 
-1. Lock/Unlock angle adjustment:
+1. Locked/Unlocked angle adjustment:
 ```swift
 // Lock: 90°, Unlock: 0°
 var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0)
-ssm.configureLockPosition(configure: &config)
+sesame2.configureLockPosition(configure: &config)
 ```
 2. Enable/Disable auto-lock:
 ```swift
-ssm.enableAutolock(delay: second[row]) { (delay) -> Void in
+sesame2.enableAutolock(delay: second[row]) { (delay) -> Void in
     // Complete handler
 }
 ```
 ```swift
-ssm.disableAutolock() { (delay) -> Void in
+sesame2.disableAutolock() { (delay) -> Void in
     // Complete handler
 }
 ```
 3. Drop Key:     
 This command will clear the Sesame keys saved in SesameSDK. This means you will not able to retrieve the Sesame device via `CHBleManager.shared.getSesames()`.
 ```swift
-ssm.dropKey()
+sesame2.dropKey()
 ```
 4. Reset Sesame:     
 This command will reset the Sesame device and clear the Sesame keys saved in SesameSDK.
 ```swift
-ssm.resetSesame()
+sesame2.resetSesame()
 ```
 ### Get Sesame Information
 
 1. UUID:     
 Every Sesame device has a unique identifier.
 ```swift
-ssm.deviceId
+sesame2.deviceId
 ```
-2. Sesame device status (`noSignal`, `receiveBle`, `connecting`, `loginStatus`, etc.) Please see Documents/CHDeviceStatus.md
+2. Sesame device status (`noSignal`, `receiveBle`, `connecting`, `loginStatus`, etc.) Please see Documents/CHSesame2Status.md
 ```swift
-ssm.deviceStatus 
+sesame2.deviceStatus 
 ```
-3. Sesame mechanical status (lock position, battery, etc) Please see Documents/CHSesameMechStatus.md
+3. Sesame mechanical status (angle position, battery status, etc) Please see Documents/CHSesame2MechStatus.md
 ```swift
-ssm.mechStatus
+sesame2.mechStatus
 ```
 ### Lock/Unlock Sesame
 ```swift
-ssm.toggle { result in
+sesame2.toggle { result in
     // Completion handler
 }
 ```
@@ -224,13 +227,12 @@ ssm.toggle { result in
 SesameSDK can export keys(Base64 encoded JSON objects) to you, and you can share the keys with other people in many ways.
 1. Export Sesame keys:
 ```swift
-ssm.getKey()
+sesame2.getKey()
 ```
 2. Import Sesame keys:     
 Once you imported keys(Base64 encoded JSON objects) successfully, you can retrieve the device via `CHBleManager.shared.getSesames()`.
 ```swift
-// ssm2Key is the key data(Base64 encoded JSON objects) that you can get from `ssm.getKey()`
-CHBleManager.shared.receiveKey(ssm2Keys: [ssm2Key]) { result in
+CHDeviceManager.shared.receiveSesame2Keys(sesame2Keys: [String]) { result in
     switch result {
         case .success(_):
             // Success handler

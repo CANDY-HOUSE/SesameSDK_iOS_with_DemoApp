@@ -1,3 +1,0 @@
-```Swift
-public class CHEmpty {}
-```
