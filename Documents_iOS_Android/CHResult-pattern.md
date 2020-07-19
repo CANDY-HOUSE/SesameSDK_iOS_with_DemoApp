@@ -1,6 +1,7 @@
 # CHResult pattern
 1. [https://developer.apple.com/documentation/swift/result](https://developer.apple.com/documentation/swift/result)
-2. typealias CHResult<T> = (Result<CHResultState<T>, Error >) ->  ()
+2. [https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-result/](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-result/)
+3. typealias CHResult<T> = (Result<CHResultState<T>, Error >) ->  ()
 
 ## CHResultState
 1. CHResultStateCache: Values from coredata(iOS database / Android Database)
