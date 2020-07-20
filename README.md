@@ -45,7 +45,10 @@ with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ 
 - AWSAPIGateway.framework
 
 # Configure the SDK
-1. Download SesameSDK and play with the included iOS/Android Demo app. または Apple TestFlight( https://testflight.apple.com/join/mK4OadTW ) / Google Drive( https://drive.google.com/file/d/15aRQl6aWBVwJSE4l3ZL-eMisPoe-f2lW/view?usp=sharing ) からダウンロードする。
+1. Download SesameSDK and play with the included iOS/Android Demo app.  または  
+Apple TestFlight( https://testflight.apple.com/join/mK4OadTW )  
+Google Drive( https://drive.google.com/file/d/15aRQl6aWBVwJSE4l3ZL-eMisPoe-f2lW/view?usp=sharing )  
+からダウンロードする。
 2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
 3. Get the **API Key** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history. 
 4. Setup the **API Key** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
