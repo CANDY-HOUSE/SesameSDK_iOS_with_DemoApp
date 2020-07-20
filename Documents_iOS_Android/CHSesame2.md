@@ -45,7 +45,7 @@ public protocol CHSesame2: class {
     func getKey() -> String?  //SesameSDKの内部データベースに保存されてるこのセサミデバイスの 「Base64 encoded 鍵」 を取り出す
 
     func getHistories(page: UInt, _ callback: @escaping CHResult<[CHSesame2History]>) 
-    // SDK経由で最新の履歴から取得する; page:ページ数、1ページの中に新→旧の順番で最大50個の履歴が入ってる。
+    // SDK経由で最新の履歴から履歴を取得する; page:ページ数、1ページの中に 新→旧の履歴順番で 最大50個の履歴が入ってる。
 }
 ```
 
