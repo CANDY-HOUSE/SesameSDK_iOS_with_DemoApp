@@ -44,8 +44,8 @@ public protocol CHSesame2: class {
     func dropKey() //SesameSDKの内部データベースに保存されてるこのセサミの鍵を削除するだけ。再度何処かから同じ鍵を取ってこれば再度使える状態になる。
     func getKey() -> String?  //SesameSDKの内部データベースに保存されてるこのセサミデバイスの 「Base64 encoded 鍵」 を取り出す
 
-    func getHistories(page: UInt, _ callback: @escaping CHResult<[CHSesame2History]>) // SDKを経由して、履歴を取得する
-
+    func getHistories(page: UInt, _ callback: @escaping CHResult<[CHSesame2History]>) 
+    // SDK経由で最新の履歴から取得する; page:ページ数、1ページの中に新→旧の順番で最大50個の履歴が入ってる。
 }
 ```
 
