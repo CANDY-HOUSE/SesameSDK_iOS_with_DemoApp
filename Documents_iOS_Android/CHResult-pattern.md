@@ -13,29 +13,29 @@
 1. [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 2. [Apple CBManagerState](https://developer.apple.com/documentation/corebluetooth/cbmanagerstate)
 
-| Timing/error   |  domain | code       |Message       |
-|:---------------------:|:-------------------:|:-----------:|:-----------:|
-|  No network                |  SesameSDK     |   -1009       |The Internet connection appears to be offline. | 
-|  No API key                |  SesameSDK     |    403        | Forbidden | 
-|  Wrong parameter           |  SesameSDK     |    400        | Bad request | 
-|  Wrong URL                 |  SesameSDK     |    404        | Not found | 
-|  CANDY HOUSE server down   |  SesameSDK     |    502        | Unknown error| 
-|  History authentication failed|  SesameSDK     |    401     | History authentication failed| 
-|  PARSE_ERROR               |  SesameSDK     |    480        | Data parse failed | 
-|  History tag too long       |  SesameSDK     |    600       | Over 21-byte limit | 
-|  cmd connect/lock/unlock   | CBCentralManager   |  4        | PoweredOff| 
-|  cmd connect/lock/unlock   | CBCentralManager   |  3        | Unauthorized| 
-|  cmd connect/lock/unlock   | CBCentralManager   |  2        | Unsupported| 
-|  cmd connect/lock/unlock   |  SesameSDK     |   -2          | No BLE signal| 
-|  cmd lock/unlock           |  SesameSDK     |   -1          | Sesame BLE unlogin|
-|    cmd lock/unlock         |  SesameSDK      |   1          | Invalid Format| 
-|    cmd lock/unlock         |  SesameSDK      |   2          | notSupported| 
-|    cmd lock/unlock         |  SesameSDK      |   3          | resultStorageFail| 
-|    cmd lock/unlock         |  SesameSDK      |   4          | invalidSig| 
-|    cmd lock/unlock         |  SesameSDK      |   5          | notFound| 
-|    cmd lock/unlock         |  SesameSDK      |   6          | unknown| 
-|    cmd lock/unlock         |  SesameSDK      |   7          | busy| 
-|    cmd lock/unlock         |  SesameSDK      |   8          | invalid Param| 
+| Timing/error   |  domain | code       |Message       || 
+|:---------------------:|:-------------------:|:-----------:|:-----------:|:-----------:|
+|  No network                |  SesameSDK     |   -1009       |The Internet connection appears to be offline. | | 
+|  No API key                |  SesameSDK     |    403        | Forbidden | | 
+|  Wrong parameter           |  SesameSDK     |    400        | Bad request | | 
+|  Wrong URL                 |  SesameSDK     |    404        | Not found | | 
+|  CANDY HOUSE server down   |  SesameSDK     |    502        | Unknown error| |  
+|  History authentication failed|  SesameSDK     |    401     | History authentication failed| |  
+|  PARSE_ERROR               |  SesameSDK     |    480        | Data parse failed |  | 
+|  History tag too long       |  SesameSDK     |    600       | Over 21-byte limit | | 
+|  cmd connect/lock/unlock   | CBCentralManager   |  4        | PoweredOff| | 
+|  cmd connect/lock/unlock   | CBCentralManager   |  3        | Unauthorized| | 
+|  cmd connect/lock/unlock   | CBCentralManager   |  2        | Unsupported| | 
+|  cmd connect/lock/unlock   |  SesameSDK     |   -2          | No BLE signal| | 
+|  cmd lock/unlock           |  SesameSDK     |   -1          | Sesame BLE unlogin|| 
+|    cmd lock/unlock         |  SesameSDK      |   1          | Invalid Format| | 
+|    cmd lock/unlock         |  SesameSDK      |   2          | notSupported| | 
+|    cmd lock/unlock         |  SesameSDK      |   3          | resultStorageFail| | 
+|    cmd lock/unlock         |  SesameSDK      |   4          | invalidSig| | 
+|    cmd lock/unlock         |  SesameSDK      |   5          | notFound| | 
+|    cmd lock/unlock         |  SesameSDK      |   6          | unknown| | 
+|    cmd lock/unlock         |  SesameSDK      |   7          | busy| | 
+|    cmd lock/unlock         |  SesameSDK      |   8          | invalid Param| | 
 
 
 # example
