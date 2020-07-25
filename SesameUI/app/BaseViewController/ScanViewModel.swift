@@ -34,9 +34,10 @@ final class ScanViewModel: ViewModel {
             switch result {
             case .success(let sesame2):
 
-                for sesame in sesame2 {
+                for sesame2 in sesame2.data {
                     tokenFetchLock.enter()
-                    sesame.setHistoryTag(encodedHistoryTag) {_ in
+                    Sesame2Store.shared.deletePropertyAndHisotryForDevice(sesame2)
+                    sesame2.setHistoryTag(encodedHistoryTag) {_ in
                         tokenFetchLock.leave()
                     }
                 }

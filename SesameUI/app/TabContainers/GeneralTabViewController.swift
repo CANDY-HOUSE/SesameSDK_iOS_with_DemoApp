@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by Yiling on 2019/08/30.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -21,7 +21,6 @@ public class GeneralTabViewController: UITabBarController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
         tabBar.tintColor = .sesame2Green
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
@@ -45,32 +44,5 @@ public class GeneralTabViewController: UITabBarController {
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }
-    }
-}
-
-extension GeneralTabViewController: UITabBarControllerDelegate {
-    public override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch self.tabBar.items?.firstIndex(of: item) {
-        case Items.deviceList:
-            break
-        case Items.contactsList:
-//            guard AWSMobileClient.default().isSignedIn == true else {
-//                self.gotoLoginPage()
-//                return
-//            }
-            break
-        case Items.me:
-            break
-        default:
-            break
-        }
-    }
-    
-    public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-//        if let navigationViewController = viewController as? UINavigationController,
-//            let _ = navigationViewController.viewControllers.first as? FriendsViewController {
-//            return AWSMobileClient.default().isLoggedIn
-//        }
-        return true
     }
 }

@@ -3,13 +3,12 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2020/1/8.
-//  Copyright © 2020 Cerberus. All rights reserved.
+//  Copyright © 2020 CandyHouse. All rights reserved.
 //
 
 import UIKit
 
 extension UIViewController {
-    //取得當前uiviewcontroller
     class func getCurrentVC() -> UIViewController?{
         var result:UIViewController?
         var window = UIApplication.shared.keyWindow
@@ -45,7 +44,8 @@ extension UIAlertController {
 
     class func  showAlertController(_ sender:UIView,title:String? = nil,msg:String? = nil,style:UIAlertController.Style, actions:[UIAlertAction]) {
 
-        let close = UIAlertAction.addAction(title: "Cancel".localStr, style: .cancel) { (action) in
+        let close = UIAlertAction.addAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
+                                            style: .cancel) { (action) in
 
            }
         let VC = UIViewController.getCurrentVC()
@@ -56,10 +56,5 @@ extension UIAlertController {
         alertController.addAction(close)
         alertController.popoverPresentationController?.sourceView = sender
         VC?.present(alertController, animated: true, completion: nil);
-    }
-}
-extension Sequence {
-    func group<U: Hashable>(by key: (Iterator.Element) -> U) -> [U:[Iterator.Element]] {
-        return Dictionary.init(grouping: self, by: key)
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Constants {
+enum Constant {
 
     static let screenHeight = UIScreen.main.bounds.height
     static let screenWidth = UIScreen.main.bounds.width
@@ -30,5 +30,9 @@ struct Constants {
     static var statusBarHeight: CGFloat {
         return iPhoneX ? 44.0: 20.0
     }
-
+    
+    static let storyboardName = "Main"
+    static let resourceBundle = Bundle(for: BluetoothDevicesListViewController.self)
+    static let storyboard = UIStoryboard(name: Constant.storyboardName,
+                                         bundle: resourceBundle)
 }

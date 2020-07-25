@@ -1,17 +1,17 @@
 //
-//  SesameSDK.h
-//  SesameSDK
+//  Sesame2SDK.h
+//  Sesame2SDK
 //
 //  Created by Cerberus on 2019/09/04.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for SesameSDK.
+//! Project version number for Sesame2SDK.
 FOUNDATION_EXPORT double SesameSDKVersionNumber;
 
-//! Project version string for SesameSDK.
+//! Project version string for Sesame2SDK.
 FOUNDATION_EXPORT const unsigned char SesameSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SesameSDK/PublicHeader.h>

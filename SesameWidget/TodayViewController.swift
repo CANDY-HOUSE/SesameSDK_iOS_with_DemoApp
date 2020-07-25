@@ -3,7 +3,7 @@
 //  locker
 //
 //  Created by tse on 2019/10/15.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -60,7 +60,7 @@ public class TodayViewController: UIViewController, NCWidgetProviding {
             DispatchQueue.main.async {
                 CHDeviceManager.shared.getSesame2s(){ result in
                     if case .success(let sesame2) = result {
-                        self.devices = sesame2
+                        self.devices = sesame2.data
                         self.devices
                             .sort(by: {
                                 let name1 = Sesame2Store.shared.getPropertyForDevice($0).name ?? $0.deviceId.uuidString
@@ -76,14 +76,14 @@ public class TodayViewController: UIViewController, NCWidgetProviding {
     func notifyTable()  {
         DispatchQueue.main.async {
             if self.devices.count == 0 && self.informations.count == 0 {
-                self.informations = ["co.candyhouse.sesame-sdk-test-app.locker.noDeviceFound".localStr]
+                self.informations = ["co.candyhouse.sesame-sdk-test-app.locker.noDeviceFound".localized]
             }
             self.tableView.reloadData()
         }
     }
 }
 
-extension TodayViewController: UITableViewDataSource {
+extension TodayViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devices.count > 0 ? devices.count : informations.count
     }
@@ -92,10 +92,12 @@ extension TodayViewController: UITableViewDataSource {
         if devices.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceCell", for: indexPath) as! DeviceCell
             cell.sesame2 = devices[indexPath.row]
+            cell.selectionStyle = .none
             return  cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "information", for: indexPath)
             cell.textLabel?.text = informations[indexPath.row]
+            cell.selectionStyle = .none
             return  cell
         }
     }

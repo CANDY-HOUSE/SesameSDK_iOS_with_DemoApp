@@ -18,19 +18,20 @@ public final class RegisterDeviceListViewModel: ViewModel {
 
     private var sesame2s: [CHSesame2] = [] {
         didSet {
-            for sesame in sesame2s {
-                sesame.connect(){_ in}
-            }
+            sesame2s.first?.connect(){_ in}
+//            for sesame in sesame2s {
+//                sesame.connect(){_ in}
+//            }
         }
     }
     var sesame2Versions = [String:String]()
     
     private var dfuHelper: DFUHelper?
     
-    public private(set) var emptyMessage = "No New Devices".localStr
+    public private(set) var emptyMessage = "co.candyhouse.sesame-sdk-test-app.NoNewDevices".localized
     public private(set) var backButtonImage = "icons_filled_close"
-    private(set) var mySesameText = "ドラえもん".localStr
-    private(set) var dfuActionText = "DFU".localStr
+    private(set) var mySesameText = "ドラえもん".localized
+    private(set) var dfuActionText = "DFU".localized
     
     public var statusUpdated: ViewStatusHandler?
     public var delegate: RegisterDeviceListViewModelDelegate?
@@ -49,6 +50,8 @@ public final class RegisterDeviceListViewModel: ViewModel {
     
     public func didSelectCellAtRow(_ row: Int) {
         let sesame2 = sesame2s[row]
+        sesame2.connect(){_ in}
+
         if sesame2.deviceStatus == .readytoRegister {
             registerSesame2(sesame2)
         } else {
@@ -58,8 +61,8 @@ public final class RegisterDeviceListViewModel: ViewModel {
     }
     
     private func registerSesame2(_ sesame2: CHSesame2) {
-        
-        sesame2.registerSesame( { result in
+
+        sesame2.registerSesame2( { result in
             switch result {
 
             case .success(_):
@@ -69,6 +72,8 @@ public final class RegisterDeviceListViewModel: ViewModel {
                 }
                 
                 L.d("註冊成功", "configureLockPosition")
+                
+                Sesame2Store.shared.deletePropertyAndHisotryForDevice(sesame2)
                 
                 guard let encodedHistoryTag = self.mySesameText.data(using: .utf8) else {
                     assertionFailure("Encode historyTag failed")
@@ -86,7 +91,7 @@ public final class RegisterDeviceListViewModel: ViewModel {
                     }
                 }
                 
-                sesame2.configureLockPosition(lockTarget: 1024/4, unlockTarget: 0){ result in
+                sesame2.configureLockPosition(lockTarget: 0, unlockTarget: 256){ result in
                     switch result {
                     case .success(_):
                         break
@@ -103,8 +108,8 @@ public final class RegisterDeviceListViewModel: ViewModel {
     }
     
     func dfuDeviceAtIndexPath(_ indexPath: IndexPath, observer: DFUHelperObserver) {
-        let sesam32 = sesame2s[indexPath.row]
-        sesame2Versions.removeValue(forKey: sesam32.deviceId.uuidString)
+        let sesame2 = sesame2s[indexPath.row]
+        sesame2Versions.removeValue(forKey: sesame2.deviceId.uuidString)
         guard let filePath = Constant
             .resourceBundle
             .url(forResource: nil,
@@ -113,7 +118,7 @@ public final class RegisterDeviceListViewModel: ViewModel {
                 return
         }
         
-        sesam32.updateFirmware { result in
+        sesame2.updateFirmware { result in
             switch result {
             case .success(let peripheral):
                 guard let peripheral = peripheral.data else {
@@ -167,17 +172,18 @@ public final class RegisterDeviceListViewModel: ViewModel {
     }
 }
 
-extension RegisterDeviceListViewModel: CHBleManagerDelegate, CHSesame2Delegate {
+extension RegisterDeviceListViewModel: CHBleManagerDelegate {
 
-    public func didDiscoverUnRegisteredSesames(sesames: [CHSesame2]) {
-        sesame2s = sesames.sorted(by: { $0.rssi.intValue > $1.rssi.intValue })
+    public func didDiscoverUnRegisteredSesame2s(sesame2s: [CHSesame2]) {
+        self.sesame2s = sesame2s.sorted(by: { $0.rssi!.intValue > $1.rssi!.intValue })
         statusUpdated?(.received)
     }
+}
 
+extension RegisterDeviceListViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
         if status == .readytoRegister {
             registerSesame2(device)
         }
     }
-
 }

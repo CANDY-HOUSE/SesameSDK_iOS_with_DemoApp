@@ -10,20 +10,22 @@ import UIKit
 
 final class VersionLabel: UILabel {
     
-    private lazy var gitPlist: String = {
+    private lazy var gitPlist: String? = {
         guard let path = Bundle.main.path(forResource: "git", ofType: "plist") else {
-            assertionFailure("git.plist not found")
-            return ""
+            return nil
         }
         return path
     }()
     
-    private lazy var gitPlistContent: [String: Any] = {
-        return NSDictionary(contentsOfFile: gitPlist) as! [String : Any]
+    private lazy var gitPlistContent: [String: Any]? = {
+        guard let gitPlist = gitPlist else {
+            return nil
+        }
+        return NSDictionary(contentsOfFile: gitPlist) as? [String : Any] ?? nil
     }()
     
     private lazy var commit: String? = {
-        gitPlistContent["GitCommit"] as? String
+        gitPlistContent?["GitCommit"] as? String ?? nil
     }()
 
     init() {

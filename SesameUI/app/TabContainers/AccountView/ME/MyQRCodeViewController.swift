@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/11/11.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -63,7 +63,7 @@ public class MyQRCodeViewController: CHBaseViewController {
         }
         
         qrImg.image = UIImage.generateQRCode(qrCode, UIImage.makeLetterAvatar(withUsername: viewModel.deviceName ?? ""), .black)
-        hintLabel.text = "Scan this QR code to share \(viewModel.deviceName ?? "")".localStr
+        hintLabel.text = "Scan this QR code to share \(viewModel.deviceName ?? "")".localized
     }
     
     public func generateInvitationCode() {

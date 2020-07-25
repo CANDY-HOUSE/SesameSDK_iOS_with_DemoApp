@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/8/6.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     @IBOutlet weak var Interval: UITextField!
     @IBOutlet weak var timesInput: UITextField!
     @IBOutlet weak var versionTagBtn: UIButton!
-    @IBOutlet weak var lockCircle: Knob!
+    // @IBOutlet weak var lockCircle: Knob!
     @IBOutlet weak var gattStatusLB: UILabel!
     @IBOutlet weak var unlockSetBtn: UIButton!
     @IBOutlet weak var lockSetBtn: UIButton!
@@ -197,13 +197,19 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     }
     
     @IBAction func enableAutolock(_ sender: Any) {
-        let alert = UIAlertController(title: "Autolock", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let alert = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.AutoLock".localized,
+                                      message: nil,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
+                                      style: .cancel,
+                                      handler: nil))
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input your delay second here..."
             textField.keyboardType = .numberPad
         })
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.OK".localized,
+                                      style: .default,
+                                      handler: { _ in
             if let second = alert.textFields?.first?.text {
                 self.sesame?.enableAutolock(delay:  Int(second)!){ (delay) -> Void in
                 }
@@ -231,7 +237,7 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
 //        }
     }
     @IBAction func unregisterClick(_ sender: UIButton) {
-        self.sesame!.resetSesame(){res in
+        self.sesame!.resetSesame2(){res in
 
         }
     }
@@ -263,12 +269,18 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     }
     
     @IBAction func registerBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "sesame name", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let alert = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.SesameName".localized,
+                                      message: nil,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
+                                      style: .cancel,
+                                      handler: nil))
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input your sesame name here..."
         })
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.OK".localized,
+                                      style: .default,
+                                      handler: { _ in
             if let name = alert.textFields?.first?.text {
                 // TODO: To be implemenated
                 //                self.sesame!.register(nickname: name, {(result) in
@@ -277,7 +289,7 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
                 //                        CHAccountManager.shared.refreshKeychain({ result in
                 //                            switch result {
                 //                            case .success(_):
-                //                                ViewHelper.showAlertMessage(title: "flushDevices", message: "success", actionTitle: "ok", viewController: self)
+                //                                ViewHelper.showAlertMessage(title: "flushDevices", message: "success", actionTitle: "co.candyhouse.sesame-sdk-test-app.OK".localized, viewController: self)
                 //                            case .failure(let error):
                 //                                DispatchQueue.main.async {
                 //                                    self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
@@ -318,7 +330,7 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
             unlockDegree = Int16(setting.getUnlockPosition()!)
             lockSetBtn.setTitle("\(setting.getLockPosition()!)", for: .normal)
             unlockSetBtn.setTitle("\(setting.getUnlockPosition()!)", for: .normal)
-            lockCircle.setLock(self.sesame!)
+//            lockCircle.setLock(self.sesame!)
 //            fwVersionLB.text = "\(self.sesame!.fwVersion)"
         }
     }
@@ -342,7 +354,7 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     var nowDegree: Int16 = 0 {
         didSet {
             angleLB.text = "angle:\(nowDegree)"
-            lockCircle.setValue(angle2degree(angle: nowDegree))
+//            lockCircle.setValue(angle2degree(angle: nowDegree))
         }
     }
     

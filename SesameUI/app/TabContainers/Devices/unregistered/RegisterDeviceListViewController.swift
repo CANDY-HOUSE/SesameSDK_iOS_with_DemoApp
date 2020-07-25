@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/11/9.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -85,6 +85,7 @@ extension RegisterDeviceListViewController: UITableViewDataSource {
         cell.viewModel = cellViewModel
         cell.ssi.textColor = (indexPath.row == 0) ? .sesame2Green : .gray
         cell.statusLabel.text = cellViewModel.currentStatus()
+        // TODO: Uncomment when firmware is ready
 //        cell.delegate = self
 //        cell.dfuButton.setTitle(viewModel.dfuActionText, for: .normal)
 //        cell.firmwareVersionLabel.text = viewModel.firmwareVersionForDeviceAtIndexPath(indexPath)
@@ -96,6 +97,7 @@ extension RegisterDeviceListViewController: UITableViewDataSource {
 extension RegisterDeviceListViewController: RegisterCellDelegate {
     
     func dfuForCell(_ cell: UITableViewCell) {
+        // TODO: Uncomment when firmware is ready
 //        guard let indexPath = deviceTableView.indexPath(for: cell) else {
 //            return
 //        }

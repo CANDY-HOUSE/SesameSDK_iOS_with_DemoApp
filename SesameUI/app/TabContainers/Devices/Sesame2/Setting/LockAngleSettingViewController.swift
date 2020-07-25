@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/10/11.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -22,7 +22,7 @@ class LockAngleSettingViewController: CHBaseViewController  {
     @IBOutlet weak var setLockButton: UIButton!
     @IBOutlet weak var setUnlockButton: UIButton!
     
-    @IBOutlet weak var sesameView: SesameView!
+    @IBOutlet weak var sesameView: LockView!
     @IBAction func setLock(_ sender: UIButton) {
         viewModel.setLock()
     }
@@ -67,12 +67,12 @@ class LockAngleSettingViewController: CHBaseViewController  {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
+        titleLabel.text = viewModel.title
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refreshUI()
-        navigationItem.title = viewModel.title
     }
     
     public func refreshUI() {

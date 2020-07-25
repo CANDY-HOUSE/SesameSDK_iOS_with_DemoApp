@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>17</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -38,7 +38,7 @@
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>To connect Sesame Smart Lock and lock/unlock the door.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>This app would like to make data available to nearby bluetooth devices even when you're not using the app.</string>
+	<string>This app would like to make data available to nearby bluetooth devices even when you&#39;re not using the app.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>To scan QR code</string>
 	<key>UIBackgroundModes</key>

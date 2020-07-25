@@ -39,15 +39,15 @@ public class GeneralTabViewCoordinator: Coordinator {
                 return
         }
         
-        let deviceListItem = UITabBarItem(title: "Sesame".localStr,
+        let deviceListItem = UITabBarItem(title: "co.candyhouse.sesame-sdk-test-app.Sesame".localized,
                                           image: UIImage.SVGImage(named:"keychain_original"),
                                           selectedImage: UIImage.SVGImage(named:"keychain_tint"))
         
-        let contactItem = UITabBarItem(title: "Contacts".localStr,
+        let contactItem = UITabBarItem(title: "co.candyhouse.sesame-sdk-test-app.Contacts".localized,
                                        image: UIImage.SVGImage(named:"icons_outlined_contacts",fillColor: UIColor.gray),
                                        selectedImage: UIImage.SVGImage(named:"icons_filled_contacts",fillColor: .sesame2Green))
         
-        let meItem = UITabBarItem(title: "Me".localStr,
+        let meItem = UITabBarItem(title: "co.candyhouse.sesame-sdk-test-app.Me".localized,
                                   image: UIImage.SVGImage(named:"icons_outlined_me",fillColor: UIColor.gray),
                                   selectedImage: UIImage.SVGImage(named:"icons_filled_official-accounts",fillColor: .sesame2Green))
         

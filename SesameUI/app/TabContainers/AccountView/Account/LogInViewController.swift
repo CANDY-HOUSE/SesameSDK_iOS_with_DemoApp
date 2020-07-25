@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by Yiling on 2019/08/05.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 import AWSAPIGateway
 import UIKit
@@ -162,74 +162,7 @@ public class LogInViewController: CHBaseViewController {
         L.d("🦠", username, password)
         
         viewModel.logInDidPressed(userName: username, password: password)
-
-//        AWSMobileClient.default().signIn(username: username,
-//                                         password: password,
-//                                         validationData:nil) { result, error in
-//            if let error = error  {
-//                if let awsError = error as? AWSMobileClientError {
-//                    switch awsError {
-//                    case .userNotConfirmed(message: _):
-//                        DispatchQueue.main.async {
-//                            self.userisNotConfirm = true
-//                            self.didPressSignupOrForgotPassword("")
-//                            ViewHelper.hideLoadingView(view: self.view)
-//                        }
-//                    default:
-//                        DispatchQueue.main.async {
-//                            self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-//                            ViewHelper.hideLoadingView(view: self.view)
-//                        }
-//                    }
-//                }
-//            } else {
-//                L.d("帳號密碼登入成功")
-//
-//
-//                DispatchQueue.main.async {
-//                    CHUIKeychainManager.shared.setUsername(username,
-//                                                           password: password)
-//                    self.userisNotConfirm = false
-//                    self.dismissSelf()
-//                    ViewHelper.hideLoadingView(view: self.view)
-//                    self.checkNameAndBindCHServer()
-//                }
-//            }
-//        }
     }
-    
-//    func checkNameAndBindCHServer() {
-//        AWSMobileClient.default().getUserAttributes { userAttributes, error in
-//
-//            if let error = error {
-//                L.d(ErrorMessage.descriptionFromError(error: error))
-//            } else if let userAttributes = userAttributes {
-//                do {
-//                    let user = try User.userFromAttributes(userAttributes)
-//                    CHAccountManager.shared.updateMyProfile(
-//                        first_name:user.givenName,
-//                        last_name:user.familyName
-//                    ) { result in
-//                        switch result {
-//                        case .success(let candyUUID):
-//                            L.d(candyUUID.data as Any)
-//                        case .failure(let error):
-//                            L.d(ErrorMessage.descriptionFromError(error: error))
-//                        }
-//                    }
-////                    CHAccountManager.shared.getMyProfile(){profile in
-////                        L.d(profile.nickname)
-////                        L.d(profile.getCandyUUID())
-////                    }
-//                } catch {
-//                    // TODO: Error Hnadleing
-//                    L.d(ErrorMessage.descriptionFromError(error: error))
-//                }
-//            } else {
-//                L.d("All Null")
-//            }
-//        }
-//    }
     
     @IBAction func forgetPassword(_ sender: Any) {
         viewModel.forgotPasswordTapped(email: (userName?.text)!.toMail())

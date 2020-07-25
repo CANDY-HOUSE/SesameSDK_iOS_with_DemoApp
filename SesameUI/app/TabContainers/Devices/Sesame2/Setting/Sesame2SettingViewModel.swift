@@ -25,7 +25,14 @@ public final class Sesame2SettingViewModel: ViewModel {
             }
         }
     }
-    private var isHiddenPicker = true
+    private var isHiddenAutoLockSecondPicker = true
+    private(set) var advIntervalTitle = "Adv Interval"
+    private(set) var txPowerTitle = "TX Power"
+    private(set) var advInterval = ""
+    private(set) var txPower: String = ""
+    
+    private(set) var isHiddenAdvIntervalPicker = true
+    private(set) var isHiddenTxPowerPicker = true
     
     public var statusUpdated: ViewStatusHandler?
     
@@ -34,21 +41,27 @@ public final class Sesame2SettingViewModel: ViewModel {
     var delegate: Sesame2SettingViewModelDelegate?
     
     // MARK: - Properties
-    private(set) var changeNameIndicator = "Change Sesame Name".localStr
-    private(set) var enterSesameName = "Enter Sesame name".localStr
-    private(set) var angleIndicator = "Configure Angles".localStr
-    private(set) var dfuIndicator = "SesameOS Update".localStr
-    private(set) var removeSesameText = "Reset the Sesame and trash the key".localStr
-    private(set) var dropKeyText = "Trash the key of the Sesame".localStr
-    private(set) var autoLockLabel1Text = "autolock".localStr
-    private(set) var autoLockLabel2Text = "After".localStr
-    private(set) var autoLockLabel3Text = "sec".localStr
+    private(set) var changeNameIndicator = "co.candyhouse.sesame-sdk-test-app.ChangeSesameName".localized
+    private(set) var enterSesameName = "co.candyhouse.sesame-sdk-test-app.EnterSesameName".localized
+    private(set) var angleIndicator = "co.candyhouse.sesame-sdk-test-app.ConfigureAngles".localized
+    private(set) var dfuIndicator = "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized
+    private(set) var removeSesameText = "co.candyhouse.sesame-sdk-test-app.ResetSesame".localized
+    private(set) var dropKeyText = "co.candyhouse.sesame-sdk-test-app.TrashTheKey".localized
+    private(set) var autoLockLabel1Text = "co.candyhouse.sesame-sdk-test-app.AutoLock".localized
+    private(set) var autoLockLabel2Text = "co.candyhouse.sesame-sdk-test-app.after".localized
+    private(set) var autoLockLabel3Text = "co.candyhouse.sesame-sdk-test-app.sec".localized
     private(set) var arrowImg = "arrow"
-    private(set) var uuidTitleText = "UUID".localStr
-    private(set) var modifyHistoryTagText = "History Tag".localStr
-    private(set) var mySesameText = "ドラえもん".localStr
-    private(set) var share = "Share the key of the Sesame".localStr
+    private(set) var uuidTitleText = "UUID".localized
+    private(set) var modifyHistoryTagText = "History Tag".localized
+    private(set) var mySesameText = "ドラえもん".localized
+    private(set) var share = "co.candyhouse.sesame-sdk-test-app.ShareTheKey".localized
     private(set) var autoLockSwitchColor = UIColor.sesame2Green
+    
+    private let dBms = [-40, -20, -16, -12, -8, -4, 0, 3, 4]
+    private let advIntervals = [20, 152.5, 211.25, 318.75, 417.5, 546.25, 760, 852.5, 1022.5, 1285]
+    private(set) var advIntervalPickerSelectedRow: Int = 0
+    private(set) var txPowerPickerSelectedRow: Int = 0
+    
     
     var title: String {
         let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
@@ -87,8 +100,8 @@ public final class Sesame2SettingViewModel: ViewModel {
         isHiddenAutoLockDisplay
     }
     
-    var secondPickerIsHidden: Bool {
-        isHiddenPicker
+    var isHiddenSecondPicker: Bool {
+        isHiddenAutoLockSecondPicker
     }
     
     var sesame2VersionText: String {
@@ -109,7 +122,8 @@ public final class Sesame2SettingViewModel: ViewModel {
     public func viewWillAppear() {
         getAutoLockSetting()
         getVersionTag()
-        isHiddenPicker = true
+        getBleAdvParameter()
+        isHiddenAutoLockSecondPicker = true
         sesame2.delegate = self
     }
     
@@ -132,9 +146,9 @@ public final class Sesame2SettingViewModel: ViewModel {
                 }
                 strongSelf.statusUpdated?(.received)
             }
-            isHiddenPicker = true
+            isHiddenAutoLockSecondPicker = true
         } else {
-            isHiddenPicker = false
+            isHiddenAutoLockSecondPicker = false
         }
         switchIsOn = sender.isOn
         statusUpdated?(.received)
@@ -150,7 +164,8 @@ public final class Sesame2SettingViewModel: ViewModel {
             switch result {
             case .success(let delay):
                 strongSelf.switchIsOn = delay.data != 0
-
+                strongSelf.isHiddenAutoLockDisplay = !strongSelf.switchIsOn
+                strongSelf.delay = delay.data
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -170,7 +185,53 @@ public final class Sesame2SettingViewModel: ViewModel {
             case .failure(let error):
                 strongSelf.statusUpdated?(.finished(.failure(error)))
             }
-            
+        }
+    }
+    
+    private func getBleAdvParameter() {
+        sesame2.getBleAdvParameter { [weak self] result in
+            guard let strongSelf = self else {
+                return
+            }
+            switch result {
+            case .success(let bleAdvResult):
+                let selectedAdvIntervalIndex = strongSelf.advIntervals.firstIndex(of: strongSelf.millionsecondFromBleUnit(bleAdvResult.data.interval))
+                strongSelf.advIntervalPickerSelectedRow = selectedAdvIntervalIndex ?? 0
+                strongSelf.advInterval = strongSelf.readableAdvInterval(bleAdvResult.data.interval)
+                strongSelf.txPower = strongSelf.readableTxPower(bleAdvResult.data.txPower)
+                let selectedTxPowerIndex = strongSelf.dBms.firstIndex(of: Int(bleAdvResult.data.txPower))
+                strongSelf.txPowerPickerSelectedRow = selectedTxPowerIndex ?? 0
+                strongSelf.statusUpdated?(.received)
+            case .failure(let error):
+                strongSelf.statusUpdated?(.finished(.failure(error)))
+            }
+        }
+    }
+    
+    func readableAdvInterval(_ interval: UInt16) -> String {
+        "\(millionsecondFromBleUnit(interval)) ms"
+    }
+    
+    func bleUnitFromMillionSecond(_ millionSecond: Double) -> Int {
+        Int(millionSecond / 0.625)
+    }
+    
+    func millionsecondFromBleUnit(_ bleUnit: UInt16) -> Double {
+        Double(bleUnit) * 0.625
+    }
+    
+    func readableTxPower(_ txPower: Int8) -> String {
+        // -40dBm, -20dBm, -16dBm, -12dBm, -8dBm, -4dBm, 0dBm, +3dBm and +4dBm
+        // 4 , 3 , 0 , -4 , -8 , -12 , -16 , -20 , -40
+        
+        guard let index = dBms.firstIndex(of: Int(txPower)) else {
+            return "Unknow"
+        }
+        let value = dBms[index]
+        if value > 0 {
+            return "+\(value) dBm"
+        } else {
+            return "\(value) dBm"
         }
     }
     
@@ -192,20 +253,44 @@ extension Sesame2SettingViewModel: CHSesame2Delegate {
 
 // MARK: - AutoLock
 extension Sesame2SettingViewModel {
-    var second: [Int] {
+    private var second: [Int] {
         [1,2,3,4,5,6,7,8,9,10,11,12,13]
     }
 
-    func numberOfComponents() -> Int {
+    func columnOfAutoLock() -> Int {
         1
     }
     
-    func numberOfRowInComponent() -> Int {
-        return second.count
+    func columnOfAdvInterval() -> Int {
+        1
     }
     
-    func pickerTextForRow(_ row: Int) -> String {
+    func columnOfTxPower() -> Int {
+        1
+    }
+    
+    func rowOfAutoLock() -> Int {
+        second.count
+    }
+    
+    func rowOfAdvInterval() -> Int {
+        advIntervals.count
+    }
+    
+    func rowOfTxPower() -> Int {
+        dBms.count
+    }
+    
+    func secondPickerTextForRow(_ row: Int) -> String {
         String(second[row])
+    }
+    
+    func advIntervalPickerTextForRow(_ row: Int) -> String {
+        "\(advIntervals[row]) ms"
+    }
+    
+    func txPowerPickerTextForRow(_ row: Int) -> String {
+        String(dBms[row])
     }
     
     func autolockSecondTapped() {
@@ -213,17 +298,35 @@ extension Sesame2SettingViewModel {
             statusUpdated?(.received)
         }
         if delay == 0 {
-            isHiddenPicker = true
+            isHiddenAutoLockSecondPicker = true
             switchIsOn = false
             return
         } else {
             switchIsOn = true
             isHiddenAutoLockDisplay = false
         }
-        isHiddenPicker.toggle()
+        isHiddenAutoLockSecondPicker.toggle()
     }
     
-    func pickerDidSelectRow(_ row: Int) {
+    func advIntervalConfigTapped() {
+//        guard sesame2.deviceStatus.loginStatus() == .login else {
+//            return
+//        }
+//
+//        isHiddenAdvIntervalPicker.toggle()
+//        statusUpdated?(.received)
+    }
+    
+    func txPowerConfgTapped() {
+//        guard sesame2.deviceStatus.loginStatus() == .login else {
+//            return
+//        }
+//        
+//        isHiddenTxPowerPicker.toggle()
+//        statusUpdated?(.received)
+    }
+    
+    func secondPickerDidSelectRow(_ row: Int) {
 
         sesame2.enableAutolock(delay: second[row]) { [weak self] result  in
             guard let strongSelf = self else {
@@ -234,7 +337,7 @@ extension Sesame2SettingViewModel {
                 DispatchQueue.main.async {
                     strongSelf.delay = delay.data
                     strongSelf.isHiddenAutoLockDisplay = delay.data > 0 ? false : true
-                    strongSelf.isHiddenPicker = true
+                    strongSelf.isHiddenAutoLockSecondPicker = true
                     strongSelf.statusUpdated?(.received)
                 }
             case .failure(let error):
@@ -244,12 +347,38 @@ extension Sesame2SettingViewModel {
 
         }
     }
+    
+    func advPickerDidSelectRow(_ row: Int) {
+//        let newAdvInterval = advIntervals[row]
+//        sesame2.updateBleAdvParameter(interval: UInt16(bleUnitFromMillionSecond(newAdvInterval)),
+//                                      txPower: sesame2.bleAdvParameter!.txPower) { [weak self] _ in
+//                                        guard let strongSelf = self else {
+//                                            return
+//                                        }
+//                                        strongSelf.advIntervalPickerSelectedRow = row
+//                                        strongSelf.statusUpdated?(.received)
+//        }
+        isHiddenAdvIntervalPicker = true
+    }
+    
+    func txPowerPickerDidSelectRow(_ row: Int) {
+//        let newTxPower = dBms[row]
+//        sesame2.updateBleAdvParameter(interval: sesame2.bleAdvParameter!.interval,
+//                                      txPower: Int8(newTxPower)) { [weak self] _ in
+//                                        guard let strongSelf = self else {
+//                                            return
+//                                        }
+//                                        strongSelf.txPowerPickerSelectedRow = row
+//                                        strongSelf.statusUpdated?(.received)
+//        }
+        isHiddenTxPowerPicker = true
+    }
 }
 
 // MARK: - DFU
 extension Sesame2SettingViewModel {
     public func dfuActionText() -> String {
-        "SesameOS Update".localStr
+        "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized
     }
     
     public func dfuActionWithObserver(_ observer: DFUHelperObserver) {
@@ -327,25 +456,25 @@ extension Sesame2SettingViewModel {
     }
 }
 
-// MARK: - Friends
+// MARK: - Remove Sesame
 extension Sesame2SettingViewModel {
     
     public func deleteSesameTitle() -> String {
-        "Reset the Sesame and trash the key".localStr
+        "co.candyhouse.sesame-sdk-test-app.ResetSesame".localized
     }
     
     public func deleteSeesameAction() {
         statusUpdated?(.loading)
         let sesame2 = self.sesame2
         let deleteComplete = {
-            Sesame2Store.shared.deletePropertyForDevice(sesame2)
+            Sesame2Store.shared.deletePropertyAndHisotryForDevice(sesame2)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.delegate?.sesame2Deleted()
             }
         }
         
         guard AWSMobileClient.default().isSignedIn == true else {
-            sesame2.resetSesame() { [weak self] result in
+            sesame2.resetSesame2() { [weak self] result in
                 guard let strongSelf = self else {
                     return
                 }
@@ -359,7 +488,7 @@ extension Sesame2SettingViewModel {
             return
         }
         
-        sesame2.resetSesame() { [weak self] result in
+        sesame2.resetSesame2() { [weak self] result in
             guard let strongSelf = self else {
                 return
             }
@@ -374,10 +503,10 @@ extension Sesame2SettingViewModel {
     
     func dropKey() {
         statusUpdated?(.loading)
-        Sesame2Store.shared.deletePropertyForDevice(self.sesame2)
-        sesame2.dropKey()
+        Sesame2Store.shared.deletePropertyAndHisotryForDevice(self.sesame2)
+        sesame2.dropKey(){res in}
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            Sesame2Store.shared.deletePropertyForDevice(self.sesame2)
+            Sesame2Store.shared.deletePropertyAndHisotryForDevice(self.sesame2)
             self.delegate?.sesame2Deleted()
         }
     }

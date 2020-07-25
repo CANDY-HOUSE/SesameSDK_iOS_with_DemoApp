@@ -29,6 +29,4 @@ public final class MyQRCodeViewCoordinator: Coordinator {
         myQRCodeViewController.viewModel = viewModel
         navigationController.pushViewController(myQRCodeViewController, animated: true)
     }
-    
-    
 }

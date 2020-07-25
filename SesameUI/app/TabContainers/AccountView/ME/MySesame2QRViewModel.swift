@@ -18,7 +18,7 @@ public final class MyQRViewModel: ViewModel {
     private(set) var mail: String?
     private(set) var qrCodeType: QRcodeType
     
-    public private(set) var hintLabelText = "Scan this QR code to add me on your contact".localStr
+    public private(set) var hintLabelText = "co.candyhouse.sesame-sdk-test-app.AddFriendByScan".localized
     
     public init(familyName: String? = nil,
                 givenName: String? = nil,

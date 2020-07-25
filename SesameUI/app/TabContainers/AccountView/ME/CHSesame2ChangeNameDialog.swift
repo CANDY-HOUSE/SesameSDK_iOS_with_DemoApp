@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2020/1/13.
-//  Copyright © 2020 Cerberus. All rights reserved.
+//  Copyright © 2020 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -24,8 +24,8 @@ public class CHSesame2ChangeNameDialog: UIViewController {
     @IBOutlet weak var cancelBTN: UIButton!
     @IBOutlet weak var okBTN: UIButton!
     
-    var titleLBText: String = "Change Sesame Name".localStr
-    var firstHintLBText: String = "Give Sesame a cooool name! 😎".localStr
+    var titleLBText: String = "co.candyhouse.sesame-sdk-test-app.ChangeSesameName".localized
+    var firstHintLBText: String = "co.candyhouse.sesame-sdk-test-app.GiveSesameAName".localized
 
     @IBAction func onOKCLick(_ sender: Any) {
         if let first = nameTF.text {
@@ -48,8 +48,8 @@ public class CHSesame2ChangeNameDialog: UIViewController {
         super.viewDidLoad()
         firstHintLB.text = firstHintLBText
         titleLB.text = titleLBText
-        cancelBTN.setTitle("Cancel".localStr, for: .normal)
-        okBTN.setTitle("OK".localStr, for: .normal)
+        cancelBTN.setTitle("co.candyhouse.sesame-sdk-test-app.Cancel".localized, for: .normal)
+        okBTN.setTitle("co.candyhouse.sesame-sdk-test-app.OK".localized.localized, for: .normal)
         titleLB.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
         okBTN.titleLabel?.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
         cancelBTN.titleLabel?.font = .boldSystemFont(ofSize: UIFont.labelFontSize)

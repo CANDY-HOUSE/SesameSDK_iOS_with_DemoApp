@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/10/9.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ class FriendsViewController: CHBaseViewController {
     private var menuFloatView: PopUpMenuControl?
     private func showMoreMenu() {
         if menuFloatView == nil {
-            let y = Constants.statusBarHeight + 44
+            let y = Constant.statusBarHeight + 44
             let frame = CGRect(x: 0, y: y, width: view.bounds.width, height: view.bounds.height - y)
             menuFloatView = PopUpMenuControl(frame: frame)
             menuFloatView?.delegate = self

@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/9/27.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -74,7 +74,7 @@ class ScanViewController: CHBaseViewController {
         }
         
         scanViewSp.scanAnimationImage = UIImage.CHUIImage(named: "ScanLine")!
-        hintLb.text = "Scan the QR code".localStr
+        hintLb.text = "co.candyhouse.sesame-sdk-test-app.ScanTheQRCode".localized
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(rotatedCamera),
                                                name: UIDevice.orientationDidChangeNotification,
@@ -96,7 +96,7 @@ class ScanViewController: CHBaseViewController {
     func cameraEnable() {
         let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if (authStatus == .authorized) {
-            //                L.d("掃描已經授權")
+            
         }
         else if (authStatus == .denied) {
             L.d("掃描denied")
@@ -117,7 +117,8 @@ class ScanViewController: CHBaseViewController {
                     self.dismiss(animated: true, completion:nil)
                 }
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+            let cancelAction = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel",
+                                             style: UIAlertAction.Style.cancel) {
                 UIAlertAction in
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion:nil)
@@ -184,27 +185,6 @@ extension ScanViewController: QRScannerViewDelegate {
     func qrScanningSucceededWithCode(_ qrCode: String?) {
         playSound()
         viewModel.receivedQRCode(qrCode)
-//        guard let urlString = qrCode,
-//            let scanSchema = URL(string: urlString),
-//            let sesame2Key = scanSchema.sesame2Key() else {
-//                let error = NSError(domain: "", code: 0, userInfo: ["error message": "Parse qr code url failed"])
-//                L.d(error.errorDescription())
-//                DispatchQueue.main.async {
-//                    self.view.makeToast(error.errorDescription())
-//                }
-//                return
-//        }
-//
-//        CHBleManager.shared.receiveKey(sesame2Keys: [sesame2Key]) { result in
-//            switch result {
-//            case .success(_):
-//                self.dismiss(animated: true, completion: nil)
-//            case .failure(let error):
-//                DispatchQueue.main.async {
-//                    self.view.makeToast(error.errorDescription())
-//                }
-//            }
-//        }
     }
     
     func playSound() {

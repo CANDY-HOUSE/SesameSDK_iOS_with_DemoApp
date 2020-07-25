@@ -36,7 +36,3 @@ extension CHSesame2 {
         return components.url?.absoluteString
     }
 }
-
-extension URL {
-    
-}

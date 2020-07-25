@@ -47,15 +47,8 @@ extension CHSesame2 {
             WKInterfaceDevice.current().play(.stop)
         }
         
-        toggle { result in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + interval, execute: {
-//                switch result {
-//                case .success(_):
-//                    WKInterfaceDevice.current().play(.success)
-//                case .failure(_):
-//                    WKInterfaceDevice.current().play(.failure)
-//                }
-//            })
+        toggle { _ in
+
         }
         #endif
     }
@@ -63,27 +56,27 @@ extension CHSesame2 {
     public func localizedDescription() -> String {
         switch deviceStatus {
         case .reset:
-            return "co.candyhouse.sesame-sdk-test-app.reset".localStr
+            return "co.candyhouse.sesame-sdk-test-app.reset".localized
         case .noSignal:
-            return "co.candyhouse.sesame-sdk-test-app.noSignal".localStr
+            return "co.candyhouse.sesame-sdk-test-app.noSignal".localized
         case .receiveBle:
-            return "co.candyhouse.sesame-sdk-test-app.receiveBle".localStr
+            return "co.candyhouse.sesame-sdk-test-app.receiveBle".localized
         case .connecting:
-            return "co.candyhouse.sesame-sdk-test-app.connecting".localStr
+            return "co.candyhouse.sesame-sdk-test-app.connecting".localized
         case .waitgatt:
-            return "co.candyhouse.sesame-sdk-test-app.waitgatt".localStr
+            return "co.candyhouse.sesame-sdk-test-app.waitgatt".localized
         case .logining:
-            return "co.candyhouse.sesame-sdk-test-app.logining".localStr
+            return "co.candyhouse.sesame-sdk-test-app.logining".localized
         case .readytoRegister:
-            return "co.candyhouse.sesame-sdk-test-app.readytoRegister".localStr
+            return "co.candyhouse.sesame-sdk-test-app.readytoRegister".localized
         case .locked:
-            return "co.candyhouse.sesame-sdk-test-app.locked".localStr
+            return "co.candyhouse.sesame-sdk-test-app.locked".localized
         case .unlocked:
-            return "co.candyhouse.sesame-sdk-test-app.unlocked".localStr
+            return "co.candyhouse.sesame-sdk-test-app.unlocked".localized
         case .nosetting:
-            return "co.candyhouse.sesame-sdk-test-app.nosetting".localStr
+            return "co.candyhouse.sesame-sdk-test-app.nosetting".localized
         case .moved:
-            return "co.candyhouse.sesame-sdk-test-app.moved".localStr
+            return "co.candyhouse.sesame-sdk-test-app.moved".localized
         }
     }
     

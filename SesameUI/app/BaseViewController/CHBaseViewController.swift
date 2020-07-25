@@ -13,6 +13,20 @@ import Foundation
 
 public class CHBaseViewController: UIViewController {
     private var previouseNavigationTitle = ""
+    lazy var titleLabel: UILabel = {
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0,
+                                               y: 0,
+                                               width: 200,
+                                               height: 40))
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 1
+        titleLabel.minimumScaleFactor = 0.01
+        return titleLabel
+    }()
     
     struct NavigationBarTintColor {
         let previous: UIColor
@@ -40,19 +54,20 @@ public class CHBaseViewController: UIViewController {
             let previouseColor = navigationController?.navigationBar.tintColor ?? .white
             navigationBarTintColor = .init(previous: previouseColor)
         }
+        navigationItem.titleView = titleLabel
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBarTintColor(navigationBarTintColor.current)
-        navigationItem.title = previouseNavigationTitle
+        titleLabel.text = previouseNavigationTitle
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         setupNavigationBarTintColor(navigationBarTintColor.previous)
-        previouseNavigationTitle = navigationItem.title ?? ""
-        navigationItem.title = "co.candyhouse.sesame2app.back".localStr
+        previouseNavigationTitle = titleLabel.text ?? ""
+        titleLabel.text = ""
     }
 }
 

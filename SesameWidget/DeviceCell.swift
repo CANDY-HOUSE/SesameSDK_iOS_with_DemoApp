@@ -3,7 +3,7 @@
 //  locker
 //
 //  Created by tse on 2019/10/15.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -77,6 +77,10 @@ extension DeviceCell: CHSesame2Delegate{
             status == .receiveBle {
             device.connect(){res in}
         }
+        updateUI()
+    }
+    
+    public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
         updateUI()
     }
 }

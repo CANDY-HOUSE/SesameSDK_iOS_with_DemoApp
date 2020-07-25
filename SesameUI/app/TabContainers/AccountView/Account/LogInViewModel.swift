@@ -28,11 +28,11 @@ public final class LogInViewModel: ViewModel {
     
     private(set) var logInImage = "loginlogo"
     private(set) var subLogInImage = "loginsubhint"
-    private(set) var logInButtonTitle = "Log In".localStr
-    private(set) var nameLabelText = "Email".localStr
-    private(set) var passwordLabelText = "Password".localStr
-    private(set) var signUpButtonTitle = "Sign up".localStr
-    private(set) var forgotPasswordButtonTitle = "Forgot password".localStr
+    private(set) var logInButtonTitle = "co.candyhouse.sesame-sdk-test-app.LogIn".localized
+    private(set) var nameLabelText = "co.candyhouse.sesame-sdk-test-app.Email".localized
+    private(set) var passwordLabelText = "co.candyhouse.sesame-sdk-test-app.Password".localized
+    private(set) var signUpButtonTitle = "co.candyhouse.sesame-sdk-test-app.SignUp".localized
+    private(set) var forgotPasswordButtonTitle = "co.candyhouse.sesame-sdk-test-app.ForgotPassword".localized
     private(set) var closeImage = "icons_filled_close"
     private(set) var signUpType: SignUpViewModel.SignUpType?
     
@@ -70,26 +70,6 @@ public final class LogInViewModel: ViewModel {
 
                 if let error = error {
                     L.d(error.errorDescription())
-                } else if let userAttributes = userAttributes {
-                    do {
-                        let user = try User.userFromAttributes(userAttributes)
-//                        CHAccountManager.shared.updateMyProfile(
-//                            first_name:user.givenName,
-//                            last_name:user.familyName
-//                        ) { result in
-//                            switch result {
-//                            case .success(let candyUUID):
-//                                L.d(candyUUID.data as Any)
-//                                self.statusUpdated?(.finished(.success(true)))
-//                            case .failure(let error):
-//                                L.d(ErrorMessage.descriptionFromError(error: error))
-//                                self.statusUpdated?(.finished(.failure(error)))
-//                            }
-//                        }
-                    } catch {
-                        L.d(error.errorDescription())
-                        self.statusUpdated?(.finished(.failure(error)))
-                    }
                 } else {
                     L.d("All Null")
                     self.statusUpdated?(.finished(.failure(SingInError.unknow)))

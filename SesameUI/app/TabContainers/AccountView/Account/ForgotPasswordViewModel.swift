@@ -25,11 +25,11 @@ public final class ForgotPasswordViewModel: ViewModel {
     
     private(set) var backButtonImage = "icons_filled_close"
     private(set) var confirmationCodeAlertTitle = "Code Sent"
-    private(set) var emailLabelText = "Email".localStr
-    private(set) var confirmationCodeLabelText = "Verification".localStr
-    private(set) var newPasswordLabelText = "New Password".localStr
-    private(set) var confirmationButtonTitle = "Verification code".localStr
-    private(set) var resendEmailButtonTitle = "Send verification code".localStr
+    private(set) var emailLabelText = "co.candyhouse.sesame-sdk-test-app.Email".localized
+    private(set) var confirmationCodeLabelText = "Verification".localized
+    private(set) var newPasswordLabelText = "co.candyhouse.sesame-sdk-test-app.NewPassword".localized
+    private(set) var confirmationButtonTitle = "co.candyhouse.sesame-sdk-test-app.VerificationCode".localized
+    private(set) var resendEmailButtonTitle = "co.candyhouse.sesame-sdk-test-app.SendVerificationCode".localized
     public var confirmationCodeSendDestination: String? {
         forgotPasswordResult?.codeDeliveryDetails?.destination
     }
@@ -40,7 +40,7 @@ public final class ForgotPasswordViewModel: ViewModel {
             return "Code resent"
         }
     }
-    private(set) var confirmationCodeActionTitle = "Ok"
+    private(set) var confirmationCodeActionTitle = "co.candyhouse.sesame-sdk-test-app.OK".localized
     
     private(set) var email: String
     private(set) var password: String?

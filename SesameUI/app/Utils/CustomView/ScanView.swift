@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2020/1/6.
-//  Copyright © 2020 Cerberus. All rights reserved.
+//  Copyright © 2020 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -33,8 +33,8 @@ public class ScanView: UIView {
         contentView = UIView(frame: CGRect(x: scanBorderX, y: scanBorderY, width: scanBorderWidth, height:scanBorderHeight))
     }
 
-    var screenWidth = Constants.screenWidth
-    var screenHeight = Constants.screenHeight
+    var screenWidth = Constant.screenWidth
+    var screenHeight = Constant.screenHeight
 
     override public func draw(_ rect: CGRect) {
         super.draw(rect)

@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by Yiling on 2019/09/02.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -43,7 +43,9 @@ class ViewHelper: NSObject {
     class func alert(_ title: String, _ message: String, _ viewController: UIViewController) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.OK".localized,
+                                          style: .default,
+                                          handler: nil))
             viewController.present(alert, animated: true, completion: nil)
         }
     }

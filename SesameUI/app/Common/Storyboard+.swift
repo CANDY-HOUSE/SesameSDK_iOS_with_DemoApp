@@ -15,8 +15,8 @@ public extension UIStoryboard {
             Constant.storyboard.instantiateViewController(withIdentifier: "MyQRCodeViewController") as? MyQRCodeViewController
         }
         
-        static var sesame2RoomMainVC: Sesame2RoomMainViewController? {
-            Constant.storyboard.instantiateViewController(withIdentifier: "Sesame2RoomMainViewController") as? Sesame2RoomMainViewController
+        static var sesame2RoomMainVC: Sesame2HistoryViewController? {
+            Constant.storyboard.instantiateViewController(withIdentifier: "Sesame2HistoryViewController") as? Sesame2HistoryViewController
         }
         
         static var bluetoothDevicesListViewController: BluetoothDevicesListViewController? {
@@ -70,15 +70,7 @@ public extension UIStoryboard {
         static var registerDeviceListVC: RegisterDeviceListViewController? {
             Constant.storyboard.instantiateViewController(withIdentifier: "RegisterDeviceListViewController") as? RegisterDeviceListViewController
         }
-        
-//        static var addFriendViewController: AddFriendViewController? {
-//            Constant.storyboard.instantiateViewController(withIdentifier: "AddFriendViewController") as? AddFriendViewController
-//        }
-//        
-//        static var deleteFriendVC: DeleteFriendViewController? {
-//            Constant.storyboard.instantiateViewController(withIdentifier: "DeleteFriendVC") as? DeleteFriendViewController
-//        }
-        
+
         static var bluetoothSesameControlViewController: BluetoothSesame2ControlViewController? {
             Constant.storyboard.instantiateViewController(withIdentifier: "BluetoothSesame2ControlViewController") as? BluetoothSesame2ControlViewController
         }

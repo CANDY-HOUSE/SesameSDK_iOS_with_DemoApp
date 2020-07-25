@@ -27,9 +27,9 @@ public final class FriendsViewModel: ViewModel {
     
     var delegate: FriendsViewModelDelegate?
     
-    public private(set) var emptyMessage = "No Contacts".localStr
-    private(set) var actonTitle = "DeleteFriend".localStr
-    private(set) var pullToRefreshTitle = "Pull to refresh".localStr
+    public private(set) var emptyMessage = "co.candyhouse.sesame-sdk-test-app.NoContacts".localized
+    private(set) var actonTitle = "co.candyhouse.sesame-sdk-test-app.DeleteFriend".localized
+    private(set) var pullToRefreshTitle = "co.candyhouse.sesame-sdk-test-app.PullToRefresh".localized
     
     public init() {
 
@@ -54,16 +54,6 @@ public final class FriendsViewModel: ViewModel {
     }
     
     func tableViewDidSelectRowAt(_ row: Int) {
-//        let uuid = friends[row].id.uuidString
-//        CHAccountManager.shared.unfriend(fdId: uuid) { result in
-//            switch result {
-//            case .success(_):
-//                self.friends.remove(at: row)
-//                self.statusUpdated?(.finished(.success("")))
-//            case .failure(let error):
-//                self.statusUpdated?(.finished(.failure(error)))
-//            }
-//        }
     }
     
     func titleForSelectedRow(_ row: Int) -> String? {
