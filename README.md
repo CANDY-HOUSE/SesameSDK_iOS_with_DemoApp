@@ -43,7 +43,6 @@ with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ 
 # Essential dependencies
 - SesameSDK.framework
 - AWSAPIGateway.framework
-
 # Configure the SDK
 1. Download SesameSDK and play with the included iOS/Android Demo app.  または
 [Apple TestFlight](https://testflight.apple.com/join/mK4OadTW) / 
