@@ -69,7 +69,7 @@ class PopUpMenu: UIView {
             if index != menus.count - 1 {
                 let line = UIImageView()
                 line.image = UIImage.CHUIImage(named: "MoreFunctionFrameLine_120x0_")
-                line.frame = CGRect(x: 50, y: itemHeight - Constants.lineHeight, width: itemWidth - 50, height: Constants.lineHeight)
+                line.frame = CGRect(x: 50, y: itemHeight - Constant.lineHeight, width: itemWidth - 50, height: Constant.lineHeight)
                 button.addSubview(line)
             }
             buttons.append(button)

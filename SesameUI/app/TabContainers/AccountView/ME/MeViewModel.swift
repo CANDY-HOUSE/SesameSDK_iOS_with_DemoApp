@@ -27,11 +27,11 @@ public final class MeViewModel: ViewModel {
     private(set) var avatarImage: String?
     private(set) var email: String?
     
-    private(set) var logoutButtonTitle = "Log Out".localStr
-    private(set) var changeAccountNameText = "Edit Name".localStr
+    private(set) var logoutButtonTitle = "co.candyhouse.sesame-sdk-test-app.LogOut".localized
+    private(set) var changeAccountNameText = "co.candyhouse.sesame-sdk-test-app.EditName".localized
     private(set) var rightButtonImage = "icons_outlined_addoutline"
     private(set) var qrCodeIcon = "icons_outlined_qr-code"
-    private(set) var logOutButtonTitle = "Log Out".localStr
+    private(set) var logOutButtonTitle = "co.candyhouse.sesame-sdk-test-app.LogOut".localized
     
     var isSignedIn: Bool {
         AWSMobileClient.default().isSignedIn
@@ -58,20 +58,8 @@ public final class MeViewModel: ViewModel {
     
     func logOutTapped() {
         AWSMobileClient.default().signOut()
-//        CHAccountManager.shared.logout()
         CHUIKeychainManager.shared.setWidgetNeedSignIn(true)
         CHUIKeychainManager.shared.removeUsernameAndPassword()
-//        guard let storeURL = try? CHBleManager.shared.backupStoreURL() else {
-//            return
-//        }
-//        WCSession.default.transferFile(storeURL, metadata: nil)
-//        NotificationCenter
-//            .default
-//            .addObserver(forName: .WCSessioinDidReceiveMessage,
-//                         object: nil,
-//                         queue: nil) { notification in
-//                            try? FileManager.default.removeItem(at: storeURL)
-//        }
     }
     
     func modifyAccountNameTapped(lastName: String, firstName: String) {

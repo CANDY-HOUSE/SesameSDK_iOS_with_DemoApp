@@ -29,7 +29,6 @@ class QRScannerView: UIView {
         super.init(coder: aDecoder)
         doInitialSetup()
         layer.connection?.videoOrientation = .landscapeLeft
-//        layer.connection?.videoOrientation = .portrait
     }
     
     override init(frame: CGRect) {
@@ -125,5 +124,4 @@ extension QRScannerView: AVCaptureMetadataOutputObjectsDelegate {
             found(code: stringValue)
         }
     }
-
 }

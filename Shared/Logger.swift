@@ -3,7 +3,7 @@
 //  sesame-sdk
 //
 //  Created by tse on 2019/8/6.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -16,8 +16,6 @@ class L {
         let fileName = (file as NSString).lastPathComponent
         let ismain  = (Thread.isMainThread)
         let dateFormatter = DateFormatter()
-        //        dateFormatter.dateFormat = "mm:ss.SSSS"
-        //        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.locale = Locale(identifier: "ja_JP")

@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by Cerberus on 2019/08/05.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -26,7 +26,7 @@ public class BluetoothDevicesListViewController: CHBaseViewController, UITableVi
     var viewModel: BluetoothDevicesListViewModel!
     
     lazy var popUpMenuControl: PopUpMenuControl = {
-        let y = Constants.statusBarHeight + 44
+        let y = Constant.statusBarHeight + 44
         let frame = CGRect(x: 0, y: y, width: view.bounds.width, height: view.bounds.height - y)
         let popUpMenuControl = PopUpMenuControl(frame: frame)
         popUpMenuControl.delegate = self
@@ -87,7 +87,7 @@ public class BluetoothDevicesListViewController: CHBaseViewController, UITableVi
         testMode.isHidden = true
         #endif
 
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh".localStr)
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame-sdk-test-app.PullToRefresh".localized)
         refreshControl.addTarget(self, action: #selector(pullTorefresh), for: .valueChanged)
         deviceTableView.addSubview(refreshControl)
         deviceTableView.tableFooterView = UIView(frame: .zero)
@@ -171,7 +171,7 @@ extension BluetoothDevicesListViewController {
             self.deviceTableView.reloadData()
             
             if self.viewModel.numberOfRowsInSection(0) == 0 {
-                self.deviceTableView.setEmptyMessage("No Devices".localStr)
+                self.deviceTableView.setEmptyMessage("co.candyhouse.sesame-sdk-test-app.NoDevices".localized)
             } else {
                 self.deviceTableView.restore()
             }

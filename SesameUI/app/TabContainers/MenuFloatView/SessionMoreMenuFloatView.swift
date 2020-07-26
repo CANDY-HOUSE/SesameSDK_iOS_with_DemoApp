@@ -30,15 +30,15 @@ class PopUpMenuControl: UIButton {
         super.init(frame: frame)
         
         let addFriend = PopUpMenuItem(type: .addFriends,
-                                            title: LocalizedString("Add Contacts"),
-                                            icon: "icons_filled_add-friends")
+                                      title: "co.candyhouse.sesame-sdk-test-app.AddContacts".localized,
+                                      icon: "icons_filled_add-friends")
 
         let addDevices = PopUpMenuItem(type: .addDevices,
-                                            title: LocalizedString("New Sesame"),
-                                            icon: "icons_filled_favorites")
+                                       title: "co.candyhouse.sesame-sdk-test-app.NewSesame".localized,
+                                       icon: "icons_filled_favorites")
         
         let scanDeviceQRCode = PopUpMenuItem(type: .receiveKey,
-                                             title: "co.candyhouse.sesame-sdk-test-app.scanQRCode".localStr,
+                                             title: "co.candyhouse.sesame-sdk-test-app.scanQRCode".localized,
                                           icon: "icons_filled_scan")
 
 

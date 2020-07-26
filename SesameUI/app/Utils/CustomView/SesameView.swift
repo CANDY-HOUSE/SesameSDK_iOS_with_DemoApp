@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/10/11.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Foundation
 import UIKit.UIGestureRecognizerSubclass
 import SesameSDK
 
-class SesameView: UIControl {
+class LockView: UIControl {
     
     var viewModel: SesameViewModel!
 
@@ -19,7 +19,6 @@ class SesameView: UIControl {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        L.d("init aDecoder")
         commonInit()
     }
 
@@ -149,8 +148,6 @@ private class KnobRenderer {
     }
     
     func setPointerAngle(_ newPointerAngle: CGFloat) {
-
-
         let ss = CGFloat(Double.pi*2)  / CGFloat(360) * newPointerAngle
         let ww = CGFloat(Double.pi*2)  / CGFloat(360) * newPointerAngle   + CGFloat(Double.pi/2)
 
@@ -169,8 +166,6 @@ private class KnobRenderer {
         let ring = UIBezierPath(arcCenter: center, radius: radius,
                                 startAngle: 0,
                                 endAngle: CGFloat(Double.pi) * 2, clockwise: true)
-
-
         trackLayer.path = ring.cgPath
     }
     

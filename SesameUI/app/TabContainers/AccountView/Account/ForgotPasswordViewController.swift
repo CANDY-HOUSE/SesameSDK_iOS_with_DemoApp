@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/12/7.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,6 @@ import AWSCognitoIdentityProvider
 import AWSMobileClient
 
 class ForgotPasswordViewController: CHBaseViewController {
-//    var loginVC:LogInViewController? = nil
     
     var viewModel: ForgotPasswordViewModel!
 
@@ -49,7 +48,9 @@ class ForgotPasswordViewController: CHBaseViewController {
                         let alertController = UIAlertController(title: "Code Sent",
                                                                 message: "Code sent to \(result.codeDeliveryDetails?.destination ?? "no message")",
                             preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                        let okAction = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.OK".localized,
+                                                     style: .default,
+                                                     handler: nil)
                         alertController.addAction(okAction)
                         self.present(alertController, animated: true, completion: nil)
 
@@ -69,27 +70,6 @@ class ForgotPasswordViewController: CHBaseViewController {
     
     @IBAction func confirm(_ sender: Any) {
         self.view.endEditing(true)
-        
-//        AWSMobileClient
-//            .default()
-//            .confirmForgotPassword(username: emailTextField.text!.toMail(),
-//                                   newPassword: self.newPasswordTextField.text!,
-//                                   confirmationCode: self.confirmationCodeTextField.text!)
-//            { forgotPasswordResult, error in
-//                DispatchQueue.main.async {
-//                    if let error = error {
-//                        self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-//                    } else {
-//                        DispatchQueue.main.async {
-//                            self.loginVC?.userName.text = self.emailTextField.text!.toMail()
-//                            self.loginVC?.password.text = self.newPasswordTextField.text
-//                            self.dismiss(animated: true, completion:nil)
-//                            self.view.makeToast("change sucess".localStr)
-//                        }
-//                        let _ = self.navigationController?.popToRootViewController(animated: true)
-//                    }
-//                }
-//        }
     }
     
     override func viewDidLoad() {

@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by Cerberus on 2019/08/05.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UserNotifications
@@ -46,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        CHAccountManager.shared.updateApnsDeviceToken(deviceToken: deviceToken.toHexString())
         UserDefaults.standard.setValue(deviceToken.toHexString(), forKey: "devicePushToken")
     }
 

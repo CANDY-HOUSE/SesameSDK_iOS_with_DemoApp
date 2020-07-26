@@ -53,24 +53,15 @@ final class BluetoothDevicesListViewModel: ViewModel {
         CHDeviceManager.shared.getSesame2s() { result in
             switch result {
             case .success(let sesame2s):
-                self.sesameDevices = sesame2s
+                self.sesameDevices = sesame2s.data
                 var keys = [String: Any]()
-                for sesame in sesame2s {
+                for sesame in sesame2s.data {
                     if let key = sesame.getKey() {
                         keys[sesame.deviceId.uuidString] = key
                     }
                 }
-                WCSession.default.sendMessage(keys, replyHandler: nil, errorHandler: nil)
-//                guard let storeURL = try? CHBleManager.shared.backupStoreURL() else {
-//                    return
-//                }
-//                WCSession.default.transferFile(storeURL, metadata: nil)
-                
-//                guard let sesame2StoreURL = try? Sesame2Store.shared.backupStoreURL() else {
-//                    return
-//                }
-//                WCSession.default.transferFile(sesame2StoreURL, metadata: nil)
-                L.d("Retrieved \(sesame2s.count) devices, sent db to watch.")
+                WCSession.default.transferUserInfo(keys)
+                L.d("Retrieved \(sesame2s.data.count) devices, sending keys to the watch.")
                 self.statusUpdated?(.received)
             case .failure(let error):
                 self.statusUpdated?(.finished(.failure(error)))

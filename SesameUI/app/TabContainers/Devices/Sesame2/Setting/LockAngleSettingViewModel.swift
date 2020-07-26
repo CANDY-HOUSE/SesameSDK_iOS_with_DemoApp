@@ -24,11 +24,11 @@ public final class LockAngleSettingViewModel: ViewModel {
     
     public private(set) var setLockImage = "icon_lock"
     public private(set) var setUnlockImage = "icon_unlock"
-    public private(set) var hintContent = "Please completely lock/unlock Sesame, and press the buttons below to configure locked/unlocked positions respectively.".localStr
-    public private(set) var title = "Configure Angles".localStr
-    public private(set) var hintTitle = "Please configure Locked/Unlocked Angle.".localStr
-    public private(set) var setLockButtonTitle = "Set Locked Position".localStr
-    public private(set) var setUnlockButtonTitle = "Set Unlocked Position".localStr
+    public private(set) var hintContent = "co.candyhouse.sesame-sdk-test-app.PleaseCompletelyLockUnlock".localized
+    public private(set) var title = "co.candyhouse.sesame-sdk-test-app.ConfigureAngles".localized
+    public private(set) var hintTitle = "co.candyhouse.sesame-sdk-test-app.PleaseConfigureAngle".localized
+    public private(set) var setLockButtonTitle = "co.candyhouse.sesame-sdk-test-app.SetLockedPosition".localized
+    public private(set) var setUnlockButtonTitle = "co.candyhouse.sesame-sdk-test-app.SetUnlockedPosition".localized
     
     init(sesame2: CHSesame2) {
         self.sesame2 = sesame2
@@ -46,7 +46,6 @@ public final class LockAngleSettingViewModel: ViewModel {
         if unlockDegree == -32768 {
             unlockDegree = 0
         }
-//        var config = CHSesameLockPositionConfiguration(lockTarget: lockDegree, unlockTarget: unlockDegree)
         if abs(lockDegree - unlockDegree) < 50 {
             statusUpdated?(.finished(.failure(LockAngleError.tooClose)))
             return
@@ -70,9 +69,9 @@ public final class LockAngleSettingViewModel: ViewModel {
             statusUpdated?(.finished(.failure(LockAngleError.tooClose)))
             return
         }
-          sesame2.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
-
-         }
+        sesame2.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
+            
+        }
         statusUpdated?(.finished(.success("")))
     }
     
@@ -97,7 +96,6 @@ public final class LockAngleSettingViewModel: ViewModel {
             unlockDegree = Int16(setting.getUnlockPosition()!)
             
             if !setting.isConfigured() {
-//                var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0){res in}
                 sesame2.configureLockPosition(lockTarget: 1024/4, unlockTarget: 0){res in}
             }
             
@@ -136,7 +134,7 @@ extension LockAngleSettingViewModel: CHSesame2Delegate {
 }
 
 extension LockAngleSettingViewModel {
-    public func sesameViewModel() -> SesameViewModel {
-        SesameViewModel(sesame2: sesame2)
+    public func sesameViewModel() -> LockViewModel {
+        LockViewModel(sesame2: sesame2)
     }
 }

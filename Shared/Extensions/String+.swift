@@ -28,7 +28,7 @@ extension String {
         return data(using: String.Encoding.utf8, allowLossyConversion: true)?.bytes ?? Array(utf8)
     }
     
-    public var localStr: String{
+    public var localized: String{
         return NSLocalizedString(self,
                                  bundle: LanguageBundle.bundle,
                                  value: "",

@@ -18,7 +18,7 @@ public final class RegisterCellModel: ViewModel {
     }
     
     public func ssiText() -> String {
-        "\(sesame2.rssi.intValue + 130)%"
+        (sesame2.rssi == nil) ? "0%":"\(sesame2.rssi!.intValue + 130)%"
     }
     
     public func bluetoothImage() -> String {

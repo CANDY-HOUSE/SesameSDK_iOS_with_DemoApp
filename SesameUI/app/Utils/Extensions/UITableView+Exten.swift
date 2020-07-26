@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/12/24.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -17,13 +17,10 @@ extension UITableView {
         messageLabel.textAlignment = .center
         messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
         messageLabel.sizeToFit()
-
-        self.backgroundView = messageLabel
-//        self.separatorStyle = .none
+        backgroundView = messageLabel
     }
 
     func restore() {
-        self.backgroundView = nil
-//        self.separatorStyle = .singleLine
+        backgroundView = nil
     }
 }

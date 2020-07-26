@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2020/1/9.
-//  Copyright © 2020 Cerberus. All rights reserved.
+//  Copyright © 2020 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -47,11 +47,11 @@ public class CHTFDialogViewController: UIViewController {
         super.viewDidLoad()
         titleLB.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
 
-        titleLB.text = "Edit Name".localStr
-        cancelBtn.setTitle("Cancel".localStr, for: .normal)
-        okBtn.setTitle("OK".localStr, for: .normal)
-        tophintLB.text = "Last Name".localStr
-        secondHintLB.text = "First Name".localStr
+        titleLB.text = "co.candyhouse.sesame-sdk-test-app.EditName".localized
+        cancelBtn.setTitle("co.candyhouse.sesame-sdk-test-app.Cancel".localized, for: .normal)
+        okBtn.setTitle("co.candyhouse.sesame-sdk-test-app.OK".localized.localized, for: .normal)
+        tophintLB.text = "co.candyhouse.sesame-sdk-test-app.LastName".localized
+        secondHintLB.text = "co.candyhouse.sesame-sdk-test-app.FirstName".localized
 
 
         let tmpFamilyName = UserDefaults.standard.string(forKey: "family_name")

@@ -93,107 +93,86 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         let property = getPropertyForDevice(device)
         for history in histories {
             switch history {
-            case let autoLockUpdatedHistory as Sesame2HistoryAutoLockUpdated:
+            case .autoLock(let autoLockHistory):
+                let newHistory = Sesame2HistoryAutoLockMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = autoLockHistory.historyTag
+                newHistory.date = autoLockHistory.date
+                newHistory.recordID = autoLockHistory.recordID
+                newHistory.sectionIdentifier = autoLockHistory.date.toYMD()
+                property.addToHistories(newHistory)
+            case .autoLockUpdated(let autoLockUpdatedHistory):
                 let newHistory = Sesame2HistoryAutoLockUpdatedMO(context: managedObjectContext)
-                let timeStamp = Int64(autoLockUpdatedHistory.timeStamp)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = autoLockUpdatedHistory.historyTag
-                newHistory.timeStamp = timeStamp
-                newHistory.historyType = Int64(autoLockUpdatedHistory.type.rawValue)
-                newHistory.registrationTimes = Int64(autoLockUpdatedHistory.registrationTimes ?? -1)
+                newHistory.date = autoLockUpdatedHistory.date
                 newHistory.recordID = autoLockUpdatedHistory.recordID
-                newHistory.sectionIdentifier = Date(timeIntervalSince1970: TimeInterval(timeStamp)).toYMD()
-                if let enableBefore = autoLockUpdatedHistory.enabledBefore {
-                    newHistory.enabledBefore = Int64(enableBefore)
-                }
-                if let enableAfter = autoLockUpdatedHistory.enabledAfter {
-                    newHistory.enabledAfter = Int64(enableAfter)
-                }
+                newHistory.sectionIdentifier = autoLockUpdatedHistory.date.toYMD()
+                newHistory.enabledBefore = Int64(autoLockUpdatedHistory.enabledBefore)
+                newHistory.enabledAfter = Int64(autoLockUpdatedHistory.enabledAfter)
                 property.addToHistories(newHistory)
-            case let mechSettingUpdatedHistory as Sesame2HistoryMechSettingUpdated:
+            case .mechSettingUpdated(let mechSettingUpdatedHistory):
                 let newHistory = Sesame2HistoryMechSettingUpdatedMO(context: managedObjectContext)
-                let timeStamp = Int64(mechSettingUpdatedHistory.timeStamp)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = mechSettingUpdatedHistory.historyTag
-                newHistory.timeStamp = timeStamp
-                newHistory.historyType = Int64(mechSettingUpdatedHistory.type.rawValue)
-                newHistory.registrationTimes = Int64(mechSettingUpdatedHistory.registrationTimes ?? -1)
+                newHistory.date = mechSettingUpdatedHistory.date
                 newHistory.recordID = mechSettingUpdatedHistory.recordID
-                newHistory.sectionIdentifier = Date(timeIntervalSince1970: TimeInterval(timeStamp)).toYMD()
-                if let lockRangeMaxAfter = mechSettingUpdatedHistory.lockRangeMaxAfter {
-                    newHistory.lockRangeMaxAfter = Int64(lockRangeMaxAfter)
-                }
-                
-                if let lockRangeMaxBefore = mechSettingUpdatedHistory.lockRangeMaxBefore {
-                    newHistory.lockRangeMaxBefore = Int64(lockRangeMaxBefore)
-                }
-                
-                if let lockRangeMinAfter = mechSettingUpdatedHistory.lockRangeMinAfter {
-                    newHistory.lockRangeMinAfter = Int64(lockRangeMinAfter)
-                }
-                
-                if let lockRangeMinBefore = mechSettingUpdatedHistory.lockRangeMinBefore {
-                    newHistory.lockRangeMinBefore = Int64(lockRangeMinBefore)
-                }
-                
-                if let lockTargetAfter = mechSettingUpdatedHistory.lockTargetAfter {
-                    newHistory.lockTargetAfter = Int64(lockTargetAfter)
-                }
-                
-                if let lockTargetBefore = mechSettingUpdatedHistory.lockTargetBefore {
-                    newHistory.lockTargetBefore = Int64(lockTargetBefore)
-                }
-                
-                if let unlockRangeMaxAfter = mechSettingUpdatedHistory.unlockRangeMaxAfter {
-                    newHistory.unlockRangeMaxAfter = Int64(unlockRangeMaxAfter)
-                }
-                
-                if let unlockRangeMaxBefore = mechSettingUpdatedHistory.unlockRangeMaxBefore {
-                    newHistory.unlockRangeMaxBefore = Int64(unlockRangeMaxBefore)
-                }
-                
-                if let unlockRangeMinAfter = mechSettingUpdatedHistory.unlockRangeMinAfter {
-                    newHistory.unlockRangeMinAfter = Int64(unlockRangeMinAfter)
-                }
-                
-                if let unlockRangeMinBefore = mechSettingUpdatedHistory.unlockRangeMinBefore {
-                    newHistory.unlockRangeMinBefore = Int64(unlockRangeMinBefore)
-                }
-                
-                if let unlockTargetAfter = mechSettingUpdatedHistory.unlockTargetAfter {
-                    newHistory.unlockTargetAfter = Int64(unlockTargetAfter)
-                }
-                
-                if let unlockTargetBefore = mechSettingUpdatedHistory.unlockTargetBefore {
-                    newHistory.unlockTargetBefore = Int64(unlockTargetBefore)
-                }
+                newHistory.sectionIdentifier = mechSettingUpdatedHistory.date.toYMD()
+                newHistory.lockTargetAfter = Int64(mechSettingUpdatedHistory.lockTargetAfter)
+                newHistory.lockTargetBefore = Int64(mechSettingUpdatedHistory.lockTargetBefore)
+                newHistory.unlockTargetAfter = Int64(mechSettingUpdatedHistory.unlockTargetAfter)
+                newHistory.unlockTargetBefore = Int64(mechSettingUpdatedHistory.unlockTargetBefore)
                 property.addToHistories(newHistory)
-            case let timeChaedHistoryHistory as Sesame2HistoryTimeChanged:
+            case .timeChanged(let timeChaedHistoryHistory):
                 let newHistory = Sesame2HistoryTimeChangedMO(context: managedObjectContext)
-                let timeStamp = Int64(timeChaedHistoryHistory.timeStamp)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = timeChaedHistoryHistory.historyTag
-                newHistory.timeStamp = timeStamp
-                newHistory.historyType = Int64(timeChaedHistoryHistory.type.rawValue)
-                newHistory.registrationTimes = Int64(timeChaedHistoryHistory.registrationTimes ?? -1)
-                newHistory.recordID = history.recordID
-                newHistory.sectionIdentifier = Date(timeIntervalSince1970: TimeInterval(timeStamp)).toYMD()
-                newHistory.newTime = timeChaedHistoryHistory.newTime
+                newHistory.date = timeChaedHistoryHistory.date
+                newHistory.recordID = timeChaedHistoryHistory.recordID
+                newHistory.sectionIdentifier = timeChaedHistoryHistory.date.toYMD()
+                newHistory.newTime = timeChaedHistoryHistory.timeAfter
                 newHistory.timeBefore = timeChaedHistoryHistory.timeBefore
                 property.addToHistories(newHistory)
-            case let lockUnlockHistory as Sesame2HistoryLockUnlock:
-                let newHistory = Sesame2HistoryLockUnlockMO(context: managedObjectContext)
-                let timeStamp = Int64(lockUnlockHistory.timeStamp)
+            case .bleLock(let lockHistory):
+                let newHistory = Sesame2HistoryLockMO(context: managedObjectContext)
                 newHistory.deviceID = device.deviceId
-                newHistory.historyTag = lockUnlockHistory.historyTag
-                newHistory.timeStamp = timeStamp
-                newHistory.historyType = Int64(lockUnlockHistory.type.rawValue)
-                newHistory.registrationTimes = Int64(lockUnlockHistory.registrationTimes ?? -1)
-                newHistory.recordID = lockUnlockHistory.recordID
-                newHistory.sectionIdentifier = Date(timeIntervalSince1970: TimeInterval(timeStamp)).toYMD()
+                newHistory.historyTag = lockHistory.historyTag
+                newHistory.date = lockHistory.date
+                newHistory.recordID = lockHistory.recordID
+                newHistory.sectionIdentifier = lockHistory.date.toYMD()
                 property.addToHistories(newHistory)
-            default:
-                break
+            case .manualElse(let manualElseHisotry):
+                let newHistory = Sesame2HistoryManualElseMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = manualElseHisotry.historyTag
+                newHistory.date = manualElseHisotry.date
+                newHistory.recordID = manualElseHisotry.recordID
+                newHistory.sectionIdentifier = manualElseHisotry.date.toYMD()
+                property.addToHistories(newHistory)
+            case .manualLocked(let manualLockedHistory):
+                let newHistory = Sesame2HistoryManualLockedMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = manualLockedHistory.historyTag
+                newHistory.date = manualLockedHistory.date
+                newHistory.recordID = manualLockedHistory.recordID
+                newHistory.sectionIdentifier = manualLockedHistory.date.toYMD()
+                property.addToHistories(newHistory)
+            case .manualUnlocked(let manualUnlockedHistory):
+                let newHistory = Sesame2HistoryManualUnlockedMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = manualUnlockedHistory.historyTag
+                newHistory.date = manualUnlockedHistory.date
+                newHistory.recordID = manualUnlockedHistory.recordID
+                newHistory.sectionIdentifier = manualUnlockedHistory.date.toYMD()
+                property.addToHistories(newHistory)
+            case .bleUnLock(let bleUnLockHistory):
+                let newHistory = Sesame2HistoryUnlockMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = bleUnLockHistory.historyTag
+                newHistory.date = bleUnLockHistory.date
+                newHistory.recordID = bleUnLockHistory.recordID
+                newHistory.sectionIdentifier = bleUnLockHistory.date.toYMD()
+                property.addToHistories(newHistory)
             }
         }
     }
@@ -251,7 +230,7 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
-    func deletePropertyForDevice(_ device: CHSesame2) {
+    func deletePropertyAndHisotryForDevice(_ device: CHSesame2) {
         let storeDevice = getPropertyForDevice(device)
         managedObjectContext.delete(storeDevice)
         // TODO: Replace by cascade delete

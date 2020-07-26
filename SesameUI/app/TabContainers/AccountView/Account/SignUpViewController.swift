@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/11/25.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import UIKit
@@ -14,100 +14,7 @@ import AWSMobileClient
 
 class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDelegate {
 
-//    var loginVC:LogInViewController? = nil
     var viewModel: SignUpViewModel!
-    
-    @IBAction func back(_ sender: Any) {
-        viewModel.backTapped()
-    }
-
-    @IBAction func signup(_ sender: Any) {
-        self.view.endEditing(true)
-        
-        viewModel.signUpTapped(password: passwordTextField.text!,
-                               email: emailTextField.text!.toMail(),
-                               givenName: givenNameTextField.text!,
-                               familyName: familyNameTextField.text!)
-        
-//        let userAttributes: [String: String] = [
-//            "email": emailTF.text!.toMail(),
-//            "given_name": givenNameTF.text!,
-//            "family_name": userTF.text!
-//        ]
-        
-//        AWSMobileClient
-//            .default()
-//            .signUp(username: emailTF.text!.toMail(),
-//                    password: passwordTF.text!,
-//                    userAttributes: userAttributes) { result, error in
-//                        DispatchQueue.main.async {
-//                            if let error = error as? AWSMobileClientError {
-//                                // TODO: Error Handle
-//                                L.d(ErrorMessage.descriptionFromError(error: error))
-//                                self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-//                            } else if let result = result {
-//                                switch result.signUpConfirmationState {
-//                                case .confirmed:
-//                                    self.view.makeToast("confirmed")
-//                                case .unconfirmed:
-//                                    self.view.makeToast("unconfirmed")
-//
-//                                    //view group 1
-//                                    self.userTF.isEnabled = false
-//                                    self.givenNameTF.isEnabled = false
-//                                    self.passwordTF.isEnabled = false
-//                                    self.emailTF.isEnabled = false
-//                                    self.signupBtn.isEnabled = false
-//                                    self.signupBtn.backgroundColor = UIColor.lightGray
-//                                    self.signupBtn.alpha = 0.6
-//                                    //end view group 1
-//
-//                                    //view group 2
-//                                    self.cinfirmTF.isHidden = false // todo test
-//                                    self.confirmCodeLB.isHidden = false
-//                                    self.confirmBtn.isHidden = false
-//                                    self.resendEmailBtn.isHidden = false
-//                                    //end view group 2
-//
-//                                    let alertController = UIAlertController(title: "Code Sent",
-//                                                                            message: "Code sent to \(result.codeDeliveryDetails?.destination ?? "no message")",
-//                                        preferredStyle: .alert)
-//                                    let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//                                    alertController.addAction(okAction)
-//                                    self.present(alertController, animated: true, completion: nil)
-//
-//                                case .unknown:
-//                                    self.view.makeToast("unknown")
-//                                }
-//                            } else {
-//                                self.view.makeToast("Unknow error")
-//                            }
-//                        }
-//        }
-    }
-
-    @IBAction func confirmuser(_ sender: Any) {
-        viewModel.confirmUserTapped(email: emailTextField.text!.toMail(),
-                                    confirmationCode: confirmationCodeTextField.text!)
-//        AWSMobileClient
-//            .default()
-//            .confirmSignUp(username: emailTF.text!.toMail(),
-//                           confirmationCode: self.cinfirmTF.text!) { signUpResult, error in
-//                            DispatchQueue.main.async {
-//                                if let error = error {
-//                                    self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-//                                } else {
-//                                    self.loginVC?.userName.text = self.emailTF.text!.toMail()
-//                                    self.loginVC?.password.text = self.passwordTF.text
-//                                    self.dismiss(animated: true, completion:nil)
-//                                }
-//                            }
-//        }
-    }
-    
-    @IBAction func reSendEmail(_ sender: Any) {
-        viewModel.reSendEmailTapped(email: emailTextField.text!.toMail())
-    }
     
     @IBOutlet weak var familyNameLabel: UILabel!
     @IBOutlet weak var familyNameTextField: UITextField!
@@ -228,17 +135,39 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
         if viewModel.signUpType == .unconfirmedUser {
             reSendEmail("")
         }
-        
-//        loginVC!.userisNotConfirmed = false
     }
     
     func confirmationCodeSendAlert() {
         let alertController = UIAlertController(title: viewModel.confirmationCodeSendAlertTitle,
                                                 message: viewModel.confirmationCodeSendAlertMessage,
             preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.OK".localized,
+                                     style: .default,
+                                     handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        viewModel.backTapped()
+    }
+
+    @IBAction func signup(_ sender: Any) {
+        self.view.endEditing(true)
+        
+        viewModel.signUpTapped(password: passwordTextField.text!,
+                               email: emailTextField.text!.toMail(),
+                               givenName: givenNameTextField.text!,
+                               familyName: familyNameTextField.text!)
+    }
+
+    @IBAction func confirmuser(_ sender: Any) {
+        viewModel.confirmUserTapped(email: emailTextField.text!.toMail(),
+                                    confirmationCode: confirmationCodeTextField.text!)
+    }
+    
+    @IBAction func reSendEmail(_ sender: Any) {
+        viewModel.reSendEmailTapped(email: emailTextField.text!.toMail())
     }
 }
 

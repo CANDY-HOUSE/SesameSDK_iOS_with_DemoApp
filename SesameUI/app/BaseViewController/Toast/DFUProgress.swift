@@ -3,7 +3,7 @@
 //  sesame-sdk-test-app
 //
 //  Created by tse on 2019/9/11.
-//  Copyright © 2019 Cerberus. All rights reserved.
+//  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
 import Foundation
@@ -20,14 +20,18 @@ class TemporaryFirmwareUpdateClass: CHFirmwareUpdateInterface {
     var abortFunc: (() -> Void)?
     var isFinished: Bool = false
     var callBack:(_ from:String)->Void = {from in
-        L.d("test 閉包")
+        
     }
 
     init(_ mainView: UIViewController , callBack :@escaping (_ from:String)->Void ) {
         self.callBack =  callBack
         abortFunc = nil
-        alertView = UIAlertController(title: "SesameOS Update".localStr, message: "Starting soon…".localStr, preferredStyle: .alert)
-        alertView.addAction(UIAlertAction(title: "Close".localStr, style: .default, handler: self.onAbortClick))
+        alertView = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized,
+                                      message: "co.candyhouse.sesame-sdk-test-app.StartingSoon".localized,
+                                      preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Close".localized,
+                                          style: .default,
+                                          handler: self.onAbortClick))
         mainView.present(self.alertView, animated: true, completion: nil)
     }
 
@@ -44,23 +48,22 @@ class TemporaryFirmwareUpdateClass: CHFirmwareUpdateInterface {
         if isFinished {
             abort()
         } else {
-            alertView.message = "Initializing…".localStr
+            alertView.message = "co.candyhouse.sesame-sdk-test-app.Initializing".localized
             abortFunc = abort
         }
     }
 
     func dfuStarted() {
-        alertView.message = "Start".localStr
+        alertView.message = "co.candyhouse.sesame-sdk-test-app.Start".localized
     }
 
     func dfuSucceed() {
-        alertView.message = "Succeeded".localStr
-        //        alertView.dismiss(animated: true, completion: nil)
+        alertView.message = "co.candyhouse.sesame-sdk-test-app.Succeeded".localized
         callBack("Succeed")
     }
 
     func dfuError(message: String) {
-        alertView.message =  "Error".localStr + ":" + message 
+        alertView.message =  "co.candyhouse.sesame-sdk-test-app.Error".localized + ":" + message
     }
 
     func dfuProgressDidChange(progress: Int) {
@@ -74,7 +77,7 @@ extension TemporaryFirmwareUpdateClass: DFUHelperObserver {
         case .aborted:
             break
         case .completed:
-            alertView.message = "Succeeded".localStr
+            alertView.message = "co.candyhouse.sesame-sdk-test-app.Succeeded".localized
             callBack("Succeed")
             isFinished = true
         case .connecting:
@@ -94,7 +97,7 @@ extension TemporaryFirmwareUpdateClass: DFUHelperObserver {
     
     func dfuError(_ error: DFUError,
                   didOccurWithMessage message: String) {
-        alertView.message =  "Error".localStr + ":" + message
+        alertView.message =  "co.candyhouse.sesame-sdk-test-app.Error".localized + ":" + message
     }
     
     func dfuProgressDidChange(for part: Int,

@@ -86,10 +86,13 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
 
 extension BluetoothDeviceCellViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
-        if device.deviceId == sesame2.deviceId,
-            status == .receiveBle {
+        L.d("status",status.description())
+        if status == .receiveBle {
             sesame2.connect(){_ in}
         }
+        statusUpdated?(.received)
+    }
+    public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
         statusUpdated?(.received)
     }
 }

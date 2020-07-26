@@ -29,7 +29,7 @@ public final class Sesame2RoomMainViewCoordinator: Coordinator {
         navigationController.navigationItem.backBarButtonItem?.setBackgroundImage(
             UIImage.SVGImage(named: "icons_outlined_addoutline")
             , for: .normal, barMetrics: .default)
-        let viewModel = Sesame2RoomMainViewModel(sesame2: sesame2)
+        let viewModel = Sesame2HistoryViewModel(sesame2: sesame2)
         viewModel.delegate = self
         sesame2RoomMainViewController.viewModel = viewModel
         navigationController.pushViewController(sesame2RoomMainViewController, animated: true)
@@ -41,7 +41,7 @@ public final class Sesame2RoomMainViewCoordinator: Coordinator {
     }
 }
 
-extension Sesame2RoomMainViewCoordinator: Sesame2RoomMainViewModelDelegate {
+extension Sesame2RoomMainViewCoordinator: Sesame2HistoryViewModelDelegate {
     public func rightButtonTappedWithSesame2(_ sesame2: CHSesame2) {
         let sesame2SettingViewCoordinator = Sesame2SettingViewControllerCoordinator(navigationController: navigationController,
                                                                               sesame2: sesame2)

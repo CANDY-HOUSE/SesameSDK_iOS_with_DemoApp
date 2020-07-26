@@ -46,14 +46,14 @@ public final class SignUpViewModel: ViewModel {
     }
     
     private(set) var backButtonImage = "icons_filled_close"
-    private(set) var mailLabelText = "Email".localStr
-    private(set) var firstNameLabelText = "First Name".localStr
-    private(set) var lastNameLabelText = "Last Name".localStr
-    private(set) var passwordLabelText = "Password".localStr
-    private(set) var confirmationCodeLabelText = "Verification code".localStr
-    private(set) var signUpButtonTitle = "Sign up".localStr
-    private(set) var confirmationButtonTtitle = "Verification code".localStr
-    private(set) var resendEmailButtonTitle = "Re-send verification code".localStr
+    private(set) var mailLabelText = "co.candyhouse.sesame-sdk-test-app.Email".localized
+    private(set) var firstNameLabelText = "co.candyhouse.sesame-sdk-test-app.FirstName".localized
+    private(set) var lastNameLabelText = "co.candyhouse.sesame-sdk-test-app.LastName".localized
+    private(set) var passwordLabelText = "co.candyhouse.sesame-sdk-test-app.Password".localized
+    private(set) var confirmationCodeLabelText = "co.candyhouse.sesame-sdk-test-app.VerificationCode".localized
+    private(set) var signUpButtonTitle = "co.candyhouse.sesame-sdk-test-app.SignUp".localized
+    private(set) var confirmationButtonTtitle = "co.candyhouse.sesame-sdk-test-app.VerificationCode".localized
+    private(set) var resendEmailButtonTitle = "co.candyhouse.sesame-sdk-test-app.Re-sendVerificationCode".localized
     
     private(set) var email: String
     private(set) var password: String
