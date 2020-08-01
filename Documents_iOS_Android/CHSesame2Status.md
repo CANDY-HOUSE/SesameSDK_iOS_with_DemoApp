@@ -7,6 +7,7 @@
     waitgatt
     logining
     readytoRegister
+    registering
     locked
     unlocked
     moved
@@ -15,14 +16,15 @@
 ## If unregistered
 
 
-| action/status | noSignal  | receiveBle  | connecting    | readytoRegister | nosetting  |
-|:-------------:|:---------:|:-----------:|:-------------:|:---------------:|:----------:|
-|  close to Sesame2 |receiveBle |             |               |                 |            |
-|  connect      |           | connecting  |               |                 |            |
-|  connecting   |           |             |readytoRegister|                 |            |
-|  register     |           |             |               | nosetting       |            |
-|  configureLockPosition    |    |        |               |                 | locked/unlocked(registered)|
-|  disconnect   |           |             |            |    noSignal     | noSignal   |
+| action/status | noSignal  | receiveBle  | connecting    | readytoRegister |registering  | nosetting  |
+|:-------------:|:---------:|:-----------:|:-------------:|:---------------:|:----------:|:----------:|
+|close to Sesame2|receiveBle |            |               |                 |            |            |
+|  connect      |           | connecting  |               |                 |            |             |
+|  connecting   |           |             |readytoRegister|                 |            |             |
+|  register     |           |             |               | registering     |            |           |
+|  registering  |           |             |               |                 |   nosetting|         |
+|  configureLockPosition|   |             |               |                 |            | locked/unlocked(registered)|
+|  disconnect   |           |             |               |                 |             |  noSignal       |
 
 ## If registered
 | action/status | noSignal  | receiveBle  | connecting  | waitgatt | logining | locked/unlocked  |nosetting  |

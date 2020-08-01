@@ -7,14 +7,15 @@ public protocol CHSesame2MechStatus {
 
     func getBatteryPrecentage() -> Int
     
-    func getPosition() -> Int16?
+    var position:Int16{ get }
     //セサミのリアルタイムの角度。範圍： -32767~0~32767 ; -32768 は意義のない的デフォルト值。 例0˚ ⇄ 0 で 360˚ ⇄ 1024 
 
-    func isInLockRange() -> Bool?
+    var isInLockRange : Bool{ get }
     //施錠範囲であるか否か　の判断   
     
-    func isInUnlockRange() -> Bool?
+    var isInUnlockRange : Bool { get }
     //解錠範囲であるか否か　の判断
+
 }
 ```
 ## Android
@@ -27,9 +28,9 @@ class CHSesame2MechStatus(data: ByteArray) {
     
     val position:Short
 
-    var inLockRange:Boolean
+    var isInLockRange:Boolean
     
-    var inUnlockRange:Boolean
+    var isInUnlockRange:Boolean
 }
 
 ```
