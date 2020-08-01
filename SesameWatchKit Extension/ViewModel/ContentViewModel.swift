@@ -64,13 +64,9 @@ class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, C
                     return
                 }
                 L.d("Watch get \(deviceModels.count) device(s).")
-//                for deviceModel in deviceModels {
-//                    deviceModel.device.connect()
-//                }
                 strongSelf.deviceModels = deviceModels
                 strongSelf.displayText = LocalizedString("co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady")
-                strongSelf.displayColor = UIColor.sesame2Green
-                SessionDataManager.shared.sendMessageToiPhone(["removeCopy": true])
+                strongSelf.displayColor = UIColor.white
         }
         .store(in: &disposables)
         deviceProvider.connect()

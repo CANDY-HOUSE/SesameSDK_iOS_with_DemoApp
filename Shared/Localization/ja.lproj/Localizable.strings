@@ -37,7 +37,12 @@
 "co.candyhouse.sesame-sdk-test-app.NoContacts" = "連絡先なし";
 "co.candyhouse.sesame-sdk-test-app.ScanInTheFrame" = "スキャンする";
 "co.candyhouse.sesame-sdk-test-app.OK" = "OK";
-"co.candyhouse.sesame-sdk-test-app.sec" = "秒後";
+"co.candyhouse.sesame-sdk-test-app.sec" = "秒";
+"co.candyhouse.sesame-sdk-test-app.secAfter" = "%@ 後";
+"co.candyhouse.sesame-sdk-test-app.cm" = "cm";
+"co.candyhouse.sesame-sdk-test-app.min" = "分";
+"co.candyhouse.sesame-sdk-test-app.hour" = "時間";
+"co.candyhouse.sesame-sdk-test-app.off" = "オフ";
 "co.candyhouse.sesame-sdk-test-app.after" = "";
 "co.candyhouse.sesame-sdk-test-app.TooClose" = "近すぎる";
 "co.candyhouse.sesame-sdk-test-app.SesameName" = "セサミの名前";
@@ -80,3 +85,6 @@
 "co.candyhouse.sesame-sdk-test-app.unlocked" = "Unlocked";
 "co.candyhouse.sesame-sdk-test-app.nosetting" = "No setting";
 "co.candyhouse.sesame-sdk-test-app.moved" = "Moved";
+"co.candyhouse.sesame-sdk-test-app.registing" = "Registing";
+"co.candyhouse.sesame-sdk-test-app.dfu" = "DFU";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady" = "Please open Sesame App to sync keys.";

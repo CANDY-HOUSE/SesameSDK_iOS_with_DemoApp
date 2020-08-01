@@ -62,7 +62,7 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
             switch status {
             case .loading:
                 break
-            case .received:
+            case .update:
                 break
             case .finished(let result):
                 // TODO: Eliminate logic from UI

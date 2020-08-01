@@ -54,9 +54,8 @@ public class DeviceCell: UITableViewCell {
     
     func updateUI()  {
         var currentDegree: Float = 0.0
-        if let status = sesame2?.mechStatus,
-            let currentAngle = status.getPosition() {
-            currentDegree = angle2degree(angle: Int16(currentAngle))
+        if let status = sesame2?.mechStatus {
+            currentDegree = angle2degree(angle: status.position)
         }
         ownerName.text = sesame2?.deviceStatus.description()
 
@@ -64,9 +63,12 @@ public class DeviceCell: UITableViewCell {
                          lockColor: sesame2!.lockColor())
         let statusIMG = UIImage.CHUIImage(named: sesame2!.currentStatusImage())
         lock.setBackgroundImage(statusIMG, for: .normal)
-        let powPercent = sesame2!.batteryPrecentage() ?? 0
-        power.text = "\(powPercent)%"
-        battery.image = UIImage.CHUIImage(named: sesame2!.batteryImage() ?? "bt0")
+        if let powPercent = sesame2?.mechStatus?.getBatteryPrecentage() {
+            power.text = "\(powPercent)%"
+        } else {
+            power.text = ""
+        }
+        battery.image = UIImage.CHUIImage(named: sesame2!.batteryImage())
     }
 }
 

@@ -77,6 +77,10 @@ extension CHSesame2 {
             return "co.candyhouse.sesame-sdk-test-app.nosetting".localized
         case .moved:
             return "co.candyhouse.sesame-sdk-test-app.moved".localized
+        case .registing:
+            return "co.candyhouse.sesame-sdk-test-app.registing".localized
+        case .dfumode:
+            return "dfumode"
         }
     }
     
@@ -103,6 +107,10 @@ extension CHSesame2 {
         case .moved:
             return .lockGreen
         case .nosetting:
+            return .lockGray
+        case .registing:
+            return .lockGray
+        case .dfumode:
             return .lockGray
         }
     }
@@ -139,41 +147,26 @@ extension CHSesame2 {
             return "l-set"
         case .reset:
             return "l-no"
+        case .registing:
+            return "logining"
+        case .dfumode:
+            return "logining"
         }
     }
     
-    func batteryPrecentage() -> Int? {
-        
-        guard let voltage = mechStatus?.getBatteryVoltage() else {
-            return nil
-        }
-        
-        let blocks:[Float] = [6.0,5.8,5.7,5.6,5.4,5.2,5.1,5.0,4.8,4.6]
-        let mapping:[Float] = [100.0,50.0,40.0,32.0,21.0,13.0,10.0,7.0,3.0,0.0]
-        if voltage >= blocks[0] {
-            return Int((voltage-blocks[0])*200/blocks[0] + 100)
-        }
-        if voltage <= blocks[blocks.count-1] {
-            return Int(mapping[mapping.count-1])
-        }
-
-        for i in 0..<blocks.count-1 {
-            let upper: CFloat = blocks[i]
-            let lower: CFloat = blocks[i+1]
-            if voltage <= upper && voltage > lower {
-                let value: CFloat = (voltage-lower)/(upper-lower)
-                let max = mapping[i]
-                let min = mapping[i+1]
-                return Int((max-min)*value+min)
-            }
-        }
-        return 0
-    }
-    
-    func batteryImage() -> String? {
-        guard let batteryPercentage = batteryPrecentage() else {
-            return nil
+    func batteryImage() -> String {
+        guard let batteryPercentage = mechStatus?.getBatteryPrecentage() else {
+            return "bt0"
         }
         return batteryPercentage < 20 ? "bt0" : batteryPercentage < 50 ? "bt50" : "bt100"
+    }
+    
+    func currentDistanceInCentimeter() -> Int? {
+        guard let rssi = rssi,
+            let txPower = txPowerLevel else {
+                return nil
+        }
+        let distance = pow(10.0, ((Double(txPower) - rssi.doubleValue) - 62.0) / 20.0)
+        return Int(distance * 100)
     }
 }

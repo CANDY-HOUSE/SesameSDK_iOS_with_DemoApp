@@ -34,7 +34,7 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     }
     
     public var ownerNameLabel: String {
-        ""
+        return sesame2.deviceStatus.description()
     }
     
     public var isHideOwnerNameLabel: Bool {
@@ -51,7 +51,7 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     }
     
     public var isInLockRange: Bool? {
-        sesame2.mechStatus?.isInLockRange()
+        sesame2.mechStatus?.isInLockRange
     }
     
     public func toggleTapped() {
@@ -63,20 +63,21 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     }
     
     func powerPercentate() -> String {
-        let powPercent = sesame2.batteryPrecentage() ?? 0
-        return "\(powPercent)"
+        guard let powPercent = sesame2.mechStatus?.getBatteryPrecentage() else {
+            return ""
+        }
+        return "\(powPercent) %"
     }
     
     public func batteryImage() -> String {
-        return sesame2.batteryImage() ?? "bt0"
+        return sesame2.batteryImage()
     }
     
     public func currentDegree() -> Float? {
-        guard let status = sesame2.mechStatus,
-            let currentAngle = status.getPosition() else {
+        guard let status = sesame2.mechStatus else {
             return nil
         }
-        return angle2degree(angle: Int16(currentAngle))
+        return angle2degree(angle: status.position)
     }
     
     deinit {
@@ -90,10 +91,10 @@ extension BluetoothDeviceCellViewModel: CHSesame2Delegate {
         if status == .receiveBle {
             sesame2.connect(){_ in}
         }
-        statusUpdated?(.received)
+        statusUpdated?(.update(nil))
     }
     public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
-        statusUpdated?(.received)
+        statusUpdated?(.update(nil))
     }
 }
 

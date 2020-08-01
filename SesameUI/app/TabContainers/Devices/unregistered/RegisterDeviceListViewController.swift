@@ -40,8 +40,14 @@ public final class RegisterDeviceListViewController: CHBaseViewController {
                 switch status {
                 case .loading:
                     ViewHelper.showLoadingInView(view: strongSelf.view)
-                case .received:
-                    strongSelf.deviceTableView.reloadData()
+                case .update(let action):
+                    if let action = action as? RegisterDeviceListViewModel.Action,
+                        action == RegisterDeviceListViewModel.Action.dfu {
+                        strongSelf.dfuSelectedDevice()
+                    } else {
+                        strongSelf.deviceTableView.reloadData()
+                    }
+                    
                 case .finished(let result):
                     ViewHelper.hideLoadingView(view: strongSelf.view)
                     switch result {
@@ -85,37 +91,37 @@ extension RegisterDeviceListViewController: UITableViewDataSource {
         cell.viewModel = cellViewModel
         cell.ssi.textColor = (indexPath.row == 0) ? .sesame2Green : .gray
         cell.statusLabel.text = cellViewModel.currentStatus()
-        // TODO: Uncomment when firmware is ready
-//        cell.delegate = self
-//        cell.dfuButton.setTitle(viewModel.dfuActionText, for: .normal)
-//        cell.firmwareVersionLabel.text = viewModel.firmwareVersionForDeviceAtIndexPath(indexPath)
         return cell
     }
     
 }
 
-extension RegisterDeviceListViewController: RegisterCellDelegate {
+extension RegisterDeviceListViewController {
     
-    func dfuForCell(_ cell: UITableViewCell) {
-        // TODO: Uncomment when firmware is ready
-//        guard let indexPath = deviceTableView.indexPath(for: cell) else {
-//            return
-//        }
-//
-//        let check = UIAlertAction
-//                   .addAction(title: viewModel.dfuActionText,
-//                              style: .destructive) { (action) in
-//                               let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
-//
-//                               }
-//                               progressIndicator.dfuInitialized {
-//                                   self.viewModel.cancelDFU()
-//                               }
-//                                self.viewModel.dfuDeviceAtIndexPath(indexPath, observer: progressIndicator)
-//               }
-//        UIAlertController.showAlertController(view,
-//                                              style: .actionSheet,
-//                                              actions: [check])
+    func dfuSelectedDevice() {
+        
+        guard let indexPath = deviceTableView.indexPathForSelectedRow else {
+            return
+        }
+
+        let dfu = UIAlertAction
+            .addAction(title: viewModel.dfuActionText,
+                       style: .destructive) { (action) in
+                        let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
+                            
+                        }
+                        progressIndicator.dfuInitialized {
+                            self.viewModel.cancelDFU()
+                        }
+                        self.viewModel.dfuDeviceAtIndexPath(indexPath, observer: progressIndicator)
+        }
+        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.dfu".localized,
+                                                message: "",
+                                                preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
+        alertController.addAction(dfu)
+        alertController.addAction(cancel)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

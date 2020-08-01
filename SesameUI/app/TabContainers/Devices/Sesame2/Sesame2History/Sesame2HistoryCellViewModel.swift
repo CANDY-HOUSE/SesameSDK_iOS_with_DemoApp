@@ -55,6 +55,8 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
             return "co.candyhouse.sesame-sdk-test-app.manualUnlock".localized
         case _ as Sesame2HistoryUnlockMO:
             return "BLE_UNLOCK"
+        case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
+            return "HISTORY_TYPE_BLE_ADV_PARAM_UPDATED"
         default:
             return ""
         }
@@ -91,6 +93,12 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
         case _ as Sesame2HistoryManualUnlockedMO:
             return "co.candyhouse.sesame-sdk-test-app.manualUnlock".localized
         case _ as Sesame2HistoryUnlockMO:
+            if let historyTag = history.historyTag {
+                return String(decoding: historyTag, as: UTF8.self)
+            } else {
+                return ""
+            }
+        case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
             if let historyTag = history.historyTag {
                 return String(decoding: historyTag, as: UTF8.self)
             } else {

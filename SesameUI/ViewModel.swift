@@ -10,7 +10,7 @@ import Foundation
 
 public enum ViewStatus {
     case loading
-    case received
+    case update(Any?)
     case finished(Result<Any, Error>)
 }
 

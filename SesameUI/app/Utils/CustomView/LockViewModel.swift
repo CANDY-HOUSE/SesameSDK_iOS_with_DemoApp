@@ -19,21 +19,18 @@ public final class LockViewModel: ViewModel {
     }
     
     public func currentDegree() -> Float? {
-        guard let status = sesame2.mechStatus,
-            let currentAngle = status.getPosition() else {
+        guard let status = sesame2.mechStatus else {
             return nil
         }
-        return angle2degree(angle: Int16(currentAngle))
+        return angle2degree(angle: status.position)
     }
     
     public func lockPositions() -> (lockPosition: Float?, unlockPosition: Float?) {
-        guard let setting = sesame2.mechSetting,
-            let lockDegree = setting.getLockPosition(),
-            let unlockDegree = setting.getUnlockPosition() else {
+        guard let setting = sesame2.mechSetting else {
                 return (nil, nil)
         }
-        return (angle2degree(angle: Int16(lockDegree)),
-                angle2degree(angle: Int16(unlockDegree)))
+        return (angle2degree(angle: setting.lockPosition),
+                angle2degree(angle: setting.unlockPosition))
     }
     
     deinit {

@@ -54,15 +54,17 @@ final class BluetoothDevicesListViewModel: ViewModel {
             switch result {
             case .success(let sesame2s):
                 self.sesameDevices = sesame2s.data
-                var keys = [String: Any]()
-                for sesame in sesame2s.data {
-                    if let key = sesame.getKey() {
-                        keys[sesame.deviceId.uuidString] = key
+                if WCSession.isSupported() {
+                    var keys = [String: Any]()
+                    for sesame in sesame2s.data {
+                        if let key = sesame.getKey() {
+                            keys[sesame.deviceId.uuidString] = key
+                        }
                     }
+                    WCSession.default.transferUserInfo(keys)
+                    L.d("Retrieved \(sesame2s.data.count) devices, sending keys to the watch.")
                 }
-                WCSession.default.transferUserInfo(keys)
-                L.d("Retrieved \(sesame2s.data.count) devices, sending keys to the watch.")
-                self.statusUpdated?(.received)
+                self.statusUpdated?(.update(nil))
             case .failure(let error):
                 self.statusUpdated?(.finished(.failure(error)))
             }
@@ -93,7 +95,7 @@ extension BluetoothDevicesListViewModel: BluetoothDeviceCellViewModelDelegate {
     
     func testSwitchToggled(isOn: Bool) {
         UserDefaults.standard.set(isOn, forKey: "testMode")
-        statusUpdated?(.received)
+        statusUpdated?(.update(nil))
     }
     
     var isTestModeOn: Bool {

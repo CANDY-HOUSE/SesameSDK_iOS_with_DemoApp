@@ -173,6 +173,17 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
                 newHistory.recordID = bleUnLockHistory.recordID
                 newHistory.sectionIdentifier = bleUnLockHistory.date.toYMD()
                 property.addToHistories(newHistory)
+            case .bleAdvParameterUpdated(let bleAdvUpdatedHistory):
+                let newHistory = Sesame2HistoryBleAdvParameterUpdatedMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = bleAdvUpdatedHistory.historyTag
+                newHistory.date = bleAdvUpdatedHistory.date
+                newHistory.recordID = bleAdvUpdatedHistory.recordID
+                newHistory.sectionIdentifier = bleAdvUpdatedHistory.date.toYMD()
+                newHistory.intervalBefore = bleAdvUpdatedHistory.intervalBefore
+                newHistory.intervalAfter = bleAdvUpdatedHistory.intervalAfter
+                newHistory.dbmBefore = Int64(bleAdvUpdatedHistory.dbmBefore)
+                newHistory.dbmAfter = Int64(bleAdvUpdatedHistory.dbmAfter)
             }
         }
     }
