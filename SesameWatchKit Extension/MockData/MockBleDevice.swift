@@ -151,7 +151,7 @@ final class MockBleDevice: CHSesame2 {
         nil
     }
     
-    func getHistories(page: UInt, _ callback: @escaping CHResult<[CHSesame2History]>) {
+    func getHistories(page: UInt, _ result: @escaping CHResult<[CHSesame2History]>) {
         
     }
     
@@ -163,12 +163,12 @@ final class MockBleDevice: CHSesame2 {
         
     }
     
-    func getBleAdvParameter(_ callback: @escaping CHResult<CHSesame2BleAdvParameter>) {
+    func getBleAdvParameter(_ result: @escaping CHResult<CHSesame2BleAdvParameter>) {
         
     }
     
     func updateBleAdvParameter(interval: UInt16, txPower: Int8,
-                               _ callback: @escaping CHResult<CHSesame2BleAdvParameter>) {
+                               _ result: @escaping CHResult<CHSesame2BleAdvParameter>) {
         
     }
 }

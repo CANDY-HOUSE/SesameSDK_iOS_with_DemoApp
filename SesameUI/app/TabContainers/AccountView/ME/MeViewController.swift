@@ -44,7 +44,7 @@ class MeViewController: CHBaseViewController {
             switch status {
             case .loading:
                 break
-            case .received:
+            case .update:
                 executeOnMainThread {
                     strongSelf.setContentWithIsLoggedIn(strongSelf.viewModel.isSignedIn)
                 }

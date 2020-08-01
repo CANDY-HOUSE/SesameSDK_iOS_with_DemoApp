@@ -68,17 +68,16 @@ struct SesameLockView: View {
                    height: lockSize,
                    alignment: .center)
             .cornerRadius(lockSize/2)
-            
             self.lockIndicator(size: lockIndicatorSize,
                                color: Color(self.viewModel.moonColor))
                 .modifier(
                     LockMovingEffect(radians: self.viewModel.radians,
                                      radius: lockSize / 2.0)
             )
-                .animation(Animation
-                    .linear(duration: 1.0)
-                    .repeatCount(0, autoreverses: false)
-            )
+//                .animation(Animation
+//                    .linear(duration: 1.0)
+//                    .repeatCount(0, autoreverses: false)
+//            )
         }
     }
     

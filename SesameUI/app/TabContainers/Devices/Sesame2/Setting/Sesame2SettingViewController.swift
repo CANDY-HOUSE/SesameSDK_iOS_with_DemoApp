@@ -35,11 +35,9 @@ public class Sesame2SettingViewController: CHBaseViewController {
     @IBOutlet weak var version: UILabel!
     
     // AutoLock
-    @IBOutlet weak var autoLockLabel1: UILabel!
-    @IBOutlet weak var autoLockLabel2: UILabel!
-    @IBOutlet weak var autoLockLabel3: UILabel!
+    @IBOutlet weak var autoLockTitleLabel: UILabel!
+    @IBOutlet weak var autoLockValueLabel: UILabel!
     @IBOutlet weak var autoLockSwitch: UISwitch!
-    @IBOutlet weak var autoLockSecond: UILabel!
     @IBOutlet weak var secondPicker: UIPickerView!
     
     // advInterval
@@ -76,7 +74,7 @@ public class Sesame2SettingViewController: CHBaseViewController {
                 executeOnMainThread {
                     ViewHelper.showLoadingInView(view: strongSelf.view)
                 }
-            case .received:
+            case .update:
                 executeOnMainThread {
                     strongSelf.refreshUI()
                     ViewHelper.hideLoadingView(view: strongSelf.view)
@@ -125,19 +123,15 @@ public class Sesame2SettingViewController: CHBaseViewController {
         autoLockSwitch.isOn = viewModel.isAutoLockSwitchOn
         autoLockSwitch.isEnabled = viewModel.autolockSwitchIsEnabled
         
-        autoLockLabel1.isHidden = viewModel.isAutoLockLabel1Hidden
-        autoLockLabel2.isHidden = viewModel.isAutoLockLabel2Hidden
-        autoLockLabel3.isHidden = viewModel.isAutoLockLabel3Hidden
-        autoLockSecond.isHidden = viewModel.isAutoLockSecondHidden
+        autoLockTitleLabel.isHidden = viewModel.isAutoLockTitleLabelHidden
+        autoLockValueLabel.isHidden = viewModel.isAutoLockValueLabelHidden
         
         changenameLb.text = viewModel.changeNameIndicator
         angleLabel.text = viewModel.angleIndicator
         dfuLabel.text = viewModel.dfuIndicator
         
-        autoLockLabel1.text = viewModel.autoLockLabel1Text
-        autoLockLabel2.text = viewModel.autoLockLabel2Text
-        autoLockLabel3.text = viewModel.autoLockLabel3Text
-        autoLockSecond.text = viewModel.autoLockSecondText
+        autoLockTitleLabel.text = viewModel.autoLockTitleLabelText
+        autoLockValueLabel.text = viewModel.autoLockValueLabelText
         
         resetSesameButton.setTitle(viewModel.removeSesameText, for: .normal)
         dropKeyButton.setTitle(viewModel.dropKeyText, for: .normal)
@@ -151,10 +145,10 @@ public class Sesame2SettingViewController: CHBaseViewController {
         secondPicker.isHidden = viewModel.isHiddenSecondPicker
         
         advIntervalLabel.text = viewModel.advIntervalTitle
-        advIntervalValueLabel.text = viewModel.advInterval ?? ""
+        advIntervalValueLabel.text = viewModel.advInterval
         
         txPowerLabel.text = viewModel.txPowerTitle
-        txPowerValueLabel.text = viewModel.txPower ?? ""
+        txPowerValueLabel.text = viewModel.txPower
         
         advIntervalPicker.isHidden = viewModel.isHiddenAdvIntervalPicker
         txPowerPicker.isHidden = viewModel.isHiddenTxPowerPicker
@@ -167,7 +161,7 @@ public class Sesame2SettingViewController: CHBaseViewController {
         
         modifyHistoryTagLabel.text = viewModel.modifyHistoryTagText
         autoLockSwitch.onTintColor = viewModel.autoLockSwitchColor
-        
+        secondPicker.selectRow(viewModel.secondPickerSelectedRow, inComponent: 0, animated: false)
         advIntervalPicker.selectRow(viewModel.advIntervalPickerSelectedRow, inComponent: 0, animated: false)
         txPowerPicker.selectRow(viewModel.txPowerPickerSelectedRow, inComponent: 0, animated: false)
     }
@@ -201,11 +195,11 @@ public class Sesame2SettingViewController: CHBaseViewController {
     }
     
     @IBAction func advIntervalConfigTapped(_ sender: Any) {
-//        viewModel.advIntervalConfigTapped()
+        viewModel.advIntervalConfigTapped()
     }
     
     @IBAction func txPowerConfigTapped(_ sender: Any) {
-//        viewModel.txPowerConfgTapped()
+        viewModel.txPowerConfgTapped()
     }
     
     @IBAction func unRegister(_ sender: UIButton) {

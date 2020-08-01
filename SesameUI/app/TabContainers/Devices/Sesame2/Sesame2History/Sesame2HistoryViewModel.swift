@@ -48,7 +48,7 @@ public final class Sesame2HistoryViewModel: ViewModel {
         try? fetchedResultsController.performFetch()
     }
     
-    public func pullDown() {
+    public func loadMore() {
         L.d("hasMoreData??",hasMoreData)
         guard hasMoreData == true else {
             L.d("!@# No more data")
@@ -61,8 +61,6 @@ public final class Sesame2HistoryViewModel: ViewModel {
     }
     
     private func getHistory(requestPage: Int) {
-        
-        L.d("!@# 1. Retrieve history of page: \(requestPage)")
         sesame2.getHistories(page: UInt(requestPage)) { [weak self] result in
             guard let strongSelf = self else {
                 return
@@ -114,16 +112,18 @@ public final class Sesame2HistoryViewModel: ViewModel {
                         if storedRecordIDs?.contains(data.recordID) == false {
                             historiesForStore.append(history)
                         }
+                    case .bleAdvParameterUpdated(let data):
+                        if storedRecordIDs?.contains(data.recordID) == false {
+                            historiesForStore.append(history)
+                        }
                     }
                 }
                 
                 Sesame2Store.shared.addHistories(historiesForStore, toDevice: strongSelf.sesame2)
                 if strongSelf.fetchedResultsController.managedObjectContext.hasChanges {
                     try? strongSelf.fetchedResultsController.managedObjectContext.save()
-                    L.d("!@# 2. Histories in DB: \(Sesame2Store.shared.getHistoriesForDevice(strongSelf.sesame2)?.map {$0.recordID} ?? [])")
                 } else {
                     strongSelf.statusUpdated?(.finished(.success(true)))
-                    L.d("!@# 2. Histories in DB: \(Sesame2Store.shared.getHistoriesForDevice(strongSelf.sesame2)?.map {$0.recordID} ?? [])")
                 }
 
             case .failure(let error):
@@ -134,6 +134,7 @@ public final class Sesame2HistoryViewModel: ViewModel {
                 // 策略:延遲網路請求等待隔壁連上的sesame2上傳完畢後拉取
                 
                 let cmderror = error as NSError
+                
                 if cmderror.code == strongSelf.sesame2Busy {
                     L.d("策略:延遲網路請求等待隔壁連上的sesame2上傳完畢後拉取",cmderror.code)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -196,15 +197,14 @@ public final class Sesame2HistoryViewModel: ViewModel {
     }
     
     public func currentDegree() -> Float? {
-        guard let status = sesame2.mechStatus,
-            let currentAngle = status.getPosition() else {
+        guard let status = sesame2.mechStatus else {
                 return nil
         }
-        return angle2degree(angle: Int16(currentAngle))
+        return angle2degree(angle: status.position)
     }
     
     public var isInLockRange: Bool? {
-        sesame2.mechStatus?.isInLockRange()
+        sesame2.mechStatus?.isInLockRange
     }
     
     deinit {
@@ -219,10 +219,10 @@ extension Sesame2HistoryViewModel: CHSesame2Delegate {
         if status == .receiveBle {
             device.connect(){_ in}
         }
-        statusUpdated?(.received)
+        statusUpdated?(.update(nil))
     }
     
     public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
-        statusUpdated?(.received)
+        statusUpdated?(.update(nil))
     }
 }

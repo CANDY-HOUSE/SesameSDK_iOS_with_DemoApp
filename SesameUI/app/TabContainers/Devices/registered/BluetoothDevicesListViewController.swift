@@ -54,7 +54,7 @@ public class BluetoothDevicesListViewController: CHBaseViewController, UITableVi
                 executeOnMainThread {
                     strongSelf.programmaticallyRefreshing()
                 }
-            case .received:
+            case .update:
                 executeOnMainThread {
                     strongSelf.refreshControl.endRefreshing()
                     strongSelf.notifyTable()

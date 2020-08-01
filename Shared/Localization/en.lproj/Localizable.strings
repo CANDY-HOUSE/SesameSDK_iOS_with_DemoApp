@@ -38,6 +38,11 @@
 "co.candyhouse.sesame-sdk-test-app.ScanInTheFrame" = "Scan in the Frame";
 "co.candyhouse.sesame-sdk-test-app.OK" = "OK";
 "co.candyhouse.sesame-sdk-test-app.sec" = "sec";
+"co.candyhouse.sesame-sdk-test-app.secAfter" = "After %@";
+"co.candyhouse.sesame-sdk-test-app.cm" = "cm";
+"co.candyhouse.sesame-sdk-test-app.min" = "min";
+"co.candyhouse.sesame-sdk-test-app.hour" = "hr";
+"co.candyhouse.sesame-sdk-test-app.off" = "Off";
 "co.candyhouse.sesame-sdk-test-app.after" = "After";
 "co.candyhouse.sesame-sdk-test-app.TooClose" = "Too Close";
 "co.candyhouse.sesame-sdk-test-app.SesameName" = "Sesame Name";
@@ -72,7 +77,7 @@
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.openYourSesame" = "Please open your Sesame App to sync your devices.";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.receivedFile" = "Received file";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.updatingFile" = "Updating file";
-"co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady" = "Sesame is ready";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady" = "Please open Sesame App to sync keys.";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.updateDeviceFailed" = "Update devices failed %@";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.noSesameOrNotLoggedIn" = "No Sesame device or not logged in";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.lock" = "Lock";
@@ -89,3 +94,5 @@
 "co.candyhouse.sesame-sdk-test-app.unlocked" = "Unlocked";
 "co.candyhouse.sesame-sdk-test-app.nosetting" = "No setting";
 "co.candyhouse.sesame-sdk-test-app.moved" = "Moved";
+"co.candyhouse.sesame-sdk-test-app.registing" = "Registing";
+"co.candyhouse.sesame-sdk-test-app.dfu" = "DFU";

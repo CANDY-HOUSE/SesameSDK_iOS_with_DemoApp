@@ -39,7 +39,7 @@ class BluetoothDevicesCell: UITableViewCell {
                     switch status {
                     case .loading:
                         break
-                    case .received:
+                    case .update:
                         strongSelf.updateSesame2Status()
                     case .finished(let result):
                         switch result {
@@ -76,7 +76,7 @@ class BluetoothDevicesCell: UITableViewCell {
         batteryImage.image = UIImage.CHUIImage(named: viewModel?.batteryImage() ?? "")
         name.text = viewModel?.name
         ownerNameLabel.text = viewModel?.ownerNameLabel
-        ownerNameLabel.isHidden = viewModel?.isHideOwnerNameLabel ?? true
+//        ownerNameLabel.isHidden = viewModel?.isHideOwnerNameLabel ?? true
         testButton.isHidden = viewModel?.isHideTestButton ?? true
     }
     func updateSesame2Status()  {
@@ -88,6 +88,7 @@ class BluetoothDevicesCell: UITableViewCell {
             sesame2Circle.refreshUI(newPointerAngle: CGFloat(0.0),
                                 lockColor: viewModel.lockColor)
         }
+        ownerNameLabel.text = viewModel?.ownerNameLabel
 
         lockButton.setBackgroundImage(UIImage.CHUIImage(named: viewModel!.lockBackgroundImage()), for: .normal)
         powerLabel.text = viewModel?.powerPercentate()

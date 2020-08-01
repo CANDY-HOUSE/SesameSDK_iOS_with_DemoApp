@@ -18,7 +18,10 @@ public final class RegisterCellModel: ViewModel {
     }
     
     public func ssiText() -> String {
-        (sesame2.rssi == nil) ? "0%":"\(sesame2.rssi!.intValue + 130)%"
+        guard let currentDistanceInCentimeter = sesame2.currentDistanceInCentimeter() else {
+            return ""
+        }
+        return "\(currentDistanceInCentimeter) \("co.candyhouse.sesame-sdk-test-app.cm".localized)"
     }
     
     public func bluetoothImage() -> String {

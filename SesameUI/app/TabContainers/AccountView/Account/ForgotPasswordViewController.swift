@@ -85,7 +85,7 @@ class ForgotPasswordViewController: CHBaseViewController {
             switch status {
             case .loading:
                 break
-            case .received:
+            case .update:
                 break
             case .finished(let result):
                 switch result {

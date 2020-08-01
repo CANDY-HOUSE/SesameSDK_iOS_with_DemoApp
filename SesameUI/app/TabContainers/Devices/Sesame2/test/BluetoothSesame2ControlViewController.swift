@@ -14,70 +14,29 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     var sesame: CHSesame2?
 
     var timer: Timer?
-    
-    @IBOutlet weak var shareKeyImg: UIImageView!
+    @IBOutlet weak var deviceIDLB: UILabel!
     @IBOutlet weak var lockIntention: UILabel!
     @IBOutlet weak var Interval: UITextField!
     @IBOutlet weak var timesInput: UITextField!
     @IBOutlet weak var versionTagBtn: UIButton!
-    // @IBOutlet weak var lockCircle: Knob!
     @IBOutlet weak var gattStatusLB: UILabel!
     @IBOutlet weak var unlockSetBtn: UIButton!
     @IBOutlet weak var lockSetBtn: UIButton!
-    @IBOutlet weak var resultLB: UILabel!
     @IBOutlet weak var angleLB: UILabel!
     @IBOutlet weak var lockstatusLB: UILabel!
-    @IBOutlet weak var nicknameLB: UILabel!
-    @IBOutlet weak var deviceIDLB: UILabel!
-    @IBOutlet weak var bleIDLB: UILabel!
+
     @IBOutlet weak var enableAutolockBtn: UIButton!
     @IBOutlet weak var disableAutolockBtn: UIButton!
     @IBOutlet weak var registStatusLB: UILabel!
     @IBOutlet weak var powerLB: UILabel!
-    @IBOutlet weak var fwVersionLB: UILabel!
     @IBOutlet weak var autolockLB: UILabel!
-    @IBOutlet weak var userTable: UITableView!
     var dfuHelper: CHDFUHelper?
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        dfuHelper?.abort()
-        dfuHelper = nil
-    }
-    
+
     @IBAction func lockdegree(_ sender: Any) {
         lockDegree = nowDegree
     }
-    @IBAction func generateKey(_ sender: UIButton) {
-        
-        // no use
-        let title = sender.titleLabel?.text!
-        if(title!.contains("manager")){
-            issueAnQRCodeKey(imgv: self.shareKeyImg,level: .manager)
-        }
-        if(title!.contains("guest")){
-            issueAnQRCodeKey(imgv: self.shareKeyImg,level: .guest)
-        }
-        shareKeyImg.image = UIImage.CHUIImage(named: "loading")
-    }
-    
-    @IBAction func refreshUserList(_ sender: Any) {
-        //        self.sesame?.getDeviceMembers() { result in
-        //            switch result {
-        //            case .success(let users):
-        //                DispatchQueue.main.async {
-        //                    self.userList = users.data
-        //                    self.userTable.reloadData()
-        //                }
-        //            case .failure(let error):
-        //                L.d(ErrorMessage.descriptionFromError(error: error))
-        //                DispatchQueue.main.async {
-        //                    self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-        //                }
-        //            }
-        //        }
-    }
-    
+
     @objc func timerUpdate() {
         guard let _ = self.mechStatus else {
             return
@@ -86,34 +45,8 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
         if(times! == 1) {
             self.timer?.invalidate()
         }
-        
-//        sesame?.getAutolockSetting { [weak self] autoLockTime in
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            if autoLockTime == 0 {
-//                strongSelf.sesame?.toggleWithHaptic(interval: 1.5)
-//            } else {
-//                strongSelf.sesame?.toggleWithHaptic(interval: TimeInterval(autoLockTime)+3.0)
-//            }
-//        }
-        sesame?.getAutolockSetting { [weak self] result  in
-            guard let strongSelf = self else {
-                return
-            }
-            switch result {
-            case .success(let delay):
-//                strongSelf.switchIsOn = delay.data != 0
-                if delay.data == 0 {
-                    strongSelf.sesame?.toggleWithHaptic(interval: 1.5)
-                } else {
-                    strongSelf.sesame?.toggleWithHaptic(interval: TimeInterval(delay.data)+3.0)
-                }
 
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        sesame?.toggle(){_ in}
     }
     
     @IBAction func startLock(_ sender: Any) {
@@ -147,10 +80,7 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     }
     
     @IBAction func readAutolockClick(_ sender: UIButton) {
-        
-//        self.sesame!.getAutolockSetting { (delay) -> Void in
-//            self.autolockLB.text = String(delay)
-//        }
+
         sesame?.getAutolockSetting { [weak self] result  in
             guard let strongSelf = self else {
                 return
@@ -222,42 +152,22 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     @IBAction func disableAutolock(_ sender: Any) {
         self.sesame!.disableAutolock(){ (result) -> Void in}
     }
-    
-    @IBAction func unregisterServer(_ sender: Any) {
-//        self.sesame?.unregisterServer(){ result in
-//            switch result {
-//            case .success(_):
-//                self.sesame?.unregister()
-//            case .failure(let error):
-//                ViewHelper.alert("Error", ErrorMessage.descriptionFromError(error: error), self)
-//                DispatchQueue.main.async {
-//                    ViewHelper.hideLoadingView(view: self.view)
-//                }
-//            }
-//        }
-    }
-    @IBAction func unregisterClick(_ sender: UIButton) {
-        self.sesame!.resetSesame2(){res in
 
-        }
+    @IBAction func unregisterClick(_ sender: UIButton) {
+        self.sesame!.resetSesame2(){res in}
     }
     
     @IBAction func setLock(_ sender: UIButton) {
-        sesame!.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ res in
-
-        }
+        sesame!.configureLockPosition(lockTarget: lockDegree, unlockTarget: unlockDegree){ _ in}
     }
     
     @IBAction func unlockClick(_ sender: UIButton) {
-        sesame!.unlock { _ in
-            
-        }
+        sesame!.unlock { _ in }
     }
     
     @IBAction func lockClick(_ sender: UIButton) {
-        sesame!.lock { _ in
-            
-        }
+        sesame!.lock { _ in} // default with set historytag , check with  gethistorytag
+//      sesame!.lock(historytag:Data(hex: "11223344")){_ in}
     }
     
     @IBAction func connectClick(_ sender: UIButton) {
@@ -269,44 +179,7 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     }
     
     @IBAction func registerBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.SesameName".localized,
-                                      message: nil,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
-                                      style: .cancel,
-                                      handler: nil))
-        alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "Input your sesame name here..."
-        })
-        alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.OK".localized,
-                                      style: .default,
-                                      handler: { _ in
-            if let name = alert.textFields?.first?.text {
-                // TODO: To be implemenated
-                //                self.sesame!.register(nickname: name, {(result) in
-                //                    switch result {
-                //                    case .success(_):
-                //                        CHAccountManager.shared.refreshKeychain({ result in
-                //                            switch result {
-                //                            case .success(_):
-                //                                ViewHelper.showAlertMessage(title: "flushDevices", message: "success", actionTitle: "co.candyhouse.sesame-sdk-test-app.OK".localized, viewController: self)
-                //                            case .failure(let error):
-                //                                DispatchQueue.main.async {
-                //                                    self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-                //                                }
-                //                                L.d(ErrorMessage.descriptionFromError(error: error))
-                //                            }
-                //                        })
-                //                    case .failure(let error):
-                //                        DispatchQueue.main.async {
-                //                            self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-                //                        }
-                //                        L.d(ErrorMessage.descriptionFromError(error: error))
-                //                    }
-                //                })
-            }
-        }))
-        self.present(alert, animated: true)
+        sesame!.registerSesame2(){ _ in}
     }
     
     var mechStatus: CHSesame2MechStatus? {
@@ -314,10 +187,8 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
             guard let status = mechStatus else {
                 return
             }
-            nowDegree = Int16(status.getPosition()!)
-            lockstatusLB.text = status.isInLockRange()! ? "locked" : status.isInUnlockRange()! ? "unlocked" : "moved"
-            //            let batteryStatus: CHBatteryStatus = status.getBatteryVoltage()
-            //            powerLB.text = "battery:\(batteryStatus.description()),\(status.getBatteryVoltage())"
+            nowDegree = status.position
+            lockstatusLB.text = status.isInLockRange ? "locked" : status.isInUnlockRange ? "unlocked" : "moved"
         }
     }
     
@@ -326,12 +197,10 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
             guard let setting = mechSetting else {
                 return
             }
-            lockDegree = Int16(setting.getLockPosition()!)
-            unlockDegree = Int16(setting.getUnlockPosition()!)
-            lockSetBtn.setTitle("\(setting.getLockPosition()!)", for: .normal)
-            unlockSetBtn.setTitle("\(setting.getUnlockPosition()!)", for: .normal)
-//            lockCircle.setLock(self.sesame!)
-//            fwVersionLB.text = "\(self.sesame!.fwVersion)"
+            lockDegree = setting.lockPosition
+            unlockDegree = setting.unlockPosition
+            lockSetBtn.setTitle("\(setting.lockPosition)", for: .normal)
+            unlockSetBtn.setTitle("\(setting.unlockPosition)", for: .normal)
         }
     }
     
@@ -354,7 +223,6 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     var nowDegree: Int16 = 0 {
         didSet {
             angleLB.text = "angle:\(nowDegree)"
-//            lockCircle.setValue(angle2degree(angle: nowDegree))
         }
     }
     
@@ -372,7 +240,6 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     
     
     func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
-//        L.d("test",status.description())
         deviceStatus = status
 
         if(deviceStatus == .receiveBle){
@@ -381,10 +248,8 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
         
         
         if(deviceStatus.loginStatus() == .login){
-            //            DispatchQueue.main.async {
             self.mechSetting = device.mechSetting
             self.mechStatus = device.mechStatus
-            //            }
         }
     }
     
@@ -395,39 +260,10 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
             self.lockIntention.text = intention.description
         }
     }
-    
-//    func onBleCommandResult(device: CHSesame2, command: Sesame22ItemCode, returnCode: BLECmdResultCode){
-//        DispatchQueue.main.async {
-//            self.resultLB.text = "\(command.plainName),\(returnCode)"
-//            
-//            //            L.d("\(command.description()),\(returnCode.description())")
-//            if command == .lock || command == .unlock && returnCode == .success {
-//                let times = Int(self.timesInput.text!)
-//                if times! > 0 {
-//                    self.timesInput.text = "\(times! - 1)"
-//                }
-//            }
-//        }
-//    }
+
 }
 
-extension BluetoothSesame2ControlViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-    }
-    func deleteUser(_ user:  UUID?) {
-        
-    }
-}
+
 
 extension BluetoothSesame2ControlViewController {
     override func viewWillAppear(_ animated: Bool) {
@@ -446,19 +282,13 @@ extension BluetoothSesame2ControlViewController {
         mechStatus = sesame!.mechStatus
         mechSetting = sesame!.mechSetting
         deviceStatus = sesame!.deviceStatus
-        
-        //        deviceIDLB.text = "accessLevel:\(sesame!.accessLevel.rawValue)"
-        //        bleIDLB.text = "BleId:\(sesame!.bleIdStr)"
-        //        nicknameLB.text="customNickname:\(sesame!.customDeviceName)"
-        shareKeyImg.image = UIImage.CHUIImage(named: "refresh")
-        
-        //        if(self.sesame!.accessLevel == .manager  || self.sesame!.accessLevel == .owner   ){
-        self.refreshUserList(self)
-        //        }
-        sesame!.connect(){_ in}
+        deviceIDLB.text = sesame!.deviceId.uuidString
+        powerLB.text = "power: \(sesame!.mechStatus?.getBatteryPrecentage() ?? 0) %"
     }
     
-    func issueAnQRCodeKey(imgv:UIImageView , level:CHDeviceAccessLevel) {
-
-    }
+    override func viewDidDisappear(_ animated: Bool) {
+         super.viewDidDisappear(animated)
+         dfuHelper?.abort()
+         dfuHelper = nil
+     }
 }

@@ -41,17 +41,17 @@ public final class MeViewModel: ViewModel {
         AWSMobileClient.default().addUserStateListener(self) { (status, info) in
             switch status {
             case .signedIn:
-                self.statusUpdated?(.received)
+                self.statusUpdated?(.update(nil))
             case .signedOut:
-                self.statusUpdated?(.received)
+                self.statusUpdated?(.update(nil))
             case .guest:
-                self.statusUpdated?(.received)
+                self.statusUpdated?(.update(nil))
             case .signedOutFederatedTokensInvalid:
-                self.statusUpdated?(.received)
+                self.statusUpdated?(.update(nil))
             case .signedOutUserPoolsTokenInvalid:
-                self.statusUpdated?(.received)
+                self.statusUpdated?(.update(nil))
             case .unknown:
-                self.statusUpdated?(.received)
+                self.statusUpdated?(.update(nil))
             }
         }
     }

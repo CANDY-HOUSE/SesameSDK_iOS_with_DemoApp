@@ -82,7 +82,7 @@ public final class LockAngleSettingViewModel: ViewModel {
             }
             switch result {
             case .success(_):
-                strongSelf.statusUpdated?(.received)
+                strongSelf.statusUpdated?(.update(nil))
             case .failure(let error):
                 strongSelf.statusUpdated?(.finished(.failure(error)))
             }
@@ -92,12 +92,9 @@ public final class LockAngleSettingViewModel: ViewModel {
     public func viewDidLoad() {
         if let setting = sesame2.mechSetting {
 
-            lockDegree = Int16(setting.getLockPosition()!)
-            unlockDegree = Int16(setting.getUnlockPosition()!)
-            
-            if !setting.isConfigured() {
-                sesame2.configureLockPosition(lockTarget: 1024/4, unlockTarget: 0){res in}
-            }
+            lockDegree = setting.lockPosition
+            unlockDegree = setting.unlockPosition
+
             
         } else {
             let error = NSError(domain: "co.candyhouse.sesame-sdk-test-app", code: 0, userInfo: ["message": "Get sesame setting failed."])
@@ -107,8 +104,8 @@ public final class LockAngleSettingViewModel: ViewModel {
         guard let status = sesame2.mechStatus else {
             return
         }
-        currentDegree = Int16(status.getPosition()!)
-        statusUpdated?(.received)
+        currentDegree = status.position
+        statusUpdated?(.update(nil))
     }
 }
 
@@ -128,8 +125,8 @@ extension LockAngleSettingViewModel: CHSesame2Delegate {
         guard let status = device.mechStatus else {
             return
         }
-        currentDegree = Int16(status.getPosition()!)
-        statusUpdated?(.received)
+        currentDegree = status.position
+        statusUpdated?(.update(nil))
     }
 }
 

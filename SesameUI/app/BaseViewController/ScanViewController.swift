@@ -60,7 +60,7 @@ class ScanViewController: CHBaseViewController {
                 switch status {
                 case .loading:
                     break
-                case .received:
+                case .update:
                     break
                 case .finished(let result):
                     switch result {
@@ -157,11 +157,11 @@ class ScanViewController: CHBaseViewController {
             case .landscapeRight:
                 scannerView.layer.connection?.videoOrientation = supportedOrientations.contains("UIInterfaceOrientationLandscapeRight") ? .landscapeLeft : .portrait
             case .faceUp:
-                break
+                scannerView.layer.connection?.videoOrientation = supportedOrientations.contains("UIInterfaceOrientationPortrait") ? .portrait : .portrait
             case .faceDown:
-                break
+                scannerView.layer.connection?.videoOrientation = supportedOrientations.contains("UIInterfaceOrientationPortrait") ? .portrait : .portrait
             case .unknown:
-                break
+                scannerView.layer.connection?.videoOrientation = supportedOrientations.contains("UIInterfaceOrientationPortrait") ? .portrait : .portrait
             @unknown default:
                 break
             }

@@ -38,7 +38,7 @@ public final class FriendsViewModel: ViewModel {
     @objc
     func refresh() {
         friends = []
-        statusUpdated?(.received)
+        statusUpdated?(.update(nil))
     }
     
     public func rightbuttonItemImage() -> String {

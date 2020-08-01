@@ -20,9 +20,9 @@ class Sesame2HistoryViewController: CHBaseViewController {
     @IBOutlet weak var sesameCircle: Sesame2Circle!
     @IBOutlet weak var Locker: UIButton!
     var refreshControl = UIActivityIndicatorView(style: .gray)
-    var isJustEnterTheView = true
     // MARK: - Flag
     private var canRefresh = true
+    private var isFirstTimeEnterTheView = true
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -38,7 +38,7 @@ class Sesame2HistoryViewController: CHBaseViewController {
             switch status {
             case .loading:
                 strongSelf.refreshControl.startAnimating()
-            case .received:
+            case .update:
                 executeOnMainThread {
                     strongSelf.updataSesame2UI()
                 }
@@ -79,20 +79,22 @@ class Sesame2HistoryViewController: CHBaseViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        scrollToBottomWithAnimation(!isJustEnterTheView)
+        if isFirstTimeEnterTheView == true {
+            scrollToBottomWithAnimation(false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updataSesame2UI()
         viewModel.viewWillAppear()
-        viewModel.pullDown()
         titleLabel.text = viewModel.title
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        isJustEnterTheView = false
+        isFirstTimeEnterTheView = false
+        viewModel.loadMore()
     }
     
     // MARK: Methods
@@ -234,7 +236,7 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
     
     @objc func refresh(_ sender: AnyObject) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.viewModel.pullDown()
+            self.viewModel.loadMore()
         }
     }
 }
@@ -250,7 +252,9 @@ extension Sesame2HistoryViewController: NSFetchedResultsControllerDelegate {
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         executeOnMainThread {
             self.historyTable.endUpdates()
-            self.scrollToBottomWithAnimation(!self.isJustEnterTheView)
+            if !self.historyTable.isTracking && !self.historyTable.isDragging && !self.historyTable.isDecelerating {
+                self.scrollToBottomWithAnimation(true)
+            }
         }
     }
     

@@ -47,21 +47,17 @@ public final class Sesame2SettingViewModel: ViewModel {
     private(set) var dfuIndicator = "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized
     private(set) var removeSesameText = "co.candyhouse.sesame-sdk-test-app.ResetSesame".localized
     private(set) var dropKeyText = "co.candyhouse.sesame-sdk-test-app.TrashTheKey".localized
-    private(set) var autoLockLabel1Text = "co.candyhouse.sesame-sdk-test-app.AutoLock".localized
-    private(set) var autoLockLabel2Text = "co.candyhouse.sesame-sdk-test-app.after".localized
-    private(set) var autoLockLabel3Text = "co.candyhouse.sesame-sdk-test-app.sec".localized
+    private(set) var autoLockTitleLabelText = "co.candyhouse.sesame-sdk-test-app.AutoLock".localized
+    private(set) var autoLockValueLabelText = ""
     private(set) var arrowImg = "arrow"
     private(set) var uuidTitleText = "UUID".localized
     private(set) var modifyHistoryTagText = "History Tag".localized
     private(set) var mySesameText = "ドラえもん".localized
     private(set) var share = "co.candyhouse.sesame-sdk-test-app.ShareTheKey".localized
     private(set) var autoLockSwitchColor = UIColor.sesame2Green
-    
-    private let dBms = [-40, -20, -16, -12, -8, -4, 0, 3, 4]
-    private let advIntervals = [20, 152.5, 211.25, 318.75, 417.5, 546.25, 760, 852.5, 1022.5, 1285]
     private(set) var advIntervalPickerSelectedRow: Int = 0
     private(set) var txPowerPickerSelectedRow: Int = 0
-    
+    private(set) var secondPickerSelectedRow: Int = 0
     
     var title: String {
         let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
@@ -88,11 +84,11 @@ public final class Sesame2SettingViewModel: ViewModel {
         isHiddenAutoLockDisplay
     }
     
-    var isAutoLockLabel1Hidden: Bool {
+    var isAutoLockTitleLabelHidden: Bool {
         false
     }
     
-    var isAutoLockLabel2Hidden: Bool {
+    var isAutoLockValueLabelHidden: Bool {
         isHiddenAutoLockDisplay
     }
     
@@ -134,7 +130,7 @@ public final class Sesame2SettingViewModel: ViewModel {
     
     @objc func updateUI() {
         executeOnMainThread {
-            self.statusUpdated?(.received)
+            self.statusUpdated?(.update(nil))
         }
     }
     
@@ -144,14 +140,14 @@ public final class Sesame2SettingViewModel: ViewModel {
                 guard let strongSelf = self else {
                     return
                 }
-                strongSelf.statusUpdated?(.received)
+                strongSelf.statusUpdated?(.update(nil))
             }
             isHiddenAutoLockSecondPicker = true
         } else {
             isHiddenAutoLockSecondPicker = false
         }
         switchIsOn = sender.isOn
-        statusUpdated?(.received)
+        statusUpdated?(.update(nil))
     }
     
     // MARK: - Business logic
@@ -166,6 +162,8 @@ public final class Sesame2SettingViewModel: ViewModel {
                 strongSelf.switchIsOn = delay.data != 0
                 strongSelf.isHiddenAutoLockDisplay = !strongSelf.switchIsOn
                 strongSelf.delay = delay.data
+                strongSelf.autoLockValueLabelText = String(format: "co.candyhouse.sesame-sdk-test-app.secAfter".localized, arguments: [strongSelf.formatedTimeFromSec(strongSelf.delay)])
+                strongSelf.secondPickerSelectedRow = strongSelf.seconds.firstIndex(of: strongSelf.delay) ?? 0
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -181,7 +179,7 @@ public final class Sesame2SettingViewModel: ViewModel {
             switch result {
             case .success(let status):
                 strongSelf.version = status.data
-                strongSelf.statusUpdated?(.received)
+                strongSelf.statusUpdated?(.update(nil))
             case .failure(let error):
                 strongSelf.statusUpdated?(.finished(.failure(error)))
             }
@@ -195,29 +193,21 @@ public final class Sesame2SettingViewModel: ViewModel {
             }
             switch result {
             case .success(let bleAdvResult):
-                let selectedAdvIntervalIndex = strongSelf.advIntervals.firstIndex(of: strongSelf.millionsecondFromBleUnit(bleAdvResult.data.interval))
+                let selectedAdvIntervalIndex = strongSelf.advIntervals.firstIndex(of: bleAdvResult.data.interval)
                 strongSelf.advIntervalPickerSelectedRow = selectedAdvIntervalIndex ?? 0
                 strongSelf.advInterval = strongSelf.readableAdvInterval(bleAdvResult.data.interval)
                 strongSelf.txPower = strongSelf.readableTxPower(bleAdvResult.data.txPower)
                 let selectedTxPowerIndex = strongSelf.dBms.firstIndex(of: Int(bleAdvResult.data.txPower))
                 strongSelf.txPowerPickerSelectedRow = selectedTxPowerIndex ?? 0
-                strongSelf.statusUpdated?(.received)
+                strongSelf.statusUpdated?(.update(nil))
             case .failure(let error):
                 strongSelf.statusUpdated?(.finished(.failure(error)))
             }
         }
     }
     
-    func readableAdvInterval(_ interval: UInt16) -> String {
-        "\(millionsecondFromBleUnit(interval)) ms"
-    }
-    
-    func bleUnitFromMillionSecond(_ millionSecond: Double) -> Int {
-        Int(millionSecond / 0.625)
-    }
-    
-    func millionsecondFromBleUnit(_ bleUnit: UInt16) -> Double {
-        Double(bleUnit) * 0.625
+    func readableAdvInterval(_ interval: Double) -> String {
+        "\(interval) ms"
     }
     
     func readableTxPower(_ txPower: Int8) -> String {
@@ -253,8 +243,16 @@ extension Sesame2SettingViewModel: CHSesame2Delegate {
 
 // MARK: - AutoLock
 extension Sesame2SettingViewModel {
-    private var second: [Int] {
-        [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    private var seconds: [Int] {
+        [3, 5, 7, 10, 15, 30, 60, 60*2, 60*5, 60*10, 60*15, 60*30, 60*60]
+    }
+    
+    private var dBms: [Int] {
+        [-40, -20, -16, -12, -8, -4, 0, 3, 4]
+    }
+    
+    private var advIntervals: [Double] {
+         [20, 152.5, 211.25, 318.75, 417.5, 546.25, 760, 852.5, 1022.5, 1285]
     }
 
     func columnOfAutoLock() -> Int {
@@ -270,7 +268,7 @@ extension Sesame2SettingViewModel {
     }
     
     func rowOfAutoLock() -> Int {
-        second.count
+        seconds.count
     }
     
     func rowOfAdvInterval() -> Int {
@@ -282,7 +280,19 @@ extension Sesame2SettingViewModel {
     }
     
     func secondPickerTextForRow(_ row: Int) -> String {
-        String(second[row])
+        formatedTimeFromSec(seconds[row])
+    }
+    
+    func formatedTimeFromSec(_ sec: Int) -> String {
+        if sec > 0 && sec < 60 {
+            return "\(sec) \("co.candyhouse.sesame-sdk-test-app.sec".localized)"
+        } else if sec >= 60 && sec < 60*60 {
+            return "\(sec/60) \("co.candyhouse.sesame-sdk-test-app.min".localized)"
+        } else if sec >= 60*60 {
+            return "\(sec/(60*60)) \("co.candyhouse.sesame-sdk-test-app.hour".localized)"
+        } else {
+            return "co.candyhouse.sesame-sdk-test-app.off".localized
+        }
     }
     
     func advIntervalPickerTextForRow(_ row: Int) -> String {
@@ -295,7 +305,7 @@ extension Sesame2SettingViewModel {
     
     func autolockSecondTapped() {
         defer {
-            statusUpdated?(.received)
+            statusUpdated?(.update(nil))
         }
         if delay == 0 {
             isHiddenAutoLockSecondPicker = true
@@ -309,26 +319,26 @@ extension Sesame2SettingViewModel {
     }
     
     func advIntervalConfigTapped() {
-//        guard sesame2.deviceStatus.loginStatus() == .login else {
-//            return
-//        }
-//
-//        isHiddenAdvIntervalPicker.toggle()
-//        statusUpdated?(.received)
+        guard sesame2.deviceStatus.loginStatus() == .login else {
+            return
+        }
+
+        isHiddenAdvIntervalPicker.toggle()
+        statusUpdated?(.update(nil))
     }
     
     func txPowerConfgTapped() {
-//        guard sesame2.deviceStatus.loginStatus() == .login else {
-//            return
-//        }
-//        
-//        isHiddenTxPowerPicker.toggle()
-//        statusUpdated?(.received)
+        guard sesame2.deviceStatus.loginStatus() == .login else {
+            return
+        }
+        
+        isHiddenTxPowerPicker.toggle()
+        statusUpdated?(.update(nil))
     }
     
     func secondPickerDidSelectRow(_ row: Int) {
 
-        sesame2.enableAutolock(delay: second[row]) { [weak self] result  in
+        sesame2.enableAutolock(delay: seconds[row]) { [weak self] result  in
             guard let strongSelf = self else {
                 return
             }
@@ -338,7 +348,9 @@ extension Sesame2SettingViewModel {
                     strongSelf.delay = delay.data
                     strongSelf.isHiddenAutoLockDisplay = delay.data > 0 ? false : true
                     strongSelf.isHiddenAutoLockSecondPicker = true
-                    strongSelf.statusUpdated?(.received)
+                    strongSelf.autoLockValueLabelText = String(format: "co.candyhouse.sesame-sdk-test-app.secAfter".localized, arguments: [strongSelf.secondPickerTextForRow(row)])
+                    strongSelf.secondPickerSelectedRow = row
+                    strongSelf.statusUpdated?(.update(nil))
                 }
             case .failure(let error):
                 L.d(error.errorDescription())
@@ -349,28 +361,42 @@ extension Sesame2SettingViewModel {
     }
     
     func advPickerDidSelectRow(_ row: Int) {
-//        let newAdvInterval = advIntervals[row]
-//        sesame2.updateBleAdvParameter(interval: UInt16(bleUnitFromMillionSecond(newAdvInterval)),
-//                                      txPower: sesame2.bleAdvParameter!.txPower) { [weak self] _ in
-//                                        guard let strongSelf = self else {
-//                                            return
-//                                        }
-//                                        strongSelf.advIntervalPickerSelectedRow = row
-//                                        strongSelf.statusUpdated?(.received)
-//        }
+        let newAdvInterval = advIntervals[row]
+        sesame2.updateBleAdvParameter(interval: newAdvInterval,
+                                      txPower: Int8(dBms[txPowerPickerSelectedRow])) { [weak self] result in
+                                        guard let strongSelf = self else {
+                                            return
+                                        }
+                                        switch result {
+                                        case .success(let bleAdvParameterData):
+                                            strongSelf.advIntervalPickerSelectedRow = row
+                                            strongSelf.advInterval = strongSelf.readableAdvInterval(bleAdvParameterData.data.interval)
+                                            strongSelf.statusUpdated?(.update(nil))
+                                        case .failure(let error):
+                                            strongSelf.statusUpdated?(.finished(.failure(error)))
+                                        }
+        }
         isHiddenAdvIntervalPicker = true
     }
     
     func txPowerPickerDidSelectRow(_ row: Int) {
-//        let newTxPower = dBms[row]
-//        sesame2.updateBleAdvParameter(interval: sesame2.bleAdvParameter!.interval,
-//                                      txPower: Int8(newTxPower)) { [weak self] _ in
-//                                        guard let strongSelf = self else {
-//                                            return
-//                                        }
-//                                        strongSelf.txPowerPickerSelectedRow = row
-//                                        strongSelf.statusUpdated?(.received)
-//        }
+        let newTxPower = dBms[row]
+        let interval = advIntervals[advIntervalPickerSelectedRow]
+        sesame2.updateBleAdvParameter(interval: interval,
+                                      txPower: Int8(newTxPower)) { [weak self] result in
+                                        guard let strongSelf = self else {
+                                            return
+                                        }
+                                        switch result {
+                                        case .success(let bleAdvParameterData):
+                                            strongSelf.txPower = strongSelf.readableTxPower(bleAdvParameterData.data.txPower)
+                                            strongSelf.txPowerPickerSelectedRow = row
+                                            strongSelf.statusUpdated?(.update(nil))
+                                        case .failure(let error):
+                                            strongSelf.statusUpdated?(.finished(.failure(error)))
+                                        }
+                                        
+        }
         isHiddenTxPowerPicker = true
     }
 }
