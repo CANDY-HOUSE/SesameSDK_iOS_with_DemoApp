@@ -1,4 +1,4 @@
-# iOS
+# iOS prepare to release !!
 
 ```Swift
 public protocol CHSesame2: class {
