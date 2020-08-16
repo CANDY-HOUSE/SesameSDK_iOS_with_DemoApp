@@ -91,16 +91,26 @@ extension RegisterDeviceListViewController: UITableViewDataSource {
         cell.viewModel = cellViewModel
         cell.ssi.textColor = (indexPath.row == 0) ? .sesame2Green : .gray
         cell.statusLabel.text = cellViewModel.currentStatus()
+        cell.delegate = self
         return cell
     }
     
 }
 
+extension RegisterDeviceListViewController: RegisterCellDelegate {
+    func dfuTapped(cell: UITableViewCell) {
+        guard let indexPath = deviceTableView.indexPath(for: cell) else {
+            return
+        }
+        dfuSelectedDevice(indexPath: indexPath)
+    }
+}
+
 extension RegisterDeviceListViewController {
     
-    func dfuSelectedDevice() {
+    func dfuSelectedDevice(indexPath: IndexPath? = nil) {
         
-        guard let indexPath = deviceTableView.indexPathForSelectedRow else {
+        guard let indexPath = indexPath ?? deviceTableView.indexPathForSelectedRow else {
             return
         }
 
@@ -116,7 +126,7 @@ extension RegisterDeviceListViewController {
                         self.viewModel.dfuDeviceAtIndexPath(indexPath, observer: progressIndicator)
         }
         let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.dfu".localized,
-                                                message: "",
+                                                message: viewModel.dfuFileName(),
                                                 preferredStyle: .alert)
         let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
         alertController.addAction(dfu)

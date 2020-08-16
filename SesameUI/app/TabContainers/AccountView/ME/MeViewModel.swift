@@ -16,6 +16,7 @@ public protocol MeViewModelDelegate {
     func newSesameTapped()
     func loginRegisterTapped()
     func showMyQRCodeTappe()
+    func registerWifiModule2Tapped()
 }
 
 public final class MeViewModel: ViewModel {
@@ -95,6 +96,8 @@ extension MeViewModel {
             delegate?.newSesameTapped()
         case .receiveKey:
             delegate?.scanViewTapped()
+//        case .addWifiModule2:
+//            delegate?.registerWifiModule2Tapped()
         }
     }
     

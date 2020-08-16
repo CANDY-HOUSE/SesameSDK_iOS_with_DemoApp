@@ -63,4 +63,10 @@ extension MeViewCoordinator: MeViewModelDelegate {
         let loginViewController = LogInViewCoordinator(navigationController: navigationController)
         loginViewController.start()
     }
+    
+    public func registerWifiModule2Tapped() {
+        let registerWifiModule2ViewCoordinator = RegisterWifiModule2ViewCoordinator(navigationController: navigationController)
+        registerWifiModule2ViewCoordinator.parentCoordinator = self
+        registerWifiModule2ViewCoordinator.start()
+    }
 }

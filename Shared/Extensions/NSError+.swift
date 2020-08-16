@@ -100,6 +100,8 @@ extension NSError {
             return "Data parse failed"
         case 204:
             return "No content"
+        case -1009:
+            return "No network"
         default:
             return "Unknow"
         }

@@ -12,6 +12,7 @@ import SesameSDK
 public protocol FriendsViewModelDelegate {
     func scanViewTapped()
     func newSesameTapped()
+    func registerWifiModule2Tapped()
 }
 
 public protocol Friend {
@@ -68,6 +69,8 @@ public final class FriendsViewModel: ViewModel {
             delegate?.newSesameTapped()
         case .receiveKey:
             delegate?.scanViewTapped()
+//        case .addWifiModule2:
+//            delegate?.registerWifiModule2Tapped()
         }
     }
 }

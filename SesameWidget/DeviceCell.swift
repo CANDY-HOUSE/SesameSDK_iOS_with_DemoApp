@@ -36,10 +36,7 @@ public class DeviceCell: UITableViewCell {
         didSet{
             sesame2?.delegate = self
             sesame2?.connect{res in}
-            
             updateUI()
-
-//            ownerName.isHidden = true
             ownerName.text = sesame2?.deviceStatus.description()
             
             let device = Sesame2Store.shared.getPropertyForDevice(sesame2!)
@@ -68,6 +65,7 @@ public class DeviceCell: UITableViewCell {
         } else {
             power.text = ""
         }
+        
         battery.image = UIImage.CHUIImage(named: sesame2!.batteryImage())
     }
 }
@@ -76,7 +74,7 @@ extension DeviceCell: CHSesame2Delegate{
 
     public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
         if device.deviceId == sesame2?.deviceId,
-            status == .receiveBle {
+            status == .receivedBle {
             device.connect(){res in}
         }
         updateUI()

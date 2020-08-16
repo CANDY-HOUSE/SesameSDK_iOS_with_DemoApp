@@ -32,12 +32,14 @@ public class GeneralTabViewCoordinator: Coordinator {
         meViewCoordinator.parentCoordinator = self
         meViewCoordinator.start()
         
-        guard let entryViewController = UIStoryboard.viewControllers.generalTabViewController,
-            let deviceListViewController = bluetoothListCoordinator.presentedViewController,
-            let friendListViewController = friendsViewControllerCoordinator.presentedViewController,
-            let meViewController = meViewCoordinator.presentedViewController else {
-                return
-        }
+//        let iotCoordinator = IoTSampleTabBarControllerCoordinator(navigationViewController: UINavigationController())
+//        iotCoordinator.parentCoordinator = self
+//        iotCoordinator.start()
+        
+        let deviceListViewController = bluetoothListCoordinator.presentedViewController
+        let friendListViewController = friendsViewControllerCoordinator.presentedViewController
+        let meViewController = meViewCoordinator.presentedViewController
+//        let iotViewController = iotCoordinator.presentedViewController
         
         let deviceListItem = UITabBarItem(title: "co.candyhouse.sesame-sdk-test-app.Sesame".localized,
                                           image: UIImage.SVGImage(named:"keychain_original"),
@@ -51,14 +53,24 @@ public class GeneralTabViewCoordinator: Coordinator {
                                   image: UIImage.SVGImage(named:"icons_outlined_me",fillColor: UIColor.gray),
                                   selectedImage: UIImage.SVGImage(named:"icons_filled_official-accounts",fillColor: .sesame2Green))
         
-        
-        deviceListViewController.tabBarItem = deviceListItem
-        friendListViewController.tabBarItem = contactItem
-        meViewController.tabBarItem = meItem
+        let iotItem = UITabBarItem(title: "IoT",
+                                  image: UIImage.SVGImage(named:"icons_filled_favorites",fillColor: UIColor.gray),
+                                  selectedImage: UIImage.SVGImage(named:"icons_filled_favorites-accounts",fillColor: .sesame2Green))
 
-        entryViewController.setViewControllers([bluetoothListCoordinator.navigationController,
-                                                friendsViewControllerCoordinator.navigationController,
-                                                meViewCoordinator.navigationController],
+        deviceListViewController?.tabBarItem = deviceListItem
+        friendListViewController?.tabBarItem = contactItem
+        meViewController?.tabBarItem = meItem
+//        iotViewController?.tabBarItem = iotItem
+
+        guard let entryViewController = UIStoryboard.viewControllers.generalTabViewController else {
+            return
+        }
+        entryViewController.setViewControllers([
+            bluetoothListCoordinator.navigationController,
+            friendsViewControllerCoordinator.navigationController,
+            meViewCoordinator.navigationController,
+//            iotCoordinator.navigationController
+            ],
                                                animated: false)
         
         navigationController.pushViewController(entryViewController, animated: false)

@@ -29,6 +29,8 @@ class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, C
     @Published var isShowContent = false
     @Published var displayColor = UIColor.white
     
+    let userData = UserData.shared
+    
     private var deviceProvider: ContentProvider
     private var disposables = [AnyCancellable]()
     
@@ -43,6 +45,7 @@ class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, C
         }
     }
     
+    // MARK: - Binding
     private func receivedDeviceModels() {
         deviceProvider
             .subjectPublisher
@@ -64,7 +67,17 @@ class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, C
                     return
                 }
                 L.d("Watch get \(deviceModels.count) device(s).")
-                strongSelf.deviceModels = deviceModels
+                strongSelf.deviceModels = deviceModels.sorted(by: { (left, right) -> Bool in
+                    left.uuid.uuidString < right.uuid.uuidString
+                })
+                
+                // MARK: - Clear removed device
+                let containedSelectedUUID = deviceModels.contains {
+                    strongSelf.userData.selectedDevice == $0.device.deviceId
+                }
+                if containedSelectedUUID == false {
+                    strongSelf.userData.selectedDevice = nil
+                }
                 strongSelf.displayText = LocalizedString("co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady")
                 strongSelf.displayColor = UIColor.white
         }
@@ -72,9 +85,32 @@ class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, C
         deviceProvider.connect()
     }
     
+    // MARK: - User Event
+    func deviceHasSelected() {
+        // Refresh UI
+        isShowContent.toggle()
+        isShowContent.toggle()
+    }
+    
+    // MARK: - View Models
+    func selectedSesameLockCellModel() -> Sesame2LockViewModel {
+        let selectedIndex = deviceModels.firstIndex(where: { [weak self] in
+            $0.device.deviceId == self?.userData.selectedDevice
+        }) ?? 0
+        
+        return Sesame2LockViewModel(device: deviceModels[selectedIndex].device)
+    }
+    
     func sesameLockCellModels() -> [Sesame2LockViewModel] {
         deviceModels.map { deviceModel -> Sesame2LockViewModel in
             Sesame2LockViewModel(device: deviceModel.device)
         }
+    }
+    
+    func sesame2ListViewModel() -> Sesame2ListViewModel {
+        let sesame2s = deviceModels.map {
+            $0.device
+        }
+        return Sesame2ListViewModel(sesame2s: sesame2s)
     }
 }

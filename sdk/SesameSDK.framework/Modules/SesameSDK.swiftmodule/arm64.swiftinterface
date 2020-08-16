@@ -1,0 +1,556 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SesameSDK
+import AWSAPIGateway
+import AWSCore
+import AWSIoT
+import CoreBluetooth
+import CoreData
+import Foundation
+import Security
+@_exported import SesameSDK
+import Swift
+import UIKit
+public var Sesame2SDKVersionString: Swift.String? {
+  get
+}
+public var Sesame2SDKBundleVersionString: Swift.String? {
+  get
+}
+public var Sesame2SDKVersion: Swift.UInt? {
+  get
+}
+public var Sesame2SDKBundleVersion: Swift.UInt? {
+  get
+}
+public protocol CHSesame2 : AnyObject {
+  var deviceId: Foundation.UUID! { get }
+  var delegate: SesameSDK.CHSesame2Delegate? { get set }
+  var rssi: Foundation.NSNumber? { get }
+  var txPowerLevel: Swift.Int? { get }
+  var isRegistered: Swift.Bool { get }
+  var deviceStatus: SesameSDK.CHSesame2Status { get }
+  var mechStatus: SesameSDK.CHSesame2MechStatus? { get }
+  var mechSetting: SesameSDK.CHSesame2MechSettings? { get }
+  var intention: SesameSDK.CHSesame2Intention { get }
+  func unlock(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func toggle(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func connect(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func disconnect(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func registerSesame2(_ result: @escaping SesameSDK.CHResult<SesameSDK.CHEmpty>)
+  func resetSesame2(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func getAutolockSetting(result: @escaping (SesameSDK.CHResult<Swift.Int>))
+  func updateFirmware(_ result: @escaping SesameSDK.CHResult<CoreBluetooth.CBPeripheral?>)
+  func getVersionTag(result: @escaping (SesameSDK.CHResult<Swift.String>))
+  func setHistoryTag(_ tag: Foundation.Data, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func getHistoryTag() -> Foundation.Data?
+  func dropKey(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func getKey() -> Swift.String?
+  func getHistories(page: Swift.UInt, _ result: @escaping SesameSDK.CHResult<[SesameSDK.CHSesame2History]>)
+  func getBleAdvParameter(_ result: @escaping SesameSDK.CHResult<SesameSDK.Sesame2BleAdvParameter>)
+  func lock(historytag: Foundation.Data?, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func unlock(historytag: Foundation.Data?, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func toggle(historytag: Foundation.Data?, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func configureLockPosition(historytag: Foundation.Data?, lockTarget: Swift.Int16, unlockTarget: Swift.Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func updateBleAdvParameter(historytag: Foundation.Data?, interval: Swift.Double, txPower: Swift.Int8, _ result: @escaping SesameSDK.CHResult<SesameSDK.Sesame2BleAdvParameter>)
+  func enableAutolock(historytag: Foundation.Data?, delay: Swift.Int, result: @escaping (SesameSDK.CHResult<Swift.Int>))
+  func disableAutolock(historytag: Foundation.Data?, result: @escaping (SesameSDK.CHResult<Swift.Int>))
+}
+extension CHSesame2 {
+  public func lock(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  public func unlock(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  public func toggle(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  public func configureLockPosition(lockTarget: Swift.Int16, unlockTarget: Swift.Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  public func updateBleAdvParameter(interval: Swift.Double, txPower: Swift.Int8, _ result: @escaping SesameSDK.CHResult<SesameSDK.Sesame2BleAdvParameter>)
+  public func enableAutolock(delay: Swift.Int, result: @escaping (SesameSDK.CHResult<Swift.Int>))
+  public func disableAutolock(result: @escaping (SesameSDK.CHResult<Swift.Int>))
+}
+@_hasMissingDesignatedInitializers public class User : Swift.Codable {
+  public var id: Swift.String
+  public var nickname: Swift.String
+  public var first_name: Swift.String
+  public var last_name: Swift.String
+  public func getUUID() -> Foundation.UUID
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class CnadyHouseUUID : Swift.Codable {
+  public var uid: Swift.String
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class CHProfile : Swift.Codable {
+  public var id: Swift.String
+  public var nickname: Swift.String
+  public func getCandyUUID() -> Foundation.UUID
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class ServerError : Swift.Codable {
+  public var message: Swift.String
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers final public class Heckel<T> where T : SesameSDK.DiffAware {
+  final public func diff(old: [T], new: [T]) -> [SesameSDK.Change<T>]
+  @objc deinit
+}
+public struct Insert<T> {
+  public let item: T
+  public let index: Swift.Int
+}
+public struct Delete<T> {
+  public let item: T
+  public let index: Swift.Int
+}
+public struct Replace<T> {
+  public let oldItem: T
+  public let newItem: T
+  public let index: Swift.Int
+}
+public struct Move<T> {
+  public let item: T
+  public let fromIndex: Swift.Int
+  public let toIndex: Swift.Int
+}
+public enum Change<T> {
+  case insert(SesameSDK.Insert<T>)
+  case delete(SesameSDK.Delete<T>)
+  case replace(SesameSDK.Replace<T>)
+  case move(SesameSDK.Move<T>)
+  public var insert: SesameSDK.Insert<T>? {
+    get
+  }
+  public var delete: SesameSDK.Delete<T>? {
+    get
+  }
+  public var replace: SesameSDK.Replace<T>? {
+    get
+  }
+  public var move: SesameSDK.Move<T>? {
+    get
+  }
+}
+public func diff<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>] where T : SesameSDK.DiffAware
+public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
+public protocol CHFirmwareUpdateInterface : AnyObject {
+  func dfuInitialized(abort: @escaping () -> Swift.Void)
+  func dfuStarted()
+  func dfuSucceeded()
+  func dfuError(message: Swift.String)
+  func dfuProgressDidChange(progress: Swift.Int)
+}
+public protocol CHSesame2Delegate {
+  func onBleDeviceStatusChanged(device: SesameSDK.CHSesame2, status: SesameSDK.CHSesame2Status)
+  func onMechStatusChanged(device: SesameSDK.CHSesame2, status: SesameSDK.CHSesame2MechStatus, intention: SesameSDK.CHSesame2Intention)
+}
+extension CHSesame2Delegate {
+  public func onBleDeviceStatusChanged(device: SesameSDK.CHSesame2, status: SesameSDK.CHSesame2Status)
+  public func onMechStatusChanged(device: SesameSDK.CHSesame2, status: SesameSDK.CHSesame2MechStatus, intention: SesameSDK.CHSesame2Intention)
+}
+public protocol CHWifiModule2Delegate {
+  func onBleDeviceStatusChanged(device: SesameSDK.CHWifiModule2, status: SesameSDK.CHSesame2Status)
+  func onMechStatusChanged(device: SesameSDK.CHWifiModule2, status: SesameSDK.CHSesame2MechStatus, intention: SesameSDK.CHSesame2Intention)
+  func wifiSSID() -> Swift.String
+  func wifiPassword() -> Swift.String
+  func wifiSetupResult(_ result: Swift.Bool)
+}
+extension CHWifiModule2Delegate {
+  public func onBleDeviceStatusChanged(device: SesameSDK.CHWifiModule2, status: SesameSDK.CHSesame2Status)
+  public func onMechStatusChanged(device: SesameSDK.CHWifiModule2, status: SesameSDK.CHSesame2MechStatus, intention: SesameSDK.CHSesame2Intention)
+}
+extension URL {
+  public static func storeURL(for appGroup: Swift.String?, databaseName: Swift.String) -> Foundation.URL?
+}
+@_hasMissingDesignatedInitializers public class CHDeviceKey : Swift.Codable {
+  public var deviceUUID: Foundation.UUID
+  public var deviceModel: Swift.String
+  public var historyTag: Foundation.Data?
+  public var keyIndex: Swift.String
+  public var secretKey: Swift.String
+  public var sesame2PublicKey: Swift.String
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public typealias CHResult<T> = (Swift.Result<SesameSDK.CHResultState<T>, Swift.Error>) -> ()
+@_hasMissingDesignatedInitializers public class CHResultState<T> {
+  public var data: T
+  public var isCache: Swift.Bool?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHResultStateCache<T> : SesameSDK.CHResultState<T> {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHResultStateNetworks<T> : SesameSDK.CHResultState<T> {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHResultStateBLE<T> : SesameSDK.CHResultState<T> {
+  @objc deinit
+}
+public enum CHDeviceAccessLevel : Swift.String {
+  case none
+  case owner
+  case manager
+  case guest
+  case member
+  case unknown
+  public static var haveRightToAcceress: Swift.Int
+  public func power() -> Swift.Int
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHHistoryEventType : Swift.String {
+  case lock, unlock, manualLock, manualUnlock, autolock, manualOperated
+  case keyIssue, keyRevoke, keyClaim, gatewayIssue, gatewayRevoke
+  case unknown
+  public static func isLockType(_ event: SesameSDK.CHHistoryEventType) -> Swift.Bool
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHDeviceMemberType : Swift.String {
+  case token, tokenPending, unknown
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension Array {
+  public func executeIfPresent(_ closure: ([Element]) -> Swift.Void)
+}
+public protocol CHSesame2MechStatus {
+  func getBatteryVoltage() -> Swift.Float
+  func getBatteryPrecentage() -> Swift.Int
+  var position: Swift.Int16 { get }
+  var isInLockRange: Swift.Bool { get }
+  var isInUnlockRange: Swift.Bool { get }
+}
+public protocol CHSesame2MechSettings {
+  var lockPosition: Swift.Int16 { get }
+  var unlockPosition: Swift.Int16 { get }
+  func isConfigured() -> Swift.Bool
+}
+public enum CHSesame2Intention : Swift.String {
+  case locking, unlocking, movingToUnknownTarget, idle
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol CHSesame2BleAdvParameter {
+  var interval: Swift.Double { get }
+  var txPower: Swift.Int8 { get }
+}
+public enum CHProductModel : Swift.UInt16 {
+  case sesame2
+  case wifiModule2
+  public typealias RawValue = Swift.UInt16
+  public init?(rawValue: Swift.UInt16)
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+public protocol CHBleManagerDelegate : AnyObject {
+  func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameSDK.CHSesame2])
+  func didDiscoverUnRegisteredSesame2(sesame2: SesameSDK.CHSesame2)
+  func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameSDK.CHWifiModule2])
+}
+extension CHBleManagerDelegate {
+  public func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameSDK.CHSesame2])
+  public func didDiscoverUnRegisteredSesame2(sesame2: SesameSDK.CHSesame2)
+  public func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameSDK.CHWifiModule2])
+}
+public enum CHSesame2Status {
+  case noSignal
+  case receivedBle
+  case connecting
+  case reset
+  case waitingGatt
+  case logining
+  case readytoRegister
+  case registing
+  case locked
+  case unlocked
+  case moved
+  case nosetting
+  case dfumode
+  public func description() -> Swift.String
+  public func loginStatus() -> SesameSDK.CHDeviceLoginStatus
+  public static func == (a: SesameSDK.CHSesame2Status, b: SesameSDK.CHSesame2Status) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum CHDeviceLoginStatus : Swift.String {
+  case logined
+  case unlogined
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class CHAccountManager {
+  public static let shared: SesameSDK.CHAccountManager!
+  @objc deinit
+}
+public protocol DiffAware {
+  associatedtype DiffId : Swift.Hashable
+  var diffId: Self.DiffId { get }
+  static func compareContent(_ a: Self, _ b: Self) -> Swift.Bool
+}
+extension DiffAware where Self : Swift.Hashable {
+  public var diffId: Self {
+    get
+  }
+  public static func compareContent(_ a: Self, _ b: Self) -> Swift.Bool
+}
+extension Int : SesameSDK.DiffAware {
+  public typealias DiffId = Swift.Int
+}
+extension String : SesameSDK.DiffAware {
+  public typealias DiffId = Swift.String
+}
+extension Character : SesameSDK.DiffAware {
+  public typealias DiffId = Swift.Character
+}
+extension UUID : SesameSDK.DiffAware {
+  public typealias DiffId = Foundation.UUID
+}
+extension UIDevice {
+  public static let modelName: Swift.String
+}
+public struct Sesame2BleAdvParameter : SesameSDK.CHSesame2BleAdvParameter {
+  public var interval: Swift.Double
+  public var txPower: Swift.Int8
+}
+@_hasMissingDesignatedInitializers public class Client : Swift.Codable {
+  public var belongs_to: [Swift.String]?
+  public var nickname: Swift.String?
+  public var accessId: Foundation.Data? {
+    get
+  }
+  public var userId: Foundation.UUID? {
+    get
+  }
+  public var memberType: SesameSDK.CHDeviceMemberType {
+    get
+  }
+  public var roleType: SesameSDK.CHDeviceAccessLevel {
+    get
+  }
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHBleManager : ObjectiveC.NSObject {
+  public static let shared: SesameSDK.CHBleManager
+  weak public var delegate: SesameSDK.CHBleManagerDelegate?
+  public func disableScan(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  public func enableScan(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  public func disConnectAll(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  @objc deinit
+}
+extension CHBleManager : CoreBluetooth.CBCentralManagerDelegate {
+  @objc dynamic public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
+}
+extension CHBleManager : CoreBluetooth.CBPeripheralDelegate {
+  @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
+  @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
+  @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
+}
+final public class WagnerFischer<T> where T : SesameSDK.DiffAware {
+  public init(reduceMove: Swift.Bool = false)
+  final public func diff(old: [T], new: [T]) -> [SesameSDK.Change<T>]
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CHIotManager {
+  public static let shared: SesameSDK.CHIotManager!
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class CHConfiguration {
+  public static let shared: SesameSDK.CHConfiguration
+  final public func setAPIKey(_ key: Swift.String)
+  final public func apiKey() -> Swift.String?
+  final public func appGroup() -> Swift.String?
+  final public func setIdentityPoolId(_ identityPoolId: Swift.String)
+  final public func identityPoolId() -> Swift.String?
+  @discardableResult
+  final public func setValue(_ value: Any, forKey key: Swift.String) -> Swift.Bool
+  final public func getValueForKey(_ key: Swift.String) -> Any?
+  @objc deinit
+}
+public class LockHistoryList : Swift.Codable {
+  public var lockHistories: [SesameSDK.LockHistory]
+  public init(lockHistories: [SesameSDK.LockHistory])
+  required convenience public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public class LockHistory : Swift.Codable {
+  public var locked: Swift.Bool
+  public var succeeded: Swift.Bool
+  public var event: Swift.String
+  public var ingestion_at: Swift.Double
+  public var operator_id: [Swift.String?]
+  public func getTimeStamp() -> Foundation.Date
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public class FeedHistory : Swift.Codable {
+  public var pl: Foundation.Data
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public protocol CHWifiModule2 : AnyObject {
+  var deviceId: Foundation.UUID! { get }
+  var rssi: Foundation.NSNumber? { get }
+  var txPowerLevel: Swift.Int? { get }
+  var isRegistered: Swift.Bool { get }
+  var delegate: SesameSDK.CHWifiModule2Delegate? { get set }
+  var deviceStatus: SesameSDK.CHSesame2Status { get }
+  func registerWifiModule2(_ result: @escaping SesameSDK.CHResult<SesameSDK.CHEmpty>)
+  func resetWifiModule2(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func updateFirmware(_ result: @escaping SesameSDK.CHResult<CoreBluetooth.CBPeripheral?>)
+  func getVersionTag(result: @escaping (SesameSDK.CHResult<Swift.String>))
+  func connect(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+  func disconnect(result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
+}
+@objc @_inheritsConvenienceInitializers public class CHDeviceManager : ObjectiveC.NSObject {
+  public static let shared: SesameSDK.CHDeviceManager
+  public func getSesame2s(result: @escaping (SesameSDK.CHResult<[SesameSDK.CHSesame2]>))
+  public func receiveSesame2Keys(sesame2Keys: [Swift.String], result: @escaping (SesameSDK.CHResult<[SesameSDK.CHSesame2]>))
+  public func receiveSesame2Keys(sesame2Keys: Swift.String..., result: @escaping (SesameSDK.CHResult<[SesameSDK.CHSesame2]>))
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_hasMissingDesignatedInitializers public class CHSesame2HistoryData {
+  final public let recordID: Swift.Int32
+  final public let historyTag: Foundation.Data?
+  final public let date: Foundation.Date
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHSesame2AutoLockUpdatedHistoryData : SesameSDK.CHSesame2HistoryData {
+  final public let enabledBefore: Swift.Int16
+  final public let enabledAfter: Swift.Int16
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHSesame2MechSettingUpdatedHistoryData : SesameSDK.CHSesame2HistoryData {
+  final public let lockTargetBefore: Swift.Int16
+  final public let unlockTargetBefore: Swift.Int16
+  final public let lockTargetAfter: Swift.Int16
+  final public let unlockTargetAfter: Swift.Int16
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHSesame2TimeChangedHistoryData : SesameSDK.CHSesame2HistoryData {
+  final public let timeAfter: Foundation.Date
+  final public let timeBefore: Foundation.Date
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHSesame2BleAdvParameterUpdatedHistoryData : SesameSDK.CHSesame2HistoryData {
+  public var intervalBefore: Swift.Double {
+    get
+    set
+  }
+  public var intervalAfter: Swift.Double {
+    get
+    set
+  }
+  final public let dbmBefore: Swift.Int8
+  final public let dbmAfter: Swift.Int8
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CHSesame2DriveFailedHistoryData : SesameSDK.CHSesame2HistoryData {
+  final public let stoppedPosition: Swift.Int16
+  final public let fsmRetCode: Swift.Int8
+  final public let deviceStatus: SesameSDK.CHSesame2Status
+  @objc deinit
+}
+public enum CHSesame2History {
+  case manualElse(SesameSDK.CHSesame2HistoryData)
+  case manualLocked(SesameSDK.CHSesame2HistoryData)
+  case manualUnlocked(SesameSDK.CHSesame2HistoryData)
+  case bleLock(SesameSDK.CHSesame2HistoryData)
+  case bleUnLock(SesameSDK.CHSesame2HistoryData)
+  case autoLock(SesameSDK.CHSesame2HistoryData)
+  case autoLockUpdated(SesameSDK.CHSesame2AutoLockUpdatedHistoryData)
+  case mechSettingUpdated(SesameSDK.CHSesame2MechSettingUpdatedHistoryData)
+  case timeChanged(SesameSDK.CHSesame2TimeChangedHistoryData)
+  case bleAdvParameterUpdated(SesameSDK.CHSesame2BleAdvParameterUpdatedHistoryData)
+  case driveLocked(SesameSDK.CHSesame2HistoryData)
+  case driveUnlocked(SesameSDK.CHSesame2HistoryData)
+  case driveFailed(SesameSDK.CHSesame2DriveFailedHistoryData)
+  case none(SesameSDK.CHSesame2HistoryData)
+}
+@_hasMissingDesignatedInitializers public class CHEmpty {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(CHDevice) public class CHDevice : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension CHDevice {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<SesameSDK.CHDevice>
+  @objc @NSManaged dynamic public var deviceModel: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var deviceUUID: Foundation.UUID? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var historyTag: Foundation.Data? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var keyIndex: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var secretKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var sesame2PublicKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+extension SesameSDK.CHDeviceAccessLevel : Swift.Equatable {}
+extension SesameSDK.CHDeviceAccessLevel : Swift.Hashable {}
+extension SesameSDK.CHDeviceAccessLevel : Swift.RawRepresentable {}
+extension SesameSDK.CHHistoryEventType : Swift.Equatable {}
+extension SesameSDK.CHHistoryEventType : Swift.Hashable {}
+extension SesameSDK.CHHistoryEventType : Swift.RawRepresentable {}
+extension SesameSDK.CHDeviceMemberType : Swift.Equatable {}
+extension SesameSDK.CHDeviceMemberType : Swift.Hashable {}
+extension SesameSDK.CHDeviceMemberType : Swift.RawRepresentable {}
+extension SesameSDK.CHSesame2Intention : Swift.Equatable {}
+extension SesameSDK.CHSesame2Intention : Swift.Hashable {}
+extension SesameSDK.CHSesame2Intention : Swift.RawRepresentable {}
+extension SesameSDK.CHProductModel : Swift.Equatable {}
+extension SesameSDK.CHProductModel : Swift.Hashable {}
+extension SesameSDK.CHProductModel : Swift.RawRepresentable {}
+extension SesameSDK.CHSesame2Status : Swift.Equatable {}
+extension SesameSDK.CHSesame2Status : Swift.Hashable {}
+extension SesameSDK.CHDeviceLoginStatus : Swift.Equatable {}
+extension SesameSDK.CHDeviceLoginStatus : Swift.Hashable {}
+extension SesameSDK.CHDeviceLoginStatus : Swift.RawRepresentable {}

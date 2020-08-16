@@ -66,18 +66,20 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
             return historyFRC
         }
     
-    func FRCOfSesame2History(_ sesame2: CHSesame2, offset: Int = 0, limit: Int = 0) -> NSFetchedResultsController<NSFetchRequestResult> {
+    func FRCOfSesame2History(_ sesame2: CHSesame2, offset: Int = 0, limit: Int? = nil) -> NSFetchedResultsController<NSFetchRequestResult> {
         let historyFRC = FRCOfSesame2History(sesame2)
         historyFRC.fetchRequest.fetchOffset = offset
-        historyFRC.fetchRequest.fetchLimit = limit
+        if let limit = limit {
+            historyFRC.fetchRequest.fetchLimit = limit
+        }
         return historyFRC
     }
     
     fileprivate func FRCOfSesame2History(_ sesam2: CHSesame2) -> NSFetchedResultsController<NSFetchRequestResult> {
         let request: NSFetchRequest<Sesame2HistoryMO> = Sesame2HistoryMO.fetchRequest()
         request.predicate = NSPredicate(format: "deviceID == %@", sesam2.deviceId as CVarArg)
-        let sortByName = NSSortDescriptor(key: "recordID", ascending: true)
-        let sortByIdentity = NSSortDescriptor(key: "sectionIdentifier", ascending: true)
+        let sortByName = NSSortDescriptor(key: "recordID", ascending: false)
+        let sortByIdentity = NSSortDescriptor(key: "sectionIdentifier", ascending: false)
         request.sortDescriptors = [sortByIdentity, sortByName]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
@@ -184,6 +186,42 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
                 newHistory.intervalAfter = bleAdvUpdatedHistory.intervalAfter
                 newHistory.dbmBefore = Int64(bleAdvUpdatedHistory.dbmBefore)
                 newHistory.dbmAfter = Int64(bleAdvUpdatedHistory.dbmAfter)
+            case .driveLocked(let driveLockHistory):
+                let newHistory = Sesame2HistoryDriveLockedMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = driveLockHistory.historyTag
+                newHistory.date = driveLockHistory.date
+                newHistory.recordID = driveLockHistory.recordID
+                newHistory.sectionIdentifier = driveLockHistory.date.toYMD()
+                property.addToHistories(newHistory)
+            case .driveUnlocked(let driveUnlockedHistory):
+                let newHistory = Sesame2HistoryDriveUnlockedMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = driveUnlockedHistory.historyTag
+                newHistory.date = driveUnlockedHistory.date
+                newHistory.recordID = driveUnlockedHistory.recordID
+                newHistory.sectionIdentifier = driveUnlockedHistory.date.toYMD()
+                property.addToHistories(newHistory)
+            case .driveFailed(let driveFailedHistory):
+                let newHistory = Sesame2HistoryDriveFailedMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = driveFailedHistory.historyTag
+                newHistory.date = driveFailedHistory.date
+                newHistory.recordID = driveFailedHistory.recordID
+                newHistory.sectionIdentifier = driveFailedHistory.date.toYMD()
+                newHistory.fsmRetCode = Int64(driveFailedHistory.fsmRetCode)
+                newHistory.deviceStatus = driveFailedHistory.deviceStatus.description()
+                L.d("driveFailedHistory.deviceStatus",driveFailedHistory.deviceStatus.description())
+                newHistory.stoppedPosition = Int64(driveFailedHistory.stoppedPosition)
+                property.addToHistories(newHistory)
+            case .none(let noneHistory):
+                let newHistory = Sesame2HistoryDriveLockedMO(context: managedObjectContext)
+                newHistory.deviceID = device.deviceId
+                newHistory.historyTag = noneHistory.historyTag
+                newHistory.date = noneHistory.date
+                newHistory.recordID = noneHistory.recordID
+                newHistory.sectionIdentifier = noneHistory.date.toYMD()
+                property.addToHistories(newHistory)
             }
         }
     }

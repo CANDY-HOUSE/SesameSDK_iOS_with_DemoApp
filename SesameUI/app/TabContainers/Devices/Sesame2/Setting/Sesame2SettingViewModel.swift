@@ -69,7 +69,7 @@ public final class Sesame2SettingViewModel: ViewModel {
     }
     
     var autolockSwitchIsEnabled: Bool {
-        sesame2.deviceStatus.loginStatus() == .login
+        sesame2.deviceStatus.loginStatus() == .logined
     }
     
     var isAutoLockSwitchOn: Bool {
@@ -235,7 +235,7 @@ extension Sesame2SettingViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2,
                                          status: CHSesame2Status) {
         if device.deviceId == sesame2.deviceId,
-            status == .receiveBle {
+            status == .receivedBle {
             device.connect(){_ in}
         }
     }
@@ -319,7 +319,7 @@ extension Sesame2SettingViewModel {
     }
     
     func advIntervalConfigTapped() {
-        guard sesame2.deviceStatus.loginStatus() == .login else {
+        guard sesame2.deviceStatus.loginStatus() == .logined else {
             return
         }
 
@@ -328,7 +328,7 @@ extension Sesame2SettingViewModel {
     }
     
     func txPowerConfgTapped() {
-        guard sesame2.deviceStatus.loginStatus() == .login else {
+        guard sesame2.deviceStatus.loginStatus() == .logined else {
             return
         }
         
@@ -407,6 +407,16 @@ extension Sesame2SettingViewModel {
         "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized
     }
     
+    public func dfuFileName() -> String? {
+        guard let filePath = Constant
+            .resourceBundle
+            .url(forResource: nil,
+                 withExtension: ".zip") else {
+                return nil
+        }
+        return filePath.lastPathComponent
+    }
+    
     public func dfuActionWithObserver(_ observer: DFUHelperObserver) {
         guard let filePath = Constant
             .resourceBundle
@@ -453,6 +463,7 @@ extension Sesame2SettingViewModel {
     
     func rename(_ name: String) {
         Sesame2Store.shared.savePropertyForDevice(sesame2, withProperties: ["name": name])
+        WatchKitFileTransfer.transferKeysToWatch()
     }
     
     func historyTagPlaceholder() -> String {
