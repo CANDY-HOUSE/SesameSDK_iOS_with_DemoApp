@@ -13,7 +13,7 @@ public enum CHSesame2History {
     case timeChanged(CHSesame2TimeChangedHistoryData)                // セサミデバイスの内部時計が校正された
 }
 public class CHSesame2HistoryData {
-  public  let recordID:Int32      　　　　　　// 連続でない(将来的に連続になるように修正する予定)、セサミデバイスがリセットされるまで当履歴の唯1つのID、 小→大
+  public  let recordID:Int32      　　　　　　// 連続でない(将来、連続になるように修正する予定)、セサミデバイスがリセットされるまで当履歴の唯1つのID、 小→大
   public  let date: Date          　　　　　　// 1970/1/1 00:00:00 から秒単位のタイムスタンプ
   public  let historyTag: Data?   　　　　　　// 鍵に付いてるタグやメモ 0 ~ 21bytes
 }
