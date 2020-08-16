@@ -5,8 +5,8 @@ public enum CHSesame2History {
     case manualElse(CHSesame2HistoryData)
     case manualLocked(CHSesame2HistoryData)
     case manualUnlocked(CHSesame2HistoryData)
-    case bleLock(CHSesame2HistoryData)                               // BLEコマンドによる施錠
-    case bleUnLock(CHSesame2HistoryData)                             // BLEコマンドによる解錠
+    case bleLock(CHSesame2HistoryData)                               // セサミデバイスが 施錠のBLEコマンド を受付しました
+    case bleUnLock(CHSesame2HistoryData)                             // セサミデバイスが 解錠のBLEコマンド を受付しました
     case autoLock(CHSesame2HistoryData)                              // セサミデバイスがオートロックしました
     case autoLockUpdated(CHSesame2AutoLockUpdatedHistoryData)        // オートロックの設定が変更されました
     case mechSettingUpdated(CHSesame2MechSettingUpdatedHistoryData)  // 施解錠角度の設定が変更されました
