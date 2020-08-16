@@ -57,7 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {//退出
         CHBleManager.shared.disableScan(){res in}
         CHBleManager.shared.disConnectAll(){res in}
-        Sesame2Store.shared.saveIfNeeded()
+        if let enableHistoryStore = CHConfiguration.shared.getValueForKey("EnableHistoryStore") as? Bool,
+            enableHistoryStore == true {
+            Sesame2Store.shared.saveIfNeeded()
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {//進入

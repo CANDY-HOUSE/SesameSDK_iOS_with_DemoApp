@@ -11,6 +11,10 @@ import UIKit
 import SesameSDK
 import CoreBluetooth
 
+protocol RegisterCellDelegate: class {
+    func dfuTapped(cell: UITableViewCell)
+}
+
 class RegisterCell: UITableViewCell {
 
     @IBOutlet weak var modelLb: UILabel!
@@ -22,6 +26,8 @@ class RegisterCell: UITableViewCell {
             statusLabel.font = UIFont.systemFont(ofSize: 15)
         }
     }
+    @IBOutlet weak var dfuButton: UIButton!
+    weak var delegate: RegisterCellDelegate?
     
     var viewModel: RegisterCellModel! {
         didSet {
@@ -30,6 +36,17 @@ class RegisterCell: UITableViewCell {
                                                   fillColor: .sesame2Green)
             modelLb.text = viewModel.modelLabelText()
             statusLabel.text = viewModel.currentStatus()
+            dfuButton.setTitle("", for: .normal)
+            let image = UIImage.SVGImage(named: viewModel.dfuButtonImage,
+                                         size: CGSize(width: dfuButton.bounds.width, height: dfuButton.bounds.height))
+            dfuButton.setImage(image!, for: .normal)
+            dfuButton.tintColor = .sesame2Green
+            dfuButton.isHidden = viewModel.isHiddenDfuButton
         }
     }
+    
+    @IBAction func dfuTapped(_ sender: Any) {
+        delegate?.dfuTapped(cell: self)
+    }
+    
 }

@@ -185,6 +185,7 @@ public class Sesame2SettingViewController: CHBaseViewController {
         }
         if let view = sender as? UIView {
             UIAlertController.showAlertController(view,
+                                                  msg: viewModel.dfuFileName(),
                                                   style: .actionSheet,
                                                   actions: [check])
         }

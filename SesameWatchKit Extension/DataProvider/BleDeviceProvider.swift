@@ -27,7 +27,7 @@ final class BleDeviceProvider: Provider, CHSesame2Delegate {
     
     func onBleDeviceStatusChanged(device: CHSesame2,
                                   status: CHSesame2Status) {
-        if device.deviceId == self.device.deviceId, status == .receiveBle {
+        if device.deviceId == self.device.deviceId, status == .receivedBle {
             device.connect(){res in}
             self.device = device
         }
@@ -40,5 +40,11 @@ final class BleDeviceProvider: Provider, CHSesame2Delegate {
         let subject = BleDeviceSubject(request: .init(device))
         subjectPublisher.send(subject)
         subject.connect()
+    }
+    
+    deinit {
+        device.disconnect { _ in
+            
+        }
     }
 }

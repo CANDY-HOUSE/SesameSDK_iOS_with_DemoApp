@@ -10,11 +10,15 @@ import SwiftUI
 
 struct ContentView<ContentProvider: Provider>: View {
     @ObservedObject var viewModel: ContentViewModel<ContentProvider>
+    @State var userData = UserData.shared
 
     var body: some View {
         GeometryReader { geometry in
             if self.viewModel.isShowContent {
-                self.content(geometry: geometry)
+                self.container(geometry: geometry)
+                .onReceive(self.userData.$selectedDevice) { _ in
+                    self.viewModel.deviceHasSelected()
+                }
             } else {
                 VStack {
                     Spacer()
@@ -27,33 +31,29 @@ struct ContentView<ContentProvider: Provider>: View {
         }
     }
     
-    func content(geometry: GeometryProxy) -> some View {
-        return ForEach(0..<1) { _ in
-            ScrollView(.horizontal, showsIndicators: true) {
-                HStack(alignment: .center, spacing: 0) {
-                    ForEach(self.viewModel.sesameLockCellModels(),
-                            id: \.uuid)
-                    { sesameLockCellModel in
-                        self.sesameLockCell(sesameLockCellModel: sesameLockCellModel, geometry: geometry)
-                    }
-                }
-            }
+    func container(geometry: GeometryProxy) -> some View {
+        ScrollView (.horizontal, showsIndicators: true) {
+             HStack {
+                sesame2sListView(geometry: geometry)
+                sesame2LockView(geometry: geometry)
+             }
         }
-        .padding(.horizontal)
-        .background(Color(UIColor(rgb: 0x222223)))
-        .cornerRadius(10.0)
-        .frame(height: geometry.size.height)
     }
     
-    func sesameLockCell(sesameLockCellModel: Sesame2LockViewModel, geometry: GeometryProxy) -> some View {
-        
-        return SesameLockViewContainer(viewModel: sesameLockCellModel)
-            .frame(minWidth: geometry.size.width * 0.9,
-                   maxWidth: geometry.size.width * 0.9,
-                   minHeight: geometry.size.height * 0.9,
-                   maxHeight: geometry.size.height * 0.9,
+    func sesame2sListView(geometry: GeometryProxy) -> some View {
+        Sesame2ListView(viewModel: viewModel.sesame2ListViewModel())
+            .environmentObject(userData)
+            .frame(width: geometry.size.width)
+    }
+    
+    func sesame2LockView(geometry: GeometryProxy) -> some View {
+        Sesame2LockViewContainer(viewModel: viewModel.selectedSesameLockCellModel())
+            .frame(minWidth: geometry.size.width,
+                   maxWidth: geometry.size.width,
+                   minHeight: geometry.size.height,
+                   maxHeight: geometry.size.height,
                    alignment: .center)
-            .padding(.vertical)
+            .environmentObject(self.userData)
     }
 }
 

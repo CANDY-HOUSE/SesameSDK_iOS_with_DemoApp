@@ -74,5 +74,25 @@ public extension UIStoryboard {
         static var bluetoothSesameControlViewController: BluetoothSesame2ControlViewController? {
             Constant.storyboard.instantiateViewController(withIdentifier: "BluetoothSesame2ControlViewController") as? BluetoothSesame2ControlViewController
         }
+        
+//        static var registerWifiModule2TableViewController: RegisterWifiModule2ViewController? {
+//            Constant.storyboard.instantiateViewController(withIdentifier: "RegisterWifiModule2ViewController") as? RegisterWifiModule2ViewController
+//        }
+        
+        // IoT test VCs
+//        static var ioTSampleTabBarController: IoTSampleTabBarController? {
+//            let storyboard = UIStoryboard(name: "IoTSampleSwiftMain", bundle: nil)
+//            return storyboard.instantiateViewController(withIdentifier: "IoTSampleTabBarController") as? IoTSampleTabBarController
+//        }
+//        
+//        static var shadowTestingViewController: ShadowTestingViewController? {
+//            let storyboard = UIStoryboard(name: "IoTSampleSwiftMain", bundle: nil)
+//            return storyboard.instantiateViewController(withIdentifier: "ShadowTestingViewController") as? ShadowTestingViewController
+//        }
+//        
+//        static var ioTLockViewController: IoTLockViewController? {
+//            let storyboard = UIStoryboard(name: "IoTSampleSwiftMain", bundle: nil)
+//            return storyboard.instantiateViewController(withIdentifier: "IoTLockViewController") as? IoTLockViewController
+//        }
     }
 }

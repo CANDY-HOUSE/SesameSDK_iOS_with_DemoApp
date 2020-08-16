@@ -242,12 +242,12 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
         deviceStatus = status
 
-        if(deviceStatus == .receiveBle){
+        if(deviceStatus == .receivedBle){
             device.connect(){_ in}
         }
         
         
-        if(deviceStatus.loginStatus() == .login){
+        if(deviceStatus.loginStatus() == .logined){
             self.mechSetting = device.mechSetting
             self.mechStatus = device.mechStatus
         }

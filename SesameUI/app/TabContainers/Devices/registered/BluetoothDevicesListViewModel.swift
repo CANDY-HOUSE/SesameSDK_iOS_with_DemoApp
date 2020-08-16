@@ -14,6 +14,7 @@ public protocol BluetoothDevicesListViewModelDelegate: class {
     func bluetootheDevicesListViewDidTappedSesame2(_ sesame2: CHSesame2)
     func newSesameTapped()
     func scanViewTapped()
+    func registerWifiModule2Tapped()
     func enterTestMode(sesame2: CHSesame2)
 }
 
@@ -54,16 +55,7 @@ final class BluetoothDevicesListViewModel: ViewModel {
             switch result {
             case .success(let sesame2s):
                 self.sesameDevices = sesame2s.data
-                if WCSession.isSupported() {
-                    var keys = [String: Any]()
-                    for sesame in sesame2s.data {
-                        if let key = sesame.getKey() {
-                            keys[sesame.deviceId.uuidString] = key
-                        }
-                    }
-                    WCSession.default.transferUserInfo(keys)
-                    L.d("Retrieved \(sesame2s.data.count) devices, sending keys to the watch.")
-                }
+                WatchKitFileTransfer.transferKeysToWatch()
                 self.statusUpdated?(.update(nil))
             case .failure(let error):
                 self.statusUpdated?(.finished(.failure(error)))
@@ -79,6 +71,8 @@ final class BluetoothDevicesListViewModel: ViewModel {
             delegate?.newSesameTapped()
         case .receiveKey:
             delegate?.scanViewTapped()
+//        case .addWifiModule2:
+//            delegate?.registerWifiModule2Tapped()
         }
     }
     

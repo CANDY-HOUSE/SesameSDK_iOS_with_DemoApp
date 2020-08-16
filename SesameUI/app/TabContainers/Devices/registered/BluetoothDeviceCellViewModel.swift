@@ -43,7 +43,7 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
     }
     
     public var isShowContent: Bool {
-        sesame2.deviceStatus.loginStatus() == .unlogin
+        sesame2.deviceStatus.loginStatus() == .unlogined
     }
     
     public var lockColor: UIColor {
@@ -87,8 +87,8 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
 
 extension BluetoothDeviceCellViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
-        L.d("status",status.description())
-        if status == .receiveBle {
+//        L.d("status",status.description())
+        if status == .receivedBle {
             sesame2.connect(){_ in}
         }
         statusUpdated?(.update(nil))

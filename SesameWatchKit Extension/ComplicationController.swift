@@ -57,7 +57,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                 template.imageProvider = CLKImageProvider(onePieceImage: image)
             }
             returnTemplate = template
-            break
         case .modularLarge:
             break
         case .utilitarianSmall:
@@ -66,29 +65,27 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                 template.imageProvider = CLKImageProvider(onePieceImage: image)
             }
             returnTemplate = template
-            break
         case .utilitarianLarge:
             let template = CLKComplicationTemplateUtilitarianLargeFlat()
-            template.textProvider = CLKSimpleTextProvider(text: "UtilLargeFlat", shortText: "TEMP", accessibilityLabel: "Sesame")
+            template.textProvider = CLKSimpleTextProvider(text: "UtilLargeFlat", shortText: "Sesame", accessibilityLabel: "Sesame")
             if let image = UIImage(named: "Complication/Modular") {
 
                 template.imageProvider = CLKImageProvider(onePieceImage: image)
             }
             returnTemplate = template
-            break
         case .circularSmall:
             let template = CLKComplicationTemplateCircularSmallSimpleImage()
-            template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Circular")!)
+            if let image = UIImage(named: "Complication/Circular") {
+                template.imageProvider = CLKImageProvider(onePieceImage: image)
+            }
             returnTemplate = template
-            break
         case .extraLarge:
             break
         case .graphicCorner:
             let template = CLKComplicationTemplateGraphicCornerStackText()
-            template.innerTextProvider = CLKTextProvider(format: "Sesame")
+            template.innerTextProvider = CLKTextProvider(format: "")
             template.outerTextProvider = CLKTextProvider(format: "Sesame")
             returnTemplate = template
-            break
         case .graphicBezel:
             let template = CLKComplicationTemplateGraphicBezelCircularText()
             let circularImg = CLKComplicationTemplateGraphicCircularImage()
@@ -99,7 +96,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             template.circularTemplate = circularImg
             template.textProvider = text
             returnTemplate = template
-            break
         case .graphicCircular:
             let template = CLKComplicationTemplateGraphicCircularImage()
             if let image = UIImage(named: "Complication/Graphic Circular") {
@@ -107,9 +103,18 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             }
             returnTemplate = template
         case .graphicRectangular:
-            break
+            let template = CLKComplicationTemplateGraphicCircularImage()
+            if let image = UIImage(named: "Complication/Graphic Circular") {
+                template.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
+            }
+            returnTemplate = template
         case .utilitarianSmallFlat:
-            break
+            let template = CLKComplicationTemplateUtilitarianSmallFlat()
+            if let image = UIImage(named: "Complication/Utilitarian") {
+                template.imageProvider = CLKImageProvider(onePieceImage: image)
+            }
+            template.textProvider = CLKTextProvider(format: "Sesame")
+            returnTemplate = template
         @unknown default:
             break
         }

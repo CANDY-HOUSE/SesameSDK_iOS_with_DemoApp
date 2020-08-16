@@ -87,4 +87,13 @@
 "co.candyhouse.sesame-sdk-test-app.moved" = "Moved";
 "co.candyhouse.sesame-sdk-test-app.registing" = "Registing";
 "co.candyhouse.sesame-sdk-test-app.dfu" = "DFU";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.notSupport" = "Your system does not support Sesame lock.";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.openYourSesame" = "Please open your Sesame App to sync your devices.";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.receivedFile" = "Received file";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.updatingFile" = "Updating file";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady" = "Please open Sesame App to sync keys.";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.updateDeviceFailed" = "Update devices failed %@";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.noSesameOrNotLoggedIn" = "No Sesame device or not logged in";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.lock" = "Lock";
+"co.candyhouse.sesame-sdk-test-app.watchkitapp.unlock" = "Unlock";
+"co.candyhouse.sesame-sdk-test-app.NewWifiModule2" = "New WiFi Modeule2";

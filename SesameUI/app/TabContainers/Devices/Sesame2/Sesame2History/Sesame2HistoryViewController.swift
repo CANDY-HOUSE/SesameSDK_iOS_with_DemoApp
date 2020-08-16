@@ -21,6 +21,7 @@ class Sesame2HistoryViewController: CHBaseViewController {
     @IBOutlet weak var Locker: UIButton!
     var refreshControl = UIActivityIndicatorView(style: .gray)
     // MARK: - Flag
+    private var isNeedScrollToBottom = true
     private var canRefresh = true
     private var isFirstTimeEnterTheView = true
     // MARK: - Life Cycle
@@ -37,7 +38,7 @@ class Sesame2HistoryViewController: CHBaseViewController {
             }
             switch status {
             case .loading:
-                strongSelf.refreshControl.startAnimating()
+                break
             case .update:
                 executeOnMainThread {
                     strongSelf.updataSesame2UI()
@@ -47,9 +48,12 @@ class Sesame2HistoryViewController: CHBaseViewController {
                 case .success(_):
                     executeOnMainThread {
                         strongSelf.canRefresh = strongSelf.viewModel.hasMoreData
-                        if strongSelf.refreshControl.isAnimating {
-                            strongSelf.hideLoadingIndicator()
-                            strongSelf.refreshControl.stopAnimating()
+                        if strongSelf.canRefresh == false {
+                            strongSelf.refreshControl.removeFromSuperview()
+                        }
+                        strongSelf.historyTable.reloadData()
+                        if strongSelf.isNeedScrollToBottom == true {
+                            strongSelf.refreshToBottom()
                         }
                     }
                 case .failure(let error):
@@ -57,14 +61,15 @@ class Sesame2HistoryViewController: CHBaseViewController {
                         strongSelf.view.makeToast(error.errorDescription())
                     }
                 }
-                
             }
         }
 
-        refreshControl.translatesAutoresizingMaskIntoConstraints = false
-        refreshControl.stopAnimating()
-        historyTable.addSubview(refreshControl)
+        historyTable.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
+        viewModel.setFetchedResultsControllerDelegate(self)
         
+        refreshControl.translatesAutoresizingMaskIntoConstraints = false
+        historyTable.addSubview(refreshControl)
+        refreshControl.startAnimating()
         let constraints = [
             refreshControl.centerXAnchor.constraint(equalTo: historyTable.centerXAnchor),
             refreshControl.topAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor,
@@ -73,8 +78,6 @@ class Sesame2HistoryViewController: CHBaseViewController {
             refreshControl.heightAnchor.constraint(equalToConstant: 20)
         ]
         NSLayoutConstraint.activate(constraints)
-        historyTable.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
-        viewModel.setFetchedResultsControllerDelegate(self)
     }
     
     override func viewWillLayoutSubviews() {
@@ -94,6 +97,9 @@ class Sesame2HistoryViewController: CHBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isFirstTimeEnterTheView = false
+        if CHConfiguration.shared.isHistoryStorageEnabled() {
+            isNeedScrollToBottom = false
+        }
         viewModel.loadMore()
     }
     
@@ -141,6 +147,7 @@ class Sesame2HistoryViewController: CHBaseViewController {
     }
     
     @IBAction func lockButtonTapped(_ sender: UIButton) {
+        isNeedScrollToBottom = true
         viewModel.lockButtonTapped()
     }
     
@@ -204,39 +211,30 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
         }
         return headerView
     }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if refreshControl.isAnimating {
-            showLoadingIndicator()
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < -5, !scrollView.isDragging {
+            startRefresh()
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < -25,
-            !refreshControl.isAnimating && canRefresh {
+    @objc
+    func startRefresh() {
+        if canRefresh {
+            isNeedScrollToBottom = false
             canRefresh = false
-            refreshControl.startAnimating()
-            showLoadingIndicator()
             refresh(self)
         }
     }
     
-    func showLoadingIndicator() {
-        executeOnMainThread {
-            let offsetPoint = CGPoint(x: 0, y: -self.refreshControl.frame.maxY)
-            self.historyTable.setContentOffset(offsetPoint, animated: true)
-        }
-    }
-    
-    func hideLoadingIndicator() {
-        executeOnMainThread {
-            self.historyTable.setContentOffset(CGPoint.zero, animated: true)
-        }
-    }
-    
     @objc func refresh(_ sender: AnyObject) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.viewModel.loadMore()
+        self.viewModel.loadMore()
+    }
+    
+    func refreshToBottom() {
+        historyTable.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.scrollToBottomWithAnimation()
         }
     }
 }
@@ -244,17 +242,22 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
 // MARK: - FRC Delegate
 extension Sesame2HistoryViewController: NSFetchedResultsControllerDelegate {
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        executeOnMainThread {
-            self.historyTable.beginUpdates()
-        }
+//        executeOnMainThread {
+//            self.historyTable.beginUpdates()
+//        }
     }
      
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         executeOnMainThread {
-            self.historyTable.endUpdates()
-            if !self.historyTable.isTracking && !self.historyTable.isDragging && !self.historyTable.isDecelerating {
-                self.scrollToBottomWithAnimation(true)
+//            self.historyTable.endUpdates()
+            self.canRefresh = self.viewModel.hasMoreData
+            self.historyTable.reloadData()
+            if self.isNeedScrollToBottom == true {
+                self.refreshToBottom()
             }
+//            if !self.historyTable.isTracking && !self.historyTable.isDragging && !self.historyTable.isDecelerating {
+//                self.scrollToBottomWithAnimation(true)
+//            }
         }
     }
     
@@ -263,53 +266,53 @@ extension Sesame2HistoryViewController: NSFetchedResultsControllerDelegate {
                     atSectionIndex sectionIndex: Int,
                     for type: NSFetchedResultsChangeType) {
         executeOnMainThread {
-            let section = IndexSet(integer: sectionIndex)
-            
-            switch type {
-            case .delete:
-                self.historyTable.deleteSections(section, with: .automatic)
-            case .insert:
-                self.historyTable.insertSections(section, with: .automatic)
-            case .move:
-                break
-            case .update:
-                break
-            @unknown default:
-                break
-            }
+//            let section = IndexSet(integer: sectionIndex)
+//
+//            switch type {
+//            case .delete:
+//                self.historyTable.deleteSections(section, with: .automatic)
+//            case .insert:
+//                self.historyTable.insertSections(section, with: .automatic)
+//            case .move:
+//                break
+//            case .update:
+//                break
+//            @unknown default:
+//                break
+//            }
         }
     }
     
     public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
-        executeOnMainThread {
-            switch (type) {
-            case .insert:
-                if let indexPath = newIndexPath as IndexPath? {
-                    self.historyTable.insertRows(at: [indexPath], with: .fade)
-                }
-            case .delete:
-                if let indexPath = indexPath as IndexPath? {
-                    self.historyTable.deleteRows(at: [indexPath], with: .fade)
-                }
-            case .update:
-                if let indexPath = indexPath as IndexPath? {
-                    if let cell = self.historyTable.cellForRow(at: indexPath) as? Sesame2HistoryCell {
-                        self.configureCell(cell, atIndexPath: indexPath)
-                    }
-                }
-            case .move:
-                if let indexPath = indexPath as IndexPath? {
-                    self.historyTable.deleteRows(at: [indexPath], with: .fade)
-                }
-
-                if let newIndexPath = newIndexPath as IndexPath? {
-                    self.historyTable.insertRows(at: [newIndexPath], with: .fade)
-                }
-            @unknown default:
-                break
-            }
-        }
+//        executeOnMainThread {
+//            switch (type) {
+//            case .insert:
+//                if let indexPath = newIndexPath as IndexPath? {
+//                    self.historyTable.insertRows(at: [indexPath], with: .fade)
+//                }
+//            case .delete:
+//                if let indexPath = indexPath as IndexPath? {
+//                    self.historyTable.deleteRows(at: [indexPath], with: .fade)
+//                }
+//            case .update:
+//                if let indexPath = indexPath as IndexPath? {
+//                    if let cell = self.historyTable.cellForRow(at: indexPath) as? Sesame2HistoryCell {
+//                        self.configureCell(cell, atIndexPath: indexPath)
+//                    }
+//                }
+//            case .move:
+//                if let indexPath = indexPath as IndexPath? {
+//                    self.historyTable.deleteRows(at: [indexPath], with: .fade)
+//                }
+//
+//                if let newIndexPath = newIndexPath as IndexPath? {
+//                    self.historyTable.insertRows(at: [newIndexPath], with: .fade)
+//                }
+//            @unknown default:
+//                break
+//            }
+//        }
         
     }
 }

@@ -40,9 +40,17 @@ class PopUpMenuControl: UIButton {
         let scanDeviceQRCode = PopUpMenuItem(type: .receiveKey,
                                              title: "co.candyhouse.sesame-sdk-test-app.scanQRCode".localized,
                                           icon: "icons_filled_scan")
+        
+//        let addWifiModule2 = PopUpMenuItem(type: .addWifiModule2,
+//                                          title: "co.candyhouse.sesame-sdk-test-app.NewWifiModule2".localized,
+//                                          icon: "icons_filled_favorites")
 
-
-        menus = [addDevices, addFriend, scanDeviceQRCode]
+        menus = [
+            addDevices,
+            addFriend,
+            scanDeviceQRCode,
+//            addWifiModule2
+        ]
 
         let menuView = PopUpMenu(itemHeight: menuHeight, itemWidth: menuWidth, menus: menus)
         menuView.frame.origin = CGPoint(x: frame.width - menuWidth - paddingRight, y: paddingTop)

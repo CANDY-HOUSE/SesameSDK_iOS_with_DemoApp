@@ -41,4 +41,12 @@ public final class CHBLEDelegatesManager: CHBleManagerDelegate {
             }
         })
     }
+    
+    public func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [CHWifiModule2]) {
+        bleObservers.objectEnumerator().forEach({ observer in
+            if let observer = observer as? CHBleManagerDelegate {
+                observer.didDiscoverUnRegisteredWifiModule2s(wifiModule2s)
+            }
+        })
+    }
 }

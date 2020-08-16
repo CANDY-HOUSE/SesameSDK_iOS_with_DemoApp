@@ -114,7 +114,7 @@ extension LockAngleSettingViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2,
                                          status: CHSesame2Status) {
         if device.deviceId == sesame2.deviceId,
-            status == .receiveBle {
+            status == .receivedBle {
             sesame2.connect(){_ in}
         }
     }

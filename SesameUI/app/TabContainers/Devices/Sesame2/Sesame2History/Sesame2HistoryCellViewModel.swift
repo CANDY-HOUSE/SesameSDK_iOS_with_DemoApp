@@ -57,53 +57,70 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
             return "BLE_UNLOCK"
         case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
             return "HISTORY_TYPE_BLE_ADV_PARAM_UPDATED"
+        case _ as Sesame2HistoryDriveFailedMO:
+            return "DRIVE_FAILED"
+        case _ as Sesame2HistoryDriveLockedMO:
+            return "DRIVE_LOCKED"
+        case _ as Sesame2HistoryDriveUnlockedMO:
+            return "DRIVE_UNLOCKED"
+        case _ as Sesame2HistoryNoneMO:
+            return "NONE"
         default:
             return ""
         }
     }
     
     public var userLabelText: String {
+        let displayText = "\(history.recordID): "
         switch history {
         case _ as Sesame2HistoryAutoLockMO:
-            return "co.candyhouse.sesame-sdk-test-app.AutoLock".localized
+            return displayText + "co.candyhouse.sesame-sdk-test-app.AutoLock".localized
         case _ as Sesame2HistoryAutoLockUpdatedMO:
             if let historyTag = history.historyTag {
-                return String(decoding: historyTag, as: UTF8.self)
+                return displayText + String(decoding: historyTag, as: UTF8.self)
             } else {
-                return ""
+                return displayText + ""
             }
         case _ as Sesame2HistoryMechSettingUpdatedMO:
             if let historyTag = history.historyTag {
-                return String(decoding: historyTag, as: UTF8.self)
+                return displayText + String(decoding: historyTag, as: UTF8.self)
             } else {
-                return ""
+                return displayText + ""
             }
         case _ as Sesame2HistoryTimeChangedMO:
             return "TIME_CHANGED"
         case _ as Sesame2HistoryLockMO:
             if let historyTag = history.historyTag {
-                return String(decoding: historyTag, as: UTF8.self)
+                return displayText + String(decoding: historyTag, as: UTF8.self)
             } else {
-                return ""
+                return displayText + ""
             }
         case _ as Sesame2HistoryManualElseMO:
-            return "co.candyhouse.sesame-sdk-test-app.manualOperated".localized
+            return displayText + "co.candyhouse.sesame-sdk-test-app.manualOperated".localized
         case _ as Sesame2HistoryManualLockedMO:
-            return "co.candyhouse.sesame-sdk-test-app.manualLock".localized
+            return displayText + "co.candyhouse.sesame-sdk-test-app.manualLock".localized
         case _ as Sesame2HistoryManualUnlockedMO:
-            return "co.candyhouse.sesame-sdk-test-app.manualUnlock".localized
+            return displayText + "co.candyhouse.sesame-sdk-test-app.manualUnlock".localized
         case _ as Sesame2HistoryUnlockMO:
             if let historyTag = history.historyTag {
-                return String(decoding: historyTag, as: UTF8.self)
+                return displayText + String(decoding: historyTag, as: UTF8.self)
             } else {
-                return ""
+                return displayText + ""
             }
         case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
             if let historyTag = history.historyTag {
-                return String(decoding: historyTag, as: UTF8.self)
+                return displayText + String(decoding: historyTag, as: UTF8.self)
             } else {
-                return ""
+                return displayText + ""
             }
+        case _ as Sesame2HistoryDriveFailedMO:
+            return displayText
+        case _ as Sesame2HistoryDriveLockedMO:
+            return displayText
+        case _ as Sesame2HistoryDriveUnlockedMO:
+            return displayText
+        case _ as Sesame2HistoryNoneMO:
+            return displayText
         default:
             return ""
         }
@@ -131,6 +148,14 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
             return "icon_unlock"
         case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
             return "icons_outlined_setting"
+        case _ as Sesame2HistoryDriveFailedMO:
+            return "icons_outlined_setting"
+        case _ as Sesame2HistoryDriveLockedMO:
+            return "icon_lock"
+        case _ as Sesame2HistoryDriveUnlockedMO:
+            return "icon_unlock"
+        case _ as Sesame2HistoryNoneMO:
+            return "icons_outlined_setting"
         default:
             return ""
         }
@@ -155,6 +180,8 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
             }
         case let bleAdvParameterChanged as Sesame2HistoryBleAdvParameterUpdatedMO:
             return "Interval: \(bleAdvParameterChanged.intervalBefore) -> \(bleAdvParameterChanged.intervalAfter), TX Power: \(bleAdvParameterChanged.dbmBefore) -> \(bleAdvParameterChanged.dbmAfter)"
+        case let driveFailed as Sesame2HistoryDriveFailedMO:
+            return "fsmRetCode: \(driveFailed.fsmRetCode), stoppedPosition: \(driveFailed.stoppedPosition), device status: \(driveFailed.deviceStatus ?? "")"
         default:
             return ""
         }

@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>19</string>
+	<string>22</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -41,6 +41,8 @@
 	<string>This app would like to make data available to nearby bluetooth devices even when you&#39;re not using the app.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>To scan QR code</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Application requires user’s location for better user experience.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

@@ -25,36 +25,34 @@ class Sesame2LockViewModel: ObservableObject {
     var uuid: UUID?
     private var device: CHSesame2
     private var disposables = [AnyCancellable]()
-//    private var bleProvider: BleDeviceProvider!
+    private var bleProvider: BleDeviceProvider!
     
     init(device: CHSesame2) {
         // Initial properties
         self.uuid = device.deviceId
         self.device = device
-        self.device.connect(){res in}
-        self.device.delegate = self
-//        self.bleProvider = BleDeviceProvider(device: device)
-//        // Binding or configure
-//        self.bleProvider
-//            .subjectPublisher
-//            .map { $0.result }
-//            .switchToLatest()
+        self.bleProvider = BleDeviceProvider(device: device)
+        // Binding or configure
+        self.bleProvider
+            .subjectPublisher
+            .map { $0.result }
+            .switchToLatest()
 //            .throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)
-//            .sink(receiveCompletion: { complete in
-//                switch complete {
-//                case .finished:
-//                    break
-//                case .failure(let error):
-//                    L.d(error)
-//                }
-//            }) { [weak self] device in
-//                guard let strongSelf = self else { return }
-//                strongSelf.device = device
-//                strongSelf.setContentBy(device: device)
-//        }
-//        .store(in: &disposables)
-//
-//        self.bleProvider.connect()
+            .sink(receiveCompletion: { complete in
+                switch complete {
+                case .finished:
+                    break
+                case .failure(let error):
+                    L.d(error)
+                }
+            }) { [weak self] device in
+                guard let strongSelf = self else { return }
+                strongSelf.device = device
+                strongSelf.setContentBy(device: device)
+        }
+        .store(in: &disposables)
+
+        self.bleProvider.connect()
         
         self.cellTapped = { [weak self] in
             guard let strongSelf = self else {
@@ -63,14 +61,6 @@ class Sesame2LockViewModel: ObservableObject {
             let device = strongSelf.device
             device.toggleWithHaptic(interval: 1.5)
         }
-        
-//        NotificationCenter.default.publisher(for: .ApplicationDidBecomeActive)
-//            .debounce(for: 1.0, scheduler: DispatchQueue.main)
-//            .receive(on: DispatchQueue.main)
-//            .sink { _ in
-//                self.setContentBy(device: self.device)
-//        }
-//        .store(in: &self.disposables)
         
         // Initial view
         setContentBy(device: device)
@@ -93,36 +83,7 @@ class Sesame2LockViewModel: ObservableObject {
             return
         }
         batteryPercentage = "\(mechStatus.getBatteryPrecentage())%"
-    }
-}
-
-extension Sesame2LockViewModel: CHSesame2Delegate {
-    func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
-        if device.deviceId == self.device.deviceId,
-            status == .receiveBle {
-            self.device = device
-            self.device.connect(){res in}
-            self.device.delegate = self
-        }
-        setContentBy(device: self.device)
-    }
-    
-    public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
-        guard let mechStatus = device.mechStatus else {
-            return
-        }
         let toRadians = angle2degree(angle: Int16(mechStatus.position))
         radians = CGFloat(toRadians)
-    }
-    
-    private func angle2degree(angle: Int16) -> Float {
-        var degree = Float(angle % 1024)
-        degree = degree * 360 / 1024
-        if degree > 0 {
-            degree = 360 - degree
-        } else {
-            degree = abs(degree)
-        }
-        return degree
     }
 }

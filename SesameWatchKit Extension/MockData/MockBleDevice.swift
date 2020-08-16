@@ -11,89 +11,79 @@ import SesameWatchKitSDK
 import CoreBluetooth
 
 struct MockCHSesameMechStatus: CHSesame2MechStatus {
+    func getBatteryVoltage() -> Float {
+        0
+    }
+    
     func getBatteryPrecentage() -> Int {
         0
     }
-
-    func getBatteryVoltage() -> Float {
-        1000.0
-    }
     
-    func getPosition() -> Int64? {
-        nil
-    }
+    var position: Int16 = 0
     
-    func isInLockRange() -> Bool? {
-           nil
-       }
+    var isInLockRange: Bool = true
     
-    func isInUnlockRange() -> Bool? {
-           nil
-       }
+    var isInUnlockRange: Bool = true
+    
+    
 }
 
 struct MockCHSesameMechSettings: CHSesame2MechSettings {
-    func getLockPosition() -> Int64? {
-           nil
-       }
+    var lockPosition: Int16 = 0
     
-    func getLockMinPosition() -> Int64? {
-           nil
-       }
-    
-    func getLockMaxPosition() -> Int64? {
-           nil
-       }
-    
-    func getUnlockPosition() -> Int64? {
-           nil
-       }
-    
-    func getUnlockMinPosition() -> Int64? {
-           nil
-       }
-    
-    func getUnlockMaxPosition() -> Int64? {
-           nil
-       }
+    var unlockPosition: Int16 = 0
     
     func isConfigured() -> Bool {
         true
     }
 }
 
-final class MockBleDevice: CHSesame2 {
-    func dropKey(result: @escaping (CHResult<CHEmpty>)) {
+class MockBleDevice: CHSesame2 {
+    func disableAutolock(historytag: Data?, result: @escaping (CHResult<Int>)) {
         
     }
-
+    
+    func enableAutolock(historytag: Data?, delay: Int, result: @escaping (CHResult<Int>)) {
+        
+    }
+    
+    func updateBleAdvParameter(historytag: Data?, interval: Double, txPower: Int8, _ result: @escaping CHResult<Sesame2BleAdvParameter>) {
+        
+    }
+    
+    func configureLockPosition(historytag: Data?, lockTarget: Int16, unlockTarget: Int16, result: @escaping (CHResult<CHEmpty>)) {
+        
+    }
+    
+    func toggle(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
+        
+    }
+    
+    func unlock(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
+        
+    }
+    
+    func lock(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
+        
+    }
+    
     var deviceId: UUID! = UUID()
-    var bleAdvParameter: CHSesame2BleAdvParameter?
+    
     var delegate: CHSesame2Delegate?
     
-    var rssi: NSNumber? = NSNumber(value: 100)
+    var rssi: NSNumber?
+    
+    var txPowerLevel: Int?
     
     var isRegistered: Bool = true
     
     var deviceStatus: CHSesame2Status = .locked
     
-    var mechStatus: CHSesame2MechStatus?
+    var mechStatus: CHSesame2MechStatus? = MockCHSesameMechStatus()
     
-    var mechSetting: CHSesame2MechSettings?
+    var mechSetting: CHSesame2MechSettings? = MockCHSesameMechSettings()
     
-    var intention: CHSesame2Intention = .idle
-    
-    func lock(result: @escaping (CHResult<CHEmpty>)) {
-        
-    }
-    
-    func unlock(result: @escaping (CHResult<CHEmpty>)) {
-        
-    }
-    
-    func toggle(result: @escaping (CHResult<CHEmpty>)) {
-        
-    }
+    var intention: CHSesame2Intention = .locking
     
     func connect(result: @escaping (CHResult<CHEmpty>)) {
         
@@ -111,19 +101,7 @@ final class MockBleDevice: CHSesame2 {
         
     }
     
-    func configureLockPosition(lockTarget: Int16, unlockTarget: Int16, result: @escaping (CHResult<CHEmpty>)) {
-        
-    }
-    
     func getAutolockSetting(result: @escaping (CHResult<Int>)) {
-        
-    }
-    
-    func enableAutolock(delay: Int, result: @escaping (CHResult<Int>)) {
-        
-    }
-    
-    func disableAutolock(result: @escaping (CHResult<Int>)) {
         
     }
     
@@ -143,7 +121,7 @@ final class MockBleDevice: CHSesame2 {
         nil
     }
     
-    func dropKey() {
+    func dropKey(result: @escaping (CHResult<CHEmpty>)) {
         
     }
     
@@ -155,20 +133,7 @@ final class MockBleDevice: CHSesame2 {
         
     }
     
-    func getAdvInter(_ callback: @escaping CHResult<[Int]>) {
-        
-    }
-    
-    func getTxPower(_ callback: @escaping CHResult<[Int]>) {
-        
-    }
-    
-    func getBleAdvParameter(_ result: @escaping CHResult<CHSesame2BleAdvParameter>) {
-        
-    }
-    
-    func updateBleAdvParameter(interval: UInt16, txPower: Int8,
-                               _ result: @escaping CHResult<CHSesame2BleAdvParameter>) {
+    func getBleAdvParameter(_ result: @escaping CHResult<Sesame2BleAdvParameter>) {
         
     }
 }

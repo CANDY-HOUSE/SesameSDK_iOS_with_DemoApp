@@ -202,7 +202,7 @@ sesame2.dropKey()
 4. Reset Sesame:     
 This command will reset the Sesame device and clear the Sesame keys saved in SesameSDK.
 ```swift
-sesame2.resetSesame()
+sesame2.resetSesame2()
 ```
 ### Get Sesame Information
 
@@ -211,7 +211,7 @@ Every Sesame device has a unique identifier.
 ```swift
 sesame2.deviceId
 ```
-2. Sesame device status (`noSignal`, `receiveBle`, `connecting`, `loginStatus`, etc.) Please see Documents/CHSesame2Status.md
+2. Sesame device status (`noSignal`, `receivedBle`, `connecting`, `loginStatus`, etc.) Please see Documents/CHSesame2Status.md
 ```swift
 sesame2.deviceStatus 
 ```

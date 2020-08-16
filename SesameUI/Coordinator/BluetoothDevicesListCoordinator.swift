@@ -65,6 +65,12 @@ extension BluetoothDevicesListCoordinator: BluetoothDevicesListViewModelDelegate
         registerDeviceViewCoordinator.start()
     }
     
+    public func registerWifiModule2Tapped() {
+        let registerWifiModule2ViewCoordinator = RegisterWifiModule2ViewCoordinator(navigationController: navigationController)
+        registerWifiModule2ViewCoordinator.parentCoordinator = self
+        registerWifiModule2ViewCoordinator.start()
+    }
+    
     public func bluetootheDevicesListViewDidTappedSesame2(_ sesame2: CHSesame2) {
         let sesame2RoomMainCoordinator = Sesame2RoomMainViewCoordinator(navigationController: navigationController,
                                                                 sesame2: sesame2)

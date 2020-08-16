@@ -112,6 +112,16 @@ public final class RegisterDeviceListViewModel: ViewModel {
         })
     }
     
+    func dfuFileName() -> String? {
+        guard let filePath = Constant
+            .resourceBundle
+            .url(forResource: nil,
+                 withExtension: ".zip") else {
+                return nil
+        }
+        return filePath.lastPathComponent
+    }
+    
     func dfuDeviceAtIndexPath(_ indexPath: IndexPath, observer: DFUHelperObserver) {
         let sesame2 = sesame2s[indexPath.row]
         guard let filePath = Constant
