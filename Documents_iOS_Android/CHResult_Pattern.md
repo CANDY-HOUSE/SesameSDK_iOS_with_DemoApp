@@ -48,27 +48,27 @@
 
 ## iOS
 ```swift
-       sesame2.toggle { result in
-                switch result {
-                case .success(let chResultState):
-                    L.d("CHResultState" , chResultState,chResultState.data)
-                    //["CHResultState", SesameSDK.CHResultStateBLE<SesameSDK.CHEmpty>, SesameSDK.CHEmpty]
-                case .failure(let error):
-                    L.d("error",error)
-                }
-        }
+sesame2.toggle { result in
+    switch result {
+       case .success(let chResultState):
+           L.d("CHResultState" , chResultState,chResultState.data)
+           //["CHResultState", SesameSDK.CHResultStateBLE<SesameSDK.CHEmpty>, SesameSDK.CHEmpty]
+       case .failure(let error):
+           L.d("error",error)
+       }
+}
 ```
 ## Android
 ``` kotlin
-      sesame2.toggle() {
-          it.onSuccess {
+sesame2.toggle() {
+    it.onSuccess {
 
-          }
-          it.onFailure {
-             L.d ("message" + it)
-              L.d("code t" + (it as NSError).code)
-              L.d("domaon!!!!!:" + (it as NSError).domaon)
-              toastMSG(it.message)
-          }
-      }
+    }
+    it.onFailure {
+       L.d ("message" + it)
+       L.d("code t" + (it as NSError).code)
+       L.d("domaon!!!!!:" + (it as NSError).domaon)
+       toastMSG(it.message)
+    }
+}
 ```

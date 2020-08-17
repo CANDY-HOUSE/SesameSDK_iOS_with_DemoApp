@@ -45,7 +45,7 @@ public protocol CHSesame2: class {
     func dropKey(result: @escaping (CHResult<CHEmpty>)) //SesameSDKの内部データベースに保存されてるこのセサミの鍵を削除するだけ。再度何処かから同じ鍵を取ってこれば再度使える状態になる。
     func getKey() -> String?  //SesameSDKの内部データベースに保存されてるこのセサミデバイスの 「Base64 encoded 鍵」 を取り出す
 
-    func getHistories(page: UInt, _ result: @escaping CHResult<[CHSesame2History]>) // SDK経由で最新の履歴から履歴を取得する。 page:ページ数、ページ数は0から使う。1ページの中に 新→旧の履歴順番で 最大50個の履歴が入ってる。
+    func getHistories(page: UInt, _ result: @escaping CHResult<[CHSesame2History]>) // SDK経由で最新の履歴から履歴を取得する。 page:ページ数。ページ数の0から、新→旧の履歴順番で、1ページの中に最多50件の履歴が入ってる。
 
     func getBleAdvParameter(_ result: @escaping CHResult<Sesame2BleAdvParameterResponse>) // セサミデバイスが発信しているBluetooth advertisement の Interval と TXPower の設定値を取得する。
     func updateBleAdvParameter(historytag:Data? = nill,interval: Double, txPower: Int8,
