@@ -50,8 +50,8 @@ public protocol CHSesame2: class {
     func getBleAdvParameter(_ result: @escaping CHResult<Sesame2BleAdvParameterResponse>) // セサミデバイスが発信しているBluetooth advertisement の Interval と TXPower の設定値を取得する。
     func updateBleAdvParameter(historytag:Data? = nill,interval: Double, txPower: Int8,
                                _ result: @escaping CHResult<Sesame2BleAdvParameterResponse>) // セサミデバイスが発信しているBluetooth advertisement の Interval と TXPower を調整する。
-
-
+    // intervalには20ms～約10000msまで設定可能。　次のいずれかの値の設定を推奨する。  [546.25, 760, 852.5, 1022.5 , 1285, 20.0, 152.5, 211.25, 318.75, 417.5] 
+    // txPowerには次のいずれかの値が設定可能。 [-4, 0, 3, 4, -40, -20, -16, -12, -8]
 }
 ```
 
