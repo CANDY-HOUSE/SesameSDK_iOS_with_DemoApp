@@ -50,7 +50,8 @@ public class CHSesame2DriveFailedHistoryData: CHSesame2HistoryData {
     public let fsmRetCode: Int8
     public let deviceStatus:CHSesame2Status  // モーターが施解錠の途中に失敗した時のCHSesame2Status
 }
-
+```
+```swift
 /*
 補足１：現時点では状態は以下の３つのみとなっています。
   ＜ケース１：施錠＞

@@ -1,6 +1,6 @@
 # WebAPI (baseurl 変動の予定あり、APIKeyが必須になる予定あり)
 
-## 1. Sesame2 History
+# 1. Sesame2 History
 
 ### Request
 ```http
@@ -45,8 +45,8 @@ Parameters:
       "parameter":null
    },
 ]
-   
-
+``` 
+```javascript
 /*
 type :
 
@@ -86,7 +86,7 @@ type :
 
 ```
 
-## 2. Sesame2 Shadow
+# 2. Sesame2 Shadow
 
 ### Request
 ```http

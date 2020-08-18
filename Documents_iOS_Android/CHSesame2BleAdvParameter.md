@@ -1,7 +1,7 @@
 ## iOS
 ```swift
-public protocol CHSesame2BleAdvParameterResponse {
-    var interval: Double { get }　// 単位: millisecond
+public protocol CHSesame2BleAdvParameter {
+    var interval: Double { get }  // 単位: millisecond
     var txPower: Int8 { get }     // 単位: dBm
 }
 ```
