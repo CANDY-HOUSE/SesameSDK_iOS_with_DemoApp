@@ -4,53 +4,44 @@
   <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/SesameSDK_Swift.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
 </p>
 
-- [Introduction](#Introduction)
-- [Configure the SDK](#configure-the-sdk)
-- [Register Sesame deivce](#Register-Sesame-device)
-  - [Scan for Sesame devices](#Scan-for-Sesame-devices)
-  - [Register a Sesame](#Register-a-Sesame)
-- [Control Sesame deivce](#Control-Sesame-device)
-  - [Retrieve Sesame](#Retrieve-Sesame)
-  - [Configure Sesame](#Configure-Sesame)
-  - [Get Sesame Information](#Get-Sesame-Information)
-  - [Lock/Unlock Sesame](#Lockunlock-Sesame)
-  - [Share Sesames' Keys](#Share-Sesame-Keys)
-
-# Introduction
+# ご挨拶
 SesameSDK on iOS/Android is a delightful Bluetooth/IoT(Internet of Things) library for your iOS/Android app. The official Sesame app is built on this SesameSDK. By using SesameSDK, your app will have **ALL** functions and features that Sesame app has, which means, you will be able to
 
-- Register Sesame
-- Lock door
-- Unlock door
-- Share keys
-- Read door history
-- Update Sesame firmware
-- Configure Auto-lock
-- Configure angles
-- Get the statuses such battery status
-- iOS/iPadOS Widget
-- Apple Watch app
+- セサミデバイスの登録
+- 施錠
+- 解錠
+- 鍵のシェア
+- 履歴の取得
+- セサミデバイスのファームウェアのアップデートする
+- セサミデバイスの各種の設定
+- 電池残量の取得
+- iOS/iPadOS Widget 対応
+- Apple Watch app 対応
 
 with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ series or Sesame 1 that runs ___SesameOS 2___ which will be available in late 2020.
 
-# Requirements
+### Requirements
 
 | Minimum Targets | Minimum Bluetooth Target | Minimum IDEs |
 |:------------------:|:------------------------:|:-----------:|
 | iOS 11 <br> iPadOS 13.1 | Bluetooth 4.0 LE | Xcode 11.6 | 
-| Android 5.0 | Bluetooth 4.0 LE | Android Studio 3.5 | 
+| Android 5.0 | Bluetooth 4.0 LE | Android Studio 4.0.1 | 
 
-# Essential dependencies
-- SesameSDK.framework
-- AWSAPIGateway.framework
-# Configure the SDK
-1. Download SesameSDK and play with the included iOS/Android Demo app.  または
+### Essential dependencies
+- iOS
+  - SesameSDK.framework
+  - AWSAPIGateway.framework 
+- Android
+  - SesameSDK.aar
+
+# 1. SesameSDK を取り入れる
+- Download SesameSDK and play with the included iOS/Android Demo app.  または
 [Apple TestFlight](https://testflight.apple.com/join/mK4OadTW) / 
 [Google Drive](https://drive.google.com/file/d/15aRQl6aWBVwJSE4l3ZL-eMisPoe-f2lW/view?usp=sharing)
-から Demo app をダウンロードする。
-2. Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.
-3. Get the **API Key** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history. 
-4. Setup the **API Key** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.
+から Demo app をダウンロードする。  
+- Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.  
+- Get the **API Key** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history.   
+- Setup the **API Key** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.  
 ```swift
 import SesameSDK
 
@@ -62,12 +53,12 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-# Register Sesame device
+# 2. セサミデバイスを登録する
 <p align="center" >
   <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/RegisterSesameDevice.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
 </p>
 
-### Scan for Sesame devices
+### 2.1 Scan for Sesame devices
 1. Scan for Sesame devices.
 ```Swift
 CHBleManager.shared.enableScan()
@@ -79,7 +70,7 @@ CHBleManager.shared.disableScan()
 CHBleManager.shared.disConnectAll()
 ```
 
-### Register a Sesame
+### 2.2 Register a Sesame
 1.   Set up `CHBleManager`'s delegate property to discover unregistered Sesame devices.
 ```swift
 CHBleManager.shared.delegate = self
@@ -130,14 +121,14 @@ class SomeClass: CHSesame2Delegate {
 }
 
 ```
-# Control Sesame device
+# 3. セサミデバイスを操作する
 After successfully registering Sesame device with `device.registerSesame`, you can operate the Sesame device. The following examples demonstrate how to operate the Sesame device.
 
 <p align="center" >
   <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/ControlSesameDevice.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
 </p>
 
-### Retrieve Sesame
+### 3.1 Retrieve Sesame
 Every registered Sesame device can be retrieved via `CHBleManager.shared.getSesames()`.
 ```swift
 CHBleManager.shared.getSesames() { result in
@@ -175,36 +166,36 @@ class SomeClass: CHSesame2Delegate {
 }
 ```
 
-### Configure Sesame
+### 3.2 セサミデバイスの基本設定をする
 
-1. Locked/Unlocked angle adjustment:
+1. 施解錠の角度また位置を調整する:
 ```swift
 // Lock: 90°, Unlock: 0°
 var config = CHSesameLockPositionConfiguration(lockTarget: 1024/4, unlockTarget: 0)
 sesame2.configureLockPosition(configure: &config)
 ```
-2. Enable/Disable auto-lock:
+2. オートロック機能を設定する:
 ```swift
 sesame2.enableAutolock(delay: second[row]) { (delay) -> Void in
     // Complete handler
 }
-```
-```swift
+
 sesame2.disableAutolock() { (delay) -> Void in
     // Complete handler
 }
 ```
-3. Drop Key:     
-This command will clear the Sesame keys saved in SesameSDK. This means you will not able to retrieve the Sesame device via `CHBleManager.shared.getSesames()`.
+3. このセサミデバイスの鍵を破棄する:  
 ```swift
 sesame2.dropKey()
+// SesameSDKの内部データベースに保存されてるこのセサミの鍵を破棄するだけ。
+// You will not able to retrieve the Sesame device via `CHBleManager.shared.getSesames()`. 再度何処かから同じ鍵を取ってこれば再度使える状態になる。
 ```
-4. Reset Sesame:     
-This command will reset the Sesame device and clear the Sesame keys saved in SesameSDK.
+4. このセサミデバイスをリセットする:     
 ```swift
 sesame2.resetSesame2()
+//セサミデバイスを初期化（リセット）し、そしてSesameSDKの内部データベースに保存されてるこのセサミの鍵を破棄する。何処かから同じ鍵を取って来ても再度使えない。ユーザーは新規登録のみできる。
 ```
-### Get Sesame Information
+### 3.3 Get Sesame Information
 
 1. UUID:     
 Every Sesame device has a unique identifier.
@@ -219,13 +210,13 @@ sesame2.deviceStatus
 ```swift
 sesame2.mechStatus
 ```
-### Lock/Unlock Sesame
+### 3.4 解錠する
 ```swift
-sesame2.toggle { result in
+sesame2.unlock { result in
     // Completion handler
 }
 ```
-### Share Sesame Keys
+### 3.5 セサミデバイスの鍵をシェアする
 SesameSDK can export keys(Base64 encoded JSON objects) to you, and you can share the keys with other people in many ways.
 1. Export Sesame keys:
 ```swift
@@ -245,12 +236,10 @@ CHDeviceManager.shared.receiveSesame2Keys(sesame2Keys: [String]) { result in
 ```
 
 
-# Communications
+# 最後に
 
 - If you **found a bug**, _and can provide steps to reliably reproduce it_, open an issue.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 - If you believe you have identified a **security vulnerability** with SesameSDK, you should report it as soon as possible via email to developers@candyhouse.co Please do not post it to a public issue tracker.
-
-# License
-SesameSDK is maintained by [CANDY HOUSE, Inc.](https://jp.candyhouse.co/) under the [MIT License](https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/blob/master/LICENSE).
+- SesameSDK is maintained by [CANDY HOUSE, Inc.](https://jp.candyhouse.co/) under the [MIT License](https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/blob/master/LICENSE).
