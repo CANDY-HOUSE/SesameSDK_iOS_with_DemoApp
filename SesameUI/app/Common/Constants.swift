@@ -32,7 +32,10 @@ enum Constant {
     }
     
     static let storyboardName = "Main"
+    static let wifiStoryboardName = "Wifi"
     static let resourceBundle = Bundle(for: BluetoothDevicesListViewController.self)
     static let storyboard = UIStoryboard(name: Constant.storyboardName,
                                          bundle: resourceBundle)
+    static let wifiStoryboard = UIStoryboard(name: Constant.wifiStoryboardName,
+                                             bundle: resourceBundle)
 }

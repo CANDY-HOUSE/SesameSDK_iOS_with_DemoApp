@@ -41,15 +41,15 @@ class PopUpMenuControl: UIButton {
                                              title: "co.candyhouse.sesame-sdk-test-app.scanQRCode".localized,
                                           icon: "icons_filled_scan")
         
-//        let addWifiModule2 = PopUpMenuItem(type: .addWifiModule2,
-//                                          title: "co.candyhouse.sesame-sdk-test-app.NewWifiModule2".localized,
-//                                          icon: "icons_filled_favorites")
+        let addWifiModule2 = PopUpMenuItem(type: .addWifiModule2,
+                                          title: "co.candyhouse.sesame-sdk-test-app.NewWifiModule2".localized,
+                                          icon: "icons_filled_favorites")
 
         menus = [
             addDevices,
             addFriend,
             scanDeviceQRCode,
-//            addWifiModule2
+            addWifiModule2
         ]
 
         let menuView = PopUpMenu(itemHeight: menuHeight, itemWidth: menuWidth, menus: menus)

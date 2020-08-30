@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12F5F49D24D943AF0004FE96 /* d533ef10.zip in Resources */ = {isa = PBXBuildFile; fileRef = 12F5F49C24D943AF0004FE96 /* d533ef10.zip */; };
+		12F5F4A824F4D1490004FE96 /* 540f1476.zip in Resources */ = {isa = PBXBuildFile; fileRef = 12F5F4A724F4D1490004FE96 /* 540f1476.zip */; };
+		12F5F4A924F4D1610004FE96 /* 540f1476.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F5F4A724F4D1490004FE96 /* 540f1476.zip */; };
 		4102FAF323C2E17A00ECA735 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4102FAF223C2E17A00ECA735 /* ScanView.swift */; };
 		4102FAF723C3203600ECA735 /* icons_filled_add-friends_black.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4102FAF623C3203600ECA735 /* icons_filled_add-friends_black.svg */; };
 		41030330237902D400785311 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColor+Extensions.swift */; };
@@ -97,8 +98,6 @@
 		4155E80A23CC473F00CA093E /* CHSesame2ChangeNameDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155E80923CC473F00CA093E /* CHSesame2ChangeNameDialog.swift */; };
 		416BCD8A23828EA1002871D2 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BCD8923828EA1002871D2 /* RegisterCell.swift */; };
 		4176ED9F23C574C800F312F9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176ED9E23C574C800F312F9 /* UIViewController+Extension.swift */; };
-		4176EDA523C5ADCB00F312F9 /* icon_lock.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4176EDA423C5ADCB00F312F9 /* icon_lock.svg */; };
-		4176EDA723C5ADDF00F312F9 /* icon_unlock.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4176EDA623C5ADDF00F312F9 /* icon_unlock.svg */; };
 		4176EDA923C5AE0200F312F9 /* icon_white.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4176EDA823C5AE0200F312F9 /* icon_white.svg */; };
 		4176EDAF23C5F2B200F312F9 /* handmove.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4176EDAE23C5F2B200F312F9 /* handmove.svg */; };
 		4176EDB123C5F38C00F312F9 /* autolock.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4176EDB023C5F38C00F312F9 /* autolock.svg */; };
@@ -148,42 +147,57 @@
 		41ED3BD52376A98700CBC5D0 /* RegisterDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED3BD42376A98700CBC5D0 /* RegisterDeviceListViewController.swift */; };
 		41F1CC32234D8ABD00652D12 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1CC31234D8ABD00652D12 /* MeViewController.swift */; };
 		41F1CC34234DB66E00652D12 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1CC33234DB66E00652D12 /* FriendsViewController.swift */; };
+		B021E9DA24FA7E570067CF0C /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CC24FA7E500067CF0C /* AWSAPIGateway.framework */; };
+		B021E9DB24FA7E570067CF0C /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CC24FA7E500067CF0C /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9DC24FA7E570067CF0C /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CD24FA7E500067CF0C /* SVGKit.framework */; };
+		B021E9DD24FA7E570067CF0C /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CD24FA7E500067CF0C /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9DE24FA7E570067CF0C /* AWSCognitoIdentityProviderASF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CE24FA7E500067CF0C /* AWSCognitoIdentityProviderASF.framework */; };
+		B021E9DF24FA7E570067CF0C /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CE24FA7E500067CF0C /* AWSCognitoIdentityProviderASF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9E024FA7E570067CF0C /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CF24FA7E500067CF0C /* KeychainSwift.framework */; };
+		B021E9E124FA7E570067CF0C /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CF24FA7E500067CF0C /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9E224FA7E570067CF0C /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D024FA7E500067CF0C /* ZIPFoundation.framework */; };
+		B021E9E324FA7E570067CF0C /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D024FA7E500067CF0C /* ZIPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9E424FA7E580067CF0C /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D124FA7E500067CF0C /* AWSCognitoIdentityProvider.framework */; };
+		B021E9E524FA7E580067CF0C /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D124FA7E500067CF0C /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9E624FA7E580067CF0C /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D224FA7E500067CF0C /* AWSCore.framework */; };
+		B021E9E724FA7E580067CF0C /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D224FA7E500067CF0C /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9E824FA7E580067CF0C /* AWSIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D324FA7E500067CF0C /* AWSIoT.framework */; };
+		B021E9E924FA7E580067CF0C /* AWSIoT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D324FA7E500067CF0C /* AWSIoT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9EA24FA7E580067CF0C /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D424FA7E500067CF0C /* SesameSDK.framework */; };
+		B021E9EB24FA7E580067CF0C /* SesameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D424FA7E500067CF0C /* SesameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9EC24FA7E580067CF0C /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D524FA7E500067CF0C /* CocoaLumberjack.framework */; };
+		B021E9ED24FA7E580067CF0C /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D524FA7E500067CF0C /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9EE24FA7E580067CF0C /* AWSMobileClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D624FA7E500067CF0C /* AWSMobileClient.framework */; };
+		B021E9EF24FA7E580067CF0C /* AWSMobileClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D624FA7E500067CF0C /* AWSMobileClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9F024FA7E580067CF0C /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D724FA7E500067CF0C /* iOSDFULibrary.framework */; };
+		B021E9F124FA7E580067CF0C /* iOSDFULibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D724FA7E500067CF0C /* iOSDFULibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9F224FA7E580067CF0C /* AWSAuthCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D924FA7E500067CF0C /* AWSAuthCore.framework */; };
+		B021E9F324FA7E580067CF0C /* AWSAuthCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D924FA7E500067CF0C /* AWSAuthCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021E9F424FA7E630067CF0C /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9CC24FA7E500067CF0C /* AWSAPIGateway.framework */; };
+		B021E9F624FA7E630067CF0C /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D424FA7E500067CF0C /* SesameSDK.framework */; };
+		B021E9F924FA7E700067CF0C /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D824FA7E500067CF0C /* SesameWatchKitSDK.framework */; };
+		B021E9FA24FA7E700067CF0C /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021E9D824FA7E500067CF0C /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B029B11624D980DF002CF93F /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029B11524D980DF002CF93F /* UserData.swift */; };
 		B035418524D8152100C44C1D /* WatchKitFileTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035418424D8152100C44C1D /* WatchKitFileTransfer.swift */; };
 		B03B482124D94817008A315B /* upgrade.svg in Resources */ = {isa = PBXBuildFile; fileRef = B03B482024D94816008A315B /* upgrade.svg */; };
 		B04D1C9924E7E0D90021ACA2 /* RegisterWifiModule2ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B090BE1224E0F076005E7906 /* RegisterWifiModule2ViewCoordinator.swift */; };
-		B04D1CD924E7FC580021ACA2 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCB24E7FC500021ACA2 /* AWSAPIGateway.framework */; };
-		B04D1CDA24E7FC580021ACA2 /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCB24E7FC500021ACA2 /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CDB24E7FC580021ACA2 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCC24E7FC500021ACA2 /* SVGKit.framework */; };
-		B04D1CDC24E7FC580021ACA2 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCC24E7FC500021ACA2 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CDD24E7FC580021ACA2 /* AWSCognitoIdentityProviderASF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCD24E7FC500021ACA2 /* AWSCognitoIdentityProviderASF.framework */; };
-		B04D1CDE24E7FC580021ACA2 /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCD24E7FC500021ACA2 /* AWSCognitoIdentityProviderASF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CDF24E7FC580021ACA2 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCE24E7FC500021ACA2 /* KeychainSwift.framework */; };
-		B04D1CE024E7FC580021ACA2 /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCE24E7FC500021ACA2 /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CE124E7FC580021ACA2 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCF24E7FC500021ACA2 /* ZIPFoundation.framework */; };
-		B04D1CE224E7FC580021ACA2 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCF24E7FC500021ACA2 /* ZIPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CE324E7FC580021ACA2 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD024E7FC500021ACA2 /* AWSCognitoIdentityProvider.framework */; };
-		B04D1CE424E7FC580021ACA2 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD024E7FC500021ACA2 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CE524E7FC580021ACA2 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD124E7FC500021ACA2 /* AWSCore.framework */; };
-		B04D1CE624E7FC580021ACA2 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD124E7FC500021ACA2 /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CE724E7FC580021ACA2 /* AWSIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD224E7FC500021ACA2 /* AWSIoT.framework */; };
-		B04D1CE824E7FC580021ACA2 /* AWSIoT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD224E7FC500021ACA2 /* AWSIoT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CE924E7FC580021ACA2 /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD324E7FC500021ACA2 /* SesameSDK.framework */; };
-		B04D1CEA24E7FC580021ACA2 /* SesameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD324E7FC500021ACA2 /* SesameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CEB24E7FC580021ACA2 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD424E7FC500021ACA2 /* CocoaLumberjack.framework */; };
-		B04D1CEC24E7FC580021ACA2 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD424E7FC500021ACA2 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CED24E7FC580021ACA2 /* AWSMobileClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD524E7FC500021ACA2 /* AWSMobileClient.framework */; };
-		B04D1CEE24E7FC580021ACA2 /* AWSMobileClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD524E7FC500021ACA2 /* AWSMobileClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CEF24E7FC580021ACA2 /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD624E7FC500021ACA2 /* iOSDFULibrary.framework */; };
-		B04D1CF024E7FC580021ACA2 /* iOSDFULibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD624E7FC500021ACA2 /* iOSDFULibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CF124E7FC580021ACA2 /* AWSAuthCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD824E7FC500021ACA2 /* AWSAuthCore.framework */; };
-		B04D1CF224E7FC580021ACA2 /* AWSAuthCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD824E7FC500021ACA2 /* AWSAuthCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04D1CF324E7FC600021ACA2 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CCB24E7FC500021ACA2 /* AWSAPIGateway.framework */; };
-		B04D1CF524E7FC600021ACA2 /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD324E7FC500021ACA2 /* SesameSDK.framework */; };
-		B04D1CF824E7FC6C0021ACA2 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD724E7FC500021ACA2 /* SesameWatchKitSDK.framework */; };
-		B04D1CF924E7FC6C0021ACA2 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B04D1CD724E7FC500021ACA2 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B04D1D1524EA1DE90021ACA2 /* RegisterWifiModule2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B090BE1624E0F886005E7906 /* RegisterWifiModule2ViewController.swift */; };
+		B04D1D1724EA37640021ACA2 /* sesame2_bld_4769f9db_bootloader.zip in Resources */ = {isa = PBXBuildFile; fileRef = B04D1D1624EA37640021ACA2 /* sesame2_bld_4769f9db_bootloader.zip */; };
+		B04D1D1D24EA39340021ACA2 /* sesame2_bld_4769f9db_bootloader.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = B04D1D1624EA37640021ACA2 /* sesame2_bld_4769f9db_bootloader.zip */; };
 		B052D5F9249E212F00AEA645 /* LockAngleSettingViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B052D5F8249E212F00AEA645 /* LockAngleSettingViewCoordinator.swift */; };
 		B052D5FB249E222100AEA645 /* LockAngleSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B052D5FA249E222100AEA645 /* LockAngleSettingViewModel.swift */; };
+		B0534ADD24FA2A6900219D08 /* icon_locked.svg in Resources */ = {isa = PBXBuildFile; fileRef = B0534ADC24FA2A6900219D08 /* icon_locked.svg */; };
+		B0534ADF24FA2A6F00219D08 /* icon_unlocked.svg in Resources */ = {isa = PBXBuildFile; fileRef = B0534ADE24FA2A6E00219D08 /* icon_unlocked.svg */; };
+		B0534AE124FA2A7300219D08 /* icon_lock.svg in Resources */ = {isa = PBXBuildFile; fileRef = B0534AE024FA2A7200219D08 /* icon_lock.svg */; };
+		B0534AE324FA2A7800219D08 /* icon_unlock.svg in Resources */ = {isa = PBXBuildFile; fileRef = B0534AE224FA2A7800219D08 /* icon_unlock.svg */; };
+		B0534AE524FA360500219D08 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0534AE424FA360500219D08 /* QRCodeScanner.swift */; };
+		B0657E0124F62959008DF38B /* CHSesame2HistoryData+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0657E0024F62959008DF38B /* CHSesame2HistoryData+.swift */; };
+		B0657E0224F62959008DF38B /* CHSesame2HistoryData+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0657E0024F62959008DF38B /* CHSesame2HistoryData+.swift */; };
+		B0657E0324F62959008DF38B /* CHSesame2HistoryData+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0657E0024F62959008DF38B /* CHSesame2HistoryData+.swift */; };
+		B0657E0524F62978008DF38B /* Sesame2HistoryMO+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0657E0424F62978008DF38B /* Sesame2HistoryMO+.swift */; };
+		B0657E0624F62978008DF38B /* Sesame2HistoryMO+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0657E0424F62978008DF38B /* Sesame2HistoryMO+.swift */; };
+		B0657E0724F62978008DF38B /* Sesame2HistoryMO+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0657E0424F62978008DF38B /* Sesame2HistoryMO+.swift */; };
+		B0796E7624ED3A7700D4DD1F /* WifiModule2ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0796E7524ED3A7700D4DD1F /* WifiModule2ListCoordinator.swift */; };
 		B087E57224E126830087D978 /* CHWifiModule2+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087E57124E126830087D978 /* CHWifiModule2+.swift */; };
 		B087E57324E126830087D978 /* CHWifiModule2+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087E57124E126830087D978 /* CHWifiModule2+.swift */; };
 		B087E57424E126830087D978 /* CHWifiModule2+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087E57124E126830087D978 /* CHWifiModule2+.swift */; };
@@ -201,6 +215,16 @@
 		B09CCAF824D96834008B8E16 /* Sesame2ListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CCAF724D96834008B8E16 /* Sesame2ListCellModel.swift */; };
 		B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6138F247680FD00A797E5 /* VersionLabel.swift */; };
 		B0AD874724A89AA300330BCD /* SesameUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F49C24A4EBBF00D04651 /* SesameUI.xcdatamodeld */; };
+		B0F84D4B24ECC7890042411D /* WifiSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D4A24ECC7890042411D /* WifiSelectionTableViewController.swift */; };
+		B0F84D4D24ECC7B30042411D /* WifiSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D4C24ECC7B30042411D /* WifiSelectionTableViewCell.swift */; };
+		B0F84D4F24ECC7C60042411D /* WifiSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D4E24ECC7C60042411D /* WifiSelectionViewModel.swift */; };
+		B0F84D5224ECC89F0042411D /* Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D5124ECC89F0042411D /* Wifi.swift */; };
+		B0F84D5424ECC9EC0042411D /* WifiSelectionViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D5324ECC9EC0042411D /* WifiSelectionViewCoordinator.swift */; };
+		B0F84D6524ED2E450042411D /* Wifi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F84D6324ED2E450042411D /* Wifi.storyboard */; };
+		B0F84D6724ED2EC90042411D /* WifiModule2ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D6624ED2EC90042411D /* WifiModule2ListViewController.swift */; };
+		B0F84D6A24ED2FFD0042411D /* WifiModule2ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D6924ED2FFD0042411D /* WifiModule2ListCell.swift */; };
+		B0F84D6C24ED313D0042411D /* WifiModule2ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D6B24ED313D0042411D /* WifiModule2ListViewModel.swift */; };
+		B0F84D6E24ED31480042411D /* WifiModule2ListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F84D6D24ED31480042411D /* WifiModule2ListCellModel.swift */; };
 		B0FB248624D81985006F47C2 /* WatchKitFileTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035418424D8152100C44C1D /* WatchKitFileTransfer.swift */; };
 		B0FB248924D81BA7006F47C2 /* WatchKitFileTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB248824D81BA6006F47C2 /* WatchKitFileTransfer.swift */; };
 		B13664512320DCBE00B88EFE /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13664502320DCBE00B88EFE /* Logger.swift */; };
@@ -235,6 +259,8 @@
 		BE46A7AC24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46A7AB24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift */; };
 		BE46A7AE24A1B3CC00700F27 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46A7AD24A1B3CC00700F27 /* SignUpViewModel.swift */; };
 		BE46A7B024A1E3CE00700F27 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46A7AF24A1E3CE00700F27 /* ForgotPasswordViewModel.swift */; };
+		BE4982F024F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4982EE24F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.swift */; };
+		BE4982F124F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE4982EF24F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.xib */; };
 		BE5794EF24AF1BE200E96B72 /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C5346245EC30000252F00 /* NSError+.swift */; };
 		BE5794F024AF1BE200E96B72 /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C5346245EC30000252F00 /* NSError+.swift */; };
 		BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6978DC2483E30F0089141E /* ToastUtil.swift */; };
@@ -359,6 +385,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B04D1D1A24EA38E80021ACA2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = application_dfu;
+			dstSubfolderSpec = 7;
+			files = (
+				12F5F4A924F4D1610004FE96 /* 540f1476.zip in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B04D1D1C24EA39150021ACA2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = bootloader_dfu;
+			dstSubfolderSpec = 7;
+			files = (
+				B04D1D1D24EA39340021ACA2 /* sesame2_bld_4769f9db_bootloader.zip in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE3DD9B024829E0100EEA3B1 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,7 +422,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B04D1CF924E7FC6C0021ACA2 /* SesameWatchKitSDK.framework in Embed Frameworks */,
+				B021E9FA24FA7E700067CF0C /* SesameWatchKitSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,19 +433,19 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B04D1CE024E7FC580021ACA2 /* KeychainSwift.framework in Embed Frameworks */,
-				B04D1CE624E7FC580021ACA2 /* AWSCore.framework in Embed Frameworks */,
-				B04D1CEC24E7FC580021ACA2 /* CocoaLumberjack.framework in Embed Frameworks */,
-				B04D1CF224E7FC580021ACA2 /* AWSAuthCore.framework in Embed Frameworks */,
-				B04D1CE424E7FC580021ACA2 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
-				B04D1CE824E7FC580021ACA2 /* AWSIoT.framework in Embed Frameworks */,
-				B04D1CDE24E7FC580021ACA2 /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */,
-				B04D1CF024E7FC580021ACA2 /* iOSDFULibrary.framework in Embed Frameworks */,
-				B04D1CEE24E7FC580021ACA2 /* AWSMobileClient.framework in Embed Frameworks */,
-				B04D1CDC24E7FC580021ACA2 /* SVGKit.framework in Embed Frameworks */,
-				B04D1CDA24E7FC580021ACA2 /* AWSAPIGateway.framework in Embed Frameworks */,
-				B04D1CEA24E7FC580021ACA2 /* SesameSDK.framework in Embed Frameworks */,
-				B04D1CE224E7FC580021ACA2 /* ZIPFoundation.framework in Embed Frameworks */,
+				B021E9E124FA7E570067CF0C /* KeychainSwift.framework in Embed Frameworks */,
+				B021E9E724FA7E580067CF0C /* AWSCore.framework in Embed Frameworks */,
+				B021E9ED24FA7E580067CF0C /* CocoaLumberjack.framework in Embed Frameworks */,
+				B021E9F324FA7E580067CF0C /* AWSAuthCore.framework in Embed Frameworks */,
+				B021E9E524FA7E580067CF0C /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
+				B021E9E924FA7E580067CF0C /* AWSIoT.framework in Embed Frameworks */,
+				B021E9DF24FA7E570067CF0C /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */,
+				B021E9F124FA7E580067CF0C /* iOSDFULibrary.framework in Embed Frameworks */,
+				B021E9EF24FA7E580067CF0C /* AWSMobileClient.framework in Embed Frameworks */,
+				B021E9DD24FA7E570067CF0C /* SVGKit.framework in Embed Frameworks */,
+				B021E9DB24FA7E570067CF0C /* AWSAPIGateway.framework in Embed Frameworks */,
+				B021E9EB24FA7E580067CF0C /* SesameSDK.framework in Embed Frameworks */,
+				B021E9E324FA7E570067CF0C /* ZIPFoundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +475,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		12F5F49C24D943AF0004FE96 /* d533ef10.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = d533ef10.zip; sourceTree = "<group>"; };
+		12F5F4A724F4D1490004FE96 /* 540f1476.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = 540f1476.zip; sourceTree = "<group>"; };
 		4102FAF223C2E17A00ECA735 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		4102FAF623C3203600ECA735 /* icons_filled_add-friends_black.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "icons_filled_add-friends_black.svg"; sourceTree = "<group>"; };
 		4103032F237902D400785311 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -516,8 +562,6 @@
 		4155E80923CC473F00CA093E /* CHSesame2ChangeNameDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2ChangeNameDialog.swift; sourceTree = "<group>"; };
 		416BCD8923828EA1002871D2 /* RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
 		4176ED9E23C574C800F312F9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		4176EDA423C5ADCB00F312F9 /* icon_lock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon_lock.svg; sourceTree = "<group>"; };
-		4176EDA623C5ADDF00F312F9 /* icon_unlock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon_unlock.svg; sourceTree = "<group>"; };
 		4176EDA823C5AE0200F312F9 /* icon_white.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon_white.svg; sourceTree = "<group>"; };
 		4176EDAE23C5F2B200F312F9 /* handmove.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handmove.svg; sourceTree = "<group>"; };
 		4176EDB023C5F38C00F312F9 /* autolock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = autolock.svg; sourceTree = "<group>"; };
@@ -573,25 +617,34 @@
 		41F1CC31234D8ABD00652D12 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		41F1CC33234DB66E00652D12 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		B01C30C024CAC1EB00E91F14 /* SesameUI 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SesameUI 3.xcdatamodel"; sourceTree = "<group>"; };
+		B021E9CC24FA7E500067CF0C /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAPIGateway.framework; sourceTree = "<group>"; };
+		B021E9CD24FA7E500067CF0C /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
+		B021E9CE24FA7E500067CF0C /* AWSCognitoIdentityProviderASF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProviderASF.framework; sourceTree = "<group>"; };
+		B021E9CF24FA7E500067CF0C /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeychainSwift.framework; sourceTree = "<group>"; };
+		B021E9D024FA7E500067CF0C /* ZIPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZIPFoundation.framework; sourceTree = "<group>"; };
+		B021E9D124FA7E500067CF0C /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
+		B021E9D224FA7E500067CF0C /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
+		B021E9D324FA7E500067CF0C /* AWSIoT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSIoT.framework; sourceTree = "<group>"; };
+		B021E9D424FA7E500067CF0C /* SesameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameSDK.framework; sourceTree = "<group>"; };
+		B021E9D524FA7E500067CF0C /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
+		B021E9D624FA7E500067CF0C /* AWSMobileClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = "<group>"; };
+		B021E9D724FA7E500067CF0C /* iOSDFULibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = "<group>"; };
+		B021E9D824FA7E500067CF0C /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = "<group>"; };
+		B021E9D924FA7E500067CF0C /* AWSAuthCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAuthCore.framework; sourceTree = "<group>"; };
 		B029B11524D980DF002CF93F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		B035418424D8152100C44C1D /* WatchKitFileTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitFileTransfer.swift; sourceTree = "<group>"; };
 		B03B482024D94816008A315B /* upgrade.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = upgrade.svg; sourceTree = "<group>"; };
-		B04D1CCB24E7FC500021ACA2 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAPIGateway.framework; sourceTree = "<group>"; };
-		B04D1CCC24E7FC500021ACA2 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
-		B04D1CCD24E7FC500021ACA2 /* AWSCognitoIdentityProviderASF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProviderASF.framework; sourceTree = "<group>"; };
-		B04D1CCE24E7FC500021ACA2 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeychainSwift.framework; sourceTree = "<group>"; };
-		B04D1CCF24E7FC500021ACA2 /* ZIPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZIPFoundation.framework; sourceTree = "<group>"; };
-		B04D1CD024E7FC500021ACA2 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
-		B04D1CD124E7FC500021ACA2 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
-		B04D1CD224E7FC500021ACA2 /* AWSIoT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSIoT.framework; sourceTree = "<group>"; };
-		B04D1CD324E7FC500021ACA2 /* SesameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameSDK.framework; sourceTree = "<group>"; };
-		B04D1CD424E7FC500021ACA2 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
-		B04D1CD524E7FC500021ACA2 /* AWSMobileClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = "<group>"; };
-		B04D1CD624E7FC500021ACA2 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = "<group>"; };
-		B04D1CD724E7FC500021ACA2 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = "<group>"; };
-		B04D1CD824E7FC500021ACA2 /* AWSAuthCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSAuthCore.framework; sourceTree = "<group>"; };
+		B04D1D1624EA37640021ACA2 /* sesame2_bld_4769f9db_bootloader.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame2_bld_4769f9db_bootloader.zip; sourceTree = "<group>"; };
 		B052D5F8249E212F00AEA645 /* LockAngleSettingViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAngleSettingViewCoordinator.swift; sourceTree = "<group>"; };
 		B052D5FA249E222100AEA645 /* LockAngleSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAngleSettingViewModel.swift; sourceTree = "<group>"; };
+		B0534ADC24FA2A6900219D08 /* icon_locked.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon_locked.svg; sourceTree = "<group>"; };
+		B0534ADE24FA2A6E00219D08 /* icon_unlocked.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon_unlocked.svg; sourceTree = "<group>"; };
+		B0534AE024FA2A7200219D08 /* icon_lock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon_lock.svg; sourceTree = "<group>"; };
+		B0534AE224FA2A7800219D08 /* icon_unlock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icon_unlock.svg; sourceTree = "<group>"; };
+		B0534AE424FA360500219D08 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
+		B0657E0024F62959008DF38B /* CHSesame2HistoryData+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2HistoryData+.swift"; sourceTree = "<group>"; };
+		B0657E0424F62978008DF38B /* Sesame2HistoryMO+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sesame2HistoryMO+.swift"; sourceTree = "<group>"; };
+		B0796E7524ED3A7700D4DD1F /* WifiModule2ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2ListCoordinator.swift; sourceTree = "<group>"; };
 		B087E57124E126830087D978 /* CHWifiModule2+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2+.swift"; sourceTree = "<group>"; };
 		B08C5344245EA84000252F00 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B08C5346245EC30000252F00 /* NSError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+.swift"; sourceTree = "<group>"; };
@@ -607,6 +660,16 @@
 		B09CCAF524D96820008B8E16 /* Sesame2ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2ListCell.swift; sourceTree = "<group>"; };
 		B09CCAF724D96834008B8E16 /* Sesame2ListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2ListCellModel.swift; sourceTree = "<group>"; };
 		B0A6138F247680FD00A797E5 /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
+		B0F84D4A24ECC7890042411D /* WifiSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionTableViewController.swift; sourceTree = "<group>"; };
+		B0F84D4C24ECC7B30042411D /* WifiSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		B0F84D4E24ECC7C60042411D /* WifiSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionViewModel.swift; sourceTree = "<group>"; };
+		B0F84D5124ECC89F0042411D /* Wifi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wifi.swift; sourceTree = "<group>"; };
+		B0F84D5324ECC9EC0042411D /* WifiSelectionViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionViewCoordinator.swift; sourceTree = "<group>"; };
+		B0F84D6424ED2E450042411D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Wifi.storyboard; sourceTree = "<group>"; };
+		B0F84D6624ED2EC90042411D /* WifiModule2ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2ListViewController.swift; sourceTree = "<group>"; };
+		B0F84D6924ED2FFD0042411D /* WifiModule2ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2ListCell.swift; sourceTree = "<group>"; };
+		B0F84D6B24ED313D0042411D /* WifiModule2ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2ListViewModel.swift; sourceTree = "<group>"; };
+		B0F84D6D24ED31480042411D /* WifiModule2ListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2ListCellModel.swift; sourceTree = "<group>"; };
 		B0FB248824D81BA6006F47C2 /* WatchKitFileTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitFileTransfer.swift; sourceTree = "<group>"; };
 		B13664502320DCBE00B88EFE /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B179690722F7CE9300E91996 /* Sesame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sesame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -645,6 +708,8 @@
 		BE46A7AB24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewCoordinator.swift; sourceTree = "<group>"; };
 		BE46A7AD24A1B3CC00700F27 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		BE46A7AF24A1E3CE00700F27 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		BE4982EE24F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2HistoryLoadingTableViewCell.swift; sourceTree = "<group>"; };
+		BE4982EF24F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame2HistoryLoadingTableViewCell.xib; sourceTree = "<group>"; };
 		BE64CE5B248B1BCE00A4DABF /* MockBleDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBleDevice.swift; sourceTree = "<group>"; };
 		BE64CE5D248B284900A4DABF /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		BE64CE5F248B69D100A4DABF /* DeviceModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelProvider.swift; sourceTree = "<group>"; };
@@ -716,8 +781,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B04D1CF324E7FC600021ACA2 /* AWSAPIGateway.framework in Frameworks */,
-				B04D1CF524E7FC600021ACA2 /* SesameSDK.framework in Frameworks */,
+				B021E9F424FA7E630067CF0C /* AWSAPIGateway.framework in Frameworks */,
+				B021E9F624FA7E630067CF0C /* SesameSDK.framework in Frameworks */,
 				41E6850A235597380042B159 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,19 +791,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B04D1CDF24E7FC580021ACA2 /* KeychainSwift.framework in Frameworks */,
-				B04D1CE524E7FC580021ACA2 /* AWSCore.framework in Frameworks */,
-				B04D1CEB24E7FC580021ACA2 /* CocoaLumberjack.framework in Frameworks */,
-				B04D1CF124E7FC580021ACA2 /* AWSAuthCore.framework in Frameworks */,
-				B04D1CE324E7FC580021ACA2 /* AWSCognitoIdentityProvider.framework in Frameworks */,
-				B04D1CE724E7FC580021ACA2 /* AWSIoT.framework in Frameworks */,
-				B04D1CDD24E7FC580021ACA2 /* AWSCognitoIdentityProviderASF.framework in Frameworks */,
-				B04D1CEF24E7FC580021ACA2 /* iOSDFULibrary.framework in Frameworks */,
-				B04D1CED24E7FC580021ACA2 /* AWSMobileClient.framework in Frameworks */,
-				B04D1CDB24E7FC580021ACA2 /* SVGKit.framework in Frameworks */,
-				B04D1CD924E7FC580021ACA2 /* AWSAPIGateway.framework in Frameworks */,
-				B04D1CE924E7FC580021ACA2 /* SesameSDK.framework in Frameworks */,
-				B04D1CE124E7FC580021ACA2 /* ZIPFoundation.framework in Frameworks */,
+				B021E9E024FA7E570067CF0C /* KeychainSwift.framework in Frameworks */,
+				B021E9E624FA7E580067CF0C /* AWSCore.framework in Frameworks */,
+				B021E9EC24FA7E580067CF0C /* CocoaLumberjack.framework in Frameworks */,
+				B021E9F224FA7E580067CF0C /* AWSAuthCore.framework in Frameworks */,
+				B021E9E424FA7E580067CF0C /* AWSCognitoIdentityProvider.framework in Frameworks */,
+				B021E9E824FA7E580067CF0C /* AWSIoT.framework in Frameworks */,
+				B021E9DE24FA7E570067CF0C /* AWSCognitoIdentityProviderASF.framework in Frameworks */,
+				B021E9F024FA7E580067CF0C /* iOSDFULibrary.framework in Frameworks */,
+				B021E9EE24FA7E580067CF0C /* AWSMobileClient.framework in Frameworks */,
+				B021E9DC24FA7E570067CF0C /* SVGKit.framework in Frameworks */,
+				B021E9DA24FA7E570067CF0C /* AWSAPIGateway.framework in Frameworks */,
+				B021E9EA24FA7E580067CF0C /* SesameSDK.framework in Frameworks */,
+				B021E9E224FA7E570067CF0C /* ZIPFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,7 +811,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B04D1CF824E7FC6C0021ACA2 /* SesameWatchKitSDK.framework in Frameworks */,
+				B021E9F924FA7E700067CF0C /* SesameWatchKitSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,8 +840,6 @@
 				4103049123791BC900785311 /* icons_filled_me.svg */,
 				4103049223791BCA00785311 /* icons_outlined_me.svg */,
 				4176EDA823C5AE0200F312F9 /* icon_white.svg */,
-				4176EDA623C5ADDF00F312F9 /* icon_unlock.svg */,
-				4176EDA423C5ADCB00F312F9 /* icon_lock.svg */,
 				4103040023791AD700785311 /* icon_filled_timelineop.svg */,
 				4103041523791ADA00785311 /* icon_filled_timelineophl.svg */,
 				417A245723C4A23C00230071 /* icon_add.svg */,
@@ -840,6 +903,10 @@
 				4103040623791AD800785311 /* ui-resources_checkbox_selected.svg */,
 				4103041B23791ADB00785311 /* ui-resources_checkbox_unselected.svg */,
 				B03B482024D94816008A315B /* upgrade.svg */,
+				B0534ADC24FA2A6900219D08 /* icon_locked.svg */,
+				B0534ADE24FA2A6E00219D08 /* icon_unlocked.svg */,
+				B0534AE024FA2A7200219D08 /* icon_lock.svg */,
+				B0534AE224FA2A7800219D08 /* icon_unlock.svg */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -923,6 +990,7 @@
 				BE2B4B752463EB9900B9ACF4 /* KeychainManager.swift */,
 				BE037A90246981DB00ED2611 /* DFUHelper.swift */,
 				BE6978DC2483E30F0089141E /* ToastUtil.swift */,
+				B0534AE424FA360500219D08 /* QRCodeScanner.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -947,6 +1015,8 @@
 				BEB4A0C0249BC06F008CD1FD /* Sesame2HistoryViewModel.swift */,
 				418D73B92354192900278380 /* Sesame2HistoryCell.swift */,
 				BEB4A0C2249C542E008CD1FD /* Sesame2HistoryCellViewModel.swift */,
+				BE4982EE24F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.swift */,
+				BE4982EF24F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.xib */,
 			);
 			path = Sesame2History;
 			sourceTree = "<group>";
@@ -969,6 +1039,8 @@
 				BEB4A155249F4FE1008CD1FD /* LockViewModel.swift */,
 				4102FAF223C2E17A00ECA735 /* ScanView.swift */,
 				B0A6138F247680FD00A797E5 /* VersionLabel.swift */,
+				B0F84D5124ECC89F0042411D /* Wifi.swift */,
+				B0F84D5024ECC7CA0042411D /* WifiSelection */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -979,6 +1051,7 @@
 				4198E87724A9B6FE003C9995 /* Unregistered */,
 				4198E87624A9B6EE003C9995 /* Registered */,
 				418D73B623540E8D00278380 /* Sesame2 */,
+				B0F84D6824ED2ED50042411D /* WifiModule2 */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -1126,25 +1199,62 @@
 			path = SesameWidget;
 			sourceTree = "<group>";
 		};
-		B04D1CCA24E7FC500021ACA2 /* sdk */ = {
+		B021E9CB24FA7E500067CF0C /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				B04D1CCB24E7FC500021ACA2 /* AWSAPIGateway.framework */,
-				B04D1CCC24E7FC500021ACA2 /* SVGKit.framework */,
-				B04D1CCD24E7FC500021ACA2 /* AWSCognitoIdentityProviderASF.framework */,
-				B04D1CCE24E7FC500021ACA2 /* KeychainSwift.framework */,
-				B04D1CCF24E7FC500021ACA2 /* ZIPFoundation.framework */,
-				B04D1CD024E7FC500021ACA2 /* AWSCognitoIdentityProvider.framework */,
-				B04D1CD124E7FC500021ACA2 /* AWSCore.framework */,
-				B04D1CD224E7FC500021ACA2 /* AWSIoT.framework */,
-				B04D1CD324E7FC500021ACA2 /* SesameSDK.framework */,
-				B04D1CD424E7FC500021ACA2 /* CocoaLumberjack.framework */,
-				B04D1CD524E7FC500021ACA2 /* AWSMobileClient.framework */,
-				B04D1CD624E7FC500021ACA2 /* iOSDFULibrary.framework */,
-				B04D1CD724E7FC500021ACA2 /* SesameWatchKitSDK.framework */,
-				B04D1CD824E7FC500021ACA2 /* AWSAuthCore.framework */,
+				B021E9CC24FA7E500067CF0C /* AWSAPIGateway.framework */,
+				B021E9CD24FA7E500067CF0C /* SVGKit.framework */,
+				B021E9CE24FA7E500067CF0C /* AWSCognitoIdentityProviderASF.framework */,
+				B021E9CF24FA7E500067CF0C /* KeychainSwift.framework */,
+				B021E9D024FA7E500067CF0C /* ZIPFoundation.framework */,
+				B021E9D124FA7E500067CF0C /* AWSCognitoIdentityProvider.framework */,
+				B021E9D224FA7E500067CF0C /* AWSCore.framework */,
+				B021E9D324FA7E500067CF0C /* AWSIoT.framework */,
+				B021E9D424FA7E500067CF0C /* SesameSDK.framework */,
+				B021E9D524FA7E500067CF0C /* CocoaLumberjack.framework */,
+				B021E9D624FA7E500067CF0C /* AWSMobileClient.framework */,
+				B021E9D724FA7E500067CF0C /* iOSDFULibrary.framework */,
+				B021E9D824FA7E500067CF0C /* SesameWatchKitSDK.framework */,
+				B021E9D924FA7E500067CF0C /* AWSAuthCore.framework */,
 			);
 			path = sdk;
+			sourceTree = "<group>";
+		};
+		B04D1D1824EA37BB0021ACA2 /* application_dfu */ = {
+			isa = PBXGroup;
+			children = (
+				12F5F4A724F4D1490004FE96 /* 540f1476.zip */,
+			);
+			path = application_dfu;
+			sourceTree = "<group>";
+		};
+		B04D1D1924EA37CB0021ACA2 /* bootloader_dfu */ = {
+			isa = PBXGroup;
+			children = (
+				B04D1D1624EA37640021ACA2 /* sesame2_bld_4769f9db_bootloader.zip */,
+			);
+			path = bootloader_dfu;
+			sourceTree = "<group>";
+		};
+		B0F84D5024ECC7CA0042411D /* WifiSelection */ = {
+			isa = PBXGroup;
+			children = (
+				B0F84D4A24ECC7890042411D /* WifiSelectionTableViewController.swift */,
+				B0F84D4C24ECC7B30042411D /* WifiSelectionTableViewCell.swift */,
+				B0F84D4E24ECC7C60042411D /* WifiSelectionViewModel.swift */,
+			);
+			path = WifiSelection;
+			sourceTree = "<group>";
+		};
+		B0F84D6824ED2ED50042411D /* WifiModule2 */ = {
+			isa = PBXGroup;
+			children = (
+				B0F84D6624ED2EC90042411D /* WifiModule2ListViewController.swift */,
+				B0F84D6B24ED313D0042411D /* WifiModule2ListViewModel.swift */,
+				B0F84D6924ED2FFD0042411D /* WifiModule2ListCell.swift */,
+				B0F84D6D24ED31480042411D /* WifiModule2ListCellModel.swift */,
+			);
+			path = WifiModule2;
 			sourceTree = "<group>";
 		};
 		B0FDDA02248CDEF000DD72B7 /* ja.lproj */ = {
@@ -1182,7 +1292,7 @@
 				BE3DD99924829E0000EEA3B1 /* SesameWatchKit Extension */,
 				B179690822F7CE9300E91996 /* Products */,
 				B179693822F7CEA500E91996 /* Frameworks */,
-				B04D1CCA24E7FC500021ACA2 /* sdk */,
+				B021E9CB24FA7E500067CF0C /* sdk */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1211,6 +1321,7 @@
 				BE75139124A35B85003CDB9C /* CHBLEDelegatesManager.swift */,
 				BE46A7B324A2060200700F27 /* Coordinator */,
 				B179690E22F7CE9300E91996 /* Main.storyboard */,
+				B0F84D6324ED2E450042411D /* Wifi.storyboard */,
 			);
 			path = SesameUI;
 			sourceTree = "<group>";
@@ -1226,7 +1337,8 @@
 		B1D4726B2327AAF3005454C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				12F5F49C24D943AF0004FE96 /* d533ef10.zip */,
+				B04D1D1824EA37BB0021ACA2 /* application_dfu */,
+				B04D1D1924EA37CB0021ACA2 /* bootloader_dfu */,
 				B0FDDA04248CDEFF00DD72B7 /* Localization */,
 				419FE7852446BADF000D31CD /* awsconfiguration.json */,
 				410303262379012500785311 /* Icons */,
@@ -1271,6 +1383,8 @@
 				BEFF263A249FBA4D00E4E80F /* Notification+.swift */,
 				B08C5346245EC30000252F00 /* NSError+.swift */,
 				BE9C6CA424B3394000C7318B /* Date+.swift */,
+				B0657E0024F62959008DF38B /* CHSesame2HistoryData+.swift */,
+				B0657E0424F62978008DF38B /* Sesame2HistoryMO+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1325,6 +1439,8 @@
 				BEFF265D24A1962900E4E80F /* LogInViewCoordinator.swift */,
 				BE46A7A924A1B1EB00700F27 /* SignUpViewCoordinator.swift */,
 				BE46A7AB24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift */,
+				B0F84D5324ECC9EC0042411D /* WifiSelectionViewCoordinator.swift */,
+				B0796E7524ED3A7700D4DD1F /* WifiModule2ListCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1436,7 +1552,9 @@
 				BE3DD9B024829E0100EEA3B1 /* Embed Watch Content */,
 				BEBBF9B82499C3F300E1147E /* Embed Frameworks */,
 				BEC9D0EF2499CE6F001AE8EE /* Embed App Extensions */,
-				BED74BCD24AB0A010052F04D /* ShellScript */,
+				BED74BCD24AB0A010052F04D /* Copy git.plist */,
+				B04D1D1A24EA38E80021ACA2 /* CopyFiles */,
+				B04D1D1C24EA39150021ACA2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1456,6 +1574,7 @@
 				BED74C4824AC760D0052F04D /* Resources */,
 				BED74C6D24AC760F0052F04D /* Embed App Extensions */,
 				28099A74C231BD684B5B781E /* Frameworks */,
+				B04420AF24F3730A0021ECA9 /* Copy git.plist */,
 			);
 			buildRules = (
 			);
@@ -1471,10 +1590,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BED74C6A24AC760F0052F04D /* Build configuration list for PBXNativeTarget "SesameWatchKit Extension" */;
 			buildPhases = (
+				B04420B224F377800021ECA9 /* Set commit */,
 				BED74C5224AC760E0052F04D /* Sources */,
 				BED74C5324AC760E0052F04D /* Frameworks */,
 				BED74C5424AC760E0052F04D /* Resources */,
 				BE81196824C0764B00724ABF /* Embed Frameworks */,
+				B04420B124F376C20021ECA9 /* Copy git.plist */,
 			);
 			buildRules = (
 			);
@@ -1557,6 +1678,7 @@
 			files = (
 				BE8D0B582494A2F900B99987 /* CHConfiguration.plist in Resources */,
 				4103044923791AE100785311 /* icons_filled_mobile-contacts.svg in Resources */,
+				B0534ADF24FA2A6F00219D08 /* icon_unlocked.svg in Resources */,
 				4103047223791AE100785311 /* icons_filled_sticker.svg in Resources */,
 				417A245923C4A23C00230071 /* icon_add.svg in Resources */,
 				4103047323791AE100785311 /* icons_outlined_wechatpay.svg in Resources */,
@@ -1572,6 +1694,7 @@
 				4185AB98238941F300D25395 /* icons_outlined_qr-code_b.svg in Resources */,
 				4103047E23791AE100785311 /* icons_filled_camera.svg in Resources */,
 				4103045F23791AE100785311 /* icons_filled_location.svg in Resources */,
+				B0F84D6524ED2E450042411D /* Wifi.storyboard in Resources */,
 				414750912387FF0F00BCDB5E /* icons_outlined_addoutline_black.svg in Resources */,
 				4103046C23791AE100785311 /* icons_outlined_scan.svg in Resources */,
 				4103047F23791AE100785311 /* icons_outlined_back.svg in Resources */,
@@ -1581,6 +1704,7 @@
 				4103047A23791AE100785311 /* icons_outlined_shop.svg in Resources */,
 				4103046123791AE100785311 /* icons_filled_back.svg in Resources */,
 				419FE7862446BADF000D31CD /* awsconfiguration.json in Resources */,
+				B0534AE124FA2A7300219D08 /* icon_lock.svg in Resources */,
 				4103046323791AE100785311 /* ui-resources_checkbox_unselected.svg in Resources */,
 				4103046223791AE100785311 /* icons_filled_more.svg in Resources */,
 				4176EDB323C5FA1800F312F9 /* bluetooth.svg in Resources */,
@@ -1590,14 +1714,15 @@
 				4103046423791AE100785311 /* icons_filled_group-detail.svg in Resources */,
 				4103048923791AE100785311 /* red_envelopes_detail_top_bg.svg in Resources */,
 				4103046523791AE100785311 /* icons_outlined_radar.svg in Resources */,
+				B0534ADD24FA2A6900219D08 /* icon_locked.svg in Resources */,
 				4176EDA923C5AE0200F312F9 /* icon_white.svg in Resources */,
 				4103047023791AE100785311 /* icons_filled_album.svg in Resources */,
 				4103046A23791AE100785311 /* icons_filled_done.svg in Resources */,
 				4148D49523CDC7080055E337 /* bt0.svg in Resources */,
-				4176EDA723C5ADDF00F312F9 /* icon_unlock.svg in Resources */,
 				4103044F23791AE100785311 /* icons_filled_add-friends.svg in Resources */,
 				B179691022F7CE9300E91996 /* Main.storyboard in Resources */,
 				4103045A23791AE100785311 /* icons_filled_radar.svg in Resources */,
+				B0534AE324FA2A7800219D08 /* icon_unlock.svg in Resources */,
 				41C9CA3423C85E9B00293235 /* arrow.svg in Resources */,
 				4103045323791AE100785311 /* icons_outlined_at.svg in Resources */,
 				4147508F2387FCD600BCDB5E /* icons_outlined_addfriends_white.svg in Resources */,
@@ -1611,7 +1736,6 @@
 				B179691222F7CE9400E91996 /* Assets.xcassets in Resources */,
 				4103045B23791AE100785311 /* icons_filled_discover.svg in Resources */,
 				4103048523791AE100785311 /* icons_filled_contacts.svg in Resources */,
-				4176EDA523C5ADCB00F312F9 /* icon_lock.svg in Resources */,
 				B03B482124D94817008A315B /* upgrade.svg in Resources */,
 				4103048B23791AE100785311 /* icons_filled_favorites.svg in Resources */,
 				418FA1F9237C04EF00C7C408 /* InfoPlist.strings in Resources */,
@@ -1621,8 +1745,9 @@
 				4103045D23791AE100785311 /* icon_filled_timelineophl.svg in Resources */,
 				4103047D23791AE100785311 /* icons_filled_official-accounts.svg in Resources */,
 				4103048C23791AE100785311 /* icons_outlined_addoutline.svg in Resources */,
-				12F5F49D24D943AF0004FE96 /* d533ef10.zip in Resources */,
+				B04D1D1724EA37640021ACA2 /* sesame2_bld_4769f9db_bootloader.zip in Resources */,
 				4103045C23791AE100785311 /* icons_filled_chats.svg in Resources */,
+				BE4982F124F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.xib in Resources */,
 				4103046923791AE100785311 /* red_envelopes_top_bg.svg in Resources */,
 				4103047723791AE100785311 /* icons_outlined_news.svg in Resources */,
 				4103047923791AE100785311 /* icons_filled_transfer.svg in Resources */,
@@ -1647,6 +1772,7 @@
 				4103048023791AE100785311 /* icons_outlined_contacts.svg in Resources */,
 				4103044523791AE100785311 /* icons_outlined_share.svg in Resources */,
 				BEF25CDF24B9BCC500E958A5 /* iconfinder_9_3898370.svg in Resources */,
+				12F5F4A824F4D1490004FE96 /* 540f1476.zip in Resources */,
 				4103046723791AE100785311 /* icons_outlined_setting.svg in Resources */,
 				4103044723791AE100785311 /* icons_outlined_nearby.svg in Resources */,
 				4103046D23791AE100785311 /* icons_outlined_discover.svg in Resources */,
@@ -1694,9 +1820,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = " revision=$(git rev-parse --short HEAD 2> /dev/null | sed \"s/\\(.*\\)/\\1/\")\n\n rm -f $(pwd)/git.plist\n /usr/bin/plutil -c $(pwd)/git.plist\n /usr/libexec/PlistBuddy -c \"Add :GitCommit String $revision\" $(pwd)/git.plist \n\n";
+			shellScript = " revision=$(git rev-parse --short HEAD 2> /dev/null | sed \"s/\\(.*\\)/\\1/\")\n\n rm -f \"$(pwd)/git.plist\"\n /usr/bin/plutil -c \"$(pwd)/git.plist\"\n /usr/libexec/PlistBuddy -c \"Add :GitCommit String $revision\" \"$(pwd)/git.plist\" \n\n";
 		};
-		BED74BCD24AB0A010052F04D /* ShellScript */ = {
+		B04420AF24F3730A0021ECA9 /* Copy git.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1705,13 +1831,69 @@
 			);
 			inputPaths = (
 			);
+			name = "Copy git.plist";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n cp $(pwd)/git.plist $CODESIGNING_FOLDER_PATH\n";
+			shellScript = "
+";
+		};
+		B04420B124F376C20021ECA9 /* Copy git.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy git.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -e \"$(pwd)/git.plist\" ] || [ -e \"$CODESIGNING_FOLDER_PATH\" ]; then\n    cp \"$(pwd)/git.plist\" \"$CODESIGNING_FOLDER_PATH\"\nfi    \n";
+		};
+		B04420B224F377800021ECA9 /* Set commit */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set commit";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "revision=$(git rev-parse --short HEAD 2> /dev/null | sed \"s/\\(.*\\)/\\1/\")\n\nrm -f \"$(pwd)/git.plist\"\n/usr/bin/plutil -c \"$(pwd)/git.plist\"\n/usr/libexec/PlistBuddy -c \"Add :GitCommit String $revision\" \"$(pwd)/git.plist\" \n\n";
+		};
+		BED74BCD24AB0A010052F04D /* Copy git.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy git.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -e \"$(pwd)/git.plist\" ] || [ -e \"$CODESIGNING_FOLDER_PATH\" ]; then\n    cp \"$(pwd)/git.plist\" \"$CODESIGNING_FOLDER_PATH\"\nfi    \n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1730,7 +1912,9 @@
 				B087E57324E126830087D978 /* CHWifiModule2+.swift in Sources */,
 				412D236F2355DAD800D1B51B /* DeviceCell.swift in Sources */,
 				BEB1E71C248949700039CD7B /* CHSesame2+.swift in Sources */,
+				B0657E0224F62959008DF38B /* CHSesame2HistoryData+.swift in Sources */,
 				BE30813A248E3BEE00152D66 /* UIImage+.swift in Sources */,
+				B0657E0624F62978008DF38B /* Sesame2HistoryMO+.swift in Sources */,
 				BE308136248E3B8D00152D66 /* Math+.swift in Sources */,
 				BE9C6CA624B3394000C7318B /* Date+.swift in Sources */,
 				BE8D0B602494A44C00B99987 /* Functions.swift in Sources */,
@@ -1753,6 +1937,7 @@
 				BE8D0B5F2494A44C00B99987 /* Functions.swift in Sources */,
 				BEB4A15A249F7ECD008CD1FD /* MyQRCodeViewCoordinator.swift in Sources */,
 				B08C5347245EC30000252F00 /* NSError+.swift in Sources */,
+				B0796E7624ED3A7700D4DD1F /* WifiModule2ListCoordinator.swift in Sources */,
 				BEFF265624A0CDC400E4E80F /* ViewModel.swift in Sources */,
 				418D73BC2354222900278380 /* Sesame2SettingViewController.swift in Sources */,
 				41ED3BD52376A98700CBC5D0 /* RegisterDeviceListViewController.swift in Sources */,
@@ -1772,9 +1957,11 @@
 				BEC0908624A9F281006E188E /* CHSesameBleInterface+QRCode.swift in Sources */,
 				BE6978EA2483E37D0089141E /* CHBaseViewController.swift in Sources */,
 				41CD2A29235731E80050C42D /* LetterAvatarBuilder.swift in Sources */,
+				B0F84D4D24ECC7B30042411D /* WifiSelectionTableViewCell.swift in Sources */,
 				BEFF265424A0CC2500E4E80F /* FriendCellModel.swift in Sources */,
 				4137C8CC2350276300211F43 /* LockView.swift in Sources */,
 				BE46A7AC24A1B1FF00700F27 /* ForgotPasswordViewCoordinator.swift in Sources */,
+				B0F84D6C24ED313D0042411D /* WifiModule2ListViewModel.swift in Sources */,
 				BEB4A0C9249CA907008CD1FD /* Sesame2SettingViewModel.swift in Sources */,
 				B090BE1D24E0F8D2005E7906 /* RegisterWifiModule2Cell.swift in Sources */,
 				418D73BA2354192900278380 /* Sesame2HistoryCell.swift in Sources */,
@@ -1784,11 +1971,13 @@
 				4102FAF323C2E17A00ECA735 /* ScanView.swift in Sources */,
 				B13664512320DCBE00B88EFE /* Logger.swift in Sources */,
 				BEBA64D524E00DD100BEE5F4 /* CHConfiguration+.swift in Sources */,
+				BE4982F024F2802500FD721E /* Sesame2HistoryLoadingTableViewCell.swift in Sources */,
 				B052D5F9249E212F00AEA645 /* LockAngleSettingViewCoordinator.swift in Sources */,
 				418FA1E8237BD2C100C7C408 /* Sesame2Circle.swift in Sources */,
 				BE166B8A24913A17007CDC29 /* QRCodeType.swift in Sources */,
 				4152907D23224C2300F7E0E5 /* BluetoothSesame2ControlViewController.swift in Sources */,
 				BE30813D248E3C1F00152D66 /* URL+.swift in Sources */,
+				B04D1D1524EA1DE90021ACA2 /* RegisterWifiModule2ViewController.swift in Sources */,
 				BE30814D248E3CCF00152D66 /* String+.swift in Sources */,
 				B08C5345245EA84000252F00 /* User.swift in Sources */,
 				BEB4A0B9249B52F3008CD1FD /* BluetoothDevicesListViewModel.swift in Sources */,
@@ -1796,22 +1985,27 @@
 				410303642379164D00785311 /* UIImage+Extensions.swift in Sources */,
 				4103034D2379108D00785311 /* UIImage+SVG.swift in Sources */,
 				BEFF265224A0CC1C00E4E80F /* FriendsViewModel.swift in Sources */,
+				B0F84D5424ECC9EC0042411D /* WifiSelectionViewCoordinator.swift in Sources */,
 				BEB4A158249F620C008CD1FD /* MySesame2QRViewModel.swift in Sources */,
 				41AA8EF3237A67D600489179 /* Sesame2SettingViewController+AutoLock.swift in Sources */,
 				BEB4A0BF249B9906008CD1FD /* BluetoothDevicesListCoordinator.swift in Sources */,
 				BE9C6CA524B3394000C7318B /* Date+.swift in Sources */,
+				B0534AE524FA360500219D08 /* QRCodeScanner.swift in Sources */,
 				B087E57224E126830087D978 /* CHWifiModule2+.swift in Sources */,
 				BEB4A0C1249BC06F008CD1FD /* Sesame2HistoryViewModel.swift in Sources */,
 				BE2B4B762463EB9900B9ACF4 /* KeychainManager.swift in Sources */,
 				BEB1E71B248949700039CD7B /* CHSesame2+.swift in Sources */,
 				41CD2A2E235731E80050C42D /* UIColor+LetterAvatarKit.swift in Sources */,
 				BEFF264224A04B4D00E4E80F /* RegisterCellModel.swift in Sources */,
+				B0657E0524F62978008DF38B /* Sesame2HistoryMO+.swift in Sources */,
 				41CD2A2C235731E80050C42D /* Character+LetterAvatarKit.swift in Sources */,
 				BEFF265E24A1962900E4E80F /* LogInViewCoordinator.swift in Sources */,
 				410303662379167200785311 /* SVGImage+Extensions.swift in Sources */,
 				41CD2A30235731E80050C42D /* LetterAvatarBuilderConfiguration.swift in Sources */,
 				4152907E23224C2300F7E0E5 /* BluetoothDevicesCell.swift in Sources */,
+				B0F84D6A24ED2FFD0042411D /* WifiModule2ListCell.swift in Sources */,
 				BE6978ED2483E37D0089141E /* ViewHelper.swift in Sources */,
+				B0F84D4B24ECC7890042411D /* WifiSelectionTableViewController.swift in Sources */,
 				B052D5FB249E222100AEA645 /* LockAngleSettingViewModel.swift in Sources */,
 				BEB4A0B7249B4E6F008CD1FD /* GeneralTabViewCoordinator.swift in Sources */,
 				41CD2A2F235731E80050C42D /* LetterAvatarMaker.swift in Sources */,
@@ -1823,6 +2017,7 @@
 				BE308135248E3B8D00152D66 /* Math+.swift in Sources */,
 				BEB4A0C7249CA7CC008CD1FD /* Sesame2SettingViewControllerCoordinator.swift in Sources */,
 				BE166B8824912755007CDC29 /* Storyboard+.swift in Sources */,
+				B0F84D6724ED2EC90042411D /* WifiModule2ListViewController.swift in Sources */,
 				BEB4A0B3249B3B32008CD1FD /* Coordinator.swift in Sources */,
 				BEFF263E24A03F8800E4E80F /* RegisterDeviceListViewCoordinator.swift in Sources */,
 				41CD2A2B235731E80050C42D /* UIImage+LetterAvatarKit.swift in Sources */,
@@ -1854,10 +2049,14 @@
 				418D73B823540EBD00278380 /* Sesame2HistoryViewController.swift in Sources */,
 				BEFF265A24A0F82F00E4E80F /* MeViewCoordinator.swift in Sources */,
 				BE75139224A35B85003CDB9C /* CHBLEDelegatesManager.swift in Sources */,
+				B0F84D6E24ED31480042411D /* WifiModule2ListCellModel.swift in Sources */,
 				BEFF266024A19C0C00E4E80F /* LogInViewModel.swift in Sources */,
+				B0657E0124F62959008DF38B /* CHSesame2HistoryData+.swift in Sources */,
 				41AB857D23B1B982006DBD37 /* UITableView+Exten.swift in Sources */,
 				B04D1C9924E7E0D90021ACA2 /* RegisterWifiModule2ViewCoordinator.swift in Sources */,
+				B0F84D5224ECC89F0042411D /* Wifi.swift in Sources */,
 				4152907F23224C2300F7E0E5 /* BluetoothDevicesListViewController.swift in Sources */,
+				B0F84D4F24ECC7C60042411D /* WifiSelectionViewModel.swift in Sources */,
 				41CD2A2D235731E80050C42D /* String+LetterAvatarKit.swift in Sources */,
 				41A57CEF2328D13600FEFF60 /* QRScannerView.swift in Sources */,
 				BEB4A0B5249B3B47008CD1FD /* ApplicationCoordinator.swift in Sources */,
@@ -1887,6 +2086,7 @@
 				B09CCAF424D95F00008B8E16 /* Sesame2ListViewModel.swift in Sources */,
 				B09CCAF224D95EF0008B8E16 /* Sesame2ListView.swift in Sources */,
 				BED74C7324AC79C90052F04D /* Sesame2LockViewContainer.swift in Sources */,
+				B0657E0724F62978008DF38B /* Sesame2HistoryMO+.swift in Sources */,
 				BED74C7724AC79C90052F04D /* Provider.swift in Sources */,
 				BED74C7B24AC79C90052F04D /* BleDeviceSubject.swift in Sources */,
 				BED74C7224AC79C90052F04D /* ContentView.swift in Sources */,
@@ -1901,6 +2101,7 @@
 				BED74C8024AC79C90052F04D /* ComplicationController.swift in Sources */,
 				BED74C8C24AC7F270052F04D /* Math+.swift in Sources */,
 				B029B11624D980DF002CF93F /* UserData.swift in Sources */,
+				B0657E0324F62959008DF38B /* CHSesame2HistoryData+.swift in Sources */,
 				BE9C6CA724B3394000C7318B /* Date+.swift in Sources */,
 				BED74C9424AC7F2E0052F04D /* Functions.swift in Sources */,
 				BED74C7624AC79C90052F04D /* DeviceModel.swift in Sources */,
@@ -1976,6 +2177,14 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
+		B0F84D6324ED2E450042411D /* Wifi.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0F84D6424ED2E450042411D /* Base */,
+			);
+			name = Wifi.storyboard;
+			sourceTree = "<group>";
+		};
 		B179690E22F7CE9300E91996 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2009,7 +2218,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameWidget/SesameWidget.Debug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2047,7 +2256,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameWidget/SesameWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2210,7 +2419,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameUI/SesameUI.Debug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2240,7 +2449,7 @@
 				CODE_SIGN_ENTITLEMENTS = SesameUI/SesameUI.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2268,7 +2477,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2298,7 +2507,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2331,7 +2540,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				IBSC_MODULE = SesameWatchKit_Extension;
 				INFOPLIST_FILE = SesameWatchKit/Info.plist;
@@ -2360,7 +2569,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 59M5HB7F95;
 				IBSC_MODULE = SesameWatchKit_Extension;
 				INFOPLIST_FILE = SesameWatchKit/Info.plist;

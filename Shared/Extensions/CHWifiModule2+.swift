@@ -17,35 +17,42 @@ import SesameWatchKitSDK
 
 extension CHWifiModule2 {
     public func localizedDescription() -> String {
-//        switch deviceStatus {
-//        case .reset:
-//            return "co.candyhouse.sesame-sdk-test-app.reset".localized
-//        case .noSignal:
-//            return "co.candyhouse.sesame-sdk-test-app.noSignal".localized
-//        case .receiveBle:
-//            return "co.candyhouse.sesame-sdk-test-app.receiveBle".localized
-//        case .connecting:
-//            return "co.candyhouse.sesame-sdk-test-app.connecting".localized
-//        case .waitgatt:
-//            return "co.candyhouse.sesame-sdk-test-app.waitgatt".localized
-//        case .logining:
-//            return "co.candyhouse.sesame-sdk-test-app.logining".localized
-//        case .readytoRegister:
-//            return "co.candyhouse.sesame-sdk-test-app.readytoRegister".localized
-//        case .locked:
-//            return "co.candyhouse.sesame-sdk-test-app.locked".localized
-//        case .unlocked:
-//            return "co.candyhouse.sesame-sdk-test-app.unlocked".localized
-//        case .nosetting:
-//            return "co.candyhouse.sesame-sdk-test-app.nosetting".localized
-//        case .moved:
-//            return "co.candyhouse.sesame-sdk-test-app.moved".localized
-//        case .registing:
-//            return "co.candyhouse.sesame-sdk-test-app.registing".localized
-//        case .dfumode:
-//            return "dfumode"
-//        }
-        ""
+        switch deviceStatus {
+        case .reset:
+            return "co.candyhouse.sesame-sdk-test-app.reset".localized
+        case .noBleSignal:
+            return "co.candyhouse.sesame-sdk-test-app.noBleSignal".localized
+        case .receivedBle:
+            return "co.candyhouse.sesame-sdk-test-app.receivedBle".localized
+        case .bleConnecting:
+            return "co.candyhouse.sesame-sdk-test-app.bleConnecting".localized
+        case .waitingGatt:
+            return "co.candyhouse.sesame-sdk-test-app.waitingGatt".localized
+        case .bleLogining:
+            return "co.candyhouse.sesame-sdk-test-app.bleLogining".localized
+        case .readyToRegister:
+            return "co.candyhouse.sesame-sdk-test-app.readyToRegister".localized
+        case .locked:
+            return "co.candyhouse.sesame-sdk-test-app.locked".localized
+        case .unlocked:
+            return "co.candyhouse.sesame-sdk-test-app.unlocked".localized
+        case .noSettings:
+            return "co.candyhouse.sesame-sdk-test-app.noSettings".localized
+        case .moved:
+            return "co.candyhouse.sesame-sdk-test-app.moved".localized
+        case .registering:
+            return "co.candyhouse.sesame-sdk-test-app.registering".localized
+        case .dfumode:
+            return "dfumode"
+        case .readyToSetup:
+            return "readyToSetup"
+        case .settingUp:
+            return "settingUp"
+        case .setupSucceed:
+            return "setupSucceed"
+        @unknown default:
+            return "unknown"
+        }
     }
     
     func currentDistanceInCentimeter() -> Int? {

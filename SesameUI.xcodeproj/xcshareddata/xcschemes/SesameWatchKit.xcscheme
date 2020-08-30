@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE3DD98824829DFF00EEA3B1"
+               BlueprintIdentifier = "BED74C4924AC760D0052F04D"
                BuildableName = "SesameWatchKit.app"
                BlueprintName = "SesameWatchKit"
                ReferencedContainer = "container:SesameUI.xcodeproj">
@@ -60,7 +60,7 @@
          RemotePath = "/Sesame">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE3DD98824829DFF00EEA3B1"
+            BlueprintIdentifier = "BED74C4924AC760D0052F04D"
             BuildableName = "SesameWatchKit.app"
             BlueprintName = "SesameWatchKit"
             ReferencedContainer = "container:SesameUI.xcodeproj">
@@ -79,7 +79,7 @@
          RemotePath = "/Sesame">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE3DD98824829DFF00EEA3B1"
+            BlueprintIdentifier = "BED74C4924AC760D0052F04D"
             BuildableName = "SesameWatchKit.app"
             BlueprintName = "SesameWatchKit"
             ReferencedContainer = "container:SesameUI.xcodeproj">
@@ -88,7 +88,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE3DD98824829DFF00EEA3B1"
+            BlueprintIdentifier = "BED74C4924AC760D0052F04D"
             BuildableName = "SesameWatchKit.app"
             BlueprintName = "SesameWatchKit"
             ReferencedContainer = "container:SesameUI.xcodeproj">

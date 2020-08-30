@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SesameSDK
 import CoreLocation
 
 class RegisterWifiModule2ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -68,25 +69,15 @@ class RegisterWifiModule2ViewController: UIViewController, UITableViewDataSource
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = 120
-        
-        Topic
-            .updateTopic("$aws/things/testss2/shadow/name/topic_WM2_publish/update")
-            .subscribe { result in
-                switch result {
-                case .success(let content):
-                    executeOnMainThread {
-                        self.view.makeToast(content)
-                    }
-                case .failure(let error):
-                    executeOnMainThread {
-                        self.view.makeToast(error.errorDescription())
-                    }
-                }
-        }
     }
     
     @IBAction func dismissTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.disconnect()
     }
     
     // MARK: - Table view data source
@@ -113,42 +104,6 @@ class RegisterWifiModule2ViewController: UIViewController, UITableViewDataSource
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let wifiSSID = UIDevice.current.WiFiSSID else {
-            if CLLocationManager.authorizationStatus() == .denied ||
-                !CLLocationManager.locationServicesEnabled() ||
-                CLLocationManager.authorizationStatus() == .notDetermined {
-                let alertController = UIAlertController(title: "Permisson Not determind", message: "Go to app setting and grant the location access permission", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Go", style: .default) { _ in
-                    let url = URL(string: UIApplication.openSettingsURLString)
-                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                }
-                alertController.addAction(action)
-                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                alertController.addAction(cancel)
-            }
-            L.d("Could not get WiFiSSID: authorizationStatus \(CLLocationManager.authorizationStatus())")
-            return
-        }
-        
-        let alertController = UIAlertController(title: wifiSSID,
-                                                message: "Please enter the wifi password",
-                                                preferredStyle: .alert)
-        alertController.addTextField { textField in
-            textField.placeholder = "WiFi password"
-            textField.isSecureTextEntry = true
-        }
-        
-        let action = UIAlertAction(title: "OK", style: .default) { [weak alertController, weak self] _ in
-            if let textField = alertController?.textFields?[0] {
-                self?.viewModel.didSelectCellAtRow(indexPath.row,
-                                                   ssid: wifiSSID,
-                                                   password: textField.text!)
-            }
-            
-        }
-        alertController.addAction(action)
-        present(alertController, animated: true, completion: nil)
-        
+        viewModel.didSelectCellAtIndexPath(indexPath)
     }
 }

@@ -43,6 +43,11 @@ public class MyQRCodeViewController: CHBaseViewController {
             generateInvitationCode()
             hintLabel.text = viewModel.hintLabelText
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(share(sender:)))
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -70,5 +75,30 @@ public class MyQRCodeViewController: CHBaseViewController {
         DispatchQueue.main.async {
             ViewHelper.showLoadingInView(view: self.view)
         }
+    }
+    
+    @objc func share(sender: UIView) {
+        let objectsToShare = [qrImg.image]
+        let activityViewController = UIActivityViewController(activityItems: objectsToShare as [Any], applicationActivities: nil)
+        let excludedActivities: [UIActivity.ActivityType] = [
+            UIActivity.ActivityType.postToTwitter,
+            UIActivity.ActivityType.postToFacebook,
+            UIActivity.ActivityType.postToWeibo,
+            UIActivity.ActivityType.message,
+            UIActivity.ActivityType.mail,
+            UIActivity.ActivityType.print,
+            UIActivity.ActivityType.copyToPasteboard,
+            UIActivity.ActivityType.assignToContact,
+            UIActivity.ActivityType.saveToCameraRoll,
+            UIActivity.ActivityType.addToReadingList,
+            UIActivity.ActivityType.postToFlickr,
+            UIActivity.ActivityType.postToVimeo,
+            UIActivity.ActivityType.postToTencentWeibo
+        ]
+        activityViewController.excludedActivityTypes = excludedActivities
+        activityViewController.completionWithItemsHandler = { activity, success, items, error in
+            
+        }
+        present(activityViewController, animated: true, completion: nil)
     }
 }

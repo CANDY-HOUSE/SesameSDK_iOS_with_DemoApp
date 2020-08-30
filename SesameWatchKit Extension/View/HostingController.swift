@@ -11,9 +11,18 @@ import Foundation
 import SwiftUI
 
 class HostingController: WKHostingController<ContentView<DeviceModelProvider>> {
-//    override func awake(withContext context: Any?) {
-//        setTitle("Sesame")
-//    }
+    
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
+        #if DEBUG
+        guard let path = Bundle.main.path(forResource: "git", ofType: "plist"),
+            let gitPlistContent = NSDictionary(contentsOfFile: path) as? [String : Any],
+            let commit = gitPlistContent["GitCommit"] as? String else {
+                return
+        }
+        setTitle(commit)
+        #endif
+    }
     override var body: ContentView<DeviceModelProvider> {
         return ContentView(viewModel: .init())
     }

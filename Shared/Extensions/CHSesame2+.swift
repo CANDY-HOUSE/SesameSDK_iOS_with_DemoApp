@@ -55,28 +55,28 @@ extension CHSesame2 {
         switch deviceStatus {
         case .reset:
             return "co.candyhouse.sesame-sdk-test-app.reset".localized
-        case .noSignal:
-            return "co.candyhouse.sesame-sdk-test-app.noSignal".localized
+        case .noBleSignal:
+            return "co.candyhouse.sesame-sdk-test-app.noBleSignal".localized
         case .receivedBle:
-            return "co.candyhouse.sesame-sdk-test-app.receiveBle".localized
-        case .connecting:
-            return "co.candyhouse.sesame-sdk-test-app.connecting".localized
+            return "co.candyhouse.sesame-sdk-test-app.receivedBle".localized
+        case .bleConnecting:
+            return "co.candyhouse.sesame-sdk-test-app.bleConnecting".localized
         case .waitingGatt:
-            return "co.candyhouse.sesame-sdk-test-app.waitgatt".localized
-        case .logining:
-            return "co.candyhouse.sesame-sdk-test-app.logining".localized
-        case .readytoRegister:
-            return "co.candyhouse.sesame-sdk-test-app.readytoRegister".localized
+            return "co.candyhouse.sesame-sdk-test-app.waitingGatt".localized
+        case .bleLogining:
+            return "co.candyhouse.sesame-sdk-test-app.bleLogining".localized
+        case .readyToRegister:
+            return "co.candyhouse.sesame-sdk-test-app.readyToRegister".localized
         case .locked:
             return "co.candyhouse.sesame-sdk-test-app.locked".localized
         case .unlocked:
             return "co.candyhouse.sesame-sdk-test-app.unlocked".localized
-        case .nosetting:
-            return "co.candyhouse.sesame-sdk-test-app.nosetting".localized
+        case .noSettings:
+            return "co.candyhouse.sesame-sdk-test-app.noSettings".localized
         case .moved:
             return "co.candyhouse.sesame-sdk-test-app.moved".localized
-        case .registing:
-            return "co.candyhouse.sesame-sdk-test-app.registing".localized
+        case .registering:
+            return "co.candyhouse.sesame-sdk-test-app.registering".localized
         case .dfumode:
             return "dfumode"
         }
@@ -86,17 +86,17 @@ extension CHSesame2 {
         switch deviceStatus {
         case .reset:
             return .lockGray
-        case .noSignal:
+        case .noBleSignal:
             return .lockGray
         case .receivedBle:
             return .lockYellow
-        case .connecting:
+        case .bleConnecting:
             return .lockYellow
         case .waitingGatt:
             return .lockYellow
-        case .logining:
+        case .bleLogining:
             return .lockYellow
-        case .readytoRegister:
+        case .readyToRegister:
             return .lockYellow
         case .locked:
             return .lockRed
@@ -104,9 +104,9 @@ extension CHSesame2 {
             return .lockGreen
         case .moved:
             return .lockGreen
-        case .nosetting:
+        case .noSettings:
             return .lockGray
-        case .registing:
+        case .registering:
             return .lockGray
         case .dfumode:
             return .lockGray
@@ -117,38 +117,38 @@ extension CHSesame2 {
     //    L.d("uiState",uiState.description())
         switch deviceStatus {
 
-        case .noSignal:
-            return "l-no"
+        case .noBleSignal:
+            return "noBleSignal"
         case .receivedBle:
-            return "receiveBle"
-        case .connecting:
-            return "receiveBle"
+            return "receivedBle"
+        case .bleConnecting:
+            return "receivedBle"
 
         case .waitingGatt:
-            return "waitgatt"
+            return "waitingGatt"
 
-        case .logining:
-            return "logining"
+        case .bleLogining:
+            return "bleLogining"
 
-        case .readytoRegister:
-            return "logining"
+        case .readyToRegister:
+            return "bleLogining"
         case .locked:
-            return "img-lock"
+            return "locked"
 
         case .unlocked:
-            return "img-unlock"
+            return "unlocked"
 
         case .moved:
-            return "img-unlock"
+            return "unlocked"
 
-        case .nosetting:
-            return "l-set"
+        case .noSettings:
+            return "noSettings"
         case .reset:
-            return "l-no"
-        case .registing:
-            return "logining"
+            return "noBleSignal"
+        case .registering:
+            return "bleLogining"
         case .dfumode:
-            return "logining"
+            return "bleLogining"
         }
     }
     

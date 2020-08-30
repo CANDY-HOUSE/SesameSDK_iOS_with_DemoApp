@@ -32,14 +32,9 @@ public class GeneralTabViewCoordinator: Coordinator {
         meViewCoordinator.parentCoordinator = self
         meViewCoordinator.start()
         
-//        let iotCoordinator = IoTSampleTabBarControllerCoordinator(navigationViewController: UINavigationController())
-//        iotCoordinator.parentCoordinator = self
-//        iotCoordinator.start()
-        
         let deviceListViewController = bluetoothListCoordinator.presentedViewController
         let friendListViewController = friendsViewControllerCoordinator.presentedViewController
         let meViewController = meViewCoordinator.presentedViewController
-//        let iotViewController = iotCoordinator.presentedViewController
         
         let deviceListItem = UITabBarItem(title: "co.candyhouse.sesame-sdk-test-app.Sesame".localized,
                                           image: UIImage.SVGImage(named:"keychain_original"),
@@ -52,15 +47,10 @@ public class GeneralTabViewCoordinator: Coordinator {
         let meItem = UITabBarItem(title: "co.candyhouse.sesame-sdk-test-app.Me".localized,
                                   image: UIImage.SVGImage(named:"icons_outlined_me",fillColor: UIColor.gray),
                                   selectedImage: UIImage.SVGImage(named:"icons_filled_official-accounts",fillColor: .sesame2Green))
-        
-        let iotItem = UITabBarItem(title: "IoT",
-                                  image: UIImage.SVGImage(named:"icons_filled_favorites",fillColor: UIColor.gray),
-                                  selectedImage: UIImage.SVGImage(named:"icons_filled_favorites-accounts",fillColor: .sesame2Green))
 
         deviceListViewController?.tabBarItem = deviceListItem
         friendListViewController?.tabBarItem = contactItem
         meViewController?.tabBarItem = meItem
-//        iotViewController?.tabBarItem = iotItem
 
         guard let entryViewController = UIStoryboard.viewControllers.generalTabViewController else {
             return
@@ -68,8 +58,7 @@ public class GeneralTabViewCoordinator: Coordinator {
         entryViewController.setViewControllers([
             bluetoothListCoordinator.navigationController,
             friendsViewControllerCoordinator.navigationController,
-            meViewCoordinator.navigationController,
-//            iotCoordinator.navigationController
+            meViewCoordinator.navigationController
             ],
                                                animated: false)
         

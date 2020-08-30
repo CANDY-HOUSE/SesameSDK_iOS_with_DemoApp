@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol Coordinator {
+public protocol Coordinator: class {
     var childCoordinators: [String: Coordinator] { get }
     var parentCoordinator: Coordinator? { get set }
     var presentedViewController: UIViewController? { get }

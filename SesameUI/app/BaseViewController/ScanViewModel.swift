@@ -14,6 +14,7 @@ protocol ScanViewModelDelegate {
 }
 
 final class ScanViewModel: ViewModel {
+    private(set) var retrieveQRCodeButtonTitle = "Retrieve QRCode from photo"
     var statusUpdated: ViewStatusHandler?
     var delegate: ScanViewModelDelegate?
     

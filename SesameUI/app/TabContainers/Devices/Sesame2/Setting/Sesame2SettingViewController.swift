@@ -170,8 +170,26 @@ public class Sesame2SettingViewController: CHBaseViewController {
     }
     
     @IBAction func DFU(_ sender: Any) {
-
-        let check = UIAlertAction
+        let chooseDFUModeAlertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.dfu".localized,
+                                                message: "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized,
+                                                preferredStyle: .actionSheet)
+        let actionSheetApplicationDFU = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.application".localized, style: .default) { _ in
+            self.showApplicaitonDFUAlertForIndexPath()
+        }
+        
+        let actionSheetBootloaderDFU = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.bootloader".localized, style: .default) { _ in
+            self.showBootloaderDFUAlertForIndexPath()
+        }
+        
+        chooseDFUModeAlertController.addAction(actionSheetApplicationDFU)
+        chooseDFUModeAlertController.addAction(actionSheetBootloaderDFU)
+        chooseDFUModeAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(chooseDFUModeAlertController, animated: true, completion: nil)
+    }
+    
+    func showApplicaitonDFUAlertForIndexPath() {
+        let dfu = UIAlertAction
             .addAction(title: viewModel.dfuActionText(),
                        style: .destructive) { (action) in
                         let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
@@ -180,15 +198,36 @@ public class Sesame2SettingViewController: CHBaseViewController {
                         progressIndicator.dfuInitialized {
                             self.viewModel.cancelDFU()
                         }
-                        self.viewModel.dfuActionWithObserver(progressIndicator)
-                        
+                        self.viewModel.dfuApplicationDeviceWithObserver(progressIndicator)
         }
-        if let view = sender as? UIView {
-            UIAlertController.showAlertController(view,
-                                                  msg: viewModel.dfuFileName(),
-                                                  style: .actionSheet,
-                                                  actions: [check])
+        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.application_dfu".localized,
+                                                message: viewModel.applicationDfuFileName(),
+                                                preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
+        alertController.addAction(dfu)
+        alertController.addAction(cancel)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showBootloaderDFUAlertForIndexPath() {
+        let dfu = UIAlertAction
+            .addAction(title: viewModel.dfuActionText(),
+                       style: .destructive) { (action) in
+                        let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
+                            
+                        }
+                        progressIndicator.dfuInitialized {
+                            self.viewModel.cancelDFU()
+                        }
+                        self.viewModel.dfuBootloaderDeviceWithObserver(progressIndicator)
         }
+        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.bootloader_dfu".localized,
+                                                message: viewModel.bootloaderDfuFileName(),
+                                                preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
+        alertController.addAction(dfu)
+        alertController.addAction(cancel)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func autolockSecond(_ sender: Any) {

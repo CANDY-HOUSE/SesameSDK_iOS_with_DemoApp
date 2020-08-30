@@ -71,8 +71,8 @@ final class BluetoothDevicesListViewModel: ViewModel {
             delegate?.newSesameTapped()
         case .receiveKey:
             delegate?.scanViewTapped()
-//        case .addWifiModule2:
-//            delegate?.registerWifiModule2Tapped()
+        case .addWifiModule2:
+            delegate?.registerWifiModule2Tapped()
         }
     }
     

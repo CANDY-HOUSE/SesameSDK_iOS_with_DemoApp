@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE3DD99424829E0000EEA3B1"
+               BlueprintIdentifier = "BED74C5524AC760E0052F04D"
                BuildableName = "SesameWatchKit Extension.appex"
                BlueprintName = "SesameWatchKit Extension"
                ReferencedContainer = "container:SesameUI.xcodeproj">
@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE3DD98824829DFF00EEA3B1"
+               BlueprintIdentifier = "BED74C4924AC760D0052F04D"
                BuildableName = "SesameWatchKit.app"
                BlueprintName = "SesameWatchKit"
                ReferencedContainer = "container:SesameUI.xcodeproj">
@@ -74,7 +74,7 @@
          RemotePath = "/SesameWatchKit Extension">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE3DD99424829E0000EEA3B1"
+            BlueprintIdentifier = "BED74C5524AC760E0052F04D"
             BuildableName = "SesameWatchKit Extension.appex"
             BlueprintName = "SesameWatchKit Extension"
             ReferencedContainer = "container:SesameUI.xcodeproj">
@@ -93,7 +93,7 @@
          RemotePath = "/SesameWatchKit Extension">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE3DD99424829E0000EEA3B1"
+            BlueprintIdentifier = "BED74C5524AC760E0052F04D"
             BuildableName = "SesameWatchKit Extension.appex"
             BlueprintName = "SesameWatchKit Extension"
             ReferencedContainer = "container:SesameUI.xcodeproj">
@@ -102,7 +102,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE3DD99424829E0000EEA3B1"
+            BlueprintIdentifier = "BED74C5524AC760E0052F04D"
             BuildableName = "SesameWatchKit Extension.appex"
             BlueprintName = "SesameWatchKit Extension"
             ReferencedContainer = "container:SesameUI.xcodeproj">

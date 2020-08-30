@@ -106,7 +106,6 @@ public class BluetoothDevicesListViewController: CHBaseViewController, UITableVi
         viewModel.loadLocalDevices()
     }
     
-    
     func programmaticallyRefreshing() {
         refreshControl.beginRefreshing()
         let offsetPoint = CGPoint.init(x: 0, y: -refreshControl.frame.size.height)

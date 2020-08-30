@@ -23,7 +23,9 @@ class Sesame2HistoryViewController: CHBaseViewController {
     // MARK: - Flag
     private var isNeedScrollToBottom = true
     private var canRefresh = true
+    private var isLoadingContent = false
     private var isFirstTimeEnterTheView = true
+    private var isScrollToTopTapped = false
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -48,15 +50,12 @@ class Sesame2HistoryViewController: CHBaseViewController {
                 case .success(_):
                     executeOnMainThread {
                         strongSelf.canRefresh = strongSelf.viewModel.hasMoreData
-                        if strongSelf.canRefresh == false {
-                            strongSelf.refreshControl.removeFromSuperview()
-                        }
-                        strongSelf.historyTable.reloadData()
-                        if strongSelf.isNeedScrollToBottom == true {
-                            strongSelf.refreshToBottom()
-                        }
+                        strongSelf.refreshControl.removeFromSuperview()
+                        L.d("😀 Result is back")
+                        strongSelf.reloadContent()
                     }
                 case .failure(let error):
+                    strongSelf.isScrollToTopTapped = false
                     executeOnMainThread {
                         strongSelf.view.makeToast(error.errorDescription())
                     }
@@ -65,10 +64,17 @@ class Sesame2HistoryViewController: CHBaseViewController {
         }
 
         historyTable.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
-        viewModel.setFetchedResultsControllerDelegate(self)
         
+        addRefreshControlIndicator()
+        viewModel.loadMore()
+
+        historyTable.register(UINib(nibName: "Sesame2HistoryLoadingTableViewCell", bundle: nil), forCellReuseIdentifier: "Sesame2HistoryLoadingTableViewCell")
+    }
+    
+    func addRefreshControlIndicator() {
         refreshControl.translatesAutoresizingMaskIntoConstraints = false
         historyTable.addSubview(refreshControl)
+        historyTable.sendSubviewToBack(refreshControl)
         refreshControl.startAnimating()
         let constraints = [
             refreshControl.centerXAnchor.constraint(equalTo: historyTable.centerXAnchor),
@@ -78,13 +84,6 @@ class Sesame2HistoryViewController: CHBaseViewController {
             refreshControl.heightAnchor.constraint(equalToConstant: 20)
         ]
         NSLayoutConstraint.activate(constraints)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        if isFirstTimeEnterTheView == true {
-            scrollToBottomWithAnimation(false)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +99,6 @@ class Sesame2HistoryViewController: CHBaseViewController {
         if CHConfiguration.shared.isHistoryStorageEnabled() {
             isNeedScrollToBottom = false
         }
-        viewModel.loadMore()
     }
     
     // MARK: Methods
@@ -164,16 +162,18 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRowsInSection(section)
+        return viewModel.numberOfRowsInSection(section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = viewModel.cellIdentifierForIndexPath(indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        if let historyCell = cell as? Sesame2HistoryCell {
-            configureCell(historyCell, atIndexPath: indexPath)
-            return historyCell
+        var identifier = ""
+        if indexPath.section == 0, indexPath.row == 0, canRefresh {
+            identifier = "Sesame2HistoryLoadingTableViewCell"
+        } else {
+            identifier = viewModel.cellIdentifierForIndexPath(indexPath)
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        configureCell(cell, atIndexPath: indexPath)
         return cell
     }
     
@@ -181,6 +181,9 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
         if cell as? Sesame2HistoryCell != nil {
             let cellViewModel = self.viewModel.cellViewModelForIndexPath(indexPath)
             (cell as! Sesame2HistoryCell).viewModel = cellViewModel
+        } else if cell as? Sesame2HistoryLoadingTableViewCell != nil {
+            let cellViewModel = self.viewModel.cellViewModelForIndexPath(indexPath)
+            (cell as! Sesame2HistoryLoadingTableViewCell).viewModel = cellViewModel
         }
     }
     
@@ -212,8 +215,12 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
         return headerView
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < -5, !scrollView.isDragging {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !isFirstTimeEnterTheView,
+            (tableView.isDragging || tableView.isDecelerating || tableView.isTracking),
+            indexPath.section == 0,
+            indexPath.row == 0,
+            isLoadingContent == false {
             startRefresh()
         }
     }
@@ -221,9 +228,12 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
     @objc
     func startRefresh() {
         if canRefresh {
-            isNeedScrollToBottom = false
+            L.d("😀 can refresh")
             canRefresh = false
+            isNeedScrollToBottom = false
             refresh(self)
+        } else {
+            L.d("😀 can't refresh")
         }
     }
     
@@ -233,86 +243,36 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
     
     func refreshToBottom() {
         historyTable.reloadData()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.scrollToBottomWithAnimation()
-        }
-    }
-}
-
-// MARK: - FRC Delegate
-extension Sesame2HistoryViewController: NSFetchedResultsControllerDelegate {
-    public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        executeOnMainThread {
-//            self.historyTable.beginUpdates()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.scrollToBottomWithAnimation(false)
 //        }
     }
-     
-    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        executeOnMainThread {
-//            self.historyTable.endUpdates()
-            self.canRefresh = self.viewModel.hasMoreData
-            self.historyTable.reloadData()
-            if self.isNeedScrollToBottom == true {
-                self.refreshToBottom()
+    
+    func reloadContent() {
+        canRefresh = viewModel.hasMoreData
+        isLoadingContent = true
+        historyTable.reloadData()
+        if isNeedScrollToBottom == true {
+            L.d("🔔","***刷新***")
+            refreshToBottom()
+            isLoadingContent = false
+        } else {
+            historyTable.layer.layoutIfNeeded()
+            if isScrollToTopTapped == true {
+               isScrollToTopTapped = false
             }
-//            if !self.historyTable.isTracking && !self.historyTable.isDragging && !self.historyTable.isDecelerating {
-//                self.scrollToBottomWithAnimation(true)
-//            }
+            let indexPath = self.viewModel.firstIndexPathBeforeUpdate()
+            historyTable.scrollToRow(at: indexPath, at: .top, animated: false)
+            isLoadingContent = false
         }
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange sectionInfo: NSFetchedResultsSectionInfo,
-                    atSectionIndex sectionIndex: Int,
-                    for type: NSFetchedResultsChangeType) {
-        executeOnMainThread {
-//            let section = IndexSet(integer: sectionIndex)
-//
-//            switch type {
-//            case .delete:
-//                self.historyTable.deleteSections(section, with: .automatic)
-//            case .insert:
-//                self.historyTable.insertSections(section, with: .automatic)
-//            case .move:
-//                break
-//            case .update:
-//                break
-//            @unknown default:
-//                break
-//            }
+    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        if canRefresh {
+            isScrollToTopTapped = true
+            addRefreshControlIndicator()
+            startRefresh()
         }
-    }
-    
-    public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-//        executeOnMainThread {
-//            switch (type) {
-//            case .insert:
-//                if let indexPath = newIndexPath as IndexPath? {
-//                    self.historyTable.insertRows(at: [indexPath], with: .fade)
-//                }
-//            case .delete:
-//                if let indexPath = indexPath as IndexPath? {
-//                    self.historyTable.deleteRows(at: [indexPath], with: .fade)
-//                }
-//            case .update:
-//                if let indexPath = indexPath as IndexPath? {
-//                    if let cell = self.historyTable.cellForRow(at: indexPath) as? Sesame2HistoryCell {
-//                        self.configureCell(cell, atIndexPath: indexPath)
-//                    }
-//                }
-//            case .move:
-//                if let indexPath = indexPath as IndexPath? {
-//                    self.historyTable.deleteRows(at: [indexPath], with: .fade)
-//                }
-//
-//                if let newIndexPath = newIndexPath as IndexPath? {
-//                    self.historyTable.insertRows(at: [newIndexPath], with: .fade)
-//                }
-//            @unknown default:
-//                break
-//            }
-//        }
-        
+        return true
     }
 }
