@@ -305,12 +305,26 @@ SWIFT_CLASS("_TtC17SesameWatchKitSDK19CHWifiModule2Device")
 @end
 
 
+
+
+
+
+
+
+
+
+
+
 @interface CHWifiModule2Device (SWIFT_EXTENSION(SesameWatchKitSDK)) <CBPeripheralDelegate>
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didDiscoverServices:(NSError * _Nullable)error;
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didDiscoverCharacteristicsForService:(CBService * _Nonnull)service error:(NSError * _Nullable)error;
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didUpdateValueForCharacteristic:(CBCharacteristic * _Nonnull)characteristic error:(NSError * _Nullable)error;
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didWriteValueForCharacteristic:(CBCharacteristic * _Nonnull)characteristic error:(NSError * _Nullable)error;
 @end
+
+
+
+
 
 
 
@@ -627,12 +641,26 @@ SWIFT_CLASS("_TtC17SesameWatchKitSDK19CHWifiModule2Device")
 @end
 
 
+
+
+
+
+
+
+
+
+
+
 @interface CHWifiModule2Device (SWIFT_EXTENSION(SesameWatchKitSDK)) <CBPeripheralDelegate>
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didDiscoverServices:(NSError * _Nullable)error;
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didDiscoverCharacteristicsForService:(CBService * _Nonnull)service error:(NSError * _Nullable)error;
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didUpdateValueForCharacteristic:(CBCharacteristic * _Nonnull)characteristic error:(NSError * _Nullable)error;
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didWriteValueForCharacteristic:(CBCharacteristic * _Nonnull)characteristic error:(NSError * _Nullable)error;
 @end
+
+
+
+
 
 
 

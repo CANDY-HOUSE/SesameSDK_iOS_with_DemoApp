@@ -25,7 +25,11 @@ struct MockCHSesameMechStatus: CHSesame2MechStatus {
     
     var isInUnlockRange: Bool = true
     
+    func retCodeType() -> Sesame2RetCodeType {
+        .none
+    }
     
+    var isClutchFailed: Bool = false
 }
 
 struct MockCHSesameMechSettings: CHSesame2MechSettings {
@@ -39,6 +43,8 @@ struct MockCHSesameMechSettings: CHSesame2MechSettings {
 }
 
 class MockBleDevice: CHSesame2 {
+    var deviceShadowStatus: CHSesame2ShadowStatus?
+
     func disableAutolock(historytag: Data?, result: @escaping (CHResult<Int>)) {
         
     }

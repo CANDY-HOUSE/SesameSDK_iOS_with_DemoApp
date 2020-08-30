@@ -26,7 +26,8 @@ class BluetoothDevicesCell: UITableViewCell {
         }
     }
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var ownerNameLabel: UILabel!
+    @IBOutlet weak var deviceStatusLabel: UILabel!
+    @IBOutlet weak var shadowStatusLabel: UILabel!
     @IBOutlet weak var lockButton: UIButton!
     
     var viewModel: BluetoothDeviceCellViewModel! {
@@ -52,7 +53,7 @@ class BluetoothDevicesCell: UITableViewCell {
                 }
                 
             }
-            updateUI()
+            updateInitialStatus()
         }
     }
 
@@ -61,7 +62,7 @@ class BluetoothDevicesCell: UITableViewCell {
         viewModel?.toggleTapped()
     }
     
-    func updateUI()  {
+    func updateInitialStatus()  {
 
         if let currentDegree = viewModel.currentDegree() {
             sesame2Circle.refreshUI(newPointerAngle: CGFloat(currentDegree),
@@ -75,10 +76,11 @@ class BluetoothDevicesCell: UITableViewCell {
         powerLabel.text = viewModel?.powerPercentate()
         batteryImage.image = UIImage.CHUIImage(named: viewModel?.batteryImage() ?? "")
         name.text = viewModel?.name
-        ownerNameLabel.text = viewModel?.ownerNameLabel
-//        ownerNameLabel.isHidden = viewModel?.isHideOwnerNameLabel ?? true
+        deviceStatusLabel.text = viewModel?.deviceStatus
+        shadowStatusLabel.text = viewModel?.shadowStatus
         testButton.isHidden = viewModel?.isHideTestButton ?? true
     }
+    
     func updateSesame2Status()  {
 
         if let currentDegree = viewModel.currentDegree() {
@@ -88,8 +90,8 @@ class BluetoothDevicesCell: UITableViewCell {
             sesame2Circle.refreshUI(newPointerAngle: CGFloat(0.0),
                                 lockColor: viewModel.lockColor)
         }
-        ownerNameLabel.text = viewModel?.ownerNameLabel
-
+        deviceStatusLabel.text = viewModel?.deviceStatus
+        shadowStatusLabel.text = viewModel?.shadowStatus
         lockButton.setBackgroundImage(UIImage.CHUIImage(named: viewModel!.lockBackgroundImage()), for: .normal)
         powerLabel.text = viewModel?.powerPercentate()
         batteryImage.image = UIImage.CHUIImage(named: viewModel?.batteryImage() ?? "")

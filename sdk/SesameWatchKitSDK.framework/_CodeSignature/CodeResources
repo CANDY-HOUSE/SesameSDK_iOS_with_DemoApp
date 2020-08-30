@@ -22,7 +22,7 @@
 		</data>
 		<key>CHDeviceModel.momd/VersionInfo.plist</key>
 		<data>
-		JqdjPPYw5E11UzU/Ep9WOryS0nk=
+		XvTPc8D8lN9AUp7loKrgv0h/L8A=
 		</data>
 		<key>Headers/AWSAPIGateway.h</key>
 		<data>
@@ -158,79 +158,75 @@
 		</data>
 		<key>Headers/SesameWatchKitSDK-Swift.h</key>
 		<data>
-		60kYKdxstd+a4u/PGy3u3UCU1b0=
+		8GFpOjHYHaVX04f6qLbHMRjQeZM=
 		</data>
 		<key>Headers/SesameWatchKitSDK.h</key>
 		<data>
-		hKNKt9YUbkWXJwWAQfVuA8OGmWE=
-		</data>
-		<key>Headers/aes_cmac.h</key>
-		<data>
-		EWz3nEYxYus60i9VBoicGYlkRj8=
+		mFbGneGYLBjWDPEM58gMvsGdMdQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		/YfmpF49caTu9e+/+jxSe08vFtA=
+		DJ6do0h+ljJMK8Bm2VNPhRT4N/c=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		qM+QvdBBBlcVha9XDjOSH2uwa0w=
+		PBer53uf7K0uQku6VlBVdjLvkn8=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm.swiftinterface</key>
 		<data>
-		8aOCt7ONgETOHvOyx8NuJg2aZJ0=
+		B6DoNVFyjem5NzfHKPBM2Txr4J0=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		Fdwww+spajWPdnEzJXMaKvK8/yI=
+		dt1+Wk8H4Mf4Me1b+6DbytCs19o=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32-apple-watchos.swiftdoc</key>
 		<data>
-		deH9cN46QyJh25d6gVoTdSl4AwE=
+		jTiF4bxf2zFcll79FrGolWPx6dg=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32-apple-watchos.swiftinterface</key>
 		<data>
-		/vhtHQCYC3MEXJoHlZsPLWHvSp8=
+		lj8it9H7HkJ0UWLHEpm0yoA7gkU=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32-apple-watchos.swiftmodule</key>
 		<data>
-		k7bK+/+CTaf23RZYER/oo8ByxOk=
+		KqIaMb7dwklcqCW1WMqGx7EJ9CQ=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32.swiftdoc</key>
 		<data>
-		deH9cN46QyJh25d6gVoTdSl4AwE=
+		jTiF4bxf2zFcll79FrGolWPx6dg=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32.swiftinterface</key>
 		<data>
-		/vhtHQCYC3MEXJoHlZsPLWHvSp8=
+		lj8it9H7HkJ0UWLHEpm0yoA7gkU=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32.swiftmodule</key>
 		<data>
-		k7bK+/+CTaf23RZYER/oo8ByxOk=
+		KqIaMb7dwklcqCW1WMqGx7EJ9CQ=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k-apple-watchos.swiftdoc</key>
 		<data>
-		qM+QvdBBBlcVha9XDjOSH2uwa0w=
+		PBer53uf7K0uQku6VlBVdjLvkn8=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k-apple-watchos.swiftinterface</key>
 		<data>
-		8aOCt7ONgETOHvOyx8NuJg2aZJ0=
+		B6DoNVFyjem5NzfHKPBM2Txr4J0=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k-apple-watchos.swiftmodule</key>
 		<data>
-		Fdwww+spajWPdnEzJXMaKvK8/yI=
+		dt1+Wk8H4Mf4Me1b+6DbytCs19o=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k.swiftdoc</key>
 		<data>
-		qM+QvdBBBlcVha9XDjOSH2uwa0w=
+		PBer53uf7K0uQku6VlBVdjLvkn8=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k.swiftinterface</key>
 		<data>
-		8aOCt7ONgETOHvOyx8NuJg2aZJ0=
+		B6DoNVFyjem5NzfHKPBM2Txr4J0=
 		</data>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k.swiftmodule</key>
 		<data>
-		Fdwww+spajWPdnEzJXMaKvK8/yI=
+		dt1+Wk8H4Mf4Me1b+6DbytCs19o=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -287,11 +283,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JqdjPPYw5E11UzU/Ep9WOryS0nk=
+			XvTPc8D8lN9AUp7loKrgv0h/L8A=
 			</data>
 			<key>hash2</key>
 			<data>
-			Sgs6hHVBS0a4vRXjClxfPglU8o7PVO/4a1JOuz5b51Q=
+			M2rC3lBXflMlzHwHPVqSydzuU4smbVqV78v1f5sOP8I=
 			</data>
 		</dict>
 		<key>Headers/AWSAPIGateway.h</key>
@@ -661,198 +657,187 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			60kYKdxstd+a4u/PGy3u3UCU1b0=
+			8GFpOjHYHaVX04f6qLbHMRjQeZM=
 			</data>
 			<key>hash2</key>
 			<data>
-			BjyKWnaH9giMXKDbURADA4/jC2eOvLLFybqB8ZaiJVY=
+			qkyzCHJ86WqFFIj7uWUXKGMN8JwLm+L4KTv3A7NmRWU=
 			</data>
 		</dict>
 		<key>Headers/SesameWatchKitSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hKNKt9YUbkWXJwWAQfVuA8OGmWE=
+			mFbGneGYLBjWDPEM58gMvsGdMdQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			eDvfgWLY82TeHkl+X6WP1SqsASgn8U2Bx/NY8HiHi8A=
-			</data>
-		</dict>
-		<key>Headers/aes_cmac.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			EWz3nEYxYus60i9VBoicGYlkRj8=
-			</data>
-			<key>hash2</key>
-			<data>
-			HZefN5UAhToC5oi6brjY7TcRBEoYk3ah0HqE0LgvgjQ=
+			rO7TYGStmlvY0KWtPyFh3yGLYqC64Kw+Nk2+wJywWCk=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qM+QvdBBBlcVha9XDjOSH2uwa0w=
+			PBer53uf7K0uQku6VlBVdjLvkn8=
 			</data>
 			<key>hash2</key>
 			<data>
-			egWuFSVxSPNvy57f6SAO5xzUw/XiGA8eLXHETj/ddSo=
+			on9ojqLOEToxTVIz/Q8i1cOunUXFnqJMHOl6nS7NFHg=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8aOCt7ONgETOHvOyx8NuJg2aZJ0=
+			B6DoNVFyjem5NzfHKPBM2Txr4J0=
 			</data>
 			<key>hash2</key>
 			<data>
-			+IjQmBpHSPFycyrrBak0jzabNhP6AwDkw+age8rDxIU=
+			90GRqOBeMb2N7KOvkJcR0u1fID7XBkn6wIXK5eRwbRU=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Fdwww+spajWPdnEzJXMaKvK8/yI=
+			dt1+Wk8H4Mf4Me1b+6DbytCs19o=
 			</data>
 			<key>hash2</key>
 			<data>
-			HX8BBtSPb2qiQtGe3lLWOAalAf8B+zukSwEMB9S1CU8=
+			CdDnigSPNpOd95YBS0JzssN+CfZY7jiJOk5F2Gjnp8s=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32-apple-watchos.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			deH9cN46QyJh25d6gVoTdSl4AwE=
+			jTiF4bxf2zFcll79FrGolWPx6dg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Vcs7bGZ3/7rAjrhKNZZyLUu42iNXeEE1mma1HQ32lVE=
+			wUiYdQEbEZgw8CxPyFfyjjP6+CMRu2rHDDcCLhreU3s=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32-apple-watchos.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/vhtHQCYC3MEXJoHlZsPLWHvSp8=
+			lj8it9H7HkJ0UWLHEpm0yoA7gkU=
 			</data>
 			<key>hash2</key>
 			<data>
-			xlSsmOSQxPBaFSpBFHJGmzL2VegT2iG+zIafOKKVhLs=
+			ssiOlF3weAz7tNgsMiWYjos/pDH2vByXE/LSJj1GrFI=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32-apple-watchos.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			k7bK+/+CTaf23RZYER/oo8ByxOk=
+			KqIaMb7dwklcqCW1WMqGx7EJ9CQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			88+qpLKw0OkYMsj3rri64AOmJdf2SNKP91aj3qQc0X8=
+			+yTO4W7jozAKnHHc8j/LS7Enxj8f248gGJVFSxFuMVc=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			deH9cN46QyJh25d6gVoTdSl4AwE=
+			jTiF4bxf2zFcll79FrGolWPx6dg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Vcs7bGZ3/7rAjrhKNZZyLUu42iNXeEE1mma1HQ32lVE=
+			wUiYdQEbEZgw8CxPyFfyjjP6+CMRu2rHDDcCLhreU3s=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/vhtHQCYC3MEXJoHlZsPLWHvSp8=
+			lj8it9H7HkJ0UWLHEpm0yoA7gkU=
 			</data>
 			<key>hash2</key>
 			<data>
-			xlSsmOSQxPBaFSpBFHJGmzL2VegT2iG+zIafOKKVhLs=
+			ssiOlF3weAz7tNgsMiWYjos/pDH2vByXE/LSJj1GrFI=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/arm64_32.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			k7bK+/+CTaf23RZYER/oo8ByxOk=
+			KqIaMb7dwklcqCW1WMqGx7EJ9CQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			88+qpLKw0OkYMsj3rri64AOmJdf2SNKP91aj3qQc0X8=
+			+yTO4W7jozAKnHHc8j/LS7Enxj8f248gGJVFSxFuMVc=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k-apple-watchos.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qM+QvdBBBlcVha9XDjOSH2uwa0w=
+			PBer53uf7K0uQku6VlBVdjLvkn8=
 			</data>
 			<key>hash2</key>
 			<data>
-			egWuFSVxSPNvy57f6SAO5xzUw/XiGA8eLXHETj/ddSo=
+			on9ojqLOEToxTVIz/Q8i1cOunUXFnqJMHOl6nS7NFHg=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k-apple-watchos.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8aOCt7ONgETOHvOyx8NuJg2aZJ0=
+			B6DoNVFyjem5NzfHKPBM2Txr4J0=
 			</data>
 			<key>hash2</key>
 			<data>
-			+IjQmBpHSPFycyrrBak0jzabNhP6AwDkw+age8rDxIU=
+			90GRqOBeMb2N7KOvkJcR0u1fID7XBkn6wIXK5eRwbRU=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k-apple-watchos.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Fdwww+spajWPdnEzJXMaKvK8/yI=
+			dt1+Wk8H4Mf4Me1b+6DbytCs19o=
 			</data>
 			<key>hash2</key>
 			<data>
-			HX8BBtSPb2qiQtGe3lLWOAalAf8B+zukSwEMB9S1CU8=
+			CdDnigSPNpOd95YBS0JzssN+CfZY7jiJOk5F2Gjnp8s=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qM+QvdBBBlcVha9XDjOSH2uwa0w=
+			PBer53uf7K0uQku6VlBVdjLvkn8=
 			</data>
 			<key>hash2</key>
 			<data>
-			egWuFSVxSPNvy57f6SAO5xzUw/XiGA8eLXHETj/ddSo=
+			on9ojqLOEToxTVIz/Q8i1cOunUXFnqJMHOl6nS7NFHg=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8aOCt7ONgETOHvOyx8NuJg2aZJ0=
+			B6DoNVFyjem5NzfHKPBM2Txr4J0=
 			</data>
 			<key>hash2</key>
 			<data>
-			+IjQmBpHSPFycyrrBak0jzabNhP6AwDkw+age8rDxIU=
+			90GRqOBeMb2N7KOvkJcR0u1fID7XBkn6wIXK5eRwbRU=
 			</data>
 		</dict>
 		<key>Modules/SesameWatchKitSDK.swiftmodule/armv7k.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Fdwww+spajWPdnEzJXMaKvK8/yI=
+			dt1+Wk8H4Mf4Me1b+6DbytCs19o=
 			</data>
 			<key>hash2</key>
 			<data>
-			HX8BBtSPb2qiQtGe3lLWOAalAf8B+zukSwEMB9S1CU8=
+			CdDnigSPNpOd95YBS0JzssN+CfZY7jiJOk5F2Gjnp8s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

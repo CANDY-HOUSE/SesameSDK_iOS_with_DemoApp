@@ -19,7 +19,7 @@ public struct PopUpMenuItem {
         case addDevices
         case receiveKey
         case addFriends
-//        case addWifiModule2
+        case addWifiModule2
     }
 }
 

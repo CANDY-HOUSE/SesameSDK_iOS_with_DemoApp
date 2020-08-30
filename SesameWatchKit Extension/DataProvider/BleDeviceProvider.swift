@@ -26,7 +26,7 @@ final class BleDeviceProvider: Provider, CHSesame2Delegate {
     }
     
     func onBleDeviceStatusChanged(device: CHSesame2,
-                                  status: CHSesame2Status) {
+                                  status: CHSesame2Status,shadowStatus: CHSesame2ShadowStatus?) {
         if device.deviceId == self.device.deviceId, status == .receivedBle {
             device.connect(){res in}
             self.device = device

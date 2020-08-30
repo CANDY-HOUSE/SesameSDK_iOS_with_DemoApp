@@ -23,7 +23,7 @@ public protocol DFUHelperObserver {
 
 public protocol DFUHelper {
     init?(peripheral: CBPeripheral, zipData: Data, observer: DFUHelperObserver?)
-    func start()
+    func start(_ type: DFUFirmwareType)
     func pause()
     func resume()
     func restart()
@@ -57,9 +57,12 @@ final public class CHDFUHelper: DFUHelper {
         self.observer = observer
     }
     
-    public func start() {
-        guard let firmware = DFUFirmware(zipFile: zipData, type: .application) else {
+    public func start(_ type: DFUFirmwareType = .application) {
+        guard let firmware = DFUFirmware(zipFile: zipData, type: type) else {
             L.d("No firmware")
+            abort()
+            observer?.dfuError(DFUError.fileInvalid,
+                               didOccurWithMessage: "Dfu error")
             return
         }
         
@@ -108,6 +111,38 @@ final public class CHDFUHelper: DFUHelper {
     
     private func clean() {
         dfuController = nil
+    }
+}
+
+extension CHDFUHelper {
+    public static func applicationDfuFilePath() -> URL? {
+        guard let filePath = Constant
+            .resourceBundle
+            .url(forResource: nil,
+                 withExtension: "zip",
+                 subdirectory: "application_dfu") else {
+                return nil
+        }
+        return filePath
+    }
+    
+    public static func applicationDfuFileName() -> String? {
+        applicationDfuFilePath()?.lastPathComponent
+    }
+    
+    public static func bootloaderDfuFilePath() -> URL? {
+        guard let filePath = Constant
+            .resourceBundle
+            .url(forResource: nil,
+                 withExtension: "zip",
+                 subdirectory: "bootloader_dfu") else {
+                return nil
+        }
+        return filePath
+    }
+    
+    public static func bootloaderDfuFileName() -> String? {
+        bootloaderDfuFilePath()?.lastPathComponent
     }
 }
 

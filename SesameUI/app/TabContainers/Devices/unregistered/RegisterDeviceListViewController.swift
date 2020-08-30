@@ -114,6 +114,29 @@ extension RegisterDeviceListViewController {
             return
         }
 
+        showChooseDFUModeTypeForIndexPath(indexPath)
+    }
+    
+    func showChooseDFUModeTypeForIndexPath(_ indexPath: IndexPath) {
+        let chooseDFUModeAlertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.dfu".localized,
+                                                             message: "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized,
+                                                preferredStyle: .actionSheet)
+        let actionSheetApplicationDFU = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.application".localized, style: .default) { _ in
+            self.showApplicaitonDFUAlertForIndexPath(indexPath)
+        }
+        
+        let actionSheetBootloaderDFU = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.bootloader".localized, style: .default) { _ in
+            self.showBootloaderDFUAlertForIndexPath(indexPath)
+        }
+        
+        chooseDFUModeAlertController.addAction(actionSheetApplicationDFU)
+        chooseDFUModeAlertController.addAction(actionSheetBootloaderDFU)
+        chooseDFUModeAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(chooseDFUModeAlertController, animated: true, completion: nil)
+    }
+    
+    func showApplicaitonDFUAlertForIndexPath(_ indexPath: IndexPath) {
         let dfu = UIAlertAction
             .addAction(title: viewModel.dfuActionText,
                        style: .destructive) { (action) in
@@ -123,10 +146,31 @@ extension RegisterDeviceListViewController {
                         progressIndicator.dfuInitialized {
                             self.viewModel.cancelDFU()
                         }
-                        self.viewModel.dfuDeviceAtIndexPath(indexPath, observer: progressIndicator)
+                        self.viewModel.dfuApplicationDeviceAtIndexPath(indexPath, observer: progressIndicator)
         }
-        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.dfu".localized,
-                                                message: viewModel.dfuFileName(),
+        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.application_dfu".localized,
+                                                message: viewModel.applicationDfuFileName(),
+                                                preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
+        alertController.addAction(dfu)
+        alertController.addAction(cancel)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showBootloaderDFUAlertForIndexPath(_ indexPath: IndexPath) {
+        let dfu = UIAlertAction
+            .addAction(title: viewModel.dfuActionText,
+                       style: .destructive) { (action) in
+                        let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
+                            
+                        }
+                        progressIndicator.dfuInitialized {
+                            self.viewModel.cancelDFU()
+                        }
+                        self.viewModel.dfuBootloaderDeviceAtIndexPath(indexPath, observer: progressIndicator)
+        }
+        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.bootloader_dfu".localized,
+                                                message: viewModel.bootloaderDfuFileName(),
                                                 preferredStyle: .alert)
         let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
         alertController.addAction(dfu)

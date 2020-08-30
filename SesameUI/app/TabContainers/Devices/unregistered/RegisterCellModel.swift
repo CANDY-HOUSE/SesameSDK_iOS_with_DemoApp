@@ -43,6 +43,6 @@ public final class RegisterCellModel: ViewModel {
     }
     
     public func currentStatus() -> String {
-        sesame2.localizedDescription()
+        sesame2.deviceStatus.description()
     }
 }

@@ -75,24 +75,16 @@ public extension UIStoryboard {
             Constant.storyboard.instantiateViewController(withIdentifier: "BluetoothSesame2ControlViewController") as? BluetoothSesame2ControlViewController
         }
         
-//        static var registerWifiModule2TableViewController: RegisterWifiModule2ViewController? {
-//            Constant.storyboard.instantiateViewController(withIdentifier: "RegisterWifiModule2ViewController") as? RegisterWifiModule2ViewController
-//        }
+        static var registerWifiModule2TableViewController: RegisterWifiModule2ViewController? {
+            Constant.storyboard.instantiateViewController(withIdentifier: "RegisterWifiModule2ViewController") as? RegisterWifiModule2ViewController
+        }
         
-        // IoT test VCs
-//        static var ioTSampleTabBarController: IoTSampleTabBarController? {
-//            let storyboard = UIStoryboard(name: "IoTSampleSwiftMain", bundle: nil)
-//            return storyboard.instantiateViewController(withIdentifier: "IoTSampleTabBarController") as? IoTSampleTabBarController
-//        }
-//        
-//        static var shadowTestingViewController: ShadowTestingViewController? {
-//            let storyboard = UIStoryboard(name: "IoTSampleSwiftMain", bundle: nil)
-//            return storyboard.instantiateViewController(withIdentifier: "ShadowTestingViewController") as? ShadowTestingViewController
-//        }
-//        
-//        static var ioTLockViewController: IoTLockViewController? {
-//            let storyboard = UIStoryboard(name: "IoTSampleSwiftMain", bundle: nil)
-//            return storyboard.instantiateViewController(withIdentifier: "IoTLockViewController") as? IoTLockViewController
-//        }
+        static var wifiModule2ListViewController: WifiModule2ListViewController? {
+            Constant.wifiStoryboard.instantiateViewController(withIdentifier: "WifiModule2ListViewController") as? WifiModule2ListViewController
+        }
+        
+        static var wifiSelectionTableViewController: WifiSelectionTableViewController? {
+            Constant.wifiStoryboard.instantiateViewController(withIdentifier: "WifiSelectionTableViewController") as? WifiSelectionTableViewController
+        }
     }
 }

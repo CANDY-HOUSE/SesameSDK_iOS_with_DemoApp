@@ -20,15 +20,6 @@ FOUNDATION_EXPORT const unsigned char SesameSDKVersionString[];
 #define c_to_swift_h
 
 
-// AES-CMAC
-void aes_cmac(unsigned char* in, unsigned int length, unsigned char* out, unsigned char* key);
-
-
-// AES-CCM
-#include "aes_cmac.h"
-
-
-void aesCMAC(const uint8_t *message, unsigned int len, uint8_t *out, const uint8_t *key);
 
 int aes_ccm_ae(const uint8_t *key, size_t key_len,
                const uint8_t *nonce, size_t M,

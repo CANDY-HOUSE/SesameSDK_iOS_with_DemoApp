@@ -38,6 +38,6 @@ public final class RegisterWifiModule2CellModel: ViewModel {
     }
     
     public func deviceStatus() -> String {
-        wifiModule2.localizedDescription()
+        wifiModule2.localizedDescription()   
     }
 }

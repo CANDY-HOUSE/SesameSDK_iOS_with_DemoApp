@@ -10,6 +10,14 @@ import Foundation
 import SesameSDK
 import iOSDFULibrary
 
+public protocol CHFirmwareUpdateInterface: class {
+    func dfuInitialized(abort: @escaping () -> Void)
+    func dfuStarted()
+    func dfuSucceeded()
+    func dfuError(message: String)
+    func dfuProgressDidChange(progress: Int)
+}
+
 class TemporaryFirmwareUpdateClass: CHFirmwareUpdateInterface {
     func dfuSucceeded() {
         

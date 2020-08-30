@@ -16,7 +16,12 @@ class RegisterWifiModule2Cell: UITableViewCell {
     @IBOutlet weak var ssiLabel: UILabel!
     @IBOutlet weak var bluetoothImage: UIImageView!
     @IBOutlet weak var deviceNameLabel: UILabel!
-    @IBOutlet weak var deviceStatusLabel: UILabel!
+    @IBOutlet weak var deviceStatusLabel: UILabel! {
+        didSet {
+            deviceStatusLabel.textColor = UIColor.sesame2LightGray
+            deviceStatusLabel.font = UIFont.systemFont(ofSize: 15)
+        }
+    }
     @IBOutlet weak var dfuButton: UIButton! {
         didSet {
             dfuButton.isHidden = true

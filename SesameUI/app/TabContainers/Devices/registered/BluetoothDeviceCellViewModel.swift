@@ -33,8 +33,12 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
         return device.name ?? device.deviceID!.uuidString
     }
     
-    public var ownerNameLabel: String {
+    public var deviceStatus: String {
         return sesame2.deviceStatus.description()
+    }
+    
+    public var shadowStatus: String {
+        return sesame2.deviceShadowStatus?.description() ?? ""
     }
     
     public var isHideOwnerNameLabel: Bool {
@@ -86,7 +90,7 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
 }
 
 extension BluetoothDeviceCellViewModel: CHSesame2Delegate {
-    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status,shadowStatus: CHSesame2ShadowStatus?) {
 //        L.d("status",status.description())
         if status == .receivedBle {
             sesame2.connect(){_ in}

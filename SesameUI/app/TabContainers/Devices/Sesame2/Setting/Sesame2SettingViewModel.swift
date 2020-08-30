@@ -9,6 +9,7 @@
 import UIKit
 import SesameSDK
 import AWSMobileClient
+import iOSDFULibrary
 
 public final class Sesame2SettingViewModel: ViewModel {
     // Data
@@ -233,7 +234,7 @@ public final class Sesame2SettingViewModel: ViewModel {
 // MARK: - Delegate
 extension Sesame2SettingViewModel: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHSesame2,
-                                         status: CHSesame2Status) {
+                                         status: CHSesame2Status,shadowStatus: CHSesame2ShadowStatus?) {
         if device.deviceId == sesame2.deviceId,
             status == .receivedBle {
             device.connect(){_ in}
@@ -417,6 +418,57 @@ extension Sesame2SettingViewModel {
         return filePath.lastPathComponent
     }
     
+    func applicationDfuFileName() -> String? {
+        CHDFUHelper.applicationDfuFileName()
+    }
+    
+    func bootloaderDfuFileName() -> String? {
+        CHDFUHelper.bootloaderDfuFileName()
+    }
+    
+    func dfuApplicationDeviceWithObserver(_ observer: DFUHelperObserver) {
+        dfuDeviceAtIndexPath(type: .application, observer: observer)
+    }
+    
+    func dfuBootloaderDeviceWithObserver(_ observer: DFUHelperObserver) {
+        dfuDeviceAtIndexPath(type: .bootloader, observer: observer)
+    }
+    
+    private func dfuDeviceAtIndexPath(type: DFUFirmwareType,
+                                      observer: DFUHelperObserver) {
+        
+        guard let filePath = type == .application ? CHDFUHelper.applicationDfuFilePath() : CHDFUHelper.bootloaderDfuFilePath() else {
+            let error = NSError(domain: "", code: 0, userInfo: ["message": "DFU file not found."])
+            self.statusUpdated?(.finished(.failure(error)))
+            return
+        }
+
+        guard let zipData = try? Data(contentsOf: filePath) else {
+                let error = NSError(domain: "", code: 0, userInfo: ["message": "DFU data invalid"])
+                self.statusUpdated?(.finished(.failure(error)))
+                return
+        }
+        
+        sesame2.updateFirmware { result in
+            switch result {
+            case .success(let peripheral):
+                guard let peripheral = peripheral.data else {
+                    L.d("Request commad failed.")
+                    let error = NSError(domain: "", code: 0, userInfo: ["message": "Request commad failed."])
+                    self.statusUpdated?(.finished(.failure(error)))
+                    return
+                }
+                L.d("Success.")
+                self.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
+                self.dfuHelper?.observer = observer
+                self.dfuHelper?.start(type)
+            case .failure(let error):
+                L.d(error.errorDescription())
+                self.statusUpdated?(.finished(.failure(error)))
+            }
+        }
+    }
+    
     public func dfuActionWithObserver(_ observer: DFUHelperObserver) {
         guard let filePath = Constant
             .resourceBundle
@@ -439,7 +491,7 @@ extension Sesame2SettingViewModel {
                 L.d("Success.")
                 strongSelf.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
                 strongSelf.dfuHelper?.observer = observer
-                strongSelf.dfuHelper?.start()
+                strongSelf.dfuHelper?.start(.application)
             case .failure(let error):
                 L.d(error.errorDescription())
                 strongSelf.statusUpdated?(.finished(.failure(error)))

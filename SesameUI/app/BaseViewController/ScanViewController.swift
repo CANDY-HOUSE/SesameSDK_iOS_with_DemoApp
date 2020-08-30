@@ -14,7 +14,8 @@ class ScanViewController: CHBaseViewController {
     
     
     @IBOutlet weak var hintLb: UILabel!
-
+    @IBOutlet weak var retrieveQRCodeButton: UIButton!
+    
     @IBOutlet weak var scannerView: QRScannerView! {
         didSet {
             scannerView.delegate = self
@@ -81,6 +82,7 @@ class ScanViewController: CHBaseViewController {
                                                object: nil)
         rotatedCamera()
         back.setImage( UIImage.SVGImage(named: "icons_filled_close_b"), for: .normal)
+        retrieveQRCodeButton.setTitle(viewModel.retrieveQRCodeButtonTitle, for: .normal)
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -164,6 +166,17 @@ class ScanViewController: CHBaseViewController {
                 scannerView.layer.connection?.videoOrientation = supportedOrientations.contains("UIInterfaceOrientationPortrait") ? .portrait : .portrait
             @unknown default:
                 break
+            }
+        }
+    }
+    
+    @IBAction func retrieveQRCodeTapped(_ sender: Any) {
+        QRCodeScanner.shared.retrieveQRCodeFromPhotoLibraryWithPresenter(self) { result in
+            switch result {
+            case .success(let qrCode):
+                self.viewModel.receivedQRCode(qrCode)
+            case .failure(let error):
+                self.view.makeToast(error.errorDescription())
             }
         }
     }

@@ -93,9 +93,23 @@ final class WatchKitFileTransfer {
     }
     
     private static func receiveKeys(_ sesame2Keys: [String], userInfo: [String : Any]) {
+        let encodedHistoryTag = "ドラえもん⌚️".data(using: .utf8)!
+        let tokenFetchLock = DispatchGroup()
+        
         CHDeviceManager.shared.receiveSesame2Keys(sesame2Keys: sesame2Keys) { result in
             switch result {
-            case .success(_):
+            case .success(let sesame2):
+                
+                for sesame2 in sesame2.data {
+                    tokenFetchLock.enter()
+                    Sesame2Store.shared.deletePropertyAndHisotryForDevice(sesame2)
+                    sesame2.setHistoryTag(encodedHistoryTag) {_ in
+                        tokenFetchLock.leave()
+                    }
+                }
+
+                tokenFetchLock.wait()
+                
                 NotificationCenter.default.post(name: .WCSessioinDidReceiveMessage, object: userInfo)
             case .failure(let error):
                 L.d(error)

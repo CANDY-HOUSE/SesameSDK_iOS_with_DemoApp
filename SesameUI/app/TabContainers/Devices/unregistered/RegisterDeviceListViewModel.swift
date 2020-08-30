@@ -8,6 +8,7 @@
 
 import Foundation
 import SesameSDK
+import iOSDFULibrary
 
 public protocol RegisterDeviceListViewModelDelegate: class {
     func registerSesame2Succeed()
@@ -54,7 +55,7 @@ public final class RegisterDeviceListViewModel: ViewModel {
         sesame2.connect(){_ in}
         
         switch sesame2.deviceStatus {
-        case .readytoRegister:
+        case .readyToRegister:
             registerSesame2(sesame2)
             statusUpdated?(.loading)
         case .dfumode:
@@ -112,23 +113,38 @@ public final class RegisterDeviceListViewModel: ViewModel {
         })
     }
     
-    func dfuFileName() -> String? {
-        guard let filePath = Constant
-            .resourceBundle
-            .url(forResource: nil,
-                 withExtension: ".zip") else {
-                return nil
-        }
-        return filePath.lastPathComponent
+    func applicationDfuFileName() -> String? {
+        CHDFUHelper.applicationDfuFileName()
     }
     
-    func dfuDeviceAtIndexPath(_ indexPath: IndexPath, observer: DFUHelperObserver) {
+    func bootloaderDfuFileName() -> String? {
+        CHDFUHelper.bootloaderDfuFileName()
+    }
+    
+    func dfuApplicationDeviceAtIndexPath(_ indexPath: IndexPath,
+                              observer: DFUHelperObserver) {
+        dfuDeviceAtIndexPath(indexPath, type: .application, observer: observer)
+    }
+    
+    func dfuBootloaderDeviceAtIndexPath(_ indexPath: IndexPath,
+                                         observer: DFUHelperObserver) {
+        dfuDeviceAtIndexPath(indexPath, type: .bootloader, observer: observer)
+    }
+    
+    private func dfuDeviceAtIndexPath(_ indexPath: IndexPath,
+                                      type: DFUFirmwareType,
+                                      observer: DFUHelperObserver) {
         let sesame2 = sesame2s[indexPath.row]
-        guard let filePath = Constant
-            .resourceBundle
-            .url(forResource: nil,
-                 withExtension: ".zip"),
-            let zipData = try? Data(contentsOf: filePath) else {
+        
+        guard let filePath = type == .application ? CHDFUHelper.applicationDfuFilePath() : CHDFUHelper.bootloaderDfuFilePath() else {
+            let error = NSError(domain: "", code: 0, userInfo: ["message": "DFU file not found."])
+            self.statusUpdated?(.finished(.failure(error)))
+            return
+        }
+
+        guard let zipData = try? Data(contentsOf: filePath) else {
+                let error = NSError(domain: "", code: 0, userInfo: ["message": "DFU data invalid"])
+                self.statusUpdated?(.finished(.failure(error)))
                 return
         }
         
@@ -137,12 +153,14 @@ public final class RegisterDeviceListViewModel: ViewModel {
             case .success(let peripheral):
                 guard let peripheral = peripheral.data else {
                     L.d("Request commad failed.")
+                    let error = NSError(domain: "", code: 0, userInfo: ["message": "Request commad failed."])
+                    self.statusUpdated?(.finished(.failure(error)))
                     return
                 }
                 L.d("Success.")
                 self.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
                 self.dfuHelper?.observer = observer
-                self.dfuHelper?.start()
+                self.dfuHelper?.start(type)
             case .failure(let error):
                 L.d(error.errorDescription())
                 self.statusUpdated?(.finished(.failure(error)))
@@ -175,8 +193,8 @@ extension RegisterDeviceListViewModel: CHBleManagerDelegate {
 }
 
 extension RegisterDeviceListViewModel: CHSesame2Delegate {
-    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status) {
-        if status == .readytoRegister {
+    public func onBleDeviceStatusChanged(device: CHSesame2, status: CHSesame2Status,shadowStatus: CHSesame2ShadowStatus?) {
+        if status == .readyToRegister {
             registerSesame2(device)
         }
     }
