@@ -5,7 +5,7 @@
 </p>
 
 # ご挨拶
-SesameSDK on iOS/Android is a delightful Bluetooth/IoT(Internet of Things) library for your iOS/Android app. The official Sesame app is built on this SesameSDK. By using SesameSDK, your app will have **ALL** functions and features that Sesame app has, which means, you will be able to
+SesameSDK は簡単かつパワフルかつ無料な、iOS/Androidアプリ用の Bluetooth/IoT(Internet of Things)ライブラリ です。公式 セサミアプリ もこの SesameSDK を用いて構築されており、この SesameSDK にて、あなたのアプリでもセサミアプリが有する**全て**の機能を持たせることが可能です。すなわちあなたのアプリにて以下のことが可能です。  
 
 - セサミデバイスの登録
 - 施錠
@@ -16,13 +16,13 @@ SesameSDK on iOS/Android is a delightful Bluetooth/IoT(Internet of Things) libra
 - セサミデバイスの各種の設定
 - 電池残量の取得
 - iOS/iPadOS Widget 対応
-- Apple Watch app 対応
+- Apple Watch app 対応  
 
-with your app.<br>Please note, SesameSDK currently only supports ___Sesame 2___ series or Sesame 1 that runs ___SesameOS 2___ which will be available in late 2020.
+この SesameSDK は現時点では、Sesame2 シリーズ のみ対応しております。また今後リリース予定の SesameOS2 にアップデートした Sesame1 でも対応予定です。  
 
 ### Requirements
 
-| Minimum Targets | Minimum Bluetooth Target | Minimum IDEs |
+| Minimum Targets | Minimum Bluetooth Target | Minimum IDE |
 |:------------------:|:------------------------:|:-----------:|
 | iOS 11 <br> iPadOS 13.1 | Bluetooth 4.0 LE | Xcode 11.6 | 
 | Android 5.0 | Bluetooth 4.0 LE | Android Studio 4.0.1 | 
