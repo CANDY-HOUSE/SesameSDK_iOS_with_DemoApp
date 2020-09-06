@@ -21,7 +21,7 @@ private extension UIImage {
     }
 }
 
-public class DeviceCell: UITableViewCell {
+public class DeviceCell: UITableViewCell, LockHaptic {
     
     @IBOutlet weak var battery: UIImageView!
     @IBOutlet weak var power: UILabel!
@@ -29,8 +29,13 @@ public class DeviceCell: UITableViewCell {
     @IBOutlet weak var shadowStatusLabel: UILabel!
     @IBOutlet weak var deviceName: UILabel!
     @IBOutlet weak var lock: UIButton!
+    var lockIntention: ((CHSesame2Intention) -> Void)?
+    
     @IBAction func togle(_ sender: Any) {
-        sesame2?.toggleWithHaptic(interval: 1.5)
+//        sesame2?.toggleWithHaptic(interval: 1.5)
+        toggleWithHaptic(sesame2: sesame2!) {
+            
+        }
     }
     @IBOutlet weak var circle: Sesame2Circle!
     public var sesame2: CHSesame2?{
@@ -38,9 +43,8 @@ public class DeviceCell: UITableViewCell {
             sesame2?.delegate = self
             sesame2?.connect{res in}
             updateUI()
-            deviceStatusLabel.text = sesame2?.deviceStatus.description()
             
-            let device = Sesame2Store.shared.getPropertyForDevice(sesame2!)
+            let device = Sesame2Store.shared.getOrCreatePropertyOfSesame2(sesame2!)
             deviceName.text = device.name ?? device.deviceID!.uuidString
             
             if #available(iOSApplicationExtension 13.0, *) {
@@ -57,8 +61,13 @@ public class DeviceCell: UITableViewCell {
             if let status = self.sesame2?.mechStatus {
                 currentDegree = angle2degree(angle: status.position)
             }
-            self.deviceStatusLabel.text = self.sesame2?.deviceStatus.description()
-            self.shadowStatusLabel.text = self.sesame2?.deviceShadowStatus?.description() ?? ""
+            if CHConfiguration.shared.isDebugModeEnabled() {
+                self.deviceStatusLabel.text = self.sesame2?.deviceStatus.description()
+                self.shadowStatusLabel.text = self.sesame2?.deviceShadowStatus?.description() ?? ""
+            } else {
+                self.deviceStatusLabel.text = ""
+                self.shadowStatusLabel.text = ""
+            }
             self.circle.refreshUI(newPointerAngle: CGFloat(currentDegree),
                                   lockColor: self.sesame2!.lockColor())
             let statusIMG = UIImage.CHUIImage(named: self.sesame2!.currentStatusImage())
@@ -86,6 +95,7 @@ extension DeviceCell: CHSesame2Delegate{
     }
     
     public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
+        lockIntention?(device.intention)
         updateUI()
     }
 }

@@ -19,8 +19,9 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         
     }
 
-    var managedObjectContext: NSManagedObjectContext
-    var persistentContainer: NSPersistentContainer
+    private var historyObjectContext: NSManagedObjectContext
+    private var propertyObjectContext: NSManagedObjectContext
+    private var persistentContainer: NSPersistentContainer
     
     init(completionClosure: @escaping () -> ()) {
         
@@ -41,7 +42,8 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        self.managedObjectContext = self.persistentContainer.newBackgroundContext()
+        self.historyObjectContext = self.persistentContainer.newBackgroundContext()
+        self.propertyObjectContext = self.persistentContainer.newBackgroundContext()
     }
     
     // MARK: - FRC
@@ -54,7 +56,7 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         request.sortDescriptors = [sortByName]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
-                                                                 managedObjectContext: managedObjectContext,
+                                                                 managedObjectContext: historyObjectContext,
                                                                  sectionNameKeyPath: nil,
                                                                  cacheName: nil)
         return fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>
@@ -83,7 +85,7 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         request.sortDescriptors = [sortByIdentity, sortByName]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
-                                                                 managedObjectContext: managedObjectContext,
+                                                                 managedObjectContext: historyObjectContext,
                                                                  sectionNameKeyPath: "sectionIdentifier",
                                                                  cacheName: nil)
         return fetchedResultsController as! NSFetchedResultsController<NSFetchRequestResult>
@@ -92,7 +94,7 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
     // MARK: - Functions
     
     func addHistories(_ histories: [CHSesame2History], toDevice device: CHSesame2) {
-        let property = getPropertyForDevice(device)
+        let property = getOrCreatePropertyOfSesame2(device)
         for historyModel in historyModesFromCHHistories(histories, forDevice: device) {
             property.addToHistories(historyModel)
         }
@@ -101,16 +103,18 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
     func getHistoriesForDevice(_ device: CHSesame2) -> [Sesame2HistoryMO]? {
         let request: NSFetchRequest<Sesame2HistoryMO> = Sesame2HistoryMO.fetchRequest()
         request.predicate = NSPredicate(format: "deviceID == %@", device.deviceId as CVarArg)
-        return try? managedObjectContext.fetch(request)
+        return try? historyObjectContext.fetch(request)
     }
     
-    func savePropertyForDevice(_ device: CHSesame2, withProperties properties: [String: Any]) {
+    func savePropertyToDevice(_ device: CHSesame2, withProperties properties: [String: Any]) {
         var sesame2Store: Sesame2PropertyMO!
         
-        if let sesame2 = getDevicePropertyFromDBForDevice(device) {
+        if let sesame2 = getSesame2Property(device) {
+//            L.d("⌚️ get sesame2")
             sesame2Store = sesame2
         } else {
-            let sesame2 = createPropertyForDeviceWithoutSaving(device)
+            let sesame2 = createSesame2Property(device)
+//            L.d("⌚️ create sesame2")
             sesame2Store = sesame2
         }
         
@@ -121,39 +125,32 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         saveIfNeeded()
     }
     
-    func createPropertyForDevices(_ devices: [CHSesame2]) {
-        for device in devices {
-            createPropertyForDeviceWithoutSaving(device)
-        }
-    }
-    
-    @discardableResult
-    private func createPropertyForDeviceWithoutSaving(_ device: CHSesame2) -> Sesame2PropertyMO {
-        let request: NSFetchRequest<Sesame2PropertyMO> = Sesame2PropertyMO.fetchRequest()
-        request.predicate = NSPredicate(format: "deviceID == %@", device.deviceId.uuidString as CVarArg)
-        let foundProperties = (try? managedObjectContext.fetch(request)) ?? [Sesame2PropertyMO]()
-        if foundProperties.count == 0 {
-            let property = Sesame2PropertyMO(context: managedObjectContext)
-            property.deviceID = device.deviceId
-            return property
-        } else {
-            return foundProperties.first!
-        }
-    }
-    
     func saveIfNeeded() {
-        if managedObjectContext.hasChanges {
+        
+        if historyObjectContext.hasChanges {
             do {
-                try managedObjectContext.save()
-            } catch  {
+                try historyObjectContext.save()
+            } catch {
                 L.d("save error",error)
             }
+//            L.d("⌚️ historyObjectContext saved")
+        }
+        
+        if propertyObjectContext.hasChanges {
+            do {
+                try propertyObjectContext.save()
+            } catch {
+                L.d("save error",error)
+            }
+//            L.d("⌚️ propertyObjectContext saved")
         }
     }
     
     func deletePropertyAndHisotryForDevice(_ device: CHSesame2) {
-        let storeDevice = getPropertyForDevice(device)
-        managedObjectContext.delete(storeDevice)
+        if let storeDevice = getSesame2Property(device) {
+            propertyObjectContext.delete(storeDevice)
+        }
+        saveIfNeeded()
         // TODO: Replace by cascade delete
         deleteHistoriesForDevice(device)
     }
@@ -161,31 +158,39 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
     func deleteHistoriesForDevice(_ device: CHSesame2) {
         if let histories = getHistoriesForDevice(device) {
             for history in histories {
-                managedObjectContext.delete(history)
+                historyObjectContext.delete(history)
             }
         }
-        if managedObjectContext.hasChanges {
-            try? managedObjectContext.save()
-        }
+        saveIfNeeded()
     }
     
-    func getPropertyForDevice(_ device: CHSesame2) -> Sesame2PropertyMO {
-        if let property = getDevicePropertyFromDBForDevice(device) {
+    func getOrCreatePropertyOfSesame2(_ sesame2: CHSesame2) -> Sesame2PropertyMO {
+        if let property = getSesame2Property(sesame2) {
             return property
         } else {
-            return createPropertyForDeviceWithoutSaving(device)
+            return createSesame2Property(sesame2)
         }
     }
     
-    func getDevicePropertyFromDBForDevice(_ device: CHSesame2) -> Sesame2PropertyMO? {
+    func getSesame2Property(_ device: CHSesame2) -> Sesame2PropertyMO? {
         let request: NSFetchRequest<Sesame2PropertyMO> = Sesame2PropertyMO.fetchRequest()
-        request.predicate = NSPredicate(format: "deviceID == %@", device.deviceId.uuidString as CVarArg)
-        let devices = (try? managedObjectContext.fetch(request)) ?? [Sesame2PropertyMO]()
-        if let foundDevice = devices.first {
+        request.predicate = NSPredicate(format: "deviceID == %@", device.deviceId as CVarArg)
+        let devices = try? propertyObjectContext.fetch(request)
+        if let foundDevice = devices?.first {
             return foundDevice
         } else {
             return nil
         }
+    }
+    
+    @discardableResult
+    private func createSesame2Property(_ device: CHSesame2) -> Sesame2PropertyMO {
+        let property = Sesame2PropertyMO(context: propertyObjectContext)
+        property.deviceID = device.deviceId
+        propertyObjectContext.insert(property)
+        saveIfNeeded()
+        
+        return property
     }
 }
 
@@ -195,7 +200,7 @@ extension Sesame2Store {
         for history in histories {
             switch history {
             case .autoLock(let autoLockHistory):
-                let newHistory = Sesame2HistoryAutoLockMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryAutoLockMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = autoLockHistory.historyTag
                 newHistory.date = autoLockHistory.date
@@ -203,7 +208,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = autoLockHistory.date.toYMD()
                 historyModels.append(newHistory)
             case .autoLockUpdated(let autoLockUpdatedHistory):
-                let newHistory = Sesame2HistoryAutoLockUpdatedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryAutoLockUpdatedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = autoLockUpdatedHistory.historyTag
                 newHistory.date = autoLockUpdatedHistory.date
@@ -213,7 +218,7 @@ extension Sesame2Store {
                 newHistory.enabledAfter = Int64(autoLockUpdatedHistory.enabledAfter)
                 historyModels.append(newHistory)
             case .mechSettingUpdated(let mechSettingUpdatedHistory):
-                let newHistory = Sesame2HistoryMechSettingUpdatedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryMechSettingUpdatedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = mechSettingUpdatedHistory.historyTag
                 newHistory.date = mechSettingUpdatedHistory.date
@@ -225,7 +230,7 @@ extension Sesame2Store {
                 newHistory.unlockTargetBefore = Int64(mechSettingUpdatedHistory.unlockTargetBefore)
                 historyModels.append(newHistory)
             case .timeChanged(let timeChaedHistoryHistory):
-                let newHistory = Sesame2HistoryTimeChangedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryTimeChangedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = timeChaedHistoryHistory.historyTag
                 newHistory.date = timeChaedHistoryHistory.date
@@ -235,7 +240,7 @@ extension Sesame2Store {
                 newHistory.timeBefore = timeChaedHistoryHistory.timeBefore
                 historyModels.append(newHistory)
             case .bleLock(let lockHistory):
-                let newHistory = Sesame2HistoryLockMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryLockMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = lockHistory.historyTag
                 newHistory.date = lockHistory.date
@@ -243,7 +248,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = lockHistory.date.toYMD()
                 historyModels.append(newHistory)
             case .manualElse(let manualElseHisotry):
-                let newHistory = Sesame2HistoryManualElseMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryManualElseMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = manualElseHisotry.historyTag
                 newHistory.date = manualElseHisotry.date
@@ -251,7 +256,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = manualElseHisotry.date.toYMD()
                 historyModels.append(newHistory)
             case .manualLocked(let manualLockedHistory):
-                let newHistory = Sesame2HistoryManualLockedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryManualLockedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = manualLockedHistory.historyTag
                 newHistory.date = manualLockedHistory.date
@@ -259,7 +264,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = manualLockedHistory.date.toYMD()
                 historyModels.append(newHistory)
             case .manualUnlocked(let manualUnlockedHistory):
-                let newHistory = Sesame2HistoryManualUnlockedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryManualUnlockedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = manualUnlockedHistory.historyTag
                 newHistory.date = manualUnlockedHistory.date
@@ -267,7 +272,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = manualUnlockedHistory.date.toYMD()
                 historyModels.append(newHistory)
             case .bleUnLock(let bleUnLockHistory):
-                let newHistory = Sesame2HistoryUnlockMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryUnlockMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = bleUnLockHistory.historyTag
                 newHistory.date = bleUnLockHistory.date
@@ -275,7 +280,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = bleUnLockHistory.date.toYMD()
                 historyModels.append(newHistory)
             case .bleAdvParameterUpdated(let bleAdvUpdatedHistory):
-                let newHistory = Sesame2HistoryBleAdvParameterUpdatedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryBleAdvParameterUpdatedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = bleAdvUpdatedHistory.historyTag
                 newHistory.date = bleAdvUpdatedHistory.date
@@ -287,7 +292,7 @@ extension Sesame2Store {
                 newHistory.dbmAfter = Int64(bleAdvUpdatedHistory.dbmAfter)
                 historyModels.append(newHistory)
             case .driveLocked(let driveLockHistory):
-                let newHistory = Sesame2HistoryDriveLockedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryDriveLockedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = driveLockHistory.historyTag
                 newHistory.date = driveLockHistory.date
@@ -295,7 +300,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = driveLockHistory.date.toYMD()
                 historyModels.append(newHistory)
             case .driveUnlocked(let driveUnlockedHistory):
-                let newHistory = Sesame2HistoryDriveUnlockedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryDriveUnlockedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = driveUnlockedHistory.historyTag
                 newHistory.date = driveUnlockedHistory.date
@@ -303,7 +308,7 @@ extension Sesame2Store {
                 newHistory.sectionIdentifier = driveUnlockedHistory.date.toYMD()
                 historyModels.append(newHistory)
             case .driveFailed(let driveFailedHistory):
-                let newHistory = Sesame2HistoryDriveFailedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryDriveFailedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = driveFailedHistory.historyTag
                 newHistory.date = driveFailedHistory.date
@@ -314,7 +319,7 @@ extension Sesame2Store {
                 newHistory.stoppedPosition = Int64(driveFailedHistory.stoppedPosition)
                 historyModels.append(newHistory)
             case .none(let noneHistory):
-                let newHistory = Sesame2HistoryDriveLockedMO(context: managedObjectContext)
+                let newHistory = Sesame2HistoryDriveLockedMO(context: historyObjectContext)
                 newHistory.deviceID = device.deviceId
                 newHistory.historyTag = noneHistory.historyTag
                 newHistory.date = noneHistory.date

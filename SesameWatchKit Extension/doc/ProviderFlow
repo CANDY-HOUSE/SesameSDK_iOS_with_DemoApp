@@ -1,0 +1,10 @@
+@startuml
+
+title ProviderFlow
+
+SomeClass -> Provider: 1. Subscribe Provider
+SomeClass -> Provider: 2. Call connect function to start receive values
+Provider -> ProviderSubject: 3. Create ProviderSubjects
+ProviderSubject -> Provider: 4. Return instance
+Provider -> SomeClass: 5. Emit ProviderSubjects to subscriber
+@enduml

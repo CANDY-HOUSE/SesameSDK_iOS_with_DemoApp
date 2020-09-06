@@ -1,0 +1,22 @@
+@startuml
+
+title SesameUI Flow
+
+note left of Caller
+The caller can be the AppDelegate
+or any Coordinators.
+end note
+
+Caller -> Coordinator: 1. Create coordinator
+Caller -> Coordinator: 2. Call start function of Coordinator
+Coordinator -> ViewModel: 3. Create a ViewModel with Model
+Coordinator -> ViewController: 4. Create ViewController with the ViewModel
+Coordinator -> Coordinator: 5. Present the view
+ViewController -> ViewModel: 6. Send user event to the ViewModel
+ViewModel -> NetWork: 7. Perform tasks according to the bussiness logic
+ViewModel -> Sesame2: 8. As the delegate of Sesame2
+ViewModel -> ViewController: 9. ViewModel notify ViewController to refresh the UI
+ViewController -> ViewModel: 10. Retrieve values for display from the ViewModel
+
+@enduml
+

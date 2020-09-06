@@ -7,49 +7,14 @@
 //
 
 import Foundation
+import UIKit.UIColor
 #if os(iOS)
-import UIKit
 import SesameSDK
 #elseif os(watchOS)
-import WatchKit
 import SesameWatchKitSDK
 #endif
 
 extension CHSesame2 {
-    
-    func toggleWithHaptic(interval: TimeInterval) {
-        #if os(iOS)
-        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
-        impactFeedbackgenerator.prepare()
-        impactFeedbackgenerator.impactOccurred()
-        
-        toggle { result in
-            DispatchQueue.main.asyncAfter(deadline: .now() + interval, execute: {
-                
-                let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
-                notificationFeedbackGenerator.prepare()
-                
-                switch result {
-                case .success(let _):
-                    notificationFeedbackGenerator.notificationOccurred(.success)
-                case .failure(let error):
-                    L.d("error",error)
-                    notificationFeedbackGenerator.notificationOccurred(.error)
-                }
-            })
-        }
-        #elseif os(watchOS)
-        if deviceStatus == .locked {
-            WKInterfaceDevice.current().play(.start)
-        } else if deviceStatus == .unlocked {
-            WKInterfaceDevice.current().play(.stop)
-        }
-        
-        toggle { _ in
-
-        }
-        #endif
-    }
     
     public func localizedDescription() -> String {
         switch deviceStatus {

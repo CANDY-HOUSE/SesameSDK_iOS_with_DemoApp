@@ -19,9 +19,13 @@ class WifiSelectionTableViewController: UITableViewController {
         viewModel.statusUpdated = { [weak self] status in
             switch status {
             case .loading:
-                self?.view.makeToast("Scanning WiFi")
+                executeOnMainThread {
+                    self?.view.makeToast("Scanning WiFi")
+                }
             case .update(_):
-                self?.tableView.reloadData()
+                executeOnMainThread {
+                    self?.tableView.reloadData()
+                }
             case .finished(let result):
                 break
             }
@@ -67,7 +71,9 @@ class WifiSelectionTableViewController: UITableViewController {
             
         }
         alertController.addAction(action)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)!
+        alertController.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
+                                                style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     

@@ -55,6 +55,7 @@
 "co.candyhouse.sesame-sdk-test-app.DeleteTheMember" = "メンバーを削除";
 "co.candyhouse.sesame-sdk-test-app.PullToRefresh" = "スクロールで更新";
 "co.candyhouse.sesame-sdk-test-app.AddFriendByScan" = "QRコードをスキャンして連絡先へ追加してください";
+"co.candyhouse.sesame-sdk-test-app.AddKeyByScan" = "セサミデバイスの鍵";
 "co.candyhouse.sesame-sdk-test-app.EnterSesameName" = "名前未入力";
 "co.candyhouse.sesame-sdk-test-app.CompletelySet" = "設定完了";
 "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate" = "SesameOSをアップデート";
@@ -101,3 +102,5 @@
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.lock" = "Lock";
 "co.candyhouse.sesame-sdk-test-app.watchkitapp.unlock" = "Unlock";
 "co.candyhouse.sesame-sdk-test-app.NewWifiModule2" = "New WiFi Modeule2";
+"co.candyhouse.sesame-sdk-test-app.changeHistoryTag" = "名前";
+"co.candyhouse.sesame-sdk-test-app.share" = "シェア";

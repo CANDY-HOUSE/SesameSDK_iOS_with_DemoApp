@@ -63,8 +63,8 @@ public class TodayViewController: UIViewController, NCWidgetProviding {
                         self.devices = sesame2.data
                         self.devices
                             .sort(by: {
-                                let name1 = Sesame2Store.shared.getPropertyForDevice($0).name ?? $0.deviceId.uuidString
-                                let name2 = Sesame2Store.shared.getPropertyForDevice($1).name ?? $1.deviceId.uuidString
+                                let name1 = Sesame2Store.shared.getOrCreatePropertyOfSesame2($0).name ?? $0.deviceId.uuidString
+                                let name2 = Sesame2Store.shared.getOrCreatePropertyOfSesame2($1).name ?? $1.deviceId.uuidString
                                 return name1 < name2
                             })
                     }

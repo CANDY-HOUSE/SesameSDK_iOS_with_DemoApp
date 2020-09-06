@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/Bluetooth-4.0LE-lightblue" /> <img src="https://img.shields.io/badge/iOS-11-black" /> <img src="https://img.shields.io/badge/Android-5.0-black" /> <img src="https://img.shields.io/badge/Xcode-11.5-blue" /> <img src="https://img.shields.io/badge/Android Studio-4.0-blue" /> <img src="https://img.shields.io/badge/Swift-5.2.4-orange" /> <img src="https://img.shields.io/badge/Kotlin-1.3-orange" />
+<img src="https://img.shields.io/badge/Bluetooth-4.0LE-lightblue" /> <img src="https://img.shields.io/badge/iOS-11-black" /> <img src="https://img.shields.io/badge/Android-5.0-black" /> <img src="https://img.shields.io/badge/Xcode-11.7-blue" /> <img src="https://img.shields.io/badge/Android Studio-4.0.1-blue" /> <img src="https://img.shields.io/badge/Swift-5.2.4-orange" /> <img src="https://img.shields.io/badge/Kotlin-1.3-orange" />
 <br/>
 <p align="center" >
   <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/SesameSDK_Swift.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
@@ -24,7 +24,7 @@ SesameSDK は簡単かつパワフルかつ無料な、iOS/Androidアプリ用�
 
 | Minimum Targets | Minimum Bluetooth Target | Minimum IDE |
 |:------------------:|:------------------------:|:-----------:|
-| iOS 11 <br> iPadOS 13.1 | Bluetooth 4.0 LE | Xcode 11.6 | 
+| iOS 11 <br> iPadOS 13.1 | Bluetooth 4.0 LE | Xcode 11.7 | 
 | Android 5.0 | Bluetooth 4.0 LE | Android Studio 4.0.1 | 
 
 ### Essential dependencies

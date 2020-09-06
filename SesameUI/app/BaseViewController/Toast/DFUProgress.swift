@@ -11,36 +11,63 @@ import SesameSDK
 import iOSDFULibrary
 
 public protocol CHFirmwareUpdateInterface: class {
-    func dfuInitialized(abort: @escaping () -> Void)
+    func dfuInitializedWithAbortHandler(_ abort: @escaping () -> Void)
     func dfuStarted()
     func dfuSucceeded()
     func dfuError(message: String)
     func dfuProgressDidChange(progress: Int)
 }
 
-class TemporaryFirmwareUpdateClass: CHFirmwareUpdateInterface {
+class DFUAlertController: UIAlertController {
+    var willEnterBackground: (()->Void)?
+}
+
+class DFUIndicator: CHFirmwareUpdateInterface {
     func dfuSucceeded() {
         
     }
     
-    weak var view: UIViewController?
-    var alertView: UIAlertController
+    static let shared = DFUIndicator()
+    weak var presentingViewController: UIViewController? {
+        didSet {
+            isFinished = false
+            alertView = DFUAlertController(title: "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized,
+                                           message: "co.candyhouse.sesame-sdk-test-app.StartingSoon".localized,
+                                           preferredStyle: .alert)
+            alertView.popoverPresentationController?.sourceView = self.presentingViewController?.view
+            alertView.willEnterBackground = { [weak self] in
+                if self?.isFinished == false {
+                    self?.isFinished = true
+                    if let abortFunc = self?.abortFunc {
+                        self?.alertView.message = "Aborted"
+                        self?.alertView.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Close".localized,
+                                                          style: .default,
+                                                          handler: self?.onAbortClick))
+                        abortFunc()
+                    }
+                }
+            }
+            guard let alertView = self.alertView else {
+                return
+            }
+            presentingViewController?.present(alertView, animated: true, completion: nil)
+        }
+    }
+    var alertView: DFUAlertController!
     var abortFunc: (() -> Void)?
     var isFinished: Bool = false
     var callBack:(_ from:String)->Void = {from in
         
     }
+    
+    private init() {
+        self.abortFunc = nil
+    }
 
     init(_ mainView: UIViewController , callBack :@escaping (_ from:String)->Void ) {
-        self.callBack =  callBack
-        abortFunc = nil
-        alertView = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized,
-                                      message: "co.candyhouse.sesame-sdk-test-app.StartingSoon".localized,
-                                      preferredStyle: .alert)
-        alertView.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Close".localized,
-                                          style: .default,
-                                          handler: self.onAbortClick))
-        mainView.present(self.alertView, animated: true, completion: nil)
+        self.callBack = callBack
+        self.abortFunc = nil
+        self.presentingViewController = mainView
     }
 
     func onAbortClick(_ btn: UIAlertAction) {
@@ -52,7 +79,7 @@ class TemporaryFirmwareUpdateClass: CHFirmwareUpdateInterface {
         }
     }
 
-    func dfuInitialized(abort: @escaping () -> Void) {
+    func dfuInitializedWithAbortHandler(_ abort: @escaping () -> Void) {
         if isFinished {
             abort()
         } else {
@@ -79,12 +106,16 @@ class TemporaryFirmwareUpdateClass: CHFirmwareUpdateInterface {
     }
 }
 
-extension TemporaryFirmwareUpdateClass: DFUHelperObserver {
+extension DFUIndicator: DFUHelperObserver {
+    
     func dfuStateDidChange(to state: DFUState) {
         switch state {
         case .aborted:
             break
         case .completed:
+            alertView.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Close".localized,
+                                              style: .default,
+                                              handler: self.onAbortClick))
             alertView.message = "co.candyhouse.sesame-sdk-test-app.Succeeded".localized
             callBack("Succeed")
             isFinished = true

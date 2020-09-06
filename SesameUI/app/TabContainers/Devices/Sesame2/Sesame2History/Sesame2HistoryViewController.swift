@@ -22,7 +22,7 @@ class Sesame2HistoryViewController: CHBaseViewController {
     var refreshControl = UIActivityIndicatorView(style: .gray)
     // MARK: - Flag
     private var isNeedScrollToBottom = true
-    private var canRefresh = true
+    private var canLoadMore = true
     private var isLoadingContent = false
     private var isFirstTimeEnterTheView = true
     private var isScrollToTopTapped = false
@@ -49,7 +49,7 @@ class Sesame2HistoryViewController: CHBaseViewController {
                 switch result {
                 case .success(_):
                     executeOnMainThread {
-                        strongSelf.canRefresh = strongSelf.viewModel.hasMoreData
+                        strongSelf.canLoadMore = strongSelf.viewModel.hasMoreData
                         strongSelf.refreshControl.removeFromSuperview()
                         L.d("😀 Result is back")
                         strongSelf.reloadContent()
@@ -89,8 +89,8 @@ class Sesame2HistoryViewController: CHBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updataSesame2UI()
-        viewModel.viewWillAppear()
         titleLabel.text = viewModel.title
+        viewModel.delegateSesame2()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -102,13 +102,35 @@ class Sesame2HistoryViewController: CHBaseViewController {
     }
     
     // MARK: Methods
-    fileprivate func scrollToBottomWithAnimation(_ animation: Bool = true) {
+    func reloadContent() {
+        canLoadMore = viewModel.hasMoreData
+        isLoadingContent = true
+        historyTable.reloadData()
+        if isNeedScrollToBottom == true {
+            L.d("🔔","***刷新***")
+            refreshToBottom()
+            isLoadingContent = false
+        } else {
+            historyTable.layer.layoutIfNeeded()
+            if isScrollToTopTapped == true {
+               isScrollToTopTapped = false
+            }
+            // Scroll to the position of previous request
+            let indexPath = self.viewModel.firstIndexPathBeforeUpdate()
+            historyTable.scrollToRow(at: indexPath, at: .top, animated: false)
+            isLoadingContent = false
+        }
+    }
+    
+    func refreshToBottom() {
+        historyTable.reloadData()
+        
         executeOnMainThread {
             let lastSections = self.historyTable.numberOfSections - 1
             guard lastSections >= 0 else {
                 self.historyTable.setContentOffset(CGPoint(x: 0,
                                                            y: self.historyTable.contentSize.height),
-                                                   animated: animation)
+                                                   animated: false)
                 return
             }
             
@@ -116,12 +138,12 @@ class Sesame2HistoryViewController: CHBaseViewController {
             guard lastRow >= 0 else {
                 self.historyTable.setContentOffset(CGPoint(x: 0,
                                                            y: self.historyTable.contentSize.height),
-                                                   animated: animation)
+                                                   animated: false)
                 return
             }
             
             let indexPath = IndexPath(row: lastRow, section: lastSections)
-            self.historyTable.scrollToRow(at: indexPath, at: .top, animated: animation)
+            self.historyTable.scrollToRow(at: indexPath, at: .top, animated: false)
         }
     }
     
@@ -167,7 +189,7 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var identifier = ""
-        if indexPath.section == 0, indexPath.row == 0, canRefresh {
+        if indexPath.section == 0, indexPath.row == 0, canLoadMore {
             identifier = "Sesame2HistoryLoadingTableViewCell"
         } else {
             identifier = viewModel.cellIdentifierForIndexPath(indexPath)
@@ -225,54 +247,23 @@ extension Sesame2HistoryViewController: UITableViewDataSource, UITableViewDelega
         }
     }
     
-    @objc
-    func startRefresh() {
-        if canRefresh {
-            L.d("😀 can refresh")
-            canRefresh = false
-            isNeedScrollToBottom = false
-            refresh(self)
-        } else {
-            L.d("😀 can't refresh")
-        }
-    }
-    
-    @objc func refresh(_ sender: AnyObject) {
-        self.viewModel.loadMore()
-    }
-    
-    func refreshToBottom() {
-        historyTable.reloadData()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.scrollToBottomWithAnimation(false)
-//        }
-    }
-    
-    func reloadContent() {
-        canRefresh = viewModel.hasMoreData
-        isLoadingContent = true
-        historyTable.reloadData()
-        if isNeedScrollToBottom == true {
-            L.d("🔔","***刷新***")
-            refreshToBottom()
-            isLoadingContent = false
-        } else {
-            historyTable.layer.layoutIfNeeded()
-            if isScrollToTopTapped == true {
-               isScrollToTopTapped = false
-            }
-            let indexPath = self.viewModel.firstIndexPathBeforeUpdate()
-            historyTable.scrollToRow(at: indexPath, at: .top, animated: false)
-            isLoadingContent = false
-        }
-    }
-    
     func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        if canRefresh {
+        if canLoadMore {
             isScrollToTopTapped = true
             addRefreshControlIndicator()
             startRefresh()
         }
         return true
+    }
+
+    func startRefresh() {
+        if canLoadMore {
+            L.d("😀 can refresh")
+            canLoadMore = false
+            isNeedScrollToBottom = false
+            viewModel.loadMore()
+        } else {
+            L.d("😀 can't refresh")
+        }
     }
 }

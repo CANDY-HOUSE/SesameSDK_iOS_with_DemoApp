@@ -30,6 +30,15 @@ class MeViewController: CHBaseViewController {
     @IBOutlet var nonLoggedInComponents: [UIView]!
     @IBOutlet var loggedInComponents: [UIView]!
     
+    @IBOutlet weak var changeHistoryTagButton: UIButton! {
+        didSet {
+            changeHistoryTagButton.addTarget(self, action: #selector(MeViewController.changeHistoryTagTapped(sender:)), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var historyTagHintLabel: UILabel!
+    
+    @IBOutlet weak var debugSwitch: UISwitch!
+    
     private var menuFloatView: PopUpMenuControl?
     
     override func viewDidLoad() {
@@ -47,15 +56,19 @@ class MeViewController: CHBaseViewController {
             case .update:
                 executeOnMainThread {
                     strongSelf.setContentWithIsLoggedIn(strongSelf.viewModel.isSignedIn)
+                    strongSelf.refreshUI()
                 }
             case .finished(let result):
                 switch result {
                 case .success(_):
                     executeOnMainThread {
                         strongSelf.setLoginName()
+                        strongSelf.refreshUI()
                     }
-                case .failure(_):
-                    break
+                case .failure(let error):
+                    executeOnMainThread {
+                        strongSelf.view.makeToast(error.errorDescription())
+                    }
                 }
             }
         }
@@ -99,11 +112,13 @@ class MeViewController: CHBaseViewController {
             versionLabel.heightAnchor.constraint(equalToConstant: 40)
         ]
         NSLayoutConstraint.activate(constraints)
+        debugSwitch.onTintColor = viewModel.autoLockSwitchColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
+        refreshUI()
     }
     
     func setContentWithIsLoggedIn(_ isLoggedIn: Bool) {
@@ -141,7 +156,31 @@ class MeViewController: CHBaseViewController {
         viewModel.showQRCodeTapped()
     }
     
+    @objc func changeHistoryTagTapped(sender: UIButton) {
+        CHSesame2ChangeNameDialog.show(viewModel.historyTagPlaceholder(),
+                                       title: viewModel.changeHistoryTagPromptTitle,
+                                       hint: viewModel.changeHistoryTagHint()) { historyTag in
+            if historyTag == "" {
+                self.view.makeToast(self.viewModel.enterSesameName)
+                return
+            }
+            self.viewModel.modifyHistoryTag(historyTag)
+            DispatchQueue.main.async {
+                self.refreshUI()
+            }
+        }
+    }
     
+    func refreshUI() {
+        changeHistoryTagButton.setTitle(viewModel.historyTagPlaceholder(),
+                                        for: .normal)
+        historyTagHintLabel.text = viewModel.historyTagHintText()
+        debugSwitch.isOn = viewModel.isDubugSwitchOn()
+    }
+    
+    @IBAction func debugSwitchTapped(_ sender: UISwitch) {
+        viewModel.debugSwitchTapped(isOn: sender.isOn)
+    }
 }
 
 extension MeViewController: MeDelegate {

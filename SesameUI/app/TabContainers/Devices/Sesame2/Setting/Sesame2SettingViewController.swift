@@ -26,10 +26,6 @@ public class Sesame2SettingViewController: CHBaseViewController {
     // SSM2 Name
     @IBOutlet weak var changenameLb: UILabel!
     
-    // History Tag
-    @IBOutlet weak var historyTagValueLabel: UILabel!
-    @IBOutlet weak var modifyHistoryTagLabel: UILabel!
-    
     // DFU
     @IBOutlet weak var dfuLabel: UILabel!
     @IBOutlet weak var version: UILabel!
@@ -41,14 +37,17 @@ public class Sesame2SettingViewController: CHBaseViewController {
     @IBOutlet weak var secondPicker: UIPickerView!
     
     // advInterval
-    @IBOutlet weak var advIntervalLabel: UILabel!
-    @IBOutlet weak var advIntervalValueLabel: UILabel!
-    @IBOutlet weak var advIntervalPicker: UIPickerView!
+    
+    @IBOutlet weak var advIntervalContainer: UIView?
+    @IBOutlet weak var advIntervalLabel: UILabel?
+    @IBOutlet weak var advIntervalValueLabel: UILabel?
+    @IBOutlet weak var advIntervalPicker: UIPickerView?
     
     // txPower
-    @IBOutlet weak var txPowerLabel: UILabel!
-    @IBOutlet weak var txPowerValueLabel: UILabel!
-    @IBOutlet weak var txPowerPicker: UIPickerView!
+    @IBOutlet weak var txPowerContainer: UIView?
+    @IBOutlet weak var txPowerLabel: UILabel?
+    @IBOutlet weak var txPowerValueLabel: UILabel?
+    @IBOutlet weak var txPowerPicker: UIPickerView?
     
     // Reset Sesame
     @IBOutlet weak var resetSesameButton: UIButton!
@@ -144,90 +143,50 @@ public class Sesame2SettingViewController: CHBaseViewController {
         arrowImg.image = UIImage.SVGImage(named: viewModel.arrowImg)
         secondPicker.isHidden = viewModel.isHiddenSecondPicker
         
-        advIntervalLabel.text = viewModel.advIntervalTitle
-        advIntervalValueLabel.text = viewModel.advInterval
-        
-        txPowerLabel.text = viewModel.txPowerTitle
-        txPowerValueLabel.text = viewModel.txPower
-        
-        advIntervalPicker.isHidden = viewModel.isHiddenAdvIntervalPicker
-        txPowerPicker.isHidden = viewModel.isHiddenTxPowerPicker
+        advIntervalLabel?.text = viewModel.advIntervalTitle
+        advIntervalValueLabel?.text = viewModel.advInterval
+        txPowerLabel?.text = viewModel.txPowerTitle
+        txPowerValueLabel?.text = viewModel.txPower
+        advIntervalPicker?.isHidden = viewModel.isHiddenAdvIntervalPicker
+        txPowerPicker?.isHidden = viewModel.isHiddenTxPowerPicker
         
         version.text = viewModel.sesame2VersionText
         
         uuidTitleLabel.text = viewModel.uuidTitleText
         uuidValueLabel.text = viewModel.uuidValueText
-        historyTagValueLabel.text = viewModel.historyTagPlaceholder()
-        
-        modifyHistoryTagLabel.text = viewModel.modifyHistoryTagText
+
         autoLockSwitch.onTintColor = viewModel.autoLockSwitchColor
         secondPicker.selectRow(viewModel.secondPickerSelectedRow, inComponent: 0, animated: false)
-        advIntervalPicker.selectRow(viewModel.advIntervalPickerSelectedRow, inComponent: 0, animated: false)
-        txPowerPicker.selectRow(viewModel.txPowerPickerSelectedRow, inComponent: 0, animated: false)
+        advIntervalPicker?.selectRow(viewModel.advIntervalPickerSelectedRow, inComponent: 0, animated: false)
+        txPowerPicker?.selectRow(viewModel.txPowerPickerSelectedRow, inComponent: 0, animated: false)
+        
+
+        let debugViews = [
+            advIntervalLabel,
+            advIntervalValueLabel,
+            advIntervalPicker,
+            advIntervalContainer,
+            txPowerLabel,
+            txPowerValueLabel,
+            txPowerPicker,
+            txPowerContainer
+        ]
+        if !CHConfiguration.shared.isDebugModeEnabled() {
+            for debugView in debugViews {
+                debugView?.removeFromSuperview()
+            }
+        }
     }
     
     @IBAction func autolockSwitch(_ sender: UISwitch) {
     }
     
-    @IBAction func DFU(_ sender: Any) {
-        let chooseDFUModeAlertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.dfu".localized,
-                                                message: "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized,
-                                                preferredStyle: .actionSheet)
-        let actionSheetApplicationDFU = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.application".localized, style: .default) { _ in
-            self.showApplicaitonDFUAlertForIndexPath()
+    @IBAction func DFU(_ sender: UIButton) {
+        showDFUAlertFrom(sender: sender, dfuProcess: { [weak self] progressIndicator in
+            self?.viewModel.dfuApplicationWithObserver(progressIndicator)
+        }) { [weak self] in
+            self?.viewModel.viewDidDisappear()
         }
-        
-        let actionSheetBootloaderDFU = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.bootloader".localized, style: .default) { _ in
-            self.showBootloaderDFUAlertForIndexPath()
-        }
-        
-        chooseDFUModeAlertController.addAction(actionSheetApplicationDFU)
-        chooseDFUModeAlertController.addAction(actionSheetBootloaderDFU)
-        chooseDFUModeAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(chooseDFUModeAlertController, animated: true, completion: nil)
-    }
-    
-    func showApplicaitonDFUAlertForIndexPath() {
-        let dfu = UIAlertAction
-            .addAction(title: viewModel.dfuActionText(),
-                       style: .destructive) { (action) in
-                        let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
-                            
-                        }
-                        progressIndicator.dfuInitialized {
-                            self.viewModel.cancelDFU()
-                        }
-                        self.viewModel.dfuApplicationDeviceWithObserver(progressIndicator)
-        }
-        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.application_dfu".localized,
-                                                message: viewModel.applicationDfuFileName(),
-                                                preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
-        alertController.addAction(dfu)
-        alertController.addAction(cancel)
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func showBootloaderDFUAlertForIndexPath() {
-        let dfu = UIAlertAction
-            .addAction(title: viewModel.dfuActionText(),
-                       style: .destructive) { (action) in
-                        let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
-                            
-                        }
-                        progressIndicator.dfuInitialized {
-                            self.viewModel.cancelDFU()
-                        }
-                        self.viewModel.dfuBootloaderDeviceWithObserver(progressIndicator)
-        }
-        let alertController = UIAlertController(title: "co.candyhouse.sesame-sdk-test-app.bootloader_dfu".localized,
-                                                message: viewModel.bootloaderDfuFileName(),
-                                                preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized, style: .cancel, handler: nil)
-        alertController.addAction(dfu)
-        alertController.addAction(cancel)
-        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func autolockSecond(_ sender: Any) {

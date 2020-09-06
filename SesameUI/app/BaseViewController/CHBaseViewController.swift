@@ -68,6 +68,11 @@ public class CHBaseViewController: UIViewController {
         setupNavigationBarTintColor(navigationBarTintColor.previous)
         previouseNavigationTitle = titleLabel.text ?? ""
         titleLabel.text = ""
+        navigationItem.title = ""
+    }
+    
+    public func willEnterBackground() {
+        
     }
 }
 

@@ -15,12 +15,12 @@ public protocol BluetoothDeviceCellViewModelDelegate {
     func enterTestModeTapped(sesame2: CHSesame2)
 }
 
-public final class BluetoothDeviceCellViewModel: ViewModel {
-
+public final class BluetoothDeviceCellViewModel: ViewModel, LockHaptic {
     public var statusUpdated: ViewStatusHandler?
     
     var delegate: BluetoothDeviceCellViewModelDelegate?
     var sesame2: CHSesame2
+    var lockIntention: ((CHSesame2Intention) -> Void)?
     
     public init(sesame2: CHSesame2) {
         self.sesame2 = sesame2
@@ -28,22 +28,30 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
         sesame2.delegate = self
     }
 
-    public var name: String {
-        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
-        return device.name ?? device.deviceID!.uuidString
+    public var sesame2Name: String {
+        let device = Sesame2Store.shared.getSesame2Property(sesame2)
+        return device?.name ?? sesame2.deviceId!.uuidString
     }
     
-    public var deviceStatus: String {
-        return sesame2.deviceStatus.description()
+    public var sesame2DeviceStatus: String {
+        if CHConfiguration.shared.isDebugModeEnabled() {
+            return sesame2.deviceStatus.description()
+        } else {
+            return ""
+        }
     }
     
-    public var shadowStatus: String {
-        return sesame2.deviceShadowStatus?.description() ?? ""
+    public var sesame2ShadowStatus: String {
+        if CHConfiguration.shared.isDebugModeEnabled() {
+            return sesame2.deviceShadowStatus?.description() ?? ""
+        } else {
+            return ""
+        }
     }
     
     public var isHideOwnerNameLabel: Bool {
-        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
-        return sesame2.deviceId.uuidString == device.name
+        let device = Sesame2Store.shared.getSesame2Property(sesame2)
+        return sesame2.deviceId.uuidString == device?.name
     }
     
     public var isShowContent: Bool {
@@ -58,11 +66,11 @@ public final class BluetoothDeviceCellViewModel: ViewModel {
         sesame2.mechStatus?.isInLockRange
     }
     
-    public func toggleTapped() {
-        sesame2.toggleWithHaptic(interval: 1.5)
+    public func sesame2LockTapped() {
+        toggleWithHaptic(sesame2: sesame2) {}
     }
     
-    public func lockBackgroundImage() -> String {
+    public func sesame2LockImage() -> String {
         sesame2.currentStatusImage()
     }
     
@@ -98,6 +106,7 @@ extension BluetoothDeviceCellViewModel: CHSesame2Delegate {
         statusUpdated?(.update(nil))
     }
     public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
+        lockIntention?(device.intention)
         statusUpdated?(.update(nil))
     }
 }
@@ -105,7 +114,7 @@ extension BluetoothDeviceCellViewModel: CHSesame2Delegate {
 // MARK: - Test mode
 extension BluetoothDeviceCellViewModel {
     var isHideTestButton: Bool {
-        !UserDefaults.standard.bool(forKey: "testMode")
+        !CHConfiguration.shared.isDebugModeEnabled()
     }
     
     public func enterTestModeTapped() {

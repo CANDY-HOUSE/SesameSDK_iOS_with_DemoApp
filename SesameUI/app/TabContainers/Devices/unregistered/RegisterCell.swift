@@ -26,8 +26,8 @@ class RegisterCell: UITableViewCell {
             statusLabel.font = UIFont.systemFont(ofSize: 15)
         }
     }
-    @IBOutlet weak var dfuButton: UIButton!
     weak var delegate: RegisterCellDelegate?
+    var longPress: UILongPressGestureRecognizer?
     
     var viewModel: RegisterCellModel! {
         didSet {
@@ -35,18 +35,24 @@ class RegisterCell: UITableViewCell {
             bluetoothImg.image = UIImage.SVGImage(named: viewModel.bluetoothImage(),
                                                   fillColor: .sesame2Green)
             modelLb.text = viewModel.modelLabelText()
-            statusLabel.text = viewModel.currentStatus()
-            dfuButton.setTitle("", for: .normal)
-            let image = UIImage.SVGImage(named: viewModel.dfuButtonImage,
-                                         size: CGSize(width: dfuButton.bounds.width, height: dfuButton.bounds.height))
-            dfuButton.setImage(image!, for: .normal)
-            dfuButton.tintColor = .sesame2Green
-            dfuButton.isHidden = viewModel.isHiddenDfuButton
+            statusLabel.text = viewModel.currentSesame2Status()
+            
+            if gestureRecognizers == nil || longPress == nil {
+                self.longPress = UILongPressGestureRecognizer(target: self, action: #selector(RegisterCell.dfuTapped(_:)))
+                longPress!.minimumPressDuration = 1.0
+                addGestureRecognizer(longPress!)
+            }
         }
     }
     
+    @objc
     @IBAction func dfuTapped(_ sender: Any) {
         delegate?.dfuTapped(cell: self)
     }
     
+    deinit {
+        if let longPress = longPress {
+            removeGestureRecognizer(longPress)
+        }
+    }
 }

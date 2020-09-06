@@ -145,6 +145,11 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
                                      style: .default,
                                      handler: nil)
         alertController.addAction(okAction)
+        alertController.popoverPresentationController?.sourceView = view
+        alertController.popoverPresentationController?.sourceRect = .init(x: view.center.x,
+                                                                          y: view.center.y,
+                                                                          width: 0,
+                                                                          height: 0)
         self.present(alertController, animated: true, completion: nil)
     }
     

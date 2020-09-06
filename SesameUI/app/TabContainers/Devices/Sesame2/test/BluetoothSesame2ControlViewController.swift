@@ -53,7 +53,9 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
                 return
             }
             nowDegree = status.position
-            lockstatusLB.text = status.isInLockRange ? "locked" : status.isInUnlockRange ? "unlocked" : "moved"
+            executeOnMainThread {
+                self.lockstatusLB.text = status.isInLockRange ? "locked" : status.isInUnlockRange ? "unlocked" : "moved"
+            }
         }
     }
     
@@ -64,8 +66,10 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
             }
             lockDegree = setting.lockPosition
             unlockDegree = setting.unlockPosition
-            lockSetBtn.setTitle("\(setting.lockPosition)", for: .normal)
-            unlockSetBtn.setTitle("\(setting.unlockPosition)", for: .normal)
+            executeOnMainThread {
+                self.lockSetBtn.setTitle("\(setting.lockPosition)", for: .normal)
+                self.unlockSetBtn.setTitle("\(setting.unlockPosition)", for: .normal)
+            }
         }
     }
     
@@ -87,19 +91,25 @@ class BluetoothSesame2ControlViewController: CHBaseViewController, CHSesame2Dele
     
     var nowDegree: Int16 = 0 {
         didSet {
-            angleLB.text = "angle:\(nowDegree)"
+            executeOnMainThread {
+                self.angleLB.text = "angle:\(self.nowDegree)"
+            }
         }
     }
     
     var lockDegree: Int16 = 0 {
         didSet {
-            lockSetBtn.setTitle(String(lockDegree), for: .normal)
+            executeOnMainThread {
+                self.lockSetBtn.setTitle(String(self.lockDegree), for: .normal)
+            }
         }
     }
     
     var unlockDegree: Int16 = 0 {
         didSet {
-            unlockSetBtn.setTitle(String(unlockDegree), for: .normal)
+            executeOnMainThread {
+                self.unlockSetBtn.setTitle(String(self.unlockDegree), for: .normal)
+            }
         }
     }
     
@@ -261,7 +271,7 @@ extension BluetoothSesame2ControlViewController {
         @IBAction func dufClick(_ sender: UIButton) {
             do {
                 let zipData = try Data(contentsOf: Constant.resourceBundle.url(forResource: nil, withExtension: ".zip")!)
-                self.sesame?.updateFirmware({ result in
+                self.sesame?.updateFirmware({ [unowned self] result in
                     switch result {
                     case .success(let peripheral):
                         guard let peripheral = peripheral.data else {
@@ -269,10 +279,10 @@ extension BluetoothSesame2ControlViewController {
                             return
                         }
                         self.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
-                        let progressIndicator = TemporaryFirmwareUpdateClass(self) { success in
+                        let progressIndicator = DFUIndicator(self) { success in
                             
                         }
-                        progressIndicator.dfuInitialized {
+                        progressIndicator.dfuInitializedWithAbortHandler {
                             self.dfuHelper?.abort()
                             self.dfuHelper = nil
                         }
@@ -308,6 +318,11 @@ extension BluetoothSesame2ControlViewController {
                     
                 }
             }))
+            alert.popoverPresentationController?.sourceView = view
+            alert.popoverPresentationController?.sourceRect = .init(x: view.center.x,
+                                                                    y: view.center.y,
+                                                                    width: 0,
+                                                                    height: 0)
             self.present(alert, animated: true)
         }
         
@@ -364,8 +379,14 @@ extension BluetoothSesame2ControlViewController {
                 self?.logView.text = ""
             }
             cleanLog.addAction(ok)
-            cleanLog.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
+            cleanLog.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
+                                             style: .cancel,
+                                             handler: nil))
+            cleanLog.popoverPresentationController?.sourceView = view
+            cleanLog.popoverPresentationController?.sourceRect = .init(x: view.center.x,
+                                                                       y: view.center.y,
+                                                                       width: 0,
+                                                                       height: 0)
             present(cleanLog, animated: true, completion: nil)
         }
         
@@ -422,7 +443,8 @@ extension BluetoothSesame2ControlViewController {
             strongSelf.startTest(strongSelf.startTestButton!)
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
+                                   style: .cancel, handler: nil)
         alertController.addAction(ok)
         alertController.addAction(cancel)
         alertController.addAction(testAgain)
@@ -437,7 +459,11 @@ extension BluetoothSesame2ControlViewController {
                 break
             }
         }
-            
+        alertController.popoverPresentationController?.sourceView = view
+        alertController.popoverPresentationController?.sourceRect = .init(x: view.center.x,
+                                                                          y: view.center.y,
+                                                                          width: 0,
+                                                                          height: 0)
         present(alertController, animated: true, completion: {
     //            guard let strongSelf = self else {
     //                return
@@ -488,7 +514,9 @@ extension BluetoothSesame2ControlViewController {
                 strongSelf.navigationController?.popViewController(animated: true)
             }
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
+                                   style: .cancel,
+                                   handler: nil)
         let share = UIAlertAction(title: "Share", style: .default, handler: { [weak self] _ in
             guard let strongSelf = self else {
                 return
@@ -505,7 +533,11 @@ extension BluetoothSesame2ControlViewController {
         alertController.addAction(cancel)
         alertController.addAction(share)
         alertController.addAction(testAgain)
-        
+        alertController.popoverPresentationController?.sourceView = view
+        alertController.popoverPresentationController?.sourceRect = .init(x: view.center.x,
+                                                                          y: view.center.y,
+                                                                          width: 0,
+                                                                          height: 0)
         present(alertController, animated: true, completion: nil)
         
         testErrors = []

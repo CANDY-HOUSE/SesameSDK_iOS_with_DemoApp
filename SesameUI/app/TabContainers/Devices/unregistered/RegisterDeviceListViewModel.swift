@@ -22,9 +22,6 @@ public final class RegisterDeviceListViewModel: ViewModel {
     private var sesame2s: [CHSesame2] = [] {
         didSet {
             sesame2s.first?.connect(){_ in}
-//            for sesame in sesame2s {
-//                sesame.connect(){_ in}
-//            }
         }
     }
     
@@ -34,6 +31,10 @@ public final class RegisterDeviceListViewModel: ViewModel {
     public private(set) var backButtonImage = "icons_filled_close"
     private(set) var mySesameText = "ドラえもん".localized
     private(set) var dfuActionText = "co.candyhouse.sesame-sdk-test-app.Start".localized
+    private(set) var applicationDfuMessage = "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized
+    var dfuFileName: String {
+        CHDFUHelper.applicationDfuFileName() ?? ""
+    }
     
     public var statusUpdated: ViewStatusHandler?
     public var delegate: RegisterDeviceListViewModelDelegate?
@@ -68,13 +69,15 @@ public final class RegisterDeviceListViewModel: ViewModel {
     
     private func registerSesame2(_ sesame2: CHSesame2) {
 
-        sesame2.registerSesame2( { result in
+        sesame2.registerSesame2( { [unowned self] result in
             switch result {
 
             case .success(_):
                 defer {
-                    self.statusUpdated?(.update(nil))
-                    self.delegate?.registerSesame2Succeed()
+                    executeOnMainThread {
+                        self.statusUpdated?(.update(nil))
+                        self.delegate?.registerSesame2Succeed()
+                    }
                 }
                 
                 L.d("註冊成功", "configureLockPosition")
@@ -113,23 +116,19 @@ public final class RegisterDeviceListViewModel: ViewModel {
         })
     }
     
-    func applicationDfuFileName() -> String? {
-        CHDFUHelper.applicationDfuFileName()
-    }
+//    func bootloaderDfuFileName() -> String? {
+//        CHDFUHelper.bootloaderDfuFileName()
+//    }
     
-    func bootloaderDfuFileName() -> String? {
-        CHDFUHelper.bootloaderDfuFileName()
-    }
-    
-    func dfuApplicationDeviceAtIndexPath(_ indexPath: IndexPath,
-                              observer: DFUHelperObserver) {
+    func dfuSesame2AtIndexPath(_ indexPath: IndexPath,
+                               observer: DFUHelperObserver) {
         dfuDeviceAtIndexPath(indexPath, type: .application, observer: observer)
     }
     
-    func dfuBootloaderDeviceAtIndexPath(_ indexPath: IndexPath,
-                                         observer: DFUHelperObserver) {
-        dfuDeviceAtIndexPath(indexPath, type: .bootloader, observer: observer)
-    }
+//    func dfuBootloaderDeviceAtIndexPath(_ indexPath: IndexPath,
+//                                         observer: DFUHelperObserver) {
+//        dfuDeviceAtIndexPath(indexPath, type: .bootloader, observer: observer)
+//    }
     
     private func dfuDeviceAtIndexPath(_ indexPath: IndexPath,
                                       type: DFUFirmwareType,
@@ -148,22 +147,22 @@ public final class RegisterDeviceListViewModel: ViewModel {
                 return
         }
         
-        sesame2.updateFirmware { result in
+        sesame2.updateFirmware { [weak self] result in
             switch result {
             case .success(let peripheral):
                 guard let peripheral = peripheral.data else {
                     L.d("Request commad failed.")
                     let error = NSError(domain: "", code: 0, userInfo: ["message": "Request commad failed."])
-                    self.statusUpdated?(.finished(.failure(error)))
+                    self?.statusUpdated?(.finished(.failure(error)))
                     return
                 }
                 L.d("Success.")
-                self.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
-                self.dfuHelper?.observer = observer
-                self.dfuHelper?.start(type)
+                self?.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
+                self?.dfuHelper?.observer = observer
+                self?.dfuHelper?.start(type)
             case .failure(let error):
                 L.d(error.errorDescription())
-                self.statusUpdated?(.finished(.failure(error)))
+                self?.statusUpdated?(.finished(.failure(error)))
             }
         }
     }
@@ -171,10 +170,6 @@ public final class RegisterDeviceListViewModel: ViewModel {
     func cancelDFU() {
         dfuHelper?.abort()
         dfuHelper = nil
-    }
-    
-    func viewDidDisappear() {
-        cancelDFU()
     }
     
     deinit {

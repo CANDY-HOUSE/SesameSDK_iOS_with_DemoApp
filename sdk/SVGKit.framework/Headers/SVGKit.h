@@ -155,6 +155,7 @@ FOUNDATION_EXPORT const unsigned char SVGKitFramework_VersionString[];
 #import "SVGKPointsAndPathsParser.h"
 #import "CALayer+RecursiveClone.h"
 #import "SVGGradientLayer.h"
+#import "SVGTextLayer.h"
 #import "CALayerWithChildHitTest.h"
 #import "CAShapeLayerWithHitTest.h"
 #import "CGPathAdditions.h"
@@ -162,9 +163,11 @@ FOUNDATION_EXPORT const unsigned char SVGKitFramework_VersionString[];
 #import "SVGKImage.h"
 #import "SVGKSource.h"
 #import "NSCharacterSet+SVGKExtensions.h"
+#if SVGKIT_UIKIT
 #import "SVGKFastImageView.h"
 #import "SVGKImageView.h"
 #import "SVGKLayeredImageView.h"
+#endif
 #import "SVGKPattern.h"
 #import "SVGUtils.h"
 #if SVGKIT_MAC
@@ -172,3 +175,4 @@ FOUNDATION_EXPORT const unsigned char SVGKitFramework_VersionString[];
 #endif
 #import "NSData+NSInputStream.h"
 #import "SVGKSourceNSData.h"
+#import "SVGKInlineResource.h"

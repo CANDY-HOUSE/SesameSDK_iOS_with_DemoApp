@@ -19,6 +19,7 @@ public final class MyQRViewModel: ViewModel {
     private(set) var qrCodeType: QRcodeType
     
     public private(set) var hintLabelText = "co.candyhouse.sesame-sdk-test-app.AddFriendByScan".localized
+    public private(set) var shareText = "co.candyhouse.sesame-sdk-test-app.share".localized
     
     public init(familyName: String? = nil,
                 givenName: String? = nil,
@@ -37,6 +38,7 @@ public final class MyQRViewModel: ViewModel {
     }
     
     public var deviceName: String? {
-        sesame2?.deviceId!.uuidString
+        let device = Sesame2Store.shared.getSesame2Property(sesame2!)
+        return device?.name ?? sesame2!.deviceId!.uuidString
     }
 }
