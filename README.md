@@ -35,13 +35,12 @@ SesameSDK は簡単かつパワフルかつ無料な、iOS/Androidアプリ用�
   - SesameSDK.aar
 
 # 1. SesameSDK を取り入れる
-- Download SesameSDK and play with the included iOS/Android Demo app.  または
+- SesameSDKプロジェクトをダウンロードし、その中のiOS/Android Demo app で遊んでみてください。 または
 [Apple TestFlight](https://testflight.apple.com/join/mK4OadTW) / 
 [Google Drive](https://drive.google.com/file/d/15aRQl6aWBVwJSE4l3ZL-eMisPoe-f2lW/view?usp=sharing)
-から Demo app をダウンロードする。  
-- Drag the SesameSDK.framework and AWSAPIGateway.framework into your project.  
-- Get the **API Key** and the **Identity Pool ID** from CANDY HOUSE in order to register Sesame device and access the history.   
-- Setup the **API Key** and the **Identity Pool ID** in `didFinishLaunchingWithOptions` of `AppDelegate`.  
+からも Demo app をダウンロードできます。  
+- <ins>SesameSDK.framework</ins> と <ins>AWSAPIGateway.framework</ins> をあなたのアプリプロジェクトにドラッグ＆ドロップしてください。  
+- Demo app から <ins>API Key</ins> と <ins>Identity Pool ID</ins> をコピーして、あなたのアプリプロジェクトの`AppDelegate`の`didFinishLaunchingWithOptions`の中にペーストすると、セサミデバイスの登録と履歴へのアクセスが可能になります。  
 ```swift
 import SesameSDK
 
