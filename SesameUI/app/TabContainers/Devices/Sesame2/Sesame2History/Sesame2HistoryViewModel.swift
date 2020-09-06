@@ -29,30 +29,60 @@ class Sesame2HistoryModel {
     
     func addHistories(_ histories: [Sesame2HistoryMO]) {
         historyQueue.sync {
-            for history in histories {
-                let group = history.date!.toYMD()
-                let recordID = history.sortKey
-                guard !self.histories.keys.contains(recordID) else {
-                    continue
+            let sortedHistories = histories.sorted { (left, right) -> Bool in
+                left.sortKey < right.sortKey
+            }
+
+            if CHConfiguration.shared.isDebugModeEnabled() {
+                for history in sortedHistories {
+                    addHistory(history)
                 }
-                if self.sortedGroupKeys.contains(group) {
-                    // Add to exist group
-                    self.recordIdGroups[group]!.append(recordID)
-                    self.recordIdGroups[group]!.sort(by: <)
-                } else {
-                    // New group
-                    self.sortedGroupKeys.append(group)
-                    self.sortedGroupKeys.sort()
-                    self.recordIdGroups[group] = [recordID]
+            } else {
+                for (index, history) in sortedHistories.enumerated() {
+                    if index > 0 {
+                        let previous = sortedHistories[index - 1]
+                        
+                        if history is Sesame2HistoryDriveUnlockedMO, previous is Sesame2HistoryUnlockMO {
+                            (previous as! Sesame2HistoryUnlockMO).isUnlocked = true
+                        } else if history is Sesame2HistoryDriveLockedMO, previous is Sesame2HistoryLockMO {
+                            (previous as! Sesame2HistoryLockMO).isLocked = true
+                        } else if history is Sesame2HistoryDriveLockedMO, previous is Sesame2HistoryAutoLockMO {
+                            (previous as! Sesame2HistoryAutoLockMO).isLocked = true
+                        } else {
+                            addHistory(history)
+                        }
+                    } else {
+                        addHistory(history)
+                    }
                 }
-                // Add new history
-                self.histories[recordID] = history
             }
         }
     }
+    
+    private func addHistory(_ history: Sesame2HistoryMO) {
+        let group = history.date!.toYMD()
+        let recordID = history.sortKey
+        guard !self.histories.keys.contains(recordID) else {
+            return
+        }
+        if self.sortedGroupKeys.contains(group) {
+            // Add to exist group
+            self.recordIdGroups[group]!.append(recordID)
+            self.recordIdGroups[group]!.sort(by: <)
+        } else {
+            // New group
+            self.sortedGroupKeys.append(group)
+            self.sortedGroupKeys.sort()
+            self.recordIdGroups[group] = [recordID]
+        }
+        // Add new history
+        self.histories[recordID] = history
+    }
 }
 
-public final class Sesame2HistoryViewModel: ViewModel {
+public final class Sesame2HistoryViewModel: ViewModel, LockHaptic {
+    var lockIntention: ((CHSesame2Intention) -> Void)?
+    
     private(set) var hasMoreData = true
     private let pageLength = 50
     private var requestPage = -1
@@ -67,23 +97,24 @@ public final class Sesame2HistoryViewModel: ViewModel {
     var sesame2: CHSesame2
 
     var title: String {
-        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
-        return device.name ?? device.deviceID!.uuidString
+        let device = Sesame2Store.shared.getSesame2Property(sesame2)
+        return device?.name ?? sesame2.deviceId!.uuidString
     }
     
     public var statusUpdated: ViewStatusHandler?
     
     init(sesame2: CHSesame2) {
         self.sesame2 = sesame2
-        sesame2.connect(){_ in}
+        self.sesame2.delegate = self
+        self.sesame2.connect(){_ in}
         
         if CHConfiguration.shared.isHistoryStorageEnabled() == false {
             Sesame2Store.shared.deleteHistoriesForDevice(sesame2)
         }
     }
     
-    public func viewWillAppear() {
-        sesame2.delegate = self
+    public func delegateSesame2() {
+        self.sesame2.delegate = self
     }
     
     public func loadMore() {
@@ -159,10 +190,8 @@ public final class Sesame2HistoryViewModel: ViewModel {
                     let cmderror = error as NSError
                     L.d("!!!!!cmderror",cmderror.code)
                     
-                    
                     if cmderror.code == 5  {
                         L.d("策略:延遲網路請求等待隔壁連上的sesame2上傳完畢後拉取",cmderror.code)
-                        
                         
                         if CHConfiguration.shared.isHistoryStorageEnabled() == true,
                             (error as NSError).code == -1009 {
@@ -208,7 +237,7 @@ public final class Sesame2HistoryViewModel: ViewModel {
     }
     
     public func lockButtonTapped() {
-        sesame2.toggleWithHaptic(interval: 1.5)
+        toggleWithHaptic(sesame2: sesame2) {}
     }
     
     public var lockImage: String {
@@ -230,10 +259,6 @@ public final class Sesame2HistoryViewModel: ViewModel {
         return angle2degree(angle: status.position)
     }
     
-    public var isInLockRange: Bool? {
-        sesame2.mechStatus?.isInLockRange
-    }
-    
     deinit {
         if CHConfiguration.shared.isHistoryStorageEnabled() == false {
             Sesame2Store.shared.deleteHistoriesForDevice(sesame2)
@@ -241,6 +266,8 @@ public final class Sesame2HistoryViewModel: ViewModel {
         L.d("Sesame2HistoryViewModel deinit")
     }
     
+    /// Index of first cell of previous request
+    /// - Returns:
     public func firstIndexPathBeforeUpdate() -> IndexPath {
         historyQueue.sync {
             if !hasMoreData {
@@ -274,6 +301,7 @@ extension Sesame2HistoryViewModel: CHSesame2Delegate {
     }
     
     public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
+        lockIntention?(intention)
         statusUpdated?(.update(nil))
     }
 }

@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CHConfiguration.shared.setAPIKey("SNUrRpqs9P8fFQJfmX94e1if1XriRw7G3uLVMqkK")
         CHConfiguration.shared.setIdentityPoolId("ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae")
 
-
         return true
     }
 
@@ -61,12 +60,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             enableHistoryStore == true {
             Sesame2Store.shared.saveIfNeeded()
         }
+        
+        iterateViewControllers { viewController in
+            (viewController as? CHBaseViewController)?.willEnterBackground()
+            (viewController as? DFUAlertController)?.willEnterBackground?()
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {//進入
         CHBleManager.shared.enableScan(){ res in
 
         }
+    }
+    
+    @discardableResult
+    func iterateViewControllers(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController,
+                           event: (UIViewController)->Void) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            event(navigationController)
+            return iterateViewControllers(controller: navigationController.visibleViewController, event: event)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                event(selected)
+                return iterateViewControllers(controller: selected, event: event)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            event(presented)
+            return iterateViewControllers(controller: presented, event: event)
+        }
+        if let controller = controller {
+            event(controller)
+        }
+        return controller
     }
 
 }

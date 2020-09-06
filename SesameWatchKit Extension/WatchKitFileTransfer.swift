@@ -13,7 +13,51 @@ import WatchConnectivity
 final class WatchKitFileTransfer {
 
     static func receiveUserInfoFromIPhone(_ userInfo: [String: Any]) {
-        L.d("session didReceiveUserInfo")
+//        L.d(" ⌚️ session didReceiveUserInfo")
+        
+//        L.d("1. ⌚️ Get old deivces")
+        CHDeviceManager.shared.getSesame2s { result in
+            switch result {
+            case .success(let sesames):
+                
+                let sesame2s = sesames.data
+                var haveNewDevice = sesame2s.count > 0 ? false : true
+                
+                for currentDevice in sesame2s {
+                    guard let propertyDic = userInfo[currentDevice.deviceId.uuidString] as? [String: String] else {
+                        haveNewDevice = true
+                        break
+                    }
+                    if propertyDic["key"] != currentDevice.getKey() {
+                        haveNewDevice = true
+                        break
+                    }
+                    if propertyDic["historyTag"] != String(data: currentDevice.getHistoryTag()!,
+                                                           encoding: .utf8) {
+                        haveNewDevice = true
+                        break
+                    }
+                }
+                
+                guard haveNewDevice == true else {
+//                    L.d("⌚️ No new devices.")
+                    updateSesame2Name(sesames.data, userInfo: userInfo, hasNewDevice: false)
+                    return
+                }
+//                L.d("2. ⌚️ New deivces")
+                self.dropOldDevices {
+//                    L.d("3. ⌚️ Receive keys")
+                    updateSesame2Name(sesames.data, userInfo: userInfo, hasNewDevice: true)
+                }
+
+            case .failure(_):
+                L.d("Receive keys error")
+                break
+            }
+        }
+    }
+    
+    private static func updateSesame2Name(_ sesame2s: [CHSesame2], userInfo: [String: Any], hasNewDevice: Bool) {
         guard let keyProperties = userInfo as? [String: [String: String]] else {
             L.d("Receive keys error")
             return
@@ -21,59 +65,25 @@ final class WatchKitFileTransfer {
         let sesame2KeysString = keyProperties.compactMap {
             $0.value["key"]
         }
-
-        var isNewDevices = true
         
-        L.d("1. Get old deivces")
-        CHDeviceManager.shared.getSesame2s { result in
-            switch result {
-            case .success(let sesames):
-                
-                defer {
-                    var isNewName = false
-                    for sesame2 in sesames.data {
-                        let key = sesame2.deviceId.uuidString
-                        let propertyDic = userInfo[key] as? [String: String]
-                        if let name = propertyDic?["name"], Sesame2Store.shared.getPropertyForDevice(sesame2).name != name {
-                            Sesame2Store.shared.savePropertyForDevice(sesame2, withProperties: ["name": name])
-                            isNewName = true
-                            L.d("4. New names.")
-                        }
-                    }
-                    if isNewName && isNewDevices {
-                        self.receiveKeys(sesame2KeysString, userInfo: userInfo)
-                    } else if isNewDevices {
-                        self.receiveKeys(sesame2KeysString, userInfo: userInfo)
-                    } else if isNewName {
-                        NotificationCenter.default.post(name: .WCSessioinDidReceiveMessage, object: userInfo)
-                    }
-                }
-                
-                var haveNewDevice = false
-                for currentDevice in sesames.data {
-                    guard let propertyDic = userInfo[currentDevice.deviceId.uuidString] as? [String: String] else {
-                        haveNewDevice = true
-                        break
-                    }
-                    if propertyDic["key"] == currentDevice.getKey() {
-                        haveNewDevice = true
-                        break
-                    }
-                }
-                
-                guard haveNewDevice == true else {
-                    L.d("No new devices.")
-                    return
-                }
-                L.d("2. New deivces")
-                self.dropOldDevices {
-                    L.d("3. Receive keys: \(isNewDevices)")
-                }
-
-            case .failure(_):
-                L.d("Receive keys error")
-                break
+        var isNewName = false
+        
+        for sesame2 in sesame2s {
+            
+            let key = sesame2.deviceId.uuidString
+            let propertyDic = userInfo[key] as? [String: String]
+            if let name = propertyDic?["name"], Sesame2Store.shared.getSesame2Property(sesame2)?.name != name {
+                Sesame2Store.shared.savePropertyToDevice(sesame2, withProperties: ["name": name])
+                isNewName = true
+//                L.d("4. ⌚️ New names.", Sesame2Store.shared.getSesame2Property(sesame2)?.name)
             }
+        }
+        if isNewName && hasNewDevice {
+            self.receiveKeys(sesame2KeysString, userInfo: userInfo)
+        } else if hasNewDevice {
+            self.receiveKeys(sesame2KeysString, userInfo: userInfo)
+        } else if isNewName {
+            NotificationCenter.default.post(name: .WCSessioinDidReceiveMessage, object: userInfo)
         }
     }
     
@@ -93,7 +103,7 @@ final class WatchKitFileTransfer {
     }
     
     private static func receiveKeys(_ sesame2Keys: [String], userInfo: [String : Any]) {
-        let encodedHistoryTag = "ドラえもん⌚️".data(using: .utf8)!
+        
         let tokenFetchLock = DispatchGroup()
         
         CHDeviceManager.shared.receiveSesame2Keys(sesame2Keys: sesame2Keys) { result in
@@ -101,8 +111,13 @@ final class WatchKitFileTransfer {
             case .success(let sesame2):
                 
                 for sesame2 in sesame2.data {
+                    var encodedHistoryTag = "ドラえもん⌚️".data(using: .utf8)!
+                    if let propertyDic = userInfo[sesame2.deviceId.uuidString] as? [String: String],
+                        let historyTag = propertyDic["historyTag"] {
+                        let watchHistoryTag = "\(historyTag)\("⌚️")".data(using: .utf8)!
+                        encodedHistoryTag = watchHistoryTag.count > 21 ? historyTag.data(using: .utf8)! : watchHistoryTag
+                    }
                     tokenFetchLock.enter()
-                    Sesame2Store.shared.deletePropertyAndHisotryForDevice(sesame2)
                     sesame2.setHistoryTag(encodedHistoryTag) {_ in
                         tokenFetchLock.leave()
                     }

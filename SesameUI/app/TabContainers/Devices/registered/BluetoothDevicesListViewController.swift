@@ -73,19 +73,9 @@ public class BluetoothDevicesListViewController: CHBaseViewController, UITableVi
                                               action: #selector(handleRightBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = rightButtonItem
         
-
-        
-        testMode.isOn = viewModel.isTestModeOn
-        
         deviceTableView.rowHeight = UITableView.automaticDimension
         deviceTableView.estimatedRowHeight = 110
         deviceTableView.rowHeight = 110
-        
-        #if DEBUG
-        testMode.isHidden = false
-        #else
-        testMode.isHidden = true
-        #endif
 
         refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame-sdk-test-app.PullToRefresh".localized)
         refreshControl.addTarget(self, action: #selector(pullTorefresh), for: .valueChanged)

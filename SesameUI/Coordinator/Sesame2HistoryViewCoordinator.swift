@@ -9,7 +9,7 @@
 import UIKit
 import SesameSDK
 
-public final class Sesame2RoomMainViewCoordinator: Coordinator {
+public final class Sesame2HistoryViewCoordinator: Coordinator {
     public var childCoordinators: [String : Coordinator] = [:]
     public var parentCoordinator: Coordinator?
     public weak var presentedViewController: UIViewController?
@@ -23,7 +23,7 @@ public final class Sesame2RoomMainViewCoordinator: Coordinator {
     }
     
     public func start() {
-        guard let sesame2RoomMainViewController = UIStoryboard.viewControllers.sesame2RoomMainVC else {
+        guard let sesame2HistoryViewController = UIStoryboard.viewControllers.sesame2HistoryViewController else {
             return
         }
         navigationController.navigationItem.backBarButtonItem?.setBackgroundImage(
@@ -31,17 +31,17 @@ public final class Sesame2RoomMainViewCoordinator: Coordinator {
             , for: .normal, barMetrics: .default)
         let viewModel = Sesame2HistoryViewModel(sesame2: sesame2)
         viewModel.delegate = self
-        sesame2RoomMainViewController.viewModel = viewModel
-        navigationController.pushViewController(sesame2RoomMainViewController, animated: true)
-        presentedViewController = sesame2RoomMainViewController
+        sesame2HistoryViewController.viewModel = viewModel
+        navigationController.pushViewController(sesame2HistoryViewController, animated: true)
+        presentedViewController = sesame2HistoryViewController
     }
     
     deinit {
-        L.d("Sesame2RoomMainVCCoordinator deinit")
+        L.d("Sesame2HistoryViewCoordinator deinit")
     }
 }
 
-extension Sesame2RoomMainViewCoordinator: Sesame2HistoryViewModelDelegate {
+extension Sesame2HistoryViewCoordinator: Sesame2HistoryViewModelDelegate {
     public func rightButtonTappedWithSesame2(_ sesame2: CHSesame2) {
         let sesame2SettingViewCoordinator = Sesame2SettingViewControllerCoordinator(navigationController: navigationController,
                                                                               sesame2: sesame2)

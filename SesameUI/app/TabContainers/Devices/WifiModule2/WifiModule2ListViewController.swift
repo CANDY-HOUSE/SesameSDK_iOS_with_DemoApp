@@ -44,12 +44,6 @@ class WifiModule2ListViewController: CHBaseViewController {
         deviceTableView.estimatedRowHeight = 110
         deviceTableView.rowHeight = 110
         
-        #if DEBUG
-        testMode.isHidden = false
-        #else
-        testMode.isHidden = true
-        #endif
-        
         refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame-sdk-test-app.PullToRefresh".localized)
         refreshControl.addTarget(self, action: #selector(pullTorefresh), for: .valueChanged)
         deviceTableView.addSubview(refreshControl)
@@ -69,12 +63,6 @@ class WifiModule2ListViewController: CHBaseViewController {
             self.deviceTableView.setEmptyMessage("co.candyhouse.sesame-sdk-test-app.NoDevices".localized)
         } else {
             self.deviceTableView.restore()
-        }
-    }
-    
-    @IBOutlet weak var testMode: UISwitch! {
-        didSet {
-            testMode.addTarget(self, action: #selector(BluetoothDevicesListViewController.testToggleSwitched), for: .valueChanged)
         }
     }
     

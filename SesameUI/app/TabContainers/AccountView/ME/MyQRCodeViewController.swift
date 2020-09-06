@@ -11,6 +11,7 @@ import SesameSDK
 
 public class MyQRCodeViewController: CHBaseViewController {
     
+    @IBOutlet weak var qrCodeContainerView: UIView!
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var headImg: UIImageView!
     @IBOutlet weak var familyNameLabel: UILabel!
@@ -26,8 +27,8 @@ public class MyQRCodeViewController: CHBaseViewController {
         super.viewDidLoad()
         assert(viewModel != nil, "MyQRViewModel should not be nil")
 
-        familyNameLabel.text = viewModel.familyName
-        givenNameLabel.text = viewModel.givenName
+//        familyNameLabel.text = viewModel.familyName
+        givenNameLabel.text = viewModel.deviceName
         mailLabel.text  = viewModel.mail
         mailLabel.adjustsFontSizeToFitWidth = true
         
@@ -44,7 +45,7 @@ public class MyQRCodeViewController: CHBaseViewController {
             hintLabel.text = viewModel.hintLabelText
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share",
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.shareText,
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(share(sender:)))
@@ -67,8 +68,18 @@ public class MyQRCodeViewController: CHBaseViewController {
                 return
         }
         
-        qrImg.image = UIImage.generateQRCode(qrCode, UIImage.makeLetterAvatar(withUsername: viewModel.deviceName ?? ""), .black)
-        hintLabel.text = "Scan this QR code to share \(viewModel.deviceName ?? "")".localized
+        let appIcon = UIImage(named: "AppIcon")!
+        UIGraphicsBeginImageContextWithOptions(appIcon.size, false, appIcon.scale)
+        let rect = CGRect(origin: .zero, size: appIcon.size)
+        UIBezierPath(roundedRect: rect, cornerRadius: appIcon.size.height/2).addClip()
+        appIcon.draw(in: rect)
+        let circleAppIcon = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        qrImg.image = UIImage.generateQRCode(qrCode,
+                                             circleAppIcon!,
+                                             .black)
+        hintLabel.text = "co.candyhouse.sesame-sdk-test-app.AddKeyByScan".localized
     }
     
     public func generateInvitationCode() {
@@ -78,27 +89,46 @@ public class MyQRCodeViewController: CHBaseViewController {
     }
     
     @objc func share(sender: UIView) {
-        let objectsToShare = [qrImg.image]
+        let imageName = "/\(viewModel.deviceName!).png"
+        var documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                                         .userDomainMask, true)[0]
+        documentsDirectoryPath += imageName
+        
+        let renderer = UIGraphicsImageRenderer(bounds: qrCodeContainerView.bounds)
+        let image = renderer.image { rendererContext in
+            qrCodeContainerView.layer.render(in: rendererContext.cgContext)
+        }
+
+        try! image.pngData()!.write(to: URL(fileURLWithPath: documentsDirectoryPath))
+        let fileURL = URL(fileURLWithPath: documentsDirectoryPath)
+        let objectsToShare = [fileURL]
+        
         let activityViewController = UIActivityViewController(activityItems: objectsToShare as [Any], applicationActivities: nil)
         let excludedActivities: [UIActivity.ActivityType] = [
-            UIActivity.ActivityType.postToTwitter,
-            UIActivity.ActivityType.postToFacebook,
-            UIActivity.ActivityType.postToWeibo,
-            UIActivity.ActivityType.message,
-            UIActivity.ActivityType.mail,
-            UIActivity.ActivityType.print,
-            UIActivity.ActivityType.copyToPasteboard,
-            UIActivity.ActivityType.assignToContact,
-            UIActivity.ActivityType.saveToCameraRoll,
-            UIActivity.ActivityType.addToReadingList,
-            UIActivity.ActivityType.postToFlickr,
-            UIActivity.ActivityType.postToVimeo,
-            UIActivity.ActivityType.postToTencentWeibo
+            .postToTwitter,
+            .postToFacebook,
+            .postToWeibo,
+            .message,
+            .mail,
+            .print,
+            .copyToPasteboard,
+            .assignToContact,
+            .saveToCameraRoll,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo,
+            .postToTencentWeibo
         ]
         activityViewController.excludedActivityTypes = excludedActivities
         activityViewController.completionWithItemsHandler = { activity, success, items, error in
             
         }
+        activityViewController.popoverPresentationController?.sourceView = view
+        activityViewController.popoverPresentationController?.permittedArrowDirections = .up
+        activityViewController.popoverPresentationController?.sourceRect = .init(x: view.bounds.maxX,
+                                                                                 y: 60,
+                                                                                 width: 0,
+                                                                                 height: 0)
         present(activityViewController, animated: true, completion: nil)
     }
 }

@@ -28,15 +28,21 @@ public final class MeViewModel: ViewModel {
     private(set) var avatarImage: String?
     private(set) var email: String?
     
+    private(set) var enterSesameName = "co.candyhouse.sesame-sdk-test-app.EnterSesameName".localized
     private(set) var logoutButtonTitle = "co.candyhouse.sesame-sdk-test-app.LogOut".localized
     private(set) var changeAccountNameText = "co.candyhouse.sesame-sdk-test-app.EditName".localized
     private(set) var rightButtonImage = "icons_outlined_addoutline"
     private(set) var qrCodeIcon = "icons_outlined_qr-code"
     private(set) var logOutButtonTitle = "co.candyhouse.sesame-sdk-test-app.LogOut".localized
+    private(set) var changeHistoryTagPromptTitle = "co.candyhouse.sesame-sdk-test-app.changeHistoryTag".localized
+    private(set) var mySesameText = "ドラえもん".localized
+    private(set) var autoLockSwitchColor = UIColor.sesame2Green
     
     var isSignedIn: Bool {
         AWSMobileClient.default().isSignedIn
     }
+    
+    lazy var sesame2s = [CHSesame2]()
     
     init() {
         AWSMobileClient.default().addUserStateListener(self) { (status, info) in
@@ -53,6 +59,15 @@ public final class MeViewModel: ViewModel {
                 self.statusUpdated?(.update(nil))
             case .unknown:
                 self.statusUpdated?(.update(nil))
+            }
+        }
+        
+        CHDeviceManager.shared.getSesame2s { result in
+            switch result {
+            case .success(let content):
+                self.sesame2s = content.data
+            case .failure(let error):
+                self.statusUpdated?(.finished(.failure(error)))
             }
         }
     }
@@ -85,13 +100,74 @@ public final class MeViewModel: ViewModel {
     func showQRCodeTapped() {
         delegate?.showMyQRCodeTappe()
     }
+    
+    func historyTagPlaceholder() -> String {
+        guard let historyTag = sesame2s.first?.getHistoryTag() else {
+            return mySesameText
+        }
+        return String(data: historyTag, encoding: .utf8) ?? mySesameText
+    }
+    
+    func changeHistoryTagHint() -> String {
+        CHConfiguration.shared.isDebugModeEnabled() ? "History Tag" : ""
+    }
+    
+    func modifyHistoryTag(_ historyTag: String) {
+        guard let encodedHistoryTag = historyTag.data(using: .utf8) else {
+            let error = NSError(domain: "", code: 0, userInfo: ["message":"Unsupported format"])
+            statusUpdated?(.finished(.failure(error)))
+            return
+        }
+        
+        CHDeviceManager.shared.getSesame2s { result in
+            switch result {
+            case .success(let content):
+                self.sesame2s = content.data
+                
+                for sesame2 in self.sesame2s {
+                    sesame2.setHistoryTag(encodedHistoryTag) { [weak self] result in
+                        guard let strongSelf = self else {
+                            return
+                        }
+                        switch result {
+                        case .success(_):
+                            strongSelf.statusUpdated?(.finished(.success(true)))
+                            WatchKitFileTransfer.transferKeysToWatch()
+                        case .failure(let error):
+                            strongSelf.statusUpdated?(.finished(.failure(error)))
+                        }
+                    }
+                }
+                
+            case .failure(let error):
+                self.statusUpdated?(.finished(.failure(error)))
+            }
+        }
+    }
+    
+    func historyTagHintText() -> String {
+        if CHConfiguration.shared.isDebugModeEnabled() {
+            return "History Tag"
+        } else {
+            return ""
+        }
+    }
+    
+    func debugSwitchTapped(isOn: Bool) {
+        CHConfiguration.shared.enableDebugMode(isOn)
+        statusUpdated?(.update(nil))
+    }
+    
+    func isDubugSwitchOn() -> Bool {
+        CHConfiguration.shared.isDebugModeEnabled()
+    }
 }
 
 extension MeViewModel {
     public func popUpMenuTappedOnItem(_ item: PopUpMenuItem) {
         switch item.type {
-        case .addFriends:
-            break
+//        case .addFriends:
+//            break
         case .addDevices:
             delegate?.newSesameTapped()
         case .receiveKey:

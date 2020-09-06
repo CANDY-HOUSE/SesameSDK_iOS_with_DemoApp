@@ -72,8 +72,8 @@ extension BluetoothDevicesListCoordinator: BluetoothDevicesListViewModelDelegate
     }
     
     public func bluetootheDevicesListViewDidTappedSesame2(_ sesame2: CHSesame2) {
-        let sesame2RoomMainCoordinator = Sesame2RoomMainViewCoordinator(navigationController: navigationController,
-                                                                sesame2: sesame2)
+        let sesame2RoomMainCoordinator = Sesame2HistoryViewCoordinator(navigationController: navigationController,
+                                                                       sesame2: sesame2)
         sesame2RoomMainCoordinator.start()
     }
 }

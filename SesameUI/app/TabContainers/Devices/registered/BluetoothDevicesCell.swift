@@ -41,7 +41,7 @@ class BluetoothDevicesCell: UITableViewCell {
                     case .loading:
                         break
                     case .update:
-                        strongSelf.updateSesame2Status()
+                        strongSelf.refreshUI()
                     case .finished(let result):
                         switch result {
                         case .success(_):
@@ -53,16 +53,16 @@ class BluetoothDevicesCell: UITableViewCell {
                 }
                 
             }
-            updateInitialStatus()
+            updateInitialUI()
         }
     }
 
     
     @IBAction func togleLock(_ sender: UIButton) {
-        viewModel?.toggleTapped()
+        viewModel?.sesame2LockTapped()
     }
     
-    func updateInitialStatus()  {
+    func updateInitialUI()  {
 
         if let currentDegree = viewModel.currentDegree() {
             sesame2Circle.refreshUI(newPointerAngle: CGFloat(currentDegree),
@@ -72,16 +72,16 @@ class BluetoothDevicesCell: UITableViewCell {
                                 lockColor: viewModel.lockColor)
         }
         
-        lockButton.setBackgroundImage(UIImage.CHUIImage(named: viewModel!.lockBackgroundImage()), for: .normal)
+        lockButton.setBackgroundImage(UIImage.CHUIImage(named: viewModel!.sesame2LockImage()), for: .normal)
         powerLabel.text = viewModel?.powerPercentate()
         batteryImage.image = UIImage.CHUIImage(named: viewModel?.batteryImage() ?? "")
-        name.text = viewModel?.name
-        deviceStatusLabel.text = viewModel?.deviceStatus
-        shadowStatusLabel.text = viewModel?.shadowStatus
+        name.text = viewModel?.sesame2Name
+        deviceStatusLabel.text = viewModel?.sesame2DeviceStatus
+        shadowStatusLabel.text = viewModel?.sesame2ShadowStatus
         testButton.isHidden = viewModel?.isHideTestButton ?? true
     }
     
-    func updateSesame2Status()  {
+    func refreshUI()  {
 
         if let currentDegree = viewModel.currentDegree() {
             sesame2Circle.refreshUI(newPointerAngle: CGFloat(currentDegree),
@@ -90,9 +90,9 @@ class BluetoothDevicesCell: UITableViewCell {
             sesame2Circle.refreshUI(newPointerAngle: CGFloat(0.0),
                                 lockColor: viewModel.lockColor)
         }
-        deviceStatusLabel.text = viewModel?.deviceStatus
-        shadowStatusLabel.text = viewModel?.shadowStatus
-        lockButton.setBackgroundImage(UIImage.CHUIImage(named: viewModel!.lockBackgroundImage()), for: .normal)
+        deviceStatusLabel.text = viewModel?.sesame2DeviceStatus
+        shadowStatusLabel.text = viewModel?.sesame2ShadowStatus
+        lockButton.setBackgroundImage(UIImage.CHUIImage(named: viewModel!.sesame2LockImage()), for: .normal)
         powerLabel.text = viewModel?.powerPercentate()
         batteryImage.image = UIImage.CHUIImage(named: viewModel?.batteryImage() ?? "")
     }

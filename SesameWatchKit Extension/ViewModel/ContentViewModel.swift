@@ -51,6 +51,7 @@ class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, C
             .subjectPublisher
             .map { $0.result }
             .switchToLatest()
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {
                 case .finished:

@@ -12,16 +12,6 @@ import SesameSDK
 public final class RegisterCellModel: ViewModel {
     public var statusUpdated: ViewStatusHandler?
     private var sesame2: CHSesame2
-    private(set) var dfuButtonImage = "upgrade"
-    var isHiddenDfuButton: Bool {
-        get {
-            if sesame2.deviceStatus == .dfumode {
-                return true
-            } else {
-                return false
-            }
-        }
-    }
     
     public init(sesame2: CHSesame2) {
         self.sesame2 = sesame2
@@ -42,7 +32,7 @@ public final class RegisterCellModel: ViewModel {
         sesame2.deviceId.uuidString
     }
     
-    public func currentStatus() -> String {
-        sesame2.deviceStatus.description()
+    public func currentSesame2Status() -> String {
+        CHConfiguration.shared.isDebugModeEnabled() ? sesame2.deviceStatus.description() : ""
     }
 }

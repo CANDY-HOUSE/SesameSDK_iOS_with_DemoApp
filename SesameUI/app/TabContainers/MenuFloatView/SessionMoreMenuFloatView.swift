@@ -29,9 +29,9 @@ class PopUpMenuControl: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let addFriend = PopUpMenuItem(type: .addFriends,
-                                      title: "co.candyhouse.sesame-sdk-test-app.AddContacts".localized,
-                                      icon: "icons_filled_add-friends")
+//        let addFriend = PopUpMenuItem(type: .addFriends,
+//                                      title: "co.candyhouse.sesame-sdk-test-app.AddContacts".localized,
+//                                      icon: "icons_filled_add-friends")
 
         let addDevices = PopUpMenuItem(type: .addDevices,
                                        title: "co.candyhouse.sesame-sdk-test-app.NewSesame".localized,
@@ -47,7 +47,7 @@ class PopUpMenuControl: UIButton {
 
         menus = [
             addDevices,
-            addFriend,
+//            addFriend,
             scanDeviceQRCode,
             addWifiModule2
         ]

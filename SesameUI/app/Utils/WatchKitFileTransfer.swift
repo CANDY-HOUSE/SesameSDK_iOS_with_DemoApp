@@ -33,9 +33,12 @@ final class WatchKitFileTransfer {
             if let key = sesame2.getKey() {
                 property["key"] = key
             }
-            if let name = Sesame2Store.shared.getPropertyForDevice(sesame2).name {
+            if let name = Sesame2Store.shared.getOrCreatePropertyOfSesame2(sesame2).name {
                 property["name"] = name
-                keys[sesame2.deviceId.uuidString] = property
+            }
+            if let historyTag = sesame2.getHistoryTag(),
+                let historyTagString = String(data: historyTag, encoding: .utf8) {
+                property["historyTag"] = historyTagString
             }
             keys[sesame2.deviceId.uuidString] = property
         }

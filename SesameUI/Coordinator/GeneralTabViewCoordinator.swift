@@ -57,7 +57,6 @@ public class GeneralTabViewCoordinator: Coordinator {
         }
         entryViewController.setViewControllers([
             bluetoothListCoordinator.navigationController,
-            friendsViewControllerCoordinator.navigationController,
             meViewCoordinator.navigationController
             ],
                                                animated: false)

@@ -12,7 +12,8 @@ import SesameWatchKitSDK
 import SwiftUI
 import Combine
 
-class Sesame2LockViewModel: ObservableObject {
+class Sesame2LockViewModel: ObservableObject, LockHaptic {
+    var lockIntention: ((CHSesame2Intention) -> Void)?
     
     @Published var display = ""
     @Published var imageName = ""
@@ -32,12 +33,16 @@ class Sesame2LockViewModel: ObservableObject {
         self.uuid = device.deviceId
         self.device = device
         self.bleProvider = BleDeviceProvider(device: device)
+        let display = Sesame2Store.shared.getSesame2Property(device)?.name
+//        L.d("⌚️ Sesame2Store.shared.getPropertyOfSesame2(device).name", display)
+        self.display = display ?? device.deviceId.uuidString
         // Binding or configure
         self.bleProvider
             .subjectPublisher
             .map { $0.result }
             .switchToLatest()
 //            .throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {
                 case .finished:
@@ -59,7 +64,9 @@ class Sesame2LockViewModel: ObservableObject {
                 return
             }
             let device = strongSelf.device
-            device.toggleWithHaptic(interval: 1.5)
+            self?.toggleWithHaptic(sesame2: device, {
+                
+            })
         }
         
         // Initial view
@@ -75,7 +82,6 @@ class Sesame2LockViewModel: ObservableObject {
     
     // MARK: - Private methods
     private func setContentBy(device: CHSesame2) {
-        display = Sesame2Store.shared.getPropertyForDevice(device).name ?? device.deviceId.uuidString
         imageName = device.currentStatusImage()
         moonColor = device.lockColor()
         batteryImage = device.batteryImage()
@@ -85,5 +91,6 @@ class Sesame2LockViewModel: ObservableObject {
         batteryPercentage = "\(mechStatus.getBatteryPrecentage())%"
         let toRadians = angle2degree(angle: Int16(mechStatus.position))
         radians = CGFloat(toRadians)
+        lockIntention?(device.intention)
     }
 }

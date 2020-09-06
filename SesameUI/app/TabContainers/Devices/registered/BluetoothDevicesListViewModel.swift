@@ -65,8 +65,8 @@ final class BluetoothDevicesListViewModel: ViewModel {
     
     public func popUpMenuTappedOnItem(_ item: PopUpMenuItem) {
         switch item.type {
-        case .addFriends:
-            break
+//        case .addFriends:
+//            break
         case .addDevices:
             delegate?.newSesameTapped()
         case .receiveKey:
@@ -88,11 +88,11 @@ extension BluetoothDevicesListViewModel: BluetoothDeviceCellViewModelDelegate {
     }
     
     func testSwitchToggled(isOn: Bool) {
-        UserDefaults.standard.set(isOn, forKey: "testMode")
+        CHConfiguration.shared.enableDebugMode(isOn)
         statusUpdated?(.update(nil))
     }
     
     var isTestModeOn: Bool {
-        UserDefaults.standard.bool(forKey: "testMode")
+        CHConfiguration.shared.isDebugModeEnabled()
     }
 }

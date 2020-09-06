@@ -46,6 +46,11 @@ class ViewHelper: NSObject {
             alert.addAction(UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.OK".localized,
                                           style: .default,
                                           handler: nil))
+            alert.popoverPresentationController?.sourceView = viewController.view
+            alert.popoverPresentationController?.sourceRect = .init(x: viewController.view.center.x,
+                                                                    y: viewController.view.center.y,
+                                                                    width: 0,
+                                                                    height: 0)
             viewController.present(alert, animated: true, completion: nil)
         }
     }
@@ -54,6 +59,11 @@ class ViewHelper: NSObject {
         DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+            alert.popoverPresentationController?.sourceView = viewController.view
+            alert.popoverPresentationController?.sourceRect = .init(x: viewController.view.center.x,
+                                                                    y: viewController.view.center.y,
+                                                                    width: 0,
+                                                                    height: 0)
             viewController.present(alert, animated: true, completion: nil)
         })
     }

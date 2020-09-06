@@ -36,42 +36,45 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
     }
     
     public var historyEvent: String {
-        switch history {
-        case _ as Sesame2HistoryAutoLockMO:
-            return "AUTOLOCK"
-        case _ as Sesame2HistoryAutoLockUpdatedMO:
-            return "AUTOLOCK_UPDATED"
-        case _ as Sesame2HistoryMechSettingUpdatedMO:
-            return "MECH_SETTING_UPDATED"
-        case _ as Sesame2HistoryTimeChangedMO:
-            return "TIME_CHANGED"
-        case _ as Sesame2HistoryLockMO:
-            return "BLE_LOCK"
-        case _ as Sesame2HistoryManualElseMO:
-            return "MANUAL_ELSE"
-        case _ as Sesame2HistoryManualLockedMO:
-            return "MANUAL_LOCKED"
-        case _ as Sesame2HistoryManualUnlockedMO:
-            return "MANUAL_UNLOCKED"
-        case _ as Sesame2HistoryUnlockMO:
-            return "BLE_UNLOCK"
-        case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
-            return "BLE_ADV_PARAM_UPDATED"
-        case _ as Sesame2HistoryDriveFailedMO:
-            return "DRIVE_FAILED"
-        case _ as Sesame2HistoryDriveLockedMO:
-            return "DRIVE_LOCKED"
-        case _ as Sesame2HistoryDriveUnlockedMO:
-            return "DRIVE_UNLOCKED"
-        case _ as Sesame2HistoryNoneMO:
-            return "NONE"
-        default:
-            return ""
+        guard !CHConfiguration.shared.isDebugModeEnabled() else {
+            switch history {
+            case _ as Sesame2HistoryAutoLockMO:
+                return "AUTOLOCK"
+            case _ as Sesame2HistoryAutoLockUpdatedMO:
+                return "AUTOLOCK_UPDATED"
+            case _ as Sesame2HistoryMechSettingUpdatedMO:
+                return "MECH_SETTING_UPDATED"
+            case _ as Sesame2HistoryTimeChangedMO:
+                return "TIME_CHANGED"
+            case _ as Sesame2HistoryLockMO:
+                return "BLE_LOCK"
+            case _ as Sesame2HistoryManualElseMO:
+                return "MANUAL_ELSE"
+            case _ as Sesame2HistoryManualLockedMO:
+                return "MANUAL_LOCKED"
+            case _ as Sesame2HistoryManualUnlockedMO:
+                return "MANUAL_UNLOCKED"
+            case _ as Sesame2HistoryUnlockMO:
+                return "BLE_UNLOCK"
+            case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
+                return "BLE_ADV_PARAM_UPDATED"
+            case _ as Sesame2HistoryDriveFailedMO:
+                return "DRIVE_FAILED"
+            case _ as Sesame2HistoryDriveLockedMO:
+                return "DRIVE_LOCKED"
+            case _ as Sesame2HistoryDriveUnlockedMO:
+                return "DRIVE_UNLOCKED"
+            case _ as Sesame2HistoryNoneMO:
+                return "NONE"
+            default:
+                return ""
+            }
         }
+        return ""
     }
     
     public var userLabelText: String {
-        let displayText = "\(history.recordID): "
+        let displayText = CHConfiguration.shared.isDebugModeEnabled() ? "\(history.recordID): " : ""
         switch history {
         case _ as Sesame2HistoryAutoLockMO:
             return displayText + "co.candyhouse.sesame-sdk-test-app.AutoLock".localized
@@ -129,7 +132,11 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
     public var avatarImage: String {
         switch history {
         case _ as Sesame2HistoryAutoLockMO:
-            return "autolock"
+            if CHConfiguration.shared.isDebugModeEnabled() {
+                return "autolock"
+            } else {
+                return (history as! Sesame2HistoryAutoLockMO).isLocked ? "icon_locked" : "autolock"
+            }
         case _ as Sesame2HistoryAutoLockUpdatedMO:
             return "icons_outlined_setting"
         case _ as Sesame2HistoryMechSettingUpdatedMO:
@@ -137,7 +144,11 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
         case _ as Sesame2HistoryTimeChangedMO:
             return "iconfinder_9_3898370"
         case _ as Sesame2HistoryLockMO:
-            return "icon_lock"
+            if CHConfiguration.shared.isDebugModeEnabled() {
+                return "icon_lock"
+            } else {
+                return (history as! Sesame2HistoryLockMO).isLocked ? "icon_locked" : "icon_lock"
+            }
         case _ as Sesame2HistoryManualElseMO:
             return "handmove"
         case _ as Sesame2HistoryManualLockedMO:
@@ -145,7 +156,11 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
         case _ as Sesame2HistoryManualUnlockedMO:
             return "icon_unlock"
         case _ as Sesame2HistoryUnlockMO:
-            return "icon_unlock"
+            if CHConfiguration.shared.isDebugModeEnabled() {
+                return "icon_unlock"
+            } else {
+                return (history as! Sesame2HistoryUnlockMO).isUnlocked ? "icon_unlocked" : "icon_unlock"
+            }
         case _ as Sesame2HistoryBleAdvParameterUpdatedMO:
             return "icons_outlined_setting"
         case _ as Sesame2HistoryDriveFailedMO:
@@ -161,7 +176,7 @@ public final class Sesame2HistoryCellViewModel: ViewModel {
         }
     }
     
-    func information() -> String {
+    func historyDetail() -> String {
         switch history {
         case _ as Sesame2HistoryLockMO:
             return ""

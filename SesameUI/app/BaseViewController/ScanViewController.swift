@@ -14,7 +14,27 @@ class ScanViewController: CHBaseViewController {
     
     
     @IBOutlet weak var hintLb: UILabel!
-    @IBOutlet weak var retrieveQRCodeButton: UIButton!
+    @IBOutlet weak var retrieveQRCodeButton: UIButton! {
+        didSet {
+            let image = UIImage.SVGImage(named: "icons_filled_album",
+                                         fillColor: .white)
+            let width = 50
+            let imageView = UIImageView(frame: .init(x: 0, y: 0, width: width, height: width))
+            imageView.image = image
+            imageView.contentMode = .center
+            imageView.backgroundColor = UIColor.darkGray
+            imageView.layer.cornerRadius = CGFloat(width/2)
+            imageView.layer.masksToBounds = true
+            
+            let renderer = UIGraphicsImageRenderer(bounds: imageView.bounds)
+            let albumImage = renderer.image { rendererContext in
+                imageView.layer.render(in: rendererContext.cgContext)
+            }
+            
+            retrieveQRCodeButton.setImage(albumImage, for: .normal)
+            retrieveQRCodeButton.setTitle(nil, for: .normal)
+        }
+    }
     
     @IBOutlet weak var scannerView: QRScannerView! {
         didSet {
@@ -82,7 +102,7 @@ class ScanViewController: CHBaseViewController {
                                                object: nil)
         rotatedCamera()
         back.setImage( UIImage.SVGImage(named: "icons_filled_close_b"), for: .normal)
-        retrieveQRCodeButton.setTitle(viewModel.retrieveQRCodeButtonTitle, for: .normal)
+//        retrieveQRCodeButton.setTitle(viewModel.retrieveQRCodeButtonTitle, for: .normal)
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -119,7 +139,7 @@ class ScanViewController: CHBaseViewController {
                     self.dismiss(animated: true, completion:nil)
                 }
             }
-            let cancelAction = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel",
+            let cancelAction = UIAlertAction(title: "co.candyhouse.sesame-sdk-test-app.Cancel".localized,
                                              style: UIAlertAction.Style.cancel) {
                 UIAlertAction in
                 DispatchQueue.main.async {
@@ -129,6 +149,11 @@ class ScanViewController: CHBaseViewController {
             let alert = UIAlertController(title: title, message: "camara privacy", preferredStyle: .alert)
             alert.addAction(okAction)
             alert.addAction(cancelAction)
+            alert.popoverPresentationController?.sourceView = view
+            alert.popoverPresentationController?.sourceRect = .init(x: view.center.x,
+                                                                    y: view.center.y,
+                                                                    width: 0,
+                                                                    height: 0)
             DispatchQueue.main.async {
                 self.present(alert, animated: true, completion: nil)
             }

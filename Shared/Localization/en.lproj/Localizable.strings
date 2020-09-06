@@ -55,6 +55,7 @@
 "co.candyhouse.sesame-sdk-test-app.DeleteTheMember" = "Delete the Member";
 "co.candyhouse.sesame-sdk-test-app.PullToRefresh" = "Pull to refresh";
 "co.candyhouse.sesame-sdk-test-app.AddFriendByScan" = "Scan this QR code to add me on your contact";
+"co.candyhouse.sesame-sdk-test-app.AddKeyByScan" = "Key of the Sesame device";
 "co.candyhouse.sesame-sdk-test-app.EnterSesameName" = "Enter Sesame name";
 "co.candyhouse.sesame-sdk-test-app.CompletelySet" = "Completely Set";
 "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate" = "SesameOS Update";
@@ -101,3 +102,5 @@
 "co.candyhouse.sesame-sdk-test-app.application" = "Application";
 "co.candyhouse.sesame-sdk-test-app.bootloader" = "Bootloader";
 "co.candyhouse.sesame-sdk-test-app.NewWifiModule2" = "New WiFi Modeule2";
+"co.candyhouse.sesame-sdk-test-app.changeHistoryTag" = "Name";
+"co.candyhouse.sesame-sdk-test-app.share" = "Share";

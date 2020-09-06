@@ -22,7 +22,7 @@ class Sesame2HistoryLoadingTableViewCell: UITableViewCell {
             userLabel.text = viewModel.userLabelText
             avatarImage.image = UIImage.SVGImage(named: viewModel.avatarImage)
             eventLabel.text = viewModel.historyEvent
-            informationTextView.text = viewModel.information()
+            informationTextView.text = viewModel.historyDetail()
         }
     }
     

@@ -50,6 +50,12 @@ public final class Sesame2SettingViewModel: ViewModel {
     private(set) var dropKeyText = "co.candyhouse.sesame-sdk-test-app.TrashTheKey".localized
     private(set) var autoLockTitleLabelText = "co.candyhouse.sesame-sdk-test-app.AutoLock".localized
     private(set) var autoLockValueLabelText = ""
+    private(set) var dfuActionText = "co.candyhouse.sesame-sdk-test-app.Start".localized
+    private(set) var applicationDfuMessage = "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized
+    var dfuFileName: String {
+        CHDFUHelper.applicationDfuFileName() ?? ""
+    }
+    
     private(set) var arrowImg = "arrow"
     private(set) var uuidTitleText = "UUID".localized
     private(set) var modifyHistoryTagText = "History Tag".localized
@@ -61,8 +67,8 @@ public final class Sesame2SettingViewModel: ViewModel {
     private(set) var secondPickerSelectedRow: Int = 0
     
     var title: String {
-        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
-        return device.name ?? device.deviceID!.uuidString
+        let device = Sesame2Store.shared.getSesame2Property(sesame2)
+        return device?.name ?? sesame2.deviceId.uuidString
     }
     
     var uuidValueText: String {
@@ -404,35 +410,17 @@ extension Sesame2SettingViewModel {
 
 // MARK: - DFU
 extension Sesame2SettingViewModel {
-    public func dfuActionText() -> String {
-        "co.candyhouse.sesame-sdk-test-app.SesameOSUpdate".localized
-    }
-    
-    public func dfuFileName() -> String? {
-        guard let filePath = Constant
-            .resourceBundle
-            .url(forResource: nil,
-                 withExtension: ".zip") else {
-                return nil
-        }
-        return filePath.lastPathComponent
-    }
-    
-    func applicationDfuFileName() -> String? {
-        CHDFUHelper.applicationDfuFileName()
-    }
-    
     func bootloaderDfuFileName() -> String? {
         CHDFUHelper.bootloaderDfuFileName()
     }
     
-    func dfuApplicationDeviceWithObserver(_ observer: DFUHelperObserver) {
+    func dfuApplicationWithObserver(_ observer: DFUHelperObserver) {
         dfuDeviceAtIndexPath(type: .application, observer: observer)
     }
     
-    func dfuBootloaderDeviceWithObserver(_ observer: DFUHelperObserver) {
-        dfuDeviceAtIndexPath(type: .bootloader, observer: observer)
-    }
+//    func dfuBootloaderDeviceWithObserver(_ observer: DFUHelperObserver) {
+//        dfuDeviceAtIndexPath(type: .bootloader, observer: observer)
+//    }
     
     private func dfuDeviceAtIndexPath(type: DFUFirmwareType,
                                       observer: DFUHelperObserver) {
@@ -449,22 +437,22 @@ extension Sesame2SettingViewModel {
                 return
         }
         
-        sesame2.updateFirmware { result in
+        sesame2.updateFirmware { [weak self] result in
             switch result {
             case .success(let peripheral):
                 guard let peripheral = peripheral.data else {
                     L.d("Request commad failed.")
                     let error = NSError(domain: "", code: 0, userInfo: ["message": "Request commad failed."])
-                    self.statusUpdated?(.finished(.failure(error)))
+                    self?.statusUpdated?(.finished(.failure(error)))
                     return
                 }
                 L.d("Success.")
-                self.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
-                self.dfuHelper?.observer = observer
-                self.dfuHelper?.start(type)
+                self?.dfuHelper = CHDFUHelper(peripheral: peripheral, zipData: zipData)
+                self?.dfuHelper?.observer = observer
+                self?.dfuHelper?.start(type)
             case .failure(let error):
                 L.d(error.errorDescription())
-                self.statusUpdated?(.finished(.failure(error)))
+                self?.statusUpdated?(.finished(.failure(error)))
             }
         }
     }
@@ -509,12 +497,12 @@ extension Sesame2SettingViewModel {
 // MARK: - Rename
 extension Sesame2SettingViewModel {
     func renamePlaceholder() -> String {
-        let device = Sesame2Store.shared.getPropertyForDevice(sesame2)
-        return device.name ?? device.deviceID!.uuidString
+        let device = Sesame2Store.shared.getSesame2Property(sesame2)
+        return device?.name ?? sesame2.deviceId.uuidString
     }
     
     func rename(_ name: String) {
-        Sesame2Store.shared.savePropertyForDevice(sesame2, withProperties: ["name": name])
+        Sesame2Store.shared.savePropertyToDevice(sesame2, withProperties: ["name": name])
         WatchKitFileTransfer.transferKeysToWatch()
     }
     

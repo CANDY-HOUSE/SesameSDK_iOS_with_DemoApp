@@ -15,7 +15,7 @@ public extension UIStoryboard {
             Constant.storyboard.instantiateViewController(withIdentifier: "MyQRCodeViewController") as? MyQRCodeViewController
         }
         
-        static var sesame2RoomMainVC: Sesame2HistoryViewController? {
+        static var sesame2HistoryViewController: Sesame2HistoryViewController? {
             Constant.storyboard.instantiateViewController(withIdentifier: "Sesame2HistoryViewController") as? Sesame2HistoryViewController
         }
         
