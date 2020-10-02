@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/Bluetooth-4.0LE-0082FC" /> <img src="https://img.shields.io/badge/iOS-11-000000" /> <img src="https://img.shields.io/badge/Android-5.0-3DDC84" /> <img src="https://img.shields.io/badge/Xcode-11.7-1575F9" /> <img src="https://img.shields.io/badge/Android Studio-4.0.1-3DDC84" /> <img src="https://img.shields.io/badge/Swift-5.2.4-FA7343" /> <img src="https://img.shields.io/badge/Kotlin-1.3-0095D5" />
+<img src="https://img.shields.io/badge/Bluetooth-4.0LE 以降-0082FC" /> <img src="https://img.shields.io/badge/iOS-10 以降-000000" /> <img src="https://img.shields.io/badge/Android-5.0 以降-3DDC84" /> <img src="https://img.shields.io/badge/Xcode-12.0.1 以降-1575F9" /> <img src="https://img.shields.io/badge/Android Studio-4.0.1 以降-3DDC84" /> <img src="https://img.shields.io/badge/Swift-5.3-FA7343" /> <img src="https://img.shields.io/badge/Kotlin-1.4-0095D5" />
 <!-- https://simpleicons.org/ -->
 <p align="center" >
   <img src="https://raw.github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/assets/SesameSDK_Swift.png" alt="CANDY HOUSE Sesame SDK" title="SesameSDK">
@@ -22,10 +22,10 @@ SesameSDK は簡単かつパワフルかつ無料な、iOS/Androidアプリ用�
 
 ### Requirements
 
-| Minimum Targets | Minimum Bluetooth Target | Minimum IDE |
-|:------------------:|:------------------------:|:-----------:|
-| iOS 11 <br> iPadOS 13.1 | Bluetooth 4.0 LE | Xcode 11.7 | 
-| Android 5.0 | Bluetooth 4.0 LE | Android Studio 4.0.1 | 
+| OS Targets                     | Bluetooth Target    | IDE Target    |
+|:------------------------------:|:-------------------:|:-------------:|
+| iOS 10 以降<br> iPadOS 13.1 以降| Bluetooth 4.0 LE 以降| Xcode 12.0.1 以降| 
+| Android 5.0 以降               | Bluetooth 4.0 LE 以降| Android Studio 4.0.1 以降| 
 
 ### Essential dependencies
 - iOS
@@ -86,6 +86,7 @@ Before registering a Sesame device, you have to connect to it in order to send c
 ```swift
 public func didDiscoverUnRegisteredSesames(sesames: [CHSesame2]) {
     for sesame2 in sesame2s {
+        sesame2.delegate = self
         sesame2.connect()
     }
 }
