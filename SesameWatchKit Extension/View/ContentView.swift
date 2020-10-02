@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct ContentView<ContentProvider: Provider>: View {
-    @ObservedObject var viewModel: ContentViewModel<ContentProvider>
+struct ContentView: View {
+    @ObservedObject var viewModel = ContentViewModel()
     @State var userData = UserData.shared
 
     var body: some View {

@@ -6,12 +6,11 @@
 //  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
-#if os(iOS)
 import UIKit
 
 class Sesame2Circle: UIControl {
     
-    private let renderer = KnobRenderer()
+    private let renderer = Sesame2CircleKnobRenderer()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,30 +32,30 @@ class Sesame2Circle: UIControl {
     }
 }
 
-
-private class KnobRenderer {
-
+private class Sesame2CircleKnobRenderer {
+    
     let unlockImgLyer = CAShapeLayer()
     var bounds = CGRect.zero
     var imageWidth: CGFloat = 0.0
-
+    
     init() {
+        unlockImgLyer.fillColor = UIColor.lockGray.cgColor
     }
-
+    
     fileprivate func updateBounds(_ bounds: CGRect) {
         self.bounds = bounds
         updateTrackLayerPath()
     }
     
     fileprivate func updateTrackLayerPath() {
-
+        
         imageWidth = bounds.width / 2
-
+        
         unlockImgLyer.frame = CGRect(x: 0,
                                      y: 0,
                                      width: bounds.width,
                                      height: bounds.width)
-
+        
         let bounds = unlockImgLyer.bounds
         let radious = imageWidth/10
         let center = CGPoint(x: bounds.maxX - 1.0, y: bounds.midY)
@@ -65,12 +64,12 @@ private class KnobRenderer {
                                 startAngle: 0,
                                 endAngle: CGFloat(Double.pi) * 2,
                                 clockwise: true)
-
+        
         unlockImgLyer.path = ring.cgPath
     }
-
+    
     fileprivate func updateunLockImage(newPointerAngle: CGFloat, lockColor: UIColor) {
-
+        
         let to = CGFloat(Double.pi*2) / CGFloat(360) * newPointerAngle
         let translation = CGAffineTransform(rotationAngle: to)
         unlockImgLyer.setAffineTransform(translation)
@@ -91,4 +90,3 @@ private class KnobRenderer {
         unlockImgLyer.add(fillColorAnimation, forKey: "fillColorAnimation")
     }
 }
-#endif

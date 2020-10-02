@@ -58,7 +58,10 @@
         <attribute name="isUnlocked" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>
     <entity name="Sesame2Property" representedClassName="Sesame2PropertyMO" syncable="YES" codeGenerationType="class">
+        <attribute name="autoUnlockType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deviceID" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="histories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sesame2History" inverseName="ssmProperty" inverseEntity="Sesame2History"/>
     </entity>
@@ -78,6 +81,6 @@
         <element name="Sesame2HistoryNone" positionX="72" positionY="99" width="128" height="43"/>
         <element name="Sesame2HistoryTimeChanged" positionX="54" positionY="9" width="128" height="73"/>
         <element name="Sesame2HistoryUnlock" positionX="45" positionY="72" width="128" height="58"/>
-        <element name="Sesame2Property" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Sesame2Property" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

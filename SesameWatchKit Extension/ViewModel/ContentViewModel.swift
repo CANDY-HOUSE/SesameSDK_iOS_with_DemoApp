@@ -17,8 +17,8 @@ protocol ContentViewModelProtocol: class {
     var deviceModels: [DeviceModel] { get set }
 }
 
-class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, ContentViewModelProtocol {
-    @Published var displayText = LocalizedString("co.candyhouse.sesame-sdk-test-app.watchkitapp.openYourSesame")
+class ContentViewModel: NSObject, ObservableObject, ContentViewModelProtocol {
+    @Published var displayText = "co.candyhouse.sesame-sdk-test-app.watchkitapp.openYourSesame".localized
     
     /// Data model wrapper, used to index and generate list view.
     @Published var deviceModels = [DeviceModel]() {
@@ -31,72 +31,122 @@ class ContentViewModel<ContentProvider: Provider>: NSObject, ObservableObject, C
     
     let userData = UserData.shared
     
-    private var deviceProvider: ContentProvider
     private var disposables = [AnyCancellable]()
     
-    init(deviceProvider: ContentProvider = DeviceModelProvider() as! ContentProvider) {
-
-        self.deviceProvider = deviceProvider
+    override init() {
         super.init()
-        self.receivedDeviceModels()
         guard WCSession.isSupported() == true else {
-            self.displayText = LocalizedString("co.candyhouse.sesame-sdk-test-app.watchkitapp.notSupport")
+            self.displayText = "co.candyhouse.sesame-sdk-test-app.watchkitapp.notSupport".localized
             return
         }
+        
+        updateWheneverMessageComming()
+        connectDevicesWhenAppBecomeActivate()
+        disconnectAllDevicesWhenAppInactivate()
     }
     
-    // MARK: - Binding
-    private func receivedDeviceModels() {
-        deviceProvider
-            .subjectPublisher
-            .map { $0.result }
-            .switchToLatest()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { complete in
-                switch complete {
-                case .finished:
-                    L.d("Finished")
-                case .failure(let error):
-                    L.d("Error: \(error)")
-                    self.displayText = error.localizedDescription
-                    self.displayColor = UIColor.white
-                    self.isShowContent = false
+    // MARK: - Get Devices
+    private func updateWheneverMessageComming() {
+        NotificationCenter.default.publisher(for: .WCSessioinDidReceiveMessage)
+            .map { notification -> [AnyHashable: Any]? in
+                notification.userInfo
+            }
+            .sink { userInfo in
+                CHDeviceManager.shared.getSesame2s { result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let sesame2s):
+                            executeOnMainThread {
+                                self.receivedSesame2s(sesame2s.data)
+                            }
+                        case .failure(let error):
+                            executeOnMainThread {
+                                self.receivedError(error)
+                            }
+                        }
+                    }
                 }
-            }) { [weak self] deviceModels in
-                guard let strongSelf = self,
-                    let deviceModels = deviceModels as? [DeviceModel] else {
-                    return
+            }
+            .store(in: &disposables)
+    }
+    
+    private func connectDevicesWhenAppBecomeActivate() {
+        NotificationCenter.default.publisher(for: .ApplicationDidBecomeActive)
+            .sink { _ in
+                L.d("ApplicationDidBecomeActive")
+                CHBleManager.shared.enableScan(){ res in
+                    
                 }
-                L.d("Watch get \(deviceModels.count) device(s).")
-                strongSelf.deviceModels = deviceModels.sorted(by: { (left, right) -> Bool in
-                    left.uuid.uuidString < right.uuid.uuidString
-                })
                 
-                // MARK: - Clear removed device
-                let containedSelectedUUID = deviceModels.contains {
-                    strongSelf.userData.selectedDevice == $0.device.deviceId
+                CHDeviceManager.shared.getSesame2s { result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let sesame2s):
+                            executeOnMainThread {
+                                self.receivedSesame2s(sesame2s.data)
+                            }
+                        case .failure(let error):
+                            executeOnMainThread {
+                                self.receivedError(error)
+                            }
+                        }
+                    }
                 }
-                if containedSelectedUUID == false {
-                    strongSelf.userData.selectedDevice = nil
-                }
-                strongSelf.displayText = LocalizedString("co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady")
-                strongSelf.displayColor = UIColor.white
-        }
-        .store(in: &disposables)
-        deviceProvider.connect()
+            }
+            .store(in: &self.disposables)
     }
     
+    private func receivedSesame2s(_ sesame2s: [CHSesame2]) {
+        let deviceModels = sesame2s.map { sesame2 in
+            DeviceModel(uuid: sesame2.deviceId, device: sesame2)
+        }
+        
+        self.deviceModels = deviceModels.sorted(by: { (left, right) -> Bool in
+            left.uuid.uuidString < right.uuid.uuidString
+        })
+        
+        // MARK: - Clear removed device
+        let containedSelectedUUID = deviceModels.contains {
+            userData.selectedDevice == $0.device.deviceId
+        }
+        if containedSelectedUUID == false {
+            userData.selectedDevice = nil
+        }
+        displayText = "co.candyhouse.sesame-sdk-test-app.watchkitapp.sesameReady".localized
+        displayColor = UIColor.white
+    }
+    
+    private func receivedError(_ error: Error) {
+        displayText = error.localizedDescription
+        displayColor = UIColor.white
+        isShowContent = false
+    }
+    
+    private func disconnectAllDevicesWhenAppInactivate() {
+        NotificationCenter.default.publisher(for: Notification.Name.ApplicationWillResignActive)
+            .sink { _ in
+                CHBleManager.shared.disableScan(){res in}
+                CHBleManager.shared.disConnectAll(){res in}
+                L.d("ApplicationWillResignActive")
+        }
+        .store(in: &self.disposables)
+    }
+
     // MARK: - User Event
     func deviceHasSelected() {
         // Refresh UI
+        CHBleManager.shared.disConnectAll { _ in
+            
+        }
         isShowContent.toggle()
         isShowContent.toggle()
     }
     
     // MARK: - View Models
     func selectedSesameLockCellModel() -> Sesame2LockViewModel {
-        let selectedIndex = deviceModels.firstIndex(where: { [weak self] in
-            $0.device.deviceId == self?.userData.selectedDevice
+        let selectedDeviceId = userData.selectedDevice
+        let selectedIndex = deviceModels.firstIndex(where: {
+            $0.device.deviceId == selectedDeviceId
         }) ?? 0
         
         return Sesame2LockViewModel(device: deviceModels[selectedIndex].device)

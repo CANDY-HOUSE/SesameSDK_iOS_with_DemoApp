@@ -33,9 +33,9 @@ struct MockCHSesameMechStatus: CHSesame2MechStatus {
 }
 
 struct MockCHSesameMechSettings: CHSesame2MechSettings {
-    var lockPosition: Int16 = 0
+    var lockPosition: Int16 = 180
     
-    var unlockPosition: Int16 = 0
+    var unlockPosition: Int16 = 90
     
     func isConfigured() -> Bool {
         true

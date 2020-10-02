@@ -16,7 +16,7 @@ struct Sesame2ListCell: View {
         GeometryReader { geometry in
             self.contentView(geometry: geometry)
                 .frame(width: geometry.size.width, height: geometry.size.height,
-                       alignment: .center)
+                       alignment: .leading)
                 .onTapGesture {
                     self.userData.selectedDevice = self.viewModel.uuid
             }

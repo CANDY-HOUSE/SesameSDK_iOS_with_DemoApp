@@ -36,6 +36,16 @@ extension UIImage{
 
         return image
     }
+    
+    func circleImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        let rect = CGRect(origin: .zero, size: size)
+        UIBezierPath(roundedRect: rect, cornerRadius: size.height/2).addClip()
+        draw(in: rect)
+        let circleImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return circleImage
+    }
 
 #if os(iOS)
     public class func generateQRCode(_ text: String,_ fillImage:UIImage? = nil, _ color:UIColor? = nil) -> UIImage? {
@@ -126,6 +136,20 @@ extension UIImage{
         }
 
         return nil
+    }
+    
+    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        color.setFill()
+        UIRectFill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        guard let cgImage = image?.cgImage else {
+            return nil
+        }
+        self.init(cgImage: cgImage)
     }
 #endif
 }

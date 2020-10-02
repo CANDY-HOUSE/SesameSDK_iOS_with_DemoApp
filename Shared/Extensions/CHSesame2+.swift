@@ -15,6 +15,19 @@ import SesameWatchKitSDK
 #endif
 
 extension CHSesame2 {
+    public func compare(_ sesame2: CHSesame2) -> Bool {
+        let leftDevice = Sesame2Store.shared.getSesame2Property(self)
+        let rightDevice = Sesame2Store.shared.getSesame2Property(sesame2)
+        if let _ = leftDevice, rightDevice == nil {
+            return true
+        } else if leftDevice == nil, let _ = rightDevice {
+            return false
+        } else if let _ = leftDevice, let _ = rightDevice {
+            return leftDevice!.name ?? "" < rightDevice!.name ?? ""
+        } else {
+            return deviceId.uuidString < sesame2.deviceId.uuidString
+        }
+    }
     
     public func localizedDescription() -> String {
         switch deviceStatus {

@@ -21,7 +21,8 @@ class Sesame2ListCellModel: ObservableObject {
     init(device: CHSesame2) {
         self.sesame2 = device
         self.uuid = device.deviceId
-        title = device.deviceId.uuidString
+        let display = Sesame2Store.shared.getSesame2Property(device)?.name
+        title = display ?? device.deviceId.uuidString
         image = "Icon"
     }
     

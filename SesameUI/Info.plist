@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>33</string>
+	<string>44</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -41,16 +41,26 @@
 	<string>This app would like to make data available to nearby bluetooth devices even when you&#39;re not using the app.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>To scan QR code</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To connect Sesame Smart Lock and lock/unlock the door.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Application requires user’s location for better user experience.</string>
+	<string>To connect Sesame Smart Lock and lock/unlock the door.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Save QR image into your album.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>OpenSesame2Intent</string>
+		<string>ToggleSesame2Intent</string>
+		<string>LockSesame2Intent</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>bluetooth-central</string>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

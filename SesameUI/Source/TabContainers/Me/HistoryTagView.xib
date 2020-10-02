@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MO9-2p-WFn" userLabel="NonLoggedInHeader" customClass="HistoryTagView" customModule="Sesame" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-ft-2yc">
+                    <rect key="frame" x="10" y="10" width="394" height="876"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                    <state key="normal" title="Log In / Register">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGo-WV-sfP">
+                    <rect key="frame" x="10" y="865" width="87" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="Dbk-ft-2yc" firstAttribute="leading" secondItem="MO9-2p-WFn" secondAttribute="leading" constant="10" id="6ni-rO-dp1"/>
+                <constraint firstAttribute="bottom" secondItem="Dbk-ft-2yc" secondAttribute="bottom" constant="10" id="E3k-eM-kJt"/>
+                <constraint firstItem="Dbk-ft-2yc" firstAttribute="top" secondItem="MO9-2p-WFn" secondAttribute="top" constant="10" id="I7H-oX-cU7"/>
+                <constraint firstItem="OGo-WV-sfP" firstAttribute="top" secondItem="Dbk-ft-2yc" secondAttribute="bottom" constant="-21" id="OHt-cF-dzJ"/>
+                <constraint firstItem="OGo-WV-sfP" firstAttribute="leading" secondItem="Dbk-ft-2yc" secondAttribute="leading" id="iBm-sh-PMl"/>
+                <constraint firstAttribute="trailing" secondItem="Dbk-ft-2yc" secondAttribute="trailing" constant="10" id="qhi-os-yDh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZHA-xB-2dv"/>
+            <connections>
+                <outlet property="historyTagButton" destination="Dbk-ft-2yc" id="v4X-gh-cmm"/>
+                <outlet property="historyTagHintLabel" destination="OGo-WV-sfP" id="uRU-hm-8R3"/>
+            </connections>
+            <point key="canvasLocation" x="180" y="343"/>
+        </view>
+    </objects>
+</document>

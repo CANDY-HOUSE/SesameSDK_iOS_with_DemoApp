@@ -17,13 +17,4 @@ extension Date {
         let strDate = dateFormatter.string(from: self)
         return strDate
     }
-    
-    func toJPtime() -> String {
-           let dateFormatter = DateFormatter()
-           dateFormatter.timeZone = TimeZone.current
-           dateFormatter.locale = NSLocale.current
-           dateFormatter.dateFormat = "MM/dd HH:mm:ss"
-           let strDate = dateFormatter.string(from: self)
-           return strDate
-    }
 }

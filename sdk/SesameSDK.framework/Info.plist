@@ -23,33 +23,29 @@
 		<string>iPhoneOS</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>33</string>
+	<string>44</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>17G64</string>
+	<string>18A390</string>
 	<key>DTPlatformName</key>
 	<string>iphoneos</string>
 	<key>DTPlatformVersion</key>
-	<string>13.6</string>
+	<string>14.0</string>
 	<key>DTSDKBuild</key>
-	<string>17G64</string>
+	<string>18A390</string>
 	<key>DTSDKName</key>
-	<string>iphoneos13.6</string>
+	<string>iphoneos14.0</string>
 	<key>DTXcode</key>
-	<string>1160</string>
+	<string>1200</string>
 	<key>DTXcodeBuild</key>
-	<string>11E708</string>
+	<string>12A7209</string>
 	<key>MinimumOSVersion</key>
-	<string>11.0.0</string>
+	<string>10.0.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
 		<integer>2</integer>
-	</array>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>arm64</string>
 	</array>
 </dict>
 </plist>

@@ -16,7 +16,7 @@ import SesameWatchKitSDK
 #endif
 
 protocol LockHaptic: class {
-    var lockIntention: ((CHSesame2Intention) -> Void)? { get set }
+    var setLockIntention: ((CHSesame2Intention) -> Void)? { get set }
 }
 
 extension LockHaptic {
@@ -40,17 +40,17 @@ extension LockHaptic {
         #endif
     }
     
-    func toggleWithHaptic(sesame2: CHSesame2, _ completion: @escaping (() -> Void)) {
-        lockIntention = { [weak self] intention in
+    func toggleWithHaptic(sesame2: CHSesame2, _ completion: (() -> Void)? = nil) {
+        setLockIntention = { [weak self] intention in
             if intention == .idle {
                 self?.completeHaptic()
-                self?.lockIntention = nil
-                completion()
+                self?.setLockIntention = nil
+                completion?()
             }
         }
-        startHaptic()
+        
         sesame2.toggle { _ in
-            
+            self.startHaptic()
         }
     }
 }

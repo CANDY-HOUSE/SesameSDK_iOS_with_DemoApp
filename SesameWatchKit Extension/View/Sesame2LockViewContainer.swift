@@ -30,10 +30,11 @@ struct Sesame2LockViewContainer: View {
                 SesameLockView(viewModel: self.viewModel)
                     .frame(width: geometry.size.width * 0.7,
                            height: geometry.size.width * 0.7)
-//                    .padding()
                 Text(self.viewModel.display)
                     .lineLimit(1)
                     .minimumScaleFactor(0.01)
+                    .frame(width: geometry.size.width,
+                           alignment: .center)
             }
             .frame(height: geometry.size.height)
                 .onReceive(self.userData.$selectedDevice) { uuid in
@@ -55,24 +56,27 @@ struct SesameLockView: View {
     
     func makePlanet(geometry: GeometryProxy) -> some View {
         let lockSize = geometry.size.height * 1
-        let lockIndicatorSize = geometry.size.height * 0.12
+        let lockIndicatorSize = geometry.size.height * 0.07
         return ZStack {
             Button(action: {
                 self.viewModel.cellTapped()
             }) {
-                Image(viewModel.imageName)
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                Circle()
+                    .strokeBorder(Color.white, lineWidth: 1)
                     .frame(width: lockSize,
                            height: lockSize,
                            alignment: .center)
-                    .cornerRadius(lockSize/2)
+                    .background(
+                        Image(viewModel.imageName)
+                            .renderingMode(.original)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                )
             }
-            .frame(width: lockSize,
-                   height: lockSize,
-                   alignment: .center)
+            .frame(width: lockSize, height: lockSize, alignment: .center)
             .cornerRadius(lockSize/2)
+            .buttonStyle(PlainButtonStyle())
+            
             self.lockIndicator(size: lockIndicatorSize,
                                color: Color(self.viewModel.moonColor))
                 .modifier(
@@ -81,7 +85,6 @@ struct SesameLockView: View {
             )
                 .animation(Animation
                     .linear(duration: 0)
-//                    .repeatCount(0, autoreverses: false)
             )
         }
     }

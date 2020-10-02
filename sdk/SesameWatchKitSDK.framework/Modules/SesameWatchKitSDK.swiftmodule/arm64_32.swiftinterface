@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
 // swift-module-flags: -target arm64_32-apple-watchos6.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SesameWatchKitSDK
 import CoreBluetooth
 import CoreData
@@ -66,16 +66,23 @@ public enum CHSesame2History {
   case driveFailed(SesameWatchKitSDK.CHSesame2DriveFailedHistoryData)
   case none(SesameWatchKitSDK.CHSesame2HistoryData)
 }
+public protocol CHExtensionListenerDelegate : AnyObject {
+  func receiveNotification(_ notificationIdentifier: Swift.String)
+}
+final public class CHExtensionListener {
+  public static let containingAppDidBecomeActive: Swift.String
+  public static let containingAppWillResignActive: Swift.String
+  public static let widgetDidBecomeActive: Swift.String
+  public static let widgetWillResignActive: Swift.String
+  public init()
+  final public func registerObserver<P>(_ listener: P, withIdentifier identifier: Swift.String) where P : SesameWatchKitSDK.CHExtensionListenerDelegate
+  final public func unregisterIdentifier(_ identifier: Swift.String)
+  final public func unregisterAll()
+  public static func post(notification: Swift.String)
+  @objc deinit
+}
 public func diff<T>(old: [T], new: [T]) -> [SesameWatchKitSDK.Change<T>] where T : SesameWatchKitSDK.DiffAware
 public func preprocess<T>(old: [T], new: [T]) -> [SesameWatchKitSDK.Change<T>]?
-public protocol CHWifiModule2Delegate : AnyObject {
-  func onBleDeviceStatusChanged(device: SesameWatchKitSDK.CHWifiModule2, status: SesameWatchKitSDK.CHWifiModule2Status)
-  func onMechStatusChanged(device: SesameWatchKitSDK.CHWifiModule2, status: SesameWatchKitSDK.CHSesame2MechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
-}
-extension CHWifiModule2Delegate {
-  public func onBleDeviceStatusChanged(device: SesameWatchKitSDK.CHWifiModule2, status: SesameWatchKitSDK.CHSesame2MechStatus)
-  public func onMechStatusChanged(device: SesameWatchKitSDK.CHWifiModule2, status: SesameWatchKitSDK.CHSesame2MechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
-}
 @_hasMissingDesignatedInitializers final public class CHConfiguration {
   public static let shared: SesameWatchKitSDK.CHConfiguration
   final public func setAPIKey(_ key: Swift.String)
@@ -508,7 +515,6 @@ extension String {
 }
 public enum CHProductModel : Swift.UInt16 {
   case sesame2
-  case wifiModule2
   public typealias RawValue = Swift.UInt16
   public init?(rawValue: Swift.UInt16)
   public var rawValue: Swift.UInt16 {
@@ -585,59 +591,15 @@ public struct Sesame2BleAdvParameter : SesameWatchKitSDK.CHSesame2BleAdvParamete
   public var interval: Swift.Double
   public var txPower: Swift.Int8
 }
-public protocol CHWifiModule2 : AnyObject {
-  var deviceId: Foundation.UUID! { get }
-  var deviceIR: Swift.String { get }
-  var rssi: Foundation.NSNumber? { get }
-  var txPowerLevel: Swift.Int? { get }
-  var isRegistered: Swift.Bool { get }
-  var delegate: SesameWatchKitSDK.CHWifiModule2Delegate? { get set }
-  var deviceStatus: SesameWatchKitSDK.CHWifiModule2Status { get }
-  func register(_ result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
-  func reset(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
-  func updateFirmware(_ result: @escaping SesameWatchKitSDK.CHResult<CoreBluetooth.CBPeripheral?>)
-  func getVersionTag(result: @escaping (SesameWatchKitSDK.CHResult<Swift.String>))
-  func connect(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
-  func disconnect(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
-  func enableWifiDiscovery(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.WifiModule2WifiInformation>))
-  func disableWifiDiscovery(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
-  func sendWifiCredential(ssid: Swift.String, password: Swift.String, _ result: @escaping SesameWatchKitSDK.CHResult<Swift.Bool>)
-  func updateSesame2s(_ sesame2s: [SesameWatchKitSDK.CHSesame2], _ result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
-}
-public protocol CHSesame2Delegate {
+public protocol CHSesame2Delegate : AnyObject {
   func onBleDeviceStatusChanged(device: SesameWatchKitSDK.CHSesame2, status: SesameWatchKitSDK.CHSesame2Status, shadowStatus: SesameWatchKitSDK.CHSesame2ShadowStatus?)
   func onMechStatusChanged(device: SesameWatchKitSDK.CHSesame2, status: SesameWatchKitSDK.CHSesame2MechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
+  func onHistoryReceived(device: SesameWatchKitSDK.CHSesame2, result: Swift.Result<SesameWatchKitSDK.CHResultState<[SesameWatchKitSDK.CHSesame2History]>, Swift.Error>)
 }
 extension CHSesame2Delegate {
   public func onBleDeviceStatusChanged(device: SesameWatchKitSDK.CHSesame2, status: SesameWatchKitSDK.CHSesame2Status)
   public func onMechStatusChanged(device: SesameWatchKitSDK.CHSesame2, status: SesameWatchKitSDK.CHSesame2MechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
-}
-public enum CHWifiModule2Status {
-  case noBleSignal
-  case receivedBle
-  case bleConnecting
-  case reset
-  case waitingGatt
-  case bleLogining
-  case readyToRegister
-  case registering
-  case locked
-  case unlocked
-  case moved
-  case noSettings
-  case dfumode
-  case setupSucceed
-  case readyToSetup
-  case settingUp
-  case connected
-  case disconnected
-  public func description() -> Swift.String
-  public func loginStatus() -> SesameWatchKitSDK.CHDeviceLoginStatus
-  public static func == (a: SesameWatchKitSDK.CHWifiModule2Status, b: SesameWatchKitSDK.CHWifiModule2Status) -> Swift.Bool
-  public var hashValue: Swift.Int {
-    get
-  }
-  public func hash(into hasher: inout Swift.Hasher)
+  public func onHistoryReceived(device: SesameWatchKitSDK.CHSesame2, result: Swift.Result<SesameWatchKitSDK.CHResultState<[SesameWatchKitSDK.CHSesame2History]>, Swift.Error>)
 }
 public typealias CHResult<T> = (Swift.Result<SesameWatchKitSDK.CHResultState<T>, Swift.Error>) -> ()
 @_hasMissingDesignatedInitializers public class CHResultState<T> {
@@ -698,12 +660,10 @@ extension UUID : SesameWatchKitSDK.DiffAware {
 public protocol CHBleManagerDelegate : AnyObject {
   func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameWatchKitSDK.CHSesame2])
   func didDiscoverUnRegisteredSesame2(sesame2: SesameWatchKitSDK.CHSesame2)
-  func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameWatchKitSDK.CHWifiModule2])
 }
 extension CHBleManagerDelegate {
   public func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameWatchKitSDK.CHSesame2])
   public func didDiscoverUnRegisteredSesame2(sesame2: SesameWatchKitSDK.CHSesame2)
-  public func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameWatchKitSDK.CHWifiModule2])
 }
 public enum CHDeviceLoginStatus : Swift.String {
   case logined
@@ -730,24 +690,9 @@ public var Sesame2WatchKitSDKVersion: Swift.UInt? {
 public var Sesame2WatchKitSDKBundleVersion: Swift.UInt? {
   get
 }
-public struct WifiModule2WifiInformation {
-  public var security: Foundation.Data {
-    get
-  }
-  public var rssi: Swift.Int16 {
-    get
-  }
-  public var ssidLength: Swift.UInt8 {
-    get
-  }
-  public var ssid: Foundation.Data? {
-    get
-  }
-}
 @objc @_inheritsConvenienceInitializers public class CHDeviceManager : ObjectiveC.NSObject {
   public static let shared: SesameWatchKitSDK.CHDeviceManager
   public func getSesame2s(result: @escaping (SesameWatchKitSDK.CHResult<[SesameWatchKitSDK.CHSesame2]>))
-  public func getWifiModule2s(result: @escaping (SesameWatchKitSDK.CHResult<[SesameWatchKitSDK.CHWifiModule2]>))
   public func receiveSesame2Keys(sesame2Keys: [Swift.String], result: @escaping (SesameWatchKitSDK.CHResult<[SesameWatchKitSDK.CHSesame2]>))
   public func receiveSesame2Keys(sesame2Keys: Swift.String..., result: @escaping (SesameWatchKitSDK.CHResult<[SesameWatchKitSDK.CHSesame2]>))
   @objc deinit
@@ -772,7 +717,7 @@ extension CHDevice {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var deviceUUID: Foundation.UUID? {
+  @objc @NSManaged dynamic public var deviceUUID: Swift.String? {
     @objc get
     @objc set
   }
@@ -792,6 +737,9 @@ extension CHDevice {
     @objc get
     @objc set
   }
+}
+extension CHDevice : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
 }
 extension SesameWatchKitSDK.CHSesame2Intention : Swift.Equatable {}
 extension SesameWatchKitSDK.CHSesame2Intention : Swift.Hashable {}
@@ -848,8 +796,6 @@ extension SesameWatchKitSDK.CHProductModel : Swift.RawRepresentable {}
 extension SesameWatchKitSDK.Sesame2RetCodeType : Swift.Equatable {}
 extension SesameWatchKitSDK.Sesame2RetCodeType : Swift.Hashable {}
 extension SesameWatchKitSDK.Sesame2RetCodeType : Swift.RawRepresentable {}
-extension SesameWatchKitSDK.CHWifiModule2Status : Swift.Equatable {}
-extension SesameWatchKitSDK.CHWifiModule2Status : Swift.Hashable {}
 extension SesameWatchKitSDK.CHDeviceLoginStatus : Swift.Equatable {}
 extension SesameWatchKitSDK.CHDeviceLoginStatus : Swift.Hashable {}
 extension SesameWatchKitSDK.CHDeviceLoginStatus : Swift.RawRepresentable {}

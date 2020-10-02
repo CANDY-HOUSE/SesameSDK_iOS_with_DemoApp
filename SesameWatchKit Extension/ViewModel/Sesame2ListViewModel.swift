@@ -16,7 +16,9 @@ class Sesame2ListViewModel: ObservableObject {
     private var sesame2s: [CHSesame2]
     
     init(sesame2s: [CHSesame2]) {
-        self.sesame2s = sesame2s
+        self.sesame2s = sesame2s.sorted(by: {
+            $0.compare($1)
+        })
     }
     
     func cellViewModels() -> [Sesame2ListCellModel] {

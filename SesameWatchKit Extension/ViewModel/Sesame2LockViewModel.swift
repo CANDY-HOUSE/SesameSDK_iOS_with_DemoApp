@@ -12,8 +12,7 @@ import SesameWatchKitSDK
 import SwiftUI
 import Combine
 
-class Sesame2LockViewModel: ObservableObject, LockHaptic {
-    var lockIntention: ((CHSesame2Intention) -> Void)?
+class Sesame2LockViewModel: ObservableObject {
     
     @Published var display = ""
     @Published var imageName = ""
@@ -26,58 +25,26 @@ class Sesame2LockViewModel: ObservableObject, LockHaptic {
     var uuid: UUID?
     private var device: CHSesame2
     private var disposables = [AnyCancellable]()
-    private var bleProvider: BleDeviceProvider!
     
     init(device: CHSesame2) {
-        // Initial properties
         self.uuid = device.deviceId
         self.device = device
-        self.bleProvider = BleDeviceProvider(device: device)
         let display = Sesame2Store.shared.getSesame2Property(device)?.name
-//        L.d("⌚️ Sesame2Store.shared.getPropertyOfSesame2(device).name", display)
         self.display = display ?? device.deviceId.uuidString
-        // Binding or configure
-        self.bleProvider
-            .subjectPublisher
-            .map { $0.result }
-            .switchToLatest()
-//            .throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { complete in
-                switch complete {
-                case .finished:
-                    break
-                case .failure(let error):
-                    L.d(error)
-                }
-            }) { [weak self] device in
-                guard let strongSelf = self else { return }
-                strongSelf.device = device
-                strongSelf.setContentBy(device: device)
+        self.device.delegate = self
+        
+        self.device.connect { _ in
+            
         }
-        .store(in: &disposables)
-
-        self.bleProvider.connect()
         
         self.cellTapped = { [weak self] in
-            guard let strongSelf = self else {
-                return
-            }
-            let device = strongSelf.device
-            self?.toggleWithHaptic(sesame2: device, {
+            self?.device.toggle { _ in
                 
-            })
+            }
         }
         
         // Initial view
         setContentBy(device: device)
-        
-        guard let status = device.mechStatus
-            else {
-            return
-        }
-        let degreeFrom = angle2degree(angle: Int16(status.position))
-        radians = CGFloat(degreeFrom.degreesToRadians)
     }
     
     // MARK: - Private methods
@@ -91,6 +58,24 @@ class Sesame2LockViewModel: ObservableObject, LockHaptic {
         batteryPercentage = "\(mechStatus.getBatteryPrecentage())%"
         let toRadians = angle2degree(angle: Int16(mechStatus.position))
         radians = CGFloat(toRadians)
-        lockIntention?(device.intention)
+    }
+}
+
+extension Sesame2LockViewModel: CHSesame2Delegate {
+    func onBleDeviceStatusChanged(device: CHSesame2,
+                                  status: CHSesame2Status,
+                                  shadowStatus: CHSesame2ShadowStatus?) {
+        if device.deviceId == self.device.deviceId, status == .receivedBle {
+            device.connect() {res in}
+        }
+        executeOnMainThread {
+            self.setContentBy(device: device)
+        }
+    }
+    
+    public func onMechStatusChanged(device: CHSesame2, status: CHSesame2MechStatus, intention: CHSesame2Intention) {
+        executeOnMainThread {
+            self.setContentBy(device: device)
+        }
     }
 }

@@ -33,7 +33,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
-        handler(nil)
+        handler(complication.family.currentTimelineEntry())
     }
     
     func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
@@ -49,77 +49,156 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        var returnTemplate: CLKComplicationTemplate? = nil
-        switch complication.family {
-        case .modularSmall:
-            let template = CLKComplicationTemplateModularSmallSimpleImage()
-            if let image = UIImage(named: "Complication/Modular") {
-                template.imageProvider = CLKImageProvider(onePieceImage: image)
-            }
-            returnTemplate = template
-        case .modularLarge:
-            break
-        case .utilitarianSmall:
-            let template = CLKComplicationTemplateUtilitarianSmallRingImage()
-            if let image = UIImage(named: "Complication/Utilitarian") {
-                template.imageProvider = CLKImageProvider(onePieceImage: image)
-            }
-            returnTemplate = template
-        case .utilitarianLarge:
-            let template = CLKComplicationTemplateUtilitarianLargeFlat()
-            template.textProvider = CLKSimpleTextProvider(text: "UtilLargeFlat", shortText: "Sesame", accessibilityLabel: "Sesame")
-            if let image = UIImage(named: "Complication/Modular") {
+        handler(complication.family.localizableSampleTemplate())
+    }
+    
+}
 
+extension CLKComplicationFamily {
+    private enum ComplicationIcon {
+        static let utilitarian = "Complication/Utilitarian"
+        static let graphicLargeRectangular = "Complication/Graphic Large Rectangular"
+        static let graphicCircular = "Complication/Graphic Circular"
+        static let graphicBezel = "Complication/Graphic Bezel"
+        static let graphicCorner = "Complication/Graphic Corner"
+        static let graphicExtraLarge = "Complication/Graphic Extra Large"
+        static let circular = "Complication/Circular"
+        static let modular = "Complication/Modular"
+    }
+    
+    private enum Template {
+        static let modular: CLKComplicationTemplate = {
+            let template = CLKComplicationTemplateModularSmallSimpleImage()
+            if let image = UIImage(named: ComplicationIcon.modular) {
                 template.imageProvider = CLKImageProvider(onePieceImage: image)
             }
-            returnTemplate = template
-        case .circularSmall:
+            return template
+        }()
+        
+        static let modularLarge: CLKComplicationTemplate = {
+            let template = CLKComplicationTemplateModularLargeStandardBody()
+            let headerText = CLKSimpleTextProvider(text: "Sesame")
+            headerText.tintColor = .sesame2Green
+            template.headerTextProvider = headerText
+            let bodyText = CLKSimpleTextProvider(text: "Tap to open")
+            template.body1TextProvider = bodyText
+            return template
+        }()
+        
+        static let utilitarianSmall: CLKComplicationTemplate = {
+            let template = CLKComplicationTemplateUtilitarianSmallRingImage()
+            if let image = UIImage(named: ComplicationIcon.utilitarian) {
+                template.imageProvider = CLKImageProvider(onePieceImage: image)
+            }
+            return template
+        }()
+        
+        static let utilitarianLarge: CLKComplicationTemplate = {
+            let template = CLKComplicationTemplateUtilitarianLargeFlat()
+            template.textProvider = CLKSimpleTextProvider(text: "Sesame")
+            if let image = UIImage(named: ComplicationIcon.utilitarian) {
+                template.imageProvider = CLKImageProvider(onePieceImage: image)
+            }
+            return template
+        }()
+        
+        static let circularSmall: CLKComplicationTemplate = {
             let template = CLKComplicationTemplateCircularSmallSimpleImage()
-            if let image = UIImage(named: "Complication/Circular") {
+            if let image = UIImage(named: ComplicationIcon.circular) {
                 template.imageProvider = CLKImageProvider(onePieceImage: image)
             }
-            returnTemplate = template
-        case .extraLarge:
-            break
-        case .graphicCorner:
-            let template = CLKComplicationTemplateGraphicCornerStackText()
-            template.innerTextProvider = CLKTextProvider(format: "")
-            template.outerTextProvider = CLKTextProvider(format: "Sesame")
-            returnTemplate = template
-        case .graphicBezel:
+            return template
+        }()
+        
+        static let extraLarge: CLKComplicationTemplate = {
+            let template = CLKComplicationTemplateExtraLargeSimpleImage()
+            if let image = UIImage(named: ComplicationIcon.graphicExtraLarge) {
+                template.imageProvider = CLKImageProvider(onePieceImage: image)
+            }
+            return template
+        }()
+        
+        static let graphicCorner: CLKComplicationTemplate = {
+            let template = CLKComplicationTemplateGraphicCornerTextImage()
+            template.textProvider = CLKTextProvider(format: "Sesame")
+            if let image = UIImage(named: ComplicationIcon.graphicCorner) {
+                template.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
+            }
+            return template
+        }()
+        
+        static let graphicBezel: CLKComplicationTemplate = {
             let template = CLKComplicationTemplateGraphicBezelCircularText()
             let circularImg = CLKComplicationTemplateGraphicCircularImage()
-            if let image = UIImage(named: "Complication/Graphic Bezel") {
+            if let image = UIImage(named: ComplicationIcon.graphicBezel) {
                 circularImg.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
             }
             let text = CLKTextProvider(format: "Sesame")
             template.circularTemplate = circularImg
             template.textProvider = text
-            returnTemplate = template
-        case .graphicCircular:
+            return template
+        }()
+        
+        static let graphicCircular: CLKComplicationTemplate = {
             let template = CLKComplicationTemplateGraphicCircularImage()
-            if let image = UIImage(named: "Complication/Graphic Circular") {
+            if let image = UIImage(named: ComplicationIcon.graphicCircular) {
                 template.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
             }
-            returnTemplate = template
-        case .graphicRectangular:
-            let template = CLKComplicationTemplateGraphicCircularImage()
-            if let image = UIImage(named: "Complication/Graphic Circular") {
-                template.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            }
-            returnTemplate = template
-        case .utilitarianSmallFlat:
+            return template
+        }()
+        
+        static let graphicRectangular: CLKComplicationTemplate = {
+            let template = CLKComplicationTemplateGraphicRectangularStandardBody()
+            let headerText = CLKSimpleTextProvider(text: "Sesame")
+            headerText.tintColor = .sesame2Green
+            template.headerTextProvider = headerText
+            template.body1TextProvider = CLKTextProvider(format: "Tap to open")
+            return template
+        }()
+        
+        static let utilitarianSmallFlat: CLKComplicationTemplate = {
             let template = CLKComplicationTemplateUtilitarianSmallFlat()
-            if let image = UIImage(named: "Complication/Utilitarian") {
+            if let image = UIImage(named: ComplicationIcon.utilitarian) {
                 template.imageProvider = CLKImageProvider(onePieceImage: image)
             }
             template.textProvider = CLKTextProvider(format: "Sesame")
-            returnTemplate = template
+            return template
+        }()
+    }
+    
+    func localizableSampleTemplate() -> CLKComplicationTemplate? {
+        var returnTemplate: CLKComplicationTemplate? = nil
+        switch self {
+        case .modularSmall:
+            returnTemplate = Template.modular
+        case .modularLarge:
+            returnTemplate = Template.modularLarge
+        case .utilitarianSmall:
+            returnTemplate = Template.utilitarianSmall
+        case .utilitarianLarge:
+            returnTemplate = Template.utilitarianLarge
+        case .circularSmall:
+            returnTemplate = Template.circularSmall
+        case .extraLarge:
+            returnTemplate = Template.extraLarge
+        case .graphicCorner:
+            returnTemplate = Template.graphicCorner
+        case .graphicBezel:
+            returnTemplate = Template.graphicBezel
+        case .graphicCircular:
+            returnTemplate = Template.graphicCircular
+        case .graphicRectangular:
+            returnTemplate = Template.graphicRectangular
+        case .utilitarianSmallFlat:
+            returnTemplate = Template.utilitarianSmallFlat
         @unknown default:
             break
         }
-        
-        handler(returnTemplate)
+        return returnTemplate
     }
     
+    func currentTimelineEntry() -> CLKComplicationTimelineEntry? {
+        return CLKComplicationTimelineEntry(date: Date(),
+                                            complicationTemplate: self.localizableSampleTemplate()!)
+    }
 }
