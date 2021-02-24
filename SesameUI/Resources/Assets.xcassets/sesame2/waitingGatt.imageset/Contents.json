@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "waitgatt.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
