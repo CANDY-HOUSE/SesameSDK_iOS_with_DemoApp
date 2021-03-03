@@ -2,6 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-SesameUI/Pods-SesameUI-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AWSAPIGateway/AWSAPIGateway.framework
 ${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework
 ${BUILT_PRODUCTS_DIR}/AWSIoT/AWSIoT.framework
-${PODS_ROOT}/SesameSDK/sdk/SesameSDK.framework
+${PODS_ROOT}/SesameSDK/SesameSDK.framework
 ${BUILT_PRODUCTS_DIR}/ZIPFoundation/ZIPFoundation.framework
 ${BUILT_PRODUCTS_DIR}/iOSDFULibrary/iOSDFULibrary.framework

@@ -17,7 +17,7 @@
     "http": "https://sesame-ios-sdk-license.s3-ap-northeast-1.amazonaws.com/LICENSE.zip"
   },
   "ios": {
-    "vendored_frameworks": "sdk/SesameSDK.framework"
+    "vendored_frameworks": "SesameSDK.framework"
   },
   "dependencies": {
     "AWSCore": [
