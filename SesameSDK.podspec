@@ -8,9 +8,9 @@ Pod::Spec.new do |s|
     s.license                 = { :type => 'MIT', :file => 'LICENSE' }
 
     s.platform                = :ios
-    s.source                  = { :http => 'https://wayne-closed-pod-test.s3.ap-northeast-2.amazonaws.com/dummy.zip' }
+    s.source                  = { :http => 'https://sesame-ios-sdk-license.s3-ap-northeast-1.amazonaws.com/LICENSE.zip' }
 
-    s.ios.deployment_target   = '9.0'
+    s.ios.deployment_target   = '10.0'
     s.ios.vendored_frameworks = 'sdk/SesameSDK.framework'
     s.dependency "AWSCore", '2.22.0'
     s.dependency "AWSAPIGateway", '2.22.0'
