@@ -15,8 +15,8 @@ PODS:
 
 DEPENDENCIES:
   - iOSDFULibrary (= 4.5.1)
-  - "SesameSDK (from `git@github.com:CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git`, branch `master`)"
-  - "SesameWatchKitSDK (from `git@github.com:CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git`, branch `master`)"
+  - "SesameSDK (from `git@github.com:CANDY-HOUSE/SesameSDK_iOS.git`, branch `main`)"
+  - "SesameWatchKitSDK (from `git@github.com:CANDY-HOUSE/SesameSDK_iOS.git`, branch `main`)"
 
 SPEC REPOS:
   trunk:
@@ -28,29 +28,29 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SesameSDK:
-    :branch: master
-    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git"
+    :branch: main
+    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS.git"
   SesameWatchKitSDK:
-    :branch: master
-    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git"
+    :branch: main
+    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS.git"
 
 CHECKOUT OPTIONS:
   SesameSDK:
-    :commit: 7f76de27e069090cdfc8c551c9c9c7c40d444d6a
-    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git"
+    :commit: 966a26aafe00bb645a635338894a20373ceef21c
+    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS.git"
   SesameWatchKitSDK:
-    :commit: 7f76de27e069090cdfc8c551c9c9c7c40d444d6a
-    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git"
+    :commit: 966a26aafe00bb645a635338894a20373ceef21c
+    :git: "git@github.com:CANDY-HOUSE/SesameSDK_iOS.git"
 
 SPEC CHECKSUMS:
   AWSAPIGateway: 75598982b238b6795241492f0802a17473280c93
   AWSCore: 8bd1def9cb0b6770c65b6d394f1c1cbc0a5562b7
   AWSIoT: 708e1284bf67df14f263f8f76c6a7fb0e0e14e1f
   iOSDFULibrary: 87c6a088cf7172e3694dfaa8305e7ded5eda2547
-  SesameSDK: 702acacc6715211d53501c8765e556365482f6d2
-  SesameWatchKitSDK: cc888b50b45df12cb43afcd8b6f25224d3a0766b
+  SesameSDK: 2968c53765333c67a86b1049e983dbaf45a36d55
+  SesameWatchKitSDK: da55d08a5cf694e28810428fd58a24d00a0bf3d2
   ZIPFoundation: 89df685c971926b0323087952320bdfee9f0b6ef
 
-PODFILE CHECKSUM: 5349ef1778c0c8bca347f78f64876e8a8300a2f5
+PODFILE CHECKSUM: 1f140a8e62fa3e38a6a895a7a175f2d3c90278fb
 
 COCOAPODS: 1.10.1

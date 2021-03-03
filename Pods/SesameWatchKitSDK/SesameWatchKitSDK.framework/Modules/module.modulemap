@@ -1,0 +1,11 @@
+framework module SesameWatchKitSDK {
+  umbrella header "SesameWatchKitSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module SesameWatchKitSDK.Swift {
+    header "SesameWatchKitSDK-Swift.h"
+    requires objc
+}

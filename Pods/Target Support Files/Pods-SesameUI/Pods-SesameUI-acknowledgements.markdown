@@ -20,7 +20,7 @@ The AWS Mobile SDK for iOS is generally licensed under the Apache 2.0 License, w
 
 MIT License
 
-Copyright (c) 2021 CANDY HOUSE, Inc.
+Copyright (c) 2021 CANDY HOUSE
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

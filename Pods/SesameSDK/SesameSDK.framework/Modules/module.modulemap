@@ -1,0 +1,11 @@
+framework module SesameSDK {
+  umbrella header "SesameSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module SesameSDK.Swift {
+    header "SesameSDK-Swift.h"
+    requires objc
+}

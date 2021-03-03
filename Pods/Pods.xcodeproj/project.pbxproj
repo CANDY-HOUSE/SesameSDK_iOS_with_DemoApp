@@ -463,6 +463,7 @@
 		297CA663DB850E46B61C1D57094EDB88 /* AWSTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSTask.h; path = AWSCore/Bolts/AWSTask.h; sourceTree = "<group>"; };
 		2A0BC6757E0CD0196C6EB384DB137D89 /* AWSIoTService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSIoTService.m; path = AWSIoT/AWSIoTService.m; sourceTree = "<group>"; };
 		2A3692F46BC2C609561B03EDC57F06A0 /* AWSCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AWSCore-prefix.pch"; sourceTree = "<group>"; };
+		2A5D9B9476831F1E416F65C045C53FA8 /* SesameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameSDK.framework; sourceTree = "<group>"; };
 		2AF03CFA67D465A722DB3D189AA56EB5 /* AWSMTLJSONAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSMTLJSONAdapter.m; path = AWSCore/Mantle/AWSMTLJSONAdapter.m; sourceTree = "<group>"; };
 		2B4436E04D85A4A5C3D6768B5FD43BE2 /* AWSAPIGateway-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AWSAPIGateway-dummy.m"; sourceTree = "<group>"; };
 		2B74DA79B9D548912BBB201EF6CBFC52 /* iOSDFULibrary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSDFULibrary.modulemap; sourceTree = "<group>"; };
@@ -589,7 +590,6 @@
 		8603BC5BBA3AC5918D2452FBE5993A18 /* AWSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSService.h; path = AWSCore/Service/AWSService.h; sourceTree = "<group>"; };
 		8662A7CD003693E00F29CC13658EE0EB /* Double.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Double.swift; path = iOSDFULibrary/Classes/Utilities/Double.swift; sourceTree = "<group>"; };
 		885023F145EC93013B53D9523196F265 /* iOSDFULibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDFULibrary.release.xcconfig; sourceTree = "<group>"; };
-		89BD3DAE93AC815399453638018DD398 /* SesameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SesameSDK.framework; path = sdk/SesameSDK.framework; sourceTree = "<group>"; };
 		8B412D74BBCB5453620C532511D7A466 /* AWSExecutor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSExecutor.m; path = AWSCore/Bolts/AWSExecutor.m; sourceTree = "<group>"; };
 		8D04D5A29761E869F4AE0010D169D47A /* AWSFMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSFMDatabaseAdditions.m; path = AWSCore/FMDB/AWSFMDatabaseAdditions.m; sourceTree = "<group>"; };
 		8D1C758F0E8227301B25F1AB11A7527A /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = AWSCore/Fabric/FABAttributes.h; sourceTree = "<group>"; };
@@ -650,6 +650,7 @@
 		BAB511564D9CB2B791472F95D0C600A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		BCBC1A68A0F447A97598863461D4793A /* AWSIoTMQTTClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSIoTMQTTClient.h; path = AWSIoT/Internal/AWSIoTMQTTClient.h; sourceTree = "<group>"; };
 		BCFA8B0DFA1B29B1CA5464304A6F34DB /* AWSIoT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AWSIoT.framework; path = AWSIoT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEDA077D8098194F073EC9FE72692FC3 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = "<group>"; };
 		BF89D73F97BA91C35731B4660F22B5AD /* AWSIoT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AWSIoT.release.xcconfig; sourceTree = "<group>"; };
 		BF998E35EF74FD8E848E2942DD7BF473 /* AWSInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSInfo.m; path = AWSCore/Service/AWSInfo.m; sourceTree = "<group>"; };
 		BFF76015B6F8072F2167629A7DD3D394 /* SecureDFUServiceInitiator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecureDFUServiceInitiator.swift; path = iOSDFULibrary/Classes/Implementation/SecureDFU/DFU/SecureDFUServiceInitiator.swift; sourceTree = "<group>"; };
@@ -704,7 +705,6 @@
 		E211640AF85BB4953317607AC7C0B328 /* AWSDDTTYLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSDDTTYLogger.m; path = AWSCore/Logging/AWSDDTTYLogger.m; sourceTree = "<group>"; };
 		E2546AEB7FBDA46E11D402B3FADE667F /* AWSIoTService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSIoTService.h; path = AWSIoT/AWSIoTService.h; sourceTree = "<group>"; };
 		E2FCC1A801DE66569BA6195AB8F862F5 /* NSError+AWSMTLModelException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+AWSMTLModelException.m"; path = "AWSCore/Mantle/NSError+AWSMTLModelException.m"; sourceTree = "<group>"; };
-		E3DB36C3CEF7BCBE026F6C95043E8E5E /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SesameWatchKitSDK.framework; path = sdk/SesameWatchKitSDK.framework; sourceTree = "<group>"; };
 		E44DDDEDDEBE2FC5C5183340788407C8 /* AWSService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSService.m; path = AWSCore/Service/AWSService.m; sourceTree = "<group>"; };
 		E4931A3FCAFC1AE9462AFABB16FDA925 /* AWSAPIGateway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AWSAPIGateway.release.xcconfig; sourceTree = "<group>"; };
 		E56CBDB83B546D4EF46D1A6B0783D4FF /* AWSDDASLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSDDASLLogger.h; path = AWSCore/Logging/AWSDDASLLogger.h; sourceTree = "<group>"; };
@@ -809,7 +809,7 @@
 		04A70A92BCF246BE43683E9DBB546992 /* SesameSDK */ = {
 			isa = PBXGroup;
 			children = (
-				755A52201197DDCB27794B73EAD8EB3F /* Frameworks */,
+				F0C98A343031E6274F3B117AD425763B /* Frameworks */,
 				A25EEAC2893431BB6FDDF50A154134B8 /* Support Files */,
 			);
 			name = SesameSDK;
@@ -933,7 +933,7 @@
 		4CC960AC04D6AA869ED90183584E0165 /* SesameWatchKitSDK */ = {
 			isa = PBXGroup;
 			children = (
-				C06795BDD1A54FE4AA5EF37457593B71 /* Frameworks */,
+				6E05259203E224C9BF24B93AE6790741 /* Frameworks */,
 				13F4BD5B6AF93A1A7161DB39319793BE /* Support Files */,
 			);
 			name = SesameWatchKitSDK;
@@ -1051,10 +1051,10 @@
 			path = "../Target Support Files/AWSAPIGateway";
 			sourceTree = "<group>";
 		};
-		755A52201197DDCB27794B73EAD8EB3F /* Frameworks */ = {
+		6E05259203E224C9BF24B93AE6790741 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				89BD3DAE93AC815399453638018DD398 /* SesameSDK.framework */,
+				BEDA077D8098194F073EC9FE72692FC3 /* SesameWatchKitSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1296,14 +1296,6 @@
 			path = "../Target Support Files/iOSDFULibrary";
 			sourceTree = "<group>";
 		};
-		C06795BDD1A54FE4AA5EF37457593B71 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E3DB36C3CEF7BCBE026F6C95043E8E5E /* SesameWatchKitSDK.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
@@ -1346,6 +1338,14 @@
 				20B395B8937D623A34C206CEF4C3B75D /* Foundation.framework */,
 			);
 			name = watchOS;
+			sourceTree = "<group>";
+		};
+		F0C98A343031E6274F3B117AD425763B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A5D9B9476831F1E416F65C045C53FA8 /* SesameSDK.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
