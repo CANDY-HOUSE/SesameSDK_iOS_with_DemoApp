@@ -2075,23 +2075,6 @@
 			};
 			name = Release;
 		};
-		14C97D9A7A37984882B4321F629774BC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C1D4B586F7367359254C6D66389BB4C /* SesameSDK.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		3479D1AEE06F028306102670C6BF6527 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 002B603AEACF4CE68DD34C2E15D58195 /* AWSAPIGateway.debug.xcconfig */;
@@ -2410,6 +2393,23 @@
 			};
 			name = Debug;
 		};
+		A96746F16650068ADF8DE2ACCCDA8848 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71931AA69F4A0E311949894FBCC4029B /* SesameSDK.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		B745B6FA723EF4650EF5F72EBD94253B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98C47EDC1CDADDF1E44ADA04DA8172BF /* Pods-SesameWatchKit Extension.release.xcconfig */;
@@ -2447,22 +2447,6 @@
 				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
-		};
-		B9B2D4CC1DCDFDA140893B83D20ADB5F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71931AA69F4A0E311949894FBCC4029B /* SesameSDK.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
 		};
 		BC55A937137322F06BA68D43C0B7316B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -2637,6 +2621,24 @@
 			};
 			name = Debug;
 		};
+		F59724CA621B245931FD90FA39D77D1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C1D4B586F7367359254C6D66389BB4C /* SesameSDK.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FB929AF0A688B951C9FF05E2A31F7629 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB18489EC7168A869F5CFECA6CCC7794 /* Pods-SesameUI.debug.xcconfig */;
@@ -2745,8 +2747,8 @@
 		54691E028B03FCA175AC8E08DCFEE6A1 /* Build configuration list for PBXAggregateTarget "SesameSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B9B2D4CC1DCDFDA140893B83D20ADB5F /* Debug */,
-				14C97D9A7A37984882B4321F629774BC /* Release */,
+				A96746F16650068ADF8DE2ACCCDA8848 /* Debug */,
+				F59724CA621B245931FD90FA39D77D1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

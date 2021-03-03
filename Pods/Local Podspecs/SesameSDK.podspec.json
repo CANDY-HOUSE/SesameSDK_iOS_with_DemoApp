@@ -4,30 +4,21 @@
   "summary": "SesameSDK summary.",
   "homepage": "https://jp.candyhouse.co",
   "authors": {
-    "SesameSDK": "Wayne.Hsiao@candyhouse.co"
+    "SesameSDK": "developers@candyhouse.co"
   },
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
   "source": {
-    "http": "https://wayne-closed-pod-test.s3.ap-northeast-2.amazonaws.com/dummy.zip"
+    "http": "https://sesame-ios-sdk-license.s3-ap-northeast-1.amazonaws.com/LICENSE.zip"
   },
   "ios": {
     "vendored_frameworks": "sdk/SesameSDK.framework"
   },
-  "exclude_files": [
-    "Shared",
-    "SesameWatchKit Extension",
-    "SesameWatchKit",
-    "SesameUI.xcodeproj",
-    "SesameUI",
-    "sdk",
-    "git.plist"
-  ],
   "dependencies": {
     "AWSCore": [
       "2.22.0"
