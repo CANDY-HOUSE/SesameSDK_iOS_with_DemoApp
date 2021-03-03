@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.license                 = { :type => 'MIT', :file => 'LICENSE' }
 
     s.platform                = :watchos
-    s.source                  = { :http => 'https://wayne-closed-pod-test.s3.ap-northeast-2.amazonaws.com/dummy.zip' }
+    s.source                  = { :http => 'https://sesame-ios-sdk-license.s3-ap-northeast-1.amazonaws.com/LICENSE.zip' }
 
     s.watchos.deployment_target   = '6.2'
     s.watchos.vendored_frameworks = 'sdk/SesameWatchKitSDK.framework'
