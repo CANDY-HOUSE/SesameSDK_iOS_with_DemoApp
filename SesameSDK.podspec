@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
     s.summary                 = 'SesameSDK summary.'
     s.homepage                = 'https://jp.candyhouse.co'
 
-    s.author                  = { 'SesameSDK' => 'Wayne.Hsiao@candyhouse.co' }
+    s.author                  = { 'SesameSDK' => 'developers@candyhouse.co' }
     s.license                 = { :type => 'MIT', :file => 'LICENSE' }
 
     s.platform                = :ios
