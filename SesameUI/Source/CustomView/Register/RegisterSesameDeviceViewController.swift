@@ -148,19 +148,36 @@ class RegisterSesameDeviceViewController: CHBaseTableViewController {
     
     // MARK: Register Sesame2
     private func registerCHDevice(_ device: CHDevice) {
-        device.registerUserKey { result in
+        device.register { result in
             executeOnMainThread {
                 ViewHelper.hideLoadingView(view: self.view)
                 if case let .failure(error) = result {
                     self.view.makeToast(error.errorDescription())
-                    
                 } else {
+                    
+                    Sesame2Store.shared.deletePropertyFor(device)
+                    let encodedHistoryTag = Sesame2Store.shared.getHistoryTag()
+                    (device as? SesameLock)?.setHistoryTag(encodedHistoryTag) { _ in }
+                    (device as? CHSesame2)?.configureLockPosition(lockTarget: 0, unlockTarget: 256) { _ in }
+                    
+                    if device is CHSesame2 {
+                        device.setDeviceName("co.candyhouse.sesame2.Sesame".localized)
+                    } else if device is CHSesameBot {
+                        device.setDeviceName("co.candyhouse.sesame2.SesameBot".localized)
+                    } else if device is CHSesameBike {
+                        device.setDeviceName("co.candyhouse.sesame2.BikeLock".localized)
+                    } else if device is CHWifiModule2 {
+                        device.setDeviceName("co.candyhouse.sesame2.WifiModule2".localized)
+                    }
+
                     self.devices.removeAll {
                         $0.deviceId == device.deviceId
                     }
-                    self.reloadTableView()
-                    self.registeredDevice = device
-                    self.dismissSelf()
+                    executeOnMainThread {
+                        self.reloadTableView()
+                        self.registeredDevice = device
+                        self.dismissSelf()
+                    }
                 }
             }
         }

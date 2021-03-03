@@ -293,18 +293,9 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         contentStackView.addArrangedSubview(addSesameButtonView)
         contentStackView.addArrangedSubview(CHUIViewGenerator.seperatorWithStyle(.group))
 
-        // MARK: Share
-//        let shareKeyView = CHUICallToActionView { [unowned self] sender in
-//            let wifiModule2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.wifiModule2, keyLevel: .member)
-//            self.navigationController?.pushViewController(wifiModule2QRCodeViewController, animated: true)
-//        }
-//        shareKeyView.title = "co.candyhouse.sesame2.ShareTheWifiModule2Key".localized
-//        contentStackView.addArrangedSubview(shareKeyView)
-
         // MARK: Drop key
-//        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         let dropKeyView = CHUICallToActionView(textColor: .lockRed) { [unowned self] sender,_ in
-            self.confirmTrashKey(sender as! UIButton)
+            self.confirmDropKey(sender as! UIButton)
         }
         dropKeyView.title = "co.candyhouse.sesame2.TrashTheWifiModule2Key".localized
         contentStackView.addArrangedSubview(dropKeyView)
@@ -336,26 +327,18 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         #endif
     }
     
-    func confirmTrashKey(_ sender: UIButton) {
+    func confirmDropKey(_ sender: UIButton) {
         let trashKey = UIAlertAction(title: "co.candyhouse.sesame2.TrashTheWifiModule2Key".localized,
                                             style: .destructive) { (action) in
             ViewHelper.showLoadingInView(view: self.view)
-            self.wifiModule2.dropUserKey { result in
-                if case let .failure(error) = result {
-                    L.d(error.errorDescription())
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-//                        self.view.makeToast(error.errorDescription())
-                    }
-                } else {
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                        self.navigationController?.popViewController(animated: false)
-                        self.dismissHandler?()
-                    }
+            Sesame2Store.shared.deletePropertyFor(self.wifiModule2)
+            self.wifiModule2.dropKey() { _ in
+                executeOnMainThread {
+                    ViewHelper.hideLoadingView(view: self.view)
+                    self.navigationController?.popToRootViewController(animated: false)
+                    self.dismissHandler?()
                 }
             }
-            
         }
         let close = UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized, style: .cancel, handler: nil)
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -383,17 +366,12 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
     
     func resetWifiModule2() {
         ViewHelper.showLoadingInView(view: self.view)
-        self.wifiModule2.resetUserKey { result in
-            if case let .failure(error) = result {
-                L.d(error.errorDescription())
-                executeOnMainThread {
-                    ViewHelper.hideLoadingView(view: self.view)
-//                    self.view.makeToast(error.errorDescription())
-                }
-            } else {
-                executeOnMainThread {
-                    self.navigationController?.popViewController(animated: false)
-                }
+        Sesame2Store.shared.deletePropertyFor(self.wifiModule2)
+        wifiModule2.reset { resetResult in
+            executeOnMainThread {
+                ViewHelper.hideLoadingView(view: self.view)
+                self.navigationController?.popToRootViewController(animated: false)
+                self.dismissHandler?()
             }
         }
     }

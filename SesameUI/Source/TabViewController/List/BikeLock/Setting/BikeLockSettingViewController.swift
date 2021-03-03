@@ -126,7 +126,7 @@ class BikeLockSettingViewController: CHBaseViewController {
         // MARK: Drop key
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         let dropKeyView = CHUICallToActionView(textColor: .lockRed) { [unowned self] sender,_ in
-            self.trashKey(sender: sender as! UIButton)
+            self.dropKey(sender: sender as! UIButton)
         }
         dropKeyView.title = "co.candyhouse.sesame2.TrashTheKey".localized
         contentStackView.addArrangedSubview(dropKeyView)
@@ -232,24 +232,17 @@ class BikeLockSettingViewController: CHBaseViewController {
     }
     
     // MARK: trashKey
-    func trashKey(sender: UIButton) {
+    func dropKey(sender: UIButton) {
         let trashKey = UIAlertAction(title: "co.candyhouse.sesame2.TrashTheKey".localized,
                                      style: .destructive) { (action) in
             ViewHelper.showLoadingInView(view: self.view)
             
-            self.bikeLock.dropUserKey { result in
-                if case let .failure(error) = result {
-                    L.d(error.errorDescription())
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-//                        self.view.makeToast(error.errorDescription())
-                    }
-                } else {
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                        self.navigationController?.popToRootViewController(animated: false)
-                        self.dismissHandler?()
-                    }
+            Sesame2Store.shared.deletePropertyFor(self.bikeLock)
+            self.bikeLock.dropKey() { _ in
+                executeOnMainThread {
+                    ViewHelper.hideLoadingView(view: self.view)
+                    self.navigationController?.popToRootViewController(animated: false)
+                    self.dismissHandler?()
                 }
             }
         }
@@ -283,21 +276,14 @@ class BikeLockSettingViewController: CHBaseViewController {
     // MARK: unregisterSesame2
     public func resetBikeLock() {
         ViewHelper.showLoadingInView(view: view)
-        bikeLock?.resetUserKey({ result in
-            if case let .failure(error) = result {
-                L.d(error.errorDescription())
-                executeOnMainThread {
-                    ViewHelper.hideLoadingView(view: self.view)
-//                    self.view.makeToast(error.errorDescription())
-                }
-            } else {
-                executeOnMainThread {
-                    ViewHelper.hideLoadingView(view: self.view)
-                    self.navigationController?.popToRootViewController(animated: false)
-                    self.dismissHandler?()
-                }
+        Sesame2Store.shared.deletePropertyFor(self.bikeLock)
+        bikeLock.reset { resetResult in
+            executeOnMainThread {
+                ViewHelper.hideLoadingView(view: self.view)
+                self.navigationController?.popToRootViewController(animated: false)
+                self.dismissHandler?()
             }
-        })
+        }
     }
     
     func showStatusViewIfNeeded() {
