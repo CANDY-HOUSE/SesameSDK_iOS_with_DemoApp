@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
     s.summary                 = 'SesameWatchKitSDK summary.'
     s.homepage                = 'https://jp.candyhouse.co'
 
-    s.author                  = { 'SesameWatchKitSDK' => 'Wayne.Hsiao@candyhouse.co' }
+    s.author                  = { 'SesameWatchKitSDK' => 'developers@candyhouse.co' }
     s.license                 = { :type => 'MIT', :file => 'LICENSE' }
 
     s.platform                = :watchos
