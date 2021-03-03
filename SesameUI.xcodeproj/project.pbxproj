@@ -3,13 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BDB63C26E77EC974CD62592 /* AWSIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB41696E923C4E45B1F2E898 /* AWSIoT.framework */; };
-		18F39E3363218DFE5161E26A /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926D31D5B3B972011BE5515F /* AWSCore.framework */; };
-		1E1DEBA9D7B62CB784F054A5 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99E6D8C2CA7CAC8921F515B /* SesameWatchKitSDK.framework */; };
+		357AD6EC54CA941C5997B0AA /* Pods_SesameUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B9B500ED189AEFD5616DC1 /* Pods_SesameUI.framework */; };
 		4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4102FAF223C2E17A00ECA735 /* ScanAnimationView.swift */; };
 		41030330237902D400785311 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColor+Extensions.swift */; };
 		4103033C23790CB800785311 /* PopUpMenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103033B23790CB800785311 /* PopUpMenuControl.swift */; };
@@ -25,13 +23,7 @@
 		41A57CEF2328D13600FEFF60 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A57CED2328D13600FEFF60 /* QRScannerView.swift */; };
 		41C9488B238B6D58009469B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94889238B6D58009469B0 /* Localizable.strings */; };
 		41C94890238B6FC2009469B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94886238B6CB2009469B0 /* Localizable.strings */; };
-		4483A970DB85674E0147F8B7 /* iOSDFULibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C417AF515177A44682E9B0A /* iOSDFULibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		479BDE58E971675B2203ED8A /* AWSIoT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB41696E923C4E45B1F2E898 /* AWSIoT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4C13D138251A58B605BF2CF1 /* SesameSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8A4DCF9204B2E70F363BE9 /* SesameSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5260E0E04321E9042ED2E484 /* SesameSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8A4DCF9204B2E70F363BE9 /* SesameSDK.framework */; };
-		69F8AA05AAAABB0340E44FBB /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522DA4D562907B4D5A4665F3 /* ZIPFoundation.framework */; };
-		A082264CECD198496AEE5FFE /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C417AF515177A44682E9B0A /* iOSDFULibrary.framework */; };
-		A0BFE8A98F88D3E7CCFD17E6 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 926D31D5B3B972011BE5515F /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		887C92D1291B9A2A33BAF059 /* Pods_SesameWatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DF4D7011AF78F2756ACD7A /* Pods_SesameWatchKit_Extension.framework */; };
 		B006628C2542CC8100F62D9B /* CHSesamehHistory+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006628B2542CC8100F62D9B /* CHSesamehHistory+.swift */; };
 		B00662912542CC9600F62D9B /* CHSesame2History+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00662902542CC9600F62D9B /* CHSesame2History+.swift */; };
 		B01728D1250C700500F87ED6 /* SesameDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D0250C700500F87ED6 /* SesameDeviceListViewController.swift */; };
@@ -85,7 +77,6 @@
 		B179691222F7CE9400E91996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B179691122F7CE9400E91996 /* Assets.xcassets */; };
 		B179691522F7CE9400E91996 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B179691322F7CE9400E91996 /* LaunchScreen.storyboard */; };
 		BE037A91246981DB00ED2611 /* DFUHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE037A90246981DB00ED2611 /* DFUHelper.swift */; };
-		BE0636892567A0AB00135D25 /* CHDevice+CHUserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0636882567A0AB00135D25 /* CHDevice+CHUserRegister.swift */; };
 		BE086B7A25E38FF0000FABAA /* ss2bike_0221_2154_4e98ef8.zip in Resources */ = {isa = PBXBuildFile; fileRef = BE086B7925E38FF0000FABAA /* ss2bike_0221_2154_4e98ef8.zip */; };
 		BE086B7F25E38FFA000FABAA /* ss2bike_0221_2154_4e98ef8.zip in Copy BikeLock DFU File */ = {isa = PBXBuildFile; fileRef = BE086B7925E38FF0000FABAA /* ss2bike_0221_2154_4e98ef8.zip */; };
 		BE166B8824912755007CDC29 /* UIStoryboard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE166B8724912755007CDC29 /* UIStoryboard+.swift */; };
@@ -180,10 +171,6 @@
 		BEFB1DE1256A6AEF00BF95CB /* CHDeviceManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB1DE0256A6AEF00BF95CB /* CHDeviceManager+.swift */; };
 		BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */; };
 		BEFF263B249FBA4D00E4E80F /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF263A249FBA4D00E4E80F /* Notification+.swift */; };
-		C0842C15AC6BD1CBFC2B50AA /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A99E6D8C2CA7CAC8921F515B /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C8AA49F1375E64A1BB06BE64 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0829EC9CF66789D7D7D5D5 /* AWSAPIGateway.framework */; };
-		C9ED5F75191DC05EABFB153B /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0829EC9CF66789D7D7D5D5 /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FB6F95FAF1D9B241A43C149F /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 522DA4D562907B4D5A4665F3 /* ZIPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,33 +191,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		17510C76D41C3A0D4DBEF79D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C0842C15AC6BD1CBFC2B50AA /* SesameWatchKitSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		79A0D8BF9C1302E07FB905A0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C9ED5F75191DC05EABFB153B /* AWSAPIGateway.framework in Embed Frameworks */,
-				A0BFE8A98F88D3E7CCFD17E6 /* AWSCore.framework in Embed Frameworks */,
-				479BDE58E971675B2203ED8A /* AWSIoT.framework in Embed Frameworks */,
-				4483A970DB85674E0147F8B7 /* iOSDFULibrary.framework in Embed Frameworks */,
-				4C13D138251A58B605BF2CF1 /* SesameSDK.framework in Embed Frameworks */,
-				FB6F95FAF1D9B241A43C149F /* ZIPFoundation.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B04D1D1A24EA38E80021ACA2 /* Copy Sesame2 DFU File */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,6 +270,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		10DF4D7011AF78F2756ACD7A /* Pods_SesameWatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SesameWatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2540407C031970698EEF4D15 /* Pods-SesameWatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SesameWatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-SesameWatchKit Extension/Pods-SesameWatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		4102FAF223C2E17A00ECA735 /* ScanAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAnimationView.swift; sourceTree = "<group>"; };
 		4103032F237902D400785311 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		4103033B23790CB800785311 /* PopUpMenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpMenuControl.swift; sourceTree = "<group>"; };
@@ -328,6 +290,7 @@
 		41C9488A238B6D58009469B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
 		522DA4D562907B4D5A4665F3 /* ZIPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZIPFoundation.framework; path = sdk/ZIPFoundation.framework; sourceTree = "<group>"; };
+		63B9B500ED189AEFD5616DC1 /* Pods_SesameUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SesameUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C417AF515177A44682E9B0A /* iOSDFULibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSDFULibrary.framework; path = sdk/iOSDFULibrary.framework; sourceTree = "<group>"; };
 		926D31D5B3B972011BE5515F /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = sdk/AWSCore.framework; sourceTree = "<group>"; };
 		9A8A4DCF9204B2E70F363BE9 /* SesameSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SesameSDK.framework; path = sdk/SesameSDK.framework; sourceTree = "<group>"; };
@@ -388,9 +351,9 @@
 		B179691122F7CE9400E91996 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B179691422F7CE9400E91996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B179691622F7CE9400E91996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B90B9B1812B818565C13FC4C /* Pods-SesameUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SesameUI.release.xcconfig"; path = "Target Support Files/Pods-SesameUI/Pods-SesameUI.release.xcconfig"; sourceTree = "<group>"; };
 		BB41696E923C4E45B1F2E898 /* AWSIoT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSIoT.framework; path = sdk/AWSIoT.framework; sourceTree = "<group>"; };
 		BE037A90246981DB00ED2611 /* DFUHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFUHelper.swift; sourceTree = "<group>"; };
-		BE0636882567A0AB00135D25 /* CHDevice+CHUserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDevice+CHUserRegister.swift"; sourceTree = "<group>"; };
 		BE086B7925E38FF0000FABAA /* ss2bike_0221_2154_4e98ef8.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ss2bike_0221_2154_4e98ef8.zip; sourceTree = "<group>"; };
 		BE0EBEC524C0053F00FC7B3B /* SesameUI 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SesameUI 2.xcdatamodel"; sourceTree = "<group>"; };
 		BE166B8724912755007CDC29 /* UIStoryboard+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+.swift"; sourceTree = "<group>"; };
@@ -458,6 +421,8 @@
 		BEFB1DE0256A6AEF00BF95CB /* CHDeviceManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceManager+.swift"; sourceTree = "<group>"; };
 		BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
 		BEFF263A249FBA4D00E4E80F /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		E806F2D1A850396BEB2BCE24 /* Pods-SesameUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SesameUI.debug.xcconfig"; path = "Target Support Files/Pods-SesameUI/Pods-SesameUI.debug.xcconfig"; sourceTree = "<group>"; };
+		F3C49954FA3C6ED6BDCA2B53 /* Pods-SesameWatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SesameWatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-SesameWatchKit Extension/Pods-SesameWatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,12 +437,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8AA49F1375E64A1BB06BE64 /* AWSAPIGateway.framework in Frameworks */,
-				18F39E3363218DFE5161E26A /* AWSCore.framework in Frameworks */,
-				0BDB63C26E77EC974CD62592 /* AWSIoT.framework in Frameworks */,
-				A082264CECD198496AEE5FFE /* iOSDFULibrary.framework in Frameworks */,
-				5260E0E04321E9042ED2E484 /* SesameSDK.framework in Frameworks */,
-				69F8AA05AAAABB0340E44FBB /* ZIPFoundation.framework in Frameworks */,
+				357AD6EC54CA941C5997B0AA /* Pods_SesameUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +445,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E1DEBA9D7B62CB784F054A5 /* SesameWatchKitSDK.framework in Frameworks */,
+				887C92D1291B9A2A33BAF059 /* Pods_SesameWatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +461,6 @@
 				BE166B8724912755007CDC29 /* UIStoryboard+.swift */,
 				B006628B2542CC8100F62D9B /* CHSesamehHistory+.swift */,
 				B00662902542CC9600F62D9B /* CHSesame2History+.swift */,
-				BE0636882567A0AB00135D25 /* CHDevice+CHUserRegister.swift */,
 				BEB36C7C2589C04000EDB9FB /* UIViewController+.swift */,
 			);
 			path = Extensions;
@@ -640,6 +599,17 @@
 				BE22E24E25809D2A006FE439 /* List */,
 			);
 			path = TabViewController;
+			sourceTree = "<group>";
+		};
+		A69F70AC3FA4779813CFFCB6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E806F2D1A850396BEB2BCE24 /* Pods-SesameUI.debug.xcconfig */,
+				B90B9B1812B818565C13FC4C /* Pods-SesameUI.release.xcconfig */,
+				2540407C031970698EEF4D15 /* Pods-SesameWatchKit Extension.debug.xcconfig */,
+				F3C49954FA3C6ED6BDCA2B53 /* Pods-SesameWatchKit Extension.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		B04D1D1824EA37BB0021ACA2 /* application_dfu */ = {
@@ -805,6 +775,7 @@
 				BE3DD99924829E0000EEA3B1 /* SesameWatchKit Extension */,
 				B179690822F7CE9300E91996 /* Products */,
 				B179693822F7CEA500E91996 /* Frameworks */,
+				A69F70AC3FA4779813CFFCB6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -840,6 +811,8 @@
 				9A8A4DCF9204B2E70F363BE9 /* SesameSDK.framework */,
 				522DA4D562907B4D5A4665F3 /* ZIPFoundation.framework */,
 				A99E6D8C2CA7CAC8921F515B /* SesameWatchKitSDK.framework */,
+				63B9B500ED189AEFD5616DC1 /* Pods_SesameUI.framework */,
+				10DF4D7011AF78F2756ACD7A /* Pods_SesameWatchKit_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1029,6 +1002,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B179692F22F7CE9500E91996 /* Build configuration list for PBXNativeTarget "SesameUI" */;
 			buildPhases = (
+				718E043245B038A9D04D23AD /* [CP] Check Pods Manifest.lock */,
 				B00AB95C2476678A0023D2F0 /* Set Commit */,
 				B179690322F7CE9300E91996 /* Sources */,
 				B179690422F7CE9300E91996 /* Frameworks */,
@@ -1040,7 +1014,7 @@
 				B065EC6C2538021B000B807D /* Copy SesameBot DFU File */,
 				BEB58CD1256CB43E001505E3 /* Copy BikeLock DFU File */,
 				B04D1D1C24EA39150021ACA2 /* Copy Bootloader File */,
-				79A0D8BF9C1302E07FB905A0 /* Embed Frameworks */,
+				CB05CC90247E8011B909B371 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1075,12 +1049,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BED74C6A24AC760F0052F04D /* Build configuration list for PBXNativeTarget "SesameWatchKit Extension" */;
 			buildPhases = (
+				40C11AF2C0E19857285ECC30 /* [CP] Check Pods Manifest.lock */,
 				B04420B224F377800021ECA9 /* Set commit */,
 				BED74C5224AC760E0052F04D /* Sources */,
 				BED74C5324AC760E0052F04D /* Frameworks */,
 				BED74C5424AC760E0052F04D /* Resources */,
 				B04420B124F376C20021ECA9 /* Copy git.plist */,
-				17510C76D41C3A0D4DBEF79D /* Embed Frameworks */,
+				009DA45BA63BD0EE5A1117ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1196,6 +1171,67 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		009DA45BA63BD0EE5A1117ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SesameWatchKit Extension/Pods-SesameWatchKit Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SesameWatchKit Extension/Pods-SesameWatchKit Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SesameWatchKit Extension/Pods-SesameWatchKit Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40C11AF2C0E19857285ECC30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SesameWatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		718E043245B038A9D04D23AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SesameUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B00AB95C2476678A0023D2F0 /* Set Commit */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1287,6 +1323,23 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ -e \"$(pwd)/git.plist\" ] || [ -e \"$CODESIGNING_FOLDER_PATH\" ]; then\n    cp \"$(pwd)/git.plist\" \"$CODESIGNING_FOLDER_PATH\"\nfi    \n";
 		};
+		CB05CC90247E8011B909B371 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SesameUI/Pods-SesameUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SesameUI/Pods-SesameUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SesameUI/Pods-SesameUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1325,7 +1378,6 @@
 				BE8245E1250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.swift in Sources */,
 				B0710A70253599F6007B4F48 /* SesameBotHistoryViewController.swift in Sources */,
 				B0710A8025359E3F007B4F48 /* SesameBotSettingViewController.swift in Sources */,
-				BE0636892567A0AB00135D25 /* CHDevice+CHUserRegister.swift in Sources */,
 				BE30813D248E3C1F00152D66 /* URL+Sesame2.swift in Sources */,
 				B01728D1250C700500F87ED6 /* SesameDeviceListViewController.swift in Sources */,
 				BE85D3042580A8030091D3A6 /* WifiModule2SSIDScanCell.swift in Sources */,
@@ -1626,8 +1678,8 @@
 		};
 		B179693022F7CE9500E91996 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E806F2D1A850396BEB2BCE24 /* Pods-SesameUI.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SesameUI/SesameUI.Debug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1657,8 +1709,8 @@
 		};
 		B179693122F7CE9500E91996 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B90B9B1812B818565C13FC4C /* Pods-SesameUI.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SesameUI/SesameUI.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1687,6 +1739,7 @@
 		};
 		BED74C6B24AC760F0052F04D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2540407C031970698EEF4D15 /* Pods-SesameWatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1717,6 +1770,7 @@
 		};
 		BED74C6C24AC760F0052F04D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3C49954FA3C6ED6BDCA2B53 /* Pods-SesameWatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "Apple Development";

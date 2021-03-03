@@ -1,0 +1,56 @@
+PODS:
+  - AWSAPIGateway (2.22.0):
+    - AWSCore (= 2.22.0)
+  - AWSCore (2.22.0)
+  - AWSIoT (2.22.0):
+    - AWSCore (= 2.22.0)
+  - iOSDFULibrary (4.5.1):
+    - ZIPFoundation (= 0.9.9)
+  - SesameSDK (1.0.0):
+    - AWSAPIGateway (= 2.22.0)
+    - AWSCore (= 2.22.0)
+    - AWSIoT (= 2.22.0)
+  - SesameWatchKitSDK (1.0.0)
+  - ZIPFoundation (0.9.9)
+
+DEPENDENCIES:
+  - iOSDFULibrary (= 4.5.1)
+  - "SesameSDK (from `git@github.com:chronicqazxc/SesameSDK_iOS_with_DemoApp.git`, branch `master`)"
+  - "SesameWatchKitSDK (from `git@github.com:chronicqazxc/SesameSDK_iOS_with_DemoApp.git`, branch `master`)"
+
+SPEC REPOS:
+  trunk:
+    - AWSAPIGateway
+    - AWSCore
+    - AWSIoT
+    - iOSDFULibrary
+    - ZIPFoundation
+
+EXTERNAL SOURCES:
+  SesameSDK:
+    :branch: master
+    :git: "git@github.com:chronicqazxc/SesameSDK_iOS_with_DemoApp.git"
+  SesameWatchKitSDK:
+    :branch: master
+    :git: "git@github.com:chronicqazxc/SesameSDK_iOS_with_DemoApp.git"
+
+CHECKOUT OPTIONS:
+  SesameSDK:
+    :commit: 45f87547675fa7d1585ac80a6675b8cf1bda1747
+    :git: "git@github.com:chronicqazxc/SesameSDK_iOS_with_DemoApp.git"
+  SesameWatchKitSDK:
+    :commit: 45f87547675fa7d1585ac80a6675b8cf1bda1747
+    :git: "git@github.com:chronicqazxc/SesameSDK_iOS_with_DemoApp.git"
+
+SPEC CHECKSUMS:
+  AWSAPIGateway: 75598982b238b6795241492f0802a17473280c93
+  AWSCore: 8bd1def9cb0b6770c65b6d394f1c1cbc0a5562b7
+  AWSIoT: 708e1284bf67df14f263f8f76c6a7fb0e0e14e1f
+  iOSDFULibrary: 87c6a088cf7172e3694dfaa8305e7ded5eda2547
+  SesameSDK: fbc58642589957eddd414d241a0045bb2ee6847f
+  SesameWatchKitSDK: b94f8404364d5d5cb1a02c6929c0efe0b69f4817
+  ZIPFoundation: 89df685c971926b0323087952320bdfee9f0b6ef
+
+PODFILE CHECKSUM: 00231a876eae305739ab0801d8548eeb8abd0aa4
+
+COCOAPODS: 1.10.1

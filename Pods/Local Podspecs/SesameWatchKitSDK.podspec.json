@@ -1,0 +1,31 @@
+{
+  "name": "SesameWatchKitSDK",
+  "version": "1.0.0",
+  "summary": "SesameWatchKitSDK summary.",
+  "homepage": "https://jp.candyhouse.co",
+  "authors": {
+    "SesameWatchKitSDK": "Wayne.Hsiao@candyhouse.co"
+  },
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "platforms": {
+    "watchos": "6.2"
+  },
+  "source": {
+    "http": "https://wayne-closed-pod-test.s3.ap-northeast-2.amazonaws.com/dummy.zip"
+  },
+  "watchos": {
+    "vendored_frameworks": "sdk/SesameWatchKitSDK.framework"
+  },
+  "exclude_files": [
+    "Shared",
+    "SesameWatchKit Extension",
+    "SesameWatchKit",
+    "SesameUI.xcodeproj",
+    "SesameUI",
+    "sdk",
+    "git.plist"
+  ]
+}

@@ -163,7 +163,7 @@ class Sesame2SettingViewController: CHBaseViewController {
 
         // MARK: Drop key
         let dropKeyView = CHUICallToActionView(textColor: .lockRed) { [unowned self] sender,_ in
-            self.trashKey(sender: sender as! UIButton)
+            self.dropKey(sender: sender as! UIButton)
         }
         dropKeyView.title = "co.candyhouse.sesame2.TrashTheKey".localized
         contentStackView.addArrangedSubview(dropKeyView)
@@ -309,23 +309,17 @@ class Sesame2SettingViewController: CHBaseViewController {
         self.version = nil
     }
     
-    // MARK: trashKey
-    func trashKey(sender: UIButton) {
+    // MARK: dropKey
+    func dropKey(sender: UIButton) {
         let trashKey = UIAlertAction(title: "co.candyhouse.sesame2.TrashTheKey".localized,
                                             style: .destructive) { (action) in
             ViewHelper.showLoadingInView(view: self.view)
-            self.sesame2.dropUserKey { result in
-                if case let .failure(error) = result {
-                    L.d(error.errorDescription())
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                    }
-                } else {
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                        self.isReset = true
-                        self.navigationController?.popToRootViewController(animated: false)
-                    }
+            Sesame2Store.shared.deletePropertyFor(self.sesame2)
+            self.sesame2.dropKey() { _ in
+                executeOnMainThread {
+                    ViewHelper.hideLoadingView(view: self.view)
+                    self.isReset = true
+                    self.navigationController?.popToRootViewController(animated: false)
                 }
             }
         }
@@ -356,24 +350,14 @@ class Sesame2SettingViewController: CHBaseViewController {
     // MARK: unregisterSesame2
     func resetSesame2() {
         ViewHelper.showLoadingInView(view: view)
-        guard sesame2.deviceStatus.loginStatus == .logined else {
-            return
-        }
-        sesame2?.resetUserKey({ result in
-            switch result {
-            case .success(_):
-                executeOnMainThread {
-                    ViewHelper.hideLoadingView(view: self.view)
-                    self.isReset = true
-                    self.navigationController?.popToRootViewController(animated: false)
-                }
-            case .failure(let error):
-                executeOnMainThread {
-                    L.d(error.errorDescription())
-                    ViewHelper.hideLoadingView(view: self.view)
-                }
+        Sesame2Store.shared.deletePropertyFor(self.sesame2)
+        self.sesame2.reset { resetResult in
+            executeOnMainThread {
+                ViewHelper.hideLoadingView(view: self.view)
+                self.isReset = true
+                self.navigationController?.popToRootViewController(animated: false)
             }
-        })
+        }
     }
     
     func showStatusViewIfNeeded() {

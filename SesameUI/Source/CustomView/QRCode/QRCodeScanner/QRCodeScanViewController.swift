@@ -282,7 +282,6 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
                 guard let device = devices.data.first else {
                     return
                 }
-                // Set KeyLevel
                 Sesame2Store.shared.deletePropertyFor(device)
                 // Set Device Name
                 if let deviceName = deviceName {
@@ -311,7 +310,6 @@ extension QRCodeScanViewController {
                 return
         }
         if let sesame2Key = scanSchema.schemaShareKeyValue() {
-            let keyLevelValue = Int(scanSchema.getQuery(name: "l")) ?? 1
             let deviceName = scanSchema.getQuery(name: "n")
             
             let b64DeviceKey = sesame2Key
@@ -341,7 +339,6 @@ extension QRCodeScanViewController {
                     guard let device = devices.data.first else {
                         return
                     }
-                    // Set KeyLevel
                     Sesame2Store.shared.deletePropertyFor(device)
                     // Set Device Name
                     device.setDeviceName(deviceName)

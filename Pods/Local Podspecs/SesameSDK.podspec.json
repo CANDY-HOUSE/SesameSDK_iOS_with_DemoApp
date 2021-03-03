@@ -1,0 +1,42 @@
+{
+  "name": "SesameSDK",
+  "version": "1.0.0",
+  "summary": "SesameSDK summary.",
+  "homepage": "https://jp.candyhouse.co",
+  "authors": {
+    "SesameSDK": "Wayne.Hsiao@candyhouse.co"
+  },
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "http": "https://wayne-closed-pod-test.s3.ap-northeast-2.amazonaws.com/dummy.zip"
+  },
+  "ios": {
+    "vendored_frameworks": "sdk/SesameSDK.framework"
+  },
+  "exclude_files": [
+    "Shared",
+    "SesameWatchKit Extension",
+    "SesameWatchKit",
+    "SesameUI.xcodeproj",
+    "SesameUI",
+    "sdk",
+    "git.plist"
+  ],
+  "dependencies": {
+    "AWSCore": [
+      "2.22.0"
+    ],
+    "AWSAPIGateway": [
+      "2.22.0"
+    ],
+    "AWSIoT": [
+      "2.22.0"
+    ]
+  }
+}
