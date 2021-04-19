@@ -135,7 +135,7 @@ extension CHWifiModule2Delegate {
   public func onScanWifiSID(device: SesameWatchKitSDK.CHWifiModule2, ssid: SesameWatchKitSDK.SSID)
 }
 public protocol CHExtensionListenerDelegate : AnyObject {
-  func receiveNotification(_ notificationIdentifier: Swift.String)
+  func receiveExtensionNotification(_ notificationIdentifier: Swift.String)
 }
 final public class CHExtensionListener {
   public static let containingAppDidBecomeActive: Swift.String
@@ -871,6 +871,7 @@ extension CHBleManager : CoreBluetooth.CBPeripheralDelegate {
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
+  @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didFailToConnect peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
 }
 public protocol CHSesameBikeDelegate : SesameWatchKitSDK.CHSesameStatusDelegate {
   func onMechStatusChanged(device: SesameWatchKitSDK.CHSesameBike, status: SesameWatchKitSDK.SesameProtocolMechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
@@ -921,11 +922,6 @@ public struct CHGuestKey : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
 }
 public protocol CHBleManagerDelegate : AnyObject {
-  func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameWatchKitSDK.CHSesame2])
-  func didDiscoverUnRegisteredSesame2(sesame2: SesameWatchKitSDK.CHSesame2)
-  func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameWatchKitSDK.CHWifiModule2])
-  func didDiscoverUnRegisteredSesameBots(_ switches: [SesameWatchKitSDK.CHSesameBot])
-  func didDiscoverUnRegisteredBikeLocks(_ bikeLocks: [SesameWatchKitSDK.CHSesameBike])
   func didDiscoverUnRegisteredCHDevices(_ devices: [SesameWatchKitSDK.CHDevice])
 }
 public enum CHScanStatus : Swift.Equatable {
@@ -954,11 +950,6 @@ public protocol CHBleStatusDelegate : AnyObject {
   func didScanChange(status: SesameWatchKitSDK.CHScanStatus)
 }
 extension CHBleManagerDelegate {
-  public func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameWatchKitSDK.CHSesame2])
-  public func didDiscoverUnRegisteredSesame2(sesame2: SesameWatchKitSDK.CHSesame2)
-  public func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameWatchKitSDK.CHWifiModule2])
-  public func didDiscoverUnRegisteredSesameBots(_ wifiModule2s: [SesameWatchKitSDK.CHSesameBot])
-  public func didDiscoverUnRegisteredBikeLocks(_ bikeLocks: [SesameWatchKitSDK.CHSesameBike])
   public func didDiscoverUnRegisteredCHDevices(_ devices: [SesameWatchKitSDK.CHDevice])
 }
 public enum CHDeviceLoginStatus : Swift.String {

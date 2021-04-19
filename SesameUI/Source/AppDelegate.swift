@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: CHExtensionListenerDelegate {
-    func receiveNotification(_ notificationIdentifier: String) {
+    func receiveExtensionNotification(_ notificationIdentifier: String) {
         if notificationIdentifier == CHExtensionListener.widgetDidBecomeActive || notificationIdentifier == CHExtensionListener.shortcutDidBecomeActive {
             switch UIApplication.shared.applicationState {
             case .active:
@@ -106,7 +106,6 @@ extension AppDelegate: CHExtensionListenerDelegate {
             case .inactive, .background:
                 CHBleManager.shared.disableScan { _ in }
                 CHBleManager.shared.disConnectAll { _ in }
-                break
             @unknown default:
                 break
             }
@@ -116,7 +115,8 @@ extension AppDelegate: CHExtensionListenerDelegate {
             case .active:
                 break
             case .background:
-                CHBleManager.shared.enableScan{ _ in }
+                Sesame2Store.shared.refreshDB()
+                CHBleManager.shared.enableScan { _ in }
             case .inactive:
                 break
             @unknown default:

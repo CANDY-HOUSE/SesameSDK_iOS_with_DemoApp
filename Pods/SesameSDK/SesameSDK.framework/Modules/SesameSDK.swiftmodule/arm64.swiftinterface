@@ -748,11 +748,6 @@ extension CHSesameBikeDelegate {
   public func encode(to encoder: Swift.Encoder) throws
 }
 public protocol CHBleManagerDelegate : AnyObject {
-  func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameSDK.CHSesame2])
-  func didDiscoverUnRegisteredSesame2(sesame2: SesameSDK.CHSesame2)
-  func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameSDK.CHWifiModule2])
-  func didDiscoverUnRegisteredSesameBots(_ switches: [SesameSDK.CHSesameBot])
-  func didDiscoverUnRegisteredBikeLocks(_ bikeLocks: [SesameSDK.CHSesameBike])
   func didDiscoverUnRegisteredCHDevices(_ devices: [SesameSDK.CHDevice])
 }
 public enum CHScanStatus : Swift.Equatable {
@@ -781,11 +776,6 @@ public protocol CHBleStatusDelegate : AnyObject {
   func didScanChange(status: SesameSDK.CHScanStatus)
 }
 extension CHBleManagerDelegate {
-  public func didDiscoverUnRegisteredSesame2s(sesame2s: [SesameSDK.CHSesame2])
-  public func didDiscoverUnRegisteredSesame2(sesame2: SesameSDK.CHSesame2)
-  public func didDiscoverUnRegisteredWifiModule2s(_ wifiModule2s: [SesameSDK.CHWifiModule2])
-  public func didDiscoverUnRegisteredSesameBots(_ wifiModule2s: [SesameSDK.CHSesameBot])
-  public func didDiscoverUnRegisteredBikeLocks(_ bikeLocks: [SesameSDK.CHSesameBike])
   public func didDiscoverUnRegisteredCHDevices(_ devices: [SesameSDK.CHDevice])
 }
 public enum CHDeviceLoginStatus : Swift.String {
@@ -917,9 +907,10 @@ extension CHBleManager : CoreBluetooth.CBPeripheralDelegate {
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
+  @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didFailToConnect peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
 }
 public protocol CHExtensionListenerDelegate : AnyObject {
-  func receiveNotification(_ notificationIdentifier: Swift.String)
+  func receiveExtensionNotification(_ notificationIdentifier: Swift.String)
 }
 final public class CHExtensionListener {
   public static let containingAppDidBecomeActive: Swift.String
