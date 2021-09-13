@@ -26,7 +26,8 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         let model = NSManagedObjectModel(contentsOf: modelURL!)
         let persistentContainer = NSPersistentContainer(name: "SesameUI", managedObjectModel: model!)
         
-        if let storeURL = URL.storeURL(for: "group.candyhouse.widget", databaseName: "SesameUI") {
+        if let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.candyhouse.widget") {
+            let storeURL = fileContainer.appendingPathComponent("SesameUI.sqlite")
             let storeDescription = NSPersistentStoreDescription(url: storeURL)
             storeDescription.shouldInferMappingModelAutomatically = true
             storeDescription.shouldMigrateStoreAutomatically = true

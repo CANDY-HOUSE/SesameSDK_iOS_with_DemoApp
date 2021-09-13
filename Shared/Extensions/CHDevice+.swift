@@ -82,14 +82,10 @@ extension CHDevice {
                 return .lockGray
             }
         } else if let wifiModule2 = self as? CHWifiModule2 {
-            if let networkStatus = wifiModule2.networkStatus,
-               (networkStatus.isAPWork &&
-                    networkStatus.isNetwork &&
-                    networkStatus.isIoTWork) == true {
-                return .sesame2Green
-            } else {
-                return .lockGray
+            if let networkStatus = wifiModule2.networkStatus?.isIoTWork {
+                return networkStatus == true ? .sesame2Green : .lockGray
             }
+            return .lockGray
         } else {
             return .lockGray
         }
@@ -157,6 +153,36 @@ extension CHDevice {
         } else {
             return ""
         }
+    }
+    
+    /// 設備 電池電量長度
+    func batteryIndicatorWidth() -> CGFloat {
+        var fullBattery = CGFloat(10.2)
+        #if os(watchOS)
+        fullBattery = CGFloat(12)
+        #endif
+        var batteryPercentage: Int?
+        if let sesamee2 = self as? CHSesame2 {
+            batteryPercentage = sesamee2.mechStatus?.getBatteryPrecentage()
+        }
+        if let switchDevice = self as? CHSesameBot {
+            batteryPercentage = switchDevice.mechStatus?.getBatteryPrecentage()
+        }
+        if let bikeLock = self as? CHSesameBike {
+            batteryPercentage = bikeLock.mechStatus?.getBatteryPrecentage()
+        }
+        if batteryPercentage == nil {
+            return 0
+        }
+        let value = 0 + (CGFloat(fullBattery) * CGFloat(batteryPercentage!) / 100)
+        return value
+    }
+    
+    func batteryIndicatorColor() -> UIColor {
+        if bluetoothColor() != .sesame2Green && wifiColor() != .sesame2Green {
+            return UIColor.lockGray
+        }
+        return (self as? CHSesameLock)?.mechStatus?.isBatteryCritical == true ? UIColor.lockRed : UIColor.sesame2Green
     }
     
     func compare(_ device: CHDevice) -> Bool {

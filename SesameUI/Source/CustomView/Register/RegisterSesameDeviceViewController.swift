@@ -157,7 +157,7 @@ class RegisterSesameDeviceViewController: CHBaseTableViewController {
                     
                     Sesame2Store.shared.deletePropertyFor(device)
                     let encodedHistoryTag = Sesame2Store.shared.getHistoryTag()
-                    (device as? SesameLock)?.setHistoryTag(encodedHistoryTag) { _ in }
+                    (device as? CHSesameLock)?.setHistoryTag(encodedHistoryTag) { _ in }
                     (device as? CHSesame2)?.configureLockPosition(lockTarget: 0, unlockTarget: 256) { _ in }
                     
                     if device is CHSesame2 {
@@ -226,8 +226,8 @@ extension RegisterSesameDeviceViewController: CHBleManagerDelegate {
     }
 }
 
-extension RegisterSesameDeviceViewController: CHSesameStatusDelegate {
-    func onBleDeviceStatusChanged(device: SesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+extension RegisterSesameDeviceViewController: CHSesame2StatusDelegate {
+    func onBleDeviceStatusChanged(device: CHSesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
         if status == .readyToRegister() && registerDeviceId == device.deviceId {
             registerCHDevice(device)
         }

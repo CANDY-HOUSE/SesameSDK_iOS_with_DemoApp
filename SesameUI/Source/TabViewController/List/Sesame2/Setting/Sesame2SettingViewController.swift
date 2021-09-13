@@ -375,7 +375,7 @@ class Sesame2SettingViewController: CHBaseViewController {
 
 // MARK: - CHSesame2Delegate
 extension Sesame2SettingViewController: CHSesame2Delegate {
-    public func onBleDeviceStatusChanged(device: SesameLock,
+    public func onBleDeviceStatusChanged(device: CHSesameLock,
                                          status: CHSesame2Status,
                                          shadowStatus: CHSesame2ShadowStatus?) {
         if device.deviceId == sesame2.deviceId,

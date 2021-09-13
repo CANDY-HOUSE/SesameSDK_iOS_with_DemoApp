@@ -164,7 +164,7 @@ class LockAngleSettingViewController: CHBaseViewController {
 
 // MARK: - CHSesame2Delegate
 extension LockAngleSettingViewController: CHSesame2Delegate {
-    public func onBleDeviceStatusChanged(device: SesameLock,
+    public func onBleDeviceStatusChanged(device: CHSesameLock,
                                          status: CHSesame2Status,shadowStatus: CHSesame2ShadowStatus?) {
         if device.deviceId == sesame2.deviceId,
             status == .receivedBle() {
@@ -176,7 +176,7 @@ extension LockAngleSettingViewController: CHSesame2Delegate {
     }
     
     public func onMechStatusChanged(device: CHSesame2,
-                                    status: SesameProtocolMechStatus,
+                                    status: CHSesameProtocolMechStatus,
                                     intention: CHSesame2Intention) {
         guard let status = device.mechStatus else {
             return

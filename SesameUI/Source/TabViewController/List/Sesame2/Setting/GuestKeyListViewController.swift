@@ -13,7 +13,7 @@ private let cellId = "cell"
 
 class GuestKeyListViewController : CHBaseTableViewController {
     
-    var device: SesameLock!
+    var device: CHSesameLock!
     
     var guestKeys = [CHGuestKey]()
     var refreshControl: UIRefreshControl = UIRefreshControl()
@@ -129,7 +129,7 @@ class GuestKeyListViewController : CHBaseTableViewController {
 }
 
 extension GuestKeyListViewController {
-    static func instanceWithDevice(_ device: SesameLock) -> GuestKeyListViewController {
+    static func instanceWithDevice(_ device: CHSesameLock) -> GuestKeyListViewController {
         let guestKeyListViewController = GuestKeyListViewController(nibName: nil, bundle: nil)
         _ = UINavigationController(rootViewController: guestKeyListViewController)
         guestKeyListViewController.device = device

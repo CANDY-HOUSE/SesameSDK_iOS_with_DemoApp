@@ -58,28 +58,22 @@ struct SesameLockView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            self.makePlanet(geometry: geometry)
+            makeSesameCircle(geometry: geometry)
         }
     }
     
-    func makePlanet(geometry: GeometryProxy) -> some View {
+    func makeSesameCircle(geometry: GeometryProxy) -> some View {
         let lockSize = geometry.size.height * 1
         let lockIndicatorSize = geometry.size.height * 0.07
         return ZStack {
             if viewModel.deviceType == .sesame2 {
                 lockButton(lockSize: .init(width: lockSize, height: lockSize))
-                lockIndicator(size: lockIndicatorSize,
-                              color: Color(viewModel.moonColor))
+                lockIndicator(size: lockIndicatorSize, color: Color(viewModel.lockColor))
                     .modifier(
-                        LockMovingEffect(radians: viewModel.radians,
-                                         radius: lockSize / 2.0)
-                    )
-                    .animation(Animation
-                                .linear(duration: 0)
+                        LockMovingEffect(radians: viewModel.radians, radius: lockSize / 2.0)
                     )
             } else if viewModel.deviceType == .sesameBot {
                 lockButton(lockSize: .init(width: lockSize, height: lockSize))
-//                    .modifier(Shake(animatableData: viewModel.radians))
             } else if viewModel.deviceType == .bikeLock {
                 lockButton(lockSize: .init(width: lockSize, height: lockSize))
             }
@@ -88,13 +82,11 @@ struct SesameLockView: View {
     
     func lockButton(lockSize: CGSize) -> some View {
         return Button(action: {
-            viewModel.cellTapped()
+            viewModel.lockTapped()
         }) {
             Circle()
                 .strokeBorder(Color.white, lineWidth: 1)
-                .frame(width: lockSize.width,
-                       height: lockSize.height,
-                       alignment: .center)
+                .frame(width: lockSize.width, height: lockSize.height, alignment: .center)
                 .background(
                     Image(viewModel.imageName)
                         .renderingMode(.original)
@@ -111,21 +103,7 @@ struct SesameLockView: View {
                        color: Color) -> some View {
         return Circle()
             .fill(color)
-            .frame(width: size,
-                   height: size,
-                   alignment: .center)
-    }
-}
-
-struct Shake: GeometryEffect {
-    var amount: CGFloat = 10
-    var shakesPerUnit = 3
-    var animatableData: CGFloat
-
-    func effectValue(size: CGSize) -> ProjectionTransform {
-        return ProjectionTransform(CGAffineTransform(translationX:
-            amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
-            y: 0))
+            .frame(width: size, height: size, alignment: .center)
     }
 }
 

@@ -357,7 +357,7 @@ class SesameBotSettingViewController: CHBaseViewController {
 
 // MARK: - CHSesame2Delegate
 extension SesameBotSettingViewController: CHSesameBotDelegate {
-    public func onBleDeviceStatusChanged(device: SesameLock,
+    public func onBleDeviceStatusChanged(device: CHSesameLock,
                                          status: CHSesame2Status,
                                          shadowStatus: CHSesame2ShadowStatus?) {
         
@@ -374,7 +374,7 @@ extension SesameBotSettingViewController: CHSesameBotDelegate {
         }
     }
     
-    func onMechStatusChanged(device: CHSesameBot, status: SesameProtocolMechStatus, intention: CHSesame2Intention) {
+    func onMechStatusChanged(device: CHSesameBot, status: CHSesameProtocolMechStatus, intention: CHSesame2Intention) {
         executeOnMainThread {
             self.refreshUI()
         }

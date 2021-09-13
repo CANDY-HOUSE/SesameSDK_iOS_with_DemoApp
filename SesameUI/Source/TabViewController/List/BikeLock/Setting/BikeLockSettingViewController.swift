@@ -301,7 +301,7 @@ class BikeLockSettingViewController: CHBaseViewController {
 
 // MARK: - CHSesame2Delegate
 extension BikeLockSettingViewController: CHSesameBikeDelegate {
-    public func onBleDeviceStatusChanged(device: SesameLock,
+    public func onBleDeviceStatusChanged(device: CHSesameLock,
                                          status: CHSesame2Status,
                                          shadowStatus: CHSesame2ShadowStatus?) {
         

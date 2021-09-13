@@ -15,7 +15,7 @@ import SesameWatchKitSDK
 import WatchKit
 #endif
 
-extension SesameLock {
+extension CHSesameLock {
     func getShadowStatus() -> CHSesame2ShadowStatus? {
         if let sesameLock = self as? CHSesame2 {
             return sesameLock.deviceShadowStatus

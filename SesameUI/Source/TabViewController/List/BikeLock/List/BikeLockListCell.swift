@@ -95,7 +95,7 @@ class BikeLockListCell: UITableViewCell {
 
 // MARK: - CHSesameBikeDelegate
 extension BikeLockListCell: CHSesameBikeDelegate {
-    func onBleDeviceStatusChanged(device: SesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+    func onBleDeviceStatusChanged(device: CHSesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
         if status == .receivedBle() {
             device.connect() {_ in}
         }
@@ -104,7 +104,7 @@ extension BikeLockListCell: CHSesameBikeDelegate {
         }
     }
     
-    func onMechStatusChanged(device: CHSesameBike, status: SesameProtocolMechStatus, intention: CHSesame2Intention) {
+    func onMechStatusChanged(device: CHSesameBike, status: CHSesameProtocolMechStatus, intention: CHSesame2Intention) {
         executeOnMainThread {
             
             var intentionString = ""

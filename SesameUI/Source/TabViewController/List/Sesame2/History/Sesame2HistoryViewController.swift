@@ -9,36 +9,33 @@
 import UIKit
 import SesameSDK
 
-//private let lockQueue = DispatchQueue(label: "co.sesameUI.history.queue")
-
-class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class Sesame2HistoryViewController: CHBaseTableViewController {
     
     // MARK: - Data model
     var sesame2: CHSesame2!
-    private var histories = [CHSesame2History]()
-    private var sections = Set<String>()
-    var tableViewData = [String: [CHSesame2History]]()
+    private var histories = [String: [CHSesame2History]]()
+    private var tableViewData = [String: [CHSesame2History]]()
     
     // MARK: - UI data
     private let pageLength = 50
-    private var currentPage = -1
+    private var cursor: UInt?
+    /// 儲存前一次請求的 section 數，及第0個 section 的 row 數
     private var previousIndexPath = IndexPath(row: 0, section: 0)
     
     // MARK: - Flag
     private var isNoMoreDataToGet = false
     private var isReloadingTableView = false
+    /// 是否需要刷新 table
     private var isHangingTableViewReload = false
     
     // MARK: - UI Component
-    @IBOutlet weak var tableView: UITableView!
-    var refreshControl = UIActivityIndicatorView(style: .gray)
     let sesame2CircleContainer = UIView(frame: .zero)
     var sesame2Circle = Sesame2Circle(frame: .init(x: 0, y: 0, width: 90, height: 90))
     var lockButton = UIButton(type: .custom)
     
     // MARK: - Callback
     var dismissHandler: (()->Void)?
-    let getHistoryThrottle = Throttle()
+    let getHistoryThrottle = Throttle(delay: 3.5)
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -53,7 +50,6 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
         lockButton.addSubview(sesame2Circle)
         sesame2CircleContainer.addSubview(lockButton)
         view.addSubview(sesame2CircleContainer)
-        tableView.addSubview(refreshControl)
         
         sesame2CircleContainer.backgroundColor = .clear
         sesame2Circle.backgroundColor = .clear
@@ -61,8 +57,6 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(sesame2CircleTapped))
         sesame2Circle.addGestureRecognizer(tapGesture)
         lockButton.setTitle(nil, for: .normal)
-        
-        refreshControl.startAnimating()
         
         sesame2CircleContainer.autoPinRight(constant: -10)
         sesame2CircleContainer.autoPinBottom(constant: -10)
@@ -76,17 +70,14 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
         lockButton.autoPinCenter()
         lockButton.autoLayoutWidth(90)
         lockButton.autoLayoutHeight(90)
-
-        refreshControl.autoPinCenterX()
-        refreshControl.autoPinTopToSafeArea(true, constant: 2)
-        refreshControl.autoLayoutWidth(20)
-        refreshControl.autoLayoutHeight(20)
         
         tableView.register(UITableViewHeaderFooterView.self,
                            forHeaderFooterViewReuseIdentifier: "header")
         tableView.register(UINib(nibName: "Sesame2HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "Sesame2HistoryTableViewCell")
         
         tableView.separatorStyle = .none
+        noContentView.isHidden = true
+        tableView.isHidden = false
         
         getHistory()
     }
@@ -96,6 +87,10 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
         title = sesame2.deviceName
         sesame2.delegate = self
         updateSesame2Circle()
+    }
+    
+    override func didBecomeActive() {
+        viewWillAppear(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -120,56 +115,58 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
             sesame2Circle.refreshUI(newPointerAngle: CGFloat(currentDegree),
                                     lockColor: sesame2.lockColor())
         }
-        lockButton.setBackgroundImage(UIImage.CHUIImage(named: sesame2.currentStatusImage()), for: .normal)
+        
+        lockButton.setBackgroundImage(UIImage(named: sesame2.currentStatusImage()), for: .normal)
     }
     
-    // MARK: Get History
+    
+    /// 拿歷史
+    /// - Parameter isUserReqeust: 區分用戶下拉取得更多`過去`歷史，或是機械狀態發生改變主動取得`最新`歷史
     private func getHistory(isUserReqeust: Bool = true) {
-        var requestPage = 0
+        var reuqestCursor: UInt?
+        // 如果是用戶下拉取得更多過去歷史，就帶`cursor`
         if isUserReqeust {
-            currentPage += 1
-            requestPage = currentPage
+            reuqestCursor = self.cursor
         }
+        // 記錄請求前的`第一個section的row數量`以及所有`section`的數量
         if tableView.numberOfSections > 0 {
             self.previousIndexPath = IndexPath(row: tableView.numberOfRows(inSection: 0),
                                                section: tableView.numberOfSections)
         }
-        
-        sesame2.getHistories(page: UInt(requestPage)) { result in
-            
-            if case let .success(histories) = result {
-                // No more data to get
-                if histories.data.count == 0 {
-                    self.isNoMoreDataToGet = true
+        // 調用歷史 API
+        sesame2.getHistories(cursor: reuqestCursor) { result in
+            if case let .success(payload) = result {
+                self.isNoMoreDataToGet = payload.data.cursor == nil
+                // 如果沒有 cursor 代表已經拿到所有過去歷史
+                if payload.data.cursor == nil {
                     executeOnMainThread {
-                        self.refreshControl.removeFromSuperview()
-                        self.reloadTableView(isScrollToBottom: false)
+                        // 有歷史則刷新 table
+                        if self.addNewHistories(payload.data.histories).count > 0 {
+                            self.reloadTableView(isScrollToBottom: false)
+                        }
                     }
                     return
                 }
                 
-                // Is invoked via user event.
+                // 是用戶主動拉取過去歷史才更新 cursor，避免 cursor 亂掉
                 if isUserReqeust {
-                    if histories.data.count < self.pageLength {
-                        self.isNoMoreDataToGet = true
-                    } else {
-                        self.isNoMoreDataToGet = false
-                    }
+                    self.cursor = payload.data.cursor
                 }
-
-                self.addNewHistories(histories.data)
                 
-                executeOnMainThread {
-                    self.refreshControl.removeFromSuperview()
-                    if requestPage == 0 {
-                        self.reloadTableView(isScrollToBottom: true)
-                    } else {
-                        self.reloadTableView(isScrollToBottom: false)
+                // 有新增能展示的歷史則刷新畫面
+                if self.addNewHistories(payload.data.histories).count > 0 {
+                    executeOnMainThread {
+                        if reuqestCursor == nil {
+                            self.reloadTableView(isScrollToBottom: true)
+                        } else {
+                            self.reloadTableView(isScrollToBottom: false)
+                        }
                     }
                 }
-            } else {
+            }
+            if case let .failure(error) = result {
                 executeOnMainThread {
-                    self.refreshControl.removeFromSuperview()
+                    self.view.makeToast(error.errorDescription())
                     self.reloadTableView(isScrollToBottom: false)
                 }
             }
@@ -181,16 +178,20 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
 
         isReloadingTableView = true
         
+        // table 還要滾動時不刷新 table, 增加使用者體驗
         if tableView.contentOffset.y < 0 {
             // Determine whether to reload in following delegate methods.
             // scrollViewDidEndDecelerating
             // scrollViewDidEndDragging
             isHangingTableViewReload = true
         } else {
-            for section in sections {
-                tableViewData[section] = self.histories.filter({ $0.sectionIdentifier == section }).sorted(by: <)
+            tableViewData = histories
+            
+            UIView.performWithoutAnimation {
+                tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
             }
-            tableView.reloadData()
             
             guard numberOfSections(in: tableView) > 0 else {
                 return
@@ -207,7 +208,10 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
         }
     }
     
+    /// 計算出刷新 table 後要移動到的位置
     func firstIndexPathBeforeUpdate() -> IndexPath {
+        
+        // 如果已經拿到所有歷史
         if isNoMoreDataToGet {
             
             var historyCount = 0
@@ -215,14 +219,22 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
                 historyCount += tableViewData[key]!.count
             }
             
+            // 所以歷史小於單頁長度
             if historyCount < pageLength {
                 return IndexPath(row: 0, section: 0)
             } else {
+                // 請求後的 section 數比請求前還多
                 if previousIndexPath.section < tableView.numberOfSections {
+                    // 計算請求前的第一個row, 在請求後的位置
+                    // 例如：請求前 section 0, 1, 2
+                    //      請求後 section 0, 1, 2, 3
+                    //      1. 請求後section數 - 請求前section數 = 要移動到的section位置 (請求前的第一個 section(0) 在請求後的 section 位置(1))
+                    //      2. 要移動到的 section 位置的 row 數 - 請求前的第一個 section row 數 = 要移動到的 row 位置
                     let section = tableView.numberOfSections - previousIndexPath.section
                     let row = tableView.numberOfRows(inSection: section) - previousIndexPath.row
                     return IndexPath(row: max(row - 1, 0), section: max(section, 0))
                 } else {
+                    // section 數未發生變化，直些相減 row 數，得到要移動的位置
                     let row = tableView.numberOfRows(inSection: 0) - previousIndexPath.row
                     return IndexPath(row: max(row - 1, 0), section: 0)
                 }
@@ -257,12 +269,13 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
 
         let indexPath = IndexPath(row: lastRow, section: lastSections)
         
-        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+        self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
     }
     
     // MARK: - Navigation
     @objc private func navigateToSesame2SettingView(_ sender: Any) {
         let sesame2SettingViewController = Sesame2SettingViewController.instanceWithSesame2(sesame2) { isReset in
+            // 設定頁面退出時的 callback 方法
             if isReset {
                 self.navigationController?.popViewController(animated: true)
                 self.dismissHandler?()
@@ -273,17 +286,17 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
     }
     
     // MARK: - UITableViewDataSource & UITableViewDelegate
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         tableViewData.keys.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sortedKeys = tableViewData.keys.sorted(by: <)
         let key = sortedKeys[section]
         return tableViewData[key]!.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Sesame2HistoryTableViewCell", for: indexPath) as! Sesame2HistoryTableViewCell
         configureCell(cell, atIndexPath: indexPath)
         return cell
@@ -344,6 +357,7 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
             return
         }
         
+        // 滑動到頂得時候拿更多歷史
         if (tableView.isDragging || tableView.isDecelerating || tableView.isTracking),
             indexPath.section == 0,
             indexPath.row == 0,
@@ -372,34 +386,20 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
         }
         
         if !isNoMoreDataToGet, isReloadingTableView == false {
-            addRefreshControlIndicator()
             getHistory()
         }
         return true
     }
     
-    func addRefreshControlIndicator() {
-        refreshControl.translatesAutoresizingMaskIntoConstraints = false
-        tableView.addSubview(refreshControl)
-        tableView.sendSubviewToBack(refreshControl)
-        refreshControl.startAnimating()
-        let constraints = [
-            refreshControl.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-            refreshControl.topAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor,
-                                                 constant: 2),
-            refreshControl.widthAnchor.constraint(equalToConstant: 20),
-            refreshControl.heightAnchor.constraint(equalToConstant: 20)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // table 滑動停止時 判斷是否需要刷新 table
         if isHangingTableViewReload == true {
             reloadTableView(isScrollToBottom: false)
         }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // table 滑動停止時 判斷是否需要刷新 table
         if isHangingTableViewReload == true {
             reloadTableView(isScrollToBottom: false)
         }
@@ -412,7 +412,7 @@ class Sesame2HistoryViewController: CHBaseViewController, UITableViewDataSource,
 
 // MARK: - CHSesame2Delegate
 extension Sesame2HistoryViewController: CHSesame2Delegate {
-    func onBleDeviceStatusChanged(device: SesameLock,
+    func onBleDeviceStatusChanged(device: CHSesameLock,
                                   status: CHSesame2Status,shadowStatus: CHSesame2ShadowStatus?) {
         if status == .receivedBle() {
             device.connect() {_ in}
@@ -422,9 +422,10 @@ extension Sesame2HistoryViewController: CHSesame2Delegate {
         }
     }
     
-    func onMechStatusChanged(device: CHSesame2, status: SesameProtocolMechStatus, intention: CHSesame2Intention) {
+    func onMechStatusChanged(device: CHSesame2, status: CHSesameProtocolMechStatus, intention: CHSesame2Intention) {
         executeOnMainThread {
             self.updateSesame2Circle()
+            // 如果未連上藍牙，又收網路通知的機械狀態變更，則主動去拉取`最新`歷史
             if device.deviceStatus.loginStatus == .unlogined {
                 self.getHistoryThrottle.execute {
                     self.getHistory(isUserReqeust: false)
@@ -433,16 +434,14 @@ extension Sesame2HistoryViewController: CHSesame2Delegate {
         }
     }
     
+    /// 從藍芽得到的新增歷史
     func onHistoryReceived(device: SesameSDK.CHSesame2, result: Result<SesameSDK.CHResultState<[SesameSDK.CHSesame2History]>, Error>) {
         if case let .success(histories) = result {
-            if histories.data.count == 0 {
-                return
-            }
-            self.addNewHistories(histories.data)
-
-            executeOnMainThread {
-                self.refreshControl.removeFromSuperview()
-                self.reloadTableView(isScrollToBottom: true)
+            // 如果有新歷史可以可以展示則刷新 table
+            if self.addNewHistories(histories.data).count > 0 {
+                executeOnMainThread {
+                    self.reloadTableView(isScrollToBottom: true)
+                }
             }
         } else if case let .failure(error) = result {
             // 理由:多人連線 sesame2 回 busy:7  notfound:5
@@ -454,32 +453,37 @@ extension Sesame2HistoryViewController: CHSesame2Delegate {
         }
     }
     
-    // MARK: - appendNewHistories
-    func addNewHistories(_ histories: [CHSesame2History]) {
+    
+    /// 新增歷史
+    /// - Parameter histories: 傳入從server, 藍芽 拿到的歷史
+    /// - Returns: 回傳過濾之後的歷史 (過濾掉開關鎖之外的歷史以及去重)
+    @discardableResult
+    func addNewHistories(_ histories: [CHSesame2History]) -> [CHSesame2History] {
         let filteredHistories = histories.filter { serverHistory -> Bool in
-            !self.histories.contains(where: { history -> Bool in
-                history.sortKey == serverHistory.sortKey
-            }) &&
-            (serverHistory.isAutoLock || serverHistory.isLock || serverHistory.isManualUnlocked || serverHistory.isUnLock || serverHistory.isManualLocked)
-        }.sorted(by: <)
+            serverHistory.isAutoLock || serverHistory.isLock || serverHistory.isManualUnlocked || serverHistory.isUnLock || serverHistory.isManualLocked
+        }
 
-        guard filteredHistories.count > 0 else {
-            return
-        }
-        
+        var returnArray = [CHSesame2History]()
         for history in filteredHistories {
-            self.histories.insert(history, at: 0)
-            sections.insert(history.sectionIdentifier)
+            if self.histories[history.sectionIdentifier] == nil {
+                self.histories[history.sectionIdentifier] = [history]
+                returnArray.append(history)
+            } else {
+                if !(self.histories[history.sectionIdentifier]!.contains {$0.historyData.timestamp == history.historyData.timestamp}) {
+                    returnArray.append(history)
+                    self.histories[history.sectionIdentifier]!.append(history)
+                    self.histories[history.sectionIdentifier]!.sort(by: >)
+                }
+            }
         }
-        
-        self.histories.sort(by: <)
+        return returnArray
     }
 }
 
 // MARK: - Designated initializer
 extension Sesame2HistoryViewController {
     static func instanceWithSesame2(_ sesame2: CHSesame2, dismissHandler: (()->Void)?) -> Sesame2HistoryViewController {
-        let sesame2HistoryViewController = Sesame2HistoryViewController(nibName: "Sesame2HistoryViewController", bundle: nil)
+        let sesame2HistoryViewController = Sesame2HistoryViewController(nibName: nil, bundle: nil)
         sesame2HistoryViewController.hidesBottomBarWhenPushed = true
         sesame2HistoryViewController.sesame2 = sesame2
         sesame2HistoryViewController.dismissHandler = dismissHandler

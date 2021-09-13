@@ -117,7 +117,7 @@ class Sesame2ListCell: UITableViewCell {
 }
 
 extension Sesame2ListCell: CHSesame2Delegate {
-    func onBleDeviceStatusChanged(device: SesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+    func onBleDeviceStatusChanged(device: CHSesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
         if status == .receivedBle() {
             device.connect() { _ in
 
@@ -129,7 +129,7 @@ extension Sesame2ListCell: CHSesame2Delegate {
         }
     }
     
-    func onMechStatusChanged(device: CHSesame2, status: SesameProtocolMechStatus, intention: CHSesame2Intention) {
+    func onMechStatusChanged(device: CHSesame2, status: CHSesameProtocolMechStatus, intention: CHSesame2Intention) {
         executeOnMainThread {
             let batteryPercentage = "\(status.getBatteryPrecentage()) %"
             let lockAngle = CGFloat(angle2degree(angle: status.position))

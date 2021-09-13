@@ -9,7 +9,7 @@
 import UIKit
 import SesameSDK
 
-protocol SesameBotListCellDelegate: class {
+protocol SesameBotListCellDelegate: AnyObject {
     func sesameBotCircleTapped(_ cell: SesameBotListCell)
     func debugModeTapped(_ cell: SesameBotListCell)
 }
@@ -96,7 +96,7 @@ class SesameBotListCell: UITableViewCell {
 
 // MARK: - CHSwitchDelegate
 extension SesameBotListCell: CHSesameBotDelegate {
-    func onBleDeviceStatusChanged(device: SesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+    func onBleDeviceStatusChanged(device: CHSesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
         if status == .receivedBle() {
             device.connect() {_ in}
         }
@@ -105,7 +105,7 @@ extension SesameBotListCell: CHSesameBotDelegate {
         }
     }
     
-    func onMechStatusChanged(device: CHSesameBot, status: SesameProtocolMechStatus, intention: CHSesame2Intention) {
+    func onMechStatusChanged(device: CHSesameBot, status: CHSesameProtocolMechStatus, intention: CHSesame2Intention) {
         executeOnMainThread {
             
             var intentionString = ""

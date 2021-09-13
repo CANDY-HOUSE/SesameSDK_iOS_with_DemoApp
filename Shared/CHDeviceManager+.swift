@@ -18,7 +18,7 @@ extension CHDeviceManager {
         let historyTag = Sesame2Store.shared.getHistoryTag()
         CHDeviceManager.shared.getCHDevices { getResult in
             if case let .success(chDevices) = getResult {
-                for sesameLock in chDevices.data.compactMap({ $0 as? SesameLock }) {
+                for sesameLock in chDevices.data.compactMap({ $0 as? CHSesameLock }) {
                     sesameLock.setHistoryTag(historyTag, result: {_ in})
                 }
             }

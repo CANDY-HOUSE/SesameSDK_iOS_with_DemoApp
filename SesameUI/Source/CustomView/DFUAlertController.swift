@@ -126,8 +126,8 @@ class DFUAlertController: UIAlertController {
     }
 }
 
-extension DFUAlertController: CHSesameStatusDelegate {
-    func onBleDeviceStatusChanged(device: SesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+extension DFUAlertController: CHSesame2StatusDelegate {
+    func onBleDeviceStatusChanged(device: CHSesameLock, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
         if !device.isRegistered,
            device.deviceStatus == .readyToRegister(),
            dfuHelper?.isFinished != true,

@@ -196,6 +196,10 @@ extension CHSesame2History {
         lhs.sortKey < rhs.sortKey
     }
     
+    static func > (lhs: CHSesame2History, rhs: CHSesame2History) -> Bool {
+        lhs.sortKey > rhs.sortKey
+    }
+    
     // MARK: - avatarImage
     var avatarImage: String {
         switch self {

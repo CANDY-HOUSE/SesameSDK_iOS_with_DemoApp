@@ -9,14 +9,14 @@
 import UIKit
 import SesameSDK
 
-@objc protocol WifiModule2SSIDScanViewControllerDelegate: class {
+@objc protocol WifiModule2SSIDScanViewControllerDelegate: AnyObject {
     func onSSIDSelected(_ ssid: String)
     @objc func onScanRequested()
 }
 
 class WifiModule2SSIDScanViewController: CHBaseTableViewController {
     
-    var ssids = [SSID]()
+    var ssids = [CHSSID]()
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var noContentRefreshControl: UIRefreshControl = UIRefreshControl()
     weak var delegate: WifiModule2SSIDScanViewControllerDelegate?

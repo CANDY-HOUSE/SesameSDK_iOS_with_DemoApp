@@ -143,7 +143,7 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         wifiModuleDeviceModels = wifiModule2.sesame2Keys.keys.compactMap { key -> WifiModule2SesameModel? in
             guard let deviceStatus = wifiModule2.sesame2Keys[key],
                   let status = UInt8(deviceStatus),
-                  let sesmae2LockStatus = WifiModule2Sesame2LockStatus(rawValue: status) else {
+                  let sesmae2LockStatus = CHWifiModule2Sesame2LockStatus(rawValue: status) else {
                 return nil
             }
             return WifiModule2SesameModel(isWifiModule2Connected: sesmae2LockStatus != .disconnected, sesame2Status: sesmae2LockStatus.description, sesame2Key: key)
@@ -401,7 +401,7 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
             internatImageView.image = UIImage.SVGImage(named: "world", fillColor: networkColor)
             
             var iotColor: UIColor
-            if networkStatus.isIoTWork {
+            if networkStatus.isIoTWork == true {
                 iotColor = UIColor.sesame2Green
             } else {
                 iotColor = UIColor.lockGray
@@ -412,10 +412,10 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
             netIndicator.isHidden = networkStatus.isConnectingNetwork ? false : true
             iotIndicator.isHidden = networkStatus.isConnectingIoT ? false : true
             
-            networkIndicatorLine.isHidden = !networkStatus.isNetwork
-            iotIndicatorLine.isHidden = !networkStatus.isIoTWork
+            networkIndicatorLine.isHidden = !(networkStatus.isNetwork ?? true)
+            iotIndicatorLine.isHidden = !(networkStatus.isIoTWork ?? true)
             
-            wifiExclamationContainerView.isHidden = networkStatus.isAPWork
+            wifiExclamationContainerView.isHidden = networkStatus.isAPWork!
             
             if wifiModule2.networkStatus?.isAPWork == true {
                 addSesameButtonView.setColor(.darkText)
@@ -586,7 +586,7 @@ extension WifiModule2SettingViewController: CHWifiModule2Delegate {
         wifiModuleDeviceModels = sesame2keys.keys.compactMap { key -> WifiModule2SesameModel? in
             guard let deviceStatus = sesame2keys[key],
                   let status = UInt8(deviceStatus),
-                  let sesmae2LockStatus = WifiModule2Sesame2LockStatus(rawValue: status) else {
+                  let sesmae2LockStatus = CHWifiModule2Sesame2LockStatus(rawValue: status) else {
                 return nil
             }
             return WifiModule2SesameModel(isWifiModule2Connected: sesmae2LockStatus != .disconnected, sesame2Status: sesmae2LockStatus.description, sesame2Key: key)
@@ -614,7 +614,7 @@ extension WifiModule2SettingViewController: CHWifiModule2Delegate {
         }
     }
     
-    func onScanWifiSID(device: CHWifiModule2, ssid: SSID) {
+    func onScanWifiSID(device: CHWifiModule2, ssid: CHSSID) {
         guard self.changeNameView != nil else {
             return
         }
