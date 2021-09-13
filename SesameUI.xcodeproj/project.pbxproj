@@ -58,7 +58,6 @@
 		B09CCAF824D96834008B8E16 /* Sesame2ListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CCAF724D96834008B8E16 /* Sesame2ListCellModel.swift */; };
 		B09F5831250F36930034759A /* LockAngleSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F5830250F36930034759A /* LockAngleSettingViewController.swift */; };
 		B09F5835250F47FC0034759A /* LockAngleSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */; };
-		B09F583D250F7F830034759A /* Sesame2HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09F583C250F7F830034759A /* Sesame2HistoryViewController.xib */; };
 		B0A442A72538205A00DCB1DB /* BikeLockListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A442A52538205A00DCB1DB /* BikeLockListCell.swift */; };
 		B0A442A82538205A00DCB1DB /* BikeLockListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A442A62538205A00DCB1DB /* BikeLockListCell.xib */; };
 		B0A443192538667A00DCB1DB /* CHBikeLock+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A443182538667A00DCB1DB /* CHBikeLock+.swift */; };
@@ -330,7 +329,6 @@
 		B09CCAF724D96834008B8E16 /* Sesame2ListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2ListCellModel.swift; sourceTree = "<group>"; };
 		B09F5830250F36930034759A /* LockAngleSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAngleSettingViewController.swift; sourceTree = "<group>"; };
 		B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockAngleSettingViewController.xib; sourceTree = "<group>"; };
-		B09F583C250F7F830034759A /* Sesame2HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame2HistoryViewController.xib; sourceTree = "<group>"; };
 		B0A442A52538205A00DCB1DB /* BikeLockListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeLockListCell.swift; sourceTree = "<group>"; };
 		B0A442A62538205A00DCB1DB /* BikeLockListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeLockListCell.xib; sourceTree = "<group>"; };
 		B0A443182538667A00DCB1DB /* CHBikeLock+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLock+.swift"; sourceTree = "<group>"; };
@@ -514,7 +512,6 @@
 			isa = PBXGroup;
 			children = (
 				BE8245DD250DC37B00AA3E23 /* Sesame2HistoryViewController.swift */,
-				B09F583C250F7F830034759A /* Sesame2HistoryViewController.xib */,
 				BE8245DF250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.swift */,
 				BE8245E0250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib */,
 			);
@@ -1120,7 +1117,6 @@
 				BE8AB1D425DF81F200370863 /* ss2sw_0219_1250_6c45744.zip in Resources */,
 				BEB36C8A258CCD6500EDB9FB /* sesame2_bf1bee1b.zip in Resources */,
 				B0710A4C25357C62007B4F48 /* SesameBotHistoryTableViewCell.xib in Resources */,
-				B09F583D250F7F830034759A /* Sesame2HistoryViewController.xib in Resources */,
 				BE8245E2250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib in Resources */,
 				B179691522F7CE9400E91996 /* LaunchScreen.storyboard in Resources */,
 				BE5FB70525511BE800DC8CD0 /* WifiModule2ListCell.xib in Resources */,
