@@ -132,7 +132,7 @@ class Sesame2SettingViewController: CHBaseViewController {
                                                                  message: "co.candyhouse.sesame2.SesameOSUpdate".localized,
                                                                  preferredStyle: .actionSheet)
             
-            let confirmAction = UIAlertAction(title: DFUHelper.sesame2ApplicationDfuFileName()!,
+            let confirmAction = UIAlertAction(title: DFUHelper.sesame2ApplicationDfuFileName(sesame2),
                                               style: .default) { _ in
                 self.dfuSesame2(self.sesame2)
             }

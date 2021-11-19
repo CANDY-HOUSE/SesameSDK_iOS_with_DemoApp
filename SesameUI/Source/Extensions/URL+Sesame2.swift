@@ -68,6 +68,10 @@ extension URL {
             var model = UInt8(SesameDeviceType.bikeLock.rawValue)
             deviceModel = Data(bytes: &model,
                                count: MemoryLayout.size(ofValue: model))
+        } else if deviceKey.deviceModel == SesameDeviceType.sesame4.modelName {
+            var model = UInt8(SesameDeviceType.sesame4.rawValue)
+            deviceModel = Data(bytes: &model,
+                               count: MemoryLayout.size(ofValue: model))
         }
         
         let keydata = deviceModel.toHexString() + deviceKey.secretKey + deviceKey.sesame2PublicKey + deviceKey.keyIndex + deviceKey.deviceUUID.uuidString.replacingOccurrences(of: "-", with: "")

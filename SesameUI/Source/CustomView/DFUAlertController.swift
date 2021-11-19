@@ -37,7 +37,7 @@ class DFUAlertController: UIAlertController {
     func startDFU() {
         
         switch dfuType {
-        case .sesame2:
+        case .sesame2, .sesame4:
             if sesame2.isRegistered {
                 if sesame2.deviceStatus.loginStatus == .logined {
                     dfuSesame2(sesame2)
@@ -165,7 +165,7 @@ extension DFUAlertController: CHSesame2StatusDelegate {
 // MARK: - CHSesame2Delegate
 extension DFUAlertController {
     func dfuSesame2(_ sesame2: CHSesame2) {
-        let filePath = DFUHelper.sesame2ApplicationDfuFilePath()!
+        let filePath = DFUHelper.sesame2ApplicationDfuFilePath(sesame2)!
         let dfuData = try! Data(contentsOf: filePath)
         
         sesame2.updateFirmware { result in

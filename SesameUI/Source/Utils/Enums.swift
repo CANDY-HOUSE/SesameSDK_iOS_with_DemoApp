@@ -24,6 +24,7 @@ enum SesameDeviceType: Int {
     case wifiModule2 = 1
     case sesameBot = 2
     case bikeLock = 3
+    case sesame4 = 4
     
     var modelName: String {
         switch self {
@@ -31,6 +32,7 @@ enum SesameDeviceType: Int {
         case .sesameBot: return "ssmbot_1"
         case .bikeLock: return "bike_1"
         case .wifiModule2: return "wm_2"
+        case .sesame4: return "sesame_4"
         }
     }
 }

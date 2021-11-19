@@ -33,7 +33,7 @@ final class DFUCenter {
                 switch result {
                 case .success(let peripheral):
                     guard let peripheral = peripheral.data else { return }
-                    let filePath = DFUHelper.sesame2ApplicationDfuFilePath()!
+                    let filePath = DFUHelper.sesame2ApplicationDfuFilePath(device)!
                     let dfuData = try! Data(contentsOf: filePath)
                     let dfuHelper = DFUHelper(peripheral: peripheral, zipData: dfuData)!
                     self.dfuHelpers[device.deviceId.uuidString] = dfuHelper
@@ -191,18 +191,19 @@ extension DFUHelper {
     }
     
     // MARK: - Sesame2
-    static func sesame2ApplicationDfuFilePath() -> URL? {
+    static func sesame2ApplicationDfuFilePath(_ sesame2: CHSesame2) -> URL? {
+        let subdirectory = sesame2.productModel == CHProductModel.sesame2 ? "sesame2_application_dfu" : "sesame4_application_dfu"
         guard let filePath = Bundle.resourceBundle
             .url(forResource: nil,
                  withExtension: "zip",
-                 subdirectory: "sesame2_application_dfu") else {
+                 subdirectory: subdirectory) else {
                 return nil
         }
         return filePath
     }
     
-    static func sesame2ApplicationDfuFileName() -> String? {
-        sesame2ApplicationDfuFilePath()?.lastPathComponent
+    static func sesame2ApplicationDfuFileName(_ sesame2: CHSesame2) -> String? {
+        sesame2ApplicationDfuFilePath(sesame2)?.lastPathComponent
     }
     
     // MARK: - BikeLock

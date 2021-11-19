@@ -280,7 +280,7 @@ extension RegisterSesameDeviceViewController: RegisterSesameDeviceCellDelegate {
             chooseDFUModeAlertController = UIAlertController(title: "",
                                                              message: "co.candyhouse.sesame2.SesameOSUpdate".localized,
                                                              preferredStyle: .actionSheet)
-            let confirmAction = UIAlertAction(title: DFUHelper.sesame2ApplicationDfuFileName()!,
+            let confirmAction = UIAlertAction(title: DFUHelper.sesame2ApplicationDfuFileName(sesame2),
                                               style: .default) { _ in
                 executeOnMainThread {
                     let dfuAlertController = DFUAlertController.instanceWithSesame2(sesame2)

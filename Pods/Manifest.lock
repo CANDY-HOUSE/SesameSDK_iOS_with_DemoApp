@@ -4,17 +4,17 @@ PODS:
   - AWSCore (2.22.0)
   - AWSIoT (2.22.0):
     - AWSCore (= 2.22.0)
-  - iOSDFULibrary (4.5.1):
-    - ZIPFoundation (= 0.9.9)
+  - iOSDFULibrary (4.11.1):
+    - ZIPFoundation (= 0.9.11)
   - SesameSDK (2.0.3):
     - AWSAPIGateway (= 2.22.0)
     - AWSCore (= 2.22.0)
     - AWSIoT (= 2.22.0)
   - SesameWatchKitSDK (2.0.3)
-  - ZIPFoundation (0.9.9)
+  - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
-  - iOSDFULibrary (= 4.5.1)
+  - iOSDFULibrary (= 4.11.1)
   - "SesameSDK (from `git@github.com:CANDY-HOUSE/SesameSDK_iOS.git`, tag `2.0.3.1`)"
   - "SesameWatchKitSDK (from `git@github.com:CANDY-HOUSE/SesameSDK_iOS.git`, tag `2.0.3.1`)"
 
@@ -46,11 +46,11 @@ SPEC CHECKSUMS:
   AWSAPIGateway: 75598982b238b6795241492f0802a17473280c93
   AWSCore: 8bd1def9cb0b6770c65b6d394f1c1cbc0a5562b7
   AWSIoT: 708e1284bf67df14f263f8f76c6a7fb0e0e14e1f
-  iOSDFULibrary: 87c6a088cf7172e3694dfaa8305e7ded5eda2547
+  iOSDFULibrary: 3500ac00451aa7d8ec48a752e91099669a2c1d27
   SesameSDK: 9a45f77894c897a10d8f9350f69fabbb93a6deb7
   SesameWatchKitSDK: 25afe0ad4b5e9a3334698cb077f4327c6630f318
-  ZIPFoundation: 89df685c971926b0323087952320bdfee9f0b6ef
+  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: 014f61fbefd822364b4b970a5d26f3488208dccb
+PODFILE CHECKSUM: e3b0edc2401db35719f0816692e129beb5760226
 
-COCOAPODS: 1.11.1
+COCOAPODS: 1.11.0
