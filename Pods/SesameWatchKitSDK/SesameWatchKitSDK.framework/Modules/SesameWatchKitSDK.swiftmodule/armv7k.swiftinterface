@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target armv7k-apple-watchos6.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SesameWatchKitSDK
 import CoreBluetooth
 import CoreData
@@ -8,6 +8,7 @@ import Security
 @_exported import SesameWatchKitSDK
 import Swift
 import WatchKit
+import _Concurrency
 import os.log
 import os
 public protocol CHWifiModule2 : SesameWatchKitSDK.CHDevice {
@@ -112,14 +113,14 @@ public protocol CHSesameBot : SesameWatchKitSDK.CHSesameLock {
   func unlock(historytag: Foundation.Data?, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   func updateSetting(historytag: Foundation.Data?, setting: SesameWatchKitSDK.CHSesameBotMechSettings, result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
 }
-extension CHSesameBot {
+extension SesameWatchKitSDK.CHSesameBot {
   public func toggle(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   public func lock(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   public func click(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   public func unlock(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   public func updateSetting(setting: SesameWatchKitSDK.CHSesameBotMechSettings, result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
 }
-extension CHSesameBotDelegate {
+extension SesameWatchKitSDK.CHSesameBotDelegate {
   public func onMechStatusChanged(device: SesameWatchKitSDK.CHSesameBot, status: SesameWatchKitSDK.CHSesameProtocolMechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
 }
 public protocol CHWifiModule2Delegate : AnyObject {
@@ -130,7 +131,7 @@ public protocol CHWifiModule2Delegate : AnyObject {
   func onOTAProgress(device: SesameWatchKitSDK.CHWifiModule2, percent: Swift.UInt8)
   func onScanWifiSID(device: SesameWatchKitSDK.CHWifiModule2, ssid: SesameWatchKitSDK.CHSSID)
 }
-extension CHWifiModule2Delegate {
+extension SesameWatchKitSDK.CHWifiModule2Delegate {
   public func onBleDeviceStatusChanged(device: SesameWatchKitSDK.CHWifiModule2, status: SesameWatchKitSDK.CHSesame2Status)
   public func onNetworkStatusChanged(device: SesameWatchKitSDK.CHWifiModule2, status: SesameWatchKitSDK.CHWifiModule2NetworkStatus)
   public func onAPSettingChanged(device: SesameWatchKitSDK.CHWifiModule2, settings: SesameWatchKitSDK.CHWifiModule2MechSettings)
@@ -154,6 +155,22 @@ final public class CHExtensionListener {
   final public func unregisterAll()
   public static func post(notification: Swift.String)
   @objc deinit
+}
+public protocol CHSesameButtonDelegate : SesameWatchKitSDK.CHSesame2StatusDelegate {
+  func onSesame2KeysChanged(device: SesameWatchKitSDK.CHSesameConnector, ssm2keys: [Swift.String : Swift.String])
+}
+public protocol CHSesameButton : SesameWatchKitSDK.CHSesameConnector, SesameWatchKitSDK.CHSesameLock {
+  var delegate: SesameWatchKitSDK.CHSesameButtonDelegate? { get set }
+  var mechSetting: SesameWatchKitSDK.CHSesameButtonMechSettings? { get }
+  var deviceShadowStatus: SesameWatchKitSDK.CHSesame2ShadowStatus? { get }
+  var intention: SesameWatchKitSDK.CHSesame2Intention { get }
+  func unlock(historytag: Foundation.Data?, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
+}
+extension SesameWatchKitSDK.CHSesameButton {
+  public func unlock(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
+}
+extension SesameWatchKitSDK.CHSesameButtonDelegate {
+  public func onSesame2KeysChanged(device: SesameWatchKitSDK.CHSesameConnector, ssm2keys: [Swift.String : Swift.String])
 }
 public enum CHWifiModule2Sesame2LockStatus : Swift.UInt8, Swift.CustomStringConvertible {
   case disconnected
@@ -208,7 +225,7 @@ public protocol CHSesame2 : SesameWatchKitSDK.CHSesameLock {
   func configureLockPosition(historytag: Foundation.Data?, lockTarget: Swift.Int16, unlockTarget: Swift.Int16, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   func updateBleAdvParameter(historytag: Foundation.Data?, interval: Swift.Double, txPower: Swift.Int8, _ result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHSesame2BleAdvParameter>)
 }
-extension CHSesame2 {
+extension SesameWatchKitSDK.CHSesame2 {
   public func lock(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   public func unlock(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   public func toggle(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
@@ -217,7 +234,7 @@ extension CHSesame2 {
   public func configureLockPosition(lockTarget: Swift.Int16, unlockTarget: Swift.Int16, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   public func updateBleAdvParameter(interval: Swift.Double, txPower: Swift.Int8, _ result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHSesame2BleAdvParameter>)
 }
-extension CHSesame2Delegate {
+extension SesameWatchKitSDK.CHSesame2Delegate {
   public func onMechSettingChanged(device: SesameWatchKitSDK.CHSesame2, settings: SesameWatchKitSDK.CHSesame2MechSettings)
   public func onHistoryReceived(device: SesameWatchKitSDK.CHSesame2, result: Swift.Result<SesameWatchKitSDK.CHResultState<[SesameWatchKitSDK.CHSesame2History]>, Swift.Error>)
   public func onMechStatusChanged(device: SesameWatchKitSDK.CHSesame2, status: SesameWatchKitSDK.CHSesameProtocolMechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
@@ -262,8 +279,9 @@ public protocol CHDevice : AnyObject {
   func getVersionTag(result: @escaping (SesameWatchKitSDK.CHResult<Swift.String>))
   func updateFirmware(result: @escaping SesameWatchKitSDK.CHResult<CoreBluetooth.CBPeripheral?>)
 }
-extension CHDevice {
+extension SesameWatchKitSDK.CHDevice {
   public func getKey() -> SesameWatchKitSDK.CHDeviceKey?
+  public func getFirZip() -> Swift.String
 }
 public protocol CHSesameLock : SesameWatchKitSDK.CHDevice {
   var isConnectedByWM2: Swift.Bool { get set }
@@ -272,7 +290,7 @@ public protocol CHSesameLock : SesameWatchKitSDK.CHDevice {
   func getTimeSignature() -> Swift.String
   func setHistoryTag(_ tag: Foundation.Data, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
 }
-extension CHSesameLock {
+extension SesameWatchKitSDK.CHSesameLock {
   public func getKey() -> SesameWatchKitSDK.CHDeviceKey?
   public func getTimeSignature() -> Swift.String
   public func setHistoryTag(_ tag: Foundation.Data, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
@@ -282,6 +300,11 @@ extension CHSesameLock {
   public func disableNotification(token: Swift.String, name: Swift.String, result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
   public func isNotificationEnabled(token: Swift.String, name: Swift.String, result: @escaping SesameWatchKitSDK.CHResult<Swift.Bool>)
   public func getSesameLockStatus(result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
+}
+public protocol CHSesameConnector : SesameWatchKitSDK.CHDevice {
+  var sesame2Keys: [Swift.String : Swift.String] { get }
+  func insertCHDevice(_ device: SesameWatchKitSDK.CHDevice, result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
+  func removeCHDevice(keyId: Swift.String, result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
 }
 public protocol CHSesameProtocolMechStatus {
   var data: Foundation.Data { get }
@@ -363,6 +386,7 @@ public enum CHProductModel : Swift.UInt16 {
   case sesameBot
   case bikeLock
   case sesame4
+  case sesameButton
   public func productType() -> Swift.Int
   public func deviceModel() -> Swift.String
   public func isLock() -> Swift.Bool
@@ -385,7 +409,6 @@ public protocol CHSesameBikeMechSettings {
   public var sesame2PublicKey: Swift.String
   public init(deviceUUID: Foundation.UUID, deviceModel: Swift.String, historyTag: Foundation.Data?, keyIndex: Swift.String, secretKey: Swift.String, sesame2PublicKey: Swift.String)
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -483,10 +506,10 @@ public typealias CHResult<T> = (Swift.Result<SesameWatchKitSDK.CHResultState<T>,
   public func disConnectAll(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   @objc deinit
 }
-extension CHBleManager : CoreBluetooth.CBCentralManagerDelegate {
+extension SesameWatchKitSDK.CHBleManager : CoreBluetooth.CBCentralManagerDelegate {
   @objc dynamic public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
 }
-extension CHBleManager : CoreBluetooth.CBPeripheralDelegate {
+extension SesameWatchKitSDK.CHBleManager : CoreBluetooth.CBPeripheralDelegate {
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
   @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
@@ -502,10 +525,10 @@ public protocol CHSesameBike : SesameWatchKitSDK.CHSesameLock {
   var intention: SesameWatchKitSDK.CHSesame2Intention { get }
   func unlock(historytag: Foundation.Data?, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
 }
-extension CHSesameBike {
+extension SesameWatchKitSDK.CHSesameBike {
   public func unlock(result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
 }
-extension CHSesameBikeDelegate {
+extension SesameWatchKitSDK.CHSesameBikeDelegate {
   public func onMechStatusChanged(device: SesameWatchKitSDK.CHSesameBike, status: SesameWatchKitSDK.CHSesameProtocolMechStatus, intention: SesameWatchKitSDK.CHSesame2Intention)
 }
 public struct CHGuestKey : Swift.Codable {
@@ -542,7 +565,7 @@ public enum CHBleStatus : Swift.String {
 public protocol CHBleStatusDelegate : AnyObject {
   func didScanChange(status: SesameWatchKitSDK.CHScanStatus)
 }
-extension CHBleManagerDelegate {
+extension SesameWatchKitSDK.CHBleManagerDelegate {
   public func didDiscoverUnRegisteredCHDevices(_ devices: [SesameWatchKitSDK.CHDevice])
 }
 public enum CHDeviceLoginStatus : Swift.String {
@@ -573,8 +596,10 @@ public var Sesame2WatchKitSDKBundleVersion: Swift.UInt? {
   public func receiveCHDeviceKeys(_ deviceKeys: SesameWatchKitSDK.CHDeviceKey..., result: @escaping (SesameWatchKitSDK.CHResult<[SesameWatchKitSDK.CHDevice]>))
   @objc deinit
 }
-extension CHDeviceManager {
+extension SesameWatchKitSDK.CHDeviceManager {
   public func disableNotification(deviceId: Swift.String, token: Swift.String, name: Swift.String, result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>)
+}
+public protocol CHSesameButtonMechSettings {
 }
 @_hasMissingDesignatedInitializers public class CHServerError : Swift.Codable {
   public var message: Swift.String
@@ -586,7 +611,7 @@ extension CHDeviceManager {
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
   @objc deinit
 }
-extension CHDeviceMO {
+extension SesameWatchKitSDK.CHDeviceMO {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<SesameWatchKitSDK.CHDeviceMO>
   @objc @NSManaged dynamic public var deviceModel: Swift.String? {
     @objc get
@@ -613,7 +638,7 @@ extension CHDeviceMO {
     @objc set
   }
 }
-extension CHDeviceMO : Swift.Identifiable {
+extension SesameWatchKitSDK.CHDeviceMO : Swift.Identifiable {
   public typealias ID = Swift.ObjectIdentifier
 }
 extension SesameWatchKitSDK.CHWifiModule2Sesame2LockStatus : Swift.Equatable {}
