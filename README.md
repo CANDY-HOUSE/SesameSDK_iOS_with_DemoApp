@@ -2,7 +2,9 @@
 
 [日本語の読み方] ""
 
-## ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CandyHouse 官方網站](https://jp.candyhouse.co/)
+## ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)
+
+[CANDY HOUSE 公式サイト](https://jp.candyhouse.co/)
 
 ## 项目概述
 
@@ -27,4 +29,8 @@
 - [Sesame Open Sensor 1]:该实例对象应用于 Sesame Open Sensor 1 产品
 - [Class 对象]
 
-### [SDK 使用条款](https://jp.candyhouse.co/pages/sesamesdk%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84)
+### 循环图
+
+![BleConnect](./doc/ref/BleConnect.svg)
+
+### [SesameSDK 利用規約](https://jp.candyhouse.co/pages/sesamesdk%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84)
