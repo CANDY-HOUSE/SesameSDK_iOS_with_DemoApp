@@ -1,0 +1,254 @@
+
+"co.candyhouse.sesame2.Sesame" = "芝麻";
+"co.candyhouse.sesame2.SesameBot" = "芝麻手指机器人";
+"co.candyhouse.sesame2.BikeLock" = "芝麻单车锁";
+"co.candyhouse.sesame2.BikeLock2" = "芝麻单车锁2";
+"co.candyhouse.sesame2.OpenSensor" = "开关传感器";
+"co.candyhouse.sesame2.WifiModule2" = "WiFi模块2";
+"co.candyhouse.sesame2.BLEConnector" = "BLE Connector";
+
+"co.candyhouse.sesame2.AddContacts" = "添加联系人";
+"co.candyhouse.sesame2.NewSesame" = "添加新设备";
+"co.candyhouse.sesame2.scanQRCode" = "扫描二维码";
+"co.candyhouse.sesame2.AutoLock" = "倒数自动上锁";
+"co.candyhouse.sesame2.AutoUnlock" = "自动解锁";
+"co.candyhouse.sesame2.Contacts" = "联系人";
+"co.candyhouse.sesame2.Me" = "我";
+"co.candyhouse.sesame2.LogOut" = "登出";
+"co.candyhouse.sesame2.LogIn" = "登入";
+"co.candyhouse.sesame2.sendSMS" = "登入 / 注册";
+"co.candyhouse.sesame2.Logging" = "Logging";
+"co.candyhouse.sesame2.FullName" = "名字";
+"co.candyhouse.sesame2.Password" = "密码";
+"co.candyhouse.sesame2.SignUp" = "注册";
+"co.candyhouse.sesame2.ConfigureAngles" = "设置角度";
+"co.candyhouse.sesame2.ResetThisSesame" = "重置芝麻";
+"co.candyhouse.sesame2.manualOperated" = "被转到了";
+"co.candyhouse.sesame2.manualLock" = "手转上锁";
+"co.candyhouse.sesame2.manualUnlock" = "手转解锁";
+"co.candyhouse.sesame2.SetLockedPosition" = "设置上锁角度";
+"co.candyhouse.sesame2.SetUnlockedPosition" = "设置解锁角度";
+"co.candyhouse.sesame2.SetMagnetPosition" = "水平校正";
+"co.candyhouse.sesame2.AdjustSesameBot" = "调整芝麻手指机器人";
+"co.candyhouse.sesame2.TapToAdjust" = "点击调整";
+"co.candyhouse.sesame2.Cancel" = "取消";
+"co.candyhouse.sesame2.DeleteFriend" = "删除联系人";
+"co.candyhouse.sesame2.Delete" = "删除";
+"co.candyhouse.sesame2.Email" = "邮箱";
+"co.candyhouse.sesame2.FirstName" = "名";
+"co.candyhouse.sesame2.LastName" = "姓";
+"co.candyhouse.sesame2.NickName" = "暱称";
+"co.candyhouse.sesame2.UUID" = "UUID";
+"co.candyhouse.sesame2.VerificationCode" = "已发到您邮箱的验证码";
+"co.candyhouse.sesame2.ResetSesame" = "重置芝麻设备并丢弃钥匙";
+"co.candyhouse.sesame2.ResetWifiModule2" = "重置WiFi模块并丢弃钥匙";
+"co.candyhouse.sesame2.TrashTheKey" = "删除芝麻";
+"co.candyhouse.sesame2.TrashTouch" = "删除 %@";
+"co.candyhouse.sesame2.TrashTheWifiModule2Key" = "删除WiFi模块";
+"co.candyhouse.sesame2.ShareTheKey" = "共享芝麻钥匙";
+"co.candyhouse.sesame2.ShareManagementView" = "共享管理画面";
+"co.candyhouse.sesame2.ShareTheWifiModule2Key" = "共享WiFi模块钥匙";
+"co.candyhouse.sesame2.ShareFriend" = "共享";
+"co.candyhouse.sesame2.ForgotPassword" = "忘记密码";
+"co.candyhouse.sesame2.Re-sendVerificationCode" = "重发验证码";
+"co.candyhouse.sesame2.SendVerificationCode" = "发送验证码";
+"co.candyhouse.sesame2.NewPassword" = "设置新密码";
+"co.candyhouse.sesame2.SuccessfullyChanged" = "修改成功";
+"co.candyhouse.sesame2.NoContacts" = "没有联系人";
+"co.candyhouse.sesame2.ScanInTheFrame" = "于框内扫描";
+"co.candyhouse.sesame2.OK" = "OK";
+"co.candyhouse.sesame2.immediately" = "马上";
+"co.candyhouse.sesame2.sec" = "秒";
+"co.candyhouse.sesame2.secAfter" = "经 %@ 后";
+"co.candyhouse.sesame2.cm" = "厘米";
+"co.candyhouse.sesame2.min" = "分";
+"co.candyhouse.sesame2.hour" = "时";
+"co.candyhouse.sesame2.off" = "关闭";
+"co.candyhouse.sesame2.after" = "之后";
+"co.candyhouse.sesame2.TooClose" = "上锁角度与解锁角度太接近啦😅";
+"co.candyhouse.sesame2.SesameName" = "芝麻名";
+"co.candyhouse.sesame2.NoDevices" = "从⊕开始注册新设备，或扫描二维码获取已注册设备的使用权限";
+"co.candyhouse.sesame2.ScanTheQRCode" = "扫描二维码";
+"co.candyhouse.sesame2.GiveSesameAName" = "给芝麻一个酷名😎";
+"co.candyhouse.sesame2.Members" = "成员";
+"co.candyhouse.sesame2.AddMember" = "添加成员";
+"co.candyhouse.sesame2.EditName" = "修改名称";
+"co.candyhouse.sesame2.DeleteTheMember" = "删除成员";
+"co.candyhouse.sesame2.PullToRefresh" = "下拉刷新";
+"co.candyhouse.sesame2.AddFriendByScan" = "添加我为您的联系人";
+"co.candyhouse.sesame2.AddFriendByScanDetail" = "用 芝麻app 扫描二维码";
+"co.candyhouse.sesame2.AddKeyByScan" = "设备的钥匙";
+"co.candyhouse.sesame2.AddKeyByScanDetail" = "用 芝麻app 扫描钥匙二维码";
+"co.candyhouse.sesame2.AddWifiModule2KeyByScan" = "WiFi模块 的钥匙";
+"co.candyhouse.sesame2.AddWifiModule2KeyByScanDetail" = "用 芝麻app 扫描二维码";
+"co.candyhouse.sesame2.EnterSesameName" = "输入 芝麻 名";
+"co.candyhouse.sesame2.CompletelySet" = "设置成功";
+"co.candyhouse.sesame2.SesameOSUpdate" = "SesameOS的更新并重启";
+"co.candyhouse.sesame2.WM2OSUpdate" = "更新升级软件";
+"co.candyhouse.sesame2.StartingSoon" = "即将开始...";
+"co.candyhouse.sesame2.Close" = "关闭";
+"co.candyhouse.sesame2.Initializing" = "初始化...";
+"co.candyhouse.sesame2.Start" = "开始";
+"co.candyhouse.sesame2.Succeeded" = "成功";
+"co.candyhouse.sesame2.Error" = "错误";
+"co.candyhouse.sesame2.PleaseConfigureAngle" = "请设置开锁角度与关锁角度";
+"co.candyhouse.sesame2.PleaseCompletelyLockUnlock" = "请手转芝麻设备至 完全上锁/完全解锁 位置，\n然后分别点击下方按钮设置 上锁角度/解锁角度";
+
+"co.candyhouse.sesame2.locker.resignIn" = "请用手机芝麻app重新登入";
+"co.candyhouse.sesame2.locker.noDeviceFound" = "没有设备";
+
+"co.candyhouse.sesame2app.back" = "上一步";
+
+// SesameWatchKit
+"co.candyhouse.sesame2.watchkitapp.notSupport" = "您的系统不支持芝麻设备";
+"co.candyhouse.sesame2.watchkitapp.openYourSesame" = "请用手机芝麻app 下拉刷新芝麻设备清单 以同步状态";
+"co.candyhouse.sesame2.watchkitapp.receivedFile" = "收到档案";
+"co.candyhouse.sesame2.watchkitapp.updatingFile" = "上传档案";
+"co.candyhouse.sesame2.watchkitapp.updateDeviceFailed" = "更新升级设备失败 %@";
+
+"co.candyhouse.sesame2.reset" = "重置";
+"co.candyhouse.sesame2.noBleSignal" = "找不到蓝牙信号, 请靠近";
+"co.candyhouse.sesame2.receivedBle" = "收到蓝牙信号了";
+"co.candyhouse.sesame2.bleConnecting" = "蓝牙连接中";
+"co.candyhouse.sesame2.waitingGatt" = "等待 GATT";
+"co.candyhouse.sesame2.waitingForAuth" = "等待认证中";
+"co.candyhouse.sesame2.bleLogining" = "蓝牙登入中";
+"co.candyhouse.sesame2.readyToRegister" = "可以注册";
+"co.candyhouse.sesame2.locked" = "上锁";
+"co.candyhouse.sesame2.unlocked" = "没上锁";
+"co.candyhouse.sesame2.noSettings" = "未设置";
+"co.candyhouse.sesame2.moved" = "被转到了";
+"co.candyhouse.sesame2.registering" = "注册中";
+"co.candyhouse.sesame2.noApSetting" = "WiFi未设置";
+"co.candyhouse.sesame2.connectIoT" = "connectIoT";
+"co.candyhouse.sesame2.waitApConnect" = "waitApConnect";
+"co.candyhouse.sesame2.iotConnected" = "iotConnected";
+"co.candyhouse.sesame2.iotDisconnected" = "iotDisconnected";
+
+"co.candyhouse.sesame2.busy" = "忙碌中";
+"co.candyhouse.sesame2.dfu" = "DFU";
+"co.candyhouse.sesame2.application_dfu" = "Application DFU";
+"co.candyhouse.sesame2.bootloader_dfu" = "Bootloader DFU";
+"co.candyhouse.sesame2.application" = "Application";
+"co.candyhouse.sesame2.bootloader" = "Bootloader";
+"co.candyhouse.sesame2.NewWifiModule2" = "添加 WiFi模块";
+"co.candyhouse.sesame2.addSesameBot" = "添加 芝麻手指机器人";
+"co.candyhouse.sesame2.addBikeLock" = "添加 芝麻单车锁";
+"co.candyhouse.sesame2.changeHistoryTag" = "名字";
+"co.candyhouse.sesame2.share" = "共享";
+
+"co.candyhouse.sesame2.wifissid" = "WiFi SSID";
+"co.candyhouse.sesame2.wifipassword" = "WiFi 密码";
+"co.candyhouse.sesame2.wifisetup" = "设置 WiFi";
+
+"co.candyhouse.sesame2.revokeKeyOfFriend" = "撤销 %@";
+"co.candyhouse.sesame2.revoke" = "撤销";
+
+"co.candyhouse.sesame2.ownerKey" = "群主钥匙";
+"co.candyhouse.sesame2.managerKey" = "管理员钥匙";
+"co.candyhouse.sesame2.memberKey" = "成员钥匙";
+
+"co.candyhouse.sesame2.owner" = "群主";
+"co.candyhouse.sesame2.manager" = "管理员";
+"co.candyhouse.sesame2.member" = "成员";
+
+"co.candyhouse.sesame2.unknownUser" = "未登入用户";
+"co.candyhouse.sesame2.loggedInUserDefaultName" = "用户";
+
+"co.candyhouse.sesame2.wm2NetworkConnectionStatus" = "网络状态";
+"co.candyhouse.sesame2.addSesameToWM2" = "添加芝麻设备…";
+"co.candyhouse.sesame2.shareSesameToFriends" = "共享设备…";
+
+
+"co.candyhouse.sesame2.sesameBotMode" = "模式";
+"co.candyhouse.sesame2.sesameBotModeNormal" = "下压后归位";
+"co.candyhouse.sesame2.sesameBotModeReversed" = "反向下压后归位";
+"co.candyhouse.sesame2.sesameBotModeCircle" = "绕一圈";
+"co.candyhouse.sesame2.sesameBotModeLongPress" = "放开后归位";
+"co.candyhouse.sesame2.OpSensorOn" = "用 开关传感器 上锁";
+"co.candyhouse.sesame2.modifyGuestKeyTag" = "命名客人钥匙";
+
+"co.candyhouse.sesame2.enableNotification" = "通知";
+
+"co.candyhouse.sesame2.Permission" = "角色与权限";
+"co.candyhouse.sesame2.NoBleDevices" = "未发现蓝牙设备";
+"co.candyhouse.sesame2.NoBleDevicesDetailDescription" = "1. 您的iPhone蓝牙开启了吗？\n2. 附近有未注册设备吗？\n3. 用针戳复位键直到LED灯熄灭以重置设备";
+
+"co.candyhouse.sesame2.selectSSID" = "选择您的 WiFi网络";
+"co.candyhouse.sesame2.enterSSIDPassword" = "请输入WiFi密码";
+"co.candyhouse.sesame2.bluetoothPoweredOff" = "手机蓝牙未开启";
+"co.candyhouse.sesame2.scanSSIDPullToRefresh" = "↓您可以下拉刷新";
+
+"co.candyhouse.sesame2.friendsKeys" = "以下设备钥匙被共享给此联系人:";
+"co.candyhouse.sesame2.bindSesame2ToWifiModule2" = "添加距离此WiFi模块 5米内要连接的芝麻设备:";
+"co.candyhouse.sesame2.bindSesame2ToTouch" = "添加距离此Sesame Touch 一米内要连接的Sesame:";
+"co.candyhouse.sesame2.bindSesame2ToSensor" = "添加距离此开关传感器 一米内要连接的Sesame:";
+"co.candyhouse.sesame2.bindSesame2ToBleConnector" = "添加距离此BLE Connectot 一米内要连接的Sesame:";
+
+"co.candyhouse.sesame2.dropKeyDesc" = "删除 %@ 不会重置 %@。若要重置 %@，请用针戳复位键直到LED灯熄灭";
+
+"co.candyhouse.sesame2.historyLOCK" =   "上锁";
+"co.candyhouse.sesame2.historyUNLOCK" = "解锁";
+"co.candyhouse.sesame2.historyMANUAL_LOCKED" =   "手转上锁";
+"co.candyhouse.sesame2.historyMANUAL_UNLOCKED" = "手转解锁";
+"co.candyhouse.sesame2.historyAUTOLOCK_UPDATED" = "自动上锁设置被更新";
+"co.candyhouse.sesame2.historyMECH_SETTING_UPDATED" = "角度设置被更新";
+"co.candyhouse.sesame2.historyAUTOLOCK" = "倒数自动上锁";
+
+"co.candyhouse.sesame2.voiceShortcut" = "Siri 自定义短语";
+"co.candyhouse.sesame2.suggestedPhrase" = "芝麻开门";
+
+"co.candyhouse.sesame2.chooseVoiceShortcut" = "Siri 自定义短语";
+"co.candyhouse.sesame2.toggle" = "上锁或解锁芝麻";
+"co.candyhouse.sesame2.lock" = "上锁芝麻";
+"co.candyhouse.sesame2.unlock" = "解锁芝麻";
+
+"co.candyhouse.sesame2.connectWifiFailed" = "很抱歉🙏\n
+        请确认您的WiFi密码, 或把WiFi模块设置于尽量接近WiFi路由器的地方 \n\n
+        然后多试几次通常能成功连上线.🙏";
+
+"co.candyhouse.sesame2.radiusMeter" = "半径 %d 米";
+
+"co.candyhouse.sesame2.gpsDescription" = "1. 设置红圈区。当您的手机GPS出去又进入这红圈, 您的手机会透过蓝牙把芝麻自动解锁 \n2. 如果您手机的GPS不稳定, 请调大红圈区。您可以点击地图以调整芝麻位置 \n3. 使用自动解锁功能时, 请确保芝麻app在手机系统背景运作";
+"co.candyhouse.sesame2.on" = "开启";
+"co.candyhouse.sesame2.off" = "关闭";
+
+"co.candyhouse.sesame2.exitAutoUnlockRegion" = "自动解锁功能已启动, 请保持芝麻app 在背景运作";
+"co.candyhouse.sesame2.enterAutoUnlockRegion" = "欢迎回来, 自动解锁待命中!";
+
+"co.candyhouse.sesame2.latest" = "(最新)";
+
+"co.candyhouse.sesame2.propertySelect" = "Choose Property";
+"co.candyhouse.sesame2.installComplete" = "成功安装";
+"co.candyhouse.sesame2.pleaseEnableLocationAccess" = "请开启手机的位置权限";
+"co.candyhouse.sesame2.retry" = "请重试一次";
+"co.candyhouse.sesame2.move" = "请移动您的手机";
+"co.candyhouse.sesame2.uploadUserKeysFail" = "网络现在不太稳, 下拉刷新或登出可能导致芝麻设备清单消失";
+"co.candyhouse.sesame2.ResetSesameButton" = "Reset the Sesame Button and trash the key";
+"co.candyhouse.sesame2.TrashTheSesameButtonKey" = "Delete the Sesame Button";
+"co.candyhouse.sesame2.EditSesameButtonName" = "Edit Sesame Button Name";
+"co.candyhouse.sesame2.bindSesame2ToSesameButton" = "Add Sesame that is to be connected by this Sesame Button:";
+"co.candyhouse.sesame2.model" = "机种";
+"co.candyhouse.sesame2.battery" = "电池电量";
+"co.candyhouse.sesame2.fingerprint" = "管理指纹";
+"co.candyhouse.sesame2.default_fingerprint_name" = "指纹🖋️";
+"co.candyhouse.sesame2.TouchProFingerModify" = "修改此指纹名称🖋️";
+"co.candyhouse.sesame2.TouchProFingerDelete" = "删除指纹";
+"co.candyhouse.sesame2.SSMTouchPro" = "Sesame Touch Pro";
+"co.candyhouse.sesame2.SSMTouch" = "Sesame Touch";
+
+"co.candyhouse.sesame2.nfcCard" = "管理NFC卡";
+"co.candyhouse.sesame2.passcodes" = "管理数字密码";
+"co.candyhouse.sesame2.TouchEmptyFingerHint" = "靠近Sesame Touch设备，点击⊕图标，将手指放在Sesame Touch上以添加指纹。\n\n另外，多次改变手指角度 输入同一手指，可以大幅提高识别率👍";
+"co.candyhouse.sesame2.TouchEmptyNFCHint" = "靠近Sesame Touch设备，点击⊕图标，将NFC卡放在Sesame Touch上以添加NFC卡。\n\n如果要使用iPhone或Apple Watch内置的交通卡，需要将其设置为快捷交通卡。";
+"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "靠近Sesame Touch设备，点击⊕图标，输入数字密码并以上锁或解锁按钮添加数字密码。";
+"co.candyhouse.sesame2.default_card_name" = "NFC卡🖋️";
+"co.candyhouse.sesame2.TouchProCardModify" = "修改此NFC卡名称🖋️";
+"co.candyhouse.sesame2.default_passcode_name" = "数字密码🖋️";
+"co.candyhouse.sesame2.TouchProPWDModify" = "修改此数字密码名称🖋️";
+
+"co.candyhouse.sesame2.pleaseResetOpenSensor" = "一旦您从设置页面退出、SesameOS更新后的重启、或是与手机蓝牙连接断开，开关传感器将自动切换到省电模式。如果您想要更新SesameOS或添加新的Sesame，您需要用细棒按住开关传感器的重置按钮约5秒，直到LED灯熄灭为止进行重置。然后，您可以再次从⊕按钮进行注册。";
+
+"candyhouse.no_data" = "";
+"candyhouse.pull_up_to_load" = "下拉刷新";
+"candyhouse.release_to_refresh" = "release_to_refresh";

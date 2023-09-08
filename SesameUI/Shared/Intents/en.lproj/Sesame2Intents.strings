@@ -1,0 +1,113 @@
+/////////// Toggle /////////////
+
+// Title
+"EmQRed" = "Toggle Sesame";
+
+// Description
+"ny69cy" = "To lock or unlock Sesame";
+
+// Toggle Sesame
+"oKdyAt" = "Toggle ${name}";
+
+// Toggle Sesame
+"Mj9Wuq" = "Toggle ${name}";
+
+// Parameter display name
+"ELFt3l" = "Sesame name";
+
+// Parameter metadata default value
+"vJ5K2k" = "Sesame"; // Toggle "name"
+
+// Parameter prompt
+"ozq6aw" = "Please tell me the Sesame name.";
+
+// Toggle succeed ConciseFormatString
+"Aj33jO" = "Toggled ${name} successfully.";
+
+// Toggle succeed ormatString
+"kFbjNn" = "Toggled ${name} successfully.";
+
+// Toggle failed ConciseFormatString
+"Bv0JIN" = "Failed to toggle ${name}.";
+
+// Toggle failed ormatString
+"In26Lu" = "Failed to toggle ${name}.";
+
+// Response parameter display name
+"JYucdV" = "Sesame name";
+
+/////////// Lock /////////////
+
+// Lock Sesame title
+"Fy501q" = "Lock Sesame";
+
+// Lock Sesame description
+"R6z0fD" = "To lock Sesame";
+
+// Lock Sesame
+"19bGy2" = "Lock ${name}";
+
+// Lock Sesame
+"1PEdZK" = "Lock ${name}";
+
+// Parameter display name
+"97VKou" = "Sesame name";
+
+// Parameter metadata default value
+"HVvUJZ" = "Sesame";
+
+// Parameter prompt
+"o4gn3t" = "Please tell me the Sesame name.";
+
+// Lock succeed ConciseFormatString
+"5LASLv" = "Locked ${name} successfully.";
+
+// Lock succeed ormatString
+"SDAIOT" = "Locked ${name} successfully.";
+
+// Lock failed ConciseFormatString
+"qkVyl3" = "Failed to lock ${name}.";
+
+// Lock failed ormatString
+"X7d5U8" = "Failed to lock ${name}.";
+
+// Response parameter display name
+"U0v9jY" = "Sesame name";
+
+/////////// Unlock /////////////
+
+// Unlock Sesame title
+"m748UM" = "Unlock Sesame";
+
+// Unlock Sesame description
+"kM3Dv7" = "To unlock Sesame";
+
+// UnLock Sesame
+"zubRdQ" = "Unlock ${name}";
+
+// UnLock Sesame
+"7Y6Srb" = "Unlock ${name}";
+
+// Parameter display name
+"TtmQv3" = "Sesame name";
+
+// Parameter metadata default value
+"HVvUJZ" = "Sesame"; // Lock "name"
+
+// Parameter prompt
+"O34v48" = "Please tell me the Sesame name.";
+
+// Unlock succeed ConciseFormatString
+"I9bhKC" = "Unlocked ${name} successfully.";
+
+// Unlock succeed ormatString
+"Yx8YvC" = "Unlocked ${name} successfully.";
+
+// Unlock failed ConciseFormatString
+"pDYcBz" = "Failed to unlock ${name}.";
+
+// Unlock failed ormatString
+"fJ25VT" = "Failed to unlock ${name}.";
+
+// Response parameter display name
+"I1miN3" = "Sesame name";

@@ -1,0 +1,8 @@
+"CFBundleDisplayName" = "芝麻";
+"NSCameraUsageDescription" = "掃描 QR Code";
+"NSPhotoLibraryUsageDescription" = "從相簿裡掃描 QR Code";
+"NSBluetoothPeripheralUsageDescription" = "芝麻app需要透過藍芽連接芝麻設備";
+"NSBluetoothAlwaysUsageDescription" = "芝麻app需要透過藍芽連接芝麻設備";
+"NSLocationAlwaysUsageDescription" = "回來後自動解鎖芝麻設備的功能 需要最精准的手機位置訊息";
+"NSLocationWhenInUseUsageDescription" = "回來後自動解鎖芝麻設備的功能 需要最精准的手機位置訊息";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "回來後自動解鎖芝麻設備的功能 需要最精准的手機位置訊息";

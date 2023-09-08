@@ -1,0 +1,8 @@
+"CFBundleDisplayName" = "芝麻";
+"NSCameraUsageDescription" = "扫描二维码";
+"NSPhotoLibraryUsageDescription" = "从相簿里扫描二维码";
+"NSBluetoothPeripheralUsageDescription" = "芝麻app需要透过蓝牙连接芝麻设备";
+"NSBluetoothAlwaysUsageDescription" = "芝麻app需要透过蓝牙连接芝麻设备";
+"NSLocationAlwaysUsageDescription" = "回来后自动解锁芝麻设备的功能 需要最精准的手机位置信息";
+"NSLocationWhenInUseUsageDescription" = "回来后自动解锁芝麻设备的功能 需要最精准的手机位置信息";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "回来后自动解锁芝麻设备的功能 需要最精准的手机位置信息";

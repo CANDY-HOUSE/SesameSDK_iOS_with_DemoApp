@@ -1,0 +1,8 @@
+"CFBundleDisplayName" = "Sesame";
+"NSCameraUsageDescription" = "To scan QR Code";
+"NSPhotoLibraryUsageDescription" = "To scan QR Cdoe from your album";
+"NSBluetoothPeripheralUsageDescription" = "Sesame app has to access Sesame devices via Bluetooth.";
+"NSBluetoothAlwaysUsageDescription" = "Sesame app has to access Sesame devices via Bluetooth.";
+"NSLocationAlwaysUsageDescription" = "The Auto-Unlock feature which automatically unlocks the door for you when you are back, needs the precise location all the time";
+"NSLocationWhenInUseUsageDescription" = "The Auto-Unlock feature which automatically unlocks the door for you when you are back, needs the precise location all the time";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "The Auto-Unlock feature which automatically unlocks the door for you when you are back, needs the precise location all the time";

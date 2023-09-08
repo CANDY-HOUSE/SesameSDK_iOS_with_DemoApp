@@ -1,0 +1,258 @@
+
+"co.candyhouse.sesame2.Sesame" = "Sesame";
+"co.candyhouse.sesame2.SesameBot" = "Sesame bot";
+"co.candyhouse.sesame2.BikeLock" = "Sesame Bike";
+"co.candyhouse.sesame2.BikeLock2" = "Sesame Bike 2";
+"co.candyhouse.sesame2.OpenSensor" = "Open Sensor";
+"co.candyhouse.sesame2.BLEConnector" = "BLE Connector";
+
+"co.candyhouse.sesame2.AddContacts" = "Add Contacts";
+"co.candyhouse.sesame2.NewSesame" = "New Device";
+"co.candyhouse.sesame2.scanQRCode" = "Scan QR Code";
+"co.candyhouse.sesame2.AutoLock" = "Auto-lock timer";
+"co.candyhouse.sesame2.AutoUnlock" = "Auto Unlock";
+"co.candyhouse.sesame2.Contacts" = "Contacts";
+"co.candyhouse.sesame2.WifiModule2" = "WiFi Module";
+"co.candyhouse.sesame2.Me" = "Me";
+"co.candyhouse.sesame2.LogOut" = "Log Out";
+"co.candyhouse.sesame2.LogIn" = "Log In";
+"co.candyhouse.sesame2.sendSMS" = "Log In / Sign Up";
+"co.candyhouse.sesame2.Logging" = "Logging";
+"co.candyhouse.sesame2.FullName" = "Full Name";
+"co.candyhouse.sesame2.Password" = "Password";
+"co.candyhouse.sesame2.SignUp" = "Sign up";
+"co.candyhouse.sesame2.ConfigureAngles" = "Configure Angles";
+"co.candyhouse.sesame2.ResetThisSesame" = "Reset this Sesame";
+"co.candyhouse.sesame2.manualOperated" = "Movement in Thumbturn";
+"co.candyhouse.sesame2.manualLock" = "Manually Locked";
+"co.candyhouse.sesame2.manualUnlock" = "Manually Unlocked";
+"co.candyhouse.sesame2.SetLockedPosition" = "Set Locked Position";
+"co.candyhouse.sesame2.SetUnlockedPosition" = "Set Unlocked Position";
+"co.candyhouse.sesame2.SetMagnetPosition" = "Horizontal calibration";
+"co.candyhouse.sesame2.AdjustSesameBot" = "Adjust Sesame Bot";
+"co.candyhouse.sesame2.TapToAdjust" = "Tap to adjust";
+"co.candyhouse.sesame2.Cancel" = "Cancel";
+"co.candyhouse.sesame2.DeleteFriend" = "Delete the Contact";
+"co.candyhouse.sesame2.Delete" = "Delete";
+"co.candyhouse.sesame2.Email" = "Email";
+"co.candyhouse.sesame2.FirstName" = "First Name";
+"co.candyhouse.sesame2.LastName" = "Last Name";
+"co.candyhouse.sesame2.NickName" = "Nick Name";
+"co.candyhouse.sesame2.UUID" = "UUID";
+"co.candyhouse.sesame2.VerificationCode" = "Verification code sent to your email";
+"co.candyhouse.sesame2.ResetSesame" = "Reset the Sesame and trash the key";
+"co.candyhouse.sesame2.ResetWifiModule2" = "Reset the WiFi Module and trash the key";
+"co.candyhouse.sesame2.TrashTheKey" = "Delete the Sesame";
+"co.candyhouse.sesame2.TrashTouch" = "Delete %@";
+"co.candyhouse.sesame2.TrashTheWifiModule2Key" = "Delete the WiFi Module";
+"co.candyhouse.sesame2.ShareTheKey" = "Share the key of the Sesame";
+"co.candyhouse.sesame2.ShareManagementView" = "Share Management View";
+"co.candyhouse.sesame2.ShareTheWifiModule2Key" = "Share the key of the WiFi Module";
+"co.candyhouse.sesame2.ShareFriend" = "Share";
+"co.candyhouse.sesame2.ForgotPassword" = "Forgot password";
+"co.candyhouse.sesame2.Re-sendVerificationCode" = "Re-send verification code";
+"co.candyhouse.sesame2.SendVerificationCode" = "Send verification code";
+"co.candyhouse.sesame2.NewPassword" = "New Password";
+"co.candyhouse.sesame2.SuccessfullyChanged" = "Successfully Changed";
+"co.candyhouse.sesame2.NoContacts" = "No Contacts";
+"co.candyhouse.sesame2.ScanInTheFrame" = "Scan in the Frame";
+"co.candyhouse.sesame2.OK" = "OK";
+"co.candyhouse.sesame2.immediately" = "Immediately";
+"co.candyhouse.sesame2.sec" = "sec";
+"co.candyhouse.sesame2.secAfter" = "After %@";
+"co.candyhouse.sesame2.cm" = "cm";
+"co.candyhouse.sesame2.min" = "min";
+"co.candyhouse.sesame2.hour" = "hr";
+"co.candyhouse.sesame2.off" = "Off";
+"co.candyhouse.sesame2.after" = "After";
+"co.candyhouse.sesame2.TooClose" = "The locked position and the unlocked position are too close😅";
+"co.candyhouse.sesame2.SesameName" = "Sesame Name";
+"co.candyhouse.sesame2.NoDevices" = "Press ⊕ to register a new device, or scan the QR code to obtain access to an already registered device";
+"co.candyhouse.sesame2.ScanTheQRCode" = "Scan the QR code";
+"co.candyhouse.sesame2.GiveSesameAName" = "Give Sesame a cooool name! 😎";
+"co.candyhouse.sesame2.Members" = "Members";
+"co.candyhouse.sesame2.AddMember" = "Add Member";
+"co.candyhouse.sesame2.EditName" = "Edit Name";
+"co.candyhouse.sesame2.DeleteTheMember" = "Delete the Member";
+"co.candyhouse.sesame2.PullToRefresh" = "Pull to refresh";
+"co.candyhouse.sesame2.AddFriendByScan" = "Add me on your contact";
+"co.candyhouse.sesame2.AddFriendByScanDetail" = "Scan the QR code with Sesame app";
+"co.candyhouse.sesame2.AddKeyByScan" = "Key of the device";
+"co.candyhouse.sesame2.AddKeyByScanDetail" = "Scan the QR code with Sesame app";
+"co.candyhouse.sesame2.AddWifiModule2KeyByScan" = "Key of the WiFi Module device";
+"co.candyhouse.sesame2.AddWifiModule2KeyByScanDetail" = "Scan the QR code with Sesame app";
+"co.candyhouse.sesame2.EnterSesameName" = "Enter Sesame name";
+"co.candyhouse.sesame2.CompletelySet" = "Completely Set";
+"co.candyhouse.sesame2.SesameOSUpdate" = "SesameOS Update&Restart";
+"co.candyhouse.sesame2.WM2OSUpdate" = "Software Update";
+"co.candyhouse.sesame2.StartingSoon" = "Starting soon…";
+"co.candyhouse.sesame2.Close" = "Close";
+"co.candyhouse.sesame2.Initializing" = "Initializing…";
+"co.candyhouse.sesame2.Start" = "Start";
+"co.candyhouse.sesame2.Succeeded" = "Succeeded";
+"co.candyhouse.sesame2.Error" = "Error";
+"co.candyhouse.sesame2.PleaseConfigureAngle" = "Please configure the locked/unlocked positions.";
+"co.candyhouse.sesame2.PleaseCompletelyLockUnlock" = "Please manually turn Sesame to fully locked/unlocked positions, and tap the buttons below to configure the locked/unlocked positions respectively.";
+
+"co.candyhouse.sesame2.locker.resignIn" = "Please go Sesame app and login again";
+"co.candyhouse.sesame2.locker.noDeviceFound" = "No Devices";
+
+"co.candyhouse.sesame2app.back" = "Back";
+
+// SesameWatchKit
+"co.candyhouse.sesame2.watchkitapp.notSupport" = "Your system does not support Sesame lock.";
+"co.candyhouse.sesame2.watchkitapp.openYourSesame" = "Please open your Sesame App on iPhone and pull the Sesame list to sync Sesame";
+"co.candyhouse.sesame2.watchkitapp.receivedFile" = "Received file";
+"co.candyhouse.sesame2.watchkitapp.updatingFile" = "Updating file";
+"co.candyhouse.sesame2.watchkitapp.updateDeviceFailed" = "Update devices failed %@";
+
+"co.candyhouse.sesame2.reset" = "Reset";
+"co.candyhouse.sesame2.noBleSignal" = "Bluetooth signal not found, please get closer";
+"co.candyhouse.sesame2.receivedBle" = "Received Ble";
+"co.candyhouse.sesame2.bleConnecting" = "Ble Connecting";
+"co.candyhouse.sesame2.waitingGatt" = "Waiting gatt";
+"co.candyhouse.sesame2.waitingForAuth" = "Waiting auth";
+"co.candyhouse.sesame2.bleLogining" = "Ble Loging in";
+"co.candyhouse.sesame2.readyToRegister" = "Ready to register";
+"co.candyhouse.sesame2.locked" = "Locked";
+"co.candyhouse.sesame2.unlocked" = "Unlocked";
+"co.candyhouse.sesame2.noSettings" = "No settings";
+"co.candyhouse.sesame2.moved" = "Moved";
+"co.candyhouse.sesame2.registering" = "Registering";
+"co.candyhouse.sesame2.noApSetting" = "noApSetting";
+"co.candyhouse.sesame2.connectIoT" = "connectIoT";
+"co.candyhouse.sesame2.waitApConnect" = "waitApConnect";
+"co.candyhouse.sesame2.iotConnected" = "iotConnected";
+"co.candyhouse.sesame2.iotDisconnected" = "iotConnected";
+"co.candyhouse.sesame2.busy" = "Busy";
+"co.candyhouse.sesame2.dfu" = "DFU";
+"co.candyhouse.sesame2.application_dfu" = "Application DFU";
+"co.candyhouse.sesame2.bootloader_dfu" = "Bootloader DFU";
+"co.candyhouse.sesame2.application" = "Application";
+"co.candyhouse.sesame2.bootloader" = "Bootloader";
+"co.candyhouse.sesame2.NewWifiModule2" = "New WiFi Modeule";
+"co.candyhouse.sesame2.addSesameBot" = "New SesameBot";
+"co.candyhouse.sesame2.addBikeLock" = "New BikeLock";
+"co.candyhouse.sesame2.changeHistoryTag" = "Name";
+"co.candyhouse.sesame2.share" = "Share";
+
+"co.candyhouse.sesame2.wifissid" = "WiFi SSID";
+"co.candyhouse.sesame2.wifipassword" = "WiFi Password";
+"co.candyhouse.sesame2.wifisetup" = "WiFi Setup";
+
+"co.candyhouse.sesame2.revokeKeyOfFriend" = "Revoke %@";
+"co.candyhouse.sesame2.revoke" = "Revoke";
+
+"co.candyhouse.sesame2.ownerKey" = "Owner Key";
+"co.candyhouse.sesame2.managerKey" = "Manager Key";
+"co.candyhouse.sesame2.memberKey" = "Guest Key";
+
+"co.candyhouse.sesame2.owner" = "Owner";
+"co.candyhouse.sesame2.manager" = "Manager";
+"co.candyhouse.sesame2.member" = "Guest";
+
+"co.candyhouse.sesame2.unknownUser" = "Unlogin user";
+"co.candyhouse.sesame2.loggedInUserDefaultName" = "Login user";
+
+"co.candyhouse.sesame2.wm2NetworkConnectionStatus" = "Internet Status";
+"co.candyhouse.sesame2.addSesameToWM2" = "Add Sesame…";
+"co.candyhouse.sesame2.shareSesameToFriends" = "Share devices…";
+
+
+"co.candyhouse.sesame2.sesameBotMode" = "Mode";
+"co.candyhouse.sesame2.sesameBotModeNormal" = "Click then return";
+"co.candyhouse.sesame2.sesameBotModeReversed" = "Reversed";
+"co.candyhouse.sesame2.sesameBotModeCircle" = "Make a circle";
+"co.candyhouse.sesame2.sesameBotModeLongPress" = "Release then return";
+
+"co.candyhouse.sesame2.modifyGuestKeyTag" = "Rename the Guest Key";
+"co.candyhouse.sesame2.OpSensorOn" = "Lock with Open Sensor";
+"co.candyhouse.sesame2.enableNotification" = "Notifications";
+
+"co.candyhouse.sesame2.Permission" = "Role & Permission";
+"co.candyhouse.sesame2.NoBleDevices" = "Bluetooth devices not found";
+"co.candyhouse.sesame2.NoBleDevicesDetailDescription" = "1. Is iPhone Bluetooth on？\n2. Is the unregistered device nearby？\n3. To reset the registered device, please press the reset button with a pin until the LED light turns off.";
+
+"co.candyhouse.sesame2.selectSSID" = "Select your WiFi network";
+"co.candyhouse.sesame2.enterSSIDPassword" = "Please enter the WiFi password";
+"co.candyhouse.sesame2.bluetoothPoweredOff" = "Bluetooth is off";
+"co.candyhouse.sesame2.scanSSIDPullToRefresh" = "↓You can pull to refresh";
+
+"co.candyhouse.sesame2.friendsKeys" = "The following device keys are shared with this contact:";
+"co.candyhouse.sesame2.bindSesame2ToWifiModule2" = "Add Sesame to be connected within 5 meters of this WiFi Module:";
+"co.candyhouse.sesame2.bindSesame2ToTouch" = "Add Sesame to be connected within 1 meter of this Sesame Touch:";
+"co.candyhouse.sesame2.bindSesame2ToSensor" = "Add Sesame to be connected within 1 meter of this Open Sensor:";
+"co.candyhouse.sesame2.bindSesame2ToBleConnector" = "Add Sesame to be connected within 1 meter of this BLE Connector:";
+
+
+"co.candyhouse.sesame2.dropKeyDesc" = "Deleting %@ won't reset %@. To reset %@, please press the reset button with a pin until the LED light turns off.";
+
+"co.candyhouse.sesame2.historyLOCK" =   "is locked";
+"co.candyhouse.sesame2.historyUNLOCK" = "is unlocked";
+"co.candyhouse.sesame2.historyMANUAL_LOCKED" =   "is manually locked";
+"co.candyhouse.sesame2.historyMANUAL_UNLOCKED" = "is manually unlocked";
+"co.candyhouse.sesame2.historyAUTOLOCK_UPDATED" = "'s Autolock setting is updated";
+"co.candyhouse.sesame2.historyMECH_SETTING_UPDATED" = "'s angle setting is updated";
+"co.candyhouse.sesame2.historyAUTOLOCK" = "Auto-lock timer";
+
+"co.candyhouse.sesame2.voiceShortcut" = "Siri Custom Phrase";
+"co.candyhouse.sesame2.suggestedPhrase" = "Open Sesame";
+
+"co.candyhouse.sesame2.chooseVoiceShortcut" = "Siri Custom Phrase";
+"co.candyhouse.sesame2.toggle" = "Toggle Sesame";
+"co.candyhouse.sesame2.lock" = "Lock Sesame";
+"co.candyhouse.sesame2.unlock" = "Unlock Sesame";
+
+"co.candyhouse.sesame2.connectWifiFailed" = "SORRY🙏\n
+Please double check your WiFi password, or put WiFi Module as close to the WiFi router as possible. \n\n
+        Then normally retry for a few times it will get connected successfully.🙏";
+
+"co.candyhouse.sesame2.radiusMeter" = "radius of %d meters";
+
+"co.candyhouse.sesame2.gpsDescription" = "1. Setup the red circle area. While your smartphone GPS going out and coming back into the red circle, your smartphone will automatically unlock the door via Bluetooth. \n2. If your GPS is unstable, please extend the red area. You can adjust Sesame's location by tapping the map. \n3. When using Auto Unlock, please do not kill/stop the Sesame app from the background.";
+"co.candyhouse.sesame2.on" = "On";
+"co.candyhouse.sesame2.off" = "Off";
+
+"co.candyhouse.sesame2.exitAutoUnlockRegion" = "Goodbye and take care.  Auto Unlock is working so please keep Sesame app in the background.";
+"co.candyhouse.sesame2.enterAutoUnlockRegion" = "Welcome back. Auto Unlock is ready!";
+
+"co.candyhouse.sesame2.latest" = "(Latest)";
+
+"co.candyhouse.sesame2.propertySelect" = "Choose Property";
+"co.candyhouse.sesame2.installComplete" = "Install completed";
+"co.candyhouse.sesame2.pleaseEnableLocationAccess" = "Please enable location access";
+"co.candyhouse.sesame2.retry" = "Please try again";
+"co.candyhouse.sesame2.move" = "Please move your phone";
+"co.candyhouse.sesame2.uploadUserKeysFail" = "You’re experiencing binding issues due to an unstable network. It’s possible to lose all paired Sesame devices if you pull to refresh or logout.";
+
+"co.candyhouse.sesame2.ResetSesameButton" = "Reset the Sesame Button and trash the key";
+"co.candyhouse.sesame2.TrashTheSesameButtonKey" = "Delete the Sesame Button";
+"co.candyhouse.sesame2.EditSesameButtonName" = "Edit Sesame Button Name";
+"co.candyhouse.sesame2.bindSesame2ToSesameButton" = "Add Sesame that is to be connected by this Sesame Button:";
+
+"co.candyhouse.sesame2.model" = "Model";
+"co.candyhouse.sesame2.battery" = "Battery level";
+"co.candyhouse.sesame2.fingerprint" = "Manage fingerprints";
+"co.candyhouse.sesame2.default_fingerprint_name" = "Fingerprint🖋️";
+"co.candyhouse.sesame2.TouchProFingerModify" = "Edit fingerptint name🖋️";
+"co.candyhouse.sesame2.TouchProFingerDelete" = "Delete fingerprint";
+"co.candyhouse.sesame2.SSMTouchPro" = "Sesame Touch Pro";
+"co.candyhouse.sesame2.SSMTouch" = "Sesame Touch";
+"co.candyhouse.sesame2.nfcCard" = "Manage NFC cards";
+
+"co.candyhouse.sesame2.passcodes" = "Manage passcodes";
+"co.candyhouse.sesame2.TouchEmptyFingerHint" = "Approach the Sesame Touch device, tap the ⊕ icon, and place your finger on Sesame Touch to add a fingerprint.\n\nAlso, by registering the same finger at different angles, the recognition rate can greatly improve👍";
+"co.candyhouse.sesame2.TouchEmptyNFCHint" = "Approach the Sesame Touch device, tap the ⊕ icon, and place your NFC card on Sesame Touch to add the NFC card.\n\nIf you are using a transit card built into iPhone or Apple Watch, you need to set it up as an Express Transit Card.";
+"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "Approach the Sesame Touch device, tap the ⊕ icon, enter the passcode and press the lock or unlock button to add the passcode.";
+
+
+"co.candyhouse.sesame2.default_card_name" = "NFC Card🖋️";
+"co.candyhouse.sesame2.TouchProCardModify" = "Edit NFC card name🖋️";
+"co.candyhouse.sesame2.default_passcode_name" = "Passcode🖋️";
+"co.candyhouse.sesame2.TouchProPWDModify" = "Edit passcode name🖋️";
+
+"co.candyhouse.sesame2.pleaseResetOpenSensor" = "Once you leave the settings page, restart after updating SesameOS, or disconnect the Bluetooth connection with your iPhone, the Open Sensor will automatically switch to power-saving mode. If you would update SesameOS or add a new Sesame, reset the Open Sesame sensor by pressing and holding the reset button with a thin stick for about 5 seconds until the LED turns off. Then, register again from the ⊕ button.";
+
+"candyhouse.no_data" = "";
+"candyhouse.pull_up_to_load" = "Pull up to load.";
+"candyhouse.release_to_refresh" = "release_to_refresh";

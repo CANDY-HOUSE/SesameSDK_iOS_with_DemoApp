@@ -1,0 +1,113 @@
+/////////// Toggle /////////////
+
+// Title
+"EmQRed" = "セサミを施錠・解錠する";
+
+// Description
+"ny69cy" = "セサミを施錠・解錠する";
+
+// Toggle Sesame
+"oKdyAt" = "${name}を施錠・解錠する";
+
+// Toggle Sesame
+"Mj9Wuq" = "${name}を施錠・解錠する";
+
+// Parameter display name
+"ELFt3l" = "セサミの名前";
+
+// Parameter metadata default value
+"vJ5K2k" = "セサミ"; // Toggle "name"
+
+// Parameter prompt
+"ozq6aw" = "連携するセサミの名前を教えてください";
+
+// Toggle succeed ConciseFormatString
+"Aj33jO" = "${name}を施/解錠できました";
+
+// Toggle succeed ormatString
+"kFbjNn" = "${name}を施/解錠できました";
+
+// Toggle failed ConciseFormatString
+"Bv0JIN" = "${name}を施/解錠できませんでした";
+
+// Toggle failed ormatString
+"In26Lu" = "${name}を施/解錠できませんでした";
+
+// Response parameter display name
+"JYucdV" = "セサミの名前";
+
+/////////// Lock /////////////
+
+// Lock Sesame title
+"Fy501q" = "セサミを施錠する";
+
+// Lock Sesame description
+"R6z0fD" = "セサミを施錠する";
+
+// Lock Sesame
+"19bGy2" = "${name}を施錠する";
+
+// Lock Sesame
+"1PEdZK" = "${name}を施錠する";
+
+// Parameter display name
+"97VKou" = "セサミの名前";
+
+// Parameter metadata default value
+"HVvUJZ" = "セサミ";
+
+// Parameter prompt
+"o4gn3t" = "施錠するセサミの名前を教えてください";
+
+// Lock succeed ConciseFormatString
+"5LASLv" = "${name}を施錠できました";
+
+// Lock succeed ormatString
+"SDAIOT" = "${name}を施錠できました";
+
+// Lock failed ConciseFormatString
+"qkVyl3" = "${name}を施錠できませんでした";
+
+// Lock failed ormatString
+"X7d5U8" = "${name}を施錠できませんでした";
+
+// Response parameter display name
+"U0v9jY" = "セサミの名前";
+
+/////////// Unlock /////////////
+
+// Unlock Sesame title
+"m748UM" = "セサミを解錠する";
+
+// Unlock Sesame description
+"kM3Dv7" = "セサミを解錠する";
+
+// UnLock Sesame
+"zubRdQ" = "${name}を解錠する";
+
+// UnLock Sesame
+"7Y6Srb" = "${name}を解錠する";
+
+// Parameter display name
+"TtmQv3" = "セサミの名前";
+
+// Parameter metadata default value
+"HVvUJZ" = "セサミ"; // Lock "name"
+
+// Parameter prompt
+"O34v48" = "解錠するセサミの名前を教えてください";
+
+// Unlock succeed ConciseFormatString
+"I9bhKC" = "${name}を解錠できました";
+
+// Unlock succeed ormatString
+"Yx8YvC" = "${name}を解錠できました";
+
+// Unlock failed ConciseFormatString
+"pDYcBz" = "${name}を解錠できませんでした";
+
+// Unlock failed ormatString
+"fJ25VT" = "${name}を解錠できませんでした";
+
+// Response parameter display name
+"I1miN3" = "セサミの名前";

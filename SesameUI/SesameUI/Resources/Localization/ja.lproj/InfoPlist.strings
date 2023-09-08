@@ -1,0 +1,8 @@
+"CFBundleDisplayName" = "セサミ";
+"NSCameraUsageDescription" = "QRコードをスキャンする";
+"NSPhotoLibraryUsageDescription" = "QRコードをアルバムから読み取る";
+"NSBluetoothPeripheralUsageDescription" = "セサミデバイスとのBluthtooh接続を許可してください。";
+"NSBluetoothAlwaysUsageDescription" = "セサミデバイスとのBluthtooh接続を許可してください。";
+"NSLocationAlwaysUsageDescription" = "手ぶら解錠をご使用の場合、正確な位置情報を「常に許可」にしてください。";
+"NSLocationWhenInUseUsageDescription" = "手ぶら解錠をご使用の場合、正確な位置情報を「常に許可」にしてください。";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "手ぶら解錠をご使用の場合、正確な位置情報を「常に許可」にしてください。";
