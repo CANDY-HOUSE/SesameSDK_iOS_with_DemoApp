@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Sesame2Property" representedClassName="Sesame2PropertyMO" parentEntity="SesameDevice" syncable="YES" codeGenerationType="class">
+        <attribute name="autoUnlockFlag" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="autoUnlockType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="guestKeys" optional="YES" attributeType="Transformable"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="radius" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="SesameBotProperty" representedClassName="SesameBotPropertyMO" parentEntity="SesameDevice" syncable="YES" codeGenerationType="class">
+        <attribute name="sesameBotMode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="SesameDevice" representedClassName="SesameDeviceMO" syncable="YES" codeGenerationType="class">
+        <attribute name="deviceID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="keyLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="voiceLockId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="voiceShortcutId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="voiceUnlockId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+</model>

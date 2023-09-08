@@ -1,8 +1,0 @@
-"CFBundleDisplayName" = "セサミ";
-"NSCameraUsageDescription" = "QRコードをスキャンする";
-"NSPhotoLibraryUsageDescription" = "QRコードをアルバムから読み取る";
-"NSBluetoothPeripheralUsageDescription" = "セサミアプリを使用していない時でもセサミアプリはセサミデバイスのBluthtooh情報にアクセスできます。";
-"NSBluetoothAlwaysUsageDescription" = "セサミアプリを使用していない時でもセサミアプリはセサミデバイスのBluthtooh情報にアクセスできます。";
-"NSLocationAlwaysUsageDescription" = "手ぶら解錠をご使用の場合、iPhoneの位置情報をセサミアプリにご共有をお願いします。";
-"NSLocationWhenInUseUsageDescription" = "手ぶら解錠をご使用の場合、iPhoneの位置情報をセサミアプリにご共有をお願いします。";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "手ぶら解錠をご使用の場合、iPhoneの位置情報をセサミアプリにご共有をお願いします。";
