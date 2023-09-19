@@ -1,27 +1,20 @@
 //
-//  Os2CipherKey.swift
+//  CHServerAuth.swift
 //  SesameSDK
 //
 //  Created by JOi Chao on 2023/9/11.
 //  Copyright © 2023 CandyHouse. All rights reserved.
 //
 
-
 import Foundation
 import Security
 import CryptoKit
-
-enum Os2Type: Int {
-    case bot = 2
-    case bike = 0
-    case sesame2 = 1
-}
 
 struct KeyQues {
     var ak: String
     var n: String
     var e: String
-    var t: Os2Type
+    var t: UInt16
 }
 
 struct KeyResp {
@@ -30,7 +23,7 @@ struct KeyResp {
     var pubkey: String
 }
 
-class Os2CipherUtils {
+class CHServerAuth {
     
     static let serverKey: String =  "04a040fcc7386b2a08304a3a2f0834df575c936794209729f0d42bd84218b35803932bea522200b2ebcbf17ab57c4509b4a3f1e268b2489eb3b75f7a765adbe181"
    

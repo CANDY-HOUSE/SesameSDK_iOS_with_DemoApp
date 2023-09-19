@@ -18,20 +18,20 @@ extension CHSesameBikeDevice {
         self.commandQueue = DispatchQueue(label: deviceId.uuidString, qos: .userInitiated)
         getIRER { irerResult in
             if case let .success(irer) = irerResult {
-                self.registerDevice(er: irer.data.er, result: result)
+                self.makeApiCall(er: irer.data.er, result: result)
             }
         }
     }
     
-    func registerDevice(er: String, result: @escaping CHResult<CHEmpty>) {
+    func makeApiCall(er: String, result: @escaping CHResult<CHEmpty>) {
         let keyData = KeyQues(
             ak: (Data(appKeyPair.publicKey).base64EncodedString()),
             n: bikeLockSessionToken!.base64EncodedString(),
             e: er,
-            t: Os2Type.bike
+            t: advertisement!.productType!.rawValue
         )
         
-        let registerKeyResp = Os2CipherUtils.getRegisterKey(data: keyData)
+        let registerKeyResp = CHServerAuth.getRegisterKey(data: keyData)
         self.deviceStatus = .registering()
         
         if let sig1 = Data(base64Encoded: registerKeyResp.sig1),

@@ -15,23 +15,22 @@ extension CHSesame2Device {
         self.commandQueue = DispatchQueue(label: deviceId.uuidString, qos: .userInitiated)
         getIRER { irerResult in
             if case let .success(irer) = irerResult {
-                let ER = irer.data.er
-                self.registerDevice(er: ER, result: result)
+                self.makeApiCall(er: irer.data.er, result: result)
             } else if case let .failure(error) = irerResult {
                 result(.failure(error))
             }
         }
     }
     
-    func registerDevice(er: String, result: @escaping CHResult<CHEmpty>) {
+    func makeApiCall(er: String, result: @escaping CHResult<CHEmpty>) {
         let keyData = KeyQues(
             ak: (Data(appKeyPair.publicKey).base64EncodedString()),
             n: sesame2SessionToken!.base64EncodedString(),
             e: er,
-            t: Os2Type.sesame2
+            t: advertisement!.productType!.rawValue
         )
         
-        let registerKeyResp = Os2CipherUtils.getRegisterKey(data: keyData)
+        let registerKeyResp = CHServerAuth.getRegisterKey(data: keyData)
         self.deviceStatus = .registering()
         
         if let sig1 = Data(base64Encoded: registerKeyResp.sig1),
