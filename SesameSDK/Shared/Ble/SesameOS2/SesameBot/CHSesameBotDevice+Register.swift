@@ -19,88 +19,46 @@ extension CHSesameBotDevice {
         self.commandQueue = DispatchQueue(label: deviceId.uuidString, qos: .userInitiated)
         getIRER { irerResult in
             if case let .success(irer) = irerResult {
-                self.onRegisterStage1(er: irer.data.er, result: result)
+                self.registerDevice(er: irer.data.er, result: result)
             }
         }
     }
     
-    func onRegisterStage1(er: String, result: @escaping CHResult<CHEmpty>) {
-
-        let request = CHAPICallObject(.post,"", [
-            "s1": [
-                "ak": (Data(appKeyPair.publicKey).base64EncodedString()),
-                "n": self.sesameBotSessionToken!.base64EncodedString(),
-                "e": er,
-                "t": CHProductModel.sesameBot.rawValue
-            ]
-        ]
+    func registerDevice(er: String, result: @escaping CHResult<CHEmpty>) {
+        let keyData = KeyQues(
+            ak: (Data(appKeyPair.publicKey).base64EncodedString()),
+            n: self.sesameBotSessionToken!.base64EncodedString(),
+            e: er,
+            t: Os2Type.bot
         )
         
-        CHAccountManager
-            .shared
-            .API(request: request) { response in
-                switch response {
-                case .success(let data):
-                    
-                    guard let data = data else {
-                        result(.failure(NSError.noContent))
-                        return
-                    }
-                    // todo kill this parcer with json decoder
-                    if let dict = try? data.decodeJsonDictionary() as? [String: String],
-                       let b64Sig1 = dict["sig1"],
-                       let b64ServerToken = dict["st"],
-                       let b64SesamePublicKey = dict["pubkey"],
-                       let sig1 = Data(base64Encoded: b64Sig1),
-                       let serverToken = Data(base64Encoded: b64ServerToken),
-                       let sesamePublicKey = Data(base64Encoded: b64SesamePublicKey) {
-                        
-                        self.deviceStatus = .registering()
-                        
-                        self.onRegisterStage2(
-                            appKey: self.appKeyPair,
-                            sig1: sig1,
-                            serverToken: serverToken,
-                            sesame2PublicKey: sesamePublicKey,
-                            result: result
-                        )
-                    } else {
-                        result(.failure(NSError.parseError))
-                        self.deviceStatus = .readyToRegister()
-                    }
-                case .failure(let error):
-                    result(.failure(error))
-                }
+        let registerKeyResp = Os2CipherUtils.getRegisterKey(data: keyData)
+        self.deviceStatus = .registering()
+        
+        if let sig1 = Data(base64Encoded: registerKeyResp.sig1),
+           let serverToken = Data(base64Encoded: registerKeyResp.st),
+           let sesame2PublicKey = Data(base64Encoded: registerKeyResp.pubkey) {
+            
+            let ecdhSecret = self.appKeyPair.ecdh(remotePublicKey: sesame2PublicKey.bytes)
+            let ecdh_secret_pre16 = Data(bytes: ecdhSecret, count: 16)
+            let session_token = serverToken + self.sesameBotSessionToken!
+            
+            let reg_key = CC.CMAC.AESCMAC(session_token, key: ecdh_secret_pre16)
+            let owner_key = CC.CMAC.AESCMAC(Data("owner_key".bytes), key: reg_key)
+            let session_key = CC.CMAC.AESCMAC(session_token, key: reg_key)
+            
+            cipher = Sesame2BleCipher(name: deviceId.uuidString, sessionKey: Data(session_key), sessionToken: session_token)
+            
+            let payload = sig1 + Data(appKeyPair.publicKey) + serverToken
+            
+            sendCommand(.init(.create, .registration, payload), isCipher: .plaintext) {  (response) -> Void in
+                self.registerCompleteHandler(owner_key: owner_key, sesame2PublicKey: sesame2PublicKey, result: result)
             }
-    }
-
-    func onRegisterStage2(
-        appKey: ECC,
-        sig1: Data,
-        serverToken: Data,
-        sesame2PublicKey: Data,
-        result: @escaping CHResult<CHEmpty>) {
-
-        let ecdhSecret = appKey.ecdh(remotePublicKey: sesame2PublicKey.bytes)
-        let ecdh_secret_pre16 = Data(bytes: ecdhSecret, count: 16)
-
-        let session_token = serverToken + sesameBotSessionToken!
-        let reg_key = CC.CMAC.AESCMAC(session_token, key: ecdh_secret_pre16)//registerKey
-        let owner_key = CC.CMAC.AESCMAC(Data("owner_key".bytes) , key: reg_key)
-        let session_key = CC.CMAC.AESCMAC( session_token, key: reg_key)
-
-        cipher = Sesame2BleCipher(name: deviceId.uuidString, sessionKey: Data(session_key), sessionToken: session_token)
-
-        let payload = sig1 + Data(appKey.publicKey) + serverToken
-
-        sendCommand(.init(.create, .registration, payload), isCipher: .plaintext) { (response) -> Void in
-            guard response.cmdResultCode == .success else {
-                result(.failure(NSError.registerError))
-                return
-            }
-            self.registerCompleteHandler(owner_key: owner_key, sesame2PublicKey: sesame2PublicKey, result: result)
+        } else {
+            result(.failure(NSError.parseError))
         }
     }
+
     
     func registerCompleteHandler(owner_key: Data, sesame2PublicKey: Data, result: @escaping CHResult<CHEmpty>) {
         guard self.fwVersion != nil else {
