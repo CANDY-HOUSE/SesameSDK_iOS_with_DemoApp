@@ -170,6 +170,8 @@
 		BEE459C7248500D600A886D5 /* SesameWatchKitSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEE4BF68259D65F200F896C8 /* CHBikeLockDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE4BF67259D65F200F896C8 /* CHBikeLockDevice+Setting.swift */; };
 		BEE4BF69259D65F200F896C8 /* CHBikeLockDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE4BF67259D65F200F896C8 /* CHBikeLockDevice+Setting.swift */; };
+		E84337D72AB99F5B00F1FD62 /* CHServerAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84337D62AB99F5B00F1FD62 /* CHServerAuth.swift */; };
+		E84337D82AB99F5B00F1FD62 /* CHServerAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84337D62AB99F5B00F1FD62 /* CHServerAuth.swift */; };
 		E85CADE52AAAC23C00741E33 /* CHAccountManager+APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6D1DD2420505200537B77 /* CHAccountManager+APIRequest.swift */; };
 		E85CADE62AAAC26900741E33 /* CHDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB222724BE984100AE6ABB /* CHDeviceManager.swift */; };
 		E86587E32A25F5940091D77F /* CHSesameBike2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86587E22A25F5940091D77F /* CHSesameBike2.swift */; };
@@ -268,6 +270,7 @@
 		BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SesameWatchKitSDK.h; sourceTree = "<group>"; };
 		BEE459C6248500D600A886D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEE4BF67259D65F200F896C8 /* CHBikeLockDevice+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Setting.swift"; sourceTree = "<group>"; };
+		E84337D62AB99F5B00F1FD62 /* CHServerAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CHServerAuth.swift; path = Shared/Ble/CHServerAuth.swift; sourceTree = SOURCE_ROOT; };
 		E86587E22A25F5940091D77F /* CHSesameBike2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2.swift; sourceTree = "<group>"; };
 		E86587EA2A25FC2B0091D77F /* CHSesameBike2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2Device.swift; sourceTree = "<group>"; };
 		EDDF7698234B22C8008DD6C9 /* CHSesame2Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+History.swift"; sourceTree = "<group>"; };
@@ -503,6 +506,7 @@
 				4133E7E22A09C9D20005DCC0 /* CHBaseDevice.swift */,
 				4133E7DF2A09C8500005DCC0 /* CHBluetoothCenter.swift */,
 				41DFF98C2A0CB1CB00C63E12 /* CHDeviceProtocol.swift */,
+				E84337D62AB99F5B00F1FD62 /* CHServerAuth.swift */,
 			);
 			path = Ble;
 			sourceTree = "<group>";
@@ -754,6 +758,7 @@
 				B065EC682537F8B9000B807D /* CHSesameBotDevice+DFU.swift in Sources */,
 				B0B534CE253435C8001384C7 /* CHBikeLock.swift in Sources */,
 				B1C4F308231F91230021C772 /* aes-ccm.c in Sources */,
+				E84337D72AB99F5B00F1FD62 /* CHServerAuth.swift in Sources */,
 				41D6D1DE2420505200537B77 /* CHAccountManager+APIRequest.swift in Sources */,
 				BEE4BF68259D65F200F896C8 /* CHBikeLockDevice+Setting.swift in Sources */,
 				B142943D231F8EB8006AA64C /* CHSesame2Device+Register.swift in Sources */,
@@ -843,6 +848,7 @@
 				41F15CB024CBD03900B91E25 /* CHSesame2Device+DFU.swift in Sources */,
 				B0FDDA33248CF6B000DD72B7 /* Sesame2BleDevice+Peripheral.swift in Sources */,
 				B0A4429925381EF800DCB1DB /* CHBikeLockDevice.swift in Sources */,
+				E84337D82AB99F5B00F1FD62 /* CHServerAuth.swift in Sources */,
 				4151165529BA22DD00B1DE1F /* CHSesame5Device+Command.swift in Sources */,
 				BE32B3D72546C8F8001ADB3A /* String+.swift in Sources */,
 				B0FDDA11248CEF7100DD72B7 /* Sesame2Payload.swift in Sources */,
@@ -935,7 +941,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -998,7 +1004,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1028,7 +1034,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SesameSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1062,7 +1068,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SesameSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1106,7 +1112,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1135,7 +1141,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};

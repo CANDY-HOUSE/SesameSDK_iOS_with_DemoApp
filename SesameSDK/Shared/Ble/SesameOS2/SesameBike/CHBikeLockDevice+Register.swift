@@ -1,4 +1,3 @@
-//
 //  CHSesameBikeDevice+Register.swift
 //  SesameSDK
 //
@@ -19,87 +18,43 @@ extension CHSesameBikeDevice {
         self.commandQueue = DispatchQueue(label: deviceId.uuidString, qos: .userInitiated)
         getIRER { irerResult in
             if case let .success(irer) = irerResult {
-                self.onRegisterStage1(er: irer.data.er, result: result)
+                self.makeApiCall(er: irer.data.er, result: result)
             }
         }
     }
     
-    func onRegisterStage1(er: String, result: @escaping CHResult<CHEmpty>) {
-        let request = CHAPICallObject(.post, "", [
-            "s1": [
-                "ak": (Data(appKeyPair.publicKey).base64EncodedString()),
-                "n": bikeLockSessionToken!.base64EncodedString(),
-                "e": er,
-                "t": CHProductModel.bikeLock.rawValue
-            ]
-            ]
+    func makeApiCall(er: String, result: @escaping CHResult<CHEmpty>) {
+        let keyData = KeyQues(
+            ak: (Data(appKeyPair.publicKey).base64EncodedString()),
+            n: bikeLockSessionToken!.base64EncodedString(),
+            e: er,
+            t: advertisement!.productType!.rawValue
         )
         
-        CHAccountManager
-            .shared
-            .API(request: request) { response in
-                switch response {
-                case .success(let data):
-                    guard let data = data else {
-                        result(.failure(NSError.noContent))
-                        return
-                    }
-                    // todo kill this parcer with json decoder
-                    if let dict = try? data.decodeJsonDictionary() as? [String: String],
-//                        let b64PayloadTime = dict["r"],
-//                        let timePayload = Data(base64Encoded: b64PayloadTime) ,
-                        let b64Sig1 = dict["sig1"],
-                        let b64ServerToken = dict["st"],
-                        let b64SesamePublicKey = dict["pubkey"],
-                        let sig1 = Data(base64Encoded: b64Sig1),
-                        let serverToken = Data(base64Encoded: b64ServerToken),
-                        let sesamePublicKey = Data(base64Encoded: b64SesamePublicKey) {
-                        
-                        self.deviceStatus = .registering()
-                        
-                        self.onRegisterStage2(
-                            appKey: self.appKeyPair,
-                            sig1: sig1,
-                            serverToken: serverToken,
-                            sesame2PublicKey: sesamePublicKey,
-                            result: result
-                        )
-                    } else {
-                        result(.failure(NSError.parseError))
-                        self.deviceStatus = .readyToRegister()
-                    }
-                case .failure(let error):
-                    result(.failure(error))
-                }
-        }
-    }
-
-    func onRegisterStage2(
-        appKey: ECC,
-        sig1: Data,
-        serverToken: Data,
-        sesame2PublicKey: Data,
-        result: @escaping CHResult<CHEmpty>) {
-
-        let ecdhSecret = appKey.ecdh(remotePublicKey: sesame2PublicKey.bytes)
-        let ecdh_secret_pre16 = Data(bytes: ecdhSecret, count: 16)
-
-        let session_token = serverToken + bikeLockSessionToken!
-        let reg_key = CC.CMAC.AESCMAC(session_token, key: ecdh_secret_pre16)//registerKey
-        let owner_key = CC.CMAC.AESCMAC(Data("owner_key".bytes) , key: reg_key)
-        let session_key = CC.CMAC.AESCMAC( session_token, key: reg_key)
-
-        cipher = Sesame2BleCipher(name: deviceId.uuidString, sessionKey: Data(session_key), sessionToken: session_token)
-
-        let payload = sig1 + Data(appKey.publicKey) + serverToken
-            L.d("[bike][register]-")
-
-        sendCommand(.init(.create, .registration, payload), isCipher: .plaintext) { (response) -> Void in
-            guard response.cmdResultCode == .success else {
-                result(.failure(self.errorFromResultCode(response.cmdResultCode)))
-                return
+        let registerKeyResp = CHServerAuth.getRegisterKey(data: keyData)
+        self.deviceStatus = .registering()
+        
+        if let sig1 = Data(base64Encoded: registerKeyResp.sig1),
+           let serverToken = Data(base64Encoded: registerKeyResp.st),
+           let sesamePublicKey = Data(base64Encoded: registerKeyResp.pubkey) {
+            
+            let ecdhSecret = self.appKeyPair.ecdh(remotePublicKey: sesamePublicKey.bytes)
+            let ecdhSecretPre16 = Data(bytes: ecdhSecret, count: 16)
+            let sessionToken = serverToken + bikeLockSessionToken!
+            
+            let registerKey = CC.CMAC.AESCMAC(sessionToken, key: ecdhSecretPre16)
+            let ownerKey = CC.CMAC.AESCMAC(Data("owner_key".bytes), key: registerKey)
+            let sessionKey = CC.CMAC.AESCMAC(sessionToken, key: registerKey)
+            
+            cipher = Sesame2BleCipher(name: deviceId.uuidString, sessionKey: Data(sessionKey), sessionToken: sessionToken)
+            
+            let payload = sig1 + Data(appKeyPair.publicKey) + serverToken
+            
+            sendCommand(.init(.create, .registration, payload), isCipher: .plaintext) {  (response) -> Void in
+                self.registerCompleteHandler(owner_key: ownerKey, sesame2PublicKey: sesamePublicKey, result: result)
             }
-            self.registerCompleteHandler(owner_key: owner_key, sesame2PublicKey: sesame2PublicKey, result: result)
+        } else {
+            result(.failure(NSError.parseError))
         }
     }
     
@@ -153,12 +108,8 @@ extension CHSesameBikeDevice {
     }
     
     func getIRER(_ result: @escaping CHResult<CHSesameBotFICR>) {
-        L.d("[bike][register][cmd]getIRER")
-
         sendCommand(.init(.read, .IRER), isCipher: .plaintext) { response in
             if response.cmdResultCode == .success {
-                L.d("[bike][register]getIRER success")
-
                 let switchFicr = CHSesameBotFICR.fromData(response.data)!
                 result(.success(.init(input: switchFicr)))
             } else {
