@@ -36,9 +36,9 @@ extension CHSesameBikeDevice {
         
         if let sig1 = Data(base64Encoded: registerKeyResp.sig1),
            let serverToken = Data(base64Encoded: registerKeyResp.st),
-           let sesame2PublicKey = Data(base64Encoded: registerKeyResp.pubkey) {
+           let sesamePublicKey = Data(base64Encoded: registerKeyResp.pubkey) {
             
-            let ecdhSecret = self.appKeyPair.ecdh(remotePublicKey: sesame2PublicKey.bytes)
+            let ecdhSecret = self.appKeyPair.ecdh(remotePublicKey: sesamePublicKey.bytes)
             let ecdhSecretPre16 = Data(bytes: ecdhSecret, count: 16)
             let sessionToken = serverToken + bikeLockSessionToken!
             
@@ -51,7 +51,7 @@ extension CHSesameBikeDevice {
             let payload = sig1 + Data(appKeyPair.publicKey) + serverToken
             
             sendCommand(.init(.create, .registration, payload), isCipher: .plaintext) {  (response) -> Void in
-                self.registerCompleteHandler(owner_key: ownerKey, sesame2PublicKey: sesame2PublicKey, result: result)
+                self.registerCompleteHandler(owner_key: ownerKey, sesame2PublicKey: sesamePublicKey, result: result)
             }
         } else {
             result(.failure(NSError.parseError))

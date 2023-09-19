@@ -42,8 +42,8 @@ class CHServerAuth {
 //        let hexstring = rawPrikey.map { String(format: "%02x", $0) }.joined() // toHexString
         
         let ecdh = try! P256.KeyAgreement.PublicKey(rawRepresentation: serverPub.dropFirst()) // 扣掉04前綴
-        let shardSeret = try! privateKey.sharedSecretFromKeyAgreement(with: ecdh).withUnsafeBytes { Data($0) }
-        let secret = shardSeret.prefix(32)
+        let sharedSecret = try! privateKey.sharedSecretFromKeyAgreement(with: ecdh).withUnsafeBytes { Data($0) }
+        let secret = sharedSecret.prefix(32)
         var serverToken = [UInt8](repeating: 0, count: 4)
         _ = SecRandomCopyBytes(kSecRandomDefault, serverToken.count, &serverToken)
         let stString = Data(serverToken).base64EncodedString()
