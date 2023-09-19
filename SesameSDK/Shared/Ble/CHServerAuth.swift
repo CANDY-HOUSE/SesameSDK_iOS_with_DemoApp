@@ -32,31 +32,31 @@ class CHServerAuth {
         let erBytes = Data(hex: data.e)
         let oneKey = CC.CMAC.AESCMAC(erBytes, key: keyBytes)
         let twoKey = CC.CMAC.AESCMAC(erBytes, key: oneKey)
-        let ecdh_pk = oneKey + twoKey
+        let priKey = oneKey + twoKey
 
         guard let serverPub = Data(hexString: serverKey) else {fatalError("Invalid hex string")}
             
-        let privateKey = try! P256.KeyAgreement.PrivateKey(rawRepresentation: ecdh_pk)
-        let localPub = privateKey.publicKey.rawRepresentation.map { String(format: "%02x", $0) }.joined()
+        let privateKey = try! P256.KeyAgreement.PrivateKey(rawRepresentation: priKey)
+        let pair = privateKey.publicKey.rawRepresentation.map { String(format: "%02x", $0) }.joined()
 //        let rawPrikey = privateKey.rawRepresentation // for log
 //        let hexstring = rawPrikey.map { String(format: "%02x", $0) }.joined() // toHexString
         
-        let serverTmp = try! P256.KeyAgreement.PublicKey(rawRepresentation: serverPub.dropFirst()) // 扣掉04前綴
-        let shardSeret = try! privateKey.sharedSecretFromKeyAgreement(with: serverTmp).withUnsafeBytes { Data($0) }
+        let ecdh = try! P256.KeyAgreement.PublicKey(rawRepresentation: serverPub.dropFirst()) // 扣掉04前綴
+        let shardSeret = try! privateKey.sharedSecretFromKeyAgreement(with: ecdh).withUnsafeBytes { Data($0) }
         let secret = shardSeret.prefix(32)
         var serverToken = [UInt8](repeating: 0, count: 4)
         _ = SecRandomCopyBytes(kSecRandomDefault, serverToken.count, &serverToken)
         let stString = Data(serverToken).base64EncodedString()
         
-        let s1_n_decoded = Data(base64Encoded: data.n)!
-        let s1_ak_decoded = Data(base64Encoded: data.ak)!
-        let session_token = Data(serverToken) + s1_n_decoded
+        let decode = Data(base64Encoded: data.n)!
+        let decodeToken = Data(base64Encoded: data.ak)!
+        let sessiontoken = Data(serverToken) + decode
         
-        let msg = s1_ak_decoded + session_token
+        let msg = decodeToken + sessiontoken
 
-        let sigBytes = CC.CMAC.AESCMAC(msg, key: secret)
-        let sigString = Data(sigBytes.prefix(4)).base64EncodedString()
-        let pubString = Data(hex: localPub).base64EncodedString()
+        let sig1 = CC.CMAC.AESCMAC(msg, key: secret)
+        let sigString = Data(sig1.prefix(4)).base64EncodedString()
+        let pubString = Data(hex: pair).base64EncodedString()
 
         return KeyResp(sig1: sigString, st: stString, pubkey: pubString)
     }
