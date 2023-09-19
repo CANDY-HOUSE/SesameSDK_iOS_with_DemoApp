@@ -38,19 +38,19 @@ extension CHSesame2Device {
            let sesame2PublicKey = Data(base64Encoded: registerKeyResp.pubkey) {
             
             let ecdhSecret = self.appKeyPair.ecdh(remotePublicKey: sesame2PublicKey.bytes)
-            let ecdh_secret_pre16 = Data(bytes: ecdhSecret, count: 16)
-            let session_token = serverToken + sesame2SessionToken!
+            let ecdhSecretPre16 = Data(bytes: ecdhSecret, count: 16)
+            let sessionToken = serverToken + sesame2SessionToken!
             
-            let reg_key = CC.CMAC.AESCMAC(session_token, key: ecdh_secret_pre16)
-            let owner_key = CC.CMAC.AESCMAC(Data("owner_key".bytes), key: reg_key)
-            let session_key = CC.CMAC.AESCMAC(session_token, key: reg_key)
+            let registerKey = CC.CMAC.AESCMAC(sessionToken, key: ecdhSecretPre16)
+            let ownerKey = CC.CMAC.AESCMAC(Data("owner_key".bytes), key: registerKey)
+            let sessionKey = CC.CMAC.AESCMAC(sessionToken, key: registerKey)
             
-            cipher = Sesame2BleCipher(name: deviceId.uuidString, sessionKey: Data(session_key), sessionToken: session_token)
+            cipher = Sesame2BleCipher(name: deviceId.uuidString, sessionKey: Data(sessionKey), sessionToken: sessionToken)
             
             let payload = sig1 + Data(appKeyPair.publicKey) + serverToken
             
             sendCommand(.init(.create, .registration, payload), isCipher: .plaintext) {  (response) -> Void in
-                self.registerCompleteHandler(owner_key: owner_key, sesame2PublicKey: sesame2PublicKey, result: result)
+                self.registerCompleteHandler(owner_key: ownerKey, sesame2PublicKey: sesame2PublicKey, result: result)
             }
         } else {
             result(.failure(NSError.parseError))

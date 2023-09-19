@@ -50,9 +50,9 @@ class CHServerAuth {
         
         let decode = Data(base64Encoded: data.n)!
         let decodeToken = Data(base64Encoded: data.ak)!
-        let sessiontoken = Data(serverToken) + decode
+        let sessionToken = Data(serverToken) + decode
         
-        let msg = decodeToken + sessiontoken
+        let msg = decodeToken + sessionToken
 
         let sig1 = CC.CMAC.AESCMAC(msg, key: secret)
         let sigString = Data(sig1.prefix(4)).base64EncodedString()
