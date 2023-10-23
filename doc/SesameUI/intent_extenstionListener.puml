@@ -1,0 +1,21 @@
+@startuml
+
+participant AppDelegate
+participant CHExtensionListener
+participant CHSesameIntent
+participant Siri和Shortcut
+
+note over AppDelegate: 初始化CHExtensionListener
+AppDelegate ->CHExtensionListener: registerObserver()
+AppDelegate ->CHExtensionListener: post()
+
+note over Siri和Shortcut: 使用者觸發
+Siri和Shortcut -> CHSesameIntent: IntentHandler()
+
+note over CHSesameIntent: CHExtensionListener發送Siri/捷徑\n活躍/非活躍狀態 通知
+CHSesameIntent->CHExtensionListener: post()
+
+note over CHExtensionListener: 通知所有Observer
+CHExtensionListener->AppDelegate: receiveExtensionNotification(...)
+
+@enduml

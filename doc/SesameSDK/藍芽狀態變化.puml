@@ -1,0 +1,15 @@
+@startuml
+title:"設備藍芽狀態變化"
+CHBleManagerDelegate -> CHBleManager: 1.enableScan()
+CHBleManager -> CHBleManagerDelegate: 2.回調未註冊的設備\ndidDiscoverUnRegisteredCHDevices 
+CHBleManagerDelegate -> CHBleManager: 3.配置CHBleManager代理，以接收未註冊設備
+CHBleManager -> CHBleManagerDelegate: 4.從代理接收未註冊的Sesame設備
+CHBleManagerDelegate -> Sesame: 5.設定CHSesame2代理，接收狀態變化
+Sesame -> CHBleManagerDelegate: 藍芽狀態改變: .receiveBle
+CHBleManagerDelegate -> Sesame: 6.未登入的Sesame設備連接
+Sesame -> CHBleManagerDelegate: 藍芽狀態改變: .readyToRegister
+CHBleManagerDelegate -> Sesame: 7.註冊Sesame
+CHBleManagerDelegate -> Sesame: 8.設定角度
+CHBleManagerDelegate -> Sesame: 9.開鎖／解鎖
+CHBleManagerDelegate -> Sesame: 10.重製設備
+@enduml

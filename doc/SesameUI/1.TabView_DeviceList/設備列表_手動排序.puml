@@ -1,0 +1,9 @@
+@startuml
+title: 設備列表手動拖曳排序
+
+note over APP : 排序 \nreorderFinished()
+
+APP -> Server: postCHUserKeys(CHUserKey)
+
+note right of Server : API: 0dkzum4jzg/device/post \nDB: user_devices \nLambda: user_devices_post
+@enduml

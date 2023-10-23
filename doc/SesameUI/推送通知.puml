@@ -1,0 +1,13 @@
+@startuml
+APP -> APP:請求用戶許可接受通知
+APP -> APNs:registerForRemoteNotifications()
+APNs --> APP: Device Token\n(裝置唯一識別)
+APP -> APP: .didRegisterForRemoteNotificationsWithDeviceToken
+APP -> APP: 把Device token存入UserDefaults(forKey: "devicePushToken")
+APP -> AWS: enableNotification({token, deviceID, name:"Sesame2"})
+note right of AWS: API Gateway: [jhcr1i3ecb]/device/v1/token/POST\nLambda:sesame_create_device_token\nDB:建立端點後把token存入device_push_token
+AWS -> APNs:Device Token
+APNs -> APP: publish notification
+APP -> APP: 把收到的notification封裝至UNNotification物件中
+APP -> APP: userNotificationCenter()\n依UserInfo顯示通知或刷新設備列表
+@enduml

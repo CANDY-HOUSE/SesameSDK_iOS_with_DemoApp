@@ -1,0 +1,7 @@
+@startuml
+title:"GET history from server"
+note left of APP: a:ssm5用驗證公鑰(4bytes亂數)\ncursor:\n有, 代表還有過去歷史; 無, 代表已無歷史\nlg:每次拿取資料的筆數
+APP -> Server: {lg:15, a:secretKey, cursor}
+note right of Server:API Gateway: [jhcr1i3ecb]/device/v2/sesame2/{device_id}/history/get\nLambda: CandyHouseMobileAPI_device_v2_sesame_history_get\nDB:sesame2_history
+Server --> APP:200(成功), {histories, cursor}
+@enduml

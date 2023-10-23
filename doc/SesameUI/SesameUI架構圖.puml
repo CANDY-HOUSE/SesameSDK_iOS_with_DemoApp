@@ -1,0 +1,53 @@
+
+@startwbs
+
+* SesameUI結構
+** 設備列表 \n SesameDeviceListVC
+*** 整合設備顯示
+**** 從local cache端上傳
+**** 從server端拉取
+*** 設備listCell顯示
+**** 設備狀態(藍芽/wifi/電量)
+** FriendListVC
+*** FriendKeyListVC
+*** FriendKeyShareSelectionVC
+** MeVC
+*** QRCodeVC(instanceWithUser)
+*** <Sesame帳戶狀態>
+**** SignUpVC
+**** SignInVC
+** 設備設定頁\nDevice SettingViewController
+*** Sesame5SettingVC
+**** 角度設定頁\nSesame5LockAngleVC
+**** 分享鑰匙頁\nQRcodeVC(instanceWithCHDevice)
+**** 自動解鎖範圍頁\nGPSMapVC
+*** Sesame2SettingVC
+**** LockAngleSettingVC
+**** QRcodeVC(instanceWithCHDevice)
+**** GPSMapVC
+*** SesameBotSettingVC
+*** BikeLockSettingVC
+*** BikeLock2SettingVC
+*** 設備設定頁共用組件
+**** KeyCollectionVC
+
+*** TouchProSettingVC
+**** TouchProKeyListVC
+**** FingerPrintListVC
+**** NFCCardVC
+**** PassCodeVC
+*** BleConnectorSettingVC
+*** OpenSensorSettingVC
+*** WifiModule2SettingVC
+**** WifiModule2KeysListVC
+**** WifiModule2SSIDScanVC
+
+** 歷史
+*** Sesame5HistoryVC
+*** Sesame2HistoryVC
+
+** Layout佈局共用
+*** QRcodeScanner
+*** 註冊列表 \n RegisterSesameDeviceVC
+
+@endwbs

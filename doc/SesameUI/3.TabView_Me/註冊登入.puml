@@ -1,0 +1,14 @@
+@startuml
+title:"Sesame帳戶 無須設密碼的客製化驗證註冊/登入"
+APP -> Server: {email, pwd:"dummypwk",\nuserAttributes: ["email": email]}
+note right of Server: Lambda 1:Pre_Sign_up_Lambda
+Server -> Server:{autoConfirmUser, autoVerifyEmail 設為true}
+note right of Server: Lambda 2:Define_Auth_Challenge_Lambda
+Server -> Server:to cognito
+note right of Server: Lambda3:Create_Auth_Challenge_Lambda\n用時間戳取4碼創造登入驗證碼，\n並用SES服務發送至客戶信箱
+Server --> APP: event
+note left of APP: 導頁至SignInVC
+APP -> Server: {event.request.challengeAnswer:驗證碼}
+note right of Server: Lambda4:Verify_Auth_Challenge_Response
+Server --> APP :event.response.answerCorrect:true/false
+@enduml

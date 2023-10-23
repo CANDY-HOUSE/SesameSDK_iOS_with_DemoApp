@@ -1,0 +1,7 @@
+@startuml
+title: "create GuestKey"
+APP -> Server: {CHDeviceKey}
+note right of Server: DB: sesame2_guest_key\nLambda: create_sesame2_guest_key\nAPI:device/v1/sesame2/{deviceUUID}/guestKey
+note right of Server:用現有Owner/Manager key製造訪客鑰匙\n1.判斷已經為guestKey格式或無鑰匙名稱\n返回400及錯誤訊息\n2.製作出guestKeyId存入DB
+Server-->APP: 200(成功),guestKeyId\n(ex:00000000000000000e096989439d4430)
+@enduml

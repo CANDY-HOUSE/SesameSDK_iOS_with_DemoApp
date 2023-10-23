@@ -1,0 +1,13 @@
+@startuml
+title:"藍芽中心運作"
+note left of APP: 初始化，建立CHBluetoothCenter代理，\n藍芽事件將被通知給此中心。
+Device -> APP: 廣播訊號
+APP -> APP: centralManagerDidUpdateState()
+APP -> APP: 掃描 
+APP -> APP: centralManager:didDiscover()
+note left of APP: 用`BleAdv`解析廣播訊息\n確定裝置型號\n存入`deviceMap`
+
+APP -> Device: 連接並開啟notify
+Device --> APP: 
+APP -> APP: centralManager:didConnect()
+@enduml

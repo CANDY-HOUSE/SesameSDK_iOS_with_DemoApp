@@ -1,0 +1,10 @@
+@startwbs
+title:"好友列表頁架構"
+* FriendListVC
+** FriendKeyListVC
+*** FriendKeyShareSelectionVC
+**** UIAlertAction
+***** OwnerKey
+***** ManagerKey
+***** GuestKey
+@endwbs

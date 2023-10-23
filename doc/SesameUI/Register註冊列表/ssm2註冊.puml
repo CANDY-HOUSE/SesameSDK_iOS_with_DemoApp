@@ -1,0 +1,25 @@
+@startuml
+
+title:"Sesame2 註冊"
+
+note over APP: registerCHDevice() \n=>CHSesame2Device()
+APP -> SSM: getIRER() \n{讀取指令, IRER}
+SSM -> APP: success
+APP -> Server: {ak:(公鑰), n:token, er, t:產品型號}
+note right of Server: API: [jhcr1i3ecb]/device/v1/sesame2/{deviceID}/post \nDB: ssm2_register_data \nLambda: sesame2_check_ficr_v1
+Server -> APP: 成功(200), data{sig1(AES_CMAC, base64格式), server token, publicKey}
+APP -> SSM: deviceStatus: .registering
+SSM -> APP: 完成
+APP -> Server: 訂閱AWS Iot服務:CHSesameLock(mechStatus)
+note right of Server: $aws/things/sesame2/shadow/name/\n{deviceUUID}/update/accepted
+Server -> APP: data
+note over APP: data => CHDeviceShadow \n刪除本地端此Sesame的 Core Data內資料
+
+APP -> Server: getSubId()
+Server -> APP: 用戶UUID
+APP -> Server: putCHUserKey() 
+note right of Server: API: [0dkzum4jzg]/device/put \nLambda: user_device_put \nDB: user_devices
+Server -> APP: 成功(200) 
+
+
+@enduml

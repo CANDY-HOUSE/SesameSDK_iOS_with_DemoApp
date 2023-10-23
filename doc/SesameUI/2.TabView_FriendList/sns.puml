@@ -1,0 +1,7 @@
+@startuml
+Server -> Server:設定好內容(content)\及event:'device'/'friend', 標題
+Server -> Server:拿輸入的subID去user_push_token找出對應的目標Arn
+Server -> APP: publish({message}) //json格式
+Server --> APP: 200(成功)
+note right of APP: UserDefaults.standard.string\n(forKey: "devicePushToken") == true\n執行內容
+@enduml

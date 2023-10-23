@@ -1,0 +1,14 @@
+@startuml
+title:"post history to server"
+APP -> SSM: deleteHistory,SSM2_ITEM_CODE_HISTORY(4)
+note left of APP: 是否刪除歷史=>\n判斷聯網與否:連網就刪除/沒連就不刪\n(SSM收到後，存為 isPeek的值)\nisPeek = true 查看最新歷史，不刪除歷史\nisPeek = false 彈出一筆最舊的歷史，並刪除該歷史
+note right of SSM: 歷史內容\n1.type : SSM2_OP_CODE_RESPONSE (0x07)\n2.item code : SSM2_ITEM_CODE_HISTORY(4)\n3.res: CMD_RESULT_SUCCESS (0x00)\n4.payload(History)\n SSM回傳值存進histitem變數
+SSM --> APP: success, history
+note left of APP: 封包成CHSesame5HistoryEvent
+note left of APP: 1.type:歷史編號\n2.歷史類型(Sesame2HistoryTypeEnum)\n3.timestamp\n4.機械狀態\n5.歷史標籤、長度
+APP -> APP: 轉換為CHSesame5HistoryData
+APP -> APP: 轉換為CHSesame5History給UI用
+APP -> Server: {deviceUUID, historyData, type}
+note right of Server: 上傳歷史資料進DB\nLambda輸入來源:\n1.from aws-iot(wm2)\n2.from api gateway(app)
+note right of Server:API Gateway: [jhcr1i3ecb]/device/v1/sesame2/historys/post\nLambda: sesame2_history_parser\nDB: sesame2_history
+@enduml

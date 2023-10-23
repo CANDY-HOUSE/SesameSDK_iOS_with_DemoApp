@@ -1,0 +1,13 @@
+@startuml
+title: "顯示設備(TableView單列)"
+
+note over APP : 整合設備列表(圖1)
+APP -> SSM: ble登入命令
+SSM --> APP: success
+note right SSM : publish
+SSM -> APP: mechStatus
+note over APP : onMectSatus()\n =>configureSesame2Cell() \nListCell顯示 \n(icon:藍芽/wifi/電量 | view:小球)
+
+APP -> Server: 
+
+@enduml

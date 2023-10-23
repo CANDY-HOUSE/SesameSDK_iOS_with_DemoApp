@@ -1,0 +1,14 @@
+@startwbs
+* device
+** CHSesame2
+*** Sesame2角度設定頁
+** CHSesame5
+*** Sesame5角度設定頁
+** CHWifiModule2
+*** WifiModule2設備設定頁
+** CHSesameTouchPro
+*** 根據`.productModel`判斷
+**** OpenSensor設定頁
+**** BleConnector設定頁
+**** TouchPro設定頁 
+@endwbs

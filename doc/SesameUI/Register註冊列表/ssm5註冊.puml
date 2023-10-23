@@ -1,0 +1,42 @@
+@startuml
+
+== App 藍芽開始掃描==
+APP -> SSM5: 0x001，訂閱notify服務
+note over APP: notify: 讓手機可讀取藍芽輸出內容(pub/ Adv)的服務
+SSM5 --> APP: 4bytes 隨機碼
+== 藍芽連線建立完成後 ==
+
+APP -> APP: secp256r1() -> {公鑰A, 私鑰A} \n(App的公鑰/私鑰)
+note over APP : deviceStatus: .registering
+APP -> SSM5: {公鑰A, 手機timestamp , 註冊命令}
+note over APP: 註冊命令:
+SSM5--> APP: (ssm5被註冊)?已註冊:不回覆
+
+SSM5 -> SSM5: 用 手機 timestamp 設定 ssm5 時間
+SSM5 -> SSM5: secp256r1() -> {公鑰S, 私鑰S} \n(ssm5的公鑰/私鑰)
+note over SSM5: SecretS = secp256r1(公鑰A, 私鑰S)\nDevice secret = Secret 的前16bytes
+SSM5 -> SSM5: Token = AES_CMAC(Device secret, 4bytes 隨機碼)
+SSM5 --> APP: {註冊成功, 機械狀態, 機械設定, 公鑰S}
+note over SSM5: [註1]註冊成功:CMD_RESULT_SUCCESS(0x00)
+
+APP -> APP: 設定 ssm5 機械狀態，機械設定
+note over APP: SecretA = secp256r1(公鑰S, 私鑰A) \nDevice secret = Secret 前16bytes
+APP -> APP: Token = AES_CMAC(Device secret,4bytes 隨機碼)
+note over APP, SSM5: 相同內容，互相傳輸資料用:\nDevice secret && token
+APP -> Server: {t:deviceType(prodoctType),\npk:(SSM5傳的)4bytes 隨機碼(mSesameToken)}\nPathParam:{device_id}
+note right of Server: API: [jhcr1i3ecb]/device/v1/sesame5/{deviceUUID} \nDB: ssm2_register_data \nLambda: ss5_deviceid_post
+Server --> APP: 成功(200)
+
+APP -> Server: subscirbeCHDeviceShadow()
+note right of Server: $aws/things/sesame2/shadow/\n name/{deviceUUID}/update/accepted
+Server --> APP: data
+note over APP: data => CHDeviceShadow \n刪除本地端此Sesame的 Core Data內資料
+
+APP -> Server: getSubId()
+Server --> APP: 用戶UUID
+APP -> Server: putCHUserKey() 
+note right of Server: API: [0dkzum4jzg]/device/put \nLambda: user_device_put \nDB: user_devices
+Server --> APP: 成功(200) 
+
+
+@enduml

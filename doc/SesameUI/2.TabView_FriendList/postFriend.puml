@@ -1,0 +1,7 @@
+@startuml
+note over APP: QR code解碼出subID
+APP -> Server: {subID}
+note right of Server: API Gateway:[0dkzum4jzg]/friend/post\nLambda:user_friend_post\nDB:user_friend
+note right of Server:1.Server從request中cognitoAuthenticationProvider\n取App用戶的SubID\n2.將兩個uuid分兩次，分別儲存屬性friendID 與 userSub的值\n3.Server完成互加為好友
+Server --> APP: 成功(200)
+@enduml

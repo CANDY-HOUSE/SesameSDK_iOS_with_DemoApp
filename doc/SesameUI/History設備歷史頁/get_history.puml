@@ -1,0 +1,18 @@
+@startuml
+title:"更新歷史頁"
+== History from server ==
+note left of APP: isUserReqeust == true
+APP -> Server: sesame2.getHistories(cursor)
+Server --> APP: {histories, cursor}
+APP -> APP: addNewHistories()\n將新數據加histories字典中
+APP -> APP: 更新cursor
+note left of APP: 從Server收到的cursor為nil, \n設isNoMoreDataToGet = true, \n代表所有舊歷史已拿完
+APP -> APP: 刷新列表reloadTableView()
+== History from SSM ==
+SSM -> APP: 設備機械狀態更新
+note left of APP: onHistoryReceived(device:result:)
+APP -> SSM: readCommand()
+SSM --> APP: history
+APP -> APP: addNewHistories()\nappend TableViewCell
+APP -> APP: 刷新列表reloadTableView()
+@enduml

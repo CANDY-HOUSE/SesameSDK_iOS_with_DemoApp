@@ -1,0 +1,10 @@
+@startuml
+note left of APP: 手機啟用通知APNs\n(Apple Push Notification service)
+APP -> Server:{token: devicePushToken}
+note right of Server: AWS sns服務
+Server -> Server : 用token建立平台端點\n =每個端點代表一個裝置
+Server -> Server: 存入公司的推送token DB
+note right of Server: API Gateway:[jhcr1i3e]/device/v1/token/post\nLambda:sesame_create_device_token\nDB:user_push_token
+note right of Server:API Gateway:[0dkzum4jzg]/friend/token/post\nLambda:friend_token_post\nDB:user_push_token
+Server --> APP: 200(成功)
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+note over APP: request
+APP -> SSM5: {SesameItemCode:82/83/88, 歷史標籤}
+
+SSM5 --> APP: success
+note over SSM5: responce
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+note left of APP: <用戶登入狀態判定>
+APP -> Server: getGuestKeys(), {deviceUUID}
+note right of Server:API Gateway: [jhcr1i3ecb]/device/v1/sesame2/{deviceUUID}\n/guestkeys/GET\nLambda: list_sesame2_guest_keys\nDB: sesame2_guest_key
+Server --> APP: 200(成功), guestKeys
+== Sesame 用戶未登入 ==
+APP -> Server: CHUserAPIManager.shared.getDeviceMembers()\n {deviceUUID, a: AESCMAC(secretKey + 時間戳)}
+note right of Server: Gateway: [0dkzum4jzg]/device/member/GET\nLambda: device_member_get \n DB: user_devices
+Server --> APP: 200(成功), friends
+note left of APP: deviceMemberViewModel.members = friends
+APP -> Server: getGuestKeys()
+Server --> APP: guestKeys
+note left of APP: deviceMemberViewModel.guestKeys = guestKeys
+note left of APP: sortedMembers()排序，渲染Cell
+== Sesame 用戶已登入 ==
+@enduml

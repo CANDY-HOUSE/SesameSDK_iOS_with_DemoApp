@@ -1,0 +1,5 @@
+@startuml
+APP -> Server: verifySMS(4位驗證碼, email)
+note right of Server: 核對privateChallengeParameters\n.secretLoginCode與challengeAnswer屬性\n是否一至
+Server --> APP: event.answerCorrect
+@enduml

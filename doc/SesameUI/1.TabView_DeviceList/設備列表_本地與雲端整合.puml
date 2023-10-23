@@ -1,0 +1,11 @@
+@startuml
+title: "API Gateway(ID: 0dkzum4jzg)"
+
+APP -> Server: getSubId()
+note right of Server :AWSMobileClient.getUserAttributes
+Server --> APP: attributes.sub
+APP -> Server: postCHUserKeys(input:{userkey + userkey.subUUID)
+note right of Server :API: /device \nDB:user_devices
+Server --> APP: [CHUserKey]
+
+@enduml
