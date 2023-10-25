@@ -30,23 +30,28 @@ public class CHDeviceManager: NSObject {
     }
     #endif
     
-    public func getCHDevices(result: @escaping (CHResult<[CHDevice]>)) { 
-        var devices = [CHDevice]()
-        for deviceData in CHDeviceCenter.shared.lastCachedevices() { // 檢索最後緩存的設備
-            if let productModel = CHProductModel.deviceModeulFromString(deviceData.deviceModel!) {
-                if let deviceId = deviceData.deviceUUID {
-                    if var sesame2Device = CHBluetoothCenter.shared.deviceMap.getOrPut(deviceId, backup: productModel.chDeviceFactory()) as? CHDeviceUtil {
-                        sesame2Device.sesame2KeyData = deviceData.toCHDeviceKey()
-                        sesame2Device.productModel = productModel
-                        devices.append(sesame2Device as! CHDevice)
-                    }
-                }
-            }else{
-                L.d("[CHDeviceManager][getCHDevices]!!!!")
+    public func getCHDevices(result: @escaping (CHResult<[CHDevice]>)) {
+        let devices = CHDeviceCenter.shared.lastCachedevices().compactMap { deviceData -> CHDevice? in
+            guard let deviceModelString = deviceData.deviceModel,
+                  let productModel = CHProductModel.deviceModeulFromString(deviceModelString),
+                  let deviceId = deviceData.deviceUUID else {
+                      L.d("[CHDeviceManager][getCHDevices] Missing data for device: \(deviceData)")
+                      return nil
+                  }
+            
+            guard var sesame2Device = CHBluetoothCenter.shared.deviceMap.getOrPut(deviceId, backup: productModel.chDeviceFactory()) as? CHDeviceUtil else {
+                L.d("[CHDeviceManager][getCHDevices] Failed to get or put device in device map for ID: \(deviceId)")
+                return nil
             }
+            
+            sesame2Device.sesame2KeyData = deviceData.toCHDeviceKey()
+            sesame2Device.productModel = productModel
+            return sesame2Device as? CHDevice
         }
+        
         result(.success(CHResultStateBLE(input: devices)))
     }
+
     
     public func receiveCHDeviceKeys(_ deviceKeys: [CHDeviceKey],result: @escaping (CHResult<[CHDevice]>)){
         parse(deviceKeys: deviceKeys, result)
