@@ -53,8 +53,9 @@ extension CHSesame5Device {
                     }
 
                     let chHistoryEvent = CHSesame5HistoryEvent(type:historyType,time:UInt64(timestampInt32)*1000,recordID:record_id_Int32,content:hisContent,parameter:mechStatusData) // Event用在post
-                    let sesame2History = self.eventToCHHistroy(historyEvent: chHistoryEvent)!
-                    (self.delegate as? CHSesame5Delegate)?.onHistoryReceived(device: self, result: .success(CHResultStateBLE(input: [sesame2History])))
+                    if let sesame2History = self.eventToCHHistroy(historyEvent: chHistoryEvent) {
+                        (self.delegate as? CHSesame5Delegate)?.onHistoryReceived(device: self, result: .success(CHResultStateBLE(input: [sesame2History])))
+                    }
                     if( self.isHistory){
                         self.readHistoryCommand() { _ in }
                     }
