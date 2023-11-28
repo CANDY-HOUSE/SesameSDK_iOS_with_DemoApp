@@ -8,7 +8,7 @@
 
 import Foundation
 import WatchConnectivity
-import SesameWatchKitSDK
+import SesameSDK
 import Combine
 import WatchKit
 

@@ -8,7 +8,7 @@
 
 import WatchKit
 import WatchConnectivity
-import SesameWatchKitSDK
+import SesameSDK
 import CoreFoundation
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {

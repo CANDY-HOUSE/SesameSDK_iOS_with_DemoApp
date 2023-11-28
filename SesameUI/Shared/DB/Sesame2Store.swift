@@ -9,11 +9,7 @@
 import Foundation
 import CoreData
 import CoreLocation
-#if os(iOS)
 import SesameSDK
-#elseif os(watchOS)
-import SesameWatchKitSDK
-#endif
 
 /// UI 層 DB
 class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {

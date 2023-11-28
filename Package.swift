@@ -13,8 +13,6 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(name: "SesameSDK", targets: ["SesameSDK"]),
-//        .library(name: "SesameSDKc", targets: ["SesameSDKc"]),
-        .library(name: "SesameWatchKitSDK", targets: ["SesameWatchKitSDK"])
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,15 +20,6 @@ let package = Package(
         .target(
             name: "SesameSDK",
             dependencies: ["SesameSDKc"], // Add CAESCCM as a dependency
-            // path: "Sources/SesameSDSwift",
-            resources: [
-                .process("DB/CHDeviceModel.xcdatamodeld"),
-            ]
-        ),
-        .target(
-            name: "SesameWatchKitSDK",
-            dependencies: ["SesameSDKc"], // Add CAESCCM as a dependency
-            // path: "Sources/SesameSDSwift",
             resources: [
                 .process("DB/CHDeviceModel.xcdatamodeld"),
             ]
@@ -39,7 +28,4 @@ let package = Package(
            name: "SesameSDKc"
         )
     ]
-//    swiftLanguageVersions: [
-//        .v5
-//    ]
 )
