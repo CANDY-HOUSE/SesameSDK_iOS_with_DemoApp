@@ -6,7 +6,7 @@
 
 import WatchKit
 import CoreBluetooth
-import SesameWatchKitSDK
+import SesameSDK
 import SwiftUI
 import Combine
 

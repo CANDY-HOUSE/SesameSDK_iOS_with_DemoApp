@@ -7,11 +7,7 @@
 //
 
 import Intents
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
-#endif
 
 class ToggleSesameIntentHandler: NSObject, ToggleSesameIntentHandling {
     func resolveName(for intent: ToggleSesameIntent, with completion: @escaping (INStringResolutionResult) -> Void) {

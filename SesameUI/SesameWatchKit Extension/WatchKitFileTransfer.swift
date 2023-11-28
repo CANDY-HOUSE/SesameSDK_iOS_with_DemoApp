@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SesameWatchKitSDK
+import SesameSDK
 import WatchConnectivity
 
 final class WatchKitFileTransfer: NSObject {

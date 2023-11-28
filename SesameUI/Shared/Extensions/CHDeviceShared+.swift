@@ -7,13 +7,8 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
 import UIKit.UIColor
-#else
-import SesameWatchKitSDK
-import WatchKit
-#endif
 
 extension CHDevice {
 
