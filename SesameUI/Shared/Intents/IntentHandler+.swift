@@ -7,13 +7,7 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
-//import Reachability
-#else
-import SesameWatchKitSDK
-import WatchKit
-#endif
 
 //extension CHSesameLock {
 //    func getShadowStatus() -> CHDeviceStatus? {
