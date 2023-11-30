@@ -71,7 +71,8 @@
 		64DA7EBF2B1589AB00A96188 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64DA7EBE2B1589AB00A96188 /* SesameSDK */; };
 		64DA7EC12B1589D900A96188 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64DA7EC02B1589D900A96188 /* SesameSDK */; };
 		64DA7EC32B1589FE00A96188 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64DA7EC22B1589FE00A96188 /* SesameSDK */; };
-		64DA7EC62B158F0000A96188 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64DA7EC52B158F0000A96188 /* SesameSDK */; };
+		64DA7F0D2B1885B600A96188 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64DA7F0C2B1885B600A96188 /* SesameSDK */; };
+		64DA7F102B18871E00A96188 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64DA7F0F2B18871E00A96188 /* SesameSDK */; };
 		64E585822B157EDA00294392 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64E585812B157EDA00294392 /* SesameSDK */; };
 		64E585872B157F3900294392 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64E585862B157F3900294392 /* SesameSDK */; };
 		64E5858E2B1586FD00294392 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64E5858D2B1586FD00294392 /* SesameSDK */; };
@@ -657,8 +658,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8B619582AAAC64D00BE8B52 /* NordicDFU in Frameworks */,
+				64DA7F102B18871E00A96188 /* SesameSDK in Frameworks */,
 				64E585872B157F3900294392 /* SesameSDK in Frameworks */,
-				64DA7EC62B158F0000A96188 /* SesameSDK in Frameworks */,
+				64DA7F0D2B1885B600A96188 /* SesameSDK in Frameworks */,
 				64B48A8A2B148A1B00AF3151 /* SesameSDK in Frameworks */,
 				64E585822B157EDA00294392 /* SesameSDK in Frameworks */,
 				64E5858E2B1586FD00294392 /* SesameSDK in Frameworks */,
@@ -1530,7 +1532,8 @@
 				64E585862B157F3900294392 /* SesameSDK */,
 				64E5858D2B1586FD00294392 /* SesameSDK */,
 				64DA7EBC2B15899300A96188 /* SesameSDK */,
-				64DA7EC52B158F0000A96188 /* SesameSDK */,
+				64DA7F0C2B1885B600A96188 /* SesameSDK */,
+				64DA7F0F2B18871E00A96188 /* SesameSDK */,
 			);
 			productName = "sesame-sdk-test-app";
 			productReference = B179690722F7CE9300E91996 /* Sesame.app */;
@@ -1670,7 +1673,7 @@
 			mainGroup = B17968FE22F7CE9300E91996;
 			packageReferences = (
 				416837312A42CF39000FB434 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */,
-				64DA7EC42B158F0000A96188 /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */,
+				64DA7F0E2B18871E00A96188 /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */,
 			);
 			productRefGroup = B179690822F7CE9300E91996 /* Products */;
 			projectDirPath = "";
@@ -2922,9 +2925,9 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		64DA7EC42B158F0000A96188 /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */ = {
+		64DA7F0E2B18871E00A96188 /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tangguoEddy/SesameSDK_iOS_with_DemoApp.git";
+			repositoryURL = "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -2961,9 +2964,13 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SesameSDK;
 		};
-		64DA7EC52B158F0000A96188 /* SesameSDK */ = {
+		64DA7F0C2B1885B600A96188 /* SesameSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 64DA7EC42B158F0000A96188 /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */;
+			productName = SesameSDK;
+		};
+		64DA7F0F2B18871E00A96188 /* SesameSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64DA7F0E2B18871E00A96188 /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */;
 			productName = SesameSDK;
 		};
 		64E585812B157EDA00294392 /* SesameSDK */ = {

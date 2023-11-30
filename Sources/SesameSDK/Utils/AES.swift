@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SesameSDKc
+import AESc
 
 class AES {
 
