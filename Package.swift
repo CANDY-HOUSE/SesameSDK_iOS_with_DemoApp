@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -20,12 +20,14 @@ let package = Package(
         .target(
             name: "SesameSDK",
             dependencies: ["SesameSDKc"], // Add CAESCCM as a dependency
+            path: "SDK/SesameSDK",
             resources: [
                 .process("DB/CHDeviceModel.xcdatamodeld"),
             ]
         ),
         .target(
-           name: "SesameSDKc"
+           name: "SesameSDKc",
+           path: "SDK/AESc"
         )
     ]
 )
