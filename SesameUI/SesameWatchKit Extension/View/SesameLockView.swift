@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import SesameWatchKitSDK
+import SesameSDK
 import CoreBluetooth
 
 struct SesameLockView: View {

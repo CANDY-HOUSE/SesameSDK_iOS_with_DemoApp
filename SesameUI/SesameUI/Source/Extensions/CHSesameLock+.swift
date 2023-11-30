@@ -5,7 +5,7 @@
 //  Created by YuHan Hsiao on 2021/08/11.
 //  Copyright © 2021 CandyHouse. All rights reserved.
 //
-
+import Foundation
 import SesameSDK
 
 extension CHSesameLock {

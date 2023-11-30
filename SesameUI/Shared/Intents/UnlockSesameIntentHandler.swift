@@ -6,11 +6,7 @@
 //
 
 import Intents
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
-#endif
 
 class UnlockSesameIntentHandler: NSObject, UnlockSesameIntentHandling {
     func resolveName(for intent: UnlockSesameIntent, with completion: @escaping (INStringResolutionResult) -> Void) {

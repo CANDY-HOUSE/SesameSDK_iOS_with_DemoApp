@@ -7,7 +7,7 @@
 //
 
 import WatchKit
-import SesameWatchKitSDK
+import SesameSDK
 import SwiftUI
 import Combine
 
