@@ -2,7 +2,7 @@
 
 ## ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CANDY HOUSE Official Site](https://jp.candyhouse.co/)
 
-##### Sesame app on Apple App Store [https://apps.apple.com/app/id1532692301/](https://apps.apple.com/app/id1532692301/)
+##### Sesame app on <img src="https://img.shields.io/badge/App Store-000000?logo=apple&logoColor=white"/> [https://apps.apple.com/app/id1532692301/](https://apps.apple.com/app/id1532692301/)
 ![img](./doc/src/resources/SesameSDK_20231201.png)
 ## Contents
 - [Overview](#overview)
@@ -19,14 +19,17 @@
 - Register Sesame devices (Sesame 5, Sesame 5 pro, Sesame Bike2, BLE Connector1, Open Sensor1, Sesame Touch 1 Pro, Sesame Touch 1, Sesame Bot1, WIFI Module2, Sesame 4, Sesame 3, Sesame Bike1)
 - Lock, unlock, or operate
 - Obtain historical records
-- Update SesameOS Over The Air(OTA)
+- Update SesameOS over the air(OTA)
 - Various device settings
 - Get battery level
 
 ## Requirements
-- iOS 12.0+ / macOS X 10.15+ / watchOS 7.0+ / iPadOS 12.0+
-- Xcode 11.0 +
-- Swift 5.3 +
+
+<img src="https://img.shields.io/badge/Swift-5.3-FA7343" />.  
+<img src="https://img.shields.io/badge/Bluetooth-4.0LE +-0082FC" />  
+<img src="https://img.shields.io/badge/iOS-12.0 +-000000" /><img src="https://img.shields.io/badge/macOS-10.15 +-000000" /><img src="https://img.shields.io/badge/watchOS-7.0 +-000000" /><img src="https://img.shields.io/badge/iPadOS-12.0 +-000000" />  
+<img src="https://img.shields.io/badge/Xcode-11.0 +-1575F9" />  
+
 
 ## Installation
 ### Swift Package Manager
