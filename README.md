@@ -3,7 +3,7 @@
 ## ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CANDY HOUSE Official Site](https://jp.candyhouse.co/)
 
 ##### App Store [Sesame app](https://apps.apple.com/cn/app/sesame-%E8%8A%9D%E9%BA%BB%E5%BC%80%E9%97%A8/id1532692301)
-![img](./doc/src/resources/SesameSDK_Swift.png)
+![img](./doc/src/resources/SesameSDK_20231201.png)
 ## Contents
 - [Overview](#overview)
 - [Requirements](#requirements)
