@@ -14,7 +14,7 @@
 
 ## Overview
 
-#### SesameSDK is a free, simple, and powerful Bluetooth/AIoT library for Apps on iOS/macOS/watchOS/iPadOS. The official Sesame application also uses this SesameSDK to build and realize all its features. Things you can do with SesameSDK:
+#### SesameSDK is an open-source, free, easy-to-use, and powerful Bluetooth/AIoT library for Apps on iOS/macOS/watchOS/iPadOS. The official Sesame application also uses this SesameSDK to build and realize all its features. Things you can do with SesameSDK:
 
 - Register Sesame devices (Sesame 5, Sesame 5 pro, Sesame Bike2, BLE Connector1, Open Sensor1, Sesame Touch 1 Pro, Sesame Touch 1, Sesame Bot1, WIFI Module2, Sesame 4, Sesame 3, Sesame Bike1)
 - Lock, unlock, or operate
