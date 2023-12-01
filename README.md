@@ -2,7 +2,7 @@
 
 ## ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CANDY HOUSE Official Site](https://jp.candyhouse.co/)
 
-##### App Store [Sesame app](https://apps.apple.com/cn/app/sesame-%E8%8A%9D%E9%BA%BB%E5%BC%80%E9%97%A8/id1532692301)
+##### Sesame app on Apple App Store [https://apps.apple.com/app/id1532692301/](https://apps.apple.com/app/id1532692301/)
 ![img](./doc/src/resources/SesameSDK_20231201.png)
 ## Contents
 - [Overview](#overview)
@@ -14,17 +14,17 @@
 
 ## Overview
 
-#### SesameSDK is a free, simple, and powerful Bluetooth library for iOS applications. The official Sesame application also uses this SesameSDK to build and realize all its features. Things you can do with SesameSDK:
+#### SesameSDK is a free, simple, and powerful Bluetooth/AIoT library for Apps on iOS/macOS/watchOS/iPadOS. The official Sesame application also uses this SesameSDK to build and realize all its features. Things you can do with SesameSDK:
 
 - Register Sesame devices (Sesame 5, Sesame 5 pro, Sesame Bike2, BLE Connector1, Open Sensor1, Sesame Touch 1 Pro, Sesame Touch 1, Sesame Bot1, WIFI Module2, Sesame 4, Sesame 3, Sesame Bike1)
-- Lock, unlock, and operate
+- Lock, unlock, or operate
 - Obtain historical records
-- Update of SesameOS3
+- Update SesameOS Over The Air(OTA)
 - Various device settings
 - Get battery level
 
 ## Requirements
-- iOS 12.0+ / Mac OS X 10.15+ / WatchOS 7.0+
+- iOS 12.0+ / macOS X 10.15+ / watchOS 7.0+ / iPadOS 12.0+
 - Xcode 11.0 +
 - Swift 5.3 +
 
