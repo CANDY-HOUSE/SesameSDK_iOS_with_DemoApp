@@ -1,9 +1,10 @@
+![img](./doc/src/resources/SesameSDK_20231201.png)
 # SesameSDK3.0 for iOS
 
-## ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CANDY HOUSE Official Site](https://jp.candyhouse.co/)
+- Sesame app on <img src="https://img.shields.io/badge/App Store-000000?logo=apple&logoColor=white"/> [https://apps.apple.com/app/id1532692301/](https://apps.apple.com/app/id1532692301/)
+- Sesame app on <img src="https://img.shields.io/badge/TestFlight-0D96F6?logo=app-store&logoColor=white"/> [https://testflight.apple.com/join/Rok4GOFD/](https://testflight.apple.com/join/Rok4GOFD/)
+- ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CANDY HOUSE Official Site](https://jp.candyhouse.co/)
 
-##### Sesame app on <img src="https://img.shields.io/badge/App Store-000000?logo=apple&logoColor=white"/> [https://apps.apple.com/app/id1532692301/](https://apps.apple.com/app/id1532692301/)
-![img](./doc/src/resources/SesameSDK_20231201.png)
 ## Contents
 - [Overview](#overview)
 - [Requirements](#requirements)
