@@ -1,4 +1,0 @@
-@startuml
-Alice -> Bob: Hello Bob, how are you?
-Bob --> Alice: I am fine, thanks!
-@enduml
