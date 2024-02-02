@@ -122,5 +122,3 @@ Regarding the design details of SesameSDK, please refer to the following design 
 ![Class_diagram](./doc/src/resources/class_diagram.svg)
 
 
-## <a id="sesamesdk-terms-of-use"></a>[SesameSDK Terms of Use](https://jp.candyhouse.co/pages/sesamesdk%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84)
-
