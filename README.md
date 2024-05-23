@@ -1,4 +1,4 @@
-![img](./doc/src/resources/SesameSDK_20231201.png)
+![SesameSDK](https://github.com/CANDY-HOUSE/.github/blob/main/profile/images/SesameSDK.png?raw=true)
 # SesameSDK3.0 for iOS
 
 - Sesame app on <img src="https://img.shields.io/badge/App Store-000000?logo=apple&logoColor=white"/> [https://apps.apple.com/app/id1532692301/](https://apps.apple.com/app/id1532692301/)
