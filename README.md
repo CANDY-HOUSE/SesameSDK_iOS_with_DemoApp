@@ -58,30 +58,30 @@ If you don't want to use any dependency manager, you can manually integrate Sesa
 
 ### 2. Initialization
 Please start the Bluetooth scan at the appropriate time
-```
+```swift
 CHBluetoothCenter.shared.enableScan { res in }
 ```
 Callback when the Bluetooth status changes
-```
+```swift
 public protocol CHBleStatusDelegate: AnyObject {
     func didScanChange(status: CHScanStatus)
 }
 ```
 The list of scanned Sesame devices will be passed back to the caller at a frequency of once per second.
-```
+```swift
 public protocol CHBleManagerDelegate: AnyObject {
     func didDiscoverUnRegisteredCHDevices(_ devices: [CHDevice])
 }
 ```
 ### 3. Connect to Device
 Before establishing a connection, you should first confirm that the device's status is connectable
-```
+```swift
 if sesame5.deviceStatus == .receivedBle() {
     sesame5.connect() { _ in }
 }
 ```
 At this point, you will receive the Sesame device's connection status callback
-```
+```swift
 public protocol CHDeviceStatusDelegate: AnyObject {
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?)
     func onMechStatus(device: CHDevice)
@@ -89,13 +89,13 @@ public protocol CHDeviceStatusDelegate: AnyObject {
 ```
 ### 4. Register Device
 When the connection status changes to ready to register, you can register the device to complete the pairing. Registration is a necessary step to bind the device
-```
+```swift
 if device.deviceStatus == .readyToRegister() {
     device.register( _ in )
 }
 ```
 After registration, you can get paired devices through the CHDeviceManager
-```
+```swift
 var chDevices = [CHDevice]()
 CHDeviceManager.shared.getCHDevices { result in
     if case let .success(devices) = result {
