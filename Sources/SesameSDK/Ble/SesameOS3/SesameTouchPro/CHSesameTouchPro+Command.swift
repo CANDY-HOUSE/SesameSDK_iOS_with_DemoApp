@@ -54,7 +54,7 @@ extension CHSesameTouchProDevice {
         if(device.productModel == .sesame5 || device.productModel == .sesame5Pro || device.productModel == .bikeLock2 ){
             let noDashUUID = device.deviceId.uuidString.replacingOccurrences(of: "-", with: "", options: [], range: nil)
             let noDashUUIDData = noDashUUID.hexStringtoData()
-			let ssmSecKa = device.getKey()!.secretKey.hexStringtoData()
+            let ssmSecKa = device.getKey()!.secretKey.hexStringtoData()
             sendCommand(.init(.addSesame,noDashUUIDData+ssmSecKa)) { (response) in
                 result(.success(CHResultStateNetworks(input: CHEmpty())))
             }
@@ -64,7 +64,7 @@ extension CHSesameTouchProDevice {
             base64Key = base64Key.replacingOccurrences(of: "=", with: "", options: [], range: nil)
             let sesame2IR = base64Key.data(using: .utf8)!
             let publicKeyData = device.getKey()!.sesame2PublicKey.hexStringtoData()
-			let ssmSecKa = device.getKey()!.secretKey.hexStringtoData()
+            let ssmSecKa = device.getKey()!.secretKey.hexStringtoData()
             let allKey = sesame2IR + publicKeyData + ssmSecKa
             sendCommand(.init(.addSesame, allKey)) { (response) in
                 result(.success(CHResultStateNetworks(input: CHEmpty())))
