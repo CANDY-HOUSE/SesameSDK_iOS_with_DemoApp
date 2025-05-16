@@ -24,7 +24,7 @@ extension CHSesameBikeDevice {
                                          hold: UInt8(secs.hold * 10),
                                          backward: UInt8(secs.backward * 10))
         
-        var mechSettingCopy = (mechSetting as? CHSesameBikeMechSettings) ?? defaultMechSetting()
+        var mechSettingCopy = mechSetting ?? defaultMechSetting()
         mechSettingCopy.secs = seconds
         
         let tmpSetting = mechSettingCopy.toData()

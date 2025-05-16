@@ -126,7 +126,7 @@ class CHDeviceCenter {
     func lastCachedevices() -> [CHDeviceMO] {
         // widget 不共享快取。需重新獲取資料庫
         let request: NSFetchRequest<CHDeviceMO> = CHDeviceMO.fetchRequest()
-        let fetchResult = (try? backgroundContext?.fetch(request)) as? [CHDeviceMO]
+		let fetchResult = try? backgroundContext?.fetch(request)
         cacheDevices = fetchResult ?? [CHDeviceMO]()
         return cacheDevices
     }
