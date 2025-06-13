@@ -1,0 +1,143 @@
+{
+  "controls": [
+    {
+      "id": 1,
+      "type": "POWER_STATUS_ON",
+      "titleIndex": 0,
+      "titles": [
+          "co.candyhouse.tvremote.power",
+          "co.candyhouse.tvremote.power"
+        ],
+      "icons": [
+          "air_power_0",
+          "air_power_1"
+        ],
+      "defaultValue": "",
+      "operateCode": "49153"
+    },
+    {
+      "id": 2,
+      "type": "HOME",
+      "titleIndex": 1,
+      "titles": ["co.candyhouse.tvremote.home"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49166"
+    },
+
+    {
+      "id": 3,
+      "type": "BACK",
+      "titleIndex": 2,
+      "titles": ["co.candyhouse.tvremote.back"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49156"
+    },
+    {
+      "id": 4,
+      "type": "MUTE",
+      "titleIndex": 3,
+      "titles": ["co.candyhouse.tvremote.mute"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49154"
+    },
+    {
+      "id": 5,
+      "type": "UP",
+      "titleIndex": 4,
+      "titles": ["co.candyhouse.tvremote.up"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49157"
+    },
+    {
+      "id": 7,
+      "type": "MENU",
+      "titleIndex": 6,
+      "titles": ["co.candyhouse.tvremote.menu"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49158"
+    },
+    {
+      "id": 8,
+      "type": "LEFT",
+      "titleIndex": 7,
+      "titles": ["co.candyhouse.tvremote.left"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49159"
+    },
+    {
+      "id": 9,
+      "type": "OK",
+      "titleIndex": 8,
+      "titles": ["co.candyhouse.tvremote.ok"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49160"
+    },
+    {
+      "id": 10,
+      "type": "RIGHT",
+      "titleIndex": 9,
+      "titles": ["co.candyhouse.tvremote.right"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49161"
+    },
+    {
+      "id": 11,
+      "type": "VOLUME_UP",
+      "titleIndex": 10,
+      "titles": ["co.candyhouse.tvremote.volumeUp"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49162"
+    },
+    {
+      "id": 12,
+      "type": "DOWN",
+      "titleIndex": 11,
+      "titles": ["co.candyhouse.tvremote.down"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49163"
+    },
+    {
+      "id": 13,
+      "type": "CHANNEL_UP",
+      "titleIndex": 12,
+      "titles": ["co.candyhouse.tvremote.channelUp"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49164"
+    },
+    {
+      "id": 14,
+      "type": "VOLUME_DOWN",
+      "titleIndex": 13,
+      "titles": ["co.candyhouse.tvremote.volumeDown"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49165"
+    },
+    {
+      "id": 15,
+      "type": "CHANNEL_DOWN",
+      "titleIndex": 14,
+      "titles": ["co.candyhouse.tvremote.channelDown"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49167"
+    }
+  ],
+  "settings": {
+    "layout": {
+      "columns": 3,
+      "spacing": 16
+    }
+  }
+}

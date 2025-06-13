@@ -1,0 +1,2208 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string-array name="strs_stb_type">
+        <item>广西广电网络-GX-013</item>
+        <item>广西广电网络-GX-016</item>
+        <item>广西广电网络-GX-008</item>
+        <item>广西广电网络-GX-019</item>
+        <item>广西广电网络-GX-006</item>
+        <item>烽火-HG600</item>
+        <item>烽火-HG650</item>
+        <item>烽火-HG680</item>
+        <item>烽火-HG680-Z</item>
+        <item>烽火-I16</item>
+        <item>烽火-I10</item>
+        <item>烽火-I10-A</item>
+        <item>乐视机顶盒-RC09K</item>
+        <item>乐视机顶盒-C1</item>
+        <item>乐视机顶盒-C1S</item>
+        <item>深圳天威-N9201</item>
+        <item>深圳天威-N9101</item>
+        <item>深圳天威-N8908</item>
+        <item>深圳天威-N8606</item>
+        <item>百度-2S</item>
+        <item>百度-3S</item>
+        <item>天猫-M10</item>
+        <item>天猫-M11</item>
+        <item>天猫-M12</item>
+        <item>天猫-M13</item>
+        <item>金亚股份-JY-DC200</item>
+        <item>金亚股份-JY-DC300</item>
+        <item>金亚股份-JY-DC310</item>
+        <item>迪优美特-A6II</item>
+        <item>迪优美特-X6II</item>
+        <item>迪优美特-S6</item>
+        <item>迪优美特-S7</item>
+        <item>迪优美特-S8</item>
+        <item>迪优美特-S9</item>
+        <item>迪优美特-Q8</item>
+        <item>迪优美特-x16</item>
+        <item>迪优美特-k9</item>
+        <item>迪优美特-x5</item>
+        <item>迪优美特-x6II</item>
+        <item>迪优美特-k7</item>
+        <item>迪优美特-Q8</item>
+        <item>迪优美特-X12</item>
+        <item>迪优美特-Q9</item>
+        <item>迪优美特-A200</item>
+        <item>华为honor-M321</item>
+        <item>华为honor-M330</item>
+        <item>上海东方有线-SC8022T</item>
+        <item>上海东方有线-DVT-5505B</item>
+        <item>上海东方有线-DVT-5505B-PK</item>
+        <item>海信-KL1616</item>
+        <item>海信-MP-606H-B</item>
+        <item>创维-E900</item>
+        <item>创维-E2100</item>
+        <item>创维-E506</item>
+        <item>创维-RMC-C285</item>
+        <item>创维-I71</item>
+        <item>创维-I71S</item>
+        <item>创维-S800</item>
+        <item>创维-A601</item>
+        <item>创维-A801</item>
+        <item>创维-A7</item>
+        <item>创维-A8</item>
+        <item>创维-A9</item>
+        <item>创维-A11</item>
+        <item>创维-A5</item>
+        <item>创维-M300</item>
+        <item>创维-i71</item>
+        <item>创维-S800</item>
+        <item>创维-A601</item>
+        <item>创维-A801</item>
+        <item>创维-HC2600</item>
+        <item>创维-YK-7801J</item>
+        <item>创维-YK-7801H</item>
+        <item>创维-40E690U</item>
+        <item>创维-42E690U</item>
+        <item>创维-50E690U</item>
+        <item>创维-58E690U</item>
+        <item>中国电信-EC2108</item>
+        <item>中国电信-EC1308</item>
+        <item>中国电信-ZXV10</item>
+        <item>中国电信-B600</item>
+        <item>中国电信-V4C</item>
+        <item>中国电信-B700</item>
+        <item>中国电信-V5C</item>
+        <item>中国电信-V2A</item>
+        <item>中国电信-V2L</item>
+        <item>中国电信-E900</item>
+        <item>中国电信-E8205</item>
+        <item>中国电信-E910</item>
+        <item>中国电信-E950</item>
+        <item>重庆-XS-213</item>
+        <item>厦门-RC-002-0A</item>
+        <item>灵云-Q2</item>
+        <item>灵云-Q3</item>
+        <item>灵云-Q5</item>
+        <item>灵云-H8</item>
+        <item>灵云-T3S</item>
+        <item>灵云-T6</item>
+        <item>灵云-LT02</item>
+        <item>灵云-LT03</item>
+        <item>华为-EC6108V9U</item>
+        <item>英菲克-i6</item>
+        <item>英菲克-i7</item>
+        <item>英菲克-i8</item>
+        <item>英菲克-i9</item>
+        <item>英菲克-i10</item>
+        <item>英菲克-i12</item>
+        <item>大麦盒子-DM1016</item>
+        <item>大麦盒子-DMR-01B</item>
+        <item>大麦盒子-DMR-DMR-02B</item>
+        <item>大麦盒子-DM1001</item>
+        <item>大麦盒子-DM1004</item>
+        <item>大麦盒子-DM1005</item>
+        <item>大麦盒子-domy30x</item>
+        <item>巨鹰科技-JY012306</item>
+        <item>巨鹰科技-JY032308</item>
+        <item>巨鹰科技-DVB-C</item>
+        <item>巨鹰科技-GE-8810D</item>
+        <item>东莞广电网络-DVB-D168</item>
+        <item>东莞广电网络-DVB-D268</item>
+        <item>东莞广电网络-DVB-D668D</item>
+        <item>东莞广电网络-DVB-D668</item>
+        <item>开博尔-F1</item>
+        <item>开博尔-F2</item>
+        <item>开博尔-F3</item>
+        <item>开博尔-F5</item>
+        <item>开博尔-M1</item>
+        <item>开博尔-M6</item>
+        <item>开博尔-M7</item>
+        <item>开博尔-M8</item>
+        <item>开博尔-M9</item>
+        <item>开博尔-Q2</item>
+        <item>开博尔-Q5</item>
+        <item>开博尔-Q6</item>
+        <item>开博尔-Q8</item>
+        <item>开博尔-Q9</item>
+        <item>开博尔-C3</item>
+        <item>开博尔-C9</item>
+        <item>开博尔-D1</item>
+        <item>开博尔-D2</item>
+        <item>华数-SD310</item>
+        <item>四川广电网络-C7600</item>
+        <item>四川广电网络-C8000</item>
+        <item>四川广电网络-SBC2</item>
+        <item>美如画-A11</item>
+        <item>美如画-A3</item>
+        <item>美如画-A4</item>
+        <item>美如画-A6</item>
+        <item>美如画-V5</item>
+        <item>美如画-V7</item>
+        <item>美如画-X8</item>
+        <item>美如画-H3</item>
+        <item>天敏-D6</item>
+        <item>天敏-D8</item>
+        <item>天敏-LFT2</item>
+        <item>天敏-LT390W</item>
+        <item>天敏-LT380W</item>
+        <item>亿格瑞-V7</item>
+        <item>亿格瑞-V12</item>
+        <item>亿格瑞-X6</item>
+        <item>亿格瑞-X6II</item>
+        <item>亿格瑞-V2</item>
+        <item>亿格瑞-X1</item>
+        <item>亿格瑞-Q3</item>
+        <item>亿格瑞-Q6</item>
+        <item>亿格瑞-A10</item>
+        <item>中国移动-CMC-01-E</item>
+        <item>中国移动-G110</item>
+        <item>中国移动-G220</item>
+        <item>我播-i6</item>
+        <item>我播-i5</item>
+        <item>我播-q5</item>
+        <item>D-Box-D202</item>
+        <item>D-Box-D230</item>
+        <item>D-Box-D300</item>
+        <item>D-Box-D301</item>
+        <item>D-Box-SD</item>
+        <item>D-Box-D200</item>
+        <item>D-Box-D02</item>
+        <item>D-Box-D023</item>
+        <item>易视宝-E2</item>
+        <item>易视宝-E2s</item>
+        <item>易视宝-E3</item>
+        <item>易视宝-E4</item>
+        <item>易视宝-E4L</item>
+        <item>易视宝-E4S</item>
+        <item>百视通-R1229</item>
+        <item>沃TV-Q5</item>
+        <item>佳的美-RM009A</item>
+        <item>佳的美-RM008X</item>
+        <item>佳的美-RM008V</item>
+        <item>佳的美-RM008E</item>
+        <item>艾科瑞-A8</item>
+        <item>艾科瑞-A11</item>
+        <item>艾科瑞-A11M</item>
+        <item>艾科瑞-A16</item>
+        <item>艾科瑞-AL-001</item>
+        <item>艾科瑞-HX-3000</item>
+        <item>艾科瑞-HX-600</item>
+        <item>现代-TVB9</item>
+        <item>现代-TVB3</item>
+        <item>现代-TVB2</item>
+        <item>现代-TVB6</item>
+        <item>现代-TVB7</item>
+        <item>九联科技-UNT400C</item>
+        <item>九联科技-UNT400B</item>
+        <item>九联科技-UNT200C</item>
+        <item>九联科技-RS-17A</item>
+        <item>九联科技-HSC-1100D10</item>
+        <item>迈乐-A100</item>
+        <item>迈乐-A200</item>
+        <item>迈乐-M12</item>
+        <item>迈乐-M3</item>
+        <item>迈乐-M6</item>
+        <item>迈乐-M8</item>
+        <item>迈乐-M9</item>
+        <item>迈乐-M5</item>
+        <item>迈乐-M1</item>
+        <item>迈乐-A1000G</item>
+        <item>大连广电-HYDFSR-0141</item>
+        <item>大连广电-DB-658C</item>
+        <item>大连广电-DB-705</item>
+        <item>威科姆-VC-9030RC</item>
+        <item>威科姆-VC-9300RC</item>
+        <item>威科姆-V-9033L</item>
+        <item>江苏有线-HC2600</item>
+        <item>江苏有线-96296</item>
+        <item>云南彩云-C2300</item>
+        <item>云南彩云-C2600</item>
+        <item>云南彩云-C3100</item>
+        <item>普利尔-P12</item>
+        <item>普利尔-P80</item>
+        <item>亚太之星-HD801</item>
+        <item>亚太之星-HD301</item>
+        <item>亚太之星-HD203</item>
+        <item>亚太之星-AT601</item>
+        <item>重庆有线-DVC-7028A</item>
+        <item>重庆有线-DVC-5058</item>
+        <item>重庆有线-HC7620</item>
+        <item>海美迪机顶盒-HD300A</item>
+        <item>海美迪机顶盒-HD300B</item>
+        <item>海美迪机顶盒-HD600A</item>
+        <item>海美迪机顶盒-HD600B</item>
+        <item>海美迪机顶盒-HD600C</item>
+        <item>海美迪机顶盒-HD910A</item>
+        <item>海美迪机顶盒-HD910B</item>
+        <item>泛亚-8000HD</item>
+        <item>泛亚-8800HD</item>
+        <item>泛亚-8900HD</item>
+        <item>优酷-YK-K1S</item>
+        <item>优酷-YK-K1</item>
+        <item>优酷-YK-K18</item>
+        <item>PPBOX-PBFA3211A</item>
+        <item>PPBOX-PBAM004101A</item>
+        <item>陕西广电-DH-STB100L</item>
+        <item>陕西广电-WL-DVB01</item>
+        <item>陕西广电-DB-5911H</item>
+        <item>陕西广电-DB-5912A</item>
+        <item>山水-X5</item>
+        <item>山水-X3</item>
+        <item>山水-X6</item>
+        <item>山水-TY-01</item>
+        <item>环网-HY-F03</item>
+        <item>环网-HY-C1150</item>
+        <item>环网-C1150K</item>
+        <item>环网-C1150H</item>
+        <item>天津广电-S-4212</item>
+        <item>天津广电-S-4211</item>
+        <item>天津广电-S-4222A</item>
+        <item>太原广电-DVBC2000</item>
+        <item>太原广电-DVBC2010C</item>
+        <item>太原广电-DVBC2020</item>
+        <item>太原广电-JDH-516D</item>
+        <item>太原广电-JDH-516F</item>
+        <item>淄博有线-C2300</item>
+        <item>淄博有线-C2510</item>
+        <item>淄博有线-C3100</item>
+        <item>湖州有线-STB18-6535C</item>
+        <item>湖州有线-STB-9399C</item>
+        <item>昆广网络-C7000</item>
+        <item>昆广网络-C2600</item>
+        <item>维德-V6</item>
+        <item>维德-W5</item>
+        <item>云南爱上网络-IPB610-1</item>
+        <item>大连有线-DVC-TH2018</item>
+        <item>大连有线-DVC-2028</item>
+        <item>大连有线-DVC5028</item>
+        <item>杭州华数-DZ40-1A</item>
+        <item>凯擘大宽屏-L-3/160545-kbro</item>
+        <item>T/HiFi天尚-T2</item>
+        <item>T/HiFi天尚-T3</item>
+        <item>T/HiFi天尚-T4</item>
+        <item>T/HiFi天尚-T5</item>
+        <item>T/HiFi天尚-T6</item>
+        <item>咪咕盒子-MGV2000</item>
+        <item>米影-M830</item>
+        <item>米影-Z600</item>
+        <item>米影-Q5</item>
+        <item>贵州广电网络-N9201</item>
+        <item>贵州广电网络-SE818</item>
+        <item>咕咕密盒-Q1</item>
+        <item>咕咕密盒-Q3</item>
+        <item>咕咕密盒-Q5</item>
+        <item>丽影网络-A1</item>
+        <item>丽影网络-A3</item>
+        <item>丽影网络-A4</item>
+        <item>数码视讯-Q5</item>
+        <item>蓝旭-L1</item>
+        <item>蓝旭-V6</item>
+        <item>蓝旭-V8</item>
+        <item>蓝旭-S2</item>
+        <item>华为荣耀-M321</item>
+        <item>华为荣耀-M330</item>
+        <item>华为荣耀-M310</item>
+        <item>华为荣耀-M311</item>
+        <item>视耐尔-V5</item>
+        <item>视耐尔-X7S</item>
+        <item>视耐尔-V8</item>
+        <item>视耐尔-S6</item>
+        <item>视耐尔-S5</item>
+        <item>视耐尔-X5</item>
+        <item>视耐尔-X7</item>
+        <item>视耐尔-X3</item>
+        <item>别致云盒-S1</item>
+        <item>别致云盒-X3</item>
+        <item>别致云盒-X5</item>
+        <item>别致云盒-X6</item>
+        <item>慈溪数字-JD-SD-CX01</item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </string-array>
+   
+
+</resources>

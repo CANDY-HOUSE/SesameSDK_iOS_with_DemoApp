@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="strs_fans_type">
+    <item>富士寶(Fusibo)-FB-AL806</item>
+    <item>富士寶(Fusibo)-FB-AL806A</item>
+    <item>富士寶(Fusibo)-FS-40E1A</item>
+    <item>富士寶(Fusibo)-FS-40E1B</item>
+    <item>富士寶(Fusibo)-FS-40E1C</item>
+    <item>富士寶(Fusibo)-FS-40E1D</item>
+    <item>富士寶(Fusibo)-FS-40E1G</item>
+    <item>富士寶(Fusibo)-FS-40E3</item>
+    <item>TCL(TCL)-FS-40-AT1614RC</item>
+    <item>TCL(TCL)-FS-40-AT1602RC</item>
+    <item>鑽石(Diamond)-FS-40K-9</item>
+    <item>鑽石(Diamond)-FSY-45C</item>
+    <item>鑽石(Diamond)-FSY-40D</item>
+    <item>鑽石(Diamond)-9A351</item>
+    <item>艾美特(Emmett)-FSW65R</item>
+    <item>艾美特(Emmett)-FS4016R</item>
+    <item>艾美特(Emmett)-FS4027R-5</item>
+    <item>艾美特(Emmett)-FS4031R</item>
+    <item>艾美特(Emmett)-FT41R</item>
+    <item>艾美特(Emmett)-FT42R</item>
+    <item>艾美特(Emmett)-FTW41R-D</item>
+    <item>艾美特(Emmett)-S3068</item>
+    <item>艾美特(Emmett)-SW125R</item>
+    <item>艾美特(Emmett)-CF619R</item>
+    <item>艾美特(Emmett)-CF617R</item>
+    <item>艾美特(Emmett)-CF621R</item>
+    <item>艾美特(Emmett)-FW4035R</item>
+    <item>艾美特(Emmett)-FT50BR</item>
+    <item>艾美特(Emmett)-FTW50BR</item>
+    <item>艾美特(Emmett)-FT50R</item>
+    <item>格力(Gree)-FD-4009B</item>
+    <item>格力(Gree)-FD4017Bg5</item>
+    <item>美的(Midea)-FS40-6DR</item>
+    <item>美的(Midea)-FS40-8AR</item>
+    <item>美的(Midea)-FS40-6AR</item>
+    <item>美的(Midea)-FS40-6CR</item>
+    <item>美的(Midea)-FS40-8BR</item>
+    <item>美的(Midea)-FS40-9BR</item>
+    <item>美的(Midea)-FS40-9AR</item>
+    <item>美的(Midea)-FS40-11AR</item>
+    <item>美的(Midea)-FS40-13GR</item>
+    <item>美的(Midea)-FS40-10DR</item>
+    <item>美的(Midea)-FS40-15KR</item>
+    <item>美的(Midea)-FS40-13ER</item>
+    <item>美的(Midea)-FTS35-12HR</item>
+    <item>美的(Midea)-FS40-13AR</item>
+    <item>先鋒(Pioneer)-LRG04-10AR</item>
+    <item>先鋒(Pioneer)-LRG04-11BR</item>
+    <item>先鋒(Pioneer)-FS40-10AR</item>
+    <item>先鋒(Pioneer)-FS40-10BR</item>
+    <item>先鋒(Pioneer)-FS40-10ER</item>
+    <item>先鋒(Pioneer)-FK-L26</item>
+    <item>先鋒(Pioneer)-FK-L26R</item>
+    <item>先鋒(Pioneer)-FK-DG101</item>
+    <item>先鋒(Pioneer)-DG091</item>
+    <item>先鋒(Pioneer)-FK-L19A</item>
+    <item>先鋒(Pioneer)-FK-L27</item>
+    <item>先鋒(Pioneer)-FK-L27R</item>
+    <item>先鋒(Pioneer)-DG1107</item>
+    <item>先鋒(Pioneer)-DG1105</item>
+    <item>先鋒(Pioneer)-LG04-11ARA</item>
+    <item>先鋒(Pioneer)-DG1109</item>
+    <item>先鋒(Pioneer)-FS40-10R</item>
+    <item>先鋒(Pioneer)-FS40-10BR</item>
+    <item>先鋒(Pioneer)-FS40-10ER</item>
+    <item>聯創(Linkage)-DF-EF1609M</item>
+    <item>聯創(Linkage)-DF-EF16850</item>
+    <item>聯創(Linkage)-DF-EF1625M</item>
+    <item>聯創(Linkage)-DF-EF1630</item>
+    <item>聯創(Linkage)-DF-EF16810</item>
+    <item>聯創(Linkage)-DF-FA05RC1</item>
+    <item>聯創(Linkage)-DF-FA05RC2</item>
+    <item>聯創(Linkage)-DF-FAWA5RCA</item>
+    <item>聯創(Linkage)-DF-AF1810K</item>
+    <item>聯創(Linkage)-DF-AF1816K</item>
+    <item>聯創(Linkage)-DF-AF1830K</item>
+    <item>聯創(Linkage)-DF-AF1812K</item>
+    <item>聯創(Linkage)-DF-AT012</item>
+    <item>聯創(Linkage)-DF-AT21A</item>
+    <item>聯創(Linkage)-DF-AT20A</item>
+    <item>聯創(Linkage)-DF-FC3008R1</item>
+    <item>聯創(Linkage)-DF-FC3008R2</item>
+    <item>聯創(Linkage)-DF-2128</item>
+    <item>KDK(KDK)-KY143</item>
+    <item>萬寶(Wanbao)-FS40-7Y</item>
+    <item>萬寶(Wanbao)-FS40-5A</item>
+    <item>萬寶(Wanbao)-FS45-B3Y</item>
+    <item>萬寶(Wanbao)-FW45-B1Y</item>
+    <item>容聲(RonShen)-FS40-A1LY</item>
+    <item>容聲(RonShen)-FS40-A1LAY</item>
+    <item>奧德爾(Odell))-FS40-FY</item>
+    <item>奧德爾(Odell))-FS40-EY</item>
+    <item>小尤魚(YOOISH)-LSF-018-8A</item>
+    <item>小尤魚(YOOISH)-LSF-018-6A</item>
+    <item>麥克維爾(McQuay)-AC5300</item>
+    <item>天加(TICA)-RC-201</item>
+    <item>Origo(Origo)-TF-29RC</item>
+    <item>Aztech(Aztech)-ASF583</item>
+    <item>Aztech(Aztech)-ASF883</item>
+
+
+<!--    <item>美的(Midea)</item>-->
+<!--    <item>长城(Changcheng)</item>-->
+<!--    <item>格力(Gree)</item>-->
+<!--    <item>艾美特(AIRMATE)</item>-->
+<!--    <item>科龙(Kelon)</item>-->
+<!--    <item>澳柯玛(Aucma)</item>-->
+<!--    <item>小天鹅(Little Swan)</item>-->
+<!--    <item>骆驼(Camel)</item>-->
+<!--    <item>小行星(Asteroid)</item>-->
+<!--    <item>华生(Hua Sheng)</item>-->
+<!--    <item>先鋒(Pioneer)</item>-->
+<!--    <item>桑普(Samp)</item>-->
+<!--    <item>中联(ZOLEE)</item>-->
+<!--    <item>永生(eosin)</item>-->
+<!--    <item>聯創(Linkage)</item>-->
+<!--    <item>丝雨(siyu)</item>-->
+<!--    <item>时丰(Shifeng)</item>-->
+<!--    <item>灿坤(eupa)</item>-->
+<!--    <item>荣事达(Rongshida)</item>-->
+<!--    <item>鑽石(Diamond)</item>-->
+<!--    <item>新的(Xinde)</item>-->
+<!--    <item>富士寶(Fusibo)</item>-->
+<!--    <item>先铎(First Duo)</item>-->
+<!--    <item>奥德尔(Odell)</item>-->
+<!--    <item>多丽(Dolly)</item>-->
+<!--    <item>海尔(Haier)</item>-->
+<!--    <item>华宝(Hua Bao)</item>-->
+<!--    <item>松下(Panasonic)</item>-->
+<!--    <item>KDK(KDK)</item>-->
+<!--    <item>丽精(Li Jing)</item>-->
+<!--    <item>万宝(Wanbao)</item>-->
+<!--    <item>夏普(SHARP)</item>-->
+<!--    <item>新飞(Xinfei)</item>-->
+<!--    <item>奥克斯(Aux)</item>-->
+<!--    <item>拍力(Take force)</item>-->
+<!--    <item>柏力(Kubler)</item>-->
+<!--    <item>创美(The creation of beauty)</item>-->
+<!--    <item>朝荣(Chao Rong)</item>-->
+<!--    <item>谛尔(Dier)</item>-->
+<!--    <item>ELT(ELT)</item>-->
+<!--    <item>方格(Square)</item>-->
+<!--    <item>方钻(Drill)</item>-->
+<!--    <item>IMASU(IMASU)</item>-->
+<!--    <item>金世康(Jin Shikang)</item>-->
+<!--    <item>金松(Jin Song)</item>-->
+<!--    <item>九和宏盛(Nine and Hongsheng)</item>-->
+<!--    <item>金羚(Jinling)</item>-->
+<!--    <item>居优乐(In e)</item>-->
+<!--    <item>康佳(Konka)</item>-->
+<!--    <item>Lasko(Lasko)</item>-->
+<!--    <item>龙昇(Long Sheng)</item>-->
+<!--    <item>龙晟(Greenmaker)</item>-->
+<!--    <item>乐迪(Natridy/Le Di)</item>-->
+<!--    <item>美蒂思(Meidisi)</item>-->
+<!--    <item>MILUX(MILUX)</item>-->
+<!--    <item>容声(RonShen)</item>-->
+<!--    <item>赛亿(Shinee)</item>-->
+<!--    <item>山湖(SVIII)</item>-->
+<!--    <item>泰瑞(Terry)</item>-->
+<!--    <item>TCL(TCL)</item>-->
+<!--    <item>天马(Tianma)</item>-->
+<!--    <item>小象(xiaoxiang)</item>-->
+<!--    <item>亚摩斯(Amos)</item>-->
+<!--    <item>杨子(Yang Zi)</item>-->
+<!--    <item>扬子(Yangzi)</item>-->
+<!--    <item>远东(The Far East)</item>-->
+<!--    <item>SANAKY(SANAKY)</item>-->
+<!--    <item>百奥耐尔(Hundreds of Mr Nair)</item>-->
+<!--    <item>冠凌(Champions league ling)</item>-->
+<!--    <item>Hampton Bay(Hampton Bay)</item>-->
+<!--    <item>好运来(Good luck to)</item>-->
+<!--    <item>赫姆斯(bringing)</item>-->
+<!--    <item>霍尼韦尔(honeywell)</item>-->
+<!--    <item>尚朋堂(ShangPengtang)</item>-->
+<!--    <item>沃拿多(Walter took more than)</item>-->
+<!--    <item>长虹(changhong)</item>-->
+<!--    <item>cople(cople)</item>-->
+<!--    <item>汇成(fed)</item>-->
+<!--    <item>clever(clever)</item>-->
+<!--    <item>百花(baihua)</item>-->
+<!--    <item>BAIRAN(BAIRAN)</item>-->
+<!--    <item>大同公司(Tatung company)</item>-->
+<!--    <item>东洋(TOYO)</item>-->
+<!--    <item>东元(TECO)</item>-->
+<!--    <item>东芝(TOSHIBA)</item>-->
+<!--    <item>歌林(Song Lin)</item>-->
+<!--    <item>惠而浦(whirlpool)</item>-->
+<!--    <item>惠康(welcom)</item>-->
+<!--    <item>菊花(juhua)</item>-->
+<!--    <item>奇美(Qi mei)</item>-->
+<!--    <item>三洋(sanyo)</item>-->
+<!--    <item>声宝(sampo)</item>-->
+<!--    <item>天敏(10moons)</item>-->
+<!--    <item>Toyomi(Toyomi)</item>-->
+<!--    <item>先科(sast)</item>-->
+<!--    <item>亚都(daya)</item>-->
+<!--    <item>贝丽(BFREE)</item>-->
+<!--    <item>布鲁雅尔(Buleair)</item>-->
+<!--    <item>戴森(dyson)</item>-->
+<!--    <item>大同(datong)</item>-->
+<!--    <item>飞利浦(PHILIPS)</item>-->
+<!--    <item>惠普(HP)</item>-->
+<!--    <item>客浦(caple)</item>-->
+<!--    <item>origo(origo)</item>-->
+<!--    <item>日本(Japan)</item>-->
+<!--    <item>三菱(MITSUBISHI)</item>-->
+<!--    <item>汤姆逊(THOMSON)</item>-->
+<!--    <item>TELEFUNKEN(TELEFUNKEN)</item>-->
+<!--    <item>威力(weili)</item>-->
+<!--    <item>现代(HYUNDAI)</item>-->
+<!--    <item>西屋(WesternElectric)</item>-->
+<!--    <item>伊莱克斯(Electrolux)</item>-->
+<!--    <item>樱花(SAKURA)</item>-->
+<!--    <item>志高(chigo)</item>-->
+<!--    <item>综合(zonghe)</item>-->
+<!--    <item>Aloha(Aloha)</item>-->
+<!--    <item>创维(SKYWORTH)</item>-->
+<!--    <item>好运达(Rowenta)</item>-->
+<!--    <item>Marks Spencer(Marks Spencer)</item>-->
+<!--    <item>Miallegro(Miallegro)</item>-->
+<!--    <item>Soleus Air(Soleus Air)</item>-->
+<!--    <item>小尤鱼(YOOISH)</item>-->
+<!--    <item>奥丽思(Aolisi)</item>-->
+<!--    <item>AAF(AAF)</item>-->
+<!--    <item>阿尔法(Alpha)</item>-->
+<!--    <item>原子伯格(Atom Berg)</item>-->
+<!--    <item>白朗(Brandt)</item>-->
+<!--    <item>蝙蝠(Bat)</item>-->
+<!--    <item>百立(Bai Li)</item>-->
+<!--    <item>大松(Song)</item>-->
+<!--    <item>东宝(Toho)</item>-->
+<!--    <item>德律风根(Telefunken)</item>-->
+<!--    <item>欧洲王牌(Europ Ace)</item>-->
+<!--    <item>飞碟(UFO)</item>-->
+<!--    <item>华格立(Huageli)</item>-->
+<!--    <item>机灵(Clever)</item>-->
+<!--    <item>金龙(Golden Dragon)</item>-->
+<!--    <item>捷宝(Triopo)</item>-->
+<!--    <item>卡帝亚(Kadiya)</item>-->
+<!--    <item>拉斯科(Lascaux)</item>-->
+<!--    <item>乐声(Music)</item>-->
+<!--    <item>马丽(Ma Li)</item>-->
+<!--    <item>美菱(MeiLing)</item>-->
+<!--    <item>品诺(Pinnuo)</item>-->
+<!--    <item>启华(Qihua)</item>-->
+<!--    <item>日彩(Ricai)</item>-->
+<!--    <item>日光(Sunlight)</item>-->
+<!--    <item>SKG(SKG)</item>-->
+<!--    <item>史密斯(Smith)</item>-->
+<!--    <item>顺发(SHUNFA)</item>-->
+<!--    <item>威利(Wiley)</item>-->
+<!--    <item>沃特森(Watson)</item>-->
+<!--    <item>沃尔顿(Walton)</item>-->
+<!--    <item>欣禾(Shinfo)</item>-->
+<!--    <item>小鸭(Duckling)</item>-->
+<!--    <item>麦克维尔(McQuay)</item>-->
+<!--    <item>天加(TICA)</item>-->
+<!--    <item>Origo(Origo)</item>-->
+<!--    <item>绿岛风(Nedfon)</item>-->
+<!--    <item>Aztech(Aztech)</item>-->
+<!--    <item>全部(All)</item>-->
+<!--    <item>其它(Other)</item>-->
+</string-array>
+
+
+</resources>

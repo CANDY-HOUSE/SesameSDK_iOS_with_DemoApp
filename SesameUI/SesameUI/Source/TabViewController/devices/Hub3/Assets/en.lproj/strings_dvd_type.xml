@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="strs_dvd_type">
+         <item> BBK(BBK)-DV-709K</item>
+         <item> BBK(BBK)-RC-136</item>
+         <item> BBK(BBK)-RC019-29</item>
+         <item> BBK(BBK)-DV605K</item>
+         <item> BBK(BBK)-DV-713</item>
+         <item> BBK(BBK)-DV-971</item>
+         <item> BBK(BBK)-DV-991</item>
+         <item> BBK(BBK)-DV-815X</item>
+         <item> BBK(BBK)-DV015</item>
+         <item> BBK(BBK)-DV-973</item>
+         <item> BBK(BBK)-DV603</item>
+         <item> BBK(BBK)-RC-019-02</item>
+         <item> BBK(BBK)-DV997</item>
+         <item> BBK(BBK)-DV967</item>
+         <item> BBK(BBK)-DV981</item>
+         <item> BBK(BBK)-DV701</item>
+         <item> BBK(BBK)-DV973K</item>
+         <item> BBK(BBK)-DV993</item>
+         <item> BBK(BBK)-DV703</item>
+         <item> BBK(BBK)-DV705</item>
+         <item> BBK(BBK)-DV963K</item>
+         <item> BBK(BBK)-DV971</item>
+         <item> BBK(BBK)-DV991</item>
+         <item> BBK(BBK)-DV995</item>
+         <item> BBK(BBK)-DV939K</item>
+         <item> BBK(BBK)-RC027-05</item>
+         <item> BBK(BBK)-RC027-04</item>
+         <item> BBK(BBK)-DV605</item>
+         <item> BBK(BBK)-DV603</item>
+         <item> BBK(BBK)-DV509U</item>
+         <item> BBK(BBK)-DV709K</item>
+         <item> Changhong(Changhong)-DVD-618</item>
+         <item> Changhong(Changhong)-PDVD-950</item>
+         <item> PHILPS(PHILPS)-BDP-2600</item>
+         <item> PHILPS(PHILPS)-BDP-2600-98</item>
+         <item> PHILPS(PHILPS)-BDP-2700</item>
+         <item> PHILPS(PHILPS)-BDP-2700-98</item>
+         <item> PHILPS(PHILPS)-BDP-3000</item>
+         <item> PHILPS(PHILPS)-BDP-3000-93</item>
+         <item> PHILPS(PHILPS)-BDP-3000-94</item>
+         <item> PHILPS(PHILPS)-BDP-3000-98</item>
+         <item> PHILPS(PHILPS)-BDP-3080</item>
+         <item> PHILPS(PHILPS)-BDP-3100-93</item>
+         <item> PHILPS(PHILPS)-BDP-3200</item>
+         <item> PHILPS(PHILPS)-BDP-3200-93</item>
+         <item> PHILPS(PHILPS)-BDP-3200-98</item>
+         <item> PHILPS(PHILPS)-BDP-3250-93</item>
+         <item> PHILPS(PHILPS)-BDP-5100</item>
+         <item> PHILPS(PHILPS)-BDP-5200</item>
+         <item> PHILPS(PHILPS)-BDP-5200K-79</item>
+         <item> PHILPS(PHILPS)-BDP-5200K-93</item>
+         <item> PHILPS(PHILPS)-BDP-7500</item>
+         <item> PHILPS(PHILPS)-BDP-7500-98</item>
+         <item> PHILPS(PHILPS)-BDP-7500SL-98</item>
+         <item> PHILPS(PHILPS)-BDP-7600-12</item>
+         <item> PHILPS(PHILPS)-BDP-7600-93</item>
+         <item> PHILPS(PHILPS)-BDP-9500</item>
+         <item> PHILPS(PHILPS)-BDP-9600</item>
+         <item> PHILPS(PHILPS)-BDP-9600-93</item>
+         <item> PHILPS(PHILPS)-BDP-9600-98</item>
+         <item> PHILPS(PHILPS)-BDP-9600G</item>
+         <item> PHILPS(PHILPS)-BDP-2600</item>
+         <item> PHILPS(PHILPS)-BDP-2600-98</item>
+         <item> PHILPS(PHILPS)-BDP-2700</item>
+         <item> PHILPS(PHILPS)-BDP-2700-98</item>
+         <item> PHILPS(PHILPS)-BDP-3000</item>
+         <item> PHILPS(PHILPS)-BDP-3000-93</item>
+         <item> PHILPS(PHILPS)-BDP-3000-94</item>
+         <item> PHILPS(PHILPS)-BDP-3000-98</item>
+         <item> PHILPS(PHILPS)-BDP-3080</item>
+         <item> PHILPS(PHILPS)-BDP-3100-93</item>
+         <item> PHILPS(PHILPS)-BDP-3200</item>
+         <item> PHILPS(PHILPS)-BDP-3200-93</item>
+         <item> PHILPS(PHILPS)-BDP-3200-98</item>
+         <item> PHILPS(PHILPS)-BDP-3250-93</item>
+         <item> PHILPS(PHILPS)-BDP-5100</item>
+         <item> PHILPS(PHILPS)-BDP-5200</item>
+         <item> PHILPS(PHILPS)-BDP-5200K-79</item>
+         <item> PHILPS(PHILPS)-BDP-5200K-93</item>
+         <item> PHILPS(PHILPS)-BDP-7500</item>
+         <item> PHILPS(PHILPS)-BDP-7500-98</item>
+         <item> PHILPS(PHILPS)-BDP-7500SL-98</item>
+         <item> PHILPS(PHILPS)-BDP-7600-12</item>
+         <item> PHILPS(PHILPS)-BDP-7600-93</item>
+         <item> PHILPS(PHILPS)-BDP-9500</item>
+         <item> PHILPS(PHILPS)-BDP-9600</item>
+         <item> PHILPS(PHILPS)-BDP-9600-93</item>
+         <item> PHILPS(PHILPS)-BDP-9600-98</item>
+         <item> PHILPS(PHILPS)-BDP-9600G</item>
+         <item> PHILPS(PHILPS)-BDP-7500S2</item>
+         <item> PHILPS(PHILPS)-BDP-7500S2</item>
+         <item> PHILPS(Philips)-DVP3386K</item>
+         <item> PHILPS(Philips)-DVP3393</item>
+         <item> PHILPS(Philips)-DVP3250</item>
+         <item> PHILPS(Philips)-DVP3986K</item>
+         <item> PHILPS(Philips)-DVP3588K93</item>
+         <item> PHILPS(Philips)-DVP2320</item>
+         <item> PHILPS(Philips)-DVP3300</item>
+         <item> PHILPS(Philips)-DVP5990</item>
+         <item> PHILPS(Philips)-DVP3800</item>
+         <item> PHILPS(Philips)-DVP3026K</item>
+         <item> PHILPS(Philips)-DVP3146K</item>
+         <item> PHILPS(Philips)-DVP2120K</item>
+         <item> PHILPS(Philips)-BDP3100</item>
+         <item> PHILPS(Philips)-BDP3080</item>
+         <item> PHILPS(Philips)-BDP2700</item>
+         <item> PHILPS(Philips)-BDP270093</item>
+         <item> Hua Lu(Hua Lu)-BDP-0801</item>
+         <item> Hua Lu(Hua Lu)-BDP-0821</item>
+         <item> Hua Lu(Hua Lu)-BDP-0921</item>
+         <item> Hua Lu(Hua Lu)-BDP-0801</item>
+         <item> Hua Lu(Hua Lu)-BDP-0821</item>
+         <item> Hua Lu(Hua Lu)-BDP-0921</item>
+         <item> Hua Lu(Hua Lu)-BDP-1001</item>
+         <item> Hua Lu(Hua Lu)-BDP-2012</item>
+         <item> Hua Lu(Hua Lu)-BDP-2018</item>
+         <item> Hua Lu(Hua Lu)-BDP-2036</item>
+         <item> Hua Lu(Hua Lu)-BDP-2039</item>
+         <item> Hua Lu(Hua Lu)-BDP-2040</item>
+         <item> Hua Lu(Hua Lu)-BDP-2046</item>
+         <item> Hua Lu(Hua Lu)-BDP-HMC9502</item>
+         <item> GIEC(GIEC)-BDP-G3000</item>
+         <item> GIEC(GIEC)-BDP-G3600</item>
+         <item> GIEC(GIEC)-BDP-G3605</item>
+         <item> GIEC(GIEC)-BDP-G3608</item>
+         <item> GIEC(GIEC)-BDP-G4300</item>
+         <item> GIEC(GIEC)-BDP-G4305</item>
+         <item> GIEC(GIEC)-BDP-G4308</item>
+         <item> GIEC(GIEC)-GK-3500</item>
+         <item> GIEC(GIEC)-GK-HD120</item>
+         <item> GIEC(GIEC)-GK-HD120</item>
+         <item> GIEC(GIEC)-LG-BD550</item>
+         <item> GIEC(GIEC)-LG-BD560</item>
+         <item> GIEC(GIEC)-LG-BD620</item>
+         <item> GIEC(GIEC)-LG-BD660</item>
+         <item> GIEC(GIEC)-LG-BD670</item>
+         <item> GIEC(GIEC)-LG-BP120</item>
+         <item> GIEC(GIEC)-LG-BP420</item>
+         <item> GIEC(GIEC)-GK-HD290</item>
+         <item> GIEC(GIEC)-T1</item>
+         <item> GIEC(GIEC)-T2</item>
+         <item> GIEC(GIEC)-T3</item>
+         <item> GIEC(GIEC)-T5</item>
+         <item> GIEC(GIEC)-3603</item>
+         <item> Marantz(Marantz)-BD8002</item>
+         <item> Marantz(Marantz)-UD5005</item>
+         <item> 0PP0(0PP0)-BDP-93</item>
+         <item> 0PP0(0PP0)-BDP-95</item>
+         <item> Samsung(Samsung)-BD-C5500</item>
+         <item> Samsung(Samsung)-BD-C6900</item>
+         <item> Samsung(Samsung)-BD-D5500</item>
+         <item> Samsung(Samsung)-BD-D6500</item>
+         <item> Samsung(Samsung)-BD-E5300</item>
+         <item> Samsung(Samsung)-BD-E5500</item>
+         <item> Samsung(Samsung)-BD-E6500</item>
+         <item> Samsung(Samsung)-BD-P1500</item>
+         <item> Samsung(Samsung)-BD-P1590</item>
+         <item> Samsung(Samsung)-BD-P4600</item>
+         <item> Landscape(Landscape)-DV-99A</item>
+         <item> Landscape(Landscape)-DV-939S</item>
+         <item> Landscape(Landscape)-san4312</item>
+         <item> Landscape(Landscape)-ES8021</item>
+         <item> Panasonic(Panasonic)-DMP-BD30</item>
+         <item> Panasonic(Panasonic)-DMP-BD65</item>
+         <item> Panasonic(Panasonic)-DMP-BD75</item>
+         <item> Panasonic(Panasonic)-DMP-BD90</item>
+         <item> Panasonic(Panasonic)-DMP-BD95</item>
+         <item> Panasonic(Panasonic)-DMP-BDT220GK</item>
+         <item> Panasonic(Panasonic)-DMP-BDT220GN</item>
+         <item> Panasonic(Panasonic)-DMP-BDT300GK</item>
+         <item> Panasonic(Panasonic)-DMP-BDT300GN</item>
+         <item> Panasonic(Panasonic)-DMP-EUR7631150</item>
+         <item> SONY(SONY)-RMT-VB100C</item>
+         <item> SONY(SONY)-BDP-BX10</item>
+         <item> SONY(SONY)-BDP-S185</item>
+         <item> SONY(SONY)-BDP-S270</item>
+         <item> SONY(SONY)-BDP-S350</item>
+         <item> SONY(SONY)-BDP-S360</item>
+         <item> SONY(SONY)-BDP-S370</item>
+         <item> SONY(SONY)-BDP-S380</item>
+         <item> SONY(SONY)-BDP-S470</item>
+         <item> SONY(SONY)-BDP-S485</item>
+         <item> SONY(SONY)-BDP-S590</item>
+         <item> SONY(SONY)-BDP-S780</item>
+         <item> SONY(SONY)-BDP-S790</item>
+         <item> SONY(SONY)-FMP-X10</item>
+         <item> SONY(SONY)-BDP-S5500</item>
+         <item> SONY(SONY)-BDV-IS1000</item>
+         <item> SONY(SONY)-BDV-T10</item>
+         <item> SONY(SONY)-BDV-IS1000</item>
+         <item> SONY(SONY)-BDV-T10</item>
+         <item> SONY(SONY)-BDV-IS1000</item>
+         <item> SONY(SONY)-BDV-T10</item>
+         <item> SONY(SONY)-RMT-B107C</item>
+         <item> SONY(SONY)-RMT-B107C</item>
+         <item> Malata(Malata)-DVP-393</item>
+         <item> Malata(Malata)-DVP-801</item>
+         <item> Malata(Malata)-MBD-901</item>
+         <item> Malata(Malata)-DVP-808</item>
+         <item> Malata(Malata)-MBD-908</item>
+         <item> Malata(Malata)-RC-221</item>
+         <item> Malata(Malata)-DVP-816</item>
+         <item> Malata(Malata)-RC-221X</item>
+         <item> Malata(Malata)-RC-216</item>
+         <item> Malata(Malata)-RC-707</item>
+         <item> Malata(Malata)-DVP-823</item>
+         <item> Malata(Malata)-DVP-890</item>
+         <item> Modern(Modern)-HD-888</item>
+         <item> Modern(Modern)-YD-888</item>
+         <item> SAST(SAST)-SAST-A06</item>
+         <item> SAST(SAST)-AEP-803</item>
+         <item> SAST(SAST)-SA-005</item>
+         <item> SAST(SAST)-SA-102</item>
+         <item> SAST(SAST)-SA-109</item>
+         <item> SAST(SAST)-SA-205</item>
+         <item> SAST(SAST)-SAST-689</item>
+         <item> SAST(SAST)-ST-263</item>
+         <item> SAST(SAST)-ST-269</item>
+         <item> SAST(SAST)-ST-800</item>
+         <item> SAST(SAST)-ST-838</item>
+         <item> SAST(SAST)-AEP-816</item>
+         <item> SAST(SAST)-SA-81</item>
+         <item> SAST(SAST)-SAST-2560</item>
+         <item> SAST(SAST)-AEP-933</item>
+         <item> SAST(SAST)-AEP-936</item>
+         <item> SAST(SAST)-AEP-987</item>
+         <item> SAST(Yushchenko)-099</item>
+         <item> SAST(Yushchenko)-098</item>
+         <item> SAST(Yushchenko)-058a</item>
+         <item> SAST(Yushchenko)-116</item>
+         <item> SAST(Yushchenko)-229</item>
+         <item> SAST(Yushchenko)-999</item>
+         <item> SAST(Yushchenko)-SM-1</item>
+         <item> SAST(Yushchenko)-ST323</item>
+         <item> SAST(Yushchenko)-ST339</item>
+         <item> SAST(Yushchenko)-ST688</item>
+         <item> SAST(Yushchenko)-AEP-966</item>
+         <item> Amoi(Amoi)-DVD-8210</item>
+         <item> Amoi(Amoi)-P-210</item>
+         <item> Amoi(Amoi)-DVD-828</item>
+         <item> Amoi(Amoi)-NDP-9200</item>
+         <item> Amoi(Amoi)-NDP-9200</item>
+         <item> Amoi(Amoi)-V922</item>
+         <item> LG(LG)-RM-D657</item>
+         <item> Kai Bor(Kai Bor)-K670I</item>
+         <item> Kai Bor(Kai Bor)-K660I</item>
+         <item> Kai Bor(Kai Bor)-K360I</item>
+         <item> Kai Bor(Kai Bor)-K610I</item>
+         <item> Kai Bor(Kai Bor)-K10</item>
+         <item> Kai Bor(Kai Bor)-H1055PLUS</item>
+         <item> Kai Bor(Kai Bor)-K370I</item>
+         <item> The lake(The lake)-DV-903</item>
+         <item> The lake(The lake)-DVD3043</item>
+         <item> The lake(The lake)-DVD3030</item>
+         <item> The lake(The lake)-DVD3031</item>
+         <item> The lake(The lake)-DVD3033</item>
+         <item> The lake(The lake)-DVD3045</item>
+         <item> The lake(The lake)-IRC-X88</item>
+         <item> The lake(The lake)-ALK-X88(FN)</item>
+         <item> The lake(The lake)-IRC-X88(FN)</item>
+         <item> Qisheng(Qisheng)-DVD8131</item>
+         <item> Qisheng(Qisheng)-DVD8122</item>
+         <item> Qisheng(Qisheng)-IRC-8122B</item>
+         <item> Qisheng(Qisheng)-IRC-926</item>
+         <item> Avlight(Avlight)-DT9A</item>
+         <item> Avlight(Avlight)-D95A</item>
+         <item> Avlight(Avlight)-T9000</item>
+         <item> Avlight(Avlight)-T20AW</item>
+         <item> Avlight(Pioneer)-LX88</item>
+         <item> Egreat(Egreat)-A10</item>
+
+
+<!--         <item> BBK(BBK)</item>-->
+<!--               <item> 金正(Kim)</item>-->
+<!--               <item>TCL(TCL)</item>-->
+<!--               <item> 长虹(Changhong)</item>-->
+<!--               <item> 创维(Skyworth)</item>-->
+<!--               <item>大宇(Da Yu)</item>-->
+<!--               <item> 东芝(T0SHIBA)</item>-->
+<!--               <item> PHILPS(Philips)</item>-->
+<!--               <item> 海尔(Haier)</item>-->
+<!--               <item> 海信(Hisense)</item>-->
+<!--               <item> GIEC(GIEC)</item>-->
+<!--               <item> 康佳(Konka)</item>-->
+<!--               <item> 奇声(Qisheng)</item>-->
+<!--               <item> 日立(Hitachi)</item>-->
+<!--               <item> Samsung(Samsung)</item>-->
+<!--               <item> 三洋(Sanyo)</item>-->
+<!--               <item> Panasonic(Panasonic)</item>-->
+<!--               <item> SONY(Sony)</item>-->
+<!--               <item> Malata(Malata)</item>-->
+<!--               <item> 夏普(Sharp)</item>-->
+<!--               <item> 夏新(Amoi)</item>-->
+<!--               <item> SAST(Yushchenko)</item>-->
+<!--               <item> 新科(Shinco)</item>-->
+<!--               <item> 其它品牌(Other brands)</item>-->
+<!--               <item> 爱华(Aiwa)</item>-->
+<!--               <item> 宝立创(Polytron)</item>-->
+<!--               <item> 三垦(sanken)</item>-->
+<!--               <item>LG(LG)</item>-->
+<!--               <item> 海得曼(ADVANTE)</item>-->
+<!--               <item> ADVANCE(ADVANCE)</item>-->
+<!--               <item> 东盟(AICO)</item>-->
+<!--               <item> 爱子(AIKO)</item>-->
+<!--               <item> 阿基拉(AKIRA)</item>-->
+<!--               <item>ALLSONIC(ALLSONIC)</item>-->
+<!--               <item> 亚马逊(AMAZONE)</item>-->
+<!--               <item> Arashi(Arashi)</item>-->
+<!--               <item> 晨曦(ASAKI)</item>-->
+<!--               <item>ASATRON(ASATRON)</item>-->
+<!--               <item>AZAYAKA(AZAYAKA)</item>-->
+<!--               <item> 古巴(BCA)</item>-->
+<!--               <item>BDXBB(BDXBB)</item>-->
+<!--               <item> 蓝天(BLUESKY)</item>-->
+<!--               <item> 意大利(BOMBA)</item>-->
+<!--               <item>BRATRON/BRAVIA(BRATRON/BRAVIA)</item>-->
+<!--               <item> Caesar(Caesar)</item>-->
+<!--               <item> 加州(CALIFORNIA)</item>-->
+<!--               <item> 科比(COBY)</item>-->
+<!--               <item> 加利福(CMC)</item>-->
+<!--               <item> 水晶(CRYSTAL)</item>-->
+<!--               <item>CYBERGREEN(CYBERGREEN)</item>-->
+<!--               <item> 赛博(CYBERTRON)</item>-->
+<!--               <item>DAEWO(DAEWO)</item>-->
+<!--               <item> 大建(DAIKEN)</item>-->
+<!--               <item> 泰达(DAITA)</item>-->
+<!--               <item>DELTRONIC(DELTRONIC)</item>-->
+<!--               <item> 卫星(DIGISAT)</item>-->
+<!--               <item> DVD VIDEO(DVD VIDEO)</item>-->
+<!--               <item> DVS(DVS)</item>-->
+<!--               <item> ELECTRIC(ELECTRIC)</item>-->
+<!--               <item> 精英(ELITE)</item>-->
+<!--               <item> EPROM(EPROM)</item>-->
+<!--               <item> 专家(EXPERT)</item>-->
+<!--               <item> EXTEND(EXTEND)</item>-->
+<!--               <item> FIRSTLINE(FIRSTLINE)</item>-->
+<!--               <item> 弗龙(FRONT)</item>-->
+<!--               <item>FUJIELECTRIC(FUJIELECTRIC)</item>-->
+<!--               <item> 富士山(FUJIYAMA)</item>-->
+<!--               <item> 伽玛(GAMMA)</item>-->
+<!--               <item> 富瑞驰(FURICHI)</item>-->
+<!--               <item> 宝石(GEM)</item>-->
+<!--               <item> GMC(GMC)</item>-->
+<!--               <item> GNG(GNG)</item>-->
+<!--               <item>HANNOCHS(HANNOCHS)</item>-->
+<!--               <item>HATEH(HATEH)</item>-->
+<!--               <item> HIMITSU(HIMITSU)</item>-->
+<!--               <item>HITARO(HITARO)</item>-->
+<!--               <item> 霍伊(HOYE)</item>-->
+<!--               <item> Modern(HYUNDAI)</item>-->
+<!--               <item> 一番(ICHIBAN)</item>-->
+<!--               <item>ICHICO(ICHICO)</item>-->
+<!--               <item>ICHITECH(ICHITECH)</item>-->
+<!--               <item>Iluv(Iluv)</item>-->
+<!--               <item> 英诺(INNOVO)</item>-->
+<!--               <item> JAPAN(JAPAN)</item>-->
+<!--               <item> 胜利(JVC)</item>-->
+<!--               <item> 胜利VCD(JVC VCD)</item>-->
+<!--               <item> 金子(KANEKO)</item>-->
+<!--               <item> 河内(KAWACHI)</item>-->
+<!--               <item> KCL(KCL)</item>-->
+<!--               <item>KENDWAY(KENDWAY)</item>-->
+<!--               <item> KENG(KENG)</item>-->
+<!--               <item> 建伍(KENWOOD)</item>-->
+<!--               <item> 小泉(KOIZUMI)</item>-->
+<!--               <item> KTM(KTM)</item>-->
+<!--               <item> 蓝瑟(LANCER)</item>-->
+<!--               <item> LSI(LSI)</item>-->
+<!--               <item> 福星(LUCKY STAR)</item>-->
+<!--               <item> 马鲁尼(MARUNI)</item>-->
+<!--               <item>MARUSHIN(MARUSHIN)</item>-->
+<!--               <item> MATRIX(MATRIX)</item>-->
+<!--               <item> 松井(MATSUI)</item>-->
+<!--               <item> 松日(MATSUNICHI)</item>-->
+<!--               <item> 万朗(MAXTRON)</item>-->
+<!--               <item> 马亚卡(MAYAKA)</item>-->
+<!--               <item> 宏大(MEGA)</item>-->
+<!--               <item> 美图(MITO)</item>-->
+<!--               <item>MITOCHIBA(MITOCHIBA)</item>-->
+<!--               <item> 三越(MITSUKOSHI)</item>-->
+<!--               <item> Multiface(Multiface)</item>-->
+<!--               <item> 中井(NAKAI)</item>-->
+<!--               <item>NANAOTECH(NANAOTECH)</item>-->
+<!--               <item> ODAIBA(ODAIBA)</item>-->
+<!--               <item>OKAIDO(OKAIDO)</item>-->
+<!--               <item> 潘塞(PANZER)</item>-->
+<!--               <item>PARDIO(PARDIO)</item>-->
+<!--               <item> 白金(PLATINUM)</item>-->
+<!--               <item> 先锋(PIONEER)</item>-->
+<!--               <item> 普卢斯(PLUS)</item>-->
+<!--               <item>PolyVision(PolyVision)</item>-->
+<!--               <item> 昆腾(QUANTUM)</item>-->
+<!--               <item> 皇家(ROYAL)</item>-->
+<!--               <item> RINRE(RINRE)</item>-->
+<!--               <item> 罗弗(ROVER)</item>-->
+<!--               <item>SASUKI(SASUKI)</item>-->
+<!--               <item>SHASUGI(SHASUGI)</item>-->
+<!--               <item>SIEKO(SIEKO)</item>-->
+<!--               <item>SGK(SGK)</item>-->
+<!--               <item> 白银(SILVER/SKYDRIVE)</item>-->
+<!--               <item>SINYOKU(SINYOKU)</item>-->
+<!--               <item>SOUGAU(SOUGAU)</item>-->
+<!--               <item> 美裕(STARPLUS)</item>-->
+<!--               <item> 斯特尔(STELLE)</item>-->
+<!--               <item>SUNSONIC(SUNSONIC)</item>-->
+<!--               <item> SUPERSAT(SUPERSAT)</item>-->
+<!--               <item> 大正(TAISHO)</item>-->
+<!--               <item> 海人草(TANAKA)</item>-->
+<!--               <item>TEKYO(TEKYO)</item>-->
+<!--               <item>TICSONIC(TICSONIC)</item>-->
+<!--               <item> 托丽(TORI)</item>-->
+<!--               <item> 联合(UNIFY)</item>-->
+<!--               <item>UNISAT(UNISAT)</item>-->
+<!--               <item>VEGATRON(VEGATRON)</item>-->
+<!--               <item> Venon(Venon)</item>-->
+<!--               <item> 沃尔(VIAR)</item>-->
+<!--               <item> 维玛(VIMA)</item>-->
+<!--               <item> 维尔康姆(VIOCOM)</item>-->
+<!--               <item>VIOTEC(VIOTEC)</item>-->
+<!--               <item>VISHIBA(VISHIBA)</item>-->
+<!--               <item> 维特纶(VITRON)</item>-->
+<!--               <item> 网视达(WORLDSTAR)</item>-->
+<!--               <item>X-PERT(X-PERT)</item>-->
+<!--               <item>YAMASTAR(YAMASTAR)</item>-->
+<!--               <item> 吉川(YOSHIKAWA)</item>-->
+<!--               <item> 荣代(YUNDAI)</item>-->
+<!--               <item>ZYREX(ZYREX)</item>-->
+<!--               <item> 美孚(DVD MOBIL)</item>-->
+<!--               <item>PORTABLE(PORTABLE)</item>-->
+<!--               <item> Hua Lu(Hua Lu)</item>-->
+<!--               <item> 0PP0(0PP0)</item>-->
+<!--               <item> Landscape(Landscape)</item>-->
+<!--               <item> 艾韵(AIYun)</item>-->
+<!--               <item> AKISHI(AKISHI)</item>-->
+<!--               <item> AKUSTIC(AKUSTIC)</item>-->
+<!--               <item> 安桥(Onkyo)</item>-->
+<!--               <item> 澳德龙(AODELONG)</item>-->
+<!--               <item> 澳迪尔(AODIER)</item>-->
+<!--               <item> Apex(Apex)</item>-->
+<!--               <item> AVLIGTH(AVLIGTH)</item>-->
+<!--               <item> 铂冠(BOGUAN)</item>-->
+<!--               <item> 布兰特(BULANTE)</item>-->
+<!--               <item> 彩星(CAIXING)</item>-->
+<!--               <item> CLASSIC(CLASSIC)</item>-->
+<!--               <item> CYBERHOME(CYBERHOME)</item>-->
+<!--               <item> D032(D032)</item>-->
+<!--               <item> 天龙(DENON)</item>-->
+<!--               <item> 德赛(DESAY)</item>-->
+<!--               <item> DIGIXME(DIGIXME)</item>-->
+<!--               <item> 帝和(DIHE)</item>-->
+<!--               <item> 鼎天(Dingtian)</item>-->
+<!--               <item> DVD(DVD)</item>-->
+<!--               <item> 艾丽卡(ELEKTRA)</item>-->
+<!--               <item> EVD2(EVD2)</item>-->
+<!--               <item> 奋达(FENDA)</item>-->
+<!--               <item> 费舍尔(FISHER)</item>-->
+<!--               <item> 爱多(AIDUO)</item>-->
+<!--               <item> 融合(FUSSION)</item>-->
+<!--               <item> 歌王(King)</item>-->
+<!--               <item> 高威达(GOVIDEO)</item>-->
+<!--               <item> GPX(GPX)</item>-->
+<!--               <item> HARMANKARDON(HARMANKARDON)</item>-->
+<!--               <item> 海特(HITER)</item>-->
+<!--               <item> 华宝(Hua Bao)</item>-->
+<!--               <item> 画佳(Huajia)</item>-->
+<!--               <item> 金格王牌(Ginger)</item>-->
+<!--               <item> 经纬(JINGWEI)</item>-->
+<!--               <item> 金威格(Kingwig)</item>-->
+<!--               <item> 巨高(Giant high)</item>-->
+<!--               <item> JX8504(JX8504)</item>-->
+<!--               <item> JX8602B(JX8602B)</item>-->
+<!--               <item> 科泰(Ketai)</item>-->
+<!--               <item> KM122(KM122)</item>-->
+<!--               <item> KY1215(KY1215)</item>-->
+<!--               <item> 拉斐特(LAFAYETTE)</item>-->
+<!--               <item> LASONIC(LASONIC)</item>-->
+<!--               <item> 灵数码(LINGSHUMA)</item>-->
+<!--               <item> LINITRON(LINITRON)</item>-->
+<!--               <item> 龙之牌(LONGZHIPAI)</item>-->
+<!--               <item> 雄伟(MAJESTIC)</item>-->
+<!--               <item> MEGATANSS(MEGATANSS)</item>-->
+<!--               <item> 鸣天(Mingday)</item>-->
+<!--               <item> 三井(MITSUI)</item>-->
+<!--               <item> MITZU(MITZU)</item>-->
+<!--               <item> MTB(MTB)</item>-->
+<!--               <item> 中道(NAKAMICHI)</item>-->
+<!--               <item> 宏盛(NORCENT)</item>-->
+<!--               <item> 欧控(OKON)</item>-->
+<!--               <item> OPPO(OPPO)</item>-->
+<!--               <item> 派高(PAIGAO)</item>-->
+<!--               <item> 飞歌(PHILCO)</item>-->
+<!--               <item> POWERSOUND(POWERSOUND)</item>-->
+<!--               <item> 天鸿(TianHong)</item>-->
+<!--               <item> RCA(RCA)</item>-->
+<!--               <item> 三凌(Pajero)</item>-->
+<!--               <item> 上广电(SVA)</item>-->
+<!--               <item> 狮龙(Bossini)</item>-->
+<!--               <item> SMC(SMC)</item>-->
+<!--               <item> 松雅(Good luck)</item>-->
+<!--               <item> SONICO(SONICO)</item>-->
+<!--               <item> SOUNDTRACK(SOUNDTRACK)</item>-->
+<!--               <item> Supersonic(Supersonic)</item>-->
+<!--               <item> 汤姆逊(Thomson)</item>-->
+<!--               <item> TEAC(TEAC)</item>-->
+<!--               <item> 顶科(TOPTEC)</item>-->
+<!--               <item> TP(TP)</item>-->
+<!--               <item> 优利康(UNITRON)</item>-->
+<!--               <item> VCD2(VCD2)</item>-->
+<!--               <item> VIDEOCD(VIDEOCD)</item>-->
+<!--               <item> VOX(VOX)</item>-->
+<!--               <item> 万宝(WANBAO)</item>-->
+<!--               <item> 万燕(Wan Yan)</item>-->
+<!--               <item> WEGATANSS(WEGATANSS)</item>-->
+<!--               <item> 威发(Granville)</item>-->
+<!--               <item> 先派(XIANPAI)</item>-->
+<!--               <item> 熊猫(Panda)</item>-->
+<!--               <item> 雅马哈(YAMAHA)</item>-->
+<!--               <item> 山川(YAMAKAWA)</item>-->
+<!--               <item> 易尚(YISHANG)</item>-->
+<!--               <item> 中兴(ZTE)</item>-->
+<!--               <item> ZONDA(ZONDA)</item>-->
+<!--               <item>哈曼顿(HarmanKardon)</item>-->
+<!--               <item>HLH(HLH)</item>-->
+<!--               <item>ADA(ADA)</item>-->
+<!--               <item>爱浪(Avlight)</item>-->
+<!--               <item>爱琴(ADCOM)</item>-->
+<!--               <item>阿拉贡(Aragon)</item>-->
+<!--               <item>奥利佳(Oliga)</item>-->
+<!--               <item>Dwin(Dwin)</item>-->
+<!--               <item>哈曼卡顿(Harman Kardon)</item>-->
+<!--               <item>皇冠(An crown)</item>-->
+<!--               <item>莱斯康(Lexicon)</item>-->
+<!--               <item>路遥(Lu Yao)</item>-->
+<!--               <item>麦景图(Mai Jingtu)</item>-->
+<!--               <item>马兰士(Marantz)</item>-->
+<!--               <item>奇力(Kellett)</item>-->
+<!--               <item>Sears(Sears)</item>-->
+<!--               <item>Sima(Sima)</item>-->
+<!--               <item>Victor(Victor)</item>-->
+<!--               <item>Little bee(Little bee)</item>-->
+<!--               <item>British treasure(British treasure)</item>-->
+<!--               <item>阿尔派(ALPINE)</item>-->
+<!--               <item>爱国者(aigo)</item>-->
+<!--               <item>艾森(ais)</item>-->
+<!--               <item>艾特铭客(Ming Ke Aite)</item>-->
+<!--               <item>AMC(AMC)</item>-->
+<!--               <item>Amstrad(Amstrad)</item>-->
+<!--               <item>奥力(Aoli)</item>-->
+<!--               <item>奥特蓝星(Altec lansing)</item>-->
+<!--               <item>奥特尼斯(Ott Kniss)</item>-->
+<!--               <item>ARC(ARC)</item>-->
+<!--               <item>Audio Access(Audio Access)</item>-->
+<!--               <item>AudioSource(AudioSource)</item>-->
+<!--               <item>B K(B K)</item>-->
+<!--               <item>八达(Bada)</item>-->
+<!--               <item>Bang Olufsen(Bang amp;Olufsen)</item>-->
+<!--               <item>宝丽音(BaoLiyin)</item>-->
+<!--               <item>奔腾(BNTN)</item>-->
+<!--               <item>BMB(BMB)</item>-->
+<!--               <item>Bogen(Bogen)</item>-->
+<!--               <item>博士(bose)</item>-->
+<!--               <item>波士顿(Boston Acoustics)</item>-->
+<!--               <item>Britania(Britania)</item>-->
+<!--               <item>California Audio Labs(California Audio Labs)</item>-->
+<!--               <item>Chiro(Chiro)</item>-->
+<!--               <item>创新(Innovation)</item>-->
+<!--               <item>CON(CON)</item>-->
+<!--               <item>丹尼克斯(Dan Nikos)</item>-->
+<!--               <item>丹特声(Dante sound)</item>-->
+<!--               <item>The eagle(The eagle)</item>-->
+<!--               <item>DCS(DCS)</item>-->
+<!--               <item>德仕(De Shi)</item>-->
+<!--               <item>蒂雅克(Teac)</item>-->
+<!--               <item>DSE(DSE)</item>-->
+<!--               <item>The ear of God(The ear of God)</item>-->
+<!--               <item>发路达(FA Lu Da)</item>-->
+<!--               <item>Fonmix(Fonmix)</item>-->
+<!--               <item>Fisher(Fisher)</item>-->
+<!--               <item>Fostex(Fostex)</item>-->
+<!--               <item>高飞(Goofy)</item>-->
+<!--               <item>GE(GE)</item>-->
+<!--               <item>根德(Gand)</item>-->
+<!--               <item>Getner(Getner)</item>-->
+<!--               <item>Gradiente(Gradiente)</item>-->
+<!--               <item>HNM(HNM)</item>-->
+<!--               <item>The sink(The sink)</item>-->
+<!--               <item>惠威(Hivi)</item>-->
+<!--               <item>湖山音响(Hushan Audio)</item>-->
+<!--               <item>IFIMAX(IFIMAX)</item>-->
+<!--               <item>Integra(Integra)</item>-->
+<!--               <item>JBL(JBL)</item>-->
+<!--               <item>健伍(Kenwood)</item>-->
+<!--               <item>健亚(Sub health)</item>-->
+<!--               <item>骄阳(Scorching Sun)</item>-->
+<!--               <item>Posture(Posture)</item>-->
+<!--               <item>霍奇斯(Hodges)</item>-->
+<!--               <item>Kai Bor(Kai Bor)</item>-->
+<!--               <item>KDS(KDS)</item>-->
+<!--               <item>Kustom(Kustom)</item>-->
+<!--               <item>莱福(Laifu)</item>-->
+<!--               <item>莲花(Lotus)</item>-->
+<!--               <item>力仕(Force Shi)</item>-->
+<!--               <item>丽音(NICAM)</item>-->
+<!--               <item>丽尊(Lees)</item>-->
+<!--               <item>Lumagen(Lumagen)</item>-->
+<!--               <item>罗技(Logitech)</item>-->
+<!--               <item>马格兰(Ma Gelan)</item>-->
+<!--               <item>麦博(Microlab)</item>-->
+<!--               <item>麦博梵高(Mai Bo VanGhon)</item>-->
+<!--               <item>麦拿伦(McLaren)</item>-->
+<!--               <item>马克莱文森(Mark Levinson)</item>-->
+<!--               <item>罗孚(Rover)</item>-->
+<!--               <item>美声(Bel)</item>-->
+<!--               <item>美时(United States)</item>-->
+<!--               <item>茗发(Ming fa)</item>-->
+<!--               <item>MOCHA(MOCHA)</item>-->
+<!--               <item>摩托罗拉(Motorola)</item>-->
+<!--               <item>TMX(TMX)</item>-->
+<!--               <item>NAD(NAD)</item>-->
+<!--               <item>奈尔思(Nails)</item>-->
+<!--               <item>NEC(NEC)</item>-->
+<!--               <item>NOD(NOD)</item>-->
+<!--               <item>欧迪福斯(Audiovox)</item>-->
+<!--               <item>讴歌(Acura)</item>-->
+<!--               <item>翩美(Beautiful beauty)</item>-->
+<!--               <item>Pule Sound(Pule Sound)</item>-->
+<!--               <item>普斯(Staples)</item>-->
+<!--               <item>乾龙盛(Qian Longsheng)</item>-->
+<!--               <item>卡维(Calve)</item>-->
+<!--               <item>卡西欧(Casio)</item>-->
+<!--               <item>Revox(Revox)</item>-->
+<!--               <item>日高(NIKKO)</item>-->
+<!--               <item>锐高(Sharp High)</item>-->
+<!--               <item>Russound(Russound)</item>-->
+<!--               <item>瑞轩(Rui Xuan)</item>-->
+<!--               <item>桑巴达(Sambada)</item>-->
+<!--               <item>三菱(Mitsubishi)</item>-->
+<!--               <item>圣歌(Chant)</item>-->
+<!--               <item>声光(Acousto Optic)</item>-->
+<!--               <item>司特朗(Strand)</item>-->
+<!--               <item>Technics(Technics)</item>-->
+<!--               <item>天籁(Sounds Of Nature)</item>-->
+<!--               <item>三逸(Three Escape)</item>-->
+<!--               <item>天韵(Tianyun)</item>-->
+<!--               <item>铁三角(The Iron Triangle)</item>-->
+<!--               <item>Wadia(Wadia)</item>-->
+<!--               <item>威格(Zweig)</item>-->
+<!--               <item>威力登(Power Board)</item>-->
+<!--               <item>丽晶(Regent)</item>-->
+<!--               <item>西凡尼亚(Sylvania)</item>-->
+<!--               <item>雅迪(HARTING)</item>-->
+<!--               <item>雅佳(Akai)</item>-->
+<!--               <item>雅俊(Ya Jun)</item>-->
+<!--               <item>雅兰仕(Alans)</item>-->
+<!--               <item>影雅(Shadow Ya)</item>-->
+<!--               <item>Turn Right(Turn Right)</item>-->
+<!--               <item>悦辰(Yue Chen)</item>-->
+<!--               <item>Zenith(Zenith)</item>-->
+<!--               <item>钟沈(Zhong Shen)</item>-->
+<!--               <item>R^YSGEM(R^YSGEM)</item>-->
+<!--               <item>全部(All)</item>-->
+<!--               <item>其它(Other)</item>-->
+<!--               <item>BAZOMBA(BAZOMBA)</item>-->
+<!--               <item>data(data)</item>-->
+<!--               <item>萨奈(SANEX)</item>-->
+<!--               <item>3M(3M)</item>-->
+<!--               <item>喜事来(An occasion to)</item>-->
+<!--               <item>爱尔达(Love)</item>-->
+<!--               <item>爱家乐(Focus on music)</item>-->
+<!--               <item>艾默生(Emerson)</item>-->
+<!--               <item>爱斯乐(Love, joy)</item>-->
+<!--               <item>The lake(The lake)</item>-->
+<!--               <item>宝丽莱(polaroid)</item>-->
+<!--               <item>popcorn(popcorn)</item>-->
+<!--               <item>博土(Rich soil)</item>-->
+<!--               <item>Broksonic(Broksonic)</item>-->
+<!--               <item>Escient(Escient)</item>-->
+<!--               <item>福柰(F Nai)</item>-->
+<!--               <item>富士机电(Fuji electromechanical)</item>-->
+<!--               <item>高士达(lg)</item>-->
+<!--               <item>海博(Hai bo)</item>-->
+<!--               <item>惠普(HP)</item>-->
+<!--               <item>海美迪(HIMEDIA)</item>-->
+<!--               <item>Homita(Homita)</item>-->
+<!--               <item>华硕(asus)</item>-->
+<!--               <item>lntegra(lntegra)</item>-->
+<!--               <item>Jaton(Jaton)</item>-->
+<!--               <item>捷威(gateway)</item>-->
+<!--               <item>JNC(JNC)</item>-->
+<!--               <item>乐华(focus)</item>-->
+<!--               <item>迈特(matt)</item>-->
+<!--               <item>美国网件(The United States netgear)</item>-->
+<!--               <item>美丽安(The beautiful)</item>-->
+<!--               <item>Nameplates(Nameplates)</item>-->
+<!--               <item>明基(benq)</item>-->
+<!--               <item>MINIX(MINIX)</item>-->
+<!--               <item>Proscan(Proscan)</item>-->
+<!--               <item>卡瓦奇(Slip)</item>-->
+<!--               <item>伽马(gamma)</item>-->
+<!--               <item>上佳(good)</item>-->
+<!--               <item>世纪格雷(The gray)</item>-->
+<!--               <item>Digital satellite(Digital satellite)</item>-->
+<!--               <item>特易购(Tesco)</item>-->
+<!--               <item>图美(Figure beauty)</item>-->
+<!--               <item>拓步(step)</item>-->
+<!--               <item>威联通(Wei unicom)</item>-->
+<!--               <item>微软(Microsoft)</item>-->
+<!--               <item>Western digital(Western digital)</item>-->
+<!--               <item>希捷(Seagate)</item>-->
+<!--               <item>Xtreamer(Xtreamer)</item>-->
+<!--               <item>雅虎(Yahoo)</item>-->
+<!--               <item>亿格瑞(Egreat)</item>-->
+<!--               <item>忆捷(Yi jie)</item>-->
+<!--               <item>优蓝博(Optimal rambo)</item>-->
+<!--               <item>优群(Optimal group)</item>-->
+<!--               <item>MHZ(MHZ)</item>-->
+<!--               <item>志科(Tzu chi branch)</item>-->
+<!--               <item>碧维视(BEVIX)</item>-->
+<!--               <item>ACL(ACL)</item>-->
+<!--               <item>AEG(AEG)</item>-->
+<!--               <item>AMTC(AMTC)</item>-->
+<!--               <item>AMW(AMW)</item>-->
+<!--               <item>UBX(UBX)</item>-->
+<!--               <item>XBox(XBox)</item>-->
+<!--               <item>Ac Ryan(Ac Ryan)</item>-->
+<!--               <item>Accurian(Accurian)</item>-->
+<!--               <item>Acoustic Research(Acoustic Research)</item>-->
+<!--               <item>Acoustic Solutions(Acoustic Solutions)</item>-->
+<!--               <item>澳威格(Aoweige)</item>-->
+<!--               <item>Arrgo(Arrgo)</item>-->
+<!--               <item>Astone(Astone)</item>-->
+<!--               <item>Audiotone(Audiotone)</item>-->
+<!--               <item>Auhtech(Auhtech)</item>-->
+<!--               <item>Buffalo(Buffalo)</item>-->
+<!--               <item>Calypso(Calypso)</item>-->
+<!--               <item>Cambridge Audio(Cambridge Audio)</item>-->
+<!--               <item>Cambridge Soundworks(Cambridge Soundworks)</item>-->
+<!--               <item>Cary Audio Design(Cary Audio Design)</item>-->
+<!--               <item>Centeios(Centeios)</item>-->
+<!--               <item>Cirago(Cirago)</item>-->
+<!--               <item>Cirago TV(Cirago TV)</item>-->
+<!--               <item>Citizen(Citizen)</item>-->
+<!--               <item>Craig(Craig)</item>-->
+<!--               <item>Curtis Mathes(Curtis Mathes)</item>-->
+<!--               <item>大同(tatung)</item>-->
+<!--               <item>Diamond Vision(Diamond Vision)</item>-->
+<!--               <item>Digix Media(Digix Media)</item>-->
+<!--               <item>Durabrand(Durabrand)</item>-->
+<!--               <item>Element Electronics(Element Electronics)</item>-->
+<!--               <item>Eminent(Eminent)</item>-->
+<!--               <item>Envive(Envive)</item>-->
+<!--               <item>ESA(ESA)</item>-->
+<!--               <item>Farenheit(Farenheit)</item>-->
+<!--               <item>Freecom(Freecom)</item>-->
+<!--               <item>Fusion(Fusion)</item>-->
+<!--               <item>Go Video(Go Video)</item>-->
+<!--               <item>iNeXT(iNeXT)</item>-->
+<!--               <item>INOi(INOi)</item>-->
+<!--               <item>Jadoo(Jadoo)</item>-->
+<!--               <item>Jensen(Jensen)</item>-->
+<!--               <item>Jwin(Jwin)</item>-->
+<!--               <item>kaleidescape(kaleidescape)</item>-->
+<!--               <item>KLH(KLH)</item>-->
+<!--               <item>KLH Audio Systems(KLH Audio Systems)</item>-->
+<!--               <item>Koss(Koss)</item>-->
+<!--               <item>Legacy(Legacy)</item>-->
+<!--               <item>LG Zenith(LG Zenith)</item>-->
+<!--               <item>Lloyd(Lloyd)</item>-->
+<!--               <item>Magnasonic(Magnasonic)</item>-->
+<!--               <item>Magnavox(Magnavox)</item>-->
+<!--               <item>Memorex(Memorex)</item>-->
+<!--               <item>Memorex GPX(Memorex GPX)</item>-->
+<!--               <item>Momitsu(Momitsu)</item>-->
+<!--               <item>Mondial(Mondial)</item>-->
+<!--               <item>Mvix(Mvix)</item>-->
+<!--               <item>NEO(NEO)</item>-->
+<!--               <item>NexxTech(NexxTech)</item>-->
+<!--               <item>Nickelodeon(Nickelodeon)</item>-->
+<!--               <item>Nu-Tec(Nu-Tec)</item>-->
+<!--               <item>Nuvo(Nuvo)</item>-->
+<!--               <item>Olive(Olive)</item>-->
+<!--               <item>Oritron(Oritron)</item>-->
+<!--               <item>Pivos(Pivos)</item>-->
+<!--               <item>Power Acoustik(Power Acoustik)</item>-->
+<!--               <item>PS Audio(PS Audio)</item>-->
+<!--               <item>普乐士(Pulex)</item>-->
+<!--               <item>Pyle(Pyle)</item>-->
+<!--               <item>清华同方(tongfang)</item>-->
+<!--               <item>清华紫光(UNIS)</item>-->
+<!--               <item>Qwestar(Qwestar)</item>-->
+<!--               <item>Rapsody(Rapsody)</item>-->
+<!--               <item>ReQuest(ReQuest)</item>-->
+<!--               <item>Rilo(Rilo)</item>-->
+<!--               <item>SageTV(SageTV)</item>-->
+<!--               <item>Samsonic(Samsonic)</item>-->
+<!--               <item>Sensory Scienc(Sensory Scienc)</item>-->
+<!--               <item>Silvercrest(Silvercrest)</item>-->
+<!--               <item>Sinotec(Sinotec)</item>-->
+<!--               <item>Sitecom(Sitecom)</item>-->
+<!--               <item>SkyVision(SkyVision)</item>-->
+<!--               <item>索爱(Sony Ericsson)</item>-->
+<!--               <item>索佳(suojia)</item>-->
+<!--               <item>Symphonic(Symphonic)</item>-->
+<!--               <item>Syntax Olevia(Syntax Olevia)</item>-->
+<!--               <item>TCM(TCM)</item>-->
+<!--               <item>Techwood(Techwood)</item>-->
+<!--               <item>Tedelex(Tedelex)</item>-->
+<!--               <item>Teufel(Teufel)</item>-->
+<!--               <item>天敏(10moons)</item>-->
+<!--               <item>铁威马(TerraMaster)</item>-->
+<!--               <item>TizzBird(TizzBird)</item>-->
+<!--               <item>Universum(Universum)</item>-->
+<!--               <item>V lnc(V lnc)</item>-->
+<!--               <item>VDiGi(VDiGi)</item>-->
+<!--               <item>Viore(Viore)</item>-->
+<!--               <item>Vivo(Vivo)</item>-->
+<!--               <item>VLSystems(VLSystems)</item>-->
+<!--               <item>VocoPro(VocoPro)</item>-->
+<!--               <item>Vosonic(Vosonic)</item>-->
+<!--               <item>Welkin(Welkin)</item>-->
+<!--               <item>小米(MI)</item>-->
+<!--               <item>XWave(XWave)</item>-->
+<!--               <item>樱花(SAKURA)</item>-->
+<!--               <item>圆刚(AVerMedia)</item>-->
+<!--               <item>ALTEC(ALTEC)</item>-->
+<!--               <item>Audio(Audio)</item>-->
+<!--               <item>乐视(letv)</item>-->
+<!--               <item>三穗(sansui)</item>-->
+<!--               <item>声光智能科技(SONIQ)</item>-->
+<!--               <item>天逸(winner)</item>-->
+<!--               <item>悦辰电子(RSR)</item>-->
+<!--               <item>爱高(AIGAO)</item>-->
+<!--               <item>亚行(ADB)</item>-->
+<!--               <item>宇瞻(Apacer)</item>-->
+<!--               <item>霸王(Overlord)</item>-->
+<!--               <item>爆米花(Popcorn)</item>-->
+<!--               <item>川崎(Kawasaki)</item>-->
+<!--               <item>戴尔(DELL)</item>-->
+<!--               <item>德国之声(Voice of Germany)</item>-->
+<!--               <item>迪优美特(DiyoMate)</item>-->
+<!--               <item>船井(Moon Pool)</item>-->
+<!--               <item>高科(Gaoke)</item>-->
+<!--               <item>歌乐(Song)</item>-->
+<!--               <item>歌林(Song Lin)</item>-->
+<!--               <item>高斯(Gaussian)</item>-->
+<!--               <item>韩锋(Feng Han)</item>-->
+<!--               <item>金格川谷(Golden Gorge Valley)</item>-->
+<!--               <item>金霸王(Duracell)</item>-->
+<!--               <item>佳能(Canon)</item>-->
+<!--               <item>捷登(JATON)</item>-->
+<!--               <item>架势(JIASHI)</item>-->
+<!--               <item>矩阵(matrix)</item>-->
+<!--               <item>科诺(Kenuo)</item>-->
+<!--               <item>LG 乐金(LG LG)</item>-->
+<!--               <item>乐尔(Le Er)</item>-->
+<!--               <item>乐笙(Le Sheng)</item>-->
+<!--               <item>Legend-V(Legend-V)</item>-->
+<!--               <item>路畅(Lu Chang)</item>-->
+<!--               <item>兰科(Orchid)</item>-->
+<!--               <item>莲(lotus)</item>-->
+<!--               <item>美如画(Powervision)</item>-->
+<!--               <item>茗(Ming)</item>-->
+<!--               <item>梅莫雷克斯(May Mo Rex)</item>-->
+<!--               <item>宝丽金(PolyGram)</item>-->
+<!--               <item>ROV王牌(ROV trump)</item>-->
+<!--               <item>日电(Xinhua)</item>-->
+<!--               <item>Satforce(Satforce)</item>-->
+<!--               <item>海之星(Sea Star)</item>-->
+<!--               <item>三菱蓝瑟(Mitsubishi Lancer)</item>-->
+<!--               <item>实达(Start)</item>-->
+<!--               <item>首华(Souwa)</item>-->
+<!--               <item>通用(currency)</item>-->
+<!--               <item>泰斯康姆(TASCAM Tim)</item>-->
+<!--               <item>TviX(TviX)</item>-->
+<!--               <item>Vtrek(Vtrek)</item>-->
+<!--               <item>网件(Netgear)</item>-->
+<!--               <item>SAST先明迪(SAST First Ming Di)</item>-->
+<!--               <item>新飞(Frestech)</item>-->
+<!--               <item>西部数据(Western Data)</item>-->
+<!--               <item>右转(right)</item>-->
+<!--               <item>英国之宝(British Treasure)</item>-->
+<!--               <item>友利电(Youlidian)</item>-->
+<!--               <item>尊宝(Jamo)</item>-->
+<!--               <item>展硕电子(Shuo Electronics)</item>-->
+<!--               <item>钟神(Zhongshen)</item>-->
+<!--               <item>兆赫(MHz)</item>-->
+<!--               <item>卓典(Zhuodian)</item>-->
+    </string-array>
+  
+
+</resources>

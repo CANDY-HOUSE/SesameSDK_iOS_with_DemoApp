@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="strs_hw_type">
+        
+            <item> 澳柯玛-FCD-50B206</item>
+            <item> 海尔-ES60H-EP(E)</item>
+            <item> 海尔-ES60H-EP(U1)</item>
+            <item> 海尔-ES80</item>
+            <item> 海尔-ES50H-G1(E)</item>
+            <item> 海尔-ES60H-G1</item>
+
+<!--        <item> 3M(3M)</item>-->
+<!--        <item> 艾雷特(aileite)</item>-->
+<!--        <item> A.0.史密斯(A.0.SMITH)</item>-->
+<!--        <item> ARISTON(ARISTON)</item>-->
+<!--        <item> 法罗力(Ferroli)</item>-->
+<!--        <item> 格兰仕(Galaz)</item>-->
+<!--        <item> 海尔(Haier)</item>-->
+<!--        <item> Luxtronex(Luxtronex)</item>-->
+<!--        <item> 美的(Midea)</item>-->
+<!--        <item> 先科(SAST)</item>-->
+<!--        <item> 西门子(SIEMENS)</item>-->
+<!--        <item> 澳柯玛(AUCMA)</item>-->
+<!--        <item>全部(All)</item>-->
+<!--        <item>其它品牌(Other brands)</item>-->
+    </string-array>
+   
+
+
+</resources>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+       <string-array name="strs_iptv_type">
+           <item> beacon-HG600</item>
+           <item> beacon-IPTVHG600</item>
+           <item> Huawei-EC1308</item>
+           <item> Huawei-EC2108</item>
+           <item> Huawei-EC1308A</item>
+           <item> Huawei-EC1308B</item>
+           <item> Huawei-EC1308C</item>
+           <item> Huawei-EC1308D</item>
+           <item> Huawei-IPTV-EC2108</item>
+           <item> Huawei-IPTV-EC1308B</item>
+           <item> UTS-P032C</item>
+           <item> UTS-P042C</item>
+           <item> states-N6207I</item>
+           <item> states-N6809I</item>
+           <item> states-IPTV-N68091</item>
+           <item> states-IPTV-N62071</item>
+           <item> ZTE-B600</item>
+           <item> ZTE-B700</item>
+           <item> ZTE-B700(V2Y)</item>
+           <item> ZTE-N8609I</item>
+           <item> ZTE-IPTV-N86091</item>
+           <item> ZTE-IPTV-B700V2Y</item>
+           <item> Daya-DS4801</item>
+           <item> Daya-DS4900</item>
+           <item> Daya-IPTVDS4900</item>
+           <item> Changhong-andbop</item>
+           <item> Mango E family-AK-001</item>
+           <item> SOSOON-TP-9018</item>
+           <item> SOSOON-TP-9028</item>
+           <item> SOSOON-TP-9038</item>
+           <item> SOSOON-TP-9048</item>
+           <item> SOSOON-TP-9058</item>
+           <item> SOSOON-TP-9068</item>
+           <item> SOSOON-TP-9078</item>
+           <item> Steeigood-X9</item>
+           <item> Xiaobawang-SU6509</item>
+           <item> Xiaobawang-SU6511</item>
+           <item> Xiaobawang-SB628</item>
+           <item> Xiaobawang-SB629</item>
+           <item> Xiaobawang-SB626</item>
+           <item> Mobaihe-CM101S</item>
+           <item> Mobaihe-CM201-2</item>
+           <item> UBOX-s800PLUS</item>
+           <item> SKYWORTH-E310</item>
+           <item> LICO-M1</item>
+           <item> LICO-M6</item>
+           <item> LICO-X1</item>
+           <item> LICO-X2</item>
+           <item> Hisense-PX1900/S</item>
+           <item> HERVE-X8</item>
+           <item> HERVE-N8</item>
+           <item> MSIDIGTAL-RM701</item>
+           <item> MSIDIGTAL-RM702</item>
+           <item> BesTV-R1208-A</item>
+           <item> BesTV-R3300-M</item>
+           <item> wihome-A1</item>
+           <item> wihome-A2</item>
+           <item> wihome-A3</item>
+           <item> wihome-A5</item>
+           <item> wihome-A6</item>
+           <item> wihome-A7</item>
+           <item> wihome-A8</item>
+           <item> wihome-A10</item>
+           <item> wihome-A11</item>
+           <item> ZIMEDIA-C1</item>
+           <item> ZIMEDIA-C2</item>
+           <item> ZIMEDIA-C3</item>
+           <item> ZIMEDIA-C16</item>
+           <item> ZIMEDIA-Z600</item>
+           <item> ZIMEDIA-X3</item>
+           <item> ZIMEDIA-A9</item>
+           <item> ZIMEDIA-X7</item>
+           <item> ZIMEDIA-K9</item>
+           <item> ZIMEDIA-X16</item>
+           <item> Lanxu-L1</item>
+           <item> Lanxu-V6</item>
+           <item> Lanxu-V8</item>
+           <item> Lanxu-T1</item>
+           <item> Lanxu-T3</item>
+           <item> Lanxu-Q3</item>
+           <item> Lanxu-Q5</item>
+           <item> Lanxu-Q7</item>
+           <item> Lanxu-Q2</item>
+           <item> Lanxu-H8</item>
+           <item> Lanxu-T9</item>
+           <item> Tshifi-RC03</item>
+           <item> JiuMao-H9</item>
+           <item> JiuMao-H15</item>
+           <item> INENG-E8S4</item>
+           <item> SATA-V6</item>
+           <item> SATA-V9</item>
+           <item> SATA-V10</item>
+           <item> SATA-A8</item>
+           <item> SATA-A9</item>
+           <item> SATA-M11</item>
+           <item> SATA-M18</item>
+           <item> Yue me-YMB0310-HX</item>
+           <item> Yue me-YMB0310-CW</item>
+           <item> SKYWORTH-T1</item>
+           <item> SKYWORTH-T2</item>
+           <item> SKYWORTH-i7</item>
+           <item> SKYWORTH-1S</item>
+           <item> SKYWORTH-Q+</item>
+
+
+<!--           <item> 烽火(beacon)</item>-->
+<!--           <item> 华为(Huawei)</item>-->
+<!--           <item> 斯达康(UTS)</item>-->
+<!--           <item> 同洲(states)</item>-->
+<!--           <item> 中兴(ZTE)</item>-->
+<!--           <item> 大亚(Daya)</item>-->
+<!--           <item> 长虹(Changhong)</item>-->
+<!--           <item>创维(SKYWORTH)</item>-->
+<!--           <item>飞利浦(PHILPS)</item>-->
+<!--           <item>海尔(Haier)</item>-->
+<!--           <item>酷乐视(Cool music)</item>-->
+<!--           <item>小米(Xiaomi)</item>-->
+<!--           <item>三星(Samsung)</item>-->
+<!--           <item>乐视(Letv)</item>-->
+<!--           <item>忆典(IDER)</item>-->
+<!--           <item>英菲克(Inphic)</item>-->
+<!--           <item>海美迪(HIMEDIA)</item>-->
+<!--           <item>JAV(JAV)</item>-->
+<!--           <item>杰科(GIEC)</item>-->
+<!--           <item>开博尔(Kaiboer)</item>-->
+<!--           <item>天敏(10Moons)</item>-->
+<!--           <item>迈乐(Mai le)</item>-->
+<!--           <item>美如画(Picture)</item>-->
+<!--           <item>我播(WOBO)</item>-->
+<!--           <item>嘉视丽(Scarlett Shili)</item>-->
+<!--           <item>艾普宽带(AIP broadband)</item>-->
+<!--           <item>康佳(Konka)</item>-->
+<!--           <item>爱奇艺(IDG Arts)</item>-->
+<!--           <item>艾视妻(AI as a wife)</item>-->
+<!--           <item>奥林丹顿(Oriental meal)</item>-->
+<!--           <item>边锋(bianfeng)</item>-->
+<!--           <item>冰尊(Ice statue)</item>-->
+<!--           <item>畅客(Chang Ke)</item>-->
+<!--           <item>创维大麦(SKYWORTH barley)</item>-->
+<!--           <item>第五元素(The fifth element)</item>-->
+<!--           <item>迪优美特(Diyomate)</item>-->
+<!--           <item>锡洛克(A Tin Lok)</item>-->
+<!--           <item>Fly to see(Fly to see)</item>-->
+<!--           <item>FireTV(FireTV)</item>-->
+<!--           <item>供视宝(For spot)</item>-->
+<!--           <item>Good star(Good star)</item>-->
+<!--           <item>海信(Hisense)</item>-->
+<!--           <item>红富士(Red Fuji)</item>-->
+<!--           <item>劲霸王(Jin overlord)</item>-->
+<!--           <item>精典(Classic)</item>-->
+<!--           <item>金亚(Jin Ya)</item>-->
+<!--           <item>金运(Kim Yun)</item>-->
+<!--           <item>科软(Department of soft)</item>-->
+<!--           <item>朗盛泰(Lang Shengtai)</item>-->
+<!--           <item>乐光(Music light)</item>-->
+<!--           <item>灵云(Ling Yun)</item>-->
+<!--           <item>诺清(The promise of Qing Dynasty)</item>-->
+<!--           <item>欧家美(Ou Jiamei)</item>-->
+<!--           <item>贝特斯(Bates)</item>-->
+<!--           <item>PPBOX(PPBOX)</item>-->
+<!--           <item>奇艺宝(Fantastic art treasure)</item>-->
+<!--           <item>瑞珀(Naperville)</item>-->
+<!--           <item>百度(Baidu)</item>-->
+<!--           <item>瑞柏(Ribb)</item>-->
+<!--           <item>视美(As the United States)</item>-->
+<!--           <item>Beans(Beans)</item>-->
+<!--           <item>TPmini(TPmini)</item>-->
+<!--           <item>拓普赛特(Tuopu Dorset)</item>-->
+<!--           <item>完美星空(Perfect starry sky)</item>-->
+<!--           <item>泰捷(Tai Jie)</item>-->
+<!--           <item>微星视道(MSI visual path)</item>-->
+<!--           <item>先科(SAST)</item>-->
+<!--           <item>夏新(Amoi)</item>-->
+<!--           <item>莹辉(Ying Hui)</item>-->
+<!--           <item>沂星(Yi Xing)</item>-->
+<!--           <item>优德信(Optimal Dickson)</item>-->
+<!--           <item>广东IPTV(Guangdong IPTV)</item>-->
+<!--           <item>芒果E族(Mango E family)</item>-->
+<!--           <item>PPTV(PPTV)</item>-->
+<!--           <item>大麦盒子(DomyBox)</item>-->
+<!--           <item>爱奇艺桔豆(iQIYI judou)</item>-->
+<!--           <item>百视通(BesTV)</item>-->
+<!--           <item>芒果嗨Q(Mango HiQ)</item>-->
+<!--           <item>7V(7V)</item>-->
+<!--           <item>天猫(Tmall)</item>-->
+<!--           <item>亿格瑞(Egreat)</item>-->
+<!--           <item>优酷(Youku)</item>-->
+<!--           <item>易视(is)</item>-->
+<!--           <item>中国移动(China Mobile)</item>-->
+<!--           <item>燧石(FlintStone)</item>-->
+<!--           <item>ABC(ABC)</item>-->
+<!--           <item>贝斯特(beisite)</item>-->
+<!--           <item>HDMI(HDMI)</item>-->
+<!--           <item>华硕(ASUS)</item>-->
+<!--           <item>惠科(HKC)</item>-->
+<!--           <item>极米(GIMI)</item>-->
+<!--           <item>九联(jiulian)</item>-->
+<!--           <item>科朗(Kelang)</item>-->
+<!--           <item>罗技(Logitech)</item>-->
+<!--           <item>MINIX(MINIX)</item>-->
+<!--           <item>RCA(RCA)</item>-->
+<!--           <item>Tronsmart(Tronsmart)</item>-->
+<!--           <item>TCL(TCL)</item>-->
+<!--           <item>天猫魔盒(Tmall)</item>-->
+<!--           <item>统帅盒子(iSee box)</item>-->
+<!--           <item>易视宝(iS)</item>-->
+<!--           <item>兆赫(MHz)</item>-->
+<!--           <item>联通(Unicom)</item>-->
+<!--           <item>综合(zonghe)</item>-->
+<!--           <item>麦格(Maige)</item>-->
+<!--           <item>索信(SOSOON)</item>-->
+<!--           <item>米看(mikan)</item>-->
+<!--           <item>摩西(moxi)</item>-->
+<!--           <item>嘉视丽(Koxsni)</item>-->
+<!--           <item>七音符(Great hopes-A)</item>-->
+<!--           <item>爱迪生(edison)</item>-->
+<!--           <item>美纳途(MNATU)</item>-->
+<!--           <item>品胜(PISEN)</item>-->
+<!--           <item>海橙天(Steeigood)</item>-->
+<!--           <item>小霸王(Xiaobawang)</item>-->
+<!--           <item>魔百和(Mobaihe)</item>-->
+<!--           <item>SSK飚王(SSK)</item>-->
+<!--           <item>安博(UBOX)</item>-->
+<!--           <item>百视达(MediaPoint)</item>-->
+<!--           <item>莱可(LICO)</item>-->
+<!--           <item>戴利普(DERIPUS)</item>-->
+<!--           <item>诺凯德(HERVE)</item>-->
+<!--           <item>微星视道(MSIDIGTAL)</item>-->
+<!--           <item>小芒果(iMAGO)</item>-->
+<!--           <item>伟皓(wihome)</item>-->
+<!--           <item>电信悦me(yueme)</item>-->
+<!--           <item>智美视(ZIMEDIA)</item>-->
+<!--           <item>蓝旭(Lanxu)</item>-->
+<!--           <item>天尚(Tshifi)</item>-->
+<!--           <item>九猫(JiuMao)</item>-->
+<!--           <item>QQBOX(QQBOX)</item>-->
+<!--           <item>暴风影音(BFBOX)</item>-->
+<!--           <item>塞维特(saiweite)</item>-->
+<!--           <item>普利尔(pulier)</item>-->
+<!--           <item>赛科达(Saikeda)</item>-->
+<!--           <item>美高美(MEIGAOMEI)</item>-->
+<!--           <item>美利多(MANYTEL)</item>-->
+<!--           <item>影能(INENG)</item>-->
+<!--           <item>摩托罗拉(Motorola VIP)</item>-->
+<!--           <item>悦me(yue me)</item>-->
+<!--           <item>MXQ(MXQ)</item>-->
+<!--           <item>全部(All)</item>-->
+<!--           <item>其它品牌(Other Brands)</item>-->
+       </string-array>
+   
+</resources>

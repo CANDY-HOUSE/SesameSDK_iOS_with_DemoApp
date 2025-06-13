@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon_turnright.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

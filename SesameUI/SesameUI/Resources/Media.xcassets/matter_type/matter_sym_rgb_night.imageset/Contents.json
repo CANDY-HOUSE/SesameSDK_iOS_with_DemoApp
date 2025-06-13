@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "matter_sym_rgb_night.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

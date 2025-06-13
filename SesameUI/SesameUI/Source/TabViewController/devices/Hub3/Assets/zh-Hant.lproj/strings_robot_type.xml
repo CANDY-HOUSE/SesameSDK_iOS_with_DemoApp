@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="strs_robot_type">
+            <item>斐纳(TOMEFON)-TF-S880</item>
+            <item>斐纳(TOMEFON)-TF-S850</item>
+            <item>斐纳(TOMEFON)-TF-S450</item>
+            <item>斐纳(TOMEFON)-TF-S750</item>
+            <item>海爾(Haier)-T330</item>
+            <item>海爾(Haier)-T330-T</item>
+            <item>海爾(Haier)-J3000PLUS</item>
+            <item>海爾(Haier)-T320PLUS</item>
+            <item>海爾(Haier)-T321PLUS</item>
+            <item>海爾(Haier)-T322PLUS</item>
+            <item>海爾(Haier)-T325PLUS</item>
+            <item>海爾(Haier)-T520</item>
+            <item>美的(Midea)-R3-L081C</item>
+            <item>飛利浦(Philips)-FC8810</item>
+            <item>飛利浦(Philips)-FC8820</item>
+            <item>科沃斯(Ecovacs)-CR120</item>
+            <item>科沃斯(Ecovacs)-CEN250</item>
+            <item>科沃斯(Ecovacs)-CEN540</item>
+            <item>浦桑尼克(Proscenic)-P1</item>
+            
+<!--            <item> 斐纳(TOMEFON)</item>-->
+<!--            <item> 海爾(Haier)</item>-->
+<!--            <item> 匠龙(JOLOG)</item>-->
+<!--            <item> 美的(Midea)</item>-->
+<!--            <item> 飛利浦(Philips)</item>-->
+<!--            <item> 益旺阁(eonego)</item>-->
+<!--            <item> 科沃斯(Ecovacs)</item>-->
+<!--            <item> 智宝(Zebot)</item>-->
+<!--            <item> CleanMate(CleanMate)</item>-->
+<!--            <item> 浦桑尼克(Proscenic)</item>-->
+<!--            <item> 全部(All)</item>-->
+<!--            <item> 其它(Other brands)</item>-->
+    </string-array>
+</resources>

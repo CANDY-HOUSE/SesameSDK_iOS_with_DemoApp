@@ -1,0 +1,127 @@
+[
+  {
+    "code": [89,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,78,79,80,81,82,83,84,85,86,87,88],
+    "name": "All",
+    "direction": "A"
+  },
+  {
+    "code": [4,66,67,68,69],
+    "name": "Daiko",
+    "direction": "D"
+  },
+  {
+    "code": [1,87],
+    "name": "Deadou",
+    "direction": "D"
+  },
+  {
+    "code": [1,82],
+    "name": "Eseoe",
+    "direction": "E"
+  },
+  {
+    "code": [1,83],
+    "name": "Fsliving",
+    "direction": "F"
+  },
+  {
+    "code": [1,88],
+    "name": "Hanwa",
+    "direction": "H"
+  },
+  {
+    "code": [5,50,51,52,53,54],
+    "name": "Hitachi",
+    "direction": "H"
+  },
+  {
+    "code": [4,60,61,62,63],
+    "name": "Iris ohyam",
+    "direction": "I"
+  },
+  {
+    "code": [1,70],
+    "name": "Kishima",
+    "direction": "K"
+  },
+  {
+    "code": [4,73,74,75,76],
+    "name": "Koizumi lighting technology",
+    "direction": "K"
+  },
+  {
+    "code": [1,78],
+    "name": "Kyohritsu",
+    "direction": "K"
+  },
+  {
+    "code": [1,89],
+    "name": "Lightmates",
+    "direction": "L"
+  },
+  {
+    "code": [3,84,85,86],
+    "name": "National",
+    "direction": "N"
+  },
+  {
+    "code": [8,33,34,35,36,37,38,39,40],
+    "name": "Nec",
+    "direction": "N"
+  },
+  {
+    "code": [1,59],
+    "name": "Nitori",
+    "direction": "N"
+  },
+  {
+    "code": [2,64,65],
+    "name": "Odelic",
+    "direction": "O"
+  },
+  {
+    "code": [2,71,72],
+    "name": "Omniglow",
+    "direction": "O"
+  },
+  {
+    "code": [89,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,78,79,80,81,82,83,84,85,86,87,88],
+    "name": "Other brands",
+    "direction": "O"
+  },
+  {
+    "code": [31,90,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,26,27,28,29,30,31,32],
+    "name": "Panasonic",
+    "direction": "P"
+  },
+  {
+    "code": [1,49],
+    "name": "Sharp",
+    "direction": "S"
+  },
+  {
+    "code": [2,79,80],
+    "name": "Takizumi",
+    "direction": "T"
+  },
+  {
+    "code": [8,41,42,43,44,45,46,47,48],
+    "name": "Toshiba",
+    "direction": "T"
+  },
+  {
+    "code": [1,81],
+    "name": "Wy",
+    "direction": "W"
+  },
+  {
+    "code": [1,89],
+    "name": "Xiaoyedeng",
+    "direction": "X"
+  },
+  {
+    "code": [4,55,56,57,58],
+    "name": "Yamazen",
+    "direction": "Y"
+  }
+]
