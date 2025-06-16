@@ -95,7 +95,6 @@
 		643A9C4C2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4D2B313FD2008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643F06892BCD10810045D789 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */; };
-		643F06982BCD12400045D789 /* bleconnector_30_11_43712c.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F068A2BCD123F0045D789 /* bleconnector_30_11_43712c.zip */; };
 		643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */; };
 		643F069F2BCD12400045D789 /* sesame_421_4_50ce5b.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06912BCD123F0045D789 /* sesame_421_4_50ce5b.zip */; };
 		643F06A02BCD12400045D789 /* sesamebike1_21_3_d7162a.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */; };
@@ -409,7 +408,10 @@
 		BEF00CBD2565483100E5DECD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF00CBC2565483100E5DECD /* Request.swift */; };
 		BEFB1DE1256A6AEF00BF95CB /* CHDeviceManagerShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */; };
 		BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */; };
-		D01CDCFF2DE8D882002C2558 /* sesame6pro_30_21_5d4cb1.zip in Resources */ = {isa = PBXBuildFile; fileRef = D01CDCFE2DE8D882002C2558 /* sesame6pro_30_21_5d4cb1.zip */; };
+		D02B2E902DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip in Resources */ = {isa = PBXBuildFile; fileRef = D02B2E8F2DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip */; };
+		D02B2E922DFD8F5E00BFE305 /* sesame6pro_30_21_37454c.zip in Resources */ = {isa = PBXBuildFile; fileRef = D02B2E912DFD8F5E00BFE305 /* sesame6pro_30_21_37454c.zip */; };
+		D02B2E942DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip in Resources */ = {isa = PBXBuildFile; fileRef = D02B2E932DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip */; };
+		D02B2E962DFD8F8700BFE305 /* sesameface1proai_30_22_6f2470.zip in Resources */ = {isa = PBXBuildFile; fileRef = D02B2E952DFD8F8700BFE305 /* sesameface1proai_30_22_6f2470.zip */; };
 		D0424E30295A908000C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
@@ -658,7 +660,6 @@
 		64190A132C2D54DC00B89592 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
 		643A9C462B3027A9008214BD /* IndicatorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorGenerator.swift; sourceTree = "<group>"; };
 		643A9C482B313970008214BD /* CHProductModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHProductModel+.swift"; sourceTree = "<group>"; };
-		643F068A2BCD123F0045D789 /* bleconnector_30_11_43712c.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_43712c.zip; sourceTree = "<group>"; };
 		643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot1_21_2_369eb9.zip; sourceTree = "<group>"; };
 		643F06912BCD123F0045D789 /* sesame_421_4_50ce5b.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame_421_4_50ce5b.zip; sourceTree = "<group>"; };
 		643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike1_21_3_d7162a.zip; sourceTree = "<group>"; };
@@ -941,7 +942,10 @@
 		BEF00CBC2565483100E5DECD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceManagerShared+.swift"; sourceTree = "<group>"; };
 		BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
-		D01CDCFE2DE8D882002C2558 /* sesame6pro_30_21_5d4cb1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_5d4cb1.zip; sourceTree = "<group>"; };
+		D02B2E8F2DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_c44362.zip; sourceTree = "<group>"; };
+		D02B2E912DFD8F5E00BFE305 /* sesame6pro_30_21_37454c.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_37454c.zip; sourceTree = "<group>"; };
+		D02B2E932DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1ai_30_23_9c43e1.zip; sourceTree = "<group>"; };
+		D02B2E952DFD8F8700BFE305 /* sesameface1proai_30_22_6f2470.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1proai_30_22_6f2470.zip; sourceTree = "<group>"; };
 		D0BF750E2D55076E007865A5 /* sesamebike2_30_6_f826b5.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_f826b5.zip; sourceTree = "<group>"; };
 		D0BF75102D550785007865A5 /* sesamebot2_30_17_f826b5.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot2_30_17_f826b5.zip; sourceTree = "<group>"; };
 		D0CB97492DE76463002BF0C0 /* opensensor1_30_8_26c21d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor1_30_8_26c21d.zip; sourceTree = "<group>"; };
@@ -1740,7 +1744,7 @@
 		B04D1D1824EA37BB0021ACA2 /* application_dfu */ = {
 			isa = PBXGroup;
 			children = (
-				643F068A2BCD123F0045D789 /* bleconnector_30_11_43712c.zip */,
+				D02B2E8F2DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip */,
 				D0CB97492DE76463002BF0C0 /* opensensor1_30_8_26c21d.zip */,
 				D0CB974B2DE76472002BF0C0 /* remote_30_14_26c21d.zip */,
 				D0CB974D2DE76482002BF0C0 /* remoten_30_15_26c21d.zip */,
@@ -1749,13 +1753,15 @@
 				D0FD14362DE6242300D76CEC /* sesame5_30_5_26c21d.zip */,
 				D0FD14382DE6242D00D76CEC /* sesame5pro_30_7_26c21d.zip */,
 				D0FD143A2DE6243300D76CEC /* sesame5us_30_16_26c21d.zip */,
-				D01CDCFE2DE8D882002C2558 /* sesame6pro_30_21_5d4cb1.zip */,
+				D02B2E912DFD8F5E00BFE305 /* sesame6pro_30_21_37454c.zip */,
 				643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */,
 				D0BF750E2D55076E007865A5 /* sesamebike2_30_6_f826b5.zip */,
 				643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */,
 				D0BF75102D550785007865A5 /* sesamebot2_30_17_f826b5.zip */,
 				9AE0C0742DE0981500425D61 /* sesameface1_30_19_0ea68f.zip */,
+				D02B2E932DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip */,
 				9AE0C0762DE0981B00425D61 /* sesameface1pro_30_18_0ea68f.zip */,
+				D02B2E952DFD8F8700BFE305 /* sesameface1proai_30_22_6f2470.zip */,
 				9AE0C0402DDF51C100425D61 /* sesametouch1_30_10_c9c196.zip */,
 				9AE0C0422DDF51C900425D61 /* sesametouch1pro_30_9_c9c196.zip */,
 			);
@@ -2555,6 +2561,7 @@
 				BE70FBEF2558D4B000B38D54 /* WifiModule2SettingViewController.xib in Resources */,
 				D0CB974C2DE76472002BF0C0 /* remote_30_14_26c21d.zip in Resources */,
 				9AE0C0752DE0981500425D61 /* sesameface1_30_19_0ea68f.zip in Resources */,
+				D02B2E942DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip in Resources */,
 				9AE0C0432DDF51C900425D61 /* sesametouch1pro_30_9_c9c196.zip in Resources */,
 				647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */,
 				6483C9732B68FA6C00D8B68D /* strings_robot_type.xml in Resources */,
@@ -2568,10 +2575,12 @@
 				6483C9492B68FA0800D8B68D /* strings_stb_type.xml in Resources */,
 				D0FD14392DE6242D00D76CEC /* sesame5pro_30_7_26c21d.zip in Resources */,
 				D0FD143B2DE6243300D76CEC /* sesame5us_30_16_26c21d.zip in Resources */,
+				E84CAC1A2A7765C4002A2E8E /* Style_guideline_2015Sep01.pdf in Resources */,
+				D02B2E902DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip in Resources */,
+				D02B2E922DFD8F5E00BFE305 /* sesame6pro_30_21_37454c.zip in Resources */,
 				6483C9432B68F9FA00D8B68D /* strings_iptv_type.xml in Resources */,
 				646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */,
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
-				D01CDCFF2DE8D882002C2558 /* sesame6pro_30_21_5d4cb1.zip in Resources */,
 				BE562E4F2564B815004617DE /* KeyCollectionViewController.xib in Resources */,
 				6483C9372B68F9DD00D8B68D /* strings_ap_type.xml in Resources */,
 				41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */,
@@ -2609,11 +2618,11 @@
 				890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */,
 				643F06A02BCD12400045D789 /* sesamebike1_21_3_d7162a.zip in Resources */,
 				BE562E422563C62D004617DE /* FriendKeyListCell.xib in Resources */,
-				643F06982BCD12400045D789 /* bleconnector_30_11_43712c.zip in Resources */,
 				6483C9552B68FA2600D8B68D /* strings_fans_type.xml in Resources */,
 				646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */,
 				D0BF75112D550785007865A5 /* sesamebot2_30_17_f826b5.zip in Resources */,
 				B07FAF96251B54F400FB5821 /* Media.xcassets in Resources */,
+				D02B2E962DFD8F8700BFE305 /* sesameface1proai_30_22_6f2470.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3425,7 +3434,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.todayExtension;
 				PRODUCT_NAME = SesameTodayExtension;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3452,7 +3461,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.todayExtension;
 				PRODUCT_NAME = SesameTodayExtension;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3478,7 +3487,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3504,7 +3513,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3658,7 +3667,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
 				PRODUCT_NAME = Sesame;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3687,7 +3696,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
 				PRODUCT_NAME = Sesame;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3714,7 +3723,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3741,7 +3750,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3772,7 +3781,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension.SesameIntentsWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -3804,7 +3813,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension.SesameIntentsWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -3833,7 +3842,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3863,7 +3872,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3894,7 +3903,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3924,7 +3933,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.95;
+				MARKETING_VERSION = 3.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
