@@ -376,4 +376,4 @@
 "co.candyhouse.sesame2.face.distance" = "距離";
 "co.candyhouse.sesame2.face.brightness" = "亮度";
 "co.candyhouse.sesame2.face.radar" = "雷達偵查距離";
-"co.candyhouse.sesame2.face.radar_distance_description" = "・這是雷達喚醒系統的偵測距離。\n・每日人流量超過10次之地方, 設置短距以省電！\n・每日人流量10次以下之地方, 設置最長距離以獲得最爽體驗。\n・即使為最短距離，觸碰「額頭」，雷達也能感應並立即啓動人臉或掌靜脈識別，兼顧省電與最爽體驗。";
+"co.candyhouse.sesame2.face.radar_distance_description" = "・這是雷達喚醒系統的偵測距離。\n・每日人流量超過10次之地方, 設置短距以省電！\n・每日人流量10次以下之地方, 設置最長距離以獲得最爽體驗。\n・即使為最短距離，觸碰「額頭」，雷達也能感應並立即啓動人臉或掌靜脈識別，兼顧極度省電與最爽體驗。";
