@@ -1,12 +1,13 @@
 ![SesameSDK](https://github.com/CANDY-HOUSE/.github/blob/main/profile/images/SesameSDK.png?raw=true)
 # SesameSDK3.0 for iOS
 
-- Sesame app on <img src="https://img.shields.io/badge/App Store-000000?logo=apple&logoColor=white"/> [https://apps.apple.com/app/id1532692301/](https://apps.apple.com/app/id1532692301/)
-- Sesame app on <img src="https://img.shields.io/badge/TestFlight-0D96F6?logo=app-store&logoColor=white"/> [https://testflight.apple.com/join/Rok4GOFD/](https://testflight.apple.com/join/Rok4GOFD/)
+- Sesame app on [![App Store](https://img.shields.io/badge/App_Store-000000?logo=apple&logoColor=white)](https://apps.apple.com/app/id1532692301/)
+- Sesame app on [![TestFlight](https://img.shields.io/badge/TestFlight-0D96F6?logo=app-store&logoColor=white)](https://testflight.apple.com/join/Rok4GOFD/)
 - ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CANDY HOUSE Official Site](https://jp.candyhouse.co/)
 
 ## Contents
 - [Overview](#overview)
+- [Disclaimer](#disclaimer)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -23,6 +24,10 @@
 - Update SesameOS over the air(OTA)
 - Various device settings
 - Get battery level
+
+## Disclaimer
+
+Please read our [DISCLAIMER](DISCLAIMER.md) before using this software.
 
 ## Requirements
 
