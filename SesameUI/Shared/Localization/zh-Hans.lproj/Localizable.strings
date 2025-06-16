@@ -368,12 +368,12 @@
 "co.candyhouse.sesame2.default_notify_palm_name" = "掌静脉";
 "co.candyhouse.sesame2.faceProPalmModify" = "修改掌静脉名称🖋️";
 "co.candyhouse.sesame2.faceProPalmDelete" = "删除掌静脉";
-"co.candyhouse.sesame2.faceProPalmHint" = "靠近 %@ 连蓝牙, 点击 ⊕ 输入掌静脉。输入后点击 X。";
+"co.candyhouse.sesame2.faceProPalmHint" = "靠近 %@ 连蓝牙, 点击 ⊕ 输入掌静脉。输入后点击 X。安装好后再注册，识别率会极高。";
 "co.candyhouse.sesame2.default_face_name" = "人脸🖋️";
 "co.candyhouse.sesame2.default_notify_face_name" = "人脸";
 "co.candyhouse.sesame2.faceProFaceModify" = "修改人脸名称🖋️";
 "co.candyhouse.sesame2.faceProFaceDelete" = "删除人脸";
-"co.candyhouse.sesame2.faceProFaceHint" = "靠近 %@ 连蓝牙, 点击 ⊕ 输入人脸。输入后点击 X。";
+"co.candyhouse.sesame2.faceProFaceHint" = "靠近 %@ 连蓝牙, 点击 ⊕ 输入人脸。输入后点击 X。安装好后再注册，识别率会极高。";
 "co.candyhouse.sesame2.delete_fail" = "删除失败，请重试";
 
 "co.candyhouse.sesame2.face.distance" = "距离";

@@ -367,12 +367,12 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.default_notify_palm_name" = "手のひら静脈";
 "co.candyhouse.sesame2.faceProPalmModify" = "パーム名を変更🖋️";
 "co.candyhouse.sesame2.faceProPalmDelete" = "手のひら静脈を削除";
-"co.candyhouse.sesame2.faceProPalmHint" = "%@に近づきBluetooth接続し、⊕ をタップして手のひら静脈を登録。登録後 X をタップ。";
+"co.candyhouse.sesame2.faceProPalmHint" = "%@に近づきBluetooth接続し、⊕ をタップして手のひら静脈を登録。登録後 X をタップ。取付けた状態で登録した方が認証率が遥かに高い。";
 "co.candyhouse.sesame2.default_face_name" = "顔つき🖋️";
 "co.candyhouse.sesame2.default_notify_face_name" = "顔つき";
 "co.candyhouse.sesame2.faceProFaceModify" = "フェイス名を変更🖋️";
 "co.candyhouse.sesame2.faceProFaceDelete" = "顔の削除";
-"co.candyhouse.sesame2.faceProFaceHint" = "%@に近づきBluetooth接続し、⊕ をタップして顔を登録。登録後 X をタップ。";
+"co.candyhouse.sesame2.faceProFaceHint" = "%@に近づきBluetooth接続し、⊕ をタップして顔を登録。登録後 X をタップ。取付けた状態で登録した方が認証率が遥かに高い。";
 "co.candyhouse.sesame2.delete_fail" = "削除に失敗しました。再試行してください";
 
 "co.candyhouse.sesame2.face.distance" = "距離";
