@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "IrReceiver.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

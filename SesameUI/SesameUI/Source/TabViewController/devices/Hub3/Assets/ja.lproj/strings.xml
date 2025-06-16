@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">遥控之星-48xx</string>
+    <string name="hiflying_smartlinker_ssid">SSID:</string>
+    <string name="hiflying_smartlinker_password">Password:</string>
+    <string name="hiflying_smartlinker_start">Start</string>
+    <string name="hiflying_smartlinker_waiting">Waiting…</string>
+    <string name="hiflying_smartlinker_timeout">Time Out!</string>
+    <string name="hiflying_smartlinker_completed">SmartLink completed</string>
+    <string formatted="false" name="hiflying_smartlinker_new_module_found">New smart linked module: Mac-%s Ip-%s</string>
+    <string name="hiflying_smartlinker_no_wifi_connectivity">No Wifi Connectivity</string>
+    <string name="str_splash_info">数据加载中,请稍等</string>
+    <string name="str_menu_tv">看电视</string>
+    <string name="str_menu_user">用户数据</string>
+    <string name="str_menu_user_login">用户登录</string>
+    <string name="str_menu_user_import">导入配置</string>
+    <string name="str_menu_user_export">导出配置</string>
+    <string name="str_menu_control">设置</string>
+    <string name="str_menu_more">更多</string>
+    <string name="str_menu_control_add_group">添加场景</string>
+    <string name="str_menu_control_add_device">添加设备</string>
+    <string name="str_menu_control_io">端口选择</string>
+    <string name="str_menu_control_io1">搜索蓝牙</string>
+    <string name="str_menu_control_io2">开灯</string>
+    <string name="str_menu_control_io3">关灯</string>
+    <string name="str_menu_control_dir">方向设定</string>
+    <string name="str_menu_control_update">检测更新</string>
+    <string name="str_menu_control_exit">退出系统</string>
+    <string name="str_menu_control_help">使用说明</string>
+    <string name="str_menu_control_edit">编辑</string>
+    <string name="str_menu_control_look">监控</string>
+    <string name="str_menu_control_study">长按界面按键进入学习模式</string>
+    <string name="str_menu_control_about">关于</string>
+    <string name="str_menu_info_rq">二维码名片</string>
+    <string name="str_menu_control_wifi_lan">直连模式</string>
+    <string name="str_menu_control_wifi_wan">外网模式</string>
+    <string name="str_menu_device_del">删除设备</string>
+    <string name="str_menu_group_del">删除场景</string>
+    <string name="str_menu_device_rename">重命名</string>
+    <string name="str_menu_group_rename">重命名</string>
+    <string name="str_menu_wifi_longclick_del">删除设备</string>
+    <string name="str_menu_watchtv_longclick_edit">编辑</string>
+    <string name="str_watchtv_ok">是否后发送ok键</string>
+    <string name="str_watchtv_select">是否先发送-/--键</string>
+    <string name="str_watchtv_did">绑定设备</string>
+    <string name="str_watchtv_num">绑定频道号</string>
+    <string name="str_watch_tv">看电视</string>
+    <string name="str_study_info_1">按键一旦学习,之前键值将被更新,并且不可回退,是否继续?</string>
+    <string name="str_other_yes">是</string>
+    <string name="str_other_no">否</string>
+    <string name="str_image">图片</string>
+    <string name="str_text">文字</string>
+    <string name="str_info">信息</string>
+    <string name="str_name">名称</string>
+    <string name="str_old_study_send">学习测试</string>
+    <string name="str_old_known_send">已知码发送</string>
+    <string name="str_new_study">学习</string>
+    <string name="str_start_study">开始学习</string>
+    <string name="str_new_study_send">学习测试</string>
+    <string name="str_new_v4_send">新版4.4发送</string>
+    <string name="str_old_study_result">旧版学习结果</string>
+    <string name="str_new_study_result">新版学习结果</string>
+    <string name="str_bt_search">搜索蓝牙</string>
+    <string name="str_setting_finish">正在进行连接....</string>
+    <string name="str_bt_loading">正在搜索蓝牙设备中</string>
+    <string name="str_wifi_ssid">请从下面列表选择家中路由器的SSID</string>
+    <string name="str_wifi_lan">请将手机wifi与所购买的wifi产品进行连接</string>
+    <string name="str_wifi_pass">请输入家中路由器的密码</string>
+    <string name="str_wifi_id">请输入或扫描所购买的产品</string>
+    <string name="str_wifi_ip">输入服务器ip地址</string>
+    <string name="str_wifi_info">请开启WIFI,连接到家中路由器</string>
+    <string name="str_wifi_link_info">请点击添加设备进行连接</string>
+    <string name="str_ip_get">获取地址</string>
+    <string name="str_wifi_port">请输入服务器程序端口号</string>
+    <string name="str_uid">设备ID:</string>
+    <string name="str_show_pass">显示密码</string>
+    <string name="str_show_wifi_err">请先按reset键进行初始化，再次尝试配置设备</string>
+    <string name="str_scan">扫一下</string>
+    <string name="str_error_no_key">目前该键尚无键值请点击 "编辑" 进入学习模式指定键值</string>
+    <string name="str_error_open_usb">尚未检测到USB设备,请确认设备是否正确连接</string>
+    <string name="str_error_open_device">尚未连接到设备,请确认设备是否已经正常开启</string>
+    <string name="str_success_open_device">已经连接到设备,感谢您对本公司的支持</string>
+    <string name="str_group_context">个遥控器</string>
+    <string name="str_wizards_info">现在您可设置您的手机以便其控制您的电视, 机顶盒, 投影机, 空调和其他电子设备</string>
+    <string name="str_button_wizards">继续</string>
+    <string name="str_wizards_info_1">请在下面选择您需要的设备类型</string>
+    <string name="str_wizards_info_2">(1)选择下列品牌直接进入码库匹配</string>
+    <string name="str_wizards_info_2_1">(2)型号匹配</string>
+    <string name="str_wizards_info_2_2">(3) 智能学习</string>
+    <string name="str_wizards_info_2_3">(1)码库匹配</string>
+    <string name="str_wizards_info_2_4">任意学習</string>
+    <string name="str_wizards_info_2_5">(4) 一键匹配</string>
+    <string name="str_wizards_info_2_6">(4)一键匹配</string>
+    <string name="str_one2two">请在下面选择一种匹配方法</string>
+    <string name="str_wizards_info_3">请在下面直接选择电器型号</string>
+    <string name="str_wizards_info_4">轻敲下方按钮,并观看您的电器是否做出正确响应,如果下方按键不是开关键请将电器处于开机状态</string>
+    <string name="str_wizards_info_4_1">您的电器是否做出正确响应?</string>
+    <string name="str_wizards_info_4_2">轻敲下方按钮,并观看您的电器是否全部做出正确响应?</string>
+    <string name="str_wizards_info_5">点击开始学习按钮后，请根据提示按下相应遥控器上的按键</string>
+    <string name="str_wizards_info_5_1">当按键变成灰色，找到遥控器上相应按键，并按下此键进行学习，学习完成，系统会自动进行下一个键的学习，直到所有按键学完。</string>
+    <string name="str_wizards_info_5_2">当按键变成灰色，你有20S时间，找到遥控器上相应按键，并按下此键进行学习，学习完成，系统会自动进行下一个键的学习，直到所有按键学完。</string>
+    <string name="str_wizards_type_finish">一个崭新的遥控器即将诞生, 希望它能改变你的生活, 陪伴您开心度过每一天, 请给你的设备起个名字吧!</string>
+    <string name="str_wizards_info_9">轻敲下方按钮后,设备处于接受状态,将手中原始遥控器对准设备后,按下遥控器上的按键,系统会自动找到最匹配的遥控器</string>
+    <string name="str_scan_info">将二维码放入框内, 即可自动扫描</string>
+    <string name="str_open_ok">打开设备成功</string>
+    <string name="str_open_err">打开设备失败</string>
+    <string name="str_check_brand_fast">品牌通</string>
+    <string name="str_group">场景</string>
+    <string name="str_group_add">场景选择</string>
+    <string name="str_wizards">设备向导</string>
+    <string name="str_down">否, 下一组</string>
+    <string name="str_again">再次发送该代码</string>
+    <string name="str_yes">是, 下一步</string>
+    <string name="str_no">否</string>
+    <string name="str_no_back">否,选择另一组</string>
+    <string name="str_diy">任意学習</string>
+    <string name="str_four_no">否, 上一步</string>
+    <string name="str_add_button">添加按键</string>
+    <string name="str_four_yes">是, 存为遥控器</string>
+    <string name="str_info_yes">我知道了</string>
+    <string name="str_info_no">下次提醒</string>
+    <string name="str_buy_yes">去逛逛</string>
+    <string name="str_buy_no">已经购买了</string>
+    <string name="str_edit_yes">是,去绑定</string>
+    <string name="str_edit_no">否,下次再说</string>
+    <string name="str_home">首页</string>
+    <string name="str_watch">看电视</string>
+    <string name="str_start">开始</string>
+    <string name="str_other_sw_up">色温+</string>
+    <string name="str_other_sw_down">色温-</string>
+    <string name="str_other_timer_up">定时+</string>
+    <string name="str_other_timer_down">定时-</string>
+    <string name="str_more">更多</string>
+    <string name="str_caoma">一个个添加过慢，请与我公司取得联系，寻求更快的解决方案</string>
+    <string name="str_rq">扫一下二维码,轻松下载软件,亲等你哦</string>
+    <string name="ble_not_supported">当前系统不支持BLE设备</string>
+    <string name="usb_not_supported">当前系统不支持USB设备</string>
+    <string name="error_bluetooth_not_supported">当前系统蓝牙不可用</string>
+    <string name="unknown_device">未知设备</string>
+    <string name="unknown_service">未知服务器</string>
+    <string name="str_fragment_top_button_add">添加按键</string>
+    <string name="str_up">按多了, 上一组</string>
+    <string name="str_fragment_more_dir">方向设定</string>
+    <string name="str_fragment_more_com">通讯选择</string>
+    <string name="str_com_select">端口选择</string>
+    <string name="str_bt">HXD1282</string>
+    <string name="str_ble">HXD1286</string>
+    <string name="str_ble_ir">HXD1265</string>
+    <string name="str_ble_ir1288">HXD1288</string>
+    <string name="str_ble_ir3290">HXD3290</string>
+    <string name="str_ble_ir1266">HXD1266</string>
+    <string name="str_ble_ir1289">HXD1289</string>
+    <string name="str_ble_ir4816">HXD4816</string>
+    <string name="str_wifi">HXD2286</string>
+    <string name="str_wifi_ex">HXD2282(内网)</string>
+    <string name="str_wifi_2288">HXD2288</string>
+    <string name="str_io">HXD019</string>
+    <string name="str_io230">HXD019_230</string>
+    <string name="str_usb">HXD3288</string>
+    <string name="str_usb230">HXD3288_230</string>
+    <string name="str_usbu230" translatable="false">HXD3288u_230</string>
+    <string name="str_sound">HXD3688</string>
+    <string name="str_fragment_more_setting">高级设置</string>
+    <string name="str_fragment_more_check_update">检测更新</string>
+    <string name="str_fragment_more_help">帮助文档</string>
+    <string name="str_fragment_more_about">关于产品</string>
+    <string name="str_fragment_bt_search">搜索蓝牙</string>
+    <string name="str_fragment_group_bedroom">卧室</string>
+    <string name="str_fragment_group_livingroom">客厅</string>
+    <string name="str_fragment_group_offic">办公室</string>
+    <string name="str_fragment_group_meeting">会议室</string>
+    <string name="str_fragment_group_cookroom">厨房</string>
+    <string name="str_fragment_group_diningroom">餐厅</string>
+    <string name="str_fragment_group_washroom">浴室</string>
+    <string name="str_fragment_step_one">选择</string>
+    <string name="str_study_finish">学习完成</string>
+    <string name="str_study_test">测试数据</string>
+    <string name="str_study_repeat">重新学习</string>
+    <string name="str_study_save">保存数据</string>
+    <string name="str_update">更新提示</string>
+    <string name="str_update_1">"当前版本:"</string>
+    <string name="str_update_2">"发现新版本:"</string>
+    <string name="str_update_3">"数据库更新"</string>
+    <string name="str_update_4">"及硬件驱动升级?"</string>
+    <string name="str_update_5">"当前系统已经是最新版本"</string>
+    <string name="str_downloading">正在下载中</string>
+    <string name="str_waiting">请稍等</string>
+    <string name="str_download_finish">下载完成</string>
+    <string name="str_download_info">是否立即安装</string>
+    <string name="str_fragment_step_study_one_new">学习新设备</string>
+    <string name="str_fragment_step_study_one_repeat">重新学习设备</string>
+    <string name="str_fragment_step_study_text_alert">当前学习数据是否保存</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新…</string>
+    <string name="pull_to_refresh_release_label">放开以刷新…</string>
+    <string name="pull_to_refresh_refreshing_label">正在载入…</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+    <string name="str_fragment_group_start_info">
+        
+        在这里面请选择你想要打开那个房间场景按键,如果没有你想要打开场景按键,请选定添加场景按键.
+        
+    </string>
+    <string name="str_fragment_device_start_info">
+        
+        请选择添加设备按键,要返回请按返回键.
+        
+    </string>
+    <string name="str_study_start_info_1">
+        
+        关闭提示对话框后, 点击要学的按键, 进入学习状态
+        
+    </string>
+    <string name="str_study_start_info_2">
+        
+        长按按键, 进入学习状态
+        
+    </string>
+    <string name="str_study_start_info_3">
+        
+        长按电视台图标进入编辑状态
+        
+    </string>
+    <string name="str_study_start_info_4">
+        
+        你可以触摸边框左右滑动,更多惊喜等待你的发掘.
+        
+    </string>
+    <string name="str_study_start_info_5">
+        
+        长按按键将它移动到一个你喜欢的位置.移动到左右边缘可以将它丢弃.
+        
+    </string>
+    <string name="str_study_start_info_6">
+        
+        感谢对我公司产品的关注,你是否有意向购买相应产品.
+        
+    </string>
+    <string name="str_study_start_info_7">
+        
+        请先长按按键进行编辑.
+        
+    </string>
+    <string name="str_study_start_info_8">
+        
+        当前电视台还没有绑定遥控器,是否去绑定
+        
+    </string>
+    <string name="str_step_know_info_3">
+        
+        步骤(3)请点击下面遥控器的灰色按键观察电器是否都做出相应反应，如果是点击完成,如果不是请回到步骤(1)继续搜索，重复上述3步过程\n
+        
+    </string>
+    <string name="str_know_start_info">
+        
+        当关闭提示对话框后将进入匹配模式, 请按页面提示操作.
+        
+    </string>
+    <string name="str_step_one_start_info">
+        (1)智能学习:学习手中现有电子设备的原始遥控器,学习成功后,作为替代原始遥控器使用.\n(2)智能匹配:从码库中匹配电子设备的原始遥控器,匹配成功后,作为替代原始遥控器使用.\n
+        
+    </string>
+    <string name="str_know_up_info">
+        
+        第二步，如果设备做出正确反映，为了确保准确，请点击灰色按键进一步进行遥控，看设备是否做出反应，如果是，点击保存，如果不是，点击自动继续搜索。
+        
+    </string>
+    <string name="str_copyright"></string>
+    <string name="str_study_info">请将被学遥控器发射头贴近对准接收器发射头，距离约3CM，然后正常按下按键</string>
+    <string-array name="strs_fragment_group">
+        <item>卧室</item>
+        <item>客厅</item>
+        <item>办公室</item>
+        <item>会议室</item>
+        <item>厨房</item>
+        <item>餐厅</item>
+        <item>浴室</item>
+        <item>自定义</item>
+    </string-array>
+    <string name="str_fragment_group_add">添加场景</string>
+    <string name="str_fragment_group_more">操作场景</string>
+    <string name="str_fragment_device_more">操作设备</string>
+    <string name="str_fragment_group_more_modify">更改名称</string>
+    <string name="str_fragment_group_more_del">删除场景</string>
+    <string name="str_fragment_device_more_modify">更改名称</string>
+    <string name="str_fragment_device_more_del">删除设备</string>
+    <string name="str_fragment_device_more_repeat">重新学习</string>
+    <string name="str_exit_info">再按一次退出程序</string>
+    <string name="str_dialog_set_name_title">设置名称</string>
+    <string name="str_dialog_set_study">学习模式</string>
+    <string name="str_dialog_set_name_name">名称</string>
+    <string name="str_txt_wifi_disconnect">请连接wifi网络</string>
+    <string name="str_txt_err_exist_device">设备已存在</string>
+    <string name="str_txt_err_set_wifi">配置设备失败,请长按开机键进入出厂模式</string>
+    <string name="str_txt_success_set_wifi">配置设备成功</string>
+    <string name="str_txt_set_wifi">配置设备</string>
+    <string name="str_txt_wait">请稍等！！！</string>
+    <string name="str_ok">确定</string>
+    <string name="str_cancel">取消</string>
+    <string name="str_save">完成</string>
+    <string name="str_loading">数据加载,请等待</string>
+    <string name="str_temp">%1$d°</string>
+    <string name="str_num">数字键</string>
+    <string name="str_num_0">0</string>
+    <string name="str_num_1">1</string>
+    <string name="str_num_2">2</string>
+    <string name="str_num_3">3</string>
+    <string name="str_num_4">4</string>
+    <string name="str_num_5">5</string>
+    <string name="str_num_6">6</string>
+    <string name="str_num_7">7</string>
+    <string name="str_num_8">8</string>
+    <string name="str_num_9">9</string>
+    <string name="str_num_f1">F1</string>
+    <string name="str_num_f2">F2</string>
+    <string name="str_num_f3">F3</string>
+    <string name="str_num_f4">F4</string>
+    <string name="str_num_f5">F5</string>
+    <string name="str_letter_a">A</string>
+    <string name="str_letter_b">B</string>
+    <string name="str_letter_c">C</string>
+    <string name="str_letter_d">D</string>
+    <string name="str_letter_e">E</string>
+    <string name="str_letter_f">F</string>
+    <string name="str_letter_g">G</string>
+    <string name="str_dir_up">上</string>
+    <string name="str_dir_down">下</string>
+    <string name="str_dir_left">左</string>
+    <string name="str_dir_right">右</string>
+    <string name="str_media_play_pause">播放/暂停</string>
+    <string name="str_media_menu">菜单</string>
+    <string name="str_media_play">播放</string>
+    <string name="str_media_pause">暂停</string>
+    <string name="str_media_stop">停止</string>
+    <string name="str_media_front">上一曲</string>
+    <string name="str_media_next">下一曲</string>
+    <string name="str_media_ff">快进</string>
+    <string name="str_media_fb">快退</string>
+    <string name="str_media_brightness">亮度</string>
+    <string name="str_media_brightness_in">亮度+</string>
+    <string name="str_media_brightness_out">亮度-</string>
+    <string name="str_media_zoom_in">变焦+</string>
+    <string name="str_media_zoom_out">变焦-</string>
+    <string name="str_media_picture_in">画面+</string>
+    <string name="str_media_picture_out">画面-</string>
+    <string name="str_other_power">电源</string>
+    <string name="str_other_power_all_on">全开</string>
+    <string name="str_other_power_all_off">全关</string>
+    <string name="str_other_power_on">开</string>
+    <string name="str_other_power_off">关</string>
+    <string name="str_other_exit">退出</string>
+    <string name="str_other_auto">自动</string>
+    <string name="str_other_click_long_click">点击或长按</string>
+    <string name="str_other_oc">开关仓</string>
+    <string name="str_other_computer">电脑</string>
+    <string name="str_other_video">视频</string>
+    <string name="str_other_signal">信号</string>
+    <string name="str_other_await">待机</string>
+    <string name="str_other_guide">导视</string>
+    <string name="str_other_mute">静音</string>
+    <string name="str_other_menu">菜单</string>
+    <string name="str_other_title">标题</string>
+    <string name="str_other_standard">制式</string>
+    <string name="str_other_000">000</string>
+    <string name="str_other_123">123</string>
+    <string name="str_other_ok">OK</string>
+    <string name="str_other_cancel">取消</string>
+    <string name="str_other_select">-/--</string>
+    <string name="str_other_av">AV/TV</string>
+    <string name="str_other_back">返回</string>
+    <string name="str_other_vol">音量</string>
+    <string name="str_other_voladd">音量+</string>
+    <string name="str_other_volsub">音量-</string>
+    <string name="str_other_ch">频道</string>
+    <string name="str_other_chadd">频道+</string>
+    <string name="str_other_chsub">频道-</string>
+    <string name="str_other_light">灯光</string>
+    <string name="str_other_sleep">睡眠</string>
+    <string name="str_other_mode">模式</string>
+    <string name="str_other_cool">制冷</string>
+    <string name="str_other_study">学习</string>
+    <string name="str_other_lost">防盗</string>
+    <string name="str_other_set">设置</string>
+    <string name="str_other_close">关闭</string>
+    <string name="str_other_speed">速度</string>
+    <string name="str_other_timer">定时</string>
+    <string name="str_other_timer_1">定时1</string>
+    <string name="str_other_timer_2">定时2</string>
+    <string name="str_other_timer_3">定时3</string>
+    <string name="str_other_timer_4">定时4</string>
+    <string name="str_other_li">负离子</string>
+    <string name="str_other_shake_head">摇头</string>
+    <string name="str_other_wind_rate">风量</string>
+    <string name="str_other_wind_rate_low">低</string>
+    <string name="str_other_wind_rate_mid">中</string>
+    <string name="str_other_wind_rate_high">高</string>
+    <string name="str_other_wind_speed">风速</string>
+    <string name="str_other_wind_dir">风向</string>
+    <string name="str_other_wind_dir_hand">手动风向</string>
+    <string name="str_other_wind_dir_updown">上下扫风</string>
+    <string name="str_other_wind_dir_leftright">左右扫风</string>
+    <string name="str_other_wind_dir_up">上</string>
+    <string name="str_other_wind_dir_mid">中</string>
+    <string name="str_other_wind_dir_down">下</string>
+    <string name="str_other_wind_dir_auto">自动风向</string>
+    <string name="str_other_temp">温度</string>
+    <string name="str_other_tempadd">+</string>
+    <string name="str_other_tempsub">-</string>
+    <string name="str_other_25">25</string>
+    <string name="str_other_dehumidifier">除湿</string>
+    <string name="str_other_blowing">送风</string>
+    <string name="str_other_hot">制热</string>
+    <string name="str_other_heat">辅热</string>
+    <string name="str_other_air_light">灯光</string>
+    <string name="str_other_eco">节能</string>
+    <string name="str_other_air_xx">关闭播报</string>
+    <string name="str_other_air_yy">打开播报</string>
+    <string name="str_other_air_hf">灯开关</string>
+    
+    <string name="str_power_1">电源</string>
+    <string name="str_power_2">恒湿</string>
+    <string name="str_power_3">加湿</string>
+    <string name="str_power_4">定时</string>
+    <string name="str_power_5">睡眠</string>
+    <string name="str_power_6">杀菌</string>
+    
+    
+    <string name="str_other_photo">拍照</string>
+    <string name="str_other_home">主页</string>
+    <string name="str_other_yuyue">预约</string>
+    <string name="str_other_save_temp">保存温度</string>
+    <string name="str_other_close_light">关灯</string>
+    <string name="str_other_light1">灯1</string>
+    <string name="str_other_light2">灯2</string>
+    <string name="str_other_light3">灯3</string>
+    <string name="str_other_uv">紫外线</string>
+    <string name="str_other_feel">舒适</string>
+    <string name="str_other_strong">强劲</string>
+    <string name="str_other_native">自然</string>
+    <string name="str_other_smart">智能</string>
+    <string name="str_other_time">时间</string>
+    <string name="str_other_hc">回充</string>
+    <string name="str_other_homepage">主页</string>
+    <string name="str_other_yb">沿边</string>
+    <string name="str_other_jb">局部</string>
+    <string name="str_other_qy">区域</string>
+    <string name="str_other_dd">定点</string>
+    <string name="str_other_gx">弓形</string>
+    <string name="str_other_sj">杀菌</string>
+    <string name="str_other_yy">预约</string>
+    <!-- 设备 -->
+    <string name="str_device">设备</string>
+    <string name="str_device_tv">电视</string>
+    <string name="str_device_iptv">IPTV</string>
+    <string name="str_device_stb">机顶盒</string>
+    <string name="str_device_dvd">影碟机</string>
+    <string name="str_device_fans">风扇</string>
+    <string name="str_device_pjt">投影仪</string>
+    <string name="str_device_light">遥控灯</string>
+    <string name="str_device_air">空调</string>
+    <string name="str_device_dc">数码相机</string>
+    <string-array name="strs_group">
+        <item>寝室</item>
+        <item>リビング</item>
+        <item>オフィス</item>
+        <item>会議室</item>
+        <item>キッチン</item>
+        <item>食堂</item>
+        <item>バスルーム</item>
+        <item>ベビールーム</item>
+        <item>シーンを追加</item>
+    </string-array>
+    <string-array name="strs_device">
+        <item>エアコン</item>
+<!--        <item>給湯器</item>-->
+<!--        <item>空気清浄機</item>-->
+        <item>テレビ</item>
+<!--        <item>IPTV</item>-->
+<!--        <item>セットトップボックス</item>-->
+<!--        <item>ディスクプレーヤー</item>-->
+<!--        <item>扇風機</item>-->
+<!--        <item>プロジェクター</item>-->
+        <item>リモコンライト</item>
+<!--        <item>デジタルカメラ</item>-->
+<!--        <item>サウンドシステム</item>-->
+<!--        <item>ロボット掃除機</item>-->
+        <item>任意学習</item>
+    </string-array>
+    <string-array name="strs_tv_key">
+        <item>音量－</item>
+        <item>チャンネル＋</item>
+        <item>メニュー</item>
+        <item>チャンネル－</item>
+        <item>音量＋</item>
+        <item>電源</item>
+        <item>ミュート</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>-/--</item>
+        <item>0</item>
+        <item>AV/TV</item>
+        <item>戻る</item>
+        <item>OK</item>
+        <item>上</item>
+        <item>下</item>
+        <item>左</item>
+        <item>右</item>
+    </string-array>
+    <string-array name="strs_iptv_key">
+        <item>電源</item>
+        <item>ミュート</item>
+        <item>音量＋</item>
+        <item>音量－</item>
+        <item>チャンネル＋</item>
+        <item>チャンネル－</item>
+        <item>上</item>
+        <item>左</item>
+        <item>OK</item>
+        <item>右</item>
+        <item>下</item>
+        <item>再生/一時停止</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>0</item>
+        <item>戻る</item>
+    </string-array>
+    <string-array name="strs_stb_key">
+        <item>スタンバイ</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>ガイド</item>
+        <item>0</item>
+        <item>戻る</item>
+        <item>上</item>
+        <item>左</item>
+        <item>OK</item>
+        <item>右</item>
+        <item>下</item>
+        <item>音量＋</item>
+        <item>音量－</item>
+        <item>チャンネル＋</item>
+        <item>チャンネル－</item>
+        <item>メニュー</item>
+    </string-array>
+    <string-array name="strs_dvd_key">
+        <item>左</item>
+        <item>上</item>
+        <item>OK</item>
+        <item>下</item>
+        <item>右</item>
+        <item>電源</item>
+        <item>ミュート</item>
+        <item>巻き戻し</item>
+        <item>再生</item>
+        <item>早送り</item>
+        <item>前の曲</item>
+        <item>停止</item>
+        <item>次の曲</item>
+        <item>制式</item>
+        <item>一時停止</item>
+        <item>タイトル</item>
+        <item>トレイを開ける/閉じる</item>
+        <item>メニュー</item>
+        <item>戻る</item>
+    </string-array>
+    <string-array name="strs_fans_key">
+        <item>電源</item>
+        <item>風速</item>
+        <item>首振り</item>
+        <item>モード</item>
+        <item>タイマー</item>
+        <item>ライト</item>
+        <item>マイナスイオン</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>スリープ</item>
+        <item>冷却</item>
+        <item>風量</item>
+        <item>低</item>
+        <item>中</item>
+        <item>高</item>
+    </string-array>
+    <string-array name="strs_pjt_key">
+        <item>電源オン</item>
+        <item>電源オフ</item>
+        <item>パソコン</item>
+        <item>ビデオ</item>
+        <item>シグナル</item>
+        <item>ズーム＋</item>
+        <item>ズーム－</item>
+        <item>画面＋</item>
+        <item>画面－</item>
+        <item>メニュー</item>
+        <item>OK</item>
+        <item>上</item>
+        <item>左</item>
+        <item>右</item>
+        <item>下</item>
+        <item>キャンセル</item>
+        <item>音量＋</item>
+        <item>音量－</item>
+        <item>ミュート</item>
+        <item>オート</item>
+        <item>一時停止</item>
+        <item>明るさ</item>
+    </string-array>
+    <string-array name="strs_light_key">
+        <item>電源全開</item>
+        <item>電源全閉</item>
+        <item>電源オン</item>
+        <item>電源オフ</item>
+        <item>明るさ＋</item>
+        <item>明るさ－</item>
+        <item>紛失防止</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>設定</item>
+        <item>学習</item>
+        <item>タイマー1</item>
+        <item>タイマー2</item>
+        <item>タイマー3</item>
+        <item>タイマー4</item>
+    </string-array>
+    <string-array name="strs_air_key">
+        <item code="49153">ON</item>
+        <item code="-1">25°C</item>
+        <item code="49153">OFF</item>
+        <item code="49163">温度</item>
+        <item code="49155">モード</item>
+        <item code="49165">温度</item>
+        <item code="49157">風速</item>
+        <item code="49159">風向</item>
+        <item code="49161">自動風向</item>
+    </string-array>
+    <string-array name="strs_dc_key">
+        <item>撮影</item>
+    </string-array>
+    <string-array name="strs_power_key">
+        <item>オン/オフ</item>
+    </string-array>
+    <string-array name="strs_watch_tv">
+        <item>安徽衛星テレビ</item>
+        <item>北京-ファイナンス</item>
+        <item>北京-教育</item>
+        <item>北京-ライフ</item>
+        <item>北京-スポーツ</item>
+        <item>北京-芸術</item>
+        <item>北京-映画</item>
+        <item>北京衛星テレビ</item>
+        <item>CCTV-1</item>
+        <item>CCTV-2</item>
+        <item>CCTV-3</item>
+        <item>CCTV-4</item>
+        <item>CCTV-5</item>
+        <item>CCTV-6</item>
+        <item>CCTV-7</item>
+        <item>CCTV-8</item>
+        <item>CCTV-9</item>
+        <item>CCTV-10</item>
+        <item>CCTV-11</item>
+        <item>CCTV-12</item>
+        <item>CCTV-13</item>
+        <item>CCTV-14</item>
+        <item>CCTV-15</item>
+        <item>重慶衛星テレビ</item>
+        <item>東方衛星テレビ</item>
+        <item>東南衛星テレビ</item>
+        <item>甘粛衛星テレビ</item>
+        <item>広東衛星テレビ</item>
+        <item>広西衛星テレビ</item>
+        <item>河北衛星テレビ</item>
+        <item>黒龍江衛星テレビ</item>
+        <item>河南衛星テレビ</item>
+        <item>湖北衛星テレビ</item>
+        <item>湖南衛星テレビ</item>
+        <item>江蘇衛星テレビ</item>
+        <item>江西衛星テレビ</item>
+        <item>吉林衛星テレビ</item>
+        <item>遼寧衛星テレビ</item>
+        <item>内モンゴル衛星テレビ</item>
+        <item>寧夏衛星テレビ</item>
+        <item>青海衛星テレビ</item>
+        <item>山東衛星テレビ</item>
+        <item>山東教育テレビ</item>
+        <item>陝西衛星テレビ</item>
+        <item>山西衛星テレビ</item>
+        <item>深セン衛星テレビ</item>
+        <item>四川衛星テレビ</item>
+        <item>天津衛星テレビ</item>
+        <item>廈門衛星テレビ</item>
+        <item>新疆衛星テレビ</item>
+        <item>西蔵衛星テレビ</item>
+        <item>雲南衛星テレビ</item>
+        <item>浙江衛星テレビ</item>
+        <item>中国教育テレビ</item>
+    </string-array>
+    <drawable name="ic_item_up">#666</drawable>
+    <drawable name="ic_item_down">#444</drawable>
+</resources>

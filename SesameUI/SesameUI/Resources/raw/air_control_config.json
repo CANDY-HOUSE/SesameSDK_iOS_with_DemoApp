@@ -1,0 +1,155 @@
+{
+  "controls": [
+    {
+      "id": 1,
+      "type": "POWER_STATUS_ON",
+      "titleIndex": 0,
+      "titles": [
+        "co.candyhouse.airKey.on",
+        "co.candyhouse.airKey.on"
+      ],
+      "icons": [
+        "air_power_1",
+        "air_power_0"
+      ],
+      "defaultValue": "",
+      "operateCode": "49153"
+    },
+    {
+      "id": 2,
+      "type": "TEMPERATURE_VALUE",
+      "titleIndex": 1,
+      "titles": [
+      ],
+      "icons": [
+      ],
+      "defaultValue": "28",
+      "operateCode": "0"
+    },
+    {
+      "id": 3,
+      "type": "POWER_STATUS_OFF",
+      "titleIndex": 2,
+      "titles": [
+        "co.candyhouse.airKey.off",
+        "co.candyhouse.airKey.off"
+      ],
+      "icons": [
+        "air_power_0",
+        "air_power_1"
+      ],
+      "defaultValue": "",
+      "operateCode": "49153"
+    },
+    {
+      "id": 4,
+      "type": "TEMP_CONTROL_ADD",
+      "titleIndex": 3,
+      "titles": [
+        "co.candyhouse.airKey.temperature"
+      ],
+      "icons": [
+        "air_temp_in"
+      ],
+      "defaultValue": "",
+      "operateCode": "49163"
+    },
+    {
+      "id": 5,
+      "type": "MODE",
+      "titleIndex": 4,
+      "titles": [
+        "co.candyhouse.airKey.mode1",
+        "co.candyhouse.airKey.mode2",
+        "co.candyhouse.airKey.mode3",
+        "co.candyhouse.airKey.mode4",
+        "co.candyhouse.airKey.mode5"
+      ],
+      "icons": [
+        "air_mode_icon_1",
+        "air_mode_icon_2",
+        "air_mode_icon_3",
+        "air_mode_icon_4",
+        "air_mode_icon_5"
+      ],
+      "defaultValue": "A",
+      "operateCode": "49161"
+    },
+    {
+      "id": 6,
+      "type": "TEMP_CONTROL_REDUCE",
+      "titleIndex": 5,
+      "titles": [
+        "co.candyhouse.airKey.temperature"
+      ],
+      "icons": [
+        "air_temp_out"
+      ],
+      "defaultValue": "",
+      "operateCode": "49162"
+    },
+    {
+      "id": 7,
+      "type": "FAN_SPEED",
+      "titleIndex": 6,
+      "titles": [
+        "co.candyhouse.airKey.windRate1",
+        "co.candyhouse.airKey.windRate2",
+        "co.candyhouse.airKey.windRate3",
+        "co.candyhouse.airKey.windRate4"
+      ],
+      "icons": [
+        "air_wind_rate_1",
+        "air_wind_rate_2",
+        "air_wind_rate_3",
+        "air_wind_rate_4"
+      ],
+      "defaultValue": "",
+      "operateCode": "49157"
+    },
+    {
+      "id": 8,
+      "type": "SWING_VERTICAL",
+      "titleIndex": 7,
+      "titles": [
+        "co.candyhouse.airKey.windDir1",
+        "co.candyhouse.airKey.windDir2",
+        "co.candyhouse.airKey.windDir3"
+      ],
+      "icons": [
+        "air_direction_1",
+        "air_direction_2",
+        "air_direction_3"
+      ],
+      "defaultValue": "",
+      "operateCode": "49159"
+    },
+    {
+      "id": 9,
+      "type": "SWING_HORIZONTAL",
+      "titleIndex": 8,
+      "titles": [
+        "co.candyhouse.airKey.windAutoDir1",
+        "co.candyhouse.airKey.windAutoDir2"
+      ],
+      "icons": [
+        "air_auto_dir_1",
+        "air_auto_dir_2"
+      ],
+      "defaultValue": "",
+      "operateCode": "49161"
+    }
+  ],
+  "settings": {
+    "temperature": {
+      "min": 17,
+      "max": 31,
+      "default": 28,
+      "step": 1
+    },
+    "layout": {
+      "columns": 3,
+      "spacing": 16
+    }
+  }
+}

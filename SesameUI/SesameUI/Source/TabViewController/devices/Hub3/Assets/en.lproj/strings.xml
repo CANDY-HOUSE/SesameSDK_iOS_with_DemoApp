@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">Remote Control Star-48xx</string>
+    <string name="hiflying_smartlinker_ssid">SSID:</string>
+    <string name="hiflying_smartlinker_password">Password:</string>
+    <string name="hiflying_smartlinker_start">Start</string>
+    <string name="hiflying_smartlinker_waiting">Waiting…</string>
+    <string name="hiflying_smartlinker_timeout">Time Out!</string>
+    <string name="hiflying_smartlinker_completed">SmartLink completed</string>
+    <string formatted="false" name="hiflying_smartlinker_new_module_found">New smart linked module: Mac-%s Ip-%s</string>
+    <string name="hiflying_smartlinker_no_wifi_connectivity">No Wifi Connectivity</string>
+    <string name="str_splash_info">Data loading, please wait</string>
+    <string name="str_menu_tv">Watch TV</string>
+    <string name="str_menu_user">User Data</string>
+    <string name="str_menu_user_login">User Login</string>
+    <string name="str_menu_user_import">Import Configuration</string>
+    <string name="str_menu_user_export">Export Configuration</string>
+    <string name="str_menu_control">Settings</string>
+    <string name="str_menu_more">More</string>
+    <string name="str_menu_control_add_group">Add Scene</string>
+    <string name="str_menu_control_add_device">Add Device</string>
+    <string name="str_menu_control_io">Port Selection</string>
+    <string name="str_menu_control_io1">Search Bluetooth</string>
+    <string name="str_menu_control_io2">Turn on light</string>
+    <string name="str_menu_control_io3">Turn off light</string>
+    <string name="str_menu_control_dir">Direction Setting</string>
+    <string name="str_menu_control_update">Check for Updates</string>
+    <string name="str_menu_control_exit">Exit System</string>
+    <string name="str_menu_control_help">Instructions</string>
+    <string name="str_menu_control_edit">Edit</string>
+    <string name="str_menu_control_look">Monitor</string>
+    <string name="str_menu_control_study">Long press the interface button to enter learning mode</string>
+    <string name="str_menu_control_about">About</string>
+    <string name="str_menu_info_rq">QR Code Business Card</string>
+    <string name="str_menu_control_wifi_lan">Direct Connection Mode</string>
+    <string name="str_menu_control_wifi_wan">External Network Mode</string>
+    <string name="str_menu_device_del">Delete Device</string>
+    <string name="str_menu_group_del">Delete Scene</string>
+    <string name="str_menu_device_rename">Rename</string>
+    <string name="str_menu_group_rename">Rename</string>
+    <string name="str_menu_wifi_longclick_del">Delete Device</string>
+    <string name="str_menu_watchtv_longclick_edit">Edit</string>
+    <string name="str_watchtv_ok">Send OK key afterwards?</string>
+    <string name="str_watchtv_select">Send -/-- key first?</string>
+    <string name="str_watchtv_did">Bind Device</string>
+    <string name="str_watchtv_num">Bind Channel Number</string>
+    <string name="str_watch_tv">Watch TV</string>
+    <string name="str_study_info_1">Once a key is learned, the previous key value will be updated and cannot be reverted. Continue?</string>
+    <string name="str_other_yes">Yes</string>
+    <string name="str_other_no">No</string>
+    <string name="str_image">Image</string>
+    <string name="str_text">Text</string>
+    <string name="str_info">Information</string>
+    <string name="str_name">Name</string>
+    <string name="str_old_study_send">Learning Test</string>
+    <string name="str_old_known_send">Known Code Send</string>
+    <string name="str_new_study">Learn</string>
+    <string name="str_start_study">Start Learning</string>
+    <string name="str_new_study_send">Learning Test</string>
+    <string name="str_new_v4_send">New Version 4.4 Send</string>
+    <string name="str_old_study_result">Old Version Learning Result</string>
+    <string name="str_new_study_result">New Version Learning Result</string>
+    <string name="str_bt_search">Search Bluetooth</string>
+    <string name="str_setting_finish">Connecting....</string>
+    <string name="str_bt_loading">Searching for Bluetooth devices</string>
+    <string name="str_wifi_ssid">Please select your home router's SSID from the list below</string>
+    <string name="str_wifi_lan">Please connect your phone's wifi with the purchased wifi product</string>
+    <string name="str_wifi_pass">Please enter the password of your home router</string>
+    <string name="str_wifi_id">Please enter or scan the purchased product</string>
+    <string name="str_wifi_ip">Enter server IP address</string>
+    <string name="str_wifi_info">Please turn on WIFI and connect to your home router</string>
+    <string name="str_wifi_link_info">Please click Add Device to connect</string>
+    <string name="str_ip_get">Get Address</string>
+    <string name="str_wifi_port">Please enter server program port number</string>
+    <string name="str_uid">Device ID:</string>
+    <string name="str_show_pass">Show Password</string>
+    <string name="str_show_wifi_err">Please press the reset button to initialize, and try to configure the device again</string>
+    <string name="str_scan">Scan</string>
+    <string name="str_error_no_key">Currently, there is no key value for this key. Click "Edit" to enter learning mode and specify a key value</string>
+    <string name="str_error_open_usb">No USB device detected, please ensure the device is properly connected</string>
+    <string name="str_error_open_device">No device connected, please ensure the device is properly turned on</string>
+    <string name="str_success_open_device">Device connected, thank you for supporting our company</string>
+    <string name="str_group_context">Remote Controllers</string>
+    <string name="str_wizards_info">Now you can set up your phone to control your TV, set-top box, projector, air conditioner, and other electronic devices</string>
+    <string name="str_button_wizards">Continue</string>
+    <string name="str_wizards_info_1">Please select the type of device you need below</string>
+    <string name="str_wizards_info_2">(1) Select the brand below to enter the code library match</string>
+    <string name="str_wizards_info_2_1">(2) Model match</string>
+    <string name="str_wizards_info_2_2">(3) Smart learning</string>
+    <string name="str_wizards_info_2_3">(1) Code library match</string>
+    <string name="str_wizards_info_2_4">Learning</string>
+    <string name="str_wizards_info_2_5">(4) One-click match</string>
+    <string name="str_wizards_info_2_6">(4) One-click match</string>
+    <string name="str_one2two">Please select a matching method below</string>
+    <string name="str_wizards_info_3">Please directly select the appliance model below</string>
+    <string name="str_wizards_info_4">Tap the button below and watch if your appliance responds correctly. If the button below is not the power switch, please turn on the appliance first</string>
+    <string name="str_wizards_info_4_1">Has your appliance responded correctly?</string>
+    <string name="str_wizards_info_4_2">Tap the button below and watch if your appliance responds correctly to all?</string>
+    <string name="str_wizards_info_5">After clicking the start learning button, follow the prompts to press the corresponding button on the remote control</string>
+    <string name="str_wizards_info_5_1">When the button turns gray, find the corresponding button on the remote control and press it to learn. After learning, the system will automatically proceed to learn the next key until all keys are learned.</string>
+    <string name="str_wizards_info_5_2">When the button turns gray, you have 20s to find the corresponding button on the remote control and press it to learn. After learning, the system will automatically proceed to learn the next key until all keys are learned.</string>
+    <string name="str_wizards_type_finish">A brand new remote control is about to be born, we hope it can change your life, accompany you to spend every day happily, please give your device a name!</string>
+    <string name="str_wizards_info_9">After tapping the button below, the device will be in receiving mode. Point the original remote control at the device and press the button on the remote control, the system will automatically find the most matching remote control</string>
+    <string name="str_scan_info">Place the QR code inside the frame to scan automatically</string>
+    <string name="str_open_ok">Device turned on successfully</string>
+    <string name="str_open_err">Failed to open device</string>
+    <string name="str_check_brand_fast">Brand Pass</string>
+    <string name="str_group">Scene</string>
+    <string name="str_group_add">Scene Selection</string>
+    <string name="str_wizards">Device Wizard</string>
+    <string name="str_down">No, next group</string>
+    <string name="str_again">Resend the code</string>
+    <string name="str_yes">Yes, next step</string>
+    <string name="str_no">No</string>
+    <string name="str_no_back">No, choose another group</string>
+    <string name="str_diy">Learning</string>
+    <string name="str_four_no">No, previous step</string>
+    <string name="str_add_button">Add Button</string>
+    <string name="str_four_yes">Yes, save as remote control</string>
+    <string name="str_info_yes">I got it</string>
+    <string name="str_info_no">Remind me next time</string>
+    <string name="str_buy_yes">Go shopping</string>
+    <string name="str_buy_no">Already purchased</string>
+    <string name="str_edit_yes">Yes, go bind</string>
+    <string name="str_edit_no">No, maybe next time</string>
+    <string name="str_home">Home</string>
+    <string name="str_watch">Watch TV</string>
+    <string name="str_start">Start</string>
+    <string name="str_other_sw_up">Color Temperature +</string>
+    <string name="str_other_sw_down">Color Temperature -</string>
+    <string name="str_other_timer_up">Timer +</string>
+    <string name="str_other_timer_down">Timer -</string>
+    <string name="str_more">More</string>
+    <string name="str_caoma">Adding one by one is too slow, please contact our company to seek a faster solution</string>
+    <string name="str_rq">Scan the QR code to download the software easily, waiting for you</string>
+    <string name="ble_not_supported">The current system does not support BLE devices</string>
+    <string name="usb_not_supported">The current system does not support USB devices</string>
+    <string name="error_bluetooth_not_supported">The current system's Bluetooth is not available</string>
+    <string name="unknown_device">Unknown Device</string>
+    <string name="unknown_service">Unknown Server</string>
+    <string name="str_fragment_top_button_add">Add Button</string>
+    <string name="str_up">Pressed too much, previous group</string>
+    <string name="str_fragment_more_dir">Direction Setting</string>
+    <string name="str_fragment_more_com">Communication Selection</string>
+    <string name="str_com_select">Port Selection</string>
+    <string name="str_bt">HXD1282</string>
+    <string name="str_ble">HXD1286</string>
+    <string name="str_ble_ir">HXD1265</string>
+    <string name="str_ble_ir1288">HXD1288</string>
+    <string name="str_ble_ir3290">HXD3290</string>
+    <string name="str_ble_ir1266">HXD1266</string>
+    <string name="str_ble_ir1289">HXD1289</string>
+    <string name="str_ble_ir4816">HXD4816</string>
+    <string name="str_wifi">HXD2286</string>
+    <string name="str_wifi_ex">HXD2282 (Intranet)</string>
+    <string name="str_wifi_2288">HXD2288</string>
+    <string name="str_io">HXD019</string>
+    <string name="str_io230">HXD019_230</string>
+    <string name="str_usb">HXD3288</string>
+    <string name="str_usb230">HXD3288_230</string>
+    <string name="str_usbu230" translatable="false">HXD3288u_230</string>
+    <string name="str_sound">HXD3688</string>
+    <string name="str_fragment_more_setting">Advanced Settings</string>
+    <string name="str_fragment_more_check_update">Check for Updates</string>
+    <string name="str_fragment_more_help">Help Document</string>
+    <string name="str_fragment_more_about">About Product</string>
+    <string name="str_fragment_bt_search">Search Bluetooth</string>
+    <string name="str_fragment_group_bedroom">Bedroom</string>
+    <string name="str_fragment_group_livingroom">Living Room</string>
+    <string name="str_fragment_group_offic">Office</string>
+    <string name="str_fragment_group_meeting">Meeting Room</string>
+    <string name="str_fragment_group_cookroom">Kitchen</string>
+    <string name="str_fragment_group_diningroom">Dining Room</string>
+    <string name="str_fragment_group_washroom">Bathroom</string>
+    <string name="str_fragment_step_one">Select</string>
+    <string name="str_study_finish">Learning Completed</string>
+    <string name="str_study_test">Test Data</string>
+    <string name="str_study_repeat">Relearn</string>
+    <string name="str_study_save">Save Data</string>
+    <string name="str_update">Update Reminder</string>
+    <string name="str_update_1">"Current version:"</string>
+    <string name="str_update_2">"New version found:"</string>
+    <string name="str_update_3">"Database update"</string>
+    <string name="str_update_4">"and hardware driver upgrade?"</string>
+    <string name="str_update_5">"The current system is already the latest version"</string>
+    <string name="str_downloading">Downloading</string>
+    <string name="str_waiting">Please wait</string>
+    <string name="str_download_finish">Download completed</string>
+    <string name="str_download_info">Install now?</string>
+    <string name="str_fragment_step_study_one_new">Learn new device</string>
+    <string name="str_fragment_step_study_one_repeat">Relearn device</string>
+    <string name="str_fragment_step_study_text_alert">Save current learning data?</string>
+    <string name="pull_to_refresh_pull_label">Pull to refresh…</string>
+    <string name="pull_to_refresh_release_label">Release to refresh…</string>
+    <string name="pull_to_refresh_refreshing_label">Loading…</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+    <string name="str_fragment_group_start_info">
+        Please select the room scene button you want to open here, if you do not have the scene button you want to open, please select Add Scene button.
+    </string>
+    <string name="str_fragment_device_start_info">
+        Please select Add Device button, press back button to return.
+    </string>
+    <string name="str_study_start_info_1">
+        After closing the prompt dialog, click the key to learn to enter the learning state
+    </string>
+    <string name="str_study_start_info_2">
+        Long press the button to enter the learning state
+    </string>
+    <string name="str_study_start_info_3">
+        Long press the TV station icon to enter edit mode
+    </string>
+    <string name="str_study_start_info_4">
+        You can touch the frame to slide left and right, more surprises await your discovery.
+    </string>
+    <string name="str_study_start_info_5">
+        Long press the button to move it to a position you like. Move to the edge to discard it.
+    </string>
+    <string name="str_study_start_info_6">
+        Thank you for your attention to our company's products, are you interested in purchasing corresponding products.
+    </string>
+    <string name="str_study_start_info_7">
+        Please long press the button to edit first.
+    </string>
+    <string name="str_study_start_info_8">
+        The current TV station has not bound the remote control, do you want to go bind
+    </string>
+    <string name="str_step_know_info_3">
+        Step (3) Please click the gray button on the remote control below to see if the appliance responds accordingly. If yes, click complete. If not, go back to step (1) to continue the search and repeat the above three steps
+    </string>
+    <string name="str_know_start_info">
+        After closing the prompt dialog, it will enter the matching mode. Please follow the page prompts.
+    </string>
+    <string name="str_step_one_start_info">(1) Smart learning: learn the original remote control of the existing electronic device in your hand, use as a replacement for the original remote control after successful learning.\n(2) Smart matching: Match the original remote control from the code library, use as a replacement for the original remote control after successful matching.\n
+    </string>
+    <string name="str_know_up_info">
+        In the second step, if the device responds correctly, to ensure accuracy, please tap the gray button to further remote control and see if the device responds. If yes, click save. If not, click auto to continue searching.
+    </string>
+    <string name="str_copyright"></string>
+    <string name="str_study_info">Please place the remote control to be learned about 3CM away from the receiver head to head, and then press the button normally</string>
+    <string-array name="strs_fragment_group">
+        <item>Bedroom</item>
+        <item>Living Room</item>
+        <item>Office</item>
+        <item>Meeting Room</item>
+        <item>Kitchen</item>
+        <item>Dining Room</item>
+        <item>Bathroom</item>
+        <item>Custom</item>
+    </string-array>
+    <string name="str_fragment_group_add">Add Scene</string>
+    <string name="str_fragment_group_more">Operate Scene</string>
+    <string name="str_fragment_device_more">Operate Device</string>
+    <string name="str_fragment_group_more_modify">Change Name</string>
+    <string name="str_fragment_group_more_del">Delete Scene</string>
+    <string name="str_fragment_device_more_modify">Change Name</string>
+    <string name="str_fragment_device_more_del">Delete Device</string>
+    <string name="str_fragment_device_more_repeat">Relearn</string>
+    <string name="str_exit_info">Press again to exit the program</string>
+    <string name="str_dialog_set_name_title">Set Name</string>
+    <string name="str_dialog_set_study">Learning Mode</string>
+    <string name="str_dialog_set_name_name">Name</string>
+    <string name="str_txt_wifi_disconnect">Please connect to a wifi network</string>
+    <string name="str_txt_err_exist_device">Device already exists</string>
+    <string name="str_txt_err_set_wifi">Failed to configure the device, please long press the power button to enter factory mode</string>
+    <string name="str_txt_success_set_wifi">Device configured successfully</string>
+    <string name="str_txt_set_wifi">Configure Device</string>
+    <string name="str_txt_wait">Please wait！！！</string>
+    <string name="str_ok">OK</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_save">Complete</string>
+    <string name="str_loading">Data loading, please wait</string>
+    <string name="str_temp">%1$d°</string>
+    <string name="str_num">Number Key</string>
+    <string name="str_num_0">0</string>
+    <string name="str_num_1">1</string>
+    <string name="str_num_2">2</string>
+    <string name="str_num_3">3</string>
+    <string name="str_num_4">4</string>
+    <string name="str_num_5">5</string>
+    <string name="str_num_6">6</string>
+    <string name="str_num_7">7</string>
+    <string name="str_num_8">8</string>
+    <string name="str_num_9">9</string>
+    <string name="str_num_f1">F1</string>
+    <string name="str_num_f2">F2</string>
+    <string name="str_num_f3">F3</string>
+    <string name="str_num_f4">F4</string>
+    <string name="str_num_f5">F5</string>
+    <string name="str_letter_a">A</string>
+    <string name="str_letter_b">B</string>
+    <string name="str_letter_c">C</string>
+    <string name="str_letter_d">D</string>
+    <string name="str_letter_e">E</string>
+    <string name="str_letter_f">F</string>
+    <string name="str_letter_g">G</string>
+    <string name="str_dir_up">Up</string>
+    <string name="str_dir_down">Down</string>
+    <string name="str_dir_left">Left</string>
+    <string name="str_dir_right">Right</string>
+    <string name="str_media_play_pause">Play/Pause</string>
+    <string name="str_media_menu">Menu</string>
+    <string name="str_media_play">Play</string>
+    <string name="str_media_pause">Pause</string>
+    <string name="str_media_stop">Stop</string>
+    <string name="str_media_front">Previous Track</string>
+    <string name="str_media_next">Next Track</string>
+    <string name="str_media_ff">Fast Forward</string>
+    <string name="str_media_fb">Rewind</string>
+    <string name="str_media_brightness">Brightness</string>
+    <string name="str_media_brightness_in">Brightness +</string>
+    <string name="str_media_brightness_out">Brightness -</string>
+    <string name="str_media_zoom_in">Zoom +</string>
+    <string name="str_media_zoom_out">Zoom -</string>
+    <string name="str_media_picture_in">Picture +</string>
+    <string name="str_media_picture_out">Picture -</string>
+    <string name="str_other_power">Power</string>
+    <string name="str_other_power_all_on">All On</string>
+    <string name="str_other_power_all_off">All Off</string>
+    <string name="str_other_power_on">On</string>
+    <string name="str_other_power_off">Off</string>
+    <string name="str_other_exit">Exit</string>
+    <string name="str_other_auto">Auto</string>
+    <string name="str_other_click_long_click">Click or Long Press</string>
+    <string name="str_other_oc">Switch Bay</string>
+    <string name="str_other_computer">Computer</string>
+    <string name="str_other_video">Video</string>
+    <string name="str_other_signal">Signal</string>
+    <string name="str_other_await">Standby</string>
+    <string name="str_other_guide">Guide</string>
+    <string name="str_other_mute">Mute</string>
+    <string name="str_other_menu">Menu</string>
+    <string name="str_other_title">Title</string>
+    <string name="str_other_standard">Standard</string>
+    <string name="str_other_000">000</string>
+    <string name="str_other_123">123</string>
+    <string name="str_other_ok">OK</string>
+    <string name="str_other_cancel">Cancel</string>
+    <string name="str_other_select">-/--</string>
+    <string name="str_other_av">AV/TV</string>
+    <string name="str_other_back">Return</string>
+    <string name="str_other_vol">Volume</string>
+    <string name="str_other_voladd">Volume +</string>
+    <string name="str_other_volsub">Volume -</string>
+    <string name="str_other_ch">Channel</string>
+    <string name="str_other_chadd">Channel +</string>
+    <string name="str_other_chsub">Channel -</string>
+    <string name="str_other_light">Light</string>
+    <string name="str_other_sleep">Sleep</string>
+    <string name="str_other_mode">Mode</string>
+    <string name="str_other_cool">Cool</string>
+    <string name="str_other_study">Study</string>
+    <string name="str_other_lost">Anti-theft</string>
+    <string name="str_other_set">Set</string>
+    <string name="str_other_close">Close</string>
+    <string name="str_other_speed">Speed</string>
+    <string name="str_other_timer">Timer</string>
+    <string name="str_other_timer_1">Timer 1</string>
+    <string name="str_other_timer_2">Timer 2</string>
+    <string name="str_other_timer_3">Timer 3</string>
+    <string name="str_other_timer_4">Timer 4</string>
+    <string name="str_other_li">Negative Ion</string>
+    <string name="str_other_shake_head">Shake Head</string>
+    <string name="str_other_wind_rate">Wind Rate</string>
+    <string name="str_other_wind_rate_low">Low</string>
+    <string name="str_other_wind_rate_mid">Mid</string>
+    <string name="str_other_wind_rate_high">High</string>
+    <string name="str_other_wind_speed">Wind Speed</string>
+    <string name="str_other_wind_dir">Wind Direction</string>
+    <string name="str_other_wind_dir_hand">Manual Wind Direction</string>
+    <string name="str_other_wind_dir_updown">Up/Down Sweep</string>
+    <string name="str_other_wind_dir_leftright">Left/Right Sweep</string>
+    <string name="str_other_wind_dir_up">Up</string>
+    <string name="str_other_wind_dir_mid">Mid</string>
+    <string name="str_other_wind_dir_down">Down</string>
+    <string name="str_other_wind_dir_auto">Auto Wind Direction</string>
+    <string name="str_other_temp">Temperature</string>
+    <string name="str_other_tempadd">+</string>
+    <string name="str_other_tempsub">-</string>
+    <string name="str_other_25">25</string>
+    <string name="str_other_dehumidifier">Dehumidifier</string>
+    <string name="str_other_blowing">Blowing</string>
+    <string name="str_other_hot">Heat</string>
+    <string name="str_other_heat">Aux Heat</string>
+    <string name="str_other_air_light">Light</string>
+    <string name="str_other_eco">Eco</string>
+    <string name="str_other_air_xx">Close Broadcast</string>
+    <string name="str_other_air_yy">Open Broadcast</string>
+    <string name="str_other_air_hf">Light Switch</string>
+    
+    <string name="str_power_1">Power</string>
+    <string name="str_power_2">Constant Humidity</string>
+    <string name="str_power_3">Humidify</string>
+    <string name="str_power_4">Timer</string>
+    <string name="str_power_5">Sleep</string>
+    <string name="str_power_6">Sterilize</string>
+    
+    
+    <string name="str_other_photo">Take Photo</string>
+    <string name="str_other_home">Home</string>
+    <string name="str_other_yuyue">Appointment</string>
+    <string name="str_other_save_temp">Save Temperature</string>
+    <string name="str_other_close_light">Turn off Light</string>
+    <string name="str_other_light1">Light 1</string>
+    <string name="str_other_light2">Light 2</string>
+    <string name="str_other_light3">Light 3</string>
+    <string name="str_other_uv">Ultraviolet</string>
+    <string name="str_other_feel">Comfort</string>
+    <string name="str_other_strong">Strong</string>
+    <string name="str_other_native">Natural</string>
+    <string name="str_other_smart">Smart</string>
+    <string name="str_other_time">Time</string>
+    <string name="str_other_hc">Return Charge</string>
+    <string name="str_other_homepage">Homepage</string>
+    <string name="str_other_yb">Edge</string>
+    <string name="str_other_jb">Partial</string>
+    <string name="str_other_qy">Area</string>
+    <string name="str_other_dd">Spot</string>
+    <string name="str_other_gx">Bow-shaped</string>
+    <string name="str_other_sj">Sterilize</string>
+    <string name="str_other_yy">Appointment</string>
+    <!-- Device -->
+    <string name="str_device">Device</string>
+    <string name="str_device_tv">TV</string>
+    <string name="str_device_iptv">IPTV</string>
+    <string name="str_device_stb">Set-top Box</string>
+    <string name="str_device_dvd">DVD Player</string>
+    <string name="str_device_fans">Fan</string>
+    <string name="str_device_pjt">Projector</string>
+    <string name="str_device_light">Remote Control Light</string>
+    <string name="str_device_air">Air Conditioner</string>
+    <string name="str_device_dc">Digital Camera</string>
+    <string-array name="strs_group">
+        <item>Bedroom</item>
+        <item>Living Room</item>
+        <item>Office</item>
+        <item>Meeting Room</item>
+        <item>Kitchen</item>
+        <item>Dining Room</item>
+        <item>Bathroom</item>
+        <item>Baby Room</item>
+        <item>Add Scene</item>
+    </string-array>
+    <string-array name="strs_device">
+        <item>Air Conditioner</item>
+<!--        <item>Water Heater</item>-->
+<!--        <item>Air Purifier</item>-->
+        <item>TV</item>
+<!--        <item>IPTV</item>-->
+<!--        <item>Set-top Box</item>-->
+<!--        <item>DVD Player</item>-->
+<!--        <item>Fan</item>-->
+<!--        <item>Projector</item>-->
+        <item>Remote Control Light</item>
+<!--        <item>Digital Camera</item>-->
+<!--        <item>Sound System</item>-->
+<!--        <item>Vacuum Cleaner</item>-->
+        <item>Learning</item>
+    </string-array>
+    <string-array name="strs_tv_key">
+        <item>Volume -</item>
+        <item>Channel +</item>
+        <item>Menu</item>
+        <item>Channel -</item>
+        <item>Volume +</item>
+        <item>Power</item>
+        <item>Mute</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>-/--</item>
+        <item>0</item>
+        <item>AV/TV</item>
+        <item>Return</item>
+        <item>OK</item>
+        <item>Up</item>
+        <item>Down</item>
+        <item>Left</item>
+        <item>Right</item>
+    </string-array>
+    <string-array name="strs_iptv_key">
+        <item>Power</item>
+        <item>Mute</item>
+        <item>Volume +</item>
+        <item>Volume -</item>
+        <item>Channel +</item>
+        <item>Channel -</item>
+        <item>Up</item>
+        <item>Left</item>
+        <item>OK</item>
+        <item>Right</item>
+        <item>Down</item>
+        <item>Play/Pause</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>0</item>
+        <item>Return</item>
+    </string-array>
+    <string-array name="strs_stb_key">
+        <item>Standby</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>Guide</item>
+        <item>0</item>
+        <item>Return</item>
+        <item>Up</item>
+        <item>Left</item>
+        <item>OK</item>
+        <item>Right</item>
+        <item>Down</item>
+        <item>Volume +</item>
+        <item>Volume -</item>
+        <item>Channel +</item>
+        <item>Channel -</item>
+        <item>Menu</item>
+    </string-array>
+    <string-array name="strs_dvd_key">
+        <item>Left</item>
+        <item>Up</item>
+        <item>OK</item>
+        <item>Down</item>
+        <item>Right</item>
+        <item>Power</item>
+        <item>Mute</item>
+        <item>Rewind</item>
+        <item>Play</item>
+        <item>Fast Forward</item>
+        <item>Previous Track</item>
+        <item>Stop</item>
+        <item>Next Track</item>
+        <item>Standard</item>
+        <item>Pause</item>
+        <item>Title</item>
+        <item>Switch Bay</item>
+        <item>Menu</item>
+        <item>Return</item>
+    </string-array>
+    <string-array name="strs_fans_key">
+        <item>Power</item>
+        <item>Wind Speed</item>
+        <item>Shake Head</item>
+        <item>Mode</item>
+        <item>Timer</item>
+        <item>Light</item>
+        <item>Negative Ion</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>Sleep</item>
+        <item>Cool</item>
+        <item>Wind Rate</item>
+        <item>Low</item>
+        <item>Mid</item>
+        <item>High</item>
+    </string-array>
+    <string-array name="strs_pjt_key">
+        <item> Power On</item>
+        <item>Power Off</item>
+        <item>Computer</item>
+        <item>Video</item>
+        <item>Signal</item>
+        <item>Zoom +</item>
+        <item>Zoom -</item>
+        <item>Picture +</item>
+        <item>Picture -</item>
+        <item>Menu</item>
+        <item>OK</item>
+        <item>Up</item>
+        <item>Left</item>
+        <item>Right</item>
+        <item>Down</item>
+        <item>Exit</item>
+        <item>Volume +</item>
+        <item>Volume -</item>
+        <item>Mute</item>
+        <item>Auto</item>
+        <item>Pause</item>
+        <item>Brightness</item>
+    </string-array>
+    <string-array name="strs_light_key">
+        <item>All On</item>
+        <item>All Off</item>
+        <item>On</item>
+        <item>Off</item>
+        <item>Brightness +</item>
+        <item>Brightness -</item>
+        <item>Anti-theft</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>Set</item>
+        <item>Learn</item>
+        <item>Timer 1</item>
+        <item>Timer 2</item>
+        <item>Timer 3</item>
+        <item>Timer 4</item>
+    </string-array>
+    <string-array name="strs_air_key">
+        <item code="49153">ON</item>
+        <item code="-1">25°C</item>
+        <item code="49153">OFF</item>
+        <item code="49163">Temperature</item>
+        <item code="49155">Mode</item>
+        <item code="49165">Temperature</item>
+        <item code="49157">Wind Speed</item>
+        <item code="49159">Wind Direction</item>
+        <item code="49161">Auto Wind Direction</item>
+    </string-array>
+    <string-array name="strs_dc_key">
+        <item>Take Photo</item>
+    </string-array>
+    <string-array name="strs_power_key">
+        <item>Switch</item>
+    </string-array>
+    <string-array name="strs_watch_tv">
+        <item>Anhui Satellite TV</item>
+        <item>Beijing - Finance</item>
+        <item>Beijing - Education</item>
+        <item>Beijing - Life</item>
+        <item>Beijing - Sports</item>
+        <item>Beijing - Culture</item>
+        <item>Beijing - Movie</item>
+        <item>Beijing Satellite TV</item>
+        <item>CCTV-1</item>
+        <item>CCTV-2</item>
+        <item>CCTV-3</item>
+        <item>CCTV-4</item>
+        <item>CCTV-5</item>
+        <item>CCTV-6</item>
+        <item>CCTV-7</item>
+        <item>CCTV-8</item>
+        <item>CCTV-9</item>
+        <item>CCTV-10</item>
+        <item>CCTV-11</item>
+        <item>CCTV-12</item>
+        <item>CCTV-13</item>
+        <item>CCTV-14</item>
+        <item>CCTV-15</item>
+        <item>Chongqing Satellite TV</item>
+        <item>Oriental Satellite TV</item>
+        <item>Southeast Satellite TV</item>
+        <item>Gansu Satellite TV</item>
+        <item>Guangdong Satellite TV</item>
+        <item>Guangxi Satellite TV</item>
+        <item>Hebei Satellite TV</item>
+        <item>Heilongjiang Satellite TV</item>
+        <item>Henan Satellite TV</item>
+        <item>Hubei Satellite TV</item>
+        <item>Hunan Satellite TV</item>
+        <item>Jiangsu Satellite TV</item>
+        <item>Jiangxi Satellite TV</item>
+        <item>Jilin Satellite TV</item>
+        <item>Liaoning Satellite TV</item>
+        <item>Inner Mongolia Satellite TV</item>
+        <item>Ningxia Satellite TV</item>
+        <item>Qinghai Satellite TV</item>
+        <item>Shandong Satellite TV</item>
+        <item>Shandong Education</item>
+        <item>Shaanxi Satellite TV</item>
+        <item>Shanxi Satellite TV</item>
+        <item>Shenzhen Satellite TV</item>
+        <item>Sichuan Satellite TV</item>
+        <item>Tianjin Satellite TV</item>
+        <item>Xiamen Satellite TV</item>
+        <item>Xinjiang Satellite TV</item>
+        <item>Tibet Satellite TV</item>
+        <item>Yunnan Satellite TV</item>
+        <item>Zhejiang Satellite TV</item>
+        <item>China Education Satellite TV</item>
+    </string-array>
+    <drawable name="ic_item_up">#666</drawable>
+    <drawable name="ic_item_down">#444</drawable>
+</resources>
+

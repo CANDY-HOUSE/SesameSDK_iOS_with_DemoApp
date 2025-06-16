@@ -1,0 +1,524 @@
+[
+  {
+    "code": 66,
+    "model": "Daiko",
+    "alias": "Daiko LONG LIFE SLIM PHOTO",
+    "direction": "D"
+  },
+  {
+    "code": 67,
+    "model": "Daiko",
+    "alias": "Daiko LONG LIFE SLIM PHOTO",
+    "direction": "D"
+  },
+  {
+    "code": 68,
+    "model": "Daiko",
+    "alias": "Daiko CEILING LIGHT KACHITTO TYPE",
+    "direction": "D"
+  },
+  {
+    "code": 69,
+    "model": "Daiko",
+    "alias": "Daiko CEILING LIGHT KACHITTO TYPE",
+    "direction": "D"
+  },
+  {
+    "code": 87,
+    "model": "Deadou",
+    "alias": "Deadou BEDSIDE LAMP",
+    "direction": "D"
+  },
+  {
+    "code": 82,
+    "model": "Eseoe",
+    "alias": "Eseoe LED STAND LIGHT",
+    "direction": "E"
+  },
+  {
+    "code": 83,
+    "model": "Fsliving",
+    "alias": "Fsliving UFO NIGHT LIGHT",
+    "direction": "F"
+  },
+  {
+    "code": 88,
+    "model": "Hanwa",
+    "alias": "Hanwa JAVALO ELF CEILING FAN",
+    "direction": "H"
+  },
+  {
+    "code": 50,
+    "model": "Hitachi",
+    "alias": "Hitachi LEC-AHXXA CH1",
+    "direction": "H"
+  },
+  {
+    "code": 51,
+    "model": "Hitachi",
+    "alias": "Hitachi LEC-AHXXA CH2",
+    "direction": "H"
+  },
+  {
+    "code": 52,
+    "model": "Hitachi",
+    "alias": "Hitachi LEC-AHXXXE CH1",
+    "direction": "H"
+  },
+  {
+    "code": 53,
+    "model": "Hitachi",
+    "alias": "Hitachi LEC-AHXXXE CH2",
+    "direction": "H"
+  },
+  {
+    "code": 54,
+    "model": "Hitachi",
+    "alias": "Hitachi LEC-AHXXXE CH3",
+    "direction": "H"
+  },
+  {
+    "code": 60,
+    "model": "Iris ohyam",
+    "alias": "Iris ohyam CL-8DLE",
+    "direction": "I"
+  },
+  {
+    "code": 61,
+    "model": "Iris ohyam",
+    "alias": "Iris ohyam CL-8DLE",
+    "direction": "I"
+  },
+  {
+    "code": 62,
+    "model": "Iris ohyam",
+    "alias": "Iris ohyam CLXXDL-ALE",
+    "direction": "I"
+  },
+  {
+    "code": 63,
+    "model": "Iris ohyam",
+    "alias": "Iris ohyam CLXXDL-ALE",
+    "direction": "I"
+  },
+  {
+    "code": 70,
+    "model": "Kishima",
+    "alias": "Kishima BABY LIGHT",
+    "direction": "K"
+  },
+  {
+    "code": 73,
+    "model": "Koizumi lighting technology",
+    "alias": "Koizumi lighting technology CEILING LIGHT CH1",
+    "direction": "K"
+  },
+  {
+    "code": 74,
+    "model": "Koizumi lighting technology",
+    "alias": "Koizumi lighting technology CEILING LIGHT CH2",
+    "direction": "K"
+  },
+  {
+    "code": 75,
+    "model": "Koizumi lighting technology",
+    "alias": "Koizumi lighting technology FLOOR LIGHT CH1",
+    "direction": "K"
+  },
+  {
+    "code": 76,
+    "model": "Koizumi lighting technology",
+    "alias": "Koizumi lighting technology FLOOR LIGHT CH2",
+    "direction": "K"
+  },
+  {
+    "code": 78,
+    "model": "Kyohritsu",
+    "alias": "Kyohritsu LED TAPE RGB",
+    "direction": "K"
+  },
+  {
+    "code": 89,
+    "model": "Lightmates",
+    "alias": "Lightmates CH010",
+    "direction": "L"
+  },
+  {
+    "code": 84,
+    "model": "National",
+    "alias": "National CEILING LIGHT DIRECT SWITCH DIMMING",
+    "direction": "N"
+  },
+  {
+    "code": 85,
+    "model": "National",
+    "alias": "National CEILING LIGHT DIRECT SWITCH DIMMING",
+    "direction": "N"
+  },
+  {
+    "code": 86,
+    "model": "National",
+    "alias": "National CEILING LIGHT DIRECT SWITCH DIMMING",
+    "direction": "N"
+  },
+  {
+    "code": 33,
+    "model": "Nec",
+    "alias": "Nec 9LTZ SERIES",
+    "direction": "N"
+  },
+  {
+    "code": 34,
+    "model": "Nec",
+    "alias": "Nec 9LTZ SERIES",
+    "direction": "N"
+  },
+  {
+    "code": 35,
+    "model": "Nec",
+    "alias": "Nec LED CEILING LIGHT",
+    "direction": "N"
+  },
+  {
+    "code": 36,
+    "model": "Nec",
+    "alias": "Nec LED CEILING LIGHT",
+    "direction": "N"
+  },
+  {
+    "code": 37,
+    "model": "Nec",
+    "alias": "Nec DIGITAL CONTINUOUS DIMMING",
+    "direction": "N"
+  },
+  {
+    "code": 38,
+    "model": "Nec",
+    "alias": "Nec DIGITAL CONTINUOUS DIMMING",
+    "direction": "N"
+  },
+  {
+    "code": 39,
+    "model": "Nec",
+    "alias": "Nec LED CEILING LIGHT",
+    "direction": "N"
+  },
+  {
+    "code": 40,
+    "model": "Nec",
+    "alias": "Nec LED CEILING LIGHT",
+    "direction": "N"
+  },
+  {
+    "code": 59,
+    "model": "Nitori",
+    "alias": "Nitori NTR-86W-R",
+    "direction": "N"
+  },
+  {
+    "code": 64,
+    "model": "Odelic",
+    "alias": "Odelic LED CEILING LIGHT",
+    "direction": "O"
+  },
+  {
+    "code": 65,
+    "model": "Odelic",
+    "alias": "Odelic MEMORY DIMMING SWITCH",
+    "direction": "O"
+  },
+  {
+    "code": 71,
+    "model": "Omniglow",
+    "alias": "Omniglow LED INTERIOR LIGHT",
+    "direction": "O"
+  },
+  {
+    "code": 72,
+    "model": "Omniglow",
+    "alias": "Omniglow BEDSIDE LAMP",
+    "direction": "O"
+  },
+  {
+    "code": 0,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI LGBE SERIES",
+    "direction": "P"
+  },
+  {
+    "code": 1,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI LGBE SERIES",
+    "direction": "P"
+  },
+  {
+    "code": 2,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI LGBE SERIES",
+    "direction": "P"
+  },
+  {
+    "code": 3,
+    "model": "Panasonic",
+    "alias": "Panasonic TWIN PA BRIGHTNESS FREE",
+    "direction": "P"
+  },
+  {
+    "code": 4,
+    "model": "Panasonic",
+    "alias": "Panasonic TWIN PA BRIGHTNESS FREE",
+    "direction": "P"
+  },
+  {
+    "code": 5,
+    "model": "Panasonic",
+    "alias": "Panasonic TWIN PA BRIGHTNESS FREE",
+    "direction": "P"
+  },
+  {
+    "code": 6,
+    "model": "Panasonic",
+    "alias": "Panasonic HH-CBXX80A",
+    "direction": "P"
+  },
+  {
+    "code": 7,
+    "model": "Panasonic",
+    "alias": "Panasonic HH-CBXX80A",
+    "direction": "P"
+  },
+  {
+    "code": 8,
+    "model": "Panasonic",
+    "alias": "Panasonic HH-CBXX80A",
+    "direction": "P"
+  },
+  {
+    "code": 9,
+    "model": "Panasonic",
+    "alias": "Panasonic OPTICAL WIRELESS REMOTE SWITCH CH A",
+    "direction": "P"
+  },
+  {
+    "code": 10,
+    "model": "Panasonic",
+    "alias": "Panasonic OPTICAL WIRELESS REMOTE SWITCH CH B",
+    "direction": "P"
+  },
+  {
+    "code": 11,
+    "model": "Panasonic",
+    "alias": "Panasonic TOTTARA REMOTE CH A",
+    "direction": "P"
+  },
+  {
+    "code": 12,
+    "model": "Panasonic",
+    "alias": "Panasonic TOTTARA REMOTE CH B",
+    "direction": "P"
+  },
+  {
+    "code": 13,
+    "model": "Panasonic",
+    "alias": "Panasonic TOTTARA REMOTE CH C",
+    "direction": "P"
+  },
+  {
+    "code": 14,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX21A",
+    "direction": "P"
+  },
+  {
+    "code": 15,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX21A",
+    "direction": "P"
+  },
+  {
+    "code": 16,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX21A",
+    "direction": "P"
+  },
+  {
+    "code": 17,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX14A",
+    "direction": "P"
+  },
+  {
+    "code": 18,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX14A",
+    "direction": "P"
+  },
+  {
+    "code": 19,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX14A",
+    "direction": "P"
+  },
+  {
+    "code": 20,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX11A",
+    "direction": "P"
+  },
+  {
+    "code": 21,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX11A",
+    "direction": "P"
+  },
+  {
+    "code": 22,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LCX11A",
+    "direction": "P"
+  },
+  {
+    "code": 26,
+    "model": "Panasonic",
+    "alias": "Panasonic HH-LCXXXA SERIES",
+    "direction": "P"
+  },
+  {
+    "code": 27,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LC600A  CH1",
+    "direction": "P"
+  },
+  {
+    "code": 28,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LC600A CH2",
+    "direction": "P"
+  },
+  {
+    "code": 29,
+    "model": "Panasonic",
+    "alias": "Panasonic ECONAVI HH-LC600A CH3",
+    "direction": "P"
+  },
+  {
+    "code": 30,
+    "model": "Panasonic",
+    "alias": "Panasonic HH-CA1290A CH1",
+    "direction": "P"
+  },
+  {
+    "code": 31,
+    "model": "Panasonic",
+    "alias": "Panasonic HH-CA1290A CH2",
+    "direction": "P"
+  },
+  {
+    "code": 32,
+    "model": "Panasonic",
+    "alias": "Panasonic HH-CA1290A CH3",
+    "direction": "P"
+  },
+  {
+    "code": 49,
+    "model": "Sharp",
+    "alias": "Sharp 600 SERIES",
+    "direction": "S"
+  },
+  {
+    "code": 79,
+    "model": "Takizumi",
+    "alias": "Takizumi LED CEILING LIGHT CH1",
+    "direction": "T"
+  },
+  {
+    "code": 80,
+    "model": "Takizumi",
+    "alias": "Takizumi LED CEILING LIGHT CH2",
+    "direction": "T"
+  },
+  {
+    "code": 41,
+    "model": "Toshiba",
+    "alias": "Toshiba CEILING LIGHT STEP DIMMING TYPE",
+    "direction": "T"
+  },
+  {
+    "code": 42,
+    "model": "Toshiba",
+    "alias": "Toshiba CEILING LIGHT STEP DIMMING TYPE",
+    "direction": "T"
+  },
+  {
+    "code": 43,
+    "model": "Toshiba",
+    "alias": "Toshiba FRC-165T CH1",
+    "direction": "T"
+  },
+  {
+    "code": 44,
+    "model": "Toshiba",
+    "alias": "Toshiba FRC-165T CH2",
+    "direction": "T"
+  },
+  {
+    "code": 45,
+    "model": "Toshiba",
+    "alias": "Toshiba CEILING LIGHT CH1",
+    "direction": "T"
+  },
+  {
+    "code": 46,
+    "model": "Toshiba",
+    "alias": "Toshiba CEILING LIGHT CH2",
+    "direction": "T"
+  },
+  {
+    "code": 47,
+    "model": "Toshiba",
+    "alias": "Toshiba CEILING LIGHT MULTI-COLOR LED TYPE CH1",
+    "direction": "T"
+  },
+  {
+    "code": 48,
+    "model": "Toshiba",
+    "alias": "Toshiba CEILING LIGHT MULTI-COLOR LED TYPE CH2",
+    "direction": "T"
+  },
+  {
+    "code": 81,
+    "model": "Wy",
+    "alias": "Wy LED CANDLE",
+    "direction": "W"
+  },
+  {
+    "code": 89,
+    "model": "Xiaoyedeng",
+    "alias": "Xiaoyedeng CH010",
+    "direction": "X"
+  },
+  {
+    "code": 55,
+    "model": "Yamazen",
+    "alias": "Yamazen LC-AXXXD",
+    "direction": "Y"
+  },
+  {
+    "code": 56,
+    "model": "Yamazen",
+    "alias": "Yamazen LC-AXXXD",
+    "direction": "Y"
+  },
+  {
+    "code": 57,
+    "model": "Yamazen",
+    "alias": "Yamazen LCL-RB80D",
+    "direction": "Y"
+  },
+  {
+    "code": 58,
+    "model": "Yamazen",
+    "alias": "Yamazen LCL-RB80D",
+    "direction": "Y"
+  }
+]

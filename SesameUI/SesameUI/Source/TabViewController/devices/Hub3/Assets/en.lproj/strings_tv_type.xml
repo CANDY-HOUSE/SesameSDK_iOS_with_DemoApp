@@ -1,0 +1,4930 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+<string-array name="strs_tv_type">
+    <item>Changhong-KDT6D</item>
+    <item>Changhong-CHD29168</item>
+    <item>Changhong-CHD29158</item>
+    <item>Changhong-CHD29100C</item>
+    <item>Changhong-RID800</item>
+    <item>Changhong-32Q2F</item>
+    <item>Changhong-43Q2F</item>
+    <item>Changhong-50Q2F</item>
+    <item>Changhong-55Q2F</item>
+    <item>Changhong-58Q2F</item>
+    <item>Changhong-24760X</item>
+    <item>Changhong-3D32A4000iV</item>
+    <item>Changhong-3D32A5000IV</item>
+    <item>Changhong-3D37A4000iV</item>
+    <item>Changhong-3D42A4049</item>
+    <item>Changhong-CHD-TD201F7</item>
+    <item>Changhong-CHD-TD270F8</item>
+    <item>Changhong-CHD-TD320F8</item>
+    <item>Changhong-CHD-TD370F8</item>
+    <item>Changhong-CHD-TM150F7</item>
+    <item>Changhong-CHD-TM201F7</item>
+    <item>Changhong-CHD-W170F7</item>
+    <item>Changhong-CHD-W260F8</item>
+    <item>Changhong-CHD-W270F8</item>
+    <item>Changhong-CHD-W320F8</item>
+    <item>Changhong-3D46A4000iV</item>
+    <item>Changhong-3D4790I</item>
+    <item>Changhong-3DTV24660i</item>
+    <item>Changhong-3DTV46860i</item>
+    <item>Changhong-CH-RL48SX</item>
+    <item>Changhong-ITV40830DE</item>
+    <item>Changhong-ITV40830DEX</item>
+    <item>Changhong-ITV42820F</item>
+    <item>Changhong-iTV42830DE</item>
+    <item>Changhong-ITV42920DE</item>
+    <item>Changhong-ITV46820F</item>
+    <item>Changhong-ITV46920DE</item>
+    <item>Changhong-iTV55830DE</item>
+    <item>Changhong-iTV55920DE</item>
+    <item>Changhong-K18T-C1-C2</item>
+    <item>Changhong-LED19860X</item>
+    <item>Changhong-LED32699</item>
+    <item>Changhong-LED32A2000V</item>
+    <item>Changhong-LED40880iX</item>
+    <item>Changhong-LED42A4049</item>
+    <item>Changhong-LED43A9000I</item>
+    <item>Changhong-LED46680</item>
+    <item>Changhong-LT3201</item>
+    <item>Changhong-LT3201AU</item>
+    <item>Changhong-LT3212E</item>
+    <item>Changhong-LT3219P</item>
+    <item>Changhong-LT4028</item>
+    <item>Changhong-LT26629</item>
+    <item>Changhong-LT3218</item>
+    <item>Changhong-LT32920EX</item>
+    <item>Changhong-LT3712</item>
+    <item>Changhong-LT3719P</item>
+    <item>Changhong-LT4028</item>
+    <item>Changhong-LT4219FHD</item>
+    <item>Changhong-LT42729F</item>
+    <item>Changhong-LT4288</item>
+    <item>Changhong-LT4299D</item>
+    <item>Changhong-LT4619P</item>
+    <item>Changhong-LT4719FHD</item>
+    <item>Changhong-LT47810FU</item>
+    <item>Changhong-LT47810QU</item>
+    <item>Changhong-LT55810DU</item>
+    <item>Changhong-PT-4206</item>
+    <item>Changhong-PT-4209</item>
+    <item>Changhong-PT-5016</item>
+    <item>Changhong-PT-6520</item>
+    <item>Changhong-PT-4288</item>
+    <item>Changhong-PT-50618</item>
+    <item>Changhong-PT50718</item>
+    <item>Changhong-PT50718X</item>
+    <item>Changhong-RL48A</item>
+    <item>Changhong-RL48B</item>
+    <item>Changhong-RL48SX</item>
+    <item>Changhong-RL58BB</item>
+    <item>Changhong-32719A</item>
+    <item>Changhong-32719A-1</item>
+    <item>Changhong-42630FX</item>
+    <item>Changhong-46630FX</item>
+    <item>Changhong-LT32710</item>
+    <item>Changhong-LT37710</item>
+    <item>Changhong-RP57B</item>
+    <item>Changhong-RP57C</item>
+    <item>Changhong-RP57C-1</item>
+    <item>Changhong-RP57CC</item>
+    <item>Changhong-RP57G</item>
+    <item>Changhong-RP57H</item>
+    <item>Changhong-3D42790I</item>
+    <item>Changhong-3D43858</item>
+    <item>Changhong-3D47790I</item>
+    <item>Changhong-3D50A3000I</item>
+    <item>Changhong-3D50A3700ID</item>
+    <item>Changhong-3D51858</item>
+    <item>Changhong-3DTV46860I</item>
+    <item>Changhong-3DTV55860I</item>
+    <item>Changhong-51A5000I</item>
+    <item>Changhong-CH-RL67DA</item>
+    <item>Changhong-CHD25155(F27)</item>
+    <item>Changhong-CHD25800</item>
+    <item>Changhong-CHD29155(F27)</item>
+    <item>Changhong-CHD29156(F27)</item>
+    <item>Changhong-CHD29168(27)</item>
+    <item>Changhong-CHD29200</item>
+    <item>Changhong-CHD29300</item>
+    <item>Changhong-CHD29800H</item>
+    <item>Changhong-CHD29915(F27)</item>
+    <item>Changhong-CHD29916</item>
+    <item>Changhong-CHD32200</item>
+    <item>Changhong-CHD32218</item>
+    <item>Changhong-CHD34155(F27)</item>
+    <item>Changhong-CHD34156(F27)</item>
+    <item>Changhong-CHD34188</item>
+    <item>Changhong-CHD34200</item>
+    <item>Changhong-CHD34218</item>
+    <item>Changhong-CHD34J15S(F27)</item>
+    <item>Changhong-CHD34J18S(F27)</item>
+    <item>Changhong-ITV37650</item>
+    <item>Changhong-ITV42738</item>
+    <item>Changhong-ITV42738X</item>
+    <item>Changhong-ITV50738</item>
+    <item>Changhong-ITV50738B</item>
+    <item>Changhong-K22A</item>
+    <item>Changhong-KDT6H</item>
+    <item>Changhong-kdt6K</item>
+    <item>Changhong-KDT6K-1</item>
+    <item>Changhong-LED32680</item>
+    <item>Changhong-LED32698</item>
+    <item>Changhong-LED32770V</item>
+    <item>Changhong-LED32860IX</item>
+    <item>Changhong-LED37860IX</item>
+    <item>Changhong-LED42860IX</item>
+    <item>Changhong-LED32C2080i</item>
+    <item>Changhong-LT3268</item>
+    <item>Changhong-PF25800</item>
+    <item>Changhong-PT42638NHDX</item>
+    <item>Changhong-PT50638NHDX</item>
+    <item>Changhong-PT50639NHDX</item>
+    <item>Changhong-PT58929FT</item>
+    <item>Changhong-RK53A</item>
+    <item>Changhong-RK55A</item>
+    <item>Changhong-RK55B</item>
+    <item>Changhong-RK55C</item>
+    <item>Changhong-RK55E</item>
+    <item>Changhong-RL67D</item>
+    <item>Changhong-RL67DA</item>
+    <item>Changhong-RL78A</item>
+    <item>Changhong-RP57G</item>
+    <item>Changhong-RP57H</item>
+    <item>Changhong-RP57HB</item>
+    <item>Changhong-RP57L</item>
+    <item>Changhong-RP61G</item>
+    <item>Changhong-RP67B</item>
+    <item>Changhong-RP67C</item>
+    <item>Changhong-RP67D</item>
+    <item>Changhong-RP67F</item>
+    <item>Changhong-SF25800</item>
+    <item>Changhong-3D42A4000iV</item>
+    <item>Changhong-3D42A5000IV</item>
+    <item>Changhong-3D43A9000i</item>
+    <item>Changhong-3D48A9000i</item>
+    <item>Changhong-3DTV43858</item>
+    <item>Changhong-ITV42738X</item>
+    <item>Changhong-iTV42850EB</item>
+    <item>Changhong-LDTV32876</item>
+    <item>Changhong-LDTV42876F</item>
+    <item>Changhong-LED32880iX</item>
+    <item>Changhong-LED32i86</item>
+    <item>Changhong-LED37880iX</item>
+    <item>Changhong-LED42680</item>
+    <item>Changhong-LED42989</item>
+    <item>Changhong-LED42i86</item>
+    <item>Changhong-LED46880i</item>
+    <item>Changhong-LT-3288</item>
+    <item>Changhong-LT-4288</item>
+    <item>Changhong-LT32876</item>
+    <item>Changhong-LT42810DU</item>
+    <item>Changhong-LT42876FHD</item>
+    <item>Changhong-PF-29008</item>
+    <item>Changhong-PT-4218</item>
+    <item>Changhong-3D46A5000I</item>
+    <item>Changhong-3D51A5000i</item>
+    <item>Changhong-3DTV55860i</item>
+    <item>Changhong-CHL4243DC</item>
+    <item>Changhong-CHP5010A</item>
+    <item>Changhong-CHP5010B</item>
+    <item>Changhong-ITV40650X</item>
+    <item>Changhong-LED42A4000iV</item>
+    <item>Changhong-LT24630X</item>
+    <item>Changhong-LT42630FX</item>
+    <item>Changhong-LT4268MX</item>
+    <item>Changhong-PT50618</item>
+    <item>Changhong-3DTV589S8FS</item>
+    <item>Changhong-3DTV63938FS</item>
+    <item>Changhong-L19BH83</item>
+    <item>Changhong-L22BH83</item>
+    <item>Changhong-L22BH86</item>
+    <item>Changhong-LT32630X</item>
+    <item>Changhong-LT32719A</item>
+    <item>Changhong-LT32729</item>
+    <item>Changhong-LT42630F</item>
+    <item>Changhong-LT42630FX</item>
+    <item>Changhong-LT42710FHD</item>
+    <item>Changhong-LT42729</item>
+    <item>Changhong-LT46610FHD</item>
+    <item>Changhong-LT46630FX</item>
+    <item>Changhong-LT46729</item>
+    <item>Changhong-LT46729FX</item>
+    <item>Changhong-RC57H</item>
+    <item>Changhong-RC57HB</item>
+    <item>Changhong-RC57W</item>
+    <item>Changhong-RL57C</item>
+    <item>Changhong-RP57CC</item>
+    <item>Changhong-RP57L</item>
+    <item>Changhong-YK1520</item>
+    <item>Changhong-YK2059</item>
+    <item>Changhong-YK510</item>
+    <item>Changhong-CH-RL53FX</item>
+    <item>Changhong-ITV32820X</item>
+    <item>Changhong-ITV32839E</item>
+    <item>Changhong-ITV42820F</item>
+    <item>Changhong-ITV46839E</item>
+    <item>Changhong-ITV55820D</item>
+    <item>Changhong-ITV55830DE</item>
+    <item>Changhong-RL53FX</item>
+    <item>Changhong-CHD3891</item>
+    <item>Changhong-CHD3891b</item>
+    <item>Changhong-CHD4011W</item>
+    <item>Changhong-CHD4011Wb</item>
+    <item>Changhong-CHD4311W</item>
+    <item>Changhong-CHD4311W-1</item>
+    <item>Changhong-CHD4388</item>
+    <item>Changhong-CHD4388b</item>
+    <item>Changhong-CHD4390</item>
+    <item>Changhong-CHD4390b</item>
+    <item>Changhong-CHD5188</item>
+    <item>Changhong-CHD5188b</item>
+    <item>Changhong-CHD5190</item>
+    <item>Changhong-CHD5190b</item>
+    <item>Changhong-HP3891A</item>
+    <item>Changhong-HP3891A-1</item>
+    <item>Changhong-HP4368</item>
+    <item>Changhong-HP4388</item>
+    <item>Changhong-HP4388b</item>
+    <item>Changhong-HP4388A</item>
+    <item>Changhong-HP4388A-1</item>
+    <item>Changhong-HP4390</item>
+    <item>Changhong-HP4390b</item>
+    <item>Changhong-HP4390A</item>
+    <item>Changhong-HP4390A-1</item>
+    <item>Changhong-HP4391A</item>
+    <item>Changhong-HP4391A-1</item>
+    <item>Changhong-HP4888A</item>
+    <item>Changhong-HP4888A-1</item>
+    <item>Changhong-CT6856</item>
+    <item>Changhong-CT6856b</item>
+    <item>Changhong-ITV46850EB</item>
+    <item>Changhong-ITV32650X</item>
+    <item>Changhong-ITV32820</item>
+    <item>Changhong-ITV32830EX</item>
+    <item>Changhong-ITV37650X</item>
+    <item>Changhong-LED24760X</item>
+    <item>Changhong-LED24770X</item>
+    <item>Changhong-LED26760X</item>
+    <item>Changhong-LED26770X</item>
+    <item>Changhong-LED32690</item>
+    <item>Changhong-LED32760X</item>
+    <item>Changhong-LED32770X</item>
+    <item>Changhong-LED37760X</item>
+    <item>Changhong-LED37770X</item>
+    <item>Changhong-LED40760X</item>
+    <item>Changhong-LED42760X</item>
+    <item>Changhong-LED46760X</item>
+    <item>Changhong-LT19610</item>
+    <item>Changhong-LT22610</item>
+    <item>Changhong-LT24610</item>
+    <item>Changhong-LT26610</item>
+    <item>Changhong-LT32630X</item>
+    <item>Changhong-LT32710</item>
+    <item>Changhong-LT32810U</item>
+    <item>Changhong-LT37630X</item>
+    <item>Changhong-LT37710</item>
+    <item>Changhong-LT37810U</item>
+    <item>Changhong-LT42710FHD</item>
+    <item>Changhong-LT47710FHD</item>
+    <item>Changhong-ITV46830DE</item>
+    <item>Changhong-LT40876FHD</item>
+    <item>Changhong-LT4619P</item>
+    <item>Changhong-LT46729F</item>
+    <item>Changhong-K10F</item>
+    <item>Changhong-K13A</item>
+    <item>Changhong-RK23B</item>
+    <item>Changhong-RK23C</item>
+    <item>Changhong-RK23E</item>
+    <item>Changhong-RK23G</item>
+    <item>Changhong-K16J</item>
+    <item>Changhong-K16N</item>
+    <item>Changhong-K16Z</item>
+    <item>Changhong-K18D</item>
+    <item>Changhong-LT19620A</item>
+    <item>Changhong-LT19629</item>
+    <item>Changhong-LT22810</item>
+    <item>Changhong-LT24720F</item>
+    <item>Changhong-LT24720FX</item>
+    <item>Changhong-LT22620A</item>
+    <item>Changhong-LT22810</item>
+    <item>Changhong-LT26920EX</item>
+    <item>Changhong-LT32620A</item>
+    <item>Changhong-RK60B</item>
+    <item>Changhong-RK60C</item>
+    <item>Changhong-K8D</item>
+    <item>Changhong-KDT6E</item>
+    <item>Changhong-KPT71</item>
+    <item>Changhong-KPT7A</item>
+    <item>Changhong-KPT7K</item>
+    <item>Changhong-RK03A</item>
+    <item>Changhong-RK34A</item>
+    <item>Changhong-KLC5B</item>
+    <item>Changhong-KLC5B-11</item>
+    <item>Changhong-KLC5B-16</item>
+    <item>Changhong-KLC5D</item>
+    <item>Changhong-KLC5E</item>
+    <item>Changhong-LDTV40876F</item>
+    <item>Changhong-LT22629</item>
+    <item>Changhong-LT3212</item>
+    <item>Changhong-KPT9A</item>
+    <item>Changhong-KPT9A-10</item>
+    <item>Changhong-KPT9A-4</item>
+    <item>Changhong-KPT9A-8</item>
+    <item>Changhong-LDTV37700C</item>
+    <item>Changhong-LDTV42700C</item>
+    <item>Changhong-LT32600</item>
+    <item>Changhong-LT32700</item>
+    <item>Changhong-LT40600</item>
+    <item>Changhong-PT32700</item>
+    <item>Changhong-PT42600NHD</item>
+    <item>Changhong-PT50600</item>
+    <item>Changhong-LDTV42810FU</item>
+    <item>Changhong-LT26720</item>
+    <item>Changhong-LT26810U</item>
+    <item>Changhong-LT32720</item>
+    <item>Changhong-LT32810U</item>
+    <item>Changhong-LT37720</item>
+    <item>Changhong-LT37810U</item>
+    <item>Changhong-LT40720F</item>
+    <item>Changhong-LT42720F</item>
+    <item>Changhong-PDTV50818U</item>
+    <item>Changhong-RCH7M61A</item>
+    <item>Changhong-RCH7M61B</item>
+    <item>Changhong-RCH7M61D</item>
+    <item>Changhong-RL53EX</item>
+    <item>Changhong-LT24610</item>
+    <item>Changhong-RL58A</item>
+    <item>Changhong-RL58B</item>
+    <item>Changhong-LT3212</item>
+    <item>Changhong-LT32629</item>
+    <item>Changhong-LT32876FHD</item>
+    <item>Changhong-LT40876FHD</item>
+    <item>Changhong-LT42876FHD</item>
+    <item>Changhong-RL57AX</item>
+    <item>Changhong-LT32876FHD</item>
+    <item>Changhong-LT40876FHD</item>
+    <item>Changhong-LT42876FHD</item>
+    <item>Changhong-RL57AX</item>
+    <item>Changhong-LT42900FHD</item>
+    <item>Changhong-LT46900FHD</item>
+    <item>Changhong-LT50900FHD</item>
+    <item>Changhong-RL48HX</item>
+    <item>Changhong-RL48JX</item>
+    <item>Changhong-RL48JX-1</item>
+    <item>Changhong-RL48TX</item>
+    <item>Changhong-PT42818NHD</item>
+    <item>Changhong-PT50718T</item>
+    <item>Changhong-PT50818NHD</item>
+    <item>Changhong-RL48KX</item>
+    <item>Changhong-RL48QX</item>
+    <item>Changhong-RL48WX</item>
+    <item>Changhong-RK12C</item>
+    <item>Changhong-RK12C-1</item>
+    <item>Changhong-RK60D</item>
+    <item>Changhong-YK510</item>
+    <item>Changhong-HP3891A</item>
+    <item>Changhong-g2128</item>
+    <item>Changhong-g2128b</item>
+    <item>Changhong-pt50638</item>
+    <item>Changhong-RL67K1</item>
+    <item>Changhong-LED46B1080</item>
+    <item>Changhong-PF25156</item>
+    <item>Changhong-3D-50738i</item>
+    <item>Changhong-HP7088</item>
+    <item>Changhong-HP6188</item>
+    <item>Changhong-HP5190A</item>
+    <item>Changhong-HP5190</item>
+    <item>Changhong-HP5189</item>
+    <item>Changhong-HP5188A</item>
+    <item>Changhong-HP5188</item>
+    <item>Changhong-HP5156</item>
+    <item>Changhong-HP4888B</item>
+    <item>Changhong-CHL4243</item>
+    <item>Changhong-YK8858</item>
+    <item>Changhong-LT26830EX</item>
+    <item>Camry-TV5803</item>
+    <item>Skyworth-YK-63LK</item>
+    <item>Skyworth-YK-63LH</item>
+    <item>Skyworth-YK-63LF</item>
+    <item>Skyworth-32L05HR</item>
+    <item>Skyworth-42L05HR</item>
+    <item>Skyworth-47L05HR</item>
+    <item>Skyworth-YK-63P</item>
+    <item>Skyworth-YK-54PI</item>
+    <item>Skyworth-5Y30</item>
+    <item>Skyworth-25ND9000</item>
+    <item>Skyworth-29T63AA</item>
+    <item>Skyworth-50E6200</item>
+    <item>Skyworth-49E6200</item>
+    <item>Skyworth-43E6000</item>
+    <item>Skyworth-YK-6600H</item>
+    <item>Skyworth-YK-6600J</item>
+    <item>Skyworth-YK-69HB</item>
+    <item>Skyworth-19I08iw</item>
+    <item>Skyworth-21D88AA</item>
+    <item>Skyworth-21N15AA</item>
+    <item>Skyworth-21N15AA-1</item>
+    <item>Skyworth-43PABHV</item>
+    <item>Skyworth-43PCAMV</item>
+    <item>Skyworth-8PS5</item>
+    <item>Skyworth-8PS6</item>
+    <item>Skyworth-HS-54C</item>
+    <item>Skyworth-24E20RN</item>
+    <item>Skyworth-24E20RN-1</item>
+    <item>Skyworth-34TIDP</item>
+    <item>Skyworth-34TIDP-1</item>
+    <item>Skyworth-39E350D</item>
+    <item>Skyworth-39E350D-1</item>
+    <item>Skyworth-39E550D</item>
+    <item>Skyworth-39E550D-1</item>
+    <item>Skyworth-24E61HR</item>
+    <item>Skyworth-26E61HR</item>
+    <item>Skyworth-26E61HR-1</item>
+    <item>Skyworth-37E61HR</item>
+    <item>Skyworth-37E61HR-1</item>
+    <item>Skyworth-37K03HR</item>
+    <item>Skyworth-37K03HR-1</item>
+    <item>Skyworth-37K05HR</item>
+    <item>Skyworth-42E350D</item>
+    <item>Skyworth-42E350D-1</item>
+    <item>Skyworth-42E550D</item>
+    <item>Skyworth-42E550D-1</item>
+    <item>Skyworth-42E600A</item>
+    <item>Skyworth-42E600A-1</item>
+    <item>Skyworth-42E60HR</item>
+    <item>Skyworth-42E60HR</item>
+    <item>Skyworth-42E61HR</item>
+    <item>Skyworth-42E61HR-1</item>
+    <item>Skyworth-42E62RN</item>
+    <item>Skyworth-42E62RN-1</item>
+    <item>Skyworth-42E6BRN</item>
+    <item>Skyworth-42E6BRN-1</item>
+    <item>Skyworth-42E6BRN-2</item>
+    <item>Skyworth-42E700S</item>
+    <item>Skyworth-42E700S-1</item>
+    <item>Skyworth-42E72RA</item>
+    <item>Skyworth-42E72RA-1</item>
+    <item>Skyworth-42E750A</item>
+    <item>Skyworth-42E7BRD</item>
+    <item>Skyworth-42E800A</item>
+    <item>Skyworth-42E80RA</item>
+    <item>Skyworth-42E82RD</item>
+    <item>Skyworth-42E82RD-1</item>
+    <item>Skyworth-42E82RD-2</item>
+    <item>Skyworth-42E83RS</item>
+    <item>Skyworth-42E83RS-1</item>
+    <item>Skyworth-42E8CRS</item>
+    <item>Skyworth-42E92RD</item>
+    <item>Skyworth-42K03HR</item>
+    <item>Skyworth-42K05HR</item>
+    <item>Skyworth-42LED10</item>
+    <item>Skyworth-46E60HR</item>
+    <item>Skyworth-47E82RD</item>
+    <item>Skyworth-47E83RS</item>
+    <item>Skyworth-47K05HR</item>
+    <item>Skyworth-55E60HR</item>
+    <item>Skyworth-8A02</item>
+    <item>Skyworth-YK-60HA</item>
+    <item>Skyworth-YK-60HB</item>
+    <item>Skyworth-YK-60HD</item>
+    <item>Skyworth-YK-60JA</item>
+    <item>Skyworth-YK-60JB</item>
+    <item>Skyworth-YK-60JD</item>
+    <item>Skyworth-YK-69HB</item>
+    <item>Skyworth-YK-69HB-1</item>
+    <item>Skyworth-YK-69JB</item>
+    <item>Skyworth-25T86HT</item>
+    <item>Skyworth-6D90</item>
+    <item>Skyworth-6D91</item>
+    <item>Skyworth-YK-32DA</item>
+    <item>Skyworth-26-L98PW</item>
+    <item>Skyworth-26-L98PW-1</item>
+    <item>Skyworth-26E20RN</item>
+    <item>Skyworth-26E20RN-1</item>
+    <item>Skyworth-32-LBAIW</item>
+    <item>Skyworth-32E20RN</item>
+    <item>Skyworth-32E20RN-1</item>
+    <item>Skyworth-32E600A</item>
+    <item>Skyworth-32E600A-1</item>
+    <item>Skyworth-32E6BRN</item>
+    <item>Skyworth-32E6BRN-1</item>
+    <item>Skyworth-32E700S</item>
+    <item>Skyworth-32E700S-1</item>
+    <item>Skyworth-32E72RA</item>
+    <item>Skyworth-32E72RA-1</item>
+    <item>Skyworth-32E7BRD</item>
+    <item>Skyworth-32E7BRD-1</item>
+    <item>Skyworth-32E80RA</item>
+    <item>Skyworth-32E80RA-1</item>
+    <item>Skyworth-32E82RD</item>
+    <item>Skyworth-32E82RD-1</item>
+    <item>Skyworth-37E700S</item>
+    <item>Skyworth-37E700S-1</item>
+    <item>Skyworth-37E72RA</item>
+    <item>Skyworth-37E72RA-1</item>
+    <item>Skyworth-37E80RA</item>
+    <item>Skyworth-37E80RA-1</item>
+    <item>Skyworth-37E82RD</item>
+    <item>Skyworth-37E82RD-1</item>
+    <item>Skyworth-37E96RA</item>
+    <item>Skyworth-37E96RA-1</item>
+    <item>Skyworth-37LBAIW</item>
+    <item>Skyworth-37LBAIW-1</item>
+    <item>Skyworth-40LBAPW</item>
+    <item>Skyworth-40LBAPW-1</item>
+    <item>Skyworth-42E83RS</item>
+    <item>Skyworth-46E80RA</item>
+    <item>Skyworth-50E550D</item>
+    <item>Skyworth-50E65SG</item>
+    <item>Skyworth-55E65SG</item>
+    <item>Skyworth-SLC-1551</item>
+    <item>Skyworth-26L03HR</item>
+    <item>Skyworth-26L03HR-1</item>
+    <item>Skyworth-32L08HR</item>
+    <item>Skyworth-32L08HR-1</item>
+    <item>Skyworth-6D30</item>
+    <item>Skyworth-8H06</item>
+    <item>Skyworth-8H11</item>
+    <item>Skyworth-HS-62D1</item>
+    <item>Skyworth-HS-62D2</item>
+    <item>Skyworth-YK-62LE</item>
+    <item>Skyworth-YK-62LK</item>
+    <item>Skyworth-YK-62PG</item>
+    <item>Skyworth-YK-63DN</item>
+    <item>Skyworth-YK-63LM</item>
+    <item>Skyworth-YK-63PI</item>
+    <item>Skyworth-YK-63PK</item>
+    <item>Skyworth-YK-63PM</item>
+    <item>Skyworth-YK-63TA</item>
+    <item>Skyworth-YK-63TC</item>
+    <item>Skyworth-YK-72DA</item>
+    <item>Skyworth-YK-72DB</item>
+    <item>Skyworth-YK-72DC</item>
+    <item>Skyworth-YK-72DD</item>
+    <item>Skyworth-26L08HR</item>
+    <item>Skyworth-26L08HR-1</item>
+    <item>Skyworth-26L16SW</item>
+    <item>Skyworth-26L16SW-1</item>
+    <item>Skyworth-28T17HT</item>
+    <item>Skyworth-28T17HT-1</item>
+    <item>Skyworth-29D68HT</item>
+    <item>Skyworth-29D68HT-1</item>
+    <item>Skyworth-29D9AHT</item>
+    <item>Skyworth-29D9AHT-1</item>
+    <item>Skyworth-29T88HT</item>
+    <item>Skyworth-29T88HT-1</item>
+    <item>Skyworth-32D98HD</item>
+    <item>Skyworth-32E56HR</item>
+    <item>Skyworth-32E56HR-1</item>
+    <item>Skyworth-32E61HR</item>
+    <item>Skyworth-32E61HR-1</item>
+    <item>Skyworth-32E96RA</item>
+    <item>Skyworth-32E96RA-1</item>
+    <item>Skyworth-32E96RA-2</item>
+    <item>Skyworth-42E96RA</item>
+    <item>Skyworth-42E96RS</item>
+    <item>Skyworth-6D66</item>
+    <item>Skyworth-6D85</item>
+    <item>Skyworth-8M01</item>
+    <item>Skyworth-8R01</item>
+    <item>Skyworth-8TAG</item>
+    <item>Skyworth-YK-63DA</item>
+    <item>Skyworth-YK-63DC</item>
+    <item>Skyworth-YK-63DE</item>
+    <item>Skyworth-YK-63DH</item>
+    <item>Skyworth-YK-63DJ</item>
+    <item>Skyworth-YK-63DQ</item>
+    <item>Skyworth-YK-63LC</item>
+    <item>Skyworth-28T90HT</item>
+    <item>Skyworth-28T90HT-1</item>
+    <item>Skyworth-29TWHT</item>
+    <item>Skyworth-29TWHT-1</item>
+    <item>Skyworth-6T18</item>
+    <item>Skyworth-6T19</item>
+    <item>Skyworth-HS-54T</item>
+    <item>Skyworth-YK-58TA</item>
+    <item>Skyworth-29T68HD</item>
+    <item>Skyworth-29T68HD-1</item>
+    <item>Skyworth-29T68HD-2</item>
+    <item>Skyworth-34T66HD</item>
+    <item>Skyworth-34T66HD-1</item>
+    <item>Skyworth-39E61HR</item>
+    <item>Skyworth-39E61HR-1</item>
+    <item>Skyworth-39E65SG</item>
+    <item>Skyworth-39E65SG</item>
+    <item>Skyworth-29T98HP</item>
+    <item>Skyworth-29T98HP-1</item>
+    <item>Skyworth-6P30</item>
+    <item>Skyworth-HS-54</item>
+    <item>Skyworth-32C08RD</item>
+    <item>Skyworth-32C08RD-1</item>
+    <item>Skyworth-32E350D</item>
+    <item>Skyworth-32E350D-1</item>
+    <item>Skyworth-32E55HM</item>
+    <item>Skyworth-32E55HM-1</item>
+    <item>Skyworth-32E5CHR</item>
+    <item>Skyworth-32E5CHR-1</item>
+    <item>Skyworth-32E61HR</item>
+    <item>Skyworth-32K03HR</item>
+    <item>Skyworth-32K03HR-1</item>
+    <item>Skyworth-32K05HR</item>
+    <item>Skyworth-32K05HR-1</item>
+    <item>Skyworth-32L05HR-1</item>
+    <item>Skyworth-37E62RN</item>
+    <item>Skyworth-37E62RN-1</item>
+    <item>Skyworth-37E82RD</item>
+    <item>Skyworth-40E61HR</item>
+    <item>Skyworth-40E61HR-1</item>
+    <item>Skyworth-55E82RD</item>
+    <item>Skyworth-55E83RS</item>
+    <item>Skyworth-YK-76HB</item>
+    <item>Skyworth-YK-76HL</item>
+    <item>Skyworth-YK-76HV</item>
+    <item>Skyworth-YK-76JB</item>
+    <item>Skyworth-YK-76JO</item>
+    <item>Skyworth-YK-76JV</item>
+    <item>Skyworth-YK-76LB</item>
+    <item>Skyworth-32L08RT</item>
+    <item>Skyworth-32L16HC</item>
+    <item>Skyworth-32L16HC-1</item>
+    <item>Skyworth-32L88IW</item>
+    <item>Skyworth-32L88IW-1</item>
+    <item>Skyworth-32L88IW-2</item>
+    <item>Skyworth-37E61HR</item>
+    <item>Skyworth-37K03HR</item>
+    <item>Skyworth-37L01HM</item>
+    <item>Skyworth-37L01HM-1</item>
+    <item>Skyworth-37L16HC</item>
+    <item>Skyworth-37L16HC-1</item>
+    <item>Skyworth-37L88IW</item>
+    <item>Skyworth-42E61HR</item>
+    <item>Skyworth-42K01HR</item>
+    <item>Skyworth-42L16HC</item>
+    <item>Skyworth-42L88IW</item>
+    <item>Skyworth-46L16HC</item>
+    <item>Skyworth-47C08RD</item>
+    <item>Skyworth-47E600A</item>
+    <item>Skyworth-47E600A-1</item>
+    <item>Skyworth-47E600A-2</item>
+    <item>Skyworth-47E61HR</item>
+    <item>Skyworth-47E700S</item>
+    <item>Skyworth-47E72RA</item>
+    <item>Skyworth-47E800A</item>
+    <item>Skyworth-47E80RA</item>
+    <item>Skyworth-47E82RD</item>
+    <item>Skyworth-47E83RS</item>
+    <item>Skyworth-47E8CRS</item>
+    <item>Skyworth-47E96RA</item>
+    <item>Skyworth-47E96RS</item>
+    <item>Skyworth-47L01HF</item>
+    <item>Skyworth-55E550D</item>
+    <item>Skyworth-55E600A</item>
+    <item>Skyworth-55E700S</item>
+    <item>Skyworth-55E72RA</item>
+    <item>Skyworth-55E750A</item>
+    <item>Skyworth-55E800A</item>
+    <item>Skyworth-55E80RA</item>
+    <item>Skyworth-55E82RD</item>
+    <item>Skyworth-55E83RS</item>
+    <item>Skyworth-55E92RD</item>
+    <item>Skyworth-55E96RA</item>
+    <item>Skyworth-55E96RS</item>
+    <item>Skyworth-55L09RF</item>
+    <item>Skyworth-65E91RD</item>
+    <item>Skyworth-8DD1</item>
+    <item>Skyworth-8G10</item>
+    <item>Skyworth-8G11</item>
+    <item>Skyworth-YK-54LF</item>
+    <item>Skyworth-YK-54LV</item>
+    <item>Skyworth-YK-54PE</item>
+    <item>Skyworth-YK-54PF</item>
+    <item>Skyworth-37L16HR</item>
+    <item>Skyworth-YK-54PM</item>
+    <item>Skyworth-3S28-23#</item>
+    <item>Skyworth-3S28-23#b</item>
+    <item>Skyworth-3Y20</item>
+    <item>Skyworth-3Y20b</item>
+    <item>Skyworth-3Y20c</item>
+    <item>Skyworth-42C08RD</item>
+    <item>Skyworth-42C08RD-1</item>
+    <item>Skyworth-42E55HM</item>
+    <item>Skyworth-42E55HM-1</item>
+    <item>Skyworth-42E65SG</item>
+    <item>Skyworth-42E65SG-1</item>
+    <item>Skyworth-42L05HF</item>
+    <item>Skyworth-47E750A</item>
+    <item>Skyworth-47L05HF</item>
+    <item>Skyworth-8M86</item>
+    <item>Skyworth-8M87</item>
+    <item>Skyworth-YK-59DA</item>
+    <item>Skyworth-YK-76HC</item>
+    <item>Skyworth-YK-76HN</item>
+    <item>Skyworth-YK-76JC</item>
+    <item>Skyworth-43PCAHV</item>
+    <item>Skyworth-8PG0</item>
+    <item>Skyworth-HS-54G</item>
+    <item>Skyworth-43PTV300S</item>
+    <item>Skyworth-50PTV300</item>
+    <item>Skyworth-50PTV300b</item>
+    <item>Skyworth-66HD</item>
+    <item>Skyworth-88HD</item>
+    <item>Skyworth-99HD</item>
+    <item>Skyworth-46E65SG</item>
+    <item>Skyworth-46L98SW</item>
+    <item>Skyworth-8TG3</item>
+    <item>Skyworth-8TG3b</item>
+    <item>Skyworth-8TG3c</item>
+    <item>Skyworth-8TG5</item>
+    <item>Skyworth-8TG6</item>
+    <item>Skyworth-HS-54F</item>
+    <item>Skyworth-HS-62D3</item>
+    <item>Skyworth-HS-62D3b</item>
+    <item>Skyworth-HS-62DA</item>
+    <item>Skyworth-YK-30PA</item>
+    <item>Skyworth-YK-63PE</item>
+    <item>SKYWORTH-37M11HM</item>
+    <item>SKYWORTH-34T66HT</item>
+    <item>SKYWORTH-42E350E</item>
+    <item>SKYWORTH-29TBDA</item>
+    <item>SKYWORTH-47led10</item>
+    <item>SKYWORTH-24E15HR</item>
+    <item>SKYWORTH-63PM</item>
+    <item>SKYWORTH-E360</item>
+    <item>SKYWORTH-SLC</item>
+    <item>SKYWORTH-SKYW7</item>
+    <item>SKYWORTH-SKYW5P</item>
+    <item>SKYWORTH-SKYW5</item>
+    <item>SKYWORTH-SKYW4</item>
+    <item>SKYWORTH-SKYW16</item>
+    <item>SKYWORTH-SKYW13</item>
+    <item>SKYWORTH-SKYW11</item>
+    <item>SKYWORTH-SKYW1</item>
+    <item>SKYWORTH-HS62DA</item>
+    <item>SKYWORTH-HS62D3</item>
+    <item>SKYWORTH-HS62D2</item>
+    <item>SKYWORTH-HS62D1</item>
+    <item>SKYWORTH-HS58</item>
+    <item>SKYWORTH-HS54T</item>
+    <item>SKYWORTH-HS54G</item>
+    <item>SKYWORTH-HS54C</item>
+    <item>SKYWORTH-HS541</item>
+    <item>SKYWORTH-HS32</item>
+    <item>SKYWORTH-3T36</item>
+    <item>SKYWORTH-3T30</item>
+    <item>SKYWORTH-3S28</item>
+    <item>SKYWORTH-3P20</item>
+    <item>SKYWORTH-3N01</item>
+    <item>SKYWORTH-3N01b</item>
+    <item>SKYWORTH-37L88lW</item>
+    <item>SKYWORTH-32LBAIW</item>
+    <item>SKYWORTH-29T86HP</item>
+    <item>SKYWORTH-29T83HT</item>
+    <item>SKYWORTH-29T68HT</item>
+    <item>SKYWORTH-26L98PW</item>
+    <item>Skyworth-YX-607</item>
+    <item>Skyworth-29TIDP</item>
+    <item>Skyworth-2550-3004</item>
+    <item>Skyworth-6D35</item>
+    <item>Skyworth-40E19HM</item>
+    <item>Skyworth-55L05TF</item>
+    <item>Skyworth-29t84ht</item>
+    <item>Skyworth-55I09rf</item>
+    <item>Skyworth-42M10HF</item>
+    <item>Skyworth-YK-72PD</item>
+    <item>Skyworth-YK-72PA</item>
+    <item>Skyworth-YK-72PE</item>
+    <item>Skyworth-YK-72PG</item>
+    <item>Skyworth-9G10</item>
+    <item>Skyworth-32P93MV</item>
+    <item>Skyworth-32P95MV</item>
+    <item>Skyworth-6D97</item>
+    <item>Skyworth-29T86HM</item>
+    <item>Skyworth-29T86HT</item>
+    <item>Skyworth-28T88HT</item>
+    <item>Skyworth-YK-8600J</item>
+    <item>Skyworth-55Q6A</item>
+    <item>Skyworth-65Q6A</item>
+    <item>Skyworth-YK-8503H</item>
+    <item>Skyworth-55G8S</item>
+    <item>Skyworth-65G8S</item>
+    <item>Skyworth-55R8</item>
+    <item>Skyworth-55S8</item>
+    <item>Skyworth-55S8A</item>
+    <item>Skyworth-HS-7700J</item>
+    <item>Skyworth-32E360E</item>
+    <item>Skyworth-YK-6002J</item>
+    <item>Skyworth-40E360E</item>
+    <item>Skyworth-42E360E</item>
+    <item>Skyworth-49E360E</item>
+    <item>Toshiba-21T01D</item>
+    <item>Toshiba-21T01D-1</item>
+    <item>Toshiba-26TA1C</item>
+    <item>Toshiba-42A3000C</item>
+    <item>Toshiba-46C3000C</item>
+    <item>Toshiba-46EL100C</item>
+    <item>Toshiba-46EL100CS</item>
+    <item>Toshiba-ct-5900</item>
+    <item>Toshiba-CT-90004</item>
+    <item>Toshiba-CT-90111</item>
+    <item>Toshiba-CT-90119</item>
+    <item>Toshiba-CT-90146</item>
+    <item>Toshiba-CT-90171</item>
+    <item>Toshiba-CT-90189</item>
+    <item>Toshiba-CT-90210</item>
+    <item>Toshiba-CT-90242</item>
+    <item>Toshiba-CT-90252</item>
+    <item>Toshiba-CT-90271</item>
+    <item>Toshiba-CT-90281</item>
+    <item>Toshiba-CT-90281</item>
+    <item>Toshiba-CT-90296</item>
+    <item>Toshiba-CT-90305</item>
+    <item>Toshiba-24AF41C</item>
+    <item>Toshiba-24BF1C</item>
+    <item>Toshiba-26AV300C</item>
+    <item>Toshiba-26AV500U</item>
+    <item>Toshiba-26BF1C</item>
+    <item>Toshiba-26HF15</item>
+    <item>Toshiba-32A100C</item>
+    <item>Toshiba-32A100C</item>
+    <item>Toshiba-32A13</item>
+    <item>Toshiba-32A150C</item>
+    <item>Toshiba-32A1C</item>
+    <item>Toshiba-32A50</item>
+    <item>Toshiba-32AV300C</item>
+    <item>Toshiba-32AV300C-1</item>
+    <item>Toshiba-32BF1C</item>
+    <item>Toshiba-32BS16</item>
+    <item>Toshiba-32C1C</item>
+    <item>Toshiba-32E100C</item>
+    <item>Toshiba-32E200U</item>
+    <item>Toshiba-32R1C</item>
+    <item>Toshiba-32TA1C</item>
+    <item>Toshiba-36ZP18</item>
+    <item>Toshiba-37AV300C</item>
+    <item>Toshiba-40A1C</item>
+    <item>Toshiba-40BF1C</item>
+    <item>Toshiba-40C1C</item>
+    <item>Toshiba-40E100C</item>
+    <item>Toshiba-40FT1U</item>
+    <item>Toshiba-40KL105C</item>
+    <item>Toshiba-40PW8</item>
+    <item>Toshiba-40R1C</item>
+    <item>Toshiba-40S51U</item>
+    <item>Toshiba-40TA1C</item>
+    <item>Toshiba-40TF1C</item>
+    <item>Toshiba-40UL605U</item>
+    <item>Toshiba-42AV300C</item>
+    <item>Toshiba-46BF1C</item>
+    <item>Toshiba-46F150C</item>
+    <item>Toshiba-46RF350U</item>
+    <item>Toshiba-46SV650C</item>
+    <item>Toshiba-46SV670U</item>
+    <item>Toshiba-46TF1C</item>
+    <item>Toshiba-46ZF1C</item>
+    <item>Toshiba-55G310U</item>
+    <item>Toshiba-55GL150C</item>
+    <item>Toshiba-55SV650C</item>
+    <item>Toshiba-55SV670U</item>
+    <item>Toshiba-55T-23D</item>
+    <item>Toshiba-55TF1C</item>
+    <item>Toshiba-CF2047</item>
+    <item>Toshiba-CT-90255</item>
+    <item>Toshiba-CT-90256</item>
+    <item>Toshiba-26CV100C</item>
+    <item>Toshiba-46TD100C</item>
+    <item>Toshiba-26CV100C</item>
+    <item>Toshiba-32EL100C</item>
+    <item>Toshiba-32EL800A</item>
+    <item>Toshiba-32XV650C</item>
+    <item>Toshiba-32XV650C-1</item>
+    <item>Toshiba-40CV550A</item>
+    <item>Toshiba-40CV550C</item>
+    <item>Toshiba-40XV650C</item>
+    <item>Toshiba-40ZV650C</item>
+    <item>Toshiba-42C3000C</item>
+    <item>Toshiba-42KL100C</item>
+    <item>Toshiba-42ZV650C</item>
+    <item>Toshiba-42ZV650U</item>
+    <item>Toshiba-46CV550C</item>
+    <item>Toshiba-46F155C</item>
+    <item>Toshiba-46FL150C</item>
+    <item>Toshiba-46K100C</item>
+    <item>Toshiba-46KL100C</item>
+    <item>Toshiba-46XF300C</item>
+    <item>Toshiba-46XV650C</item>
+    <item>Toshiba-46XV650C-1</item>
+    <item>Toshiba-46ZF355D</item>
+    <item>Toshiba-47ZV650C</item>
+    <item>Toshiba-47ZV650U</item>
+    <item>Toshiba-52X3000A</item>
+    <item>Toshiba-52XV650C</item>
+    <item>Toshiba-55X1000C</item>
+    <item>Toshiba-55X3000C</item>
+    <item>Toshiba-55XL700A</item>
+    <item>Toshiba-55ZV650C</item>
+    <item>Toshiba-55ZV650U</item>
+    <item>Toshiba-CT-8003</item>
+    <item>Toshiba-CT-8019</item>
+    <item>Toshiba-CT-90126</item>
+    <item>Toshiba-CT-90237</item>
+    <item>Toshiba-CT-90287</item>
+    <item>Toshiba-CT-90288</item>
+    <item>Toshiba-CT-90301</item>
+    <item>Toshiba-CT-90326</item>
+    <item>Toshiba-CT-90337</item>
+    <item>Toshiba-CT-90337-1</item>
+    <item>Toshiba-CT-90378</item>
+    <item>Toshiba-CT-90406</item>
+    <item>Toshiba-40KL100C</item>
+    <item>Toshiba-40XF300C</item>
+    <item>Toshiba-43A10</item>
+    <item>Toshiba-46H84</item>
+    <item>Toshiba-46R1C</item>
+    <item>Toshiba-46KL105C</item>
+    <item>Toshiba-46UL605U</item>
+    <item>Toshiba-46WD100C</item>
+    <item>Toshiba-46WX800U</item>
+    <item>Toshiba-CT-9878</item>
+    <item>Toshiba-CT-9878b</item>
+    <item>Toshiba-CT-9879</item>
+    <item>Toshiba-CT-9879b</item>
+    <item>Toshiba-CT-9880</item>
+    <item>Toshiba-CT-9881</item>
+    <item>Toshiba-CT-9932</item>
+    <item>Toshiba-CT-9932b</item>
+    <item>Toshiba-CT-9932c</item>
+    <item>Toshiba-CT-9940</item>
+    <item>Toshiba-CT-9944</item>
+    <item>Toshiba-CT-9968</item>
+    <item>Toshiba-46xv500c</item>
+    <item>Toshiba-ct-90207</item>
+    <item>Toshiba-42HDX82</item>
+    <item>Toshiba-CT-8018</item>
+    <item>Toshiba-CT-8070</item>
+    <item>PHILPS-42PFL7403</item>
+    <item>PHILPS-42PFL7493</item>
+    <item>PHILPS-47PFL7403</item>
+    <item>PHILPS-47PFL7493</item>
+    <item>PHILPS-52PFL7403</item>
+    <item>PHILPS-52PFL7493</item>
+    <item>PHILPS-19PFL3120</item>
+    <item>PHILPS-19PFL3120b</item>
+    <item>PHILPS-19PFL3120-T</item>
+    <item>PHILPS-19PFL3120-T3</item>
+    <item>PHILPS-24PFL3120</item>
+    <item>PHILPS-24PFL3120-T3</item>
+    <item>PHILPS-19PFL4322</item>
+    <item>PHILPS-19PFL4322b</item>
+    <item>PHILPS-22PFL3120</item>
+    <item>PHILPS-22PFL3500</item>
+    <item>PHILPS-22PFL3504D</item>
+    <item>PHILPS-26PFL3512D</item>
+    <item>PHILPS-32PF5320-10</item>
+    <item>PHILPS-32PF5520</item>
+    <item>PHILPS-32PF55200</item>
+    <item>PHILPS-32PFL1200</item>
+    <item>PHILPS-32PFL1325</item>
+    <item>PHILPS-32PFL3200</item>
+    <item>PHILPS-32PFL3312</item>
+    <item>PHILPS-32PFL3360</item>
+    <item>PHILPS-32PFL3390</item>
+    <item>PHILPS-32PFL3403</item>
+    <item>PHILPS-32PFL3409</item>
+    <item>PHILPS-32PFL3500</item>
+    <item>PHILPS-32PFL3506</item>
+    <item>PHILPS-32PFL3510</item>
+    <item>PHILPS-32PFL3512D</item>
+    <item>PHILPS-32PFL4507</item>
+    <item>PHILPS-32PFL5322</item>
+    <item>PHILPS-32PFL5507</item>
+    <item>PHILPS-32PFL5520</item>
+    <item>PHILPS-32PFL6007</item>
+    <item>PHILPS-39PFL5520</item>
+    <item>PHILPS-40PFL54707</item>
+    <item>PHILPS-40PFL8007</item>
+    <item>PHILPS-42PF3320</item>
+    <item>PHILPS-42PF5520</item>
+    <item>PHILPS-42PFL1320</item>
+    <item>PHILPS-42PFL1325</item>
+    <item>PHILPS-42PFL3350</item>
+    <item>PHILPS-42PFL3360</item>
+    <item>PHILPS-42PFL3380</item>
+    <item>PHILPS-42PFL3390</item>
+    <item>PHILPS-42PFL5300</item>
+    <item>PHILPS-42PFL5322</item>
+    <item>PHILPS-42PFL5403</item>
+    <item>PHILPS-42PFL5520</item>
+    <item>PHILPS-26PFL3404</item>
+    <item>PHILPS-26PFL3404b</item>
+    <item>PHILPS-26PFL3500</item>
+    <item>PHILPS-32PF9380</item>
+    <item>PHILPS-32PFL1409</item>
+    <item>PHILPS-32PFL3168</item>
+    <item>PHILPS-32PFL332D</item>
+    <item>PHILPS-32PFL3380</item>
+    <item>PHILPS-32PFL3614</item>
+    <item>PHILPS-32PFL5409</item>
+    <item>PHILPS-32PFL5605</item>
+    <item>PHILPS-32PFL5609</item>
+    <item>PHILPS-32PFL7332D</item>
+    <item>PHILPS-37PFL4007K</item>
+    <item>PHILPS-37PFL6007</item>
+    <item>PHILPS-40PFL5507</item>
+    <item>PHILPS-40PFL5507K</item>
+    <item>PHILPS-40PFL5605</item>
+    <item>PHILPS-40PFL5605H</item>
+    <item>PHILPS-40PFL6605D</item>
+    <item>PHILPS-40PFL6655D</item>
+    <item>PHILPS-40PFL6665D</item>
+    <item>PHILPS-40PFL8605H</item>
+    <item>PHILPS-42PFL-5609</item>
+    <item>PHILPS-42PFL-7862</item>
+    <item>PHILPS-42PFL1300</item>
+    <item>PHILPS-42PFL1609</item>
+    <item>PHILPS-42PFL3168</item>
+    <item>PHILPS-42PFL332D</item>
+    <item>PHILPS-42PFL3500</item>
+    <item>PHILPS-42PFL3609</item>
+    <item>PHILPS-42PFL3800</item>
+    <item>PHILPS-42PFL5332D</item>
+    <item>PHILPS-42PFL9900</item>
+    <item>PHILPS-32PFL7422</item>
+    <item>PHILPS-25PT2565</item>
+    <item>PHILPS-E427KR</item>
+    <item>PHILPS-KK</item>
+    <item>PHILPS-KK-1</item>
+    <item>PHILPS-55K8</item>
+    <item>PHILPS-32HAL6818</item>
+    <item>PHILPS-32HAL6818-T3</item>
+    <item>PHILPS-42HAL6818</item>
+    <item>PHILPS-42HAL6818-T3</item>
+    <item>PHILPS-19PHF2650/T3</item>
+    <item>AOC-A42W64</item>
+    <item>AOC-L22-W631</item>
+    <item>AOC-L227A31</item>
+    <item>AOC-T4246D</item>
+    <item>AOC-L-19W461</item>
+    <item>AOC-L-19W461b</item>
+    <item>AOC-L-19W461c</item>
+    <item>AOC-L-19W861</item>
+    <item>AOC-L-20S421</item>
+    <item>AOC-L-32W461</item>
+    <item>AOC-L-42W761</item>
+    <item>AOC-L-157A31</item>
+    <item>AOC-L19BH83</item>
+    <item>AOC-L19BH86</item>
+    <item>AOC-L19W981</item>
+    <item>AOC-L22BH86</item>
+    <item>AOC-L22W861</item>
+    <item>AOC-L267A31</item>
+    <item>AOC-L26W661</item>
+    <item>AOC-L32-W961</item>
+    <item>AOC-L327A31</item>
+    <item>AOC-L32DS99N</item>
+    <item>AOC-L32DS99X</item>
+    <item>AOC-L32W431</item>
+    <item>AOC-L377A31</item>
+    <item>AOC-L37W431</item>
+    <item>AOC-L42BN83F</item>
+    <item>AOC-L42DH93</item>
+    <item>AOC-L42DS99N</item>
+    <item>AOC-L42DS99X</item>
+    <item>AOC-L42HA91</item>
+    <item>AOC-L47BN83F</item>
+    <item>AOC-L52BS86FU</item>
+    <item>AOC-LC19S02P-M</item>
+    <item>AOC-LC22S02P-M</item>
+    <item>AOC-LC32H03</item>
+    <item>AOC-LC32R03</item>
+    <item>AOC-LC32S02P</item>
+    <item>AOC-LC32W063</item>
+    <item>AOC-LC37S05P</item>
+    <item>AOC-LC40S05P</item>
+    <item>AOC-LC42K06I</item>
+    <item>AOC-LC42R03F</item>
+    <item>AOC-LC42S05M</item>
+    <item>AOC-LE-24H067</item>
+    <item>AOC-LE19H07</item>
+    <item>AOC-LE22A1120-80</item>
+    <item>AOC-LE22H067</item>
+    <item>AOC-LE22H07F</item>
+    <item>AOC-LE24H07F</item>
+    <item>AOC-LE24H07FC</item>
+    <item>AOC-LE24K097</item>
+    <item>AOC-LE24R07P</item>
+    <item>AOC-LE26K07M</item>
+    <item>AOC-LE32K07M</item>
+    <item>AOC-LE32K0D7D</item>
+    <item>AOC-LE42K07D</item>
+    <item>AOC-LE42K0D7D</item>
+    <item>AOC-LE46K07D</item>
+    <item>AOC-LE46K09I</item>
+    <item>AOC-LE55K07I</item>
+    <item>AOC-T2646</item>
+    <item>AOC-T3246D</item>
+    <item>AOC-V24T</item>
+    <item>AOC-L16BH83</item>
+    <item>AOC-L16BN83C</item>
+    <item>AOC-L19BN83</item>
+    <item>AOC-L22BH83</item>
+    <item>AOC-L22BN83b</item>
+    <item>AOC-L26BH83</item>
+    <item>AOC-L26BH86</item>
+    <item>AOC-L26W861</item>
+    <item>AOC-L32BN83</item>
+    <item>AOC-L32DH93</item>
+    <item>AOC-L37BH83</item>
+    <item>AOC-L37BN83</item>
+    <item>AOC-L19DH93</item>
+    <item>AOC-L19DH93b</item>
+    <item>AOC-L19W698</item>
+    <item>AOC-L22DH93</item>
+    <item>AOC-L22H998</item>
+    <item>AOC-L22W898</item>
+    <item>AOC-L23DH99</item>
+    <item>AOC-L24-H898</item>
+    <item>AOC-L24DH99</item>
+    <item>AOC-L26DH93</item>
+    <item>AOC-L26W898</item>
+    <item>AOC-LC22H03F</item>
+    <item>AOC-LC26H03</item>
+    <item>AOC-LC27H060</item>
+    <item>AOC-LE19A1120-80</item>
+    <item>AOC-LE42K09I</item>
+    <item>AOC-T1954WK</item>
+    <item>AOC-T2242we</item>
+    <item>AOC-T2242we-1</item>
+    <item>AOC-LE42A3030/80</item>
+    <item>AOC-LE42A3030/80b</item>
+    <item>AOC-TFT22660AG</item>
+    <item>AOC-TFT22660AG-1</item>
+    <item>AOC-RL57J-v1</item>
+    <item>AOC-创维3DLED</item>
+    <item>AOC-Teledevice-HD3223RM</item>
+    <item>AOC-RL57C</item>
+    <item>AOC-LE42A1080/80</item>
+    <item>AOC-LE46A5300/80</item>
+    <item>AOC-Contex</item>
+    <item>AOC-KXABM</item>
+    <item>AOC-LE55A7830/80</item>
+    <item>AOC-combotvbox</item>
+    <item>AOC-索立</item>
+    <item>AOC-富士康</item>
+    <item>AOC-haier</item>
+    <item>AOC-SHARPMOTO</item>
+    <item>AOC-SHARPMOTO-1</item>
+    <item>AOC-MSTAAR</item>
+    <item>AOC-LE22A11</item>
+    <item>AOC-yk-60jc</item>
+    <item>AOC-KM-TV</item>
+    <item>AOC-KM-TV-1</item>
+    <item>AOC-st2ne</item>
+    <item>AOC-LC32S05K</item>
+    <item>AOC-LE32S15P</item>
+    <item>AOC-LC32S05P</item>
+    <item>Haier-HTR-031</item>
+    <item>Haier-21T3A-T</item>
+    <item>Haier-21F3A-T</item>
+    <item>Haier-21T5D-T</item>
+    <item>Haier-21T6D-T</item>
+    <item>Haier-L40R1</item>
+    <item>Haier-L40F6</item>
+    <item>Haier-L42F3</item>
+    <item>Haier-L42F6</item>
+    <item>Haier-L42G1</item>
+    <item>Haier-21FA18-P</item>
+    <item>Haier-21FA18-P-1</item>
+    <item>Haier-21FB1(A)</item>
+    <item>Haier-HTR-299A</item>
+    <item>Haier-21FB1</item>
+    <item>Haier-21FB1b</item>
+    <item>Haier-21T5A-T</item>
+    <item>Haier-21TA18-T</item>
+    <item>Haier-29FA10-T</item>
+    <item>Haier-29FA12-AM</item>
+    <item>Haier-37T6D-T</item>
+    <item>Haier-HE-21TD6D-T</item>
+    <item>Haier-HTR-034</item>
+    <item>Haier-HTR-038</item>
+    <item>Haier-HTR-050</item>
+    <item>Haier-HTR-051</item>
+    <item>Haier-HTR-160</item>
+    <item>Haier-HTR-160A</item>
+    <item>Haier-HTR-168</item>
+    <item>Haier-HTR-35D</item>
+    <item>Haier-HTR-35H</item>
+    <item>Haier-21T66</item>
+    <item>Haier-21T66b</item>
+    <item>Haier-25F7A-S(A)</item>
+    <item>Haier-29F5A-T(D)</item>
+    <item>Haier-37T66</item>
+    <item>Haier-HYF-33E</item>
+    <item>Haier-D29FA12-AKM</item>
+    <item>Haier-HTR096A</item>
+    <item>Haier-HTR-115</item>
+    <item>Haier-HYF-39A</item>
+    <item>Haier-21T8K-T</item>
+    <item>Haier-25F5D-T(A)</item>
+    <item>Haier-25T5A-T</item>
+    <item>Haier-25T5D-T(A)</item>
+    <item>Haier-25T7A-T</item>
+    <item>Haier-25T7A-T(G)</item>
+    <item>Haier-25T8D-S(C)</item>
+    <item>Haier-29FV6H-B</item>
+    <item>Haier-29T7A-T</item>
+    <item>Haier-34FV6H-B</item>
+    <item>Haier-34P2A-P</item>
+    <item>Haier-HTF-35K</item>
+    <item>Haier-HTR-003</item>
+    <item>Haier-HTR-003b</item>
+    <item>Haier-HTR-008</item>
+    <item>Haier-HTR-018</item>
+    <item>Haier-HTR-022</item>
+    <item>Haier-HTR-023</item>
+    <item>Haier-HTR-25D</item>
+    <item>Haier-HYF-31L</item>
+    <item>Haier-HYF-33D</item>
+    <item>Haier-HYF-35D</item>
+    <item>Haier-HYF-35H</item>
+    <item>Haier-29F5D-TA</item>
+    <item>Haier-29F5D-TA-1</item>
+    <item>Haier-29F9K-PY</item>
+    <item>Haier-D25FV6H-F</item>
+    <item>Haier-D29FV6H-F</item>
+    <item>Haier-HTR-0180</item>
+    <item>Haier-HYF-35L</item>
+    <item>Haier-HYF-40A</item>
+    <item>Haier-HYF-40B</item>
+    <item>Haier-HYF-40D</item>
+    <item>Haier-29F9G-PN</item>
+    <item>Haier-29F9G-PN-1</item>
+    <item>Haier-A29F5D</item>
+    <item>Haier-D21FA11-AM</item>
+    <item>Haier-D21FA11-AMM</item>
+    <item>Haier-D24FA11-A</item>
+    <item>Haier-D25FV6H-A8</item>
+    <item>Haier-D29FA10</item>
+    <item>Haier-D29FA3-C</item>
+    <item>Haier-D34FA9-AK</item>
+    <item>Haier-HYF-33M</item>
+    <item>Haier-HYF-33M-1</item>
+    <item>Haier-HYF-34E</item>
+    <item>Haier-32E2300U</item>
+    <item>Haier-32E2300U-1</item>
+    <item>Haier-42E2300U</item>
+    <item>Haier-42EP25BAT</item>
+    <item>Haier-HLH-19BB</item>
+    <item>Haier-LE19T3</item>
+    <item>Haier-D29FT1</item>
+    <item>Haier-D29FT1</item>
+    <item>Haier-HTR-D02A</item>
+    <item>Haier-HTR-D02A-1</item>
+    <item>Haier-L19T3W</item>
+    <item>Haier-L32R1B</item>
+    <item>Haier-D32FA9-AKM</item>
+    <item>Haier-HTR-063</item>
+    <item>Haier-HTR-091A</item>
+    <item>Haier-HTR-096B</item>
+    <item>Haier-HTR-122</item>
+    <item>Haier-HYF-35R</item>
+    <item>Haier-HTR-001</item>
+    <item>Haier-HTR-015</item>
+    <item>Haier-HTR-025</item>
+    <item>Haier-HTR-039</item>
+    <item>Haier-HTR-054</item>
+    <item>Haier-HTR-961</item>
+    <item>Haier-HTR-150</item>
+    <item>Haier-HTR-338</item>
+    <item>Haier-HTR-388V</item>
+    <item>Haier-HTR-388V-1</item>
+    <item>Haier-HTR-688</item>
+    <item>Haier-HTR-688b</item>
+    <item>Haier-HYF-08A</item>
+    <item>Haier-HYF-24D</item>
+    <item>Haier-HYF-24D-1</item>
+    <item>Haier-HYF-24H</item>
+    <item>Haier-HYF-24J</item>
+    <item>Haier-HYF-24K</item>
+    <item>Haier-HYF-28A</item>
+    <item>Haier-HYF-28D</item>
+    <item>Haier-HYF-30A</item>
+    <item>Haier-HYF-31J</item>
+    <item>Haier-HYF-31J-1</item>
+    <item>Haier-LB26R1</item>
+    <item>Haier-LB26R3</item>
+    <item>Haier-LPC65R6</item>
+    <item>Haier-LU26F6</item>
+    <item>Haier-RM-D654</item>
+    <item>Haier-HTR-D01</item>
+    <item>Haier-HTR-D01A</item>
+    <item>Haier-HTR-D01A-1</item>
+    <item>Haier-HTR-D01A-2</item>
+    <item>Haier-HTR-D3D</item>
+    <item>Haier-LE42H320</item>
+    <item>Haier-HTR-D03</item>
+    <item>Haier-HTR-D03b</item>
+    <item>Haier-L26R3</item>
+    <item>Haier-L37N01</item>
+    <item>Haier-LK37K1</item>
+    <item>Haier-LU46F6</item>
+    <item>Haier-LU55R3</item>
+    <item>Haier-HYF-35G</item>
+    <item>Haier-HYF-35G-1</item>
+    <item>Haier-L33B6A-A1</item>
+    <item>Haier-L40A8A-A1</item>
+    <item>Haier-L-42A9-AK</item>
+    <item>Haier-L-46A9-AK</item>
+    <item>Haier-L24K3</item>
+    <item>Haier-L32R1B</item>
+    <item>Haier-L42R1</item>
+    <item>Haier-L42R3</item>
+    <item>Haier-LB42R3</item>
+    <item>Haier-LE40T3</item>
+    <item>Haier-LE42A500K</item>
+    <item>Haier-LE43A700K</item>
+    <item>Haier-LE46A350K</item>
+    <item>Haier-LE48A700K</item>
+    <item>Haier-LK47K1</item>
+    <item>Haier-LU40K1</item>
+    <item>Haier-LU42F6</item>
+    <item>Haier-LU46R1</item>
+    <item>Haier-LU47K3</item>
+    <item>Haier-L32F1</item>
+    <item>Haier-L32F1b</item>
+    <item>Haier-L32R3</item>
+    <item>Haier-L32S9</item>
+    <item>Haier-LB32K3</item>
+    <item>Haier-LD42K3</item>
+    <item>Haier-LD47K3</item>
+    <item>Haier-LE32T3</item>
+    <item>Haier-LE32T6</item>
+    <item>Haier-LE37T6</item>
+    <item>Haier-LK37K1</item>
+    <item>Haier-LP42K3</item>
+    <item>Haier-LT32K1</item>
+    <item>Haier-LU32F6</item>
+    <item>Haier-LU37F6</item>
+    <item>Haier-LE24A300</item>
+    <item>Haier-LE26B13200</item>
+    <item>Haier-LE26H320</item>
+    <item>Haier-LE26Z300</item>
+    <item>Haier-LE32A300M</item>
+    <item>Haier-LE32A320</item>
+    <item>Haier-LE32B13200</item>
+    <item>Haier-LE32B70</item>
+    <item>Haier-LE32H320</item>
+    <item>Haier-LE32T30</item>
+    <item>Haier-LE32T320</item>
+    <item>Haier-LE37A320</item>
+    <item>Haier-LE46H320P</item>
+    <item>Haier-LE40T30</item>
+    <item>Haier-LE40T320</item>
+    <item>Haier-LE42A300M</item>
+    <item>Haier-LE42A300N</item>
+    <item>Haier-LE42A300ND</item>
+    <item>Haier-LE42A320</item>
+    <item>Haier-LE42A350K</item>
+    <item>Haier-LE42A520</item>
+    <item>Haier-LE42A700P</item>
+    <item>Haier-LE42B1380</item>
+    <item>Haier-LE42B70</item>
+    <item>Haier-LE42H300K</item>
+    <item>Haier-LE42H300ND</item>
+    <item>Haier-LE42H320</item>
+    <item>Haier-LE42H5R3D</item>
+    <item>Haier-LE42Z300R3D</item>
+    <item>Haier-LE43A720</item>
+    <item>Haier-LE46B1381</item>
+    <item>Haier-LE46H300ND</item>
+    <item>Haier-LE46H320</item>
+    <item>Haier-LE46H330</item>
+    <item>Haier-LE46H330-1</item>
+    <item>Haier-LE46T3</item>
+    <item>Haier-LE46T320</item>
+    <item>Haier-LE47A300N</item>
+    <item>Haier-LE47A300ND</item>
+    <item>Haier-LE47A320</item>
+    <item>Haier-LE47H5R3D</item>
+    <item>Haier-LE48A720</item>
+    <item>Haier-LE55A300N</item>
+    <item>Haier-LE55A300ND</item>
+    <item>Haier-LE55A320</item>
+    <item>Haier-LE55B1381</item>
+    <item>Haier-LE55H300ND</item>
+    <item>Haier-LE55H320</item>
+    <item>Haier-LE55H320P</item>
+    <item>Haier-LE55H330</item>
+    <item>Haier-LE55H5R3D</item>
+    <item>Haier-LE65H330</item>
+    <item>Haier-Unknown</item>
+    <item>Haier-LE32B50</item>
+    <item>Haier-HYF-28J</item>
+    <item>Haier-HTR-158</item>
+    <item>Haier-HTR-020</item>
+    <item>Haier-HYF-29A</item>
+    <item>Haier-HYF-26C</item>
+    <item>Haier-HYF-23C</item>
+    <item>Haier-D28FA11-AK</item>
+    <item>Haier-HYF-24C</item>
+    <item>Haier-HTR-D3C</item>
+    <item>Haier-HYF-35K</item>
+    <item>Haier-HTR-D02A</item>
+    <item>Haier-HTR-33E</item>
+    <item>Haier-HTR-A19</item>
+    <item>Haier-HYF-34A</item>
+    <item>Haier-HYK-31H</item>
+    <item>Haier-L32A</item>
+    <item>Haier-LE42KCH7</item>
+    <item>Haier-HTR-009</item>
+    <item>Haier-Leader HTR-T15</item>
+    <item>Haier-LE50A900K</item>
+    <item>Haier-HTR-T15</item>
+    <item>Hisense-CN-21625</item>
+    <item>Hisense-CN-21612</item>
+    <item>Hisense-TLM3733</item>
+    <item>Hisense-TLM4028</item>
+    <item>Hisense-LED46T28GP</item>
+    <item>Hisense-TLM40V86PKV</item>
+    <item>Hisense-CN-31651</item>
+    <item>Hisense-CN-22601</item>
+    <item>Hisense-LED46K28P</item>
+    <item>Hisense-LED40K380U</item>
+    <item>Hisense-LED42K380U</item>
+    <item>Hisense-LED50K380U</item>
+    <item>Hisense-LED55K380U</item>
+    <item>Hisense-TLM3288G</item>
+    <item>Hisense-TLM3733G</item>
+    <item>Hisense-TLM4788P</item>
+    <item>Hisense-CN-21602</item>
+    <item>Hisense-CN-21602b</item>
+    <item>Hisense-CN-21604</item>
+    <item>Hisense-CN-21604b</item>
+    <item>Hisense-CN-21604c</item>
+    <item>Hisense-CN-21605</item>
+    <item>Hisense-CN-21605b</item>
+    <item>Hisense-CN-21635</item>
+    <item>Hisense-CN-21635b</item>
+    <item>Hisense-CN-21638</item>
+    <item>Hisense-CN-21638b</item>
+    <item>Hisense-CN-21641</item>
+    <item>Hisense-CN-21641b</item>
+    <item>Hisense-CN-22605</item>
+    <item>Hisense-CN-22605b</item>
+    <item>Hisense-TLM3266</item>
+    <item>Hisense-TLM3766</item>
+    <item>Hisense-TLM4288P</item>
+    <item>Hisense-TLM4777</item>
+    <item>Hisense-CN-21606</item>
+    <item>Hisense-CN-21617</item>
+    <item>Hisense-CN-21617b</item>
+    <item>Hisense-CN-21620</item>
+    <item>Hisense-CN-21620b</item>
+    <item>Hisense-CN-21625b</item>
+    <item>Hisense-CN-21626</item>
+    <item>Hisense-CN-21626b</item>
+    <item>Hisense-CN-21632</item>
+    <item>Hisense-CN-21632b</item>
+    <item>Hisense-CN-21634</item>
+    <item>Hisense-CN-21634b</item>
+    <item>Hisense-CN-21603</item>
+    <item>Hisense-HDP3269</item>
+    <item>Hisense-HDP3269b</item>
+    <item>Hisense-TLM320</item>
+    <item>Hisense-TLM-3201</item>
+    <item>Hisense-TLM4033</item>
+    <item>Hisense-CN-21614</item>
+    <item>Hisense-CN-21614b</item>
+    <item>Hisense-CN-21614c</item>
+    <item>Hisense-CN-21614d</item>
+    <item>Hisense-CN-21640</item>
+    <item>Hisense-CN-21640b</item>
+    <item>Hisense-CN-21618</item>
+    <item>Hisense-CN-21618b</item>
+    <item>Hisense-CN-21630</item>
+    <item>Hisense-CN-21621</item>
+    <item>Hisense-CN-21621b</item>
+    <item>Hisense-CN-21621c</item>
+    <item>Hisense-CN-21621d</item>
+    <item>Hisense-CN-21642</item>
+    <item>Hisense-CN-21642b</item>
+    <item>Hisense-CN-21655</item>
+    <item>Hisense-CN-21655b</item>
+    <item>Hisense-CN-21658</item>
+    <item>Hisense-CN-21658b</item>
+    <item>Hisense-CN-21659</item>
+    <item>Hisense-CN-30601</item>
+    <item>Hisense-CN-30602b</item>
+    <item>Hisense-CN-30605</item>
+    <item>Hisense-LED42K11P</item>
+    <item>Hisense-LED42K11PG</item>
+    <item>Hisense-LED42K16X3D</item>
+    <item>Hisense-LED42K560X3D</item>
+    <item>Hisense-LED42K580X3D</item>
+    <item>Hisense-LED47K560X3D</item>
+    <item>Hisense-LED47K580X3D</item>
+    <item>Hisense-TLM19V66A</item>
+    <item>Hisense-TLM19V68</item>
+    <item>Hisense-TLM22V08</item>
+    <item>Hisense-TLM22V68R</item>
+    <item>Hisense-TLM22V68W</item>
+    <item>Hisense-TLM26E29</item>
+    <item>Hisense-TLM26E29X</item>
+    <item>Hisense-TLM26P69D</item>
+    <item>Hisense-TLM26V68</item>
+    <item>Hisense-TLM26V68X</item>
+    <item>Hisense-TLM3228LF</item>
+    <item>Hisense-TLM3237D</item>
+    <item>Hisense-TLM32V66A</item>
+    <item>Hisense-TLM32V68</item>
+    <item>Hisense-TLM32V78K</item>
+    <item>Hisense-CN-31901</item>
+    <item>Hisense-CN-31906b</item>
+    <item>Hisense-CN-31916</item>
+    <item>Hisense-CN-31916b</item>
+    <item>Hisense-HL42K16PL</item>
+    <item>Hisense-LCD42W58P</item>
+    <item>Hisense-TLM37E29</item>
+    <item>Hisense-TLM4077D</item>
+    <item>Hisense-TLM40V68P</item>
+    <item>Hisense-TLM4229G</item>
+    <item>Hisense-TLM4229P</item>
+    <item>Hisense-TLM4233D</item>
+    <item>Hisense-TLM4237D</item>
+    <item>Hisense-TLM42E58P</item>
+    <item>Hisense-TLM42T08GP</item>
+    <item>Hisense-TLM42T69GP</item>
+    <item>Hisense-TLM42V67PKY</item>
+    <item>Hisense-TLM4729P</item>
+    <item>Hisense-TLM47V67PK</item>
+    <item>Hisense-TPW32V69</item>
+    <item>Hisense-TPW32V69H</item>
+    <item>Hisense-TPW37M69</item>
+    <item>Hisense-TPW4233M</item>
+    <item>Hisense-TPW42M69</item>
+    <item>Hisense-TPW5029P</item>
+    <item>Hisense-TPW6029P</item>
+    <item>Hisense-TPW6328L</item>
+    <item>Hisense-CN-21607</item>
+    <item>Hisense-CN-21607b</item>
+    <item>Hisense-CN-21624</item>
+    <item>Hisense-HDP2919DH</item>
+    <item>Hisense-CN-21633</item>
+    <item>Hisense-CN-21633b</item>
+    <item>Hisense-CN-21651</item>
+    <item>Hisense-CN-21651b</item>
+    <item>Hisense-CN-21656</item>
+    <item>Hisense-CN-21661</item>
+    <item>Hisense-CN-21661b</item>
+    <item>Hisense-CN-30503</item>
+    <item>Hisense-CN-30503b</item>
+    <item>Hisense-HDP2568D</item>
+    <item>Hisense-HDP2976</item>
+    <item>Hisense-HDP2976b</item>
+    <item>Hisense-HDP2977D</item>
+    <item>Hisense-TC21R08C</item>
+    <item>Hisense-TC21R88N</item>
+    <item>Hisense-TF29A22</item>
+    <item>Hisense-CN-22601b</item>
+    <item>Hisense-CN-22601c</item>
+    <item>Hisense-CN-22601d</item>
+    <item>Hisense-CN-22602</item>
+    <item>Hisense-CN-22602b</item>
+    <item>Hisense-CN-22604</item>
+    <item>Hisense-CN-22604b</item>
+    <item>Hisense-CN-31651b</item>
+    <item>Hisense-CN-31651c</item>
+    <item>Hisense-CN-31652</item>
+    <item>Hisense-CN-31652b</item>
+    <item>Hisense-CN-31655</item>
+    <item>Hisense-CN-31655b</item>
+    <item>Hisense-CN-31658</item>
+    <item>Hisense-CN-31658b</item>
+    <item>Hisense-CN-32901</item>
+    <item>Hisense-CN-32901b</item>
+    <item>Hisense-HL140V88PZ</item>
+    <item>Hisense-HL46K11PL</item>
+    <item>Hisense-LED24K16P</item>
+    <item>Hisense-LED24K310</item>
+    <item>Hisense-LED24K310A</item>
+    <item>Hisense-LED26K11</item>
+    <item>Hisense-LED32K16</item>
+    <item>Hisense-LED40K01PZ</item>
+    <item>Hisense-LED40K11PG</item>
+    <item>Hisense-LED42K11P</item>
+    <item>Hisense-LED42XT710G3D</item>
+    <item>Hisense-LED42XT770G3D</item>
+    <item>Hisense-LED46K11P</item>
+    <item>Hisense-LED46K11PG</item>
+    <item>Hisense-LED46K16X3D</item>
+    <item>Hisense-LED46K316X3D</item>
+    <item>Hisense-LED46XT710G3D</item>
+    <item>Hisense-LED46XT770G3D</item>
+    <item>Hisense-LED48K510G3D</item>
+    <item>Hisense-LED50K316X3D</item>
+    <item>Hisense-LED55K510G3D</item>
+    <item>Hisense-LED55K560X3D</item>
+    <item>Hisense-LED55K580X3D</item>
+    <item>Hisense-LED55T18GP</item>
+    <item>Hisense-LED55T36X3D</item>
+    <item>Hisense-LED55XT710G3D</item>
+    <item>Hisense-LED55XT770G3D</item>
+    <item>Hisense-LED65K560X3D</item>
+    <item>Hisense-LTDN42V77US</item>
+    <item>Hisense-LTDN46V86US</item>
+    <item>Hisense-TLM32V88PK</item>
+    <item>Hisense-TLM40V66C</item>
+    <item>Hisense-TLM42V78K</item>
+    <item>Hisense-TLM46V66PK</item>
+    <item>Hisense-TLM46V86PK</item>
+    <item>Hisense-TLM5229P</item>
+    <item>Hisense-TLM52V67PK</item>
+    <item>Hisense-TLM52V78P</item>
+    <item>Hisense-TLM52V78PKV</item>
+    <item>Hisense-TLM55V88GP</item>
+    <item>Hisense-TPW42M88</item>
+    <item>Hisense-CN-30501</item>
+    <item>Hisense-CN-30501b</item>
+    <item>Hisense-CN-30501c</item>
+    <item>Hisense-CN-30501d</item>
+    <item>Hisense-HDP2908D</item>
+    <item>Hisense-HDP2908D-1</item>
+    <item>Hisense-PF2908N</item>
+    <item>Hisense-TC29R08N</item>
+    <item>Hisense-TF2908C</item>
+    <item>Hisense-TF2908D</item>
+    <item>Hisense-TF2988GD</item>
+    <item>Hisense-CN-30505</item>
+    <item>Hisense-CN-30505b</item>
+    <item>Hisense-CR-10701</item>
+    <item>Hisense-CR-10701b</item>
+    <item>Hisense-HYDFSR-0130</item>
+    <item>Hisense-TF2902DF</item>
+    <item>Hisense-TF2978DF</item>
+    <item>Hisense-HYDFSR-0130</item>
+    <item>Hisense-TF2902DF</item>
+    <item>Hisense-TF2978DF</item>
+    <item>Hisense-CR-20904</item>
+    <item>Hisense-CR-20906</item>
+    <item>Hisense-HDP2511G</item>
+    <item>Hisense-HDP2511G-1</item>
+    <item>Hisense-HDP2919DM</item>
+    <item>Hisense-HDP2919DM-1</item>
+    <item>Hisense-F42K20E</item>
+    <item>Hisense-F42K20E-1</item>
+    <item>Hisense-F42K20E-2</item>
+    <item>Hisense-LED42K200</item>
+    <item>Hisense-HDT4311G</item>
+    <item>Hisense-HDT4311G-1</item>
+    <item>Hisense-HDT4311G-2</item>
+    <item>Hisense-HDT4311PG</item>
+    <item>Hisense-HDT4311PG-1</item>
+    <item>Hisense-HDT4311PH</item>
+    <item>Hisense-HDT4311PH-1</item>
+    <item>Hisense-HDT4366PG</item>
+    <item>Hisense-HDT4366PG-1</item>
+    <item>Hisense-HDT5066PG</item>
+    <item>Hisense-HDT5066PG-1</item>
+    <item>Hisense-HYDFSR-0106</item>
+    <item>Hisense-HSM-765WPF</item>
+    <item>Hisense-ITVM170AS(Wifi)</item>
+    <item>Hisense-HYDFSR-0041b</item>
+    <item>Hisense-HYDFSR-0046</item>
+    <item>Hisense-HYDFSR-0054</item>
+    <item>Hisense-HYDFSR-0076</item>
+    <item>Hisense-HYDFSR-0081</item>
+    <item>Hisense-HYDFSR-0083</item>
+    <item>Hisense-HYDFSR-0083b</item>
+    <item>Hisense-TDP4302P</item>
+    <item>Hisense-TDP5002P</item>
+    <item>Hisense-HYDFSR-0089</item>
+    <item>Hisense-HYDFSR-0089b</item>
+    <item>Hisense-HYDFSR-0092</item>
+    <item>Hisense-HYDFSR-0123</item>
+    <item>Hisense-HYDFSR-0126</item>
+    <item>Hisense-HYDFSR-0126b</item>
+    <item>Hisense-ITV M280</item>
+    <item>Hisense-ITVM1101AS(Wifi)</item>
+    <item>Hisense-ITVM1101AS(WIFI+3G)</item>
+    <item>Hisense-LCD-2601</item>
+    <item>Hisense-LCD-2633EU</item>
+    <item>Hisense-LCD-4033EU</item>
+    <item>Hisense-LCD-4203EU</item>
+    <item>Hisense-LED23K11</item>
+    <item>Hisense-LED24K01</item>
+    <item>Hisense-LED24K01Z</item>
+    <item>Hisense-LED24K11P</item>
+    <item>Hisense-LED24K316</item>
+    <item>Hisense-LED26K01</item>
+    <item>Hisense-LED26K11</item>
+    <item>Hisense-LED26K200</item>
+    <item>Hisense-LED26K316</item>
+    <item>Hisense-LED40K11P</item>
+    <item>Hisense-LED42K01P</item>
+    <item>Hisense-LED42K100N</item>
+    <item>Hisense-LED42K300</item>
+    <item>Hisense-LED42K311</item>
+    <item>Hisense-LED42K316X3D</item>
+    <item>Hisense-LED42T36X3D</item>
+    <item>Hisense-LED46K311</item>
+    <item>Hisense-PDP-4210EU</item>
+    <item>Hisense-PDP-4211</item>
+    <item>Hisense-TC-2111G</item>
+    <item>Hisense-TL-3200</item>
+    <item>Hisense-LCD-3201</item>
+    <item>Hisense-LCD-3201b</item>
+    <item>Hisense-LCD-3201EU</item>
+    <item>Hisense-LCD-3203</item>
+    <item>Hisense-LCD-3203EU</item>
+    <item>Hisense-LCD-3703EU</item>
+    <item>Hisense-LCD2601EU</item>
+    <item>Hisense-LED24K200</item>
+    <item>Hisense-LED26K11P</item>
+    <item>Hisense-LED32K01</item>
+    <item>Hisense-LED32K01Z</item>
+    <item>Hisense-LED32K100N</item>
+    <item>Hisense-LED32K11</item>
+    <item>Hisense-LED32K11G</item>
+    <item>Hisense-LED32K200</item>
+    <item>Hisense-LED32K300</item>
+    <item>Hisense-LED32K310NX3D</item>
+    <item>Hisense-LED32K310X3D</item>
+    <item>Hisense-LED32K311</item>
+    <item>Hisense-LED32K316</item>
+    <item>Hisense-LED32K316X3D</item>
+    <item>Hisense-LED32K580X3D</item>
+    <item>Hisense-LED32T36X3D</item>
+    <item>Hisense-LED37K01</item>
+    <item>Hisense-LED37K01Z</item>
+    <item>Hisense-LED37K11</item>
+    <item>Hisense-LED37K11G</item>
+    <item>Hisense-LED39K200</item>
+    <item>Hisense-LED39K310NX3D</item>
+    <item>Hisense-LED39K310X3D</item>
+    <item>Hisense-LED39K311</item>
+    <item>Hisense-LED39K316X3D</item>
+    <item>Hisense-LED42K01PZ</item>
+    <item>Hisense-LED42K310NX3D</item>
+    <item>Hisense-LED42K310X3D</item>
+    <item>Hisense-LED42K310X3D-1</item>
+    <item>Hisense-LED43K510G3D</item>
+    <item>Hisense-LED46K01PZ</item>
+    <item>Hisense-LED46K200</item>
+    <item>Hisense-LED46K310NX3D</item>
+    <item>Hisense-LED46K310X3D</item>
+    <item>Hisense-LED47T36X3D</item>
+    <item>Hisense-LED50K310NX3D</item>
+    <item>Hisense-LED50K310X3D</item>
+    <item>Hisense-TLM-3233D</item>
+    <item>Hisense-TLM-3233D-1</item>
+    <item>Hisense-TLM37V78X3D</item>
+    <item>Hisense-TLM42V78X3D</item>
+    <item>Hisense-TLM47V67PK</item>
+    <item>Hisense-TLM47V78X3D</item>
+    <item>Hisense-TLM55T69GP</item>
+    <item>Hisense-TLM37v86k</item>
+    <item>Hisense-tf290</item>
+    <item>Hisense-LED42K190</item>
+    <item>Hisense-CN-22607</item>
+    <item>Hisense-LED50K310X</item>
+    <item>Hisense-LED50K310X-1</item>
+    <item>Hisense-LED50K310N</item>
+    <item>Hisense-LED50K310N-1</item>
+    <item>Hisense-ITVM280</item>
+    <item>Hisense-ITVM170WG</item>
+    <item>Hisense-ITVM1101WG</item>
+    <item>Hisense-ITVM1101W</item>
+    <item>Hisense-HYDFSRA021</item>
+    <item>Hisense-HYDFSR0126</item>
+    <item>Hisense-HYDFSR0123</item>
+    <item>Hisense-HYDFSR0092</item>
+    <item>Hisense-HYDFSR0089</item>
+    <item>Hisense-HYDFSR0081</item>
+    <item>Hisense-HYDFSR0079</item>
+    <item>Hisense-HYDFSR0077</item>
+    <item>Hisense-HYDFSR0057</item>
+    <item>Hisense-HYDFSR0041</item>
+    <item>Hisense-HL46K11</item>
+    <item>Hisense-HL42K16</item>
+    <item>Hisense-HL140V88</item>
+    <item>Hisense-CN-216659</item>
+    <item>Hisense-CN-20906</item>
+    <item>Hisense-CN-20904</item>
+    <item>Hisense-CN-10701</item>
+    <item>Hisense-CN-07601</item>
+    <item>Hisense-CN-07601b</item>
+    <item>Hisense-HYDFSR-0048</item>
+    <item>Hisense-HYDFSR-0039</item>
+    <item>Hisense-LED55K560J3D</item>
+    <item>Hisense-CN-31906</item>
+    <item>Hisense-TLM40V69PK</item>
+    <item>Hisense-TLM42P08GP</item>
+    <item>Hisense-CN-30602</item>
+    <item>Hisense-TLM19V88</item>
+    <item>Hisense-TLM22V66</item>
+    <item>Hisense-TLM22V88</item>
+    <item>Hisense-HYDFSR-0041</item>
+    <item>Hisense-TF2988C-D</item>
+    <item>Hisense-TC2100</item>
+    <item>Hisense-TC2139AD</item>
+    <item>Hisense-HYDFSR-0045</item>
+    <item>Hisense-HYDFSR-0047</item>
+    <item>Hisense-HYDFSR-0070A</item>
+    <item>Hisense-HDP2902D</item>
+    <item>Hisense-HDP2919H</item>
+    <item>Hisense-HDP3419H</item>
+    <item>Hisense-HYDFSR-0077</item>
+    <item>Hisense-TF2902H</item>
+    <item>Hisense-TF2908S</item>
+    <item>Hisense-LED55EC520UA</item>
+    <item>Hisense-LED40EC520UA</item>
+    <item>Hisense-LED42EC520UA</item>
+    <item>Hisense-LED50EC520UA</item>
+    <item>Hisense-LED40K300U</item>
+    <item>Hisense-LED42K300U</item>
+    <item>Hisense-LED50K300U</item>
+    <item>Hisense-LED55K300U</item>
+    <item>Hisense-LED55EC660US</item>
+    <item>Hisense-LED60EC660US</item>
+    <item>Hisense-LED65EC660US</item>
+    <item>Hisense-LED50M5000U</item>
+    <item>Hisense-LED43M5000U</item>
+    <item>Hisense-LED55EC550UA</item>
+    <item>Hisense-LED70M5000U</item>
+    <item>Hisense-LED50EC550UA</item>
+    <item>Hisense-LED55M5000U</item>
+    <item>Hisense-LED49EC550UA</item>
+    <item>Hisense-LED58EC550UA</item>
+    <item>Hisense-LED49M5000U</item>
+    <item>Hisense-LED55EC720US</item>
+    <item>Hisense-LED43T11N</item>
+    <item>Hisense-LED40EC270W</item>
+    <item>Hisense-LED50EC270W</item>
+    <item>Hisense-CN3A17</item>
+    <item>Venus-C5424</item>
+    <item>Venus-C5433</item>
+    <item>Venus-D2519</item>
+    <item>Venus-D2522</item>
+    <item>Venus-G329003</item>
+    <item>Venus-HYPF04</item>
+    <item>Venus-D2118</item>
+    <item>Venus-D211B</item>
+    <item>Venus-D2120</item>
+    <item>Venus-D2122</item>
+    <item>Venus-D2130</item>
+    <item>Venus-D2915F</item>
+    <item>Venus-G327001</item>
+    <item>Venus-G329004</item>
+    <item>Venus-HYPF02</item>
+    <item>Venus-HYPF03</item>
+    <item>Venus-D2506</item>
+    <item>Venus-D2511</item>
+    <item>Venus-G328141</item>
+    <item>Venus-G328142</item>
+    <item>Venus-HYPF41</item>
+    <item>Venus-G327002</item>
+    <item>Venus-G329005</item>
+    <item>Venus-HYPF08</item>
+    <item>Venus-HYPF09</item>
+    <item>Venus-G328111</item>
+    <item>Venus-TRC001</item>
+    <item>Nintaus-CLR8962</item>
+    <item>Nintaus-WL-205</item>
+    <item>Nintaus-MK-8188</item>
+    <item>JVC-RM-C110</item>
+    <item>JVC-RM-C2503</item>
+    <item>JVC-RM-C457</item>
+    <item>JVC-RM-C463</item>
+    <item>JVC-LT-40HS540</item>
+    <item>JVC-LT-32HS340</item>
+    <item>JVC-LT-24HS340</item>
+    <item>Konka-KK-Y250</item>
+    <item>Konka-P2551A</item>
+    <item>Konka-F2509A</item>
+    <item>Konka-F2565</item>
+    <item>Konka-T2526A</item>
+    <item>Konka-T2563A</item>
+    <item>Konka-KK-Y252I</item>
+    <item>Konka-P25SK383</item>
+    <item>Konka-P25SK387</item>
+    <item>Konka-P25SK569(V)</item>
+    <item>Konka-T25SK026</item>
+    <item>Konka-LED58S1</item>
+    <item>Konka-LED32S1</item>
+    <item>Konka-KK-Y378</item>
+    <item>Konka-LED43s2</item>
+    <item>Konka-KW-Y003</item>
+    <item>Konka-42M988PD</item>
+    <item>Konka-K-2588C</item>
+    <item>Konka-K-2979TSE</item>
+    <item>Konka-LED19TS98</item>
+    <item>Konka-DLC-3211UT</item>
+    <item>Konka-DLC-3211UT</item>
+    <item>Konka-KK-Y313J</item>
+    <item>Konka-KK-Y318</item>
+    <item>Konka-KK-Y318A</item>
+    <item>Konka-KK-Y318E</item>
+    <item>Konka-KK-Y331</item>
+    <item>Konka-KK-Y331b</item>
+    <item>Konka-KK-Y331A</item>
+    <item>Konka-KK-Y331B</item>
+    <item>Konka-KK-Y331C</item>
+    <item>Konka-KK-Y331H</item>
+    <item>Konka-KK-Y331K</item>
+    <item>Konka-KK-Y337</item>
+    <item>Konka-KK-Y337B</item>
+    <item>Konka-KP-2960ESN</item>
+    <item>Konka-KP-2960ESN-1</item>
+    <item>Konka-KW-Y001b</item>
+    <item>Konka-LC26ES60</item>
+    <item>Konka-LC26HS81B</item>
+    <item>Konka-LC32CT36AC</item>
+    <item>Konka-LC32DS30</item>
+    <item>Konka-LC32ES62</item>
+    <item>Konka-LC32F1000PD</item>
+    <item>Konka-LC32GS80C</item>
+    <item>Konka-LC32HS62B</item>
+    <item>Konka-LC32TS86C</item>
+    <item>Konka-LC32TS86N</item>
+    <item>Konka-LC37DS30C</item>
+    <item>Konka-LC37DT68C</item>
+    <item>Konka-LC37F1000PD</item>
+    <item>Konka-LC37FS81C</item>
+    <item>Konka-LC37GS80C</item>
+    <item>Konka-LC37MS96PD</item>
+    <item>Konka-LC40DT68C</item>
+    <item>Konka-LC40FS60DC</item>
+    <item>Konka-LC40GS60DC</item>
+    <item>Konka-LC40TS86DC</item>
+    <item>Konka-LC40TS86N</item>
+    <item>Konka-LC42DS30D</item>
+    <item>Konka-LC42F1000PD</item>
+    <item>Konka-LC42GS80C</item>
+    <item>Konka-LC42GS80DC</item>
+    <item>Konka-LC42GS80DC</item>
+    <item>Konka-LC42GS82DC</item>
+    <item>Konka-LC42MS96PD</item>
+    <item>Konka-LC42TS86DC</item>
+    <item>Konka-LC42TS86N</item>
+    <item>Konka-LC46GS80C</item>
+    <item>Konka-LC46GS80DC</item>
+    <item>Konka-LC46TS86DC</item>
+    <item>Konka-LC46TS86N</item>
+    <item>Konka-LC47DS60DC</item>
+    <item>Konka-LC47DT08AC</item>
+    <item>Konka-LC47F1000PD</item>
+    <item>Konka-LC47MS96PD</item>
+    <item>Konka-LC52DT08DC</item>
+    <item>Konka-LC55FT68AC</item>
+    <item>Konka-LC55TS86N</item>
+    <item>Konka-LED22TS98</item>
+    <item>Konka-LED24TS98</item>
+    <item>Konka-LED26F2200CE</item>
+    <item>Konka-LED26HS05</item>
+    <item>Konka-LED26R7000NE</item>
+    <item>Konka-LED26TS98</item>
+    <item>Konka-LED32C3200N</item>
+    <item>Konka-LED32E310N</item>
+    <item>Konka-LED32E320N</item>
+    <item>Konka-LED32E320PD</item>
+    <item>Konka-LED32E330C</item>
+    <item>Konka-LED32F1100PD</item>
+    <item>Konka-LED32F2200CE</item>
+    <item>Konka-LED32F2200NE</item>
+    <item>Konka-LED32F3300CE</item>
+    <item>Konka-LED32HS05E</item>
+    <item>Konka-LED32HS11E</item>
+    <item>Konka-LED32IS95N</item>
+    <item>Konka-LED32IS97N</item>
+    <item>Konka-LED32IS988PD</item>
+    <item>Konka-LED32IS98N</item>
+    <item>Konka-LED32MS92C</item>
+    <item>Konka-LED32R7000PDE</item>
+    <item>Konka-LED32X5000D</item>
+    <item>Konka-LED37IS95N</item>
+    <item>Konka-LED37IS97N</item>
+    <item>Konka-LED37MS92C</item>
+    <item>Konka-LED40F2200NE</item>
+    <item>Konka-LED40F3300DCE</item>
+    <item>Konka-LED40IS97N</item>
+    <item>Konka-LED40X6000DE</item>
+    <item>Konka-LED42C3200</item>
+    <item>Konka-LED42E310N</item>
+    <item>Konka-LED42F1100PD</item>
+    <item>Konka-LED42F2200NE</item>
+    <item>Konka-LED42F3300DCE</item>
+    <item>Konka-LED42IS95D</item>
+    <item>Konka-LED42IS95N</item>
+    <item>Konka-LED42IS97N</item>
+    <item>Konka-LED42IS988PD</item>
+    <item>Konka-LED42MS11DCE</item>
+    <item>Konka-LED42MS11PD</item>
+    <item>Konka-LED42MS92DC</item>
+    <item>Konka-LED42R7000PDE</item>
+    <item>Konka-LED42TS98N</item>
+    <item>Konka-LED42X5000DE</item>
+    <item>Konka-LED42X8000PD</item>
+    <item>Konka-LED42X9000PD</item>
+    <item>Konka-LED43X6000DE</item>
+    <item>Konka-LED46IS95D</item>
+    <item>Konka-LED46IS95N</item>
+    <item>Konka-LED46IS97N</item>
+    <item>Konka-LED46MS92DC</item>
+    <item>Konka-LED46X5000DE</item>
+    <item>Konka-LED46X8000D</item>
+    <item>Konka-LED47IS11PD</item>
+    <item>Konka-LED47IS11PD</item>
+    <item>Konka-LED47IS988PD</item>
+    <item>Konka-LED47MS11DC</item>
+    <item>Konka-LED47R7000PDE</item>
+    <item>Konka-LED47TS98N</item>
+    <item>Konka-LED47X9000PD</item>
+    <item>Konka-LED48X6000D</item>
+    <item>Konka-LED50X6000DE</item>
+    <item>Konka-LED55IS95D</item>
+    <item>Konka-LED55IS988PDE</item>
+    <item>Konka-LED55R7000PD</item>
+    <item>Konka-LED55TS98D</item>
+    <item>Konka-LED55TS98N</item>
+    <item>Konka-LED55X5000DE</item>
+    <item>Konka-LED55X8000D</item>
+    <item>Konka-LED55X9000PD</item>
+    <item>Konka-LED65X9100DS</item>
+    <item>Konka-LED72IS988D</item>
+    <item>Konka-KK-P2989N</item>
+    <item>Konka-LED55IS95N</item>
+    <item>Konka-KK-Y125</item>
+    <item>Konka-KK-Y125b</item>
+    <item>Konka-KK-Y180</item>
+    <item>Konka-KK-Y202</item>
+    <item>Konka-KK-Y226A</item>
+    <item>Konka-KK-Y226A-1</item>
+    <item>Konka-KK-Y232</item>
+    <item>Konka-KK-Y239A</item>
+    <item>Konka-KK-Y252</item>
+    <item>Konka-KK-Y268A</item>
+    <item>Konka-KK-Y261</item>
+    <item>Konka-KK-Y261H</item>
+    <item>Konka-KK-Y303</item>
+    <item>Konka-P28TM319</item>
+    <item>Konka-P29TM319</item>
+    <item>Konka-P30TM319</item>
+    <item>Konka-SP32TM391</item>
+    <item>Konka-SP32TM520</item>
+    <item>Konka-SP32TM529</item>
+    <item>Konka-KK-Y271A</item>
+    <item>Konka-KK-Y274B</item>
+    <item>Konka-KK-Y294Y</item>
+    <item>Konka-KK-Y295K</item>
+    <item>Konka-KK-Y295L</item>
+    <item>Konka-KK-Y295M</item>
+    <item>Konka-KK-Y295M-1</item>
+    <item>Konka-KK-Y309</item>
+    <item>Konka-KK-Y309A</item>
+    <item>Konka-LC19CS28</item>
+    <item>Konka-LC22CS26</item>
+    <item>Konka-LC26CS12</item>
+    <item>Konka-KK-Y294N</item>
+    <item>Konka-KK-Y297A</item>
+    <item>Konka-KK-Y314</item>
+    <item>Konka-KK-Y314B</item>
+    <item>Konka-KK-Y315</item>
+    <item>Konka-KK-Y315D</item>
+    <item>Konka-KK-Y315F</item>
+    <item>Konka-KK-Y335</item>
+    <item>Konka-KK-Y336</item>
+    <item>Konka-LC26ES26</item>
+    <item>Konka-LC26ES30</item>
+    <item>Konka-LC26ES60</item>
+    <item>Konka-LC32BT20</item>
+    <item>Konka-LC32DS30</item>
+    <item>Konka-LC32ES62</item>
+    <item>Konka-LC32ES66</item>
+    <item>Konka-LC37BT20</item>
+    <item>Konka-LC37CS12</item>
+    <item>Konka-LED40IS97N</item>
+    <item>Konka-LED46IS97N</item>
+    <item>Konka-KK-Y345</item>
+    <item>Konka-KK-Y345b</item>
+    <item>Konka-KK-Y345A</item>
+    <item>Konka-KK-Y345C</item>
+    <item>Konka-LC42F1000PD</item>
+    <item>Konka-LC47F1000PD</item>
+    <item>Konka-LED39E220NE</item>
+    <item>Konka-LED42MS11DC</item>
+    <item>Konka-LED42R5100DE</item>
+    <item>Konka-LED47X8100PDE</item>
+    <item>Konka-kwYooL</item>
+    <item>Konka-315F</item>
+    <item>Konka-8100</item>
+    <item>Konka-KK-Y315S</item>
+    <item>Konka-Y274Y</item>
+    <item>Konka-P2961K</item>
+    <item>Konka-KP-Y337</item>
+    <item>Konka-KP-Y180</item>
+    <item>Konka-KK-Y295</item>
+    <item>Konka-KK-Y313S</item>
+    <item>Konka-LC32FS81B</item>
+    <item>Konka-LC42FS81DC</item>
+    <item>Konka-LC37FS81DC</item>
+    <item>Konka-KK-Y313A</item>
+    <item>Konka-KK-Y313B</item>
+    <item>Konka-KK-Y313C</item>
+    <item>Konka-KK-Y313H</item>
+    <item>Konka-KK-Y313K</item>
+    <item>Konka-KK-Y313I</item>
+    <item>Konka-LC32DS60C</item>
+    <item>Konka-LC42DS60C</item>
+    <item>Konka-LC42GS60C</item>
+    <item>Konka-KW-Y001</item>
+    <item>Konka-KW-00I</item>
+    <item>Konka-KW-YOOI</item>
+    <item>Konka-LED43GDIOD</item>
+    <item>Konka-KG-Y501A</item>
+    <item>Konka-KK-Y378A</item>
+    <item>ROWA-1745S</item>
+    <item>ROWA-704</item>
+    <item>ROWA-807</item>
+    <item>ROWA-AT-6</item>
+    <item>ROWA-AT25206</item>
+    <item>ROWA-AT25211</item>
+    <item>ROWA-AT29181</item>
+    <item>ROWA-AT34276</item>
+    <item>ROWA-NT21A71</item>
+    <item>ROWA-RC-N13T</item>
+    <item>ROWA-RC-R02T</item>
+    <item>ROWA-RC-R05T</item>
+    <item>ROWA-RC-R06T</item>
+    <item>ROWA-RC-R07T</item>
+    <item>ROWA-RC-R10T</item>
+    <item>ROWA-705</item>
+    <item>ROWA-N29V3</item>
+    <item>ROWA-NT25C06</item>
+    <item>ROWA-NT25C41</item>
+    <item>ROWA-NT25M89</item>
+    <item>ROWA-NT29128</item>
+    <item>ROWA-NT29C41</item>
+    <item>ROWA-R166A</item>
+    <item>ROWA-R166C</item>
+    <item>ROWA-32L31</item>
+    <item>ROWA-VST59</item>
+    <item>ROWA-RJ01463</item>
+    <item>ROWA-LED32C360</item>
+    <item>ROWA-LED32C560</item>
+    <item>ROWA-LED32C610</item>
+    <item>ROWA-LED42C560</item>
+    <item>ROWA-LCD26P09A</item>
+    <item>ROWA-LCD32P09A</item>
+    <item>ROWA-LCD42P09A</item>
+    <item>ROWA-48X700</item>
+    <item>ROWA-50X700</item>
+    <item>ROWA-55X700</item>
+    <item>ROWA-LED42s100</item>
+    <item>ROWA-LED50s100</item>
+    <item>ROWA-LED55s100</item>
+    <item>ROWA-LED32S560</item>
+    <item>ROWA-LED40S560</item>
+    <item>ROWA-LED42S560</item>
+    <item>ROWA-LED48S560</item>
+    <item>ROWA-RC2000C</item>
+    <item>ROWA-RC2000C11</item>
+    <item>ROWA-RC2000R11</item>
+    <item>ROWA-L32F1B</item>
+    <item>ROWA-ARC801L</item>
+    <item>ROWA-32P3F</item>
+    <item>ROWA-49P3F</item>
+    <item>ROWA-55P3F</item>
+    <item>ROWA-65P3F</item>
+    <item>ROWA-65P4</item>
+    <item>ROWA-43T2F</item>
+    <item>ROWA-49T2F</item>
+    <item>ROWA-32L2F</item>
+    <item>ROWA-55V1M</item>
+    <item>ROWA-49A660U</item>
+    <item>ROWA-55A660U</item>
+    <item>ROWA-65P3</item>
+    <item>ROWA-55N3</item>
+    <item>ROWA-55N3G</item>
+    <item>ROWA-C810</item>
+    <item>ROWA-43S210</item>
+    <item>ROWA-32S210</item>
+    <item>ROWA-42S21</item>
+    <item>ROWA-32S300</item>
+    <item>ROWA-42S300</item>
+    <item>ROWA-RC810</item>
+    <item>LG-098003064070</item>
+    <item>LG-22LD320</item>
+    <item>LG-26LH20R42LH20FR</item>
+    <item>LG-32LD320</item>
+    <item>LG-32LD325C</item>
+    <item>LG-32LD450</item>
+    <item>LG-32LD450-CA</item>
+    <item>LG-32LD450C</item>
+    <item>LG-32LD550</item>
+    <item>LG-32LD550-CB</item>
+    <item>LG-32LE4500</item>
+    <item>LG-32LE5300</item>
+    <item>LG-32LH20R42LH20FR</item>
+    <item>LG-32LV2200-CA</item>
+    <item>LG-32LV2400_UA</item>
+    <item>LG-37LD450-CA</item>
+    <item>LG-37LH20R42LH20FR</item>
+    <item>LG-37LK435C</item>
+    <item>LG-37LK460-CC</item>
+    <item>LG-42LD400-UA</item>
+    <item>LG-42LD420</item>
+    <item>LG-42LD420-CA</item>
+    <item>LG-42LD420-ZA</item>
+    <item>LG-42LD450-CA</item>
+    <item>LG-42LD550</item>
+    <item>LG-42LD550b</item>
+    <item>LG-42LD550-CB</item>
+    <item>LG-42LE4500</item>
+    <item>LG-42LE5300</item>
+    <item>LG-42LG30R-TA</item>
+    <item>LG-42LG31RC-TA</item>
+    <item>LG-42LK460-CC</item>
+    <item>LG-42LM6200-CC</item>
+    <item>LG-42LM6400-CA</item>
+    <item>LG-42LM6600-CA</item>
+    <item>LG-42LM6700-CA</item>
+    <item>LG-42LS4100-CA</item>
+    <item>LG-42LV3600-CB</item>
+    <item>LG-42LV365C</item>
+    <item>LG-42LV375S</item>
+    <item>LG-42LW4500-CA</item>
+    <item>LG-42LW5500-CA</item>
+    <item>LG-42LW6500</item>
+    <item>LG-47LD450-CA</item>
+    <item>LG-47LD450C</item>
+    <item>LG-47LE5300</item>
+    <item>LG-47LK460-CC</item>
+    <item>LG-47LM6200-CC</item>
+    <item>LG-47LM6400-CA</item>
+    <item>LG-47LM6600-CA</item>
+    <item>LG-47LM6700-CA</item>
+    <item>LG-47LM7600-CA</item>
+    <item>LG-47LM9600</item>
+    <item>LG-47LW5500-CA</item>
+    <item>LG-52LD550</item>
+    <item>LG-52LD550-CB</item>
+    <item>LG-55EM9600</item>
+    <item>LG-55LD650</item>
+    <item>LG-55LE5300</item>
+    <item>LG-55LE8600</item>
+    <item>LG-55LM8600-CA</item>
+    <item>LG-55LM9600</item>
+    <item>LG-55LW4500-CA</item>
+    <item>LG-55LW6500-CA</item>
+    <item>LG-65LM6200-CC</item>
+    <item>LG-72LZ9700-CA</item>
+    <item>LG-72LZ9900-CA</item>
+    <item>LG-AKB73975765</item>
+    <item>LG-AKB33871421</item>
+    <item>LG-AKB69680413</item>
+    <item>LG-AKB69680414</item>
+    <item>LG-AKB69680431</item>
+    <item>LG-AKB72914220</item>
+    <item>LG-AKB72914230</item>
+    <item>LG-AKB72914248</item>
+    <item>LG-AKB72915206</item>
+    <item>LG-AKB72915207</item>
+    <item>LG-AKB72915210</item>
+    <item>LG-AKB72915211</item>
+    <item>LG-AKB72915256</item>
+    <item>LG-AKB73615327</item>
+    <item>LG-AKB73655814</item>
+    <item>LG-AKB73655860</item>
+    <item>LG-MKJ37815710</item>
+    <item>LG-MKJ40653809</item>
+    <item>LG-MKJ40653819</item>
+    <item>LG-MKJ40653827</item>
+    <item>LG-MKJ42519622</item>
+    <item>LG-MKJ42613808</item>
+    <item>LG-MKJ72914243</item>
+    <item>LG-RM-D757</item>
+    <item>LG-26LH20R</item>
+    <item>LG-26LH20RC</item>
+    <item>LG-32LH20R</item>
+    <item>LG-32LH20RC</item>
+    <item>LG-37LD450C-CA</item>
+    <item>LG-32CM540-CA</item>
+    <item>LG-37LD450</item>
+    <item>LG-37LV3600-CB</item>
+    <item>LG-42CM540-CA</item>
+    <item>LG-42LD450-CA</item>
+    <item>LG-42LD450C</item>
+    <item>LG-42LE5300-CA</item>
+    <item>LG-42LE5500</item>
+    <item>LG-42LE8500</item>
+    <item>LG-42LE8600</item>
+    <item>LG-47CM540-CA</item>
+    <item>LG-47LD450</item>
+    <item>LG-47LE5300-CA</item>
+    <item>LG-47LE5300-CA</item>
+    <item>LG-47LE5500-CA</item>
+    <item>LG-47LE8500</item>
+    <item>LG-47LE8600</item>
+    <item>LG-47LK435C</item>
+    <item>LG-47LK450</item>
+    <item>LG-47LK465C</item>
+    <item>LG-55LE5300-CA</item>
+    <item>LG-55LE5500-CA</item>
+    <item>LG-42LK435C</item>
+    <item>LG-42LK455C</item>
+    <item>LG-42LK465C</item>
+    <item>LG-42LV5700-CA</item>
+    <item>LG-47LV3600-CB</item>
+    <item>LG-47LV5700-CA</item>
+    <item>LG-47LW4500-CA</item>
+    <item>LG-47LW6500</item>
+    <item>LG-55LV5700-CA</item>
+    <item>LG-55LW5500-CA</item>
+    <item>LG-65LW6500-CA</item>
+    <item>LG-AKB72915256</item>
+    <item>LG-AKB72914282</item>
+    <item>LG-AKB72915257</item>
+    <item>LG-42LW5500-CA</item>
+    <item>LG-47LW5500-CA</item>
+    <item>LG-47LW7200-CA</item>
+    <item>LG-47LW9500-CA</item>
+    <item>LG-55LW5500-CA</item>
+    <item>LG-55LW7200-CA</item>
+    <item>LG-55LW9500-CA</item>
+    <item>LG-55LW9800-CA</item>
+    <item>LG-AKB72913306</item>
+    <item>LG-AKB72914282</item>
+    <item>LG-AKB72914283</item>
+    <item>LG-AKB72915255</item>
+    <item>LG-AKB73275615</item>
+    <item>LG-AKB73275625</item>
+    <item>LG-6710T00008G</item>
+    <item>LG-6710V00126Q</item>
+    <item>LG-6710V00042D</item>
+    <item>LG-6710V00090W</item>
+    <item>LG-6710V00091G</item>
+    <item>LG-6710V00091X</item>
+    <item>LG-6710V00138N</item>
+    <item>LG-AKB30377804</item>
+    <item>LG-MKJ37815702</item>
+    <item>LG-MKJ37815706</item>
+    <item>LG-MKJ37815707</item>
+    <item>LG-42LS41</item>
+    <item>LG-42LE4***</item>
+    <item>LG-AKB74915347</item>
+    <item>LG-AKB73615312</item>
+    <item>Hitachi-CLE-966A</item>
+    <item>Hitachi-CLE-984</item>
+    <item>Hitachi-CLE-967</item>
+    <item>Hitachi-CLE-998</item>
+    <item>Samsung-AA59-00312E</item>
+    <item>Samsung-BN59-00104H</item>
+    <item>Samsung-BN59-00104K</item>
+    <item>Samsung-BN59-00104M</item>
+    <item>Samsung-BN59-00104N</item>
+    <item>Samsung-CS-21D8S</item>
+    <item>Samsung-CS-21D9S</item>
+    <item>Samsung-CS-29V10MN</item>
+    <item>Samsung-AA59-00436A</item>
+    <item>Samsung-AA59-00457A</item>
+    <item>Samsung-AA59-00475A</item>
+    <item>Samsung-AA59-00594A</item>
+    <item>Samsung-AA59-00595A</item>
+    <item>Samsung-AA59-00642A</item>
+    <item>Samsung-BN59-00424A</item>
+    <item>Samsung-BN59-00518B</item>
+    <item>Samsung-BN59-00526A</item>
+    <item>Samsung-BN59-00613A</item>
+    <item>Samsung-BN59-00687A</item>
+    <item>Samsung-BN59-00870A</item>
+    <item>Samsung-BN59-00880A</item>
+    <item>Samsung-BN59-00951A</item>
+    <item>Samsung-BN59-01001A</item>
+    <item>Samsung-BN59-01008A</item>
+    <item>Samsung-BN59-01016A</item>
+    <item>Samsung-BN59-01027A</item>
+    <item>Samsung-LA27S7</item>
+    <item>Samsung-LA37R71B</item>
+    <item>Samsung-LA37S7</item>
+    <item>Samsung-LA40R71B</item>
+    <item>Samsung-LA40S7</item>
+    <item>Samsung-LA40S81B</item>
+    <item>Samsung-LA46B550K1F</item>
+    <item>Samsung-RM-658F</item>
+    <item>Samsung-UA32D5000PR</item>
+    <item>Samsung-UA32EH4000R</item>
+    <item>Samsung-UA40D5000PR</item>
+    <item>Samsung-UA40D5000PR</item>
+    <item>Samsung-UA46D5000PR</item>
+    <item>Samsung-UA46D6000SJ</item>
+    <item>Samsung-UA46D6600WJ</item>
+    <item>Samsung-UA55C7000WF</item>
+    <item>Samsung-UA55D6600WJ</item>
+    <item>Samsung-UA55ES8000JXXZ</item>
+    <item>Samsung-UA60ES8000JXXZ</item>
+    <item>Samsung-UA65C8000XF</item>
+    <item>Samsung-UA65ES8000JXXZ</item>
+    <item>Samsung-AA59-00649A</item>
+    <item>Samsung-AA59-00818A</item>
+    <item>Samsung-AA59-10075L</item>
+    <item>Samsung-AH59-00048A</item>
+    <item>Samsung-BN59-00430A</item>
+    <item>Samsung-BN59-00430C</item>
+    <item>Samsung-BN59-00688A</item>
+    <item>Samsung-BN59-00688B</item>
+    <item>Samsung-BN59-00752A</item>
+    <item>Samsung-BN59-01017A</item>
+    <item>Samsung-LA-26A350C1</item>
+    <item>Samsung-LA22C350D1</item>
+    <item>Samsung-LA26C350D1</item>
+    <item>Samsung-LA32C350</item>
+    <item>Samsung-LA32C350D1</item>
+    <item>Samsung-LA32C450E1</item>
+    <item>Samsung-LA32C530F1R</item>
+    <item>Samsung-LA32C550J1F</item>
+    <item>Samsung-LA32C450E1</item>
+    <item>Samsung-LA32D400E1</item>
+    <item>Samsung-LA37C530F1R</item>
+    <item>Samsung-LA37C550J1F</item>
+    <item>Samsung-LA40B530P7R</item>
+    <item>Samsung-LA40B550K1F</item>
+    <item>Samsung-LA40B550K1R</item>
+    <item>Samsung-LA40B620R3F</item>
+    <item>Samsung-LA40B650T1F</item>
+    <item>Samsung-LA40C530F1R</item>
+    <item>Samsung-LA40C550J1F</item>
+    <item>Samsung-LA40D503F7R</item>
+    <item>Samsung-LA40D550K1R</item>
+    <item>Samsung-LA46B550K1F</item>
+    <item>Samsung-LA46B620R3F</item>
+    <item>Samsung-LA46C530F1R</item>
+    <item>Samsung-LA46C550J1F</item>
+    <item>Samsung-LA46C750R2F</item>
+    <item>Samsung-LA52B550K1F</item>
+    <item>Samsung-LA52B620R3F</item>
+    <item>Samsung-LA55C750R2F</item>
+    <item>Samsung-LE-46B620R3P</item>
+    <item>Samsung-LE-52B620R3P</item>
+    <item>Samsung-LE40B620R3P</item>
+    <item>Samsung-LE40D503F7W</item>
+    <item>Samsung-LE46B620R3P</item>
+    <item>Samsung-LE52B620R3P</item>
+    <item>Samsung-RM-D613</item>
+    <item>Samsung-UA22C4000P</item>
+    <item>Samsung-UA26C4000</item>
+    <item>Samsung-UA26C4000P</item>
+    <item>Samsung-UA26D4003B</item>
+    <item>Samsung-UA32C4000P</item>
+    <item>Samsung-UA32C4000P-1</item>
+    <item>Samsung-UA32C5000QR</item>
+    <item>Samsung-UA32D4000</item>
+    <item>Samsung-UA32D4000N</item>
+    <item>Samsung-UA32D4000NM</item>
+    <item>Samsung-UA32D4000NXXZ</item>
+    <item>Samsung-UA32D4003B</item>
+    <item>Samsung-UA32EH4080R</item>
+    <item>Samsung-UA32EH5080R</item>
+    <item>Samsung-UA32EH5300M</item>
+    <item>Samsung-UA32ES6100J</item>
+    <item>Samsung-UA37C5000QR</item>
+    <item>Samsung-UA37ES5500J</item>
+    <item>Samsung-UA40B7000WF</item>
+    <item>Samsung-UA40B7000WR</item>
+    <item>Samsung-UA40C5000QR</item>
+    <item>Samsung-UA40C6200VF</item>
+    <item>Samsung-UA40C6900VF</item>
+    <item>Samsung-UA40D5003BR</item>
+    <item>Samsung-UA40D5800VR</item>
+    <item>Samsung-UA40D6000SJ</item>
+    <item>Samsung-UA40D6000SM</item>
+    <item>Samsung-UA40EH5000R</item>
+    <item>Samsung-UA40EH5080R</item>
+    <item>Samsung-UA40EH5300M</item>
+    <item>Samsung-UA40EH6000M</item>
+    <item>Samsung-UA40ES5500</item>
+    <item>Samsung-UA40ES5500J</item>
+    <item>Samsung-UA40ES6100</item>
+    <item>Samsung-UA40ES6100J</item>
+    <item>Samsung-UA40ES6200</item>
+    <item>Samsung-UA40ES6200M</item>
+    <item>Samsung-UA40ES7000J</item>
+    <item>Samsung-UA46B7000WF</item>
+    <item>Samsung-UA46C5000QR</item>
+    <item>Samsung-UA46C6200UF</item>
+    <item>Samsung-UA46C6900VF</item>
+    <item>Samsung-UA46D6000</item>
+    <item>Samsung-UA46D6000SM</item>
+    <item>Samsung-UA46D6400UJ</item>
+    <item>Samsung-UA46D6400UM</item>
+    <item>Samsung-UA46D6600WM</item>
+    <item>Samsung-UA46D7000LJ</item>
+    <item>Samsung-UA46EH5000R</item>
+    <item>Samsung-UA46EH5080R</item>
+    <item>Samsung-UA46ES5500</item>
+    <item>Samsung-UA46ES5500J</item>
+    <item>Samsung-UA46ES6100</item>
+    <item>Samsung-UA46ES6100J</item>
+    <item>Samsung-UA46ES6200</item>
+    <item>Samsung-UA46ES6700</item>
+    <item>Samsung-UA46ES6800J</item>
+    <item>Samsung-UA46ES7000J</item>
+    <item>Samsung-UA46ES7500M</item>
+    <item>Samsung-UA55B7000WF</item>
+    <item>Samsung-UA55C6200UF</item>
+    <item>Samsung-UA55C6900VF</item>
+    <item>Samsung-UA55C8000XF</item>
+    <item>Samsung-UA55D6000SJ</item>
+    <item>Samsung-UA55D6000SM</item>
+    <item>Samsung-UA55D6000STXXZ</item>
+    <item>Samsung-UA55D6400UJ</item>
+    <item>Samsung-UA55D6400UM</item>
+    <item>Samsung-UA55D6600WM</item>
+    <item>Samsung-UA55D7000LJ</item>
+    <item>Samsung-UA55D7000LM</item>
+    <item>Samsung-UA55D8000YJ</item>
+    <item>Samsung-UA55EH6000M</item>
+    <item>Samsung-UA55EH6000R</item>
+    <item>Samsung-UA55ES6100</item>
+    <item>Samsung-UA55ES6100J</item>
+    <item>Samsung-UA55ES6200</item>
+    <item>Samsung-UA55ES6700</item>
+    <item>Samsung-UA55ES6800J</item>
+    <item>Samsung-UA55ES6800M</item>
+    <item>Samsung-UA55ES7000LJ</item>
+    <item>Samsung-UA55ES8000</item>
+    <item>Samsung-UA55ES8000b</item>
+    <item>Samsung-UA55ES8000J</item>
+    <item>Samsung-UA60C6900VF</item>
+    <item>Samsung-UA60D6600VJ</item>
+    <item>Samsung-UA60D6600VM</item>
+    <item>Samsung-UA60D6600WJ</item>
+    <item>Samsung-UA60D8000YJ</item>
+    <item>Samsung-UA60D8000YV</item>
+    <item>Samsung-UA60EH6000R</item>
+    <item>Samsung-UA60ES8000J</item>
+    <item>Samsung-UE32ES6100</item>
+    <item>Samsung-UE37ES5500</item>
+    <item>Samsung-UE40ES5500</item>
+    <item>Samsung-UE40ES7000</item>
+    <item>Samsung-UE46EH5000</item>
+    <item>Samsung-UE46ES5500</item>
+    <item>Samsung-UN26D4003</item>
+    <item>Samsung-UN32EH4000F</item>
+    <item>Samsung-UN32EH5000F</item>
+    <item>Samsung-UN32EH5300</item>
+    <item>Samsung-UN60EH6000</item>
+    <item>Samsung-UN60ES8000</item>
+    <item>Samsung-BN59-00596A</item>
+    <item>Samsung-BN59-00610A</item>
+    <item>Samsung-BN59-00879A</item>
+    <item>Samsung-LA46B610</item>
+    <item>Samsung-UA55ES6800</item>
+    <item>Samsung-UA55ES6800b</item>
+    <item>Samsung-UA40C6900VM</item>
+    <item>Samsung-UA32K5500B</item>
+    <item>Samsung-UA32ES5500</item>
+    <item>Samsung-UA50ES5500</item>
+    <item>Samsung-BN59-00709A</item>
+    <item>Samsung-BN59-00602A</item>
+    <item>Samsung-BN59-00685A</item>
+    <item>Samsung-S903</item>
+    <item>Samsung-BN59-01224H</item>
+    <item>SANYO-KXAFF(S)</item>
+    <item>SANYO-KXAFP(C)</item>
+    <item>SANYO-KXABR</item>
+    <item>SANYO-JXMRD</item>
+    <item>SANYO-CK25D88</item>
+    <item>SANYO-CK29F50S</item>
+    <item>SANYO-CK29F68P</item>
+    <item>SANYO-1LBU10B01200</item>
+    <item>SANYO-CEP-2180</item>
+    <item>SANYO-LED-24CE850</item>
+    <item>SANYO-LED-26CE850</item>
+    <item>SANYO-DS-27850</item>
+    <item>SANYO-DS25830</item>
+    <item>SANYO-LCD-19E3</item>
+    <item>SANYO-LCD-23CA2</item>
+    <item>SANYO-LCD-26CA320</item>
+    <item>SANYO-LCD-26CA510</item>
+    <item>SANYO-LCD-42E3</item>
+    <item>SANYO-LCD19E35</item>
+    <item>SANYO-LCD26E3</item>
+    <item>SANYO-LCD32-E3</item>
+    <item>SANYO-LED-19CE830</item>
+    <item>SANYO-LED-19CE850</item>
+    <item>SANYO-LED-23CE630</item>
+    <item>SANYO-LED-26CE830</item>
+    <item>SANYO-LED-32CE530</item>
+    <item>SANYO-LED-32CE630</item>
+    <item>SANYO-LED-32CE830</item>
+    <item>SANYO-LED-42CE530</item>
+    <item>SANYO-LED-42CE830</item>
+    <item>SANYO-LED-47CE830</item>
+    <item>SANYO-LED-55CE830</item>
+    <item>SANYO-LED-55CE850</item>
+    <item>SANYO-JXPKL</item>
+    <item>SANYO-LCD-32CA320</item>
+    <item>SANYO-LCD-32CA760</item>
+    <item>SANYO-LCD-32CA820</item>
+    <item>SANYO-LCD-32CA828</item>
+    <item>SANYO-LCD-32CA8Z</item>
+    <item>SANYO-LCD-37CA320</item>
+    <item>SANYO-LCD-37CA520</item>
+    <item>SANYO-LCD-42CA320</item>
+    <item>SANYO-LCD-42CA5</item>
+    <item>SANYO-LCD-42CA50</item>
+    <item>SANYO-LCD-42CA820</item>
+    <item>SANYO-LCD-42CA828</item>
+    <item>SANYO-LCD-47CA10</item>
+    <item>SANYO-LCD-47CA820</item>
+    <item>SANYO-LED-32CE850</item>
+    <item>SANYO-LED-42CE850</item>
+    <item>SANYO-LED-47CE850</item>
+    <item>SANYO-LCD-37XR8DA</item>
+    <item>SANYO-LED-22XR10F</item>
+    <item>SANYO-LED-24CE710</item>
+    <item>SANYO-LED-32CE660</item>
+    <item>SANYO-LED-32CE710</item>
+    <item>SANYO-LED-32XR10F</item>
+    <item>SANYO-LED-37CE830</item>
+    <item>SANYO-LED-37CE850</item>
+    <item>SANYO-LED-42CE710</item>
+    <item>SANYO-LED42XR10FH</item>
+    <item>SVA-D2159</item>
+    <item>SVA-D2173</item>
+    <item>SVA-D2559</item>
+    <item>SVA-D2573</item>
+    <item>SVA-SVA-2</item>
+    <item>SVA-TRC001</item>
+    <item>SVA-D2160</item>
+    <item>SVA-D2171</item>
+    <item>SVA-D2553F</item>
+    <item>SVA-D25569</item>
+    <item>SVA-D2560F</item>
+    <item>SVA-D2572</item>
+    <item>SVA-D2917F</item>
+    <item>SVA-D2960F</item>
+    <item>SVA-HYPF-OM</item>
+    <item>SVA-HYPF-OP</item>
+    <item>SVA-LRC702</item>
+    <item>SVA-TRC003</item>
+    <item>SVA-TRC008</item>
+    <item>SVA-TRC001</item>
+    <item>SVA-D2957F</item>
+    <item>SVA-D2157F</item>
+    <item>SVA-D2557F</item>
+    <item>Panasonic-EUR-2952</item>
+    <item>Panasonic-EUR-50700</item>
+    <item>Panasonic-EUR-50708</item>
+    <item>Panasonic-HT000041</item>
+    <item>Panasonic-N2QAYB000035</item>
+    <item>Panasonic-N2QAYB000041</item>
+    <item>Panasonic-N2QAYB000458</item>
+    <item>Panasonic-RE-532M</item>
+    <item>Panasonic-EUR511253</item>
+    <item>Panasonic-N2QAJB000081</item>
+    <item>Panasonic-N2QAJB000081b</item>
+    <item>Panasonic-N2QAJB000157</item>
+    <item>Panasonic-N2QAYB000024</item>
+    <item>Panasonic-N2QAYB000553</item>
+    <item>Panasonic-N2QAYB000599</item>
+    <item>Panasonic-TC-L47E50</item>
+    <item>Panasonic-TC-L55ET5</item>
+    <item>Panasonic-TH-42PX50U</item>
+    <item>Panasonic-TH-L24X50C</item>
+    <item>Panasonic-TH-L24X50C-1</item>
+    <item>Panasonic-TH-L32C30A</item>
+    <item>Panasonic-TH-L32C30C</item>
+    <item>Panasonic-TH-L32C5C</item>
+    <item>Panasonic-TH-L32CH5C</item>
+    <item>Panasonic-TH-L32D25S</item>
+    <item>Panasonic-TH-L32X10A</item>
+    <item>Panasonic-TH-L32X30A</item>
+    <item>Panasonic-TH-L32X30C</item>
+    <item>Panasonic-TH-L32X30Z</item>
+    <item>Panasonic-TH-L32X50C</item>
+    <item>Panasonic-TH-L37DT30A</item>
+    <item>Panasonic-TH-L42E3A</item>
+    <item>Panasonic-TH-L42E3C</item>
+    <item>Panasonic-TH-L42U30A</item>
+    <item>Panasonic-TH-L42U30C</item>
+    <item>Panasonic-TH-L42U50C</item>
+    <item>Panasonic-TH-L47DT50C</item>
+    <item>Panasonic-TH-L47E5</item>
+    <item>Panasonic-TH-L47E5C</item>
+    <item>Panasonic-TH-L47ET5</item>
+    <item>Panasonic-TH-L47ET5C</item>
+    <item>Panasonic-TH-L55DT50C</item>
+    <item>Panasonic-TH-L55ET5C</item>
+    <item>Panasonic-TH-P42U30A</item>
+    <item>Panasonic-TH-P42U30C</item>
+    <item>Panasonic-TH-P42VT30Z</item>
+    <item>Panasonic-TH-P42X50C</item>
+    <item>Panasonic-TH-P46GT30A</item>
+    <item>Panasonic-TH-P46GT31C</item>
+    <item>Panasonic-TH-P46ST32C</item>
+    <item>Panasonic-TH-P46ST32Y</item>
+    <item>Panasonic-TH-P46UT30A</item>
+    <item>Panasonic-TH-P46UT30C</item>
+    <item>Panasonic-TH-P46X20V</item>
+    <item>Panasonic-TH-P50GT30A</item>
+    <item>Panasonic-TH-P50GT30C</item>
+    <item>Panasonic-TH-P50ST30A</item>
+    <item>Panasonic-TH-P50ST30C</item>
+    <item>Panasonic-TH-P50ST30Z</item>
+    <item>Panasonic-TH-P50ST50C</item>
+    <item>Panasonic-TH-P50U30A</item>
+    <item>Panasonic-TH-P50U30C</item>
+    <item>Panasonic-TH-P50UT30C</item>
+    <item>Panasonic-TH-P50UT50C</item>
+    <item>Panasonic-TH-P50VT30A</item>
+    <item>Panasonic-TH-P50X20V</item>
+    <item>Panasonic-TH-P50X50C</item>
+    <item>Panasonic-TH-P55GT32C</item>
+    <item>Panasonic-TH-P55ST30A</item>
+    <item>Panasonic-TH-P55ST30C</item>
+    <item>Panasonic-TH-P55ST30Z</item>
+    <item>Panasonic-TH-P55VT30A</item>
+    <item>Panasonic-TH-P55VT31C</item>
+    <item>Panasonic-TH-P60S30C</item>
+    <item>Panasonic-TH-P60ST30A</item>
+    <item>Panasonic-TH-P60ST50C</item>
+    <item>Panasonic-TH-P65VT30C</item>
+    <item>Panasonic-TH-50PV30C</item>
+    <item>Panasonic-TH-50C30C</item>
+    <item>Panasonic-TH-P50C30C</item>
+    <item>Panasonic-TH-50PX75U</item>
+    <item>Panasonic-TH-P42C10S</item>
+    <item>Panasonic-TH-P42C30C</item>
+    <item>Panasonic-TH-P42C33C</item>
+    <item>Panasonic-TH-P50C33C</item>
+    <item>Panasonic-TH-P50VT30</item>
+    <item>Panasonic-TH-P46U20C</item>
+    <item>Panasonic-TH-P46U30C</item>
+    <item>Panasonic-TH-P46U33C</item>
+    <item>Panasonic-TH-P46U20C</item>
+    <item>Panasonic-TH-P46U30C</item>
+    <item>Panasonic-TH-P46U33C</item>
+    <item>Panasonic-N2QAYB000358</item>
+    <item>Panasonic-N2QAYB000605</item>
+    <item>SONY-RM-SA017</item>
+    <item>SONY-RM-SA021</item>
+    <item>SONY-RM-SD002</item>
+    <item>SONY-RM-SD008</item>
+    <item>SONY-RM-SD009</item>
+    <item>SONY-RM-SD011</item>
+    <item>SONY-KDL-24EX320</item>
+    <item>SONY-KDL-24EX520</item>
+    <item>SONY-KDL-26EX550</item>
+    <item>SONY-KDL-32CX520</item>
+    <item>SONY-KDL-32EX420</item>
+    <item>SONY-KDL-32EX500</item>
+    <item>SONY-KDL-32EX520</item>
+    <item>SONY-KDL-32EX550</item>
+    <item>SONY-KDL-32EX600</item>
+    <item>SONY-KDL-32EX650</item>
+    <item>SONY-KDL-40CX520</item>
+    <item>SONY-KDL-40EX520</item>
+    <item>SONY-KDL-40EX720</item>
+    <item>SONY-KDL-40HX720</item>
+    <item>SONY-KDL-40HX750</item>
+    <item>SONY-KDL-40NX720</item>
+    <item>SONY-KDL-46CX520</item>
+    <item>SONY-KDL-46EX520</item>
+    <item>SONY-KDL-46EX720</item>
+    <item>SONY-KDL-46HX720</item>
+    <item>SONY-KDL-46HX750</item>
+    <item>SONY-KDL-46HX820</item>
+    <item>SONY-KDL-46HX850</item>
+    <item>SONY-KDL-46NX720</item>
+    <item>SONY-KDL-52W4100</item>
+    <item>SONY-KDL-55EX720</item>
+    <item>SONY-KDL-55EX720b</item>
+    <item>SONY-KDL-55HX720</item>
+    <item>SONY-KDL-55HX750</item>
+    <item>SONY-KDL-55HX820</item>
+    <item>SONY-KDL-55HX850</item>
+    <item>SONY-KDL-60EX720</item>
+    <item>SONY-KDL-65HX720</item>
+    <item>SONY-KDL-65HX729</item>
+    <item>SONY-KDL-70X3500</item>
+    <item>SONY-KDL-70X4500</item>
+    <item>SONY-KLV-22BX205</item>
+    <item>SONY-KLV-22EX300</item>
+    <item>SONY-KLV-22EX310</item>
+    <item>SONY-KLV-26BX205</item>
+    <item>SONY-KLV-26BX300</item>
+    <item>SONY-KLV-26BX320</item>
+    <item>SONY-KLV-32BX205</item>
+    <item>SONY-KLV-32BX320</item>
+    <item>SONY-KLV-32BX350</item>
+    <item>SONY-KLV-32EX300</item>
+    <item>SONY-KLV-32EX310</item>
+    <item>SONY-KLV-32V300A</item>
+    <item>SONY-KLV-37BX205</item>
+    <item>SONY-KLV-37BX320</item>
+    <item>SONY-KLV-40BX400</item>
+    <item>SONY-KLV-40BX450</item>
+    <item>SONY-KLV-40EX500</item>
+    <item>SONY-KLV-40NX500</item>
+    <item>SONY-KLV-40V300A</item>
+    <item>SONY-KLV-42EX410</item>
+    <item>SONY-KLV-46BX450</item>
+    <item>SONY-KLV-46EX500</item>
+    <item>SONY-KLV-46V300A</item>
+    <item>SONY-KLV-55EX500</item>
+    <item>SONY-KP-EF41HK</item>
+    <item>SONY-KP-EF41ME</item>
+    <item>SONY-KP-EF41MN</item>
+    <item>SONY-KP-EF41SN</item>
+    <item>SONY-KP-EF48HK</item>
+    <item>SONY-KP-EF48ME</item>
+    <item>SONY-KP-EF48MN</item>
+    <item>SONY-KP-EF48SN</item>
+    <item>SONY-KP-EF53HK</item>
+    <item>SONY-KP-EF53ME</item>
+    <item>SONY-KP-EF53MN</item>
+    <item>SONY-KP-EF53SN</item>
+    <item>SONY-KP-EF61HK</item>
+    <item>SONY-KP-EF61MN</item>
+    <item>SONY-KP-EF61SN</item>
+    <item>SONY-KV-E29MF1</item>
+    <item>SONY-KV-E29MF8</item>
+    <item>SONY-KV-E29MF81</item>
+    <item>SONY-KV-E29MF8S</item>
+    <item>SONY-KV-E29MFH1</item>
+    <item>SONY-KV-E29MG1</item>
+    <item>SONY-KV-E29MH1</item>
+    <item>SONY-KV-E29MH11</item>
+    <item>SONY-KV-E29MH8</item>
+    <item>SONY-KV-E29MH8L</item>
+    <item>SONY-KV-E29MN11</item>
+    <item>SONY-KV-E29MN81</item>
+    <item>SONY-KV-E29SN81</item>
+    <item>SONY-KV-E29TG8</item>
+    <item>SONY-KV-E41MG11</item>
+    <item>SONY-KV-E53MG11</item>
+    <item>SONY-KV-E53MH11</item>
+    <item>SONY-KV-E61MG11</item>
+    <item>SONY-KV-E61MH11</item>
+    <item>SONY-KV-LX34T80</item>
+    <item>SONY-RM-618A</item>
+    <item>SONY-RM-859</item>
+    <item>SONY-RM-861</item>
+    <item>SONY-RM-862</item>
+    <item>SONY-RM-869</item>
+    <item>SONY-RM-871</item>
+    <item>SONY-RM-91014</item>
+    <item>SONY-RM-912</item>
+    <item>SONY-RM-916</item>
+    <item>SONY-RM-953</item>
+    <item>SONY-RM-954</item>
+    <item>SONY-RM-961</item>
+    <item>SONY-RM-963</item>
+    <item>SONY-RM-964</item>
+    <item>SONY-RM-997</item>
+    <item>SONY-RM-D637</item>
+    <item>SONY-RM-GA005</item>
+    <item>SONY-RM-SA003</item>
+    <item>SONY-RM-SA007</item>
+    <item>SONY-RM-SA010</item>
+    <item>SONY-RM-SA010b</item>
+    <item>SONY-RM-SA011</item>
+    <item>SONY-RM-SA011b</item>
+    <item>SONY-RM-SA012</item>
+    <item>SONY-RM-SA012b</item>
+    <item>SONY-RM-SA014</item>
+    <item>SONY-RM-SA014b</item>
+    <item>SONY-RM-SA016</item>
+    <item>SONY-RM-SA016b</item>
+    <item>SONY-RM-SA018</item>
+    <item>SONY-RM-SA019</item>
+    <item>SONY-RM-SD003</item>
+    <item>SONY-RM-SD003b</item>
+    <item>SONY-RM-SD004</item>
+    <item>SONY-RM-W104</item>
+    <item>SONY-XBR-46HX929</item>
+    <item>SONY-XBR-55HX929</item>
+    <item>SONY-XBR-65HX929</item>
+    <item>SONY-KDL-40EX650</item>
+    <item>SONY-KDL-46EX650</item>
+    <item>SONY-KDL-46HX920</item>
+    <item>SONY-KDL-55HX920</item>
+    <item>SONY-KDL-55X4500</item>
+    <item>SONY-KDL-65HX920</item>
+    <item>SONY-KDL-40X2000</item>
+    <item>SONY-KDL-46X2000</item>
+    <item>SONY-KDL-52W300A</item>
+    <item>SONY-KDL-52X2000</item>
+    <item>SONY-KDL-55NX720</item>
+    <item>SONY-KDS-55A2000</item>
+    <item>SONY-KDS-70R2000</item>
+    <item>SONY-KF-E42A10</item>
+    <item>SONY-KF-E50A10</item>
+    <item>SONY-KLV-40F300A</item>
+    <item>SONY-KLV-40F310A</item>
+    <item>SONY-KLV-40W300A</item>
+    <item>SONY-KLV-40W380A</item>
+    <item>SONY-KLV-40X200A</item>
+    <item>SONY-KLV-46F300A</item>
+    <item>SONY-KLV-46F310A</item>
+    <item>SONY-KLV-46W300A</item>
+    <item>SONY-KLV-46W380A</item>
+    <item>SONY-KLV-46X200A</item>
+    <item>SONY-KLV-46X300A</item>
+    <item>SONY-KLV-52W300A</item>
+    <item>SONY-KLV-52W380A</item>
+    <item>SONY-KLV-52X200A</item>
+    <item>SONY-KLV-52X300A</item>
+    <item>SONY-KLV-70X300A</item>
+    <item>SONY-RM-ED006</item>
+    <item>SONY-RM-JB002</item>
+    <item>SONY-RM-SA001</item>
+    <item>SONY-RM-SA009</item>
+    <item>SONY-RM-SA013</item>
+    <item>SONY-RM-827S</item>
+    <item>SONY-RM-870</item>
+    <item>SONY-RM-845P</item>
+    <item>SONY-RM-857</item>
+    <item>SONY-RM-873</item>
+    <item>SONY-RM-SD005</item>
+    <item>SONY-RM-SD006</item>
+    <item>SONY-RM-SD005</item>
+    <item>SONY-RM-SD006</item>
+    <item>SONY-RM-CD001W</item>
+    <item>SONY-RM-GA016W</item>
+    <item>SONY-RM-SA020</item>
+    <item>SONY-YD005</item>
+    <item>SONY-SA007</item>
+    <item>SONY-SD007</item>
+    <item>SONY-SA019</item>
+    <item>SONY-SD012</item>
+    <item>SONY-SA018</item>
+    <item>SONY-SD006</item>
+    <item>SONY-GD011</item>
+    <item>SONY-JB002</item>
+    <item>SONY-SD001</item>
+    <item>SONY-SD004</item>
+    <item>SONY-ADP029</item>
+    <item>SONY-SA001</item>
+    <item>sony-sony-klv-420</item>
+    <item>sony-sony-klv-420b</item>
+    <item>sony-RM-SA022</item>
+    <item>sony-KD-65X7000E</item>
+    <item>sony-55X7000E</item>
+    <item>sony-49X7000E</item>
+    <item>sony-43X7000E</item>
+    <item>SONY-RM-W101</item>
+    <item>TCL-LCD42K73</item>
+    <item>TCL-LCD42B68-T</item>
+    <item>TCL-LCD32B68</item>
+    <item>TCL-L48A71S</item>
+    <item>TCL-C71</item>
+    <item>TCL-7800</item>
+    <item>TCL-RC71</item>
+    <item>TCL-RC71S</item>
+    <item>TCL-HD29M73</item>
+    <item>TCL-HD29C06</item>
+    <item>TCL-HD29189</item>
+    <item>TCL-HD29C41</item>
+    <item>TCL-LCD27K73</item>
+    <item>TCL-LCD32K73</item>
+    <item>TCL-20B66</item>
+    <item>TCL-L32E64</item>
+    <item>TCL-L26E64</item>
+    <item>TCL-RC-R07T</item>
+    <item>TCL-AT21276</item>
+    <item>TCL-AT25206</item>
+    <item>TCL-NT25228</item>
+    <item>TCL-22B12H</item>
+    <item>TCL-3216EDS</item>
+    <item>TCL-3228EDS</item>
+    <item>TCL-3273EDS</item>
+    <item>TCL-32A12H</item>
+    <item>TCL-32A325EDS</item>
+    <item>TCL-32C35H</item>
+    <item>TCL-L23D2200F</item>
+    <item>TCL-L23F3200B</item>
+    <item>TCL-L3211CDS</item>
+    <item>TCL-L32D3300C</item>
+    <item>TCL-L32E5300A</item>
+    <item>TCL-L32F3200B</item>
+    <item>TCL-L32F3300C</item>
+    <item>TCL-L32F3310-3D</item>
+    <item>TCL-L32M11HD</item>
+    <item>TCL-L32P60U</item>
+    <item>TCL-L3711CDS</item>
+    <item>TCL-L3711CDS-1</item>
+    <item>TCL-L37E5300A</item>
+    <item>TCL-L37E3300B</item>
+    <item>TCL-L39E5000-3D</item>
+    <item>TCL-L39F3300B</item>
+    <item>TCL-L39F3300FC</item>
+    <item>TCL-L40D3300FC</item>
+    <item>TCL-L40E9FBD</item>
+    <item>TCL-L4211CDS</item>
+    <item>TCL-L42E10FZ</item>
+    <item>TCL-L42E5300A</item>
+    <item>TCL-L42F2200B</item>
+    <item>TCL-L43E5000-3D</item>
+    <item>TCL-L43E5010E</item>
+    <item>TCL-L43F3300-3D</item>
+    <item>TCL-L43F3300FC</item>
+    <item>TCL-L43F3310-3D</item>
+    <item>TCL-L43F3310B</item>
+    <item>TCL-L43F3390A-3D</item>
+    <item>TCL-L43F3390FC</item>
+    <item>TCL-L43V7300A-3D</item>
+    <item>TCL-L46E10FZ</item>
+    <item>TCL-L46E5300A</item>
+    <item>TCL-L46F3200E</item>
+    <item>TCL-L46P11FZE</item>
+    <item>TCL-L46V7300A-3D</item>
+    <item>TCL-L46Z11A-3D</item>
+    <item>TCL-L48E5000-3D</item>
+    <item>TCL-L48E5010E</item>
+    <item>TCL-L48F3300-3D</item>
+    <item>TCL-L48F3310-3D</item>
+    <item>TCL-L48F3390A-3D</item>
+    <item>TCL-L50E5000-3D</item>
+    <item>TCL-L55E5390A-3D</item>
+    <item>TCL-L55F3300-3D</item>
+    <item>TCL-L55F3310-3D</item>
+    <item>TCL-L55F3390A-3D</item>
+    <item>TCL-L55P10FHD</item>
+    <item>TCL-L55P7200-3D</item>
+    <item>TCL-L55P7200-3D</item>
+    <item>TCL-L55V7300A-3D</item>
+    <item>TCL-L55V8200-3D</item>
+    <item>TCL-LED19C100</item>
+    <item>TCL-LED24C100</item>
+    <item>TCL-2616EDS</item>
+    <item>TCL-L-26E62AZ</item>
+    <item>TCL-RC198</item>
+    <item>TCL-RC2000C02</item>
+    <item>TCL-RC2000C11</item>
+    <item>TCL-RC2003D</item>
+    <item>TCL-RC3000C11</item>
+    <item>TCL-RC199</item>
+    <item>TCL-29V88</item>
+    <item>TCL-29V88b</item>
+    <item>TCL-703</item>
+    <item>TCL-32T158E</item>
+    <item>TCL-AT-21181</item>
+    <item>TCL-808</item>
+    <item>TCL-812</item>
+    <item>TCL-AT21266B</item>
+    <item>TCL-HD28B03I</item>
+    <item>TCL-HD29A41A</item>
+    <item>TCL-HD29A71I</item>
+    <item>TCL-HD29B03I</item>
+    <item>TCL-HD29B03S</item>
+    <item>TCL-HD29B06</item>
+    <item>TCL-HD29B68S</item>
+    <item>TCL-HD29C41A</item>
+    <item>TCL-HD29C81S</item>
+    <item>TCL-HD29H61S</item>
+    <item>TCL-HD32276</item>
+    <item>TCL-HD328B03IS</item>
+    <item>TCL-HD32B68I</item>
+    <item>TCL-HD32B68S</item>
+    <item>TCL-HD34A71I</item>
+    <item>TCL-HD34B03I</item>
+    <item>TCL-HD34C41</item>
+    <item>TCL-NT21A61</item>
+    <item>TCL-YX-907</item>
+    <item>TCL-AT-1</item>
+    <item>TCL-AT-2</item>
+    <item>TCL-AT-3</item>
+    <item>TCL-AT-3b</item>
+    <item>TCL-AT-4</item>
+    <item>TCL-AT-5</item>
+    <item>TCL-AT1475S</item>
+    <item>TCL-AT21106</item>
+    <item>TCL-AT21211</item>
+    <item>TCL-AT21228</item>
+    <item>TCL-AT2175S</item>
+    <item>TCL-AT21S135</item>
+    <item>TCL-AT25266B</item>
+    <item>TCL-AT25S135</item>
+    <item>TCL-AT25S168</item>
+    <item>TCL-AT29106</item>
+    <item>TCL-AT29168S</item>
+    <item>TCL-AT29211</item>
+    <item>TCL-AT29266B</item>
+    <item>TCL-AT2975S</item>
+    <item>TCL-AT34266B</item>
+    <item>TCL-AT3488S</item>
+    <item>TCL-C10T</item>
+    <item>TCL-C10T-1</item>
+    <item>TCL-C14T</item>
+    <item>TCL-C19T</item>
+    <item>TCL-RC-C01T</item>
+    <item>TCL-RC-C01T</item>
+    <item>TCL-RC-C07T</item>
+    <item>TCL-L42M61AZ</item>
+    <item>TCL-L42Z11A-3D</item>
+    <item>TCL-LCD-32S61</item>
+    <item>TCL-LED23C310</item>
+    <item>TCL-LED23C310b</item>
+    <item>TCL-LED32C710K</item>
+    <item>TCL-LED39C710K</item>
+    <item>TCL-L19N6</item>
+    <item>TCL-L19N6</item>
+    <item>TCL-L19N8</item>
+    <item>TCL-YX-4040</item>
+    <item>TCL-YX-4040b</item>
+    <item>TCL-L19M08</item>
+    <item>TCL-L19N9</item>
+    <item>TCL-L22M08</item>
+    <item>TCL-L22N3</item>
+    <item>TCL-L22N5</item>
+    <item>TCL-L22N5b</item>
+    <item>TCL-L22N9</item>
+    <item>TCL-L26E10</item>
+    <item>TCL-L26N3</item>
+    <item>TCL-L26N3b</item>
+    <item>TCL-L26N9</item>
+    <item>TCL-L32M08</item>
+    <item>TCL-L32N5</item>
+    <item>TCL-L32N9</item>
+    <item>TCL-LCD32R26</item>
+    <item>TCL-LCD37R26</item>
+    <item>TCL-L26M60</item>
+    <item>TCL-L26M61</item>
+    <item>TCL-L32E77B</item>
+    <item>TCL-L46V8200-3D</item>
+    <item>TCL-L58X9200-3D</item>
+    <item>TCL-LCD37B67</item>
+    <item>TCL-LCD40B66-P</item>
+    <item>TCL-LCD42B03-P</item>
+    <item>TCL-LCD42B66-P</item>
+    <item>TCL-LCD42B66-P-1</item>
+    <item>TCL-LCD42B66-P-2</item>
+    <item>TCL-LCD42B66-P-3</item>
+    <item>TCL-LED42C800D</item>
+    <item>TCL-LED42C800I</item>
+    <item>TCL-YX-908</item>
+    <item>TCL-L3210CDS</item>
+    <item>TCL-L3210CDS-1</item>
+    <item>TCL-L32E9AD</item>
+    <item>TCL-L48E5390A-3D</item>
+    <item>TCL-L4211CDS</item>
+    <item>TCL-L42E77DF</item>
+    <item>TCL-L4211CDS</item>
+    <item>TCL-L42E77DF</item>
+    <item>TCL-LCD-40A71-P</item>
+    <item>TCL-LED42C700</item>
+    <item>TCL-LED43C710K</item>
+    <item>TCL-LED43C720D</item>
+    <item>TCL-LED43C720D-1</item>
+    <item>TCL-LCD20A71</item>
+    <item>TCL-LCD20B66</item>
+    <item>TCL-LCD32B66-L</item>
+    <item>TCL-YX-905</item>
+    <item>TCL-LCD22R09</item>
+    <item>TCL-LCD24R19</item>
+    <item>TCL-LCD26R19</item>
+    <item>TCL-LCD32R19</item>
+    <item>TCL-RC-A01C</item>
+    <item>TCL-RC-B01</item>
+    <item>TCL-RC-B06T</item>
+    <item>TCL-RC-B07T</item>
+    <item>TCL-RC-E03T</item>
+    <item>TCL-RC-E04T</item>
+    <item>TCL-RC-E05T</item>
+    <item>TCL-RC-E06T</item>
+    <item>TCL-RC-E07T</item>
+    <item>TCL-RC-E13T</item>
+    <item>TCL-RC-E16T</item>
+    <item>TCL-RC-E18T</item>
+    <item>TCL-RC-E20T</item>
+    <item>TCL-RC-E27T</item>
+    <item>TCL-RC-E30T</item>
+    <item>TCL-RC-E33T</item>
+    <item>TCL-RC-E35T</item>
+    <item>TCL-RC-E43T</item>
+    <item>TCL-RC-E47T</item>
+    <item>TCL-RC09E</item>
+    <item>TCL-RCH7M61B</item>
+    <item>TCL-RCH7M61B-1</item>
+    <item>TCL-RC198</item>
+    <item>TCL-YX-909</item>
+    <item>TCL-LCD47k73</item>
+    <item>TCL-L32S10</item>
+    <item>TCL-L32S10b</item>
+    <item>TCL-unknown</item>
+    <item>TCL-L32S101</item>
+    <item>TCL-美之彩</item>
+    <item>TCL-HD32B03S</item>
+    <item>TCL-L22N61</item>
+    <item>TCL-L42M61R</item>
+    <item>TCL-AT21181</item>
+    <item>TCL-RC-F28T</item>
+    <item>TCL-L46F3510AN-3D</item>
+    <item>TCL-D49A561U</item>
+    <item>TCL-D55A561U</item>
+    <item>TCL-L32F3320B</item>
+    <item>TCL-L43F3200E</item>
+    <item>TCL-L39F3320B</item>
+    <item>TCL-L32</item>
+    <item>TCL-L22N6</item>
+    <item>TCL-L26N6</item>
+    <item>TCL-L32N6</item>
+    <item>TCL-L37N6</item>
+    <item>TCL-L24E09</item>
+    <item>TCL-L19E09</item>
+    <item>TCL-RC07DC12</item>
+    <item>TCL-RC07DC11</item>
+    <item>TCL-D43A810</item>
+    <item>TCL-D32A810</item>
+    <item>TCL-RC260JCI1</item>
+    <item>TCL-55V6</item>
+    <item>Xoceco-RC-Y20</item>
+    <item>Xoceco-LC-20Y25</item>
+    <item>Xoceco-Y23</item>
+    <item>Xoceco-Y15</item>
+    <item>Xoceco-Y18</item>
+    <item>Xoceco-Y26</item>
+    <item>Xoceco-HT-2966</item>
+    <item>Xoceco-HT-3281T</item>
+    <item>Xoceco-HT-3451</item>
+    <item>Xoceco-HT-3451T</item>
+    <item>Xoceco-HT-3466</item>
+    <item>Xoceco-RC-C02</item>
+    <item>Xoceco-RC-C03</item>
+    <item>Xoceco-LC-15Y18</item>
+    <item>Xoceco-LC-15Y3</item>
+    <item>Xoceco-LC-20Y15</item>
+    <item>Xoceco-LC-20Y18</item>
+    <item>Xoceco-LC-20Y23</item>
+    <item>Xoceco-LC-20Y26</item>
+    <item>Xoceco-LC-20Y3</item>
+    <item>Xoceco-LC-23Y25</item>
+    <item>Xoceco-LC-26HU19</item>
+    <item>Xoceco-LC-26HU25</item>
+    <item>Xoceco-LC-26HU39</item>
+    <item>Xoceco-LC-27U16</item>
+    <item>Xoceco-LC-27U25</item>
+    <item>Xoceco-LC-32HC56</item>
+    <item>Xoceco-LC-32HU19</item>
+    <item>Xoceco-LC-32HU25</item>
+    <item>Xoceco-LC-32HU36</item>
+    <item>Xoceco-LC-32U16</item>
+    <item>Xoceco-LC-32U18</item>
+    <item>Xoceco-LC-32U19</item>
+    <item>Xoceco-LC-32U25</item>
+    <item>Xoceco-LC-32U26</item>
+    <item>Xoceco-LC-37HC37</item>
+    <item>Xoceco-LC-37HU19</item>
+    <item>Xoceco-LC-40HC36</item>
+    <item>Xoceco-LC-42HU25</item>
+    <item>Xoceco-LC-42HU31</item>
+    <item>Xoceco-PH-42HC58</item>
+    <item>Xoceco-PH-50HC58</item>
+    <item>Xoceco-RC-A30</item>
+    <item>Xoceco-RC-A31-0A</item>
+    <item>Xoceco-RC-Y19</item>
+    <item>Xoceco-RC-Y23</item>
+    <item>Xoceco-RC-Y37</item>
+    <item>Xoceco-RC-Y46</item>
+    <item>Xoceco-RC-Y54</item>
+    <item>Xoceco-RC-Y57-0A</item>
+    <item>Xoceco-LC-19HC56</item>
+    <item>Xoceco-LC-20Y19</item>
+    <item>Xoceco-LC-22H3</item>
+    <item>Xoceco-LC-22HC40</item>
+    <item>Xoceco-LC-22HC56</item>
+    <item>Xoceco-LC-22KU63</item>
+    <item>Xoceco-LC-26HC40</item>
+    <item>Xoceco-LC-26HC56</item>
+    <item>Xoceco-LC-32A1</item>
+    <item>Xoceco-LC-32A1W09</item>
+    <item>Xoceco-LC-32D9</item>
+    <item>Xoceco-LC-32HC37</item>
+    <item>Xoceco-LC-32HC40</item>
+    <item>Xoceco-LC-32HF33</item>
+    <item>Xoceco-LC-32HU19</item>
+    <item>Xoceco-LC-32HU25</item>
+    <item>Xoceco-LC-37HC40</item>
+    <item>Xoceco-LC-37HU25</item>
+    <item>Xoceco-LC-37T25</item>
+    <item>Xoceco-LC-37T25/Y</item>
+    <item>Xoceco-LC-40HU35</item>
+    <item>Xoceco-LC-40K17</item>
+    <item>Xoceco-LC-42FT18</item>
+    <item>Xoceco-LC-42HC56W</item>
+    <item>Xoceco-LC-42HK55CY</item>
+    <item>Xoceco-LC-42HR59</item>
+    <item>Xoceco-LC-42HT63</item>
+    <item>Xoceco-LC-42HU27</item>
+    <item>Xoceco-LC-42HW35</item>
+    <item>Xoceco-LC-42R35</item>
+    <item>Xoceco-LC-46HU27YD</item>
+    <item>Xoceco-LC-47HQ36R</item>
+    <item>Xoceco-LC-47HW35</item>
+    <item>Xoceco-LC-47R35</item>
+    <item>Xoceco-LC-52HW35</item>
+    <item>Xoceco-LC-32HR40</item>
+    <item>Xoceco-LC-42HR40</item>
+    <item>Xoceco-LC-42HR59</item>
+    <item>Xoceco-LC-52HQ36R</item>
+    <item>Xoceco-RC-J18-0A</item>
+    <item>Xoceco-RC-J20-0A</item>
+    <item>Xoceco-LC-32R26</item>
+    <item>Xoceco-LC-37R26</item>
+    <item>Xoceco-LC-37R35</item>
+    <item>Xoceco-LC-40R35</item>
+    <item>Xoceco-LC-42R26</item>
+    <item>Xoceco-LC-42R35</item>
+    <item>Xoceco-LC-47R35</item>
+    <item>Xoceco-RC-J23-0A</item>
+    <item>Xoceco-RC-J27-0A</item>
+    <item>Xoceco-RC-L08</item>
+    <item>Xoceco-RC-L14</item>
+    <item>Xoceco-LC-42HU3</item>
+    <item>Xoceco-LC-42HU35</item>
+    <item>Xoceco-RC-Y01-0A</item>
+    <item>Xoceco-RC-093</item>
+    <item>Xoceco-RC-A18</item>
+    <item>Xoceco-RC-A21</item>
+    <item>Xoceco-TS-2135</item>
+    <item>Xoceco-TS-2150</item>
+    <item>Xoceco-TS2126</item>
+    <item>Xoceco-TS2130</item>
+    <item>Xoceco-TS2153</item>
+    <item>Xoceco-TS2180</item>
+    <item>Xoceco-TS2181</item>
+    <item>Xoceco-TS2587</item>
+    <item>Xoceco-RC-A24</item>
+    <item>Xoceco-RC-A28</item>
+    <item>Xoceco-RC-A28-0A</item>
+    <item>Xoceco-TS2126K</item>
+    <item>Xoceco-TS2150</item>
+    <item>Xoceco-TS2178</item>
+    <item>Xoceco-TS2553</item>
+    <item>Xoceco-TS2580</item>
+    <item>Xoceco-TS2581</item>
+    <item>Xoceco-TS2586</item>
+    <item>Xoceco-TS2588</item>
+    <item>Xoceco-TS2589</item>
+    <item>Xoceco-TS2953</item>
+    <item>Xoceco-TS2980</item>
+    <item>Xoceco-TS2981</item>
+    <item>Xoceco-TS2985</item>
+    <item>Xoceco-TS2988</item>
+    <item>Xoceco-RC-C24</item>
+    <item>Xoceco-RC-F05</item>
+    <item>Xoceco-RC-F20</item>
+    <item>Xoceco-RC-F22</item>
+    <item>Xoceco-RC-F36</item>
+    <item>Xoceco-RC-F57</item>
+    <item>Xoceco-RC-F47</item>
+    <item>Xoceco-RC-F82</item>
+    <item>Xoceco-RC-G02</item>
+    <item>Xoceco-RC-G16</item>
+    <item>Xoceco-RC-I20</item>
+    <item>Xoceco-RC-K03</item>
+    <item>Xoceco-RC-K07</item>
+    <item>Xoceco-RC-K25</item>
+    <item>Xoceco-RC-K26</item>
+    <item>Xoceco-RC-K36</item>
+    <item>Xoceco-RC-K21</item>
+    <item>Xoceco-RC-K45</item>
+    <item>Xoceco-RC-Q03</item>
+    <item>Xoceco-RC-K56</item>
+    <item>Xoceco-RC-R03</item>
+    <item>Xoceco-RC-K63</item>
+    <item>Xoceco-RC-M18</item>
+    <item>Xoceco-RC-Q16</item>
+    <item>Xoceco-RC-Q30</item>
+    <item>Xoceco-RC-Q19</item>
+    <item>Xoceco-RC-Q25</item>
+    <item>Xoceco-RC-R02</item>
+    <item>Xoceco-RC-R18M</item>
+    <item>Xoceco-RC-S09</item>
+    <item>Xoceco-RC-V08</item>
+    <item>Xoceco-RC-TN2978</item>
+    <item>Xoceco-RC-TN2985</item>
+    <item>Xoceco-RC-TN2999</item>
+    <item>Xoceco-RC-TN3483</item>
+    <item>Xoceco-RC-TN3485</item>
+    <item>Xoceco-RC-TN3489</item>
+    <item>Xoceco-RC-Y19</item>
+    <item>Xoceco-RC-Y20b</item>
+    <item>Xoceco-RC-TB29108</item>
+    <item>Xoceco-RC-TB2999</item>
+    <item>Xoceco-TW29107</item>
+    <item>Xoceco-TW29107JD</item>
+    <item>Xoceco-TW2966</item>
+    <item>Xoceco-TW3466</item>
+    <item>Sharp-074WJSA</item>
+    <item>Sharp-387WJSA</item>
+    <item>Sharp-CGA297WJSA</item>
+    <item>Sharp-GA387WJSA</item>
+    <item>Sharp-GA490WJSA</item>
+    <item>Sharp-GA499WJSB</item>
+    <item>Sharp-GA610WJSA</item>
+    <item>Sharp-GA978WJSA</item>
+    <item>Sharp-GB043WJSA</item>
+    <item>Sharp-LC-40LE830E</item>
+    <item>Sharp-LC-46FF1H</item>
+    <item>Sharp-LC-52FF1H</item>
+    <item>Sharp-LCD-26NX-430A</item>
+    <item>Sharp-LCD-32G100A</item>
+    <item>Sharp-LCD-32G120A</item>
+    <item>Sharp-LCD-32GE220A</item>
+    <item>Sharp-LCD-32LX330A</item>
+    <item>Sharp-LCD-32NX230A</item>
+    <item>Sharp-LCD-32NX330A</item>
+    <item>Sharp-LCD-32NX430A</item>
+    <item>Sharp-LCD-32Z120A</item>
+    <item>Sharp-LCD-32Z330A</item>
+    <item>Sharp-LCD-40G100A</item>
+    <item>Sharp-LCD-40G120A</item>
+    <item>Sharp-LCD-40LX330A</item>
+    <item>Sharp-LCD-40LX440A</item>
+    <item>Sharp-LCD-40LX530A</item>
+    <item>Sharp-LCD-40LX620A</item>
+    <item>Sharp-LCD-40LX730A</item>
+    <item>Sharp-LCD-40LX830A</item>
+    <item>Sharp-LCD-40NX230A</item>
+    <item>Sharp-LCD-40NX330A</item>
+    <item>Sharp-LCD-40NX430A</item>
+    <item>Sharp-LCD-40Z120A</item>
+    <item>Sharp-LCD-46FF1A</item>
+    <item>Sharp-LCD-46G100A</item>
+    <item>Sharp-LCD-46G120A</item>
+    <item>Sharp-LCD-46GE220A</item>
+    <item>Sharp-LCD-46GE50A</item>
+    <item>Sharp-LCD-46GX50A</item>
+    <item>Sharp-LCD-46LX440A</item>
+    <item>Sharp-LCD-46LX530A</item>
+    <item>Sharp-LCD-46LX620A</item>
+    <item>Sharp-LCD-46LX710A</item>
+    <item>Sharp-LCD-46LX840A</item>
+    <item>Sharp-LCD-46LX920A</item>
+    <item>Sharp-LCD-46LX930A</item>
+    <item>Sharp-LCD-46NX230A</item>
+    <item>Sharp-LCD-46NX430A</item>
+    <item>Sharp-LCD-52FF1A</item>
+    <item>Sharp-LCD-52GE220A</item>
+    <item>Sharp-LCD-52GX50A</item>
+    <item>Sharp-LCD-52LE700A</item>
+    <item>Sharp-LCD-52LX530A</item>
+    <item>Sharp-LCD-52LX540A</item>
+    <item>Sharp-LCD-52LX620A</item>
+    <item>Sharp-LCD-52LX730A</item>
+    <item>Sharp-LCD-52LX840A</item>
+    <item>Sharp-LCD-52LX920A</item>
+    <item>Sharp-LCD-52LX930A</item>
+    <item>Sharp-LCD-52X50A</item>
+    <item>Sharp-LCD-60LX540A</item>
+    <item>Sharp-LCD-60LX710A</item>
+    <item>Sharp-LCD-60LX830A</item>
+    <item>Sharp-LCD-60LX840A</item>
+    <item>Sharp-LCD-60LX920A</item>
+    <item>Sharp-LCD-60X50A</item>
+    <item>Sharp-074WJSA</item>
+    <item>Sharp-387WJSA</item>
+    <item>Sharp-CGA297WJSA</item>
+    <item>Sharp-GA387WJSA</item>
+    <item>Sharp-GA490WJSA</item>
+    <item>Sharp-GA499WJSB</item>
+    <item>Sharp-GA610WJSA</item>
+    <item>Sharp-GA978WJSA</item>
+    <item>Sharp-GB043WJSA</item>
+    <item>Sharp-LC-40LE830E</item>
+    <item>Sharp-LC-46FF1H</item>
+    <item>Sharp-LC-52FF1H</item>
+    <item>Sharp-LCD-26NX-430A</item>
+    <item>Sharp-LCD-32G100A</item>
+    <item>Sharp-LCD-32G120A</item>
+    <item>Sharp-LCD-32GE220A</item>
+    <item>Sharp-LCD-32LX330A</item>
+    <item>Sharp-LCD-32NX230A</item>
+    <item>Sharp-LCD-32NX330A</item>
+    <item>Sharp-LCD-32NX430A</item>
+    <item>Sharp-LCD-32Z120A</item>
+    <item>Sharp-LCD-32Z330A</item>
+    <item>Sharp-LCD-40G100A</item>
+    <item>Sharp-LCD-40G120A</item>
+    <item>Sharp-LCD-40LX330A</item>
+    <item>Sharp-LCD-40LX440A</item>
+    <item>Sharp-LCD-40LX530A</item>
+    <item>Sharp-LCD-40LX620A</item>
+    <item>Sharp-LCD-40LX730A</item>
+    <item>Sharp-LCD-40LX830A</item>
+    <item>Sharp-LCD-40NX230A</item>
+    <item>Sharp-LCD-40NX330A</item>
+    <item>Sharp-LCD-40NX430A</item>
+    <item>Sharp-LCD-40Z120A</item>
+    <item>Sharp-LCD-46FF1A</item>
+    <item>Sharp-LCD-46G100A</item>
+    <item>Sharp-LCD-46G120A</item>
+    <item>Sharp-LCD-46GE220A</item>
+    <item>Sharp-LCD-46GE50A</item>
+    <item>Sharp-LCD-46GX50A</item>
+    <item>Sharp-LCD-46LX440A</item>
+    <item>Sharp-LCD-46LX530A</item>
+    <item>Sharp-LCD-46LX620A</item>
+    <item>Sharp-LCD-46LX710A</item>
+    <item>Sharp-LCD-46LX840A</item>
+    <item>Sharp-LCD-46LX920A</item>
+    <item>Sharp-LCD-46LX930A</item>
+    <item>Sharp-LCD-46NX230A</item>
+    <item>Sharp-LCD-46NX430A</item>
+    <item>Sharp-LCD-52FF1A</item>
+    <item>Sharp-LCD-52GE220A</item>
+    <item>Sharp-LCD-52GE50A</item>
+    <item>Sharp-LCD-52GX50A</item>
+    <item>Sharp-LCD-52LE700A</item>
+    <item>Sharp-LCD-52LX530A</item>
+    <item>Sharp-LCD-52LX540A</item>
+    <item>Sharp-LCD-52LX620A</item>
+    <item>Sharp-LCD-52LX730A</item>
+    <item>Sharp-LCD-52LX840A</item>
+    <item>Sharp-LCD-52LX920A</item>
+    <item>Sharp-LCD-52LX930A</item>
+    <item>Sharp-LCD-52X50A</item>
+    <item>Sharp-LCD-60LX540A</item>
+    <item>Sharp-LCD-60LX710A</item>
+    <item>Sharp-LCD-60LX830A</item>
+    <item>Sharp-LCD-60LX840A</item>
+    <item>Sharp-LCD-60LX920A</item>
+    <item>Sharp-LCD-60X50A</item>
+    <item>Sharp-G0756E</item>
+    <item>Sharp-G0933PESA</item>
+    <item>Sharp-G1069PESA</item>
+    <item>Sharp-G1133PESA</item>
+    <item>Sharp-G1350SA</item>
+    <item>Sharp-G1350SA</item>
+    <item>Sharp-GA711WJSA</item>
+    <item>Sharp-GA782WJSA</item>
+    <item>Sharp-GA817WJSA</item>
+    <item>Sharp-GA870WJSA</item>
+    <item>Sharp-GA870WJSA-1</item>
+    <item>Sharp-GA921WJSA</item>
+    <item>Sharp-GA943WJSA</item>
+    <item>Sharp-LC-32LE440U</item>
+    <item>Sharp-LC-52LE830U</item>
+    <item>Sharp-LC-70LE732U</item>
+    <item>Sharp-LCD-20SH4A</item>
+    <item>Sharp-LCD-32LX440A</item>
+    <item>Sharp-LCD-52LX830A</item>
+    <item>Sharp-LCD-70LX732A</item>
+    <item>Sharp-LCD-70X55A</item>
+    <item>Sharp-LC-32LE530E</item>
+    <item>Sharp-LCD-32LX530A</item>
+    <item>Sharp-LC-40GE220H</item>
+    <item>Sharp-LC-46LX830H</item>
+    <item>Sharp-LCD-40GE220A</item>
+    <item>Sharp-LCD-46LX830A</item>
+    <item>Sharp-LC-40GE220H</item>
+    <item>Sharp-LC-46LX830H</item>
+    <item>Sharp-LCD-40GE220A</item>
+    <item>Sharp-LCD-46LX830A</item>
+    <item>Sharp-LC-40S3H</item>
+    <item>Sharp-LC-40S3H</item>
+    <item>Sharp-LC-48S3H</item>
+    <item>Sharp-LC-55S3H</item>
+    <item>Sharp-LC-80UD30H</item>
+    <item>Sharp-LC-52GE220H</item>
+    <item>Sharp-LC-46GE220</item>
+    <item>Sharp-LC-40GE220H</item>
+    <item>Sharp-LC-32GE220H</item>
+    <item>Sharp-LC-40LX530H</item>
+    <item>Sharp-LC-32LX430H</item>
+    <item>Sharp-LC-26LX430H</item>
+    <item>Sharp-LC-32NX430H</item>
+    <item>Sharp-LC-46LX530H</item>
+    <item>Sharp-LC-24LE330H</item>
+    <item>Sharp-LC-19LE330H</item>
+    <item>Sharp-LC-32LE330H</item>
+    <item>Sharp-LC-60LX531H</item>
+    <item>Sharp-LC-32LE320H</item>
+    <item>Sharp-LC-39LE400H</item>
+    <item>Sharp-LC-70LX265H</item>
+    <item>Sharp-LC-60LX265H</item>
+    <item>Sharp-LC-52LX265H</item>
+    <item>Sharp-LC-46LX265H</item>
+    <item>Sharp-LC-40LX260H</item>
+    <item>Sharp-LC-60LX565H</item>
+    <item>Sharp-LC-70LX565H</item>
+    <item>Sharp-LC-40A1H</item>
+    <item>Sharp-LC-50A1H</item>
+    <item>Sharp-LC-58S3H</item>
+    <item>Sharp-LC-65S3H</item>
+    <item>Sharp-LC-60UF30H</item>
+    <item>Sharp-LC-70UF30H</item>
+    <item>Sharp-2T-C40ACIN</item>
+    <item>Amoi-360002000077</item>
+    <item>Amoi-LC-32K1</item>
+    <item>Amoi-LC-32M2</item>
+    <item>Amoi-LC-42W1</item>
+    <item>Amoi-LC47V1P</item>
+    <item>Amoi-RC305</item>
+    <item>Amoi-RC309</item>
+    <item>Amoi-VURRC236A</item>
+    <item>Amoi-LC-22ST1</item>
+    <item>Amoi-LC-22ST1M</item>
+    <item>Amoi-LC-27HWT1</item>
+    <item>Amoi-LE-8832D</item>
+    <item>panda-2138B</item>
+    <item>panda-C49P5</item>
+    <item>panda-C54P11</item>
+    <item>panda-C54P19</item>
+    <item>panda-C54P26</item>
+    <item>panda-C54P29B</item>
+    <item>panda-C54P37</item>
+    <item>panda-YKF-16</item>
+    <item>panda-YKF-20</item>
+    <item>panda-YKF-24</item>
+    <item>panda-YKF-26</item>
+    <item>panda-YKF-7</item>
+    <item>panda-2138C</item>
+    <item>panda-2166</item>
+    <item>panda-2168</item>
+    <item>panda-2556</item>
+    <item>panda-2956</item>
+    <item>panda-YKF-40</item>
+    <item>panda-YKF-T(C)86A</item>
+    <item>panda-YKF-T(D)86</item>
+    <item>panda-2518</item>
+    <item>panda-2538</item>
+    <item>panda-2918</item>
+    <item>panda-YKF-24</item>
+    <item>panda-27-L01</item>
+    <item>panda-32-L01</item>
+    <item>panda-40L01</item>
+    <item>panda-L32F02</item>
+    <item>panda-L37K06</item>
+    <item>panda-L47K08D</item>
+    <item>panda-LE32D16</item>
+    <item>panda-LE32M19</item>
+    <item>panda-YKF-61EE</item>
+    <item>panda-YKF-67EB</item>
+    <item>panda-YKF-67GA</item>
+    <item>panda-YKF-87GB</item>
+    <item>panda-C2509</item>
+    <item>panda-C2966</item>
+    <item>panda-YKF-43</item>
+    <item>panda-L32M03H</item>
+    <item>panda-L42M03H</item>
+    <item>panda-YKF-1021A</item>
+    <item>panda-YKF-9010E</item>
+    <item>panda-YKF-9010G</item>
+    <item>panda-L42F02</item>
+    <item>panda-LE42K12</item>
+    <item>panda-PBHP-4200C</item>
+    <item>panda-YKF-11</item>
+    <item>panda-YKF-19</item>
+    <item>panda-YKF-9</item>
+    <item>panda-YKF-51C(S)</item>
+    <item>panda-YKF-51J</item>
+    <item>panda-YKF-52C(S)</item>
+    <item>panda-YKF-61</item>
+    <item>panda-YKF-63B</item>
+    <item>panda-YKF-9008C</item>
+    <item>panda-YKF-Z09A01</item>
+    <item>panda-LE32H33S</item>
+    <item>panda-LE39D52S</item>
+    <item>panda-LE39J33S</item>
+    <item>panda-LE42J33S</item>
+    <item>qinghuatongfang-RC-TFM001</item>
+    <item>qinghuatongfang-RC-TFG064A</item>
+    <item>step by step-evd</item>
+    <item>step by step-EVD-mg-1622</item>
+    <item>AIWA-lou123</item>
+    <item>AIWA-KK-W20</item>
+    <item>AIWA-West-TV</item>
+    <item>AUX-CTV-M90</item>
+    <item>Da Tong-RC-602-0A</item>
+    <item>Da Tong-V37ECFC</item>
+    <item>Jiahua-SVA-4</item>
+    <item>LeTV-X60</item>
+    <item>LeTV-X50</item>
+    <item>LeTV-S50</item>
+    <item>LeTV-S40</item>
+    <item>LeTV-MAX70</item>
+    <item>HERAN-R-5011C</item>
+    <item>TECO-88R</item>
+    <item>Huike-L42A7</item>
+    <item>Huike-L22A5</item>
+    <item>Huike-LH47V1</item>
+    <item>Huike-L42YUX1</item>
+    <item>Huike-H39DB3000</item>
+    <item>coocaa-A55</item>
+    <item>coocaa-A43</item>
+    <item>coocaa-U50</item>
+    <item>coocaa-U55</item>
+    <item>coocaa-K60</item>
+    <item>oboni-RP67FA</item>
+    <item>oboni-RP67BA</item>
+    <item>whaley-W40F</item>
+    <item>whaley-W43F</item>
+    <item>whaley-W32F</item>
+    <item>VDiGi-KT-6957-E</item>
+    <item>Horion-65S88</item>
+    <item>Regal-C1</item>
+    <item>SEEMILE-HF400</item>
+    <item>KKTV-KK-Y378C</item>
+    <item>KKTV-KK-Y378A</item>
+    <item>KKTV-LED43K35A</item>
+    <item>KKTV-LED39K35A</item>
+    <item>KKTV-LED55K35U</item>
+    <item>KKTV-LED49K70A</item>
+    <item>KKTV-LED42K70A</item>
+    <item>KKTV-LED42K70V</item>
+    <item>KKTV-KW-Y006</item>
+    <item>KKTV-KW-Y006-1</item>
+    <item>KKTV-A55U</item>
+    <item>KKTV-K32</item>
+    <item>KKTV-K49J</item>
+    <item>KKTV-K32J</item>
+    <item>KKTV-M49U</item>
+    <item>KKTV-M55U</item>
+    <item>KKTV-T43U</item>
+    <item>KKTV-T55U</item>
+    <item>KKTV-LED42R90A</item>
+    <item>KKTV-58S1</item>
+    <item>KKTV-LED48UC2</item>
+    <item>KKTV-LED55UC2</item>
+    <item>KKTV-KW-Y003S</item>
+    <item>KKTV-KW-Y004</item>
+    <item>KKTV-KW-Y005</item>
+    <item>KKTV-KW-Y007</item>
+    <item>KKTV-A48F</item>
+    <item>KKTV-K43</item>
+    <item>KKTV-K55</item>
+    <item>KKTV-U50</item>
+    <item>KKTV-A48U</item>
+    <item>KKTV-LED42X1800A</item>
+    <item>KKTV-LED50X1800A</item>
+    <item>KKTV-LED55X1800A</item>
+    <item>KKTV-KK-Y378E</item>
+    <item>KKTV-KK-K32</item>
+    <item>KKTV-KK-K32C</item>
+    <item>KKTV-KK-K24C</item>
+    <item>KKTV-KK-K32J</item>
+    <item>CHUNGHOP-E-S903</item>
+    <item>CHUNGHOP-E-L905</item>
+    <item>COSHIP-LE02</item>
+    <item>COSHIP-RC-8004</item>
+    <item>Foxconn-IC-50IP800</item>
+    <item>Foxconn-CCPRC010</item>
+    <item>Storm TV-55K8</item>
+    <item>coocaa-YK-60JB</item>
+    <item>coocaa-YK-60JBA</item>
+    <item>coocaa-YK-60JC</item>
+    <item>coocaa-YK-60JD</item>
+    <item>coocaa-HB-1</item>
+    <item>coocaa-HC-1</item>
+    <item>coocaa-HD-1</item>
+    <item>coocaa-HA-1</item>
+    <item>coocaa-U50</item>
+    <item>coocaa-YK-8600J/H</item>
+    <item>coocaa-YK-50Q5A</item>
+    <item>coocaa-YK-55Q5A</item>
+    <item>coocaa-YK-58Q5A</item>
+    <item>coocaa-YK-65Q5A</item>
+    <item>coocaa-YK-50H8M</item>
+    <item>coocaa-YK-55H8M</item>
+    <item>coocaa-YK-65H8M</item>
+    <item>coocaa-YK-64Q4A</item>
+    <item>coocaa-YK-75A7</item>
+    <item>coocaa-YK-55Q6A</item>
+    <item>coocaa-43k2</item>
+    <item>coocaa-K55</item>
+    <item>coocaa-A55</item>
+    <item>coocaa-50A2</item>
+    <item>coocaa-K43</item>
+    <item>coocaa-KX55</item>
+    <item>coocaa-65K5C</item>
+    <item>AOC-RL57C</item>
+    <item>AOC-L32BN83</item>
+    <item>AOC-L42BN83F</item>
+    <item>AOC-L37BN83</item>
+    <item>SATA-F53B</item>
+    <item>SATA-F44</item>
+    <item>SATA-F53A</item>
+    <item>SATA-L46</item>
+    <item>SATA-L45A</item>
+    <item>SATA-L46A</item>
+    <item>Funshion-G32Y</item>
+    <item>Funshion-G42Y</item>
+    <item>Funshion-G43Y</item>
+    <item>Funshion-G49Y</item>
+    <item>Funshion-G55Y</item>
+    <item>Sony Ericsson-22LE12B</item>
+    <item>Sony Ericsson-24LE12B</item>
+    <item>Sony Ericsson-26LE12B</item>
+    <item>Sony Ericsson-24LE12X</item>
+    <item>Sony Ericsson-32LE12X</item>
+    <item>Sony Ericsson-26LE12P</item>
+    <item>Sony Ericsson-30LE12A</item>
+    <item>PPTV-PPTV-50P</item>
+    <item>PPTV-PPTV-55P</item>
+    <item>PPTV-PPTV-55T</item>
+    <item>PPTV-PPTV-4</item>
+    <item>Egreat-A9</item>
+    <item>Polytron-81E666</item>
+    <item>ANSHI-ASTH-B65-CEE</item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</string-array>
+   
+
+</resources>
