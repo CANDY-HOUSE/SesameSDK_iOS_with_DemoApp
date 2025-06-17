@@ -371,15 +371,15 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.default_notify_palm_name" = "Palm Veins";
 "co.candyhouse.sesame2.faceProPalmModify" = "Edit Palm Veins Name🖋️";
 "co.candyhouse.sesame2.faceProPalmDelete" = "Delete Palm Veins";
-"co.candyhouse.sesame2.faceProPalmHint" = "Approach %@ and tap ⊕. Show Palm Veins then tap X.";
+"co.candyhouse.sesame2.faceProPalmHint" = "Approach %@ and tap ⊕. Show Palm Veins then tap X. Register after mounting for supreme recognition rates.";
 "co.candyhouse.sesame2.default_face_name" = "Face🖋️";
 "co.candyhouse.sesame2.default_notify_face_name" = "Face";
 "co.candyhouse.sesame2.faceProFaceModify" = "Edit Face Name🖋️";
 "co.candyhouse.sesame2.faceProFaceDelete" = "Delete Face";
-"co.candyhouse.sesame2.faceProFaceHint" = "Approach %@ and tap ⊕. Show your Face then tap X.";
+"co.candyhouse.sesame2.faceProFaceHint" = "Approach %@ and tap ⊕. Show your Face then tap X. Register after mounting for supreme recognition rates.";
 "co.candyhouse.sesame2.delete_fail" = "Failed to delete. Please try again";
 
 "co.candyhouse.sesame2.face.distance" = "Distance";
 "co.candyhouse.sesame2.face.brightness" = "Brightness";
 "co.candyhouse.sesame2.face.radar" = "Radar Detection\nDistance";
-"co.candyhouse.sesame2.face.radar_distance_description" = "This is the distance at which the radar wakes the system from sleep mode.\nIn high-traffic areas, shorter distance saves battery life.\nIn low-traffic areas, maximum distance ensures the best experience.";
+"co.candyhouse.sesame2.face.radar_distance_description" = "・This is the Radar wake-up detection range.\n・Over 10 visits/day: shorten range to save power !\n・10 or fewer visits/day: extend to max range for the best experience.\n・Even at minimum range, touching the radar at the “forehead” still triggers radar and instantly starts face or palm-vein recognition, balancing power saving with a supreme user experience.";

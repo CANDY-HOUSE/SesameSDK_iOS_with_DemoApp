@@ -365,15 +365,15 @@
 "co.candyhouse.sesame2.default_notify_palm_name" = "掌靜脈";
 "co.candyhouse.sesame2.faceProPalmModify" = "修改掌靜脈名稱🖋️";
 "co.candyhouse.sesame2.faceProPalmDelete" = "刪除掌靜脈";
-"co.candyhouse.sesame2.faceProPalmHint" = "靠近 %@ 連藍牙, 點擊 ⊕ 輸入掌靜脈。輸入後點擊 X。";
+"co.candyhouse.sesame2.faceProPalmHint" = "靠近 %@ 連藍牙, 點擊 ⊕ 輸入掌靜脈。輸入後點擊 X。安裝好後再註冊，識別率會極高。";
 "co.candyhouse.sesame2.default_face_name" = "人臉🖋️";
 "co.candyhouse.sesame2.default_notify_face_name" = "人臉";
 "co.candyhouse.sesame2.faceProFaceModify" = "修改人臉名稱🖋️";
 "co.candyhouse.sesame2.faceProFaceDelete" = "刪除人臉";
-"co.candyhouse.sesame2.faceProFaceHint" = "靠近 %@ 連藍牙, 點擊 ⊕ 輸入人臉。輸入後點擊 X。";
+"co.candyhouse.sesame2.faceProFaceHint" = "靠近 %@ 連藍牙, 點擊 ⊕ 輸入人臉。輸入後點擊 X。安裝好後再註冊，識別率會極高。";
 "co.candyhouse.sesame2.delete_fail" = "刪除失敗，請重試";
 
 "co.candyhouse.sesame2.face.distance" = "距離";
 "co.candyhouse.sesame2.face.brightness" = "亮度";
 "co.candyhouse.sesame2.face.radar" = "雷達偵查距離";
-"co.candyhouse.sesame2.face.radar_distance_description" = "這是雷達喚醒系統的距離設置。\n人流量大的地方, 設置較短距離以節省電池消耗。\n人流量少的地方, 設置最長距離以獲得最佳體驗。";
+"co.candyhouse.sesame2.face.radar_distance_description" = "・這是雷達喚醒系統的偵測距離。\n・每日人流量超過10次之地方, 設置短距以省電！\n・每日人流量10次以下之地方, 設置最長距離以獲得最爽體驗。\n・即使為最短距離，觸碰「額頭」的雷達，雷達也能感應並立即啓動人臉或掌靜脈識別，兼顧極度省電與最爽體驗。";
