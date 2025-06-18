@@ -12,5 +12,5 @@ public struct AWSConfig {
     public static let clientId = "ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae"
     
     // AWS IoT
-    public static let iotEndpoint = "https://a3i4hui4gxwoo8-ats.iot.ap-northeast-1.amazonaws.com"
+    public static let iotEndpoint = "https://d06107753ay3c67v7y9pa-ats.iot.ap-northeast-1.amazonaws.com"
 }

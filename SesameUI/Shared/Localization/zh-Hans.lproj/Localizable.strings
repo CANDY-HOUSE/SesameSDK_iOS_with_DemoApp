@@ -379,4 +379,4 @@
 "co.candyhouse.sesame2.face.distance" = "距离";
 "co.candyhouse.sesame2.face.brightness" = "亮度";
 "co.candyhouse.sesame2.face.radar" = "雷达侦查距离";
-"co.candyhouse.sesame2.face.radar_distance_description" = "・这是雷达唤醒系统的侦测距离。\n・每日人流量超过10次之地方, 设置短距以省电！\n・每日人流量10次以下之地方, 设置最长距离以获得最爽体验。\n・即使为最短距离，触碰「额头」的雷达，雷达也能感应并立即启动人脸或掌静脉识别，兼顾极度省电与最爽体验。";
+"co.candyhouse.sesame2.face.radar_distance_description" = "・这是雷达唤醒系统的侦测距离。\n・每日人流量超过10次之地方, 设置短距以省电！\n・每日人流量10次以下之地方, 设置最长距离以获得最爽体验。\n・即使为最短距离，按下「开锁按钮/侧面按钮」将立即启动人脸或掌静脉识别，兼顾极度省电与最爽体验。";
