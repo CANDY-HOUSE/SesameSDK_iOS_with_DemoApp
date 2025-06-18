@@ -210,8 +210,6 @@
 		890D330F2DA0E85A0031F0AF /* FaceListVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D330C2DA0E85A0031F0AF /* FaceListVC .swift */; };
 		9AE0C0412DDF51C100425D61 /* sesametouch1_30_10_c9c196.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9AE0C0402DDF51C100425D61 /* sesametouch1_30_10_c9c196.zip */; };
 		9AE0C0432DDF51C900425D61 /* sesametouch1pro_30_9_c9c196.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9AE0C0422DDF51C900425D61 /* sesametouch1pro_30_9_c9c196.zip */; };
-		9AE0C0752DE0981500425D61 /* sesameface1_30_19_0ea68f.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9AE0C0742DE0981500425D61 /* sesameface1_30_19_0ea68f.zip */; };
-		9AE0C0772DE0981B00425D61 /* sesameface1pro_30_18_0ea68f.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9AE0C0762DE0981B00425D61 /* sesameface1pro_30_18_0ea68f.zip */; };
 		B00662912542CC9600F62D9B /* CHSesame2History+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00662902542CC9600F62D9B /* CHSesame2History+.swift */; };
 		B01728D1250C700500F87ED6 /* SesameDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D0250C700500F87ED6 /* SesameDeviceListViewController.swift */; };
 		B01728D3250C78D200F87ED6 /* CHBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D2250C78D200F87ED6 /* CHBaseTableViewController.swift */; };
@@ -416,6 +414,8 @@
 		D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E33295A908300C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
+		D0500B362E0293EC009370CC /* sesameface1_30_19_f22aec.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0500B352E0293EC009370CC /* sesameface1_30_19_f22aec.zip */; };
+		D0500B382E029434009370CC /* sesameface1pro_30_18_f22aec.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0500B372E029434009370CC /* sesameface1pro_30_18_f22aec.zip */; };
 		D0BF750F2D55076E007865A5 /* sesamebike2_30_6_f826b5.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0BF750E2D55076E007865A5 /* sesamebike2_30_6_f826b5.zip */; };
 		D0BF75112D550785007865A5 /* sesamebot2_30_17_f826b5.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0BF75102D550785007865A5 /* sesamebot2_30_17_f826b5.zip */; };
 		D0CB974A2DE76463002BF0C0 /* opensensor1_30_8_26c21d.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0CB97492DE76463002BF0C0 /* opensensor1_30_8_26c21d.zip */; };
@@ -793,8 +793,6 @@
 		96B2198929112461006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9AE0C0402DDF51C100425D61 /* sesametouch1_30_10_c9c196.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesametouch1_30_10_c9c196.zip; sourceTree = "<group>"; };
 		9AE0C0422DDF51C900425D61 /* sesametouch1pro_30_9_c9c196.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesametouch1pro_30_9_c9c196.zip; sourceTree = "<group>"; };
-		9AE0C0742DE0981500425D61 /* sesameface1_30_19_0ea68f.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1_30_19_0ea68f.zip; sourceTree = "<group>"; };
-		9AE0C0762DE0981B00425D61 /* sesameface1pro_30_18_0ea68f.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1pro_30_18_0ea68f.zip; sourceTree = "<group>"; };
 		B00662902542CC9600F62D9B /* CHSesame2History+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2History+.swift"; sourceTree = "<group>"; };
 		B01728AD250B6D7E00F87ED6 /* SiriShortCutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortCutViewController.swift; sourceTree = "<group>"; };
 		B01728AF250B8AEF00F87ED6 /* GPSMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSMapViewController.swift; sourceTree = "<group>"; };
@@ -946,6 +944,8 @@
 		D02B2E912DFD8F5E00BFE305 /* sesame6pro_30_21_37454c.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_37454c.zip; sourceTree = "<group>"; };
 		D02B2E932DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1ai_30_23_9c43e1.zip; sourceTree = "<group>"; };
 		D02B2E952DFD8F8700BFE305 /* sesameface1proai_30_22_6f2470.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1proai_30_22_6f2470.zip; sourceTree = "<group>"; };
+		D0500B352E0293EC009370CC /* sesameface1_30_19_f22aec.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1_30_19_f22aec.zip; sourceTree = "<group>"; };
+		D0500B372E029434009370CC /* sesameface1pro_30_18_f22aec.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1pro_30_18_f22aec.zip; sourceTree = "<group>"; };
 		D0BF750E2D55076E007865A5 /* sesamebike2_30_6_f826b5.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_f826b5.zip; sourceTree = "<group>"; };
 		D0BF75102D550785007865A5 /* sesamebot2_30_17_f826b5.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot2_30_17_f826b5.zip; sourceTree = "<group>"; };
 		D0CB97492DE76463002BF0C0 /* opensensor1_30_8_26c21d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor1_30_8_26c21d.zip; sourceTree = "<group>"; };
@@ -1758,9 +1758,9 @@
 				D0BF750E2D55076E007865A5 /* sesamebike2_30_6_f826b5.zip */,
 				643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */,
 				D0BF75102D550785007865A5 /* sesamebot2_30_17_f826b5.zip */,
-				9AE0C0742DE0981500425D61 /* sesameface1_30_19_0ea68f.zip */,
+				D0500B352E0293EC009370CC /* sesameface1_30_19_f22aec.zip */,
 				D02B2E932DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip */,
-				9AE0C0762DE0981B00425D61 /* sesameface1pro_30_18_0ea68f.zip */,
+				D0500B372E029434009370CC /* sesameface1pro_30_18_f22aec.zip */,
 				D02B2E952DFD8F8700BFE305 /* sesameface1proai_30_22_6f2470.zip */,
 				9AE0C0402DDF51C100425D61 /* sesametouch1_30_10_c9c196.zip */,
 				9AE0C0422DDF51C900425D61 /* sesametouch1pro_30_9_c9c196.zip */,
@@ -2560,7 +2560,6 @@
 				643F06A12BCD12400045D789 /* sesame_221_0_8c080c.zip in Resources */,
 				BE70FBEF2558D4B000B38D54 /* WifiModule2SettingViewController.xib in Resources */,
 				D0CB974C2DE76472002BF0C0 /* remote_30_14_26c21d.zip in Resources */,
-				9AE0C0752DE0981500425D61 /* sesameface1_30_19_0ea68f.zip in Resources */,
 				D02B2E942DFD8F7D00BFE305 /* sesameface1ai_30_23_9c43e1.zip in Resources */,
 				9AE0C0432DDF51C900425D61 /* sesametouch1pro_30_9_c9c196.zip in Resources */,
 				647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */,
@@ -2575,7 +2574,6 @@
 				6483C9492B68FA0800D8B68D /* strings_stb_type.xml in Resources */,
 				D0FD14392DE6242D00D76CEC /* sesame5pro_30_7_26c21d.zip in Resources */,
 				D0FD143B2DE6243300D76CEC /* sesame5us_30_16_26c21d.zip in Resources */,
-				E84CAC1A2A7765C4002A2E8E /* Style_guideline_2015Sep01.pdf in Resources */,
 				D02B2E902DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip in Resources */,
 				D02B2E922DFD8F5E00BFE305 /* sesame6pro_30_21_37454c.zip in Resources */,
 				6483C9432B68F9FA00D8B68D /* strings_iptv_type.xml in Resources */,
@@ -2583,6 +2581,7 @@
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
 				BE562E4F2564B815004617DE /* KeyCollectionViewController.xib in Resources */,
 				6483C9372B68F9DD00D8B68D /* strings_ap_type.xml in Resources */,
+				D0500B382E029434009370CC /* sesameface1pro_30_18_f22aec.zip in Resources */,
 				41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */,
 				6483C94F2B68FA1700D8B68D /* strings_dvd_type.xml in Resources */,
 				BE8245E2250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib in Resources */,
@@ -2592,7 +2591,6 @@
 				6483C9612B68FA4300D8B68D /* strings_light_type.xml in Resources */,
 				64AE88392B2014AA00E2278A /* FriendListCell.xib in Resources */,
 				B01728DD250CA8D300F87ED6 /* RegisterSesameDeviceCell.xib in Resources */,
-				9AE0C0772DE0981B00425D61 /* sesameface1pro_30_18_0ea68f.zip in Resources */,
 				419FE7862446BADF000D31CD /* awsconfiguration.json in Resources */,
 				BE3A732F25CB9EAE002FF80E /* SignInViewController.xib in Resources */,
 				E811CD0A2910FF8600E46793 /* InfoPlist.strings in Resources */,
@@ -2608,6 +2606,7 @@
 				B09F5835250F47FC0034759A /* LockAngleSettingViewController.xib in Resources */,
 				6483C93D2B68F9EB00D8B68D /* strings_tv_type.xml in Resources */,
 				B179691222F7CE9400E91996 /* Assets.xcassets in Resources */,
+				D0500B362E0293EC009370CC /* sesameface1_30_19_f22aec.zip in Resources */,
 				645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */,
 				418FA1F9237C04EF00C7C408 /* InfoPlist.strings in Resources */,
 				645E2D2A2B5BC83300D39E66 /* MatterTypeViewCell.xib in Resources */,
