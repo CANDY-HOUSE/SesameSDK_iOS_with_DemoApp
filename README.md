@@ -25,10 +25,6 @@
 - Various device settings
 - Get battery level
 
-## Disclaimer
-
-Please read our [DISCLAIMER](DISCLAIMER.md) before using this software.
-
 ## Requirements
 
 <img src="https://img.shields.io/badge/Swift-5.3-FA7343" />.  

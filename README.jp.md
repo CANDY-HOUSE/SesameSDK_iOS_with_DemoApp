@@ -32,5 +32,3 @@
 ### サイクル図
 
 ![BleConnect](./doc/ref/BleConnect.svg)
-
-### [SesameSDK 利用規約](https://jp.candyhouse.co/pages/sesamesdk%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84)
