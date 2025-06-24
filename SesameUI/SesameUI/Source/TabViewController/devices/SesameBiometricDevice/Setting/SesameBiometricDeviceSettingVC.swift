@@ -191,6 +191,18 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     var dismissHandler: (()->Void)?
     var sliderView: CHUISliderSettingView!
     
+    // 定义雷达灵敏度距离和固件值的查找表
+    private let DISTANCE_TO_FIRMWARE_TABLE: [(distance: Int, firmware: Int)] = [
+        (30, 116),
+        (60, 44),
+        (80, 31),
+        (100, 23),
+        (120, 21),
+        (150, 20),
+        (200, 17),
+        (270, 16)
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .sesame2Gray
@@ -364,9 +376,9 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         // MARK: Radar View
         if self.mDevice.productModel == .sesameFace || self.mDevice.productModel == .sesameFacePro {
             sliderView = CHUIViewGenerator.slider(
-                defaultValue: 400,
-                maximumValue: 400,
-                minimumValue: 40.0,
+                defaultValue: 270,
+                maximumValue: 270,
+                minimumValue: 30.0,
                 contentWidth: 200,
                 { [weak self] slider, event in
                     guard let self = self, let slider = slider as? UISlider else { return }
@@ -569,10 +581,9 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     func setRadarUI(tag: String, payload: Data){
         L.d("radar", payload.bytes)
         let sensitivityValue = Int(payload[1]) & 0xFF
-        let percentage = calculateRadarPercentage(sensitivityValue: sensitivityValue)
-        let distance = calculateDistance(percentage: percentage)
+        let distance = calculateDistanceFromFirmwareValue(firmwareValue: sensitivityValue)
         
-        L.d("radar","来自\(tag)的雷达灵敏度：\(percentage)%, 距离：\(distance)cm")
+        L.d("radar","来自\(tag)的雷达灵敏度值：\(sensitivityValue), 距离：\(distance)cm")
         
         executeOnMainThread {
             self.sliderView.slider.value = Float(distance)
@@ -583,27 +594,53 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     
     private func handleRadarSliderChange(slider: UISlider) {
         let distance = Int(slider.value)
-        let percentage = (distance - 40) * 100 / 360
-        let sensitivityValue = calculateSensitivityValue(percentage: percentage)
+        let sensitivityValue = calculateFirmwareValueFromDistance(distance: distance)
         
         self.sliderView.updateBubble(withValue: self.formatDistanceText(distance))
         
-        L.d("radar","设置雷达灵敏度距离: \(distance)cm, 百分比：\(percentage)%, 值: \(sensitivityValue)")
+        L.d("radar","设置雷达灵敏度距离: \(distance)cm, 固件值: \(sensitivityValue)")
         
         setRadarSensitivity(device: self.mDevice, sensitivityValue: sensitivityValue)
     }
     
-    private func calculateRadarPercentage(sensitivityValue: Int) -> Int {
-        return ((116 - sensitivityValue) * 100) / (116 - 16)
+    // 根据固件值计算距离（使用线性插值）
+    private func calculateDistanceFromFirmwareValue(firmwareValue: Int) -> Int {
+        if firmwareValue >= 116 { return 30 }
+        if firmwareValue <= 16 { return 270 }
+        
+        // 找到相邻的两个点进行插值
+        for i in 0..<(DISTANCE_TO_FIRMWARE_TABLE.count - 1) {
+            let point1 = DISTANCE_TO_FIRMWARE_TABLE[i]
+            let point2 = DISTANCE_TO_FIRMWARE_TABLE[i + 1]
+            
+            if firmwareValue <= point1.firmware && firmwareValue >= point2.firmware {
+                let ratio = Float(firmwareValue - point2.firmware) / Float(point1.firmware - point2.firmware)
+                let distance = Float(point2.distance) + ratio * Float(point1.distance - point2.distance)
+                return Int(distance)
+            }
+        }
+        
+        return 30
     }
-    
-    private func calculateSensitivityValue(percentage: Int) -> UInt8 {
-        let value = 116 - (percentage * (116 - 16)) / 100
-        return UInt8(value)
-    }
-    
-    private func calculateDistance(percentage: Int) -> Int {
-        return 40 + (percentage * 360) / 100
+
+    // 根据距离计算固件值（使用线性插值）
+    private func calculateFirmwareValueFromDistance(distance: Int) -> UInt8 {
+        if distance <= 30 { return 116 }
+        if distance >= 270 { return 16 }
+        
+        // 找到相邻的两个点进行插值
+        for i in 0..<(DISTANCE_TO_FIRMWARE_TABLE.count - 1) {
+            let point1 = DISTANCE_TO_FIRMWARE_TABLE[i]
+            let point2 = DISTANCE_TO_FIRMWARE_TABLE[i + 1]
+            
+            if distance >= point1.distance && distance <= point2.distance {
+                let ratio = Float(distance - point1.distance) / Float(point2.distance - point1.distance)
+                let firmwareValue = Float(point1.firmware) + ratio * Float(point2.firmware - point1.firmware)
+                return UInt8(Int(firmwareValue))
+            }
+        }
+        
+        return 116
     }
     
     private func formatDistanceText(_ distance: Int) -> String {
