@@ -139,7 +139,10 @@ class Hub3IRRemoteViewModel {
     
     func getIrRemoteDevice() -> IRRemote? {
         guard let irRemote = irRemote else { return nil }
-        irRemote.updateState(remoteRepository.getCurrentState(hub3: device, remoteDevice: irRemote))
+        let state = remoteRepository.getCurrentState(hub3: device, remoteDevice: irRemote)
+        if (state != "") {
+            irRemote.updateState(state)
+        }
         L.d(tag, "getIrRemoteDevice irRemote=\(irRemote)")
         return irRemote
     }
