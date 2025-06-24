@@ -34,16 +34,6 @@
 
 
 ## Installation
-### Swift Package Manager
-[Swift Package Manager](https://www.swift.org/package-manager/) is a tool for managing the distribution of Swift code. It integrates with the Swift build system to automatically carry out the process of downloading, compiling, and linking dependencies.
-To integrate SesameSDK into your Xcode project using Swift Package Manager:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git", .branch("master"))
-]
-```
-![img](./doc/src/resources/spm.png)
 ### Manually
 If you don't want to use any dependency manager, you can manually integrate SesameSDK into your project.
 ![img](./doc/src/resources/manually.png)
