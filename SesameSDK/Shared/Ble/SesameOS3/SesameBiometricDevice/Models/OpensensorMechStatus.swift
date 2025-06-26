@@ -8,11 +8,20 @@
 
 
 struct OpensensorMechStatus: CHSesameProtocolMechStatus {
-    let battery: UInt16 // 第一與第二個byte
+    var battery: CShort? // 第一與第二個byte
     var data: Data
-
+    var lightLoadBatteryVoltage: CShort?
+    var heavyLoadBatteryVoltage: CShort?
+    
     func getBatteryVoltage() -> Float {
-        return Float(battery) * 2.0 / 1000.0
+        if let battery = battery {
+            return Float(battery) * 2.0 / 1000.0
+        }
+        if let lightLoadVoltage = lightLoadBatteryVoltage,
+           let heavyLoadBatteryVoltage = heavyLoadBatteryVoltage {
+            return Float(lightLoadVoltage + heavyLoadBatteryVoltage) / 1000.0
+        }
+        return 0.0
     }
     
     func getBatteryPrecentage() -> Int { // [CHDeviceProtocol]共用電量計算曲線
@@ -40,6 +49,6 @@ struct OpensensorMechStatus: CHSesameProtocolMechStatus {
 
     static func fromData(_ buf: OpenSensorData) -> OpensensorMechStatus? {
         let data = try! JSONEncoder().encode(buf)
-        return OpensensorMechStatus(battery: UInt16(buf.Battery), data: data)
+        return OpensensorMechStatus(battery: buf.Battery, data: data, lightLoadBatteryVoltage: buf.lightLoadBatteryVoltage_mV, heavyLoadBatteryVoltage: buf.heavyLoadBatteryVoltage_mV)
     }
 }

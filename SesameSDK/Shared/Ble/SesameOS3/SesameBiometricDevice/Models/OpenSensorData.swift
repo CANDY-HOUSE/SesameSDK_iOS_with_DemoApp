@@ -9,5 +9,7 @@
 public struct OpenSensorData: Codable {
     public var Status: String
     public var TimeStamp: Int
-    var Battery: Int
+    var Battery: CShort?
+    var lightLoadBatteryVoltage_mV: CShort?
+    var heavyLoadBatteryVoltage_mV: CShort?
 }
