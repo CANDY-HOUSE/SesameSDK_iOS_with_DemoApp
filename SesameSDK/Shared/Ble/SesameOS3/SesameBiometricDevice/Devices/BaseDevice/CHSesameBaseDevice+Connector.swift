@@ -91,7 +91,7 @@ extension CHSesameBaseDevice {
     func setRadarSensitivity(payload: Data, result: @escaping CHResult<CHEmpty>) {
         if (!self.isBleAvailable(result)) { return }
         
-        sendCommand(.init(.SSM_OS3_AT58LPB_PARAM_SET, payload)) { (response) in
+        sendCommand(.init(.SSM_OS3_RADAR_PARAM_SET, payload)) { (response) in
             result(.success(CHResultStateNetworks(input: CHEmpty())))
         }
     }

@@ -52,10 +52,10 @@ extension CHSesameBaseDevice {
             L.d("REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME", payload.bytes)
             (self.delegate as? CHRemoteNanoDelegate)?.onTriggerDelaySecondReceived(device: self, setting: triggerDelaySetting!)
             
-        case .SSM_OS3_AT58LPB_PARAM_PUBLISH:
+        case .SSM_OS3_RADAR_PARAM_PUBLISH:
             handle = true
             radarPayload = Data(payload.bytes)
-            L.d("SSM_OS3_AT58LPB_PARAM_PUBLISH", payload.bytes)
+            L.d("SSM_OS3_RADAR_PARAM_PUBLISH", payload.bytes)
             
         default:
             handle = false

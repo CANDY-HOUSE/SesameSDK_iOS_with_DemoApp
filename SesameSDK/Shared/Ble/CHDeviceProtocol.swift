@@ -141,8 +141,8 @@ enum SesameItemCode: UInt8 {
     case SSM_OS3_PALM_MODE_DELETE_NOTIFY = 193
     
     // 雷达灵敏度
-    case SSM_OS3_AT58LPB_PARAM_SET = 200
-    case SSM_OS3_AT58LPB_PARAM_PUBLISH = 201
+    case SSM_OS3_RADAR_PARAM_SET = 200
+    case SSM_OS3_RADAR_PARAM_PUBLISH = 201
     
 }
 
