@@ -164,7 +164,7 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
                                                                 stpDeviceUUID: self.mDevice.deviceId.uuidString.uppercased(),
                                                                 name: name,
                                                                 keyBoardPassCode: passCode.id)
-                    self.mDevice.passCodeNameSet(passCodeNameRequest: request,){ result in
+                    self.mDevice.passCodeNameSet(passCodeNameRequest: request){ result in
                         if case let .failure(error) = result {
                             executeOnMainThread {
                                 self.view.makeToast(error.errorDescription())

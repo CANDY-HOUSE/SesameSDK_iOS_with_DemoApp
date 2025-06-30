@@ -225,7 +225,7 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
                                                     stpDeviceUUID: self.mDevice.deviceId.uuidString.uppercased(),
                                                     name: name,
                                                     cardID: card.id)
-                    self.mDevice.cardNameSet(cardNameRequest: request,){ result in
+                    self.mDevice.cardNameSet(cardNameRequest: request){ result in
                         if case let .failure(error) = result {
                             executeOnMainThread {
                                 self.view.makeToast(error.errorDescription())

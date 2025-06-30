@@ -244,7 +244,8 @@ extension Sesame2Store {
     }
     
     func getSubUuid() -> Data {
-        if let historyTag = UserDefaults.standard.value(forKey: "cognitoSubuuid") as? Data {
+        if let historyTag = UserDefaults.standard.value(forKey: "cognitoSubuuid") as? Data,
+           !historyTag.isEmpty{
             return historyTag
         } else {
             return Data(repeating: 0xff, count: 16) // 未登录用户默认uuid为ffffffffffffffffffffffffffffffff
