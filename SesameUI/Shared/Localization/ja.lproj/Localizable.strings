@@ -168,7 +168,7 @@
 
 "co.candyhouse.sesame2.wm2NetworkConnectionStatus" = "ネット接続状態";
 "co.candyhouse.sesame2.addSesameToWM2" = "セサミを追加…";
-"co.candyhouse.sesame2.shareSesameToFriends" = "デバイスをシェア…";
+"co.candyhouse.sesame2.shareSesameToFriends" = "デバイスをシェアする";
 
 "co.candyhouse.sesame2.sesameBotMode" = "モード";
 "co.candyhouse.sesame2.sesameBotModeNormal" = "押して戻る";

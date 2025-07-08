@@ -167,7 +167,7 @@
 
 "co.candyhouse.sesame2.wm2NetworkConnectionStatus" = "網路狀態";
 "co.candyhouse.sesame2.addSesameToWM2" = "添加芝麻設備...";
-"co.candyhouse.sesame2.shareSesameToFriends" = "共享設備...";
+"co.candyhouse.sesame2.shareSesameToFriends" = "點擊以共享設備";
 
 "co.candyhouse.sesame2.sesameBotMode" = "模式";
 "co.candyhouse.sesame2.sesameBotModeNormal" = "下壓後歸位";
