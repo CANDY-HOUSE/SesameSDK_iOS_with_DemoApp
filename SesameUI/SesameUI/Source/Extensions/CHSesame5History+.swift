@@ -21,6 +21,8 @@ extension CHSesame5History {
         case .wm2Unlock(let history): return history
         case .webLock(let history): return history
         case .webUnlock(let history): return history
+        case .doorOpen(let history): return history
+        case .doorClose(let history): return history
         @unknown default:
             fatalError()
         }
@@ -49,6 +51,9 @@ extension CHSesame5History {
         case .bleUnlock(_), .wm2Unlock(_), .webUnlock(_):   return "history_unlock"
         case .manualLocked(_):                              return "history_lock"
         case .manualUnlocked(_):                            return "history_unlock"
+        case .doorOpen(_):                                  return "history_door_open"
+        case .doorClose(_):                                 return "history_door_close"
+    
         default:
             return ""
         }
@@ -61,6 +66,7 @@ extension CHSesame5History {
         case .manualLocked(_), .manualUnlocked(_):  return "history_manul"
         case .wm2Lock(_), .wm2Unlock(_):            return "wifi"
         case .webLock(_), .webUnlock(_):            return "pc"
+        case .doorOpen(_), .doorClose(_):           return "bluetooth"
         @unknown default:
             return ""
         }
@@ -76,7 +82,7 @@ extension CHSesame5History {
             return displayText + "co.candyhouse.sesame2.manualLock".localized
         case .manualUnlocked(_):
             return displayText + "co.candyhouse.sesame2.manualUnlock".localized
-        case .wm2Lock(_), .wm2Unlock(_), .bleLock(_), .bleUnlock(_), .webLock(_), .webUnlock(_):
+        case .wm2Lock(_), .wm2Unlock(_), .bleLock(_), .bleUnlock(_), .webLock(_), .webUnlock(_), .doorOpen(_), .doorClose(_):
             if let historyTag = self.historyData.historyTag {
                 return displayText + parseHistoryTag(historyTag)
             } else {

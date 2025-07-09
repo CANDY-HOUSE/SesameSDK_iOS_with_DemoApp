@@ -35,7 +35,7 @@ class CHSesame2HistoryEvent: Codable {
         self.init(type: type ,time: time, recordID: recordID,parameter:parameter)
 
         switch type {
-        case .BLE_LOCK, .WM2_LOCK, .WEB_LOCK, .BLE_CLICK, .WM2_CLICK, .WEB_CLICK, .MANUAL_CLICK,.BLE_UNLOCK, .WM2_UNLOCK, .WEB_UNLOCK:
+        case .BLE_LOCK, .WM2_LOCK, .WEB_LOCK, .BLE_CLICK, .WM2_CLICK, .WEB_CLICK, .MANUAL_CLICK,.BLE_UNLOCK, .WM2_UNLOCK, .WEB_UNLOCK, .DOOR_OPEN, .DOOR_CLOSE:
             let content = content.copyData
             guard let devicepk = content[safeBound: 2...17] else {
                 return
@@ -104,7 +104,7 @@ class CHSesame5HistoryEvent: Codable {
         self.init(type: type ,time: time, recordID: recordID,parameter:parameter)
 
         switch type {
-        case .BLE_LOCK, .WM2_LOCK, .WEB_LOCK, .BLE_CLICK, .WM2_CLICK, .WEB_CLICK, .MANUAL_CLICK,.BLE_UNLOCK, .WM2_UNLOCK, .WEB_UNLOCK:
+        case .BLE_LOCK, .WM2_LOCK, .WEB_LOCK, .BLE_CLICK, .WM2_CLICK, .WEB_CLICK, .MANUAL_CLICK,.BLE_UNLOCK, .WM2_UNLOCK, .WEB_UNLOCK, .DOOR_OPEN, .DOOR_CLOSE:
             self.historyTag = content.copyData.toCutedHistag()
         case .NONE:
             break

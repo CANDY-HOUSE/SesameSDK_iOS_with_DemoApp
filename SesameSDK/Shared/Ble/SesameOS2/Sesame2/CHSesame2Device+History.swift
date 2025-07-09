@@ -265,6 +265,8 @@ extension CHSesame2Device {
             return CHSesame2History.driveClick(CHSesame2HistoryData(historyEvent: historyEvent))
         case .MANUAL_CLICK:
             return CHSesame2History.manualClick(CHSesame2HistoryData(historyEvent: historyEvent))
+        case .DOOR_OPEN, .DOOR_CLOSE:
+            return nil
         case .none:
             return nil
         }

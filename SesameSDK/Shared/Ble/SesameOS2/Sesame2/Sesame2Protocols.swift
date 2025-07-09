@@ -116,6 +116,8 @@ enum Sesame2HistoryTypeEnum:UInt8
     case WEB_CLICK = 20              // Server, client解析用
     case DRIVE_CLICK = 21
     case MANUAL_CLICK = 22
+    case DOOR_OPEN = 90
+    case DOOR_CLOSE = 91
 }
 
 enum Sesame2HistoryLockOpType: UInt8 {
@@ -168,6 +170,10 @@ extension Sesame2HistoryTypeEnum {
             return "DRIVE_CLICK"
         case .MANUAL_CLICK:
             return "MANUAL_CLICK"
+        case .DOOR_OPEN:
+            return "DOOR_OPEN"
+        case .DOOR_CLOSE:
+            return "DOOR_CLOSE"
         }
     }
 }

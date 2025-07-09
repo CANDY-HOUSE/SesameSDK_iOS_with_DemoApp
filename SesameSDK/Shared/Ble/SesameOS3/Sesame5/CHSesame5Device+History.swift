@@ -114,6 +114,8 @@ public enum CHSesame5History {
     case wm2Unlock(CHSesame5HistoryData)
     case webLock(CHSesame5HistoryData)
     case webUnlock(CHSesame5HistoryData)
+    case doorOpen(CHSesame5HistoryData)
+    case doorClose(CHSesame5HistoryData)
 
 }
 
@@ -138,6 +140,10 @@ extension CHSesame5Device {
             return CHSesame5History.webLock(CHSesame5HistoryData(historyEvent: historyEvent))
         case .WEB_UNLOCK:
             return CHSesame5History.webUnlock(CHSesame5HistoryData(historyEvent: historyEvent))
+        case .DOOR_OPEN:
+            return CHSesame5History.doorOpen(CHSesame5HistoryData(historyEvent: historyEvent))
+        case .DOOR_CLOSE:
+            return CHSesame5History.doorClose(CHSesame5HistoryData(historyEvent: historyEvent))
         @unknown default:
             return nil
         }
