@@ -114,7 +114,6 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, bikeLock2.keyLevel != KeyLevel.guest.rawValue {

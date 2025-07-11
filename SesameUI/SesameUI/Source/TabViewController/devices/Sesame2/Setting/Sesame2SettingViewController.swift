@@ -118,7 +118,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, sesame2.keyLevel != KeyLevel.guest.rawValue {
             deviceMembersView = KeyCollectionViewController.instanceWithDevice(sesame2)

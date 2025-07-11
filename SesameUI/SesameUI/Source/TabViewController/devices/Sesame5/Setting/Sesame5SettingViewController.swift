@@ -152,8 +152,6 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, !isGuest {

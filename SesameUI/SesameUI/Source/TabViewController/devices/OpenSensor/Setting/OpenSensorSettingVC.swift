@@ -192,7 +192,6 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
 
         // MARK: Change name
         changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in

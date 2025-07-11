@@ -25,7 +25,7 @@ class FriendKeyListViewController: CHBaseViewController, UICollectionViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .sesame2Gray
+        view.backgroundColor = .white
         scrollView.addSubview(contentStackView)
         view.addSubview(scrollView)
         refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
@@ -58,7 +58,8 @@ class FriendKeyListViewController: CHBaseViewController, UICollectionViewDelegat
         emailView.value = friend.email
         self.emailView = emailView
         contentStackView.addArrangedSubview(emailView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .group))
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin,separatorViewBackgroundColor:.sesame2Gray))
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .group,separatorViewBackgroundColor:.white))
         
         // MARK: Sesame2 List Title
         let titleLabelContainer = UIView(frame: .zero)
@@ -73,7 +74,7 @@ class FriendKeyListViewController: CHBaseViewController, UICollectionViewDelegat
         titleLabel.autoPinTop()
         titleLabel.autoPinBottom()
         contentStackView.addArrangedSubview(titleLabelContainer)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick,separatorViewBackgroundColor:.white))
         
         // MARK: Sesame2 List
         let sesame2ListContainer = UIView(frame: .zero)
@@ -90,7 +91,7 @@ class FriendKeyListViewController: CHBaseViewController, UICollectionViewDelegat
         contentStackView.addArrangedSubview(addSesameButton)
         
         // MARK: Drop key
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .group))
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .group,separatorViewBackgroundColor:.white))
         let dropKeyView = CHUICallToActionView(textColor: .lockRed) { [unowned self] sender,_ in
             self.removeFriend(sender as! UIButton)
         }

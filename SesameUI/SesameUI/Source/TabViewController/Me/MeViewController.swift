@@ -44,9 +44,8 @@ class MeViewController: CHBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        L.d("[test]sub", AWSMobileClient.default().userSub!)
-        navigationBarBackgroundColor = .white//此頁面頭是白色
         
-        view.backgroundColor = .sesame2Gray
+        view.backgroundColor = .white
         
         contentView.axis = .vertical
         contentView.alignment = .fill
@@ -79,7 +78,7 @@ class MeViewController: CHBaseViewController {
                                               target: self,
                                               action: #selector(handleRightBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = rightButtonItem
-        scrollView.backgroundColor = .sesame2Gray
+        scrollView.backgroundColor = .white
         AWSMobileClient.default().addUserStateListener(self) { state, _ in
             executeOnMainThread {
                 self.userState = state
@@ -135,7 +134,7 @@ class MeViewController: CHBaseViewController {
         let paddingView = UIView(frame: .zero)
         let nameLabelUserStateVersionLabelHeight: CGFloat = 160.0
         paddingView.autoLayoutHeight(screenHeight - navBarHeight - tabBarHeight - nameLabelUserStateVersionLabelHeight)
-        paddingView.backgroundColor = .sesame2Gray
+        paddingView.backgroundColor = .white
         scrollContentStackView.addArrangedSubview(paddingView)
         
         // MARK: - User state
@@ -153,7 +152,7 @@ class MeViewController: CHBaseViewController {
             downloadURL: "https://testflight.apple.com/join/Rok4GOFD"
         )
         scrollContentStackView.addArrangedSubview(versionLabelWithLink)
-        scrollContentStackView.addArrangedSubview(CHUISeperatorView(style: .group))
+        scrollContentStackView.addArrangedSubview(CHUISeperatorView(style: .group,separatorViewBackgroundColor: .white))
         
         // MARK: - 登出
         if userState == .signedIn {
@@ -167,8 +166,9 @@ class MeViewController: CHBaseViewController {
                 self.performLogout(logOutTitle: title, sender: button)
             }
             logOutView!.title = title
+            logOutView?.backgroundColor = .sesame2Gray
             scrollContentStackView.addArrangedSubview(logOutView!)
-            scrollContentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+            scrollContentStackView.addArrangedSubview(CHUISeperatorView(style: .thick,separatorViewBackgroundColor: .white))
             
             // 與刪除按鈕的距離
             let spacerView = UIView()
@@ -190,6 +190,7 @@ class MeViewController: CHBaseViewController {
                 self.performLogout(logOutTitle: title, sender: button)
             }
             delAccountView!.title = title
+            delAccountView?.backgroundColor = .sesame2Gray
             scrollContentStackView.addArrangedSubview(delAccountView!)
         }
     }

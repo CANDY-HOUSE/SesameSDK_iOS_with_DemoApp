@@ -95,7 +95,6 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, sesameBot.keyLevel != KeyLevel.guest.rawValue {

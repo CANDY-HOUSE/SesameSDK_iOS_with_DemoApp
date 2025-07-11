@@ -157,7 +157,6 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
 
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()

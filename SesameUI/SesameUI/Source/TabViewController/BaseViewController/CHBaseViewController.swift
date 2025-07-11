@@ -72,7 +72,7 @@ public class CHBaseViewController: UIViewController, CHRouteCoordinator, PopUpMe
         }
     }
     var soundPlayer: AVAudioPlayer?
-    var navigationBarBackgroundColor: UIColor = .sesame2Gray
+    var navigationBarBackgroundColor: UIColor = .white
     
     // MARK: - UI Components
     private lazy var titleLabel: UILabel = {

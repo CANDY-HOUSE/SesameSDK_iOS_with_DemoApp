@@ -70,6 +70,7 @@ extension CHTableViewProxy {
         let cellDiscriptor = dataSource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(cellDiscriptor.cellCls), for: indexPath)
         cellDiscriptor.configure(cell as! CellConfiguration)
+        cell.selectionStyle = .none
         return cell
     }
     // MARK: - UITableViewDelegate

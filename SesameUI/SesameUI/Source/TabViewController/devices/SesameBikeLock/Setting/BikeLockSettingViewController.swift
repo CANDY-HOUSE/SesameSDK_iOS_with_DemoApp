@@ -88,7 +88,6 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, bikeLock.keyLevel != KeyLevel.guest.rawValue {

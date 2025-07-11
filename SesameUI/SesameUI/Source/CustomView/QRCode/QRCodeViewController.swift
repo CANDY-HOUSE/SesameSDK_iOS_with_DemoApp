@@ -31,6 +31,7 @@ public class QRCodeViewController: CHBaseViewController {
         introductionDetailLabel.textColor = .secondaryLabelColor
         introductionLabel.textColor = .secondaryLabelColor
         super.viewDidLoad()
+        view.backgroundColor = .white
         switch qrCodeType {
         case .sesameKey:
             generateDeviceQRCode()

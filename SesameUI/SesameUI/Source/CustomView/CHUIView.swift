@@ -1347,7 +1347,7 @@ final class CHUISeperatorView: UIView {
     
     private let seperatorView = UIView()
     
-    init(style: Style) {
+    init(style: Style,separatorViewBackgroundColor: UIColor = .sesame2Gray) {
         super.init(frame: .zero)
         
         var seperatorHeight: CGFloat
@@ -1367,7 +1367,7 @@ final class CHUISeperatorView: UIView {
         addSubview(seperatorView)
         
         backgroundColor = .white
-        seperatorView.backgroundColor = .sesame2Gray
+        seperatorView.backgroundColor = separatorViewBackgroundColor
         
         autoLayoutHeight(seperatorHeight)
         seperatorView.autoPinLeading(constant: padding)
