@@ -199,14 +199,6 @@
 "co.candyhouse.sesame2.dropKeyDesc" = "刪除 %@ 不會重設 %@。若要重設 %@，請用針戳重設鍵直到LED燈熄滅";
 "co.candyhouse.sesame2.holdKeyDesc" = "刪除 %@ 不會重設 %@。若要重設 %@，請按住重設鍵直到LED燈熄滅";
 
-"co.candyhouse.sesame2.historyLOCK" =   "上鎖";
-"co.candyhouse.sesame2.historyUNLOCK" = "解鎖";
-"co.candyhouse.sesame2.historyMANUAL_LOCKED" =   "手轉上鎖";
-"co.candyhouse.sesame2.historyMANUAL_UNLOCKED" = "手轉解鎖";
-"co.candyhouse.sesame2.historyAUTOLOCK_UPDATED" = "自動上鎖設定被更新";
-"co.candyhouse.sesame2.historyMECH_SETTING_UPDATED" = "角度設定被更新";
-"co.candyhouse.sesame2.historyAUTOLOCK" = "倒數自動上鎖";
-
 "co.candyhouse.sesame2.voiceShortcut" = "Siri 自定義短語";
 "co.candyhouse.sesame2.suggestedPhrase" = "芝麻開門";
 

@@ -203,14 +203,6 @@
 "co.candyhouse.sesame2.dropKeyDesc" = "删除 %@ 不会重置 %@。若要重置 %@，请用针戳复位键直到LED灯熄灭";
 "co.candyhouse.sesame2.holdKeyDesc" = "删除 %@ 不会重置 %@。若要重置 %@，请按住复位键直到LED灯熄灭";
 
-"co.candyhouse.sesame2.historyLOCK" =   "上锁";
-"co.candyhouse.sesame2.historyUNLOCK" = "解锁";
-"co.candyhouse.sesame2.historyMANUAL_LOCKED" =   "手转上锁";
-"co.candyhouse.sesame2.historyMANUAL_UNLOCKED" = "手转解锁";
-"co.candyhouse.sesame2.historyAUTOLOCK_UPDATED" = "自动上锁设置被更新";
-"co.candyhouse.sesame2.historyMECH_SETTING_UPDATED" = "角度设置被更新";
-"co.candyhouse.sesame2.historyAUTOLOCK" = "倒数自动上锁";
-
 "co.candyhouse.sesame2.voiceShortcut" = "Siri 自定义短语";
 "co.candyhouse.sesame2.suggestedPhrase" = "芝麻开门";
 

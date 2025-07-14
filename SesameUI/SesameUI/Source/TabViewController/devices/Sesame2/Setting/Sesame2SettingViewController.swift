@@ -549,9 +549,12 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         ViewHelper.showLoadingInView(view: self.notificationToggleView)
         if let deviceToken = UserDefaults.standard.string(forKey: "devicePushToken") {
             if sender.isOn == true {
-                sesame2.enableNotification(token: deviceToken, name: "Sesame2") { result in
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.notificationToggleView)
+                CHUserAPIManager.shared.getSubId {  [weak self] subId in
+                    guard let self = self else { return }
+                    sesame2.enableNotification(token: deviceToken, name: "Sesame2", subUUID: subId) { result in
+                        executeOnMainThread {
+                            ViewHelper.hideLoadingView(view: self.notificationToggleView)
+                        }
                     }
                 }
             } else {

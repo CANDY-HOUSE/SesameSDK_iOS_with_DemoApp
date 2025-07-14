@@ -200,14 +200,6 @@
 "co.candyhouse.sesame2.dropKeyDesc" = "%@を削除しても%@は初期化またリセットされません。%@を初期化またリセットするには、細い棒でリセットボタンをLED点灯が消えるまで長押ししてください。";
 "co.candyhouse.sesame2.holdKeyDesc" = "%@を削除しても%@は初期化またリセットされません。%@を初期化またリセットするには、リセットボタンをLED点灯が消えるまで長押ししてください。";
 
-"co.candyhouse.sesame2.historyLOCK" = "が施錠されました";
-"co.candyhouse.sesame2.historyUNLOCK" = "が解錠されました";
-"co.candyhouse.sesame2.historyMANUAL_LOCKED" = "が手動で施錠されました";
-"co.candyhouse.sesame2.historyMANUAL_UNLOCKED" = "が手動で解錠されました";
-"co.candyhouse.sesame2.historyAUTOLOCK_UPDATED" = "のオートロックの設定が変更されました";
-"co.candyhouse.sesame2.historyMECH_SETTING_UPDATED" = "の施解錠角度の設定が変更されました";
-"co.candyhouse.sesame2.historyAUTOLOCK" = "がオートロックしました";
-
 "co.candyhouse.sesame2.voiceShortcut" = "Siri音声コマンド";
 "co.candyhouse.sesame2.suggestedPhrase" = "オープン セサミ";
 

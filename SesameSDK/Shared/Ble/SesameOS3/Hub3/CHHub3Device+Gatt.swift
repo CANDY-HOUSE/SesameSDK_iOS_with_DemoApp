@@ -120,13 +120,13 @@ extension CHHub3Device {
     }
     
     func updateComplete(newVer: String) {
-        if progressTimer != nil {
-            progressTimer?.invalidate()
-            progressTimer = nil
-        }
         if newVer != status.v {        
             status.hub3LastFirmwareVer = newVer
             status.v = status.hub3LastFirmwareVer
+        }
+        if progressTimer != nil {
+            progressTimer?.invalidate()
+            progressTimer = nil
             progress = (current: 0, target: 0)
             (delegate as? CHWifiModule2Delegate)?.onOTAProgress(device: self, percent: 100)
         }

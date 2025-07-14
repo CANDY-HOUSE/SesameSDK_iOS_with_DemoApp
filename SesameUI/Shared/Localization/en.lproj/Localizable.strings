@@ -201,14 +201,6 @@
 "co.candyhouse.sesame2.dropKeyDesc" = "Deleting %@ won't reset %@. To reset %@, please press the reset button with a pin until the LED light turns off.";
 "co.candyhouse.sesame2.holdKeyDesc" = "Deleting %@ won't reset %@. To reset %@, please press the reset button until the LED light turns off.";
 
-"co.candyhouse.sesame2.historyLOCK" =   "is locked";
-"co.candyhouse.sesame2.historyUNLOCK" = "is unlocked";
-"co.candyhouse.sesame2.historyMANUAL_LOCKED" =   "is manually locked";
-"co.candyhouse.sesame2.historyMANUAL_UNLOCKED" = "is manually unlocked";
-"co.candyhouse.sesame2.historyAUTOLOCK_UPDATED" = "'s Autolock setting is updated";
-"co.candyhouse.sesame2.historyMECH_SETTING_UPDATED" = "'s angle setting is updated";
-"co.candyhouse.sesame2.historyAUTOLOCK" = "Auto-lock timer";
-
 "co.candyhouse.sesame2.voiceShortcut" = "Siri Custom Phrase";
 "co.candyhouse.sesame2.suggestedPhrase" = "Open Sesame";
 

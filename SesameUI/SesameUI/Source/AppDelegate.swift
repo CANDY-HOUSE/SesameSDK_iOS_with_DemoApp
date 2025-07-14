@@ -206,75 +206,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 return
             }
         }
-
-        if let deviceId = userInfo["deviceId"] as? String {
-//            L.d("[noti][willPresent]",deviceId)
-            CHDeviceManager.shared.getCHDevices { getResult in
-                if case let .success(devices) = getResult {
-                    if devices.data.filter({ $0.deviceId.uuidString == deviceId }).count == 0 {
-                        let token = UserDefaults.standard.string(forKey: "devicePushToken")!
-                        CHDeviceManager.shared.disableNotification(deviceId: deviceId, token: token, name: "Sesame2") { _ in }
-                        completionHandler([])
-                        return
-                    }
-                }
-            }
-        }
-        
-        shouldShowFullNotification(userInfo: userInfo) { shouldShow in
-            if shouldShow {
-                completionHandler([.alert, .sound, .badge])
-            } else {
-                completionHandler([])
-            }
-        }
-    }
-    
-    private func shouldShowFullNotification(userInfo: [AnyHashable: Any], completion: @escaping (Bool) -> Void) {
-        // 检查是否有有效的 triggerUserSub 数据
-        if let triggerUserSubObject = userInfo["triggerUserSub"] as? [String: Any],
-           let triggerUserSub = triggerUserSubObject["data"] as? [UInt8],
-           !triggerUserSub.isEmpty {
-            // 有效的 triggerUserSub 数据，检查是否是同一用户
-            checkIfSameTriggerUser(triggerUserSub: triggerUserSub) { isSameUser in
-                completion(!isSameUser)
-            }
-        } else {
-            // 没有有效的 triggerUserSub 数据，检查 historyTag
-            let isSameHistory = checkIfSameHistoryTag(userInfo: userInfo)
-            completion(!isSameHistory)
-        }
-    }
-    
-    private func checkIfSameTriggerUser(triggerUserSub: [UInt8], completion: @escaping (Bool) -> Void) {
-        let triggerUserSubHex = triggerUserSub.toHexString()
-        let group = DispatchGroup()
-        group.enter()
-        
-        CHUserAPIManager.shared.getSubId { subId in
-            defer { group.leave() }
-            
-            if let subId = subId {
-                let cleanSubId = subId.replacingOccurrences(of: "-", with: "")
-                completion(triggerUserSubHex == cleanSubId)
-            } else {
-                completion(false)
-            }
-        }
-        _ = group.wait(timeout: .now() + 1.0)
-    }
-
-    private func checkIfSameHistoryTag(userInfo: [AnyHashable: Any]) -> Bool {
-        guard let historyTagObject = userInfo["historyTag"] as? [String: Any],
-              let historyTagData = historyTagObject["data"] as? [UInt8],
-              !historyTagData.isEmpty else {
-            return false
-        }
-        
-        let historyTagHex = historyTagData.toHexString()
-        let clientHistoryTagHex = Sesame2Store.shared.getHistoryTag().toHexString()
-        
-        return historyTagHex == clientHistoryTagHex
+        completionHandler([.alert, .sound, .badge])
     }
 }
 

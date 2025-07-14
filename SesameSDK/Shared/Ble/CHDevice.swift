@@ -268,11 +268,13 @@ public protocol CHSesameLock: CHDevice {
 }
 
 public extension CHSesameLock {
-    func enableNotification(token: String, name: String, result: @escaping CHResult<CHEmpty>) {
+    func enableNotification(token: String, name: String, subUUID: String?, result: @escaping CHResult<CHEmpty>) {
         CHAccountManager.shared.API(request: .init(.post, "/device/v1/token",
                                                    ["token": token,
                                                     "deviceId":deviceId.uuidString,
-                                                    "name": name])) { createResult in
+                                                    "name": name,
+                                                    "subUUID": subUUID ?? "",
+                                                   ])) { createResult in
             if case let .failure(error) = createResult {
                 result(.failure(error))
             } else {
