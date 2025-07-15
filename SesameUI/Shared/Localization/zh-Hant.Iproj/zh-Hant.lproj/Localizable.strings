@@ -247,7 +247,7 @@
 "co.candyhouse.sesame2.passcodes" = "管理數字密碼";
 "co.candyhouse.sesame2.TouchEmptyFingerHint" = "靠近%@連藍牙，點擊⊕，將手指放在%@上以添加指紋。添加後點擊 X。\n\n另外，多次改變手指角度 輸入同一手指，可以大幅提高識別率👍";
 "co.candyhouse.sesame2.TouchEmptyNFCHint" = "靠近%@連藍牙，點擊⊕，將NFC卡放在%@上以添加NFC卡。添加後點擊 X。\n\n如果要使用iPhone或Apple Watch內建的交通卡，需要將其設定為快速交通卡。";
-"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "靠近%@連藍牙，點擊⊕，輸入數字密碼並以上鎖或解鎖按鈕添加數字密碼。添加後點擊 X。";
+"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "靠近%@連藍牙，點擊⊕，於%@輸入數字密碼並以上鎖或解鎖按鈕添加數字密碼。添加後點擊 X。";
 "co.candyhouse.sesame2.default_card_name" = "NFC卡🖋️";
 "co.candyhouse.sesame2.default_notify_card_name" = "NFC卡";
 "co.candyhouse.sesame2.TouchProCardModify" = "修改NFC卡名稱🖋️";

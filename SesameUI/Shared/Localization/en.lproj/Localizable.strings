@@ -250,7 +250,7 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.passcodes" = "Manage passcodes";
 "co.candyhouse.sesame2.TouchEmptyFingerHint" = "Connect %@ with Bluetooth, tap ⊕, and place your finger on %@ to add a fingerprint, tap X when finished.\n\nAlso, by registering the same finger at different angles, the recognition rate can greatly improve👍";
 "co.candyhouse.sesame2.TouchEmptyNFCHint" = "Connect %@ with Bluetooth, tap ⊕, and place your NFC card on %@ to add the NFC card, tap X when finished.\n\nIf you are using a transit card built into iPhone or Apple Watch, you need to set it up as an Express Transit Card.";
-"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "Connect %@ with Bluetooth, tap ⊕, enter the passcode and press the lock or unlock button to add the passcode, tap X when finished.";
+"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "Connect %@ with Bluetooth, tap ⊕, enter the passcode on %@ and press the lock or unlock button to add the passcode, tap X when finished.";
 
 
 "co.candyhouse.sesame2.default_card_name" = "NFC Card🖋️";
