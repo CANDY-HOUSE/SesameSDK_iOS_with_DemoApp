@@ -248,9 +248,9 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.nfcCard" = "Manage NFC cards";
 
 "co.candyhouse.sesame2.passcodes" = "Manage passcodes";
-"co.candyhouse.sesame2.TouchEmptyFingerHint" = "Approach the %@ device, tap the ⊕ icon, and place your finger on %@ to add a fingerprint.\n\nAlso, by registering the same finger at different angles, the recognition rate can greatly improve👍";
-"co.candyhouse.sesame2.TouchEmptyNFCHint" = "Approach the %@ device, tap the ⊕ icon, and place your NFC card on %@ to add the NFC card.\n\nIf you are using a transit card built into iPhone or Apple Watch, you need to set it up as an Express Transit Card.";
-"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "Approach the %@ device, tap the ⊕ icon, enter the passcode and press the lock or unlock button to add the passcode.";
+"co.candyhouse.sesame2.TouchEmptyFingerHint" = "Connect %@ with Bluetooth, tap ⊕, and place your finger on %@ to add a fingerprint, tap X when finished.\n\nAlso, by registering the same finger at different angles, the recognition rate can greatly improve👍";
+"co.candyhouse.sesame2.TouchEmptyNFCHint" = "Connect %@ with Bluetooth, tap ⊕, and place your NFC card on %@ to add the NFC card, tap X when finished.\n\nIf you are using a transit card built into iPhone or Apple Watch, you need to set it up as an Express Transit Card.";
+"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "Connect %@ with Bluetooth, tap ⊕, enter the passcode and press the lock or unlock button to add the passcode, tap X when finished.";
 
 
 "co.candyhouse.sesame2.default_card_name" = "NFC Card🖋️";
@@ -363,12 +363,12 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.default_notify_palm_name" = "Palm Veins";
 "co.candyhouse.sesame2.faceProPalmModify" = "Edit Palm Veins Name🖋️";
 "co.candyhouse.sesame2.faceProPalmDelete" = "Delete Palm Veins";
-"co.candyhouse.sesame2.faceProPalmHint" = "Approach %@ and tap ⊕. Show Palm Veins then tap X. Register after mounting for supreme recognition rates.";
+"co.candyhouse.sesame2.faceProPalmHint" = "Connect %@ with Bluetooth, tap ⊕. Show Palm Veins then tap X. Register after mounting for supreme recognition rates.";
 "co.candyhouse.sesame2.default_face_name" = "Face🖋️";
 "co.candyhouse.sesame2.default_notify_face_name" = "Face";
 "co.candyhouse.sesame2.faceProFaceModify" = "Edit Face Name🖋️";
 "co.candyhouse.sesame2.faceProFaceDelete" = "Delete Face";
-"co.candyhouse.sesame2.faceProFaceHint" = "Approach %@ and tap ⊕. Show your Face then tap X. Register after mounting for supreme recognition rates.";
+"co.candyhouse.sesame2.faceProFaceHint" = "Connect %@ with Bluetooth, tap ⊕. Show your Face then tap X. Register after mounting for supreme recognition rates.";
 "co.candyhouse.sesame2.delete_fail" = "Failed to delete. Please try again";
 
 "co.candyhouse.sesame2.face.distance" = "Distance";

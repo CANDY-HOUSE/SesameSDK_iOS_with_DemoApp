@@ -246,9 +246,9 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.SSMTouch" = "セサミタッチ";
 "co.candyhouse.sesame2.nfcCard" = "ICカードの管理";
 "co.candyhouse.sesame2.passcodes" = "暗証番号の管理";
-"co.candyhouse.sesame2.TouchEmptyFingerHint" = "%@デバイスに近づき、⊕ アイコンを押し、%@に指をかざして指紋を追加してください。\n\nまた、指の角度を変えて何度も同一の指を登録すると、さらに認識率は大幅向上👍";
-"co.candyhouse.sesame2.TouchEmptyNFCHint" = "%@デバイスに近づき、⊕ アイコンを押し、%@にICカードをかざしてICカードを追加してください。\n\niPhoneまたはApple Watchに内蔵されている交通系ICカードを使用するには、エクスプレスカードとして設定する必要があります。";
-"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "%@デバイスに近づき、⊕ アイコンを押し、Sesame Touchに暗証番号を入力して施錠また解錠ボタンで追加してください。";
+"co.candyhouse.sesame2.TouchEmptyFingerHint" = "%@に近づきBluetooth接続し、⊕ をタップし、%@に指をかざして指紋を登録。登録後 X をタップ。\n\nまた、指の角度を変えて何度も同一の指を登録すると、さらに認識率は大幅向上👍";
+"co.candyhouse.sesame2.TouchEmptyNFCHint" = "%@に近づきBluetooth接続し、⊕ をタップし、%@にICカードをかざしてICカードを登録。登録後 X をタップ。\n\niPhoneまたはApple Watchに内蔵されている交通系ICカードを使用するには、エクスプレスカードとして設定する必要があります。";
+"co.candyhouse.sesame2.TouchEmptyPasscodeHint" = "%@に近づきBluetooth接続し、⊕ をタップし、%@に暗証番号を入力して施錠また解錠ボタンで登録。登録後 X をタップ。";
 "co.candyhouse.sesame2.default_card_name" = "ICカード🖋️";
 "co.candyhouse.sesame2.default_notify_card_name" = "ICカード";
 "co.candyhouse.sesame2.TouchProCardModify" = "ICカードの名前変更🖋️";
