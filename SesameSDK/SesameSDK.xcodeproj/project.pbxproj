@@ -519,7 +519,6 @@
 		2CDFD68E2DA3A02B00421BE2 /* OpensensorMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensensorMechStatus.swift; sourceTree = "<group>"; };
 		2CDFD6912DA3A08400421BE2 /* CHSesameTouchProMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchProMechStatus.swift; sourceTree = "<group>"; };
 		3B67BD562DFBFF4800B0A894 /* AWSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfig.swift; sourceTree = "<group>"; };
-		3B82363D2E00164E008351A1 /* sync-to-public.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = "sync-to-public.yml"; path = "../.github/workflows/sync-to-public.yml"; sourceTree = SOURCE_ROOT; };
 		41077CE1239F382C0010067C /* CHSesame2Device+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Lock.swift"; sourceTree = "<group>"; };
 		411A10B123A4F13E00CFC4F1 /* CHDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceCenter.swift; sourceTree = "<group>"; };
 		4133E7DF2A09C8500005DCC0 /* CHBluetoothCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBluetoothCenter.swift; sourceTree = "<group>"; };
@@ -1055,7 +1054,6 @@
 		3B67BD552DFBFF0D00B0A894 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				3B82363D2E00164E008351A1 /* sync-to-public.yml */,
 				3B67BD562DFBFF4800B0A894 /* AWSConfig.swift */,
 			);
 			path = Configuration;
