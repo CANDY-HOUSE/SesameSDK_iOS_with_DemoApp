@@ -1,0 +1,2178 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B1D7F792E2A268800C90D01 /* CHFingerPrintCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F002E2A268800C90D01 /* CHFingerPrintCapableExtension.swift */; };
+		3B1D7F7A2E2A268800C90D01 /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F6F2E2A268800C90D01 /* NSError+.swift */; };
+		3B1D7F7B2E2A268800C90D01 /* CHResultPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F652E2A268800C90D01 /* CHResultPattern.swift */; };
+		3B1D7F7C2E2A268800C90D01 /* CHAPICallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F642E2A268800C90D01 /* CHAPICallObject.swift */; };
+		3B1D7F7D2E2A268800C90D01 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F6C2E2A268800C90D01 /* Data+.swift */; };
+		3B1D7F7E2E2A268800C90D01 /* CHRemoteNanoCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F142E2A268800C90D01 /* CHRemoteNanoCapable.swift */; };
+		3B1D7F7F2E2A268800C90D01 /* CHSesameBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED82E2A268800C90D01 /* CHSesameBot.swift */; };
+		3B1D7F802E2A268800C90D01 /* CHCapbleRenameBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F0E2E2A268800C90D01 /* CHCapbleRenameBean.swift */; };
+		3B1D7F812E2A268800C90D01 /* CHRemoteNanoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F162E2A268800C90D01 /* CHRemoteNanoDelegate.swift */; };
+		3B1D7F822E2A268800C90D01 /* CHBikeLockDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED52E2A268800C90D01 /* CHBikeLockDevice+Register.swift */; };
+		3B1D7F832E2A268800C90D01 /* CHOpenSensorCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F192E2A268800C90D01 /* CHOpenSensorCapableExtension.swift */; };
+		3B1D7F842E2A268800C90D01 /* CHSesameFacePro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F2D2E2A268800C90D01 /* CHSesameFacePro.swift */; };
+		3B1D7F852E2A268800C90D01 /* CHSesameBasePro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F282E2A268800C90D01 /* CHSesameBasePro.swift */; };
+		3B1D7F862E2A268800C90D01 /* ShadowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F602E2A268800C90D01 /* ShadowModel.swift */; };
+		3B1D7F872E2A268800C90D01 /* CHSesameBotDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED92E2A268800C90D01 /* CHSesameBotDevice.swift */; };
+		3B1D7F882E2A268800C90D01 /* CHSesame2Device+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC52E2A268800C90D01 /* CHSesame2Device+Lock.swift */; };
+		3B1D7F8A2E2A268800C90D01 /* ECC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F6D2E2A268800C90D01 /* ECC.swift */; };
+		3B1D7F8B2E2A268800C90D01 /* CHAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F622E2A268800C90D01 /* CHAccountManager.swift */; };
+		3B1D7F8C2E2A268800C90D01 /* CHSesameFaceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F2B2E2A268800C90D01 /* CHSesameFaceDevice.swift */; };
+		3B1D7F8D2E2A268800C90D01 /* AWSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F542E2A268800C90D01 /* AWSConfig.swift */; };
+		3B1D7F8E2E2A268800C90D01 /* CHSesameBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F222E2A268800C90D01 /* CHSesameBaseDevice.swift */; };
+		3B1D7F8F2E2A268800C90D01 /* CHSesame5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EEC2E2A268800C90D01 /* CHSesame5.swift */; };
+		3B1D7F902E2A268800C90D01 /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F732E2A268800C90D01 /* URLSession+.swift */; };
+		3B1D7F912E2A268800C90D01 /* CHDeviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F522E2A268800C90D01 /* CHDeviceProtocol.swift */; };
+		3B1D7F922E2A268800C90D01 /* CHSesameTouchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F392E2A268800C90D01 /* CHSesameTouchCard.swift */; };
+		3B1D7F932E2A268800C90D01 /* CHSesame2Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC72E2A268800C90D01 /* CHSesame2Device+Register.swift */; };
+		3B1D7F942E2A268800C90D01 /* CHBluetoothCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F502E2A268800C90D01 /* CHBluetoothCenter.swift */; };
+		3B1D7F952E2A268800C90D01 /* CHPassCodeCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F092E2A268800C90D01 /* CHPassCodeCapable.swift */; };
+		3B1D7F962E2A268800C90D01 /* Sesame2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ECB2E2A268800C90D01 /* Sesame2Protocols.swift */; };
+		3B1D7F972E2A268800C90D01 /* CHSesame2Device+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC62E2A268800C90D01 /* CHSesame2Device+Login.swift */; };
+		3B1D7F982E2A268800C90D01 /* CHDeviceUtil+OS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F4A2E2A268800C90D01 /* CHDeviceUtil+OS3.swift */; };
+		3B1D7F992E2A268800C90D01 /* CHFingerPrintDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F012E2A268800C90D01 /* CHFingerPrintDelegate.swift */; };
+		3B1D7F9A2E2A268800C90D01 /* CHSesame2Device+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC22E2A268800C90D01 /* CHSesame2Device+DFU.swift */; };
+		3B1D7F9B2E2A268800C90D01 /* CHAccountManager+APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F632E2A268800C90D01 /* CHAccountManager+APIRequest.swift */; };
+		3B1D7F9C2E2A268800C90D01 /* CHCardCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EF52E2A268800C90D01 /* CHCardCapable.swift */; };
+		3B1D7F9D2E2A268800C90D01 /* CHSesame2Device+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC42E2A268800C90D01 /* CHSesame2Device+History.swift */; };
+		3B1D7F9E2E2A268800C90D01 /* CHFingerPrintCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EFF2E2A268800C90D01 /* CHFingerPrintCapable.swift */; };
+		3B1D7F9F2E2A268800C90D01 /* CHBikeLockDevice+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED02E2A268800C90D01 /* CHBikeLockDevice+DFU.swift */; };
+		3B1D7FA02E2A268800C90D01 /* CHServerCapableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F0F2E2A268800C90D01 /* CHServerCapableHandler.swift */; };
+		3B1D7FA12E2A268800C90D01 /* SwCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F722E2A268800C90D01 /* SwCrypt.swift */; };
+		3B1D7FA22E2A268800C90D01 /* CHFaceEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EFD2E2A268800C90D01 /* CHFaceEventHandlers.swift */; };
+		3B1D7FA32E2A268800C90D01 /* CHSesameTouchProDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F342E2A268800C90D01 /* CHSesameTouchProDevice.swift */; };
+		3B1D7FA42E2A268800C90D01 /* CHSesameBaseDevice+Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F232E2A268800C90D01 /* CHSesameBaseDevice+Connector.swift */; };
+		3B1D7FA52E2A268800C90D01 /* CHSesame5Device+Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EEE2E2A268800C90D01 /* CHSesame5Device+Command.swift */; };
+		3B1D7FA62E2A268800C90D01 /* CHOpenSensorCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F182E2A268800C90D01 /* CHOpenSensorCapable.swift */; };
+		3B1D7FA72E2A268800C90D01 /* CHSesameBotDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE12E2A268800C90D01 /* CHSesameBotDevice+Setting.swift */; };
+		3B1D7FA82E2A268800C90D01 /* CHPalmCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F052E2A268800C90D01 /* CHPalmCapableExtension.swift */; };
+		3B1D7FA92E2A268800C90D01 /* CHSesameFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F2A2E2A268800C90D01 /* CHSesameFace.swift */; };
+		3B1D7FAA2E2A268800C90D01 /* Sesame2BleDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC92E2A268800C90D01 /* Sesame2BleDevice+Peripheral.swift */; };
+		3B1D7FAB2E2A268800C90D01 /* CHWifiModule2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F422E2A268800C90D01 /* CHWifiModule2.swift */; };
+		3B1D7FAC2E2A268800C90D01 /* SesameBotPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE22E2A268800C90D01 /* SesameBotPayload.swift */; };
+		3B1D7FAD2E2A268800C90D01 /* CHSesameBotDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EDF2E2A268800C90D01 /* CHSesameBotDevice+Peripheral.swift */; };
+		3B1D7FAE2E2A268800C90D01 /* CHHub3Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE82E2A268800C90D01 /* CHHub3Device+Gatt.swift */; };
+		3B1D7FAF2E2A268800C90D01 /* CHHub3Device+IR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE92E2A268800C90D01 /* CHHub3Device+IR.swift */; };
+		3B1D7FB02E2A268800C90D01 /* CHBikeLockDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED62E2A268800C90D01 /* CHBikeLockDevice+Setting.swift */; };
+		3B1D7FB12E2A268800C90D01 /* CHSesameBaseMechSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F382E2A268800C90D01 /* CHSesameBaseMechSettings.swift */; };
+		3B1D7FB22E2A268800C90D01 /* CHBikeLockDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED42E2A268800C90D01 /* CHBikeLockDevice+Peripheral.swift */; };
+		3B1D7FB32E2A268800C90D01 /* CHWifiModule2Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F462E2A268800C90D01 /* CHWifiModule2Device+Register.swift */; };
+		3B1D7FB42E2A268800C90D01 /* CHSesameTouchDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F312E2A268800C90D01 /* CHSesameTouchDevice.swift */; };
+		3B1D7FB52E2A268800C90D01 /* CHSesameBaseDevice+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F262E2A268800C90D01 /* CHSesameBaseDevice+Settings.swift */; };
+		3B1D7FB62E2A268800C90D01 /* BikeLockPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ECD2E2A268800C90D01 /* BikeLockPayload.swift */; };
+		3B1D7FB72E2A268800C90D01 /* CHIoTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F5F2E2A268800C90D01 /* CHIoTManager.swift */; };
+		3B1D7FB82E2A268800C90D01 /* CHSesame2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC12E2A268800C90D01 /* CHSesame2Device.swift */; };
+		3B1D7FB92E2A268800C90D01 /* CHSesameBot2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F402E2A268800C90D01 /* CHSesameBot2Device.swift */; };
+		3B1D7FBA2E2A268800C90D01 /* CHRemoteBaseTriggerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F372E2A268800C90D01 /* CHRemoteBaseTriggerSettings.swift */; };
+		3B1D7FBB2E2A268800C90D01 /* CHHub3Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE72E2A268800C90D01 /* CHHub3Device.swift */; };
+		3B1D7FBC2E2A268800C90D01 /* CHConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F692E2A268800C90D01 /* CHConfiguration.swift */; };
+		3B1D7FBD2E2A268800C90D01 /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EEA2E2A268800C90D01 /* IRDeviceType.swift */; };
+		3B1D7FBE2E2A268800C90D01 /* CHSesameBike2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EF32E2A268800C90D01 /* CHSesameBike2Device.swift */; };
+		3B1D7FBF2E2A268800C90D01 /* CHCardCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EF62E2A268800C90D01 /* CHCardCapableExtension.swift */; };
+		3B1D7FC02E2A268800C90D01 /* WifiModule2Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F472E2A268800C90D01 /* WifiModule2Payload.swift */; };
+		3B1D7FC12E2A268800C90D01 /* SafeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F702E2A268800C90D01 /* SafeDictionary.swift */; };
+		3B1D7FC22E2A268800C90D01 /* CHBikeLockDevice+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED22E2A268800C90D01 /* CHBikeLockDevice+Lock.swift */; };
+		3B1D7FC32E2A268800C90D01 /* CHSesame2HistoryEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F582E2A268800C90D01 /* CHSesame2HistoryEvent.swift */; };
+		3B1D7FC42E2A268800C90D01 /* CHSesameBot2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F3F2E2A268800C90D01 /* CHSesameBot2.swift */; };
+		3B1D7FC52E2A268800C90D01 /* CHFaceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EFC2E2A268800C90D01 /* CHFaceDelegate.swift */; };
+		3B1D7FC62E2A268800C90D01 /* CHFaceCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EFB2E2A268800C90D01 /* CHFaceCapableExtension.swift */; };
+		3B1D7FC72E2A268800C90D01 /* CHDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F5B2E2A268800C90D01 /* CHDeviceCenter.swift */; };
+		3B1D7FC82E2A268800C90D01 /* ServerBaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F662E2A268800C90D01 /* ServerBaseType.swift */; };
+		3B1D7FC92E2A268800C90D01 /* CHSesame5Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EED2E2A268800C90D01 /* CHSesame5Device.swift */; };
+		3B1D7FCA2E2A268800C90D01 /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F682E2A268800C90D01 /* AES.swift */; };
+		3B1D7FCB2E2A268800C90D01 /* CHSesame2Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC32E2A268800C90D01 /* CHSesame2Device+Gatt.swift */; };
+		3B1D7FCC2E2A268800C90D01 /* CHGuestKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F572E2A268800C90D01 /* CHGuestKey.swift */; };
+		3B1D7FCD2E2A268800C90D01 /* CHSesame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC02E2A268800C90D01 /* CHSesame2.swift */; };
+		3B1D7FCE2E2A268800C90D01 /* WifiModule2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F482E2A268800C90D01 /* WifiModule2Protocols.swift */; };
+		3B1D7FCF2E2A268800C90D01 /* SesameOS3BleCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F4C2E2A268800C90D01 /* SesameOS3BleCipher.swift */; };
+		3B1D7FD02E2A268800C90D01 /* CHSesame5Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EF02E2A268800C90D01 /* CHSesame5Device+Register.swift */; };
+		3B1D7FD12E2A268800C90D01 /* CHBikeLockDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ECF2E2A268800C90D01 /* CHBikeLockDevice.swift */; };
+		3B1D7FD22E2A268800C90D01 /* CHSesameBotDevice+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EDC2E2A268800C90D01 /* CHSesameBotDevice+History.swift */; };
+		3B1D7FD32E2A268800C90D01 /* CHSesameTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F302E2A268800C90D01 /* CHSesameTouch.swift */; };
+		3B1D7FD42E2A268800C90D01 /* CHSesameFaceProDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F2E2E2A268800C90D01 /* CHSesameFaceProDevice.swift */; };
+		3B1D7FD52E2A268800C90D01 /* CHCardEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EF82E2A268800C90D01 /* CHCardEventHandlers.swift */; };
+		3B1D7FD62E2A268800C90D01 /* OpensensorMechStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F3C2E2A268800C90D01 /* OpensensorMechStatus.swift */; };
+		3B1D7FD82E2A268800C90D01 /* CHSesameTouchPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F332E2A268800C90D01 /* CHSesameTouchPro.swift */; };
+		3B1D7FD92E2A268800C90D01 /* CHSesameBotDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EDB2E2A268800C90D01 /* CHSesameBotDevice+Gatt.swift */; };
+		3B1D7FDA2E2A268800C90D01 /* CHSesameBotDevice+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EDA2E2A268800C90D01 /* CHSesameBotDevice+DFU.swift */; };
+		3B1D7FDB2E2A268800C90D01 /* CHDeviceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F562E2A268800C90D01 /* CHDeviceKey.swift */; };
+		3B1D7FDC2E2A268800C90D01 /* CHWifiModule2Device+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F452E2A268800C90D01 /* CHWifiModule2Device+Peripheral.swift */; };
+		3B1D7FDD2E2A268800C90D01 /* CHDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F512E2A268800C90D01 /* CHDevice.swift */; };
+		3B1D7FDE2E2A268800C90D01 /* CHSesameTouchProMechStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F3A2E2A268800C90D01 /* CHSesameTouchProMechStatus.swift */; };
+		3B1D7FDF2E2A268800C90D01 /* CHSesameBaseDevice+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F272E2A268800C90D01 /* CHSesameBaseDevice+Version.swift */; };
+		3B1D7FE02E2A268800C90D01 /* CHBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F4F2E2A268800C90D01 /* CHBaseDevice.swift */; };
+		3B1D7FE12E2A268800C90D01 /* CHSesameBotDevice+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EDD2E2A268800C90D01 /* CHSesameBotDevice+Lock.swift */; };
+		3B1D7FE22E2A268800C90D01 /* CHDeviceModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F5D2E2A268800C90D01 /* CHDeviceModel.xcdatamodeld */; };
+		3B1D7FE32E2A268800C90D01 /* CHPassCodeCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F0A2E2A268800C90D01 /* CHPassCodeCapableExtension.swift */; };
+		3B1D7FE42E2A268800C90D01 /* CHCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EF72E2A268800C90D01 /* CHCardDelegate.swift */; };
+		3B1D7FE52E2A268800C90D01 /* CHFaceCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EFA2E2A268800C90D01 /* CHFaceCapable.swift */; };
+		3B1D7FE62E2A268800C90D01 /* Sesame2Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ECA2E2A268800C90D01 /* Sesame2Payload.swift */; };
+		3B1D7FE72E2A268800C90D01 /* CHPalmDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F062E2A268800C90D01 /* CHPalmDelegate.swift */; };
+		3B1D7FE82E2A268800C90D01 /* SesameBotProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE32E2A268800C90D01 /* SesameBotProtocols.swift */; };
+		3B1D7FE92E2A268800C90D01 /* OpenSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F3B2E2A268800C90D01 /* OpenSensorData.swift */; };
+		3B1D7FEA2E2A268800C90D01 /* CHSesameOS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F4B2E2A268800C90D01 /* CHSesameOS3.swift */; };
+		3B1D7FEB2E2A268800C90D01 /* CHSesameBotDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EDE2E2A268800C90D01 /* CHSesameBotDevice+Login.swift */; };
+		3B1D7FEC2E2A268800C90D01 /* CHSesameBaseDevice+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F242E2A268800C90D01 /* CHSesameBaseDevice+Delegate.swift */; };
+		3B1D7FED2E2A268800C90D01 /* CHSesameBaseDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F252E2A268800C90D01 /* CHSesameBaseDevice+Register.swift */; };
+		3B1D7FEE2E2A268800C90D01 /* SesameOS3SegmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F4D2E2A268800C90D01 /* SesameOS3SegmentType.swift */; };
+		3B1D7FEF2E2A268800C90D01 /* CHMulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F6B2E2A268800C90D01 /* CHMulticastDelegate.swift */; };
+		3B1D7FF02E2A268800C90D01 /* CHMechanicalSettingsCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F122E2A268800C90D01 /* CHMechanicalSettingsCapable.swift */; };
+		3B1D7FF12E2A268800C90D01 /* CHBikeLockDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED12E2A268800C90D01 /* CHBikeLockDevice+Gatt.swift */; };
+		3B1D7FF22E2A268800C90D01 /* CHPalmEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F072E2A268800C90D01 /* CHPalmEventHandlers.swift */; };
+		3B1D7FF32E2A268800C90D01 /* CHVersionCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F1C2E2A268800C90D01 /* CHVersionCapable.swift */; };
+		3B1D7FF42E2A268800C90D01 /* CHDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F1F2E2A268800C90D01 /* CHDelegateManager.swift */; };
+		3B1D7FF52E2A268800C90D01 /* CHBikeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ECE2E2A268800C90D01 /* CHBikeLock.swift */; };
+		3B1D7FF62E2A268800C90D01 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F712E2A268800C90D01 /* String+.swift */; };
+		3B1D7FF72E2A268800C90D01 /* Sesame2BleCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EC82E2A268800C90D01 /* Sesame2BleCipher.swift */; };
+		3B1D7FF82E2A268800C90D01 /* CHRemoteNanoCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F152E2A268800C90D01 /* CHRemoteNanoCapableExtension.swift */; };
+		3B1D7FF92E2A268800C90D01 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F6E2E2A268800C90D01 /* Logging.swift */; };
+		3B1D7FFA2E2A268800C90D01 /* CHExtensionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F6A2E2A268800C90D01 /* CHExtensionListener.swift */; };
+		3B1D7FFB2E2A268800C90D01 /* CHDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F5C2E2A268800C90D01 /* CHDeviceManager.swift */; };
+		3B1D7FFC2E2A268800C90D01 /* CHWifiModule2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F432E2A268800C90D01 /* CHWifiModule2Device.swift */; };
+		3B1D7FFD2E2A268800C90D01 /* CHSesameBike2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EF22E2A268800C90D01 /* CHSesameBike2.swift */; };
+		3B1D7FFE2E2A268800C90D01 /* CHSesameBotDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE02E2A268800C90D01 /* CHSesameBotDevice+Register.swift */; };
+		3B1D7FFF2E2A268800C90D01 /* CHHub3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EE62E2A268800C90D01 /* CHHub3.swift */; };
+		3B1D80002E2A268800C90D01 /* CHFingerPrintEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F022E2A268800C90D01 /* CHFingerPrintEventHandlers.swift */; };
+		3B1D80012E2A268800C90D01 /* CHBikeLockDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7ED32E2A268800C90D01 /* CHBikeLockDevice+Login.swift */; };
+		3B1D80022E2A268800C90D01 /* CHWifiModule2Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F442E2A268800C90D01 /* CHWifiModule2Device+Gatt.swift */; };
+		3B1D80032E2A268800C90D01 /* CHPassCodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F0B2E2A268800C90D01 /* CHPassCodeDelegate.swift */; };
+		3B1D80042E2A268800C90D01 /* CHSesame5Device+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7EEF2E2A268800C90D01 /* CHSesame5Device+History.swift */; };
+		3B1D80052E2A268800C90D01 /* CHPalmCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F042E2A268800C90D01 /* CHPalmCapable.swift */; };
+		3B1D80062E2A268800C90D01 /* CHPassCodeEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7F0C2E2A268800C90D01 /* CHPassCodeEventHandlers.swift */; };
+		3BC918BE2E2A54C700468AAC /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3BC918BD2E2A54C700468AAC /* AESc */; };
+		BEE459C7248500D600A886D5 /* SesameWatchKitSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F72B24C69E6800650CAD /* AWSAPIGatewayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66024C69E6600650CAD /* AWSAPIGatewayModel.m */; };
+		BEF8F72C24C69E6800650CAD /* AWSAPIGatewayClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66124C69E6600650CAD /* AWSAPIGatewayClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F72D24C69E6800650CAD /* AWSAPIGatewayModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66224C69E6600650CAD /* AWSAPIGatewayModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F72E24C69E6800650CAD /* AWSAPIGatewayClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66324C69E6600650CAD /* AWSAPIGatewayClient.m */; };
+		BEF8F72F24C69E6800650CAD /* AWSAPIGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66424C69E6600650CAD /* AWSAPIGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F73124C69E6800650CAD /* AWSCore.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66724C69E6600650CAD /* AWSCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F73224C69E6800650CAD /* AWSCognitoIdentity+Fabric.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66924C69E6600650CAD /* AWSCognitoIdentity+Fabric.m */; };
+		BEF8F73324C69E6800650CAD /* AWSCognitoIdentityModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66A24C69E6600650CAD /* AWSCognitoIdentityModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F73424C69E6800650CAD /* AWSCognitoIdentityResources.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66B24C69E6600650CAD /* AWSCognitoIdentityResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F73524C69E6800650CAD /* AWSCognitoIdentityService.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66C24C69E6600650CAD /* AWSCognitoIdentityService.m */; };
+		BEF8F73624C69E6800650CAD /* AWSCognitoIdentityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66D24C69E6600650CAD /* AWSCognitoIdentityModel.m */; };
+		BEF8F73724C69E6800650CAD /* AWSCognitoIdentity+Fabric.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66E24C69E6600650CAD /* AWSCognitoIdentity+Fabric.h */; };
+		BEF8F73824C69E6800650CAD /* AWSCognitoIdentityResources.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66F24C69E6600650CAD /* AWSCognitoIdentityResources.m */; };
+		BEF8F73924C69E6800650CAD /* AWSCognitoIdentityService.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67024C69E6600650CAD /* AWSCognitoIdentityService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F73A24C69E6800650CAD /* AWSCognitoIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67124C69E6600650CAD /* AWSCognitoIdentity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F73B24C69E6800650CAD /* AWSMTLModel+NSCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67324C69E6600650CAD /* AWSMTLModel+NSCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F73D24C69E6800650CAD /* AWSMTLManagedObjectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F67524C69E6600650CAD /* AWSMTLManagedObjectAdapter.m */; };
+		BEF8F73E24C69E6800650CAD /* NSError+AWSMTLModelException.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F67624C69E6600650CAD /* NSError+AWSMTLModelException.m */; };
+		BEF8F73F24C69E6800650CAD /* AWSMTLValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67724C69E6600650CAD /* AWSMTLValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F74024C69E6800650CAD /* AWSEXTRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67924C69E6600650CAD /* AWSEXTRuntimeExtensions.h */; };
+		BEF8F74124C69E6800650CAD /* AWSEXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67A24C69E6600650CAD /* AWSEXTScope.h */; };
+		BEF8F74224C69E6800650CAD /* AWSmetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67B24C69E6600650CAD /* AWSmetamacros.h */; };
+		BEF8F74324C69E6800650CAD /* AWSEXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F67C24C69E6600650CAD /* AWSEXTRuntimeExtensions.m */; };
+		BEF8F74424C69E6800650CAD /* AWSEXTKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F67D24C69E6600650CAD /* AWSEXTKeyPathCoding.h */; };
+		BEF8F74524C69E6800650CAD /* AWSEXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F67E24C69E6600650CAD /* AWSEXTScope.m */; };
+		BEF8F74624C69E6800650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F67F24C69E6600650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m */; };
+		BEF8F74724C69E6800650CAD /* AWSMTLJSONAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68024C69E6600650CAD /* AWSMTLJSONAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F74824C69E6800650CAD /* NSArray+AWSMTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F68124C69E6600650CAD /* NSArray+AWSMTLManipulationAdditions.m */; };
+		BEF8F74924C69E6800650CAD /* AWSMTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F68224C69E6600650CAD /* AWSMTLReflection.m */; };
+		BEF8F74A24C69E6800650CAD /* NSObject+AWSMTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F68324C69E6600650CAD /* NSObject+AWSMTLComparisonAdditions.m */; };
+		BEF8F74B24C69E6800650CAD /* NSValueTransformer+AWSMTLInversionAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68424C69E6600650CAD /* NSValueTransformer+AWSMTLInversionAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F74C24C69E6800650CAD /* AWSMTLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68524C69E6600650CAD /* AWSMTLModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F74D24C69E6800650CAD /* NSDictionary+AWSMTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F68624C69E6600650CAD /* NSDictionary+AWSMTLManipulationAdditions.m */; };
+		BEF8F74F24C69E6800650CAD /* AWSMTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F68824C69E6600650CAD /* AWSMTLModel+NSCoding.m */; };
+		BEF8F75024C69E6800650CAD /* AWSMTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F68924C69E6600650CAD /* AWSMTLValueTransformer.m */; };
+		BEF8F75124C69E6800650CAD /* NSError+AWSMTLModelException.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68A24C69E6600650CAD /* NSError+AWSMTLModelException.h */; };
+		BEF8F75224C69E6800650CAD /* AWSMTLManagedObjectAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68B24C69E6600650CAD /* AWSMTLManagedObjectAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F75324C69E6800650CAD /* NSValueTransformer+AWSMTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F68C24C69E6600650CAD /* NSValueTransformer+AWSMTLInversionAdditions.m */; };
+		BEF8F75424C69E6800650CAD /* NSObject+AWSMTLComparisonAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68D24C69E6600650CAD /* NSObject+AWSMTLComparisonAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F75524C69E6800650CAD /* NSArray+AWSMTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68E24C69E6700650CAD /* NSArray+AWSMTLManipulationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F75624C69E6800650CAD /* AWSMTLReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F68F24C69E6700650CAD /* AWSMTLReflection.h */; };
+		BEF8F75724C69E6800650CAD /* AWSMTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F69024C69E6700650CAD /* AWSMTLJSONAdapter.m */; };
+		BEF8F75824C69E6800650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F69124C69E6700650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F75924C69E6800650CAD /* NSDictionary+AWSMTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F69224C69E6700650CAD /* NSDictionary+AWSMTLManipulationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F75A24C69E6800650CAD /* AWSMantle.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F69324C69E6700650CAD /* AWSMantle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F75B24C69E6800650CAD /* AWSMTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F69424C69E6700650CAD /* AWSMTLModel.m */; };
+		BEF8F75C24C69E6800650CAD /* AWSXMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F69624C69E6700650CAD /* AWSXMLWriter.m */; };
+		BEF8F75D24C69E6800650CAD /* AWSXMLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F69724C69E6700650CAD /* AWSXMLWriter.h */; };
+		BEF8F75E24C69E6800650CAD /* AWSNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F69924C69E6700650CAD /* AWSNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F75F24C69E6800650CAD /* AWSURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F69A24C69E6700650CAD /* AWSURLSessionManager.m */; };
+		BEF8F76024C69E6800650CAD /* AWSNetworkingHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F69B24C69E6700650CAD /* AWSNetworkingHelpers.h */; };
+		BEF8F76124C69E6800650CAD /* AWSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F69C24C69E6700650CAD /* AWSNetworking.m */; };
+		BEF8F76224C69E6800650CAD /* AWSURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F69D24C69E6700650CAD /* AWSURLSessionManager.h */; };
+		BEF8F76324C69E6800650CAD /* AWSNetworkingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F69E24C69E6700650CAD /* AWSNetworkingHelpers.m */; };
+		BEF8F76424C69E6800650CAD /* AWSURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6A024C69E6700650CAD /* AWSURLRequestSerialization.m */; };
+		BEF8F76524C69E6800650CAD /* AWSURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6A124C69E6700650CAD /* AWSURLResponseSerialization.m */; };
+		BEF8F76624C69E6800650CAD /* AWSValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6A224C69E6700650CAD /* AWSValidation.h */; };
+		BEF8F76724C69E6800650CAD /* AWSSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6A324C69E6700650CAD /* AWSSerialization.m */; };
+		BEF8F76824C69E6800650CAD /* AWSURLRequestRetryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6A424C69E6700650CAD /* AWSURLRequestRetryHandler.m */; };
+		BEF8F76924C69E6800650CAD /* AWSURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6A524C69E6700650CAD /* AWSURLRequestSerialization.h */; };
+		BEF8F76A24C69E6800650CAD /* AWSValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6A624C69E6700650CAD /* AWSValidation.m */; };
+		BEF8F76B24C69E6800650CAD /* AWSURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6A724C69E6700650CAD /* AWSURLResponseSerialization.h */; };
+		BEF8F76C24C69E6800650CAD /* AWSURLRequestRetryHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6A824C69E6700650CAD /* AWSURLRequestRetryHandler.h */; };
+		BEF8F76D24C69E6800650CAD /* AWSSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6A924C69E6700650CAD /* AWSSerialization.h */; };
+		BEF8F76E24C69E6800650CAD /* AWSGZIP.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6AB24C69E6700650CAD /* AWSGZIP.h */; };
+		BEF8F77124C69E6800650CAD /* AWSGZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6AE24C69E6700650CAD /* AWSGZIP.m */; };
+		BEF8F77224C69E6800650CAD /* AWSCancellationTokenSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6B024C69E6700650CAD /* AWSCancellationTokenSource.h */; };
+		BEF8F77324C69E6800650CAD /* AWSExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6B124C69E6700650CAD /* AWSExecutor.h */; };
+		BEF8F77424C69E6800650CAD /* AWSCancellationToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6B224C69E6700650CAD /* AWSCancellationToken.m */; };
+		BEF8F77524C69E6800650CAD /* AWSTask.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6B324C69E6700650CAD /* AWSTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F77624C69E6800650CAD /* AWSBolts.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6B424C69E6700650CAD /* AWSBolts.m */; };
+		BEF8F77724C69E6800650CAD /* AWSCancellationTokenRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6B524C69E6700650CAD /* AWSCancellationTokenRegistration.m */; };
+		BEF8F77824C69E6800650CAD /* AWSTaskCompletionSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6B624C69E6700650CAD /* AWSTaskCompletionSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F77924C69E6800650CAD /* AWSGeneric.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6B724C69E6700650CAD /* AWSGeneric.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F77A24C69E6800650CAD /* AWSCancellationToken.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6B824C69E6700650CAD /* AWSCancellationToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F77B24C69E6800650CAD /* AWSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6B924C69E6700650CAD /* AWSExecutor.m */; };
+		BEF8F77C24C69E6800650CAD /* AWSCancellationTokenSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6BA24C69E6700650CAD /* AWSCancellationTokenSource.m */; };
+		BEF8F77D24C69E6800650CAD /* AWSCancellationTokenRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6BB24C69E6700650CAD /* AWSCancellationTokenRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F77E24C69E6800650CAD /* AWSTask.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6BC24C69E6700650CAD /* AWSTask.m */; };
+		BEF8F77F24C69E6800650CAD /* AWSBolts.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6BD24C69E6700650CAD /* AWSBolts.h */; };
+		BEF8F78024C69E6800650CAD /* AWSTaskCompletionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6BE24C69E6700650CAD /* AWSTaskCompletionSource.m */; };
+		BEF8F78124C69E6800650CAD /* AWSXMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6C024C69E6700650CAD /* AWSXMLDictionary.m */; };
+		BEF8F78424C69E6800650CAD /* AWSXMLDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6C324C69E6700650CAD /* AWSXMLDictionary.h */; };
+		BEF8F78524C69E6800650CAD /* AWSTMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6C524C69E6700650CAD /* AWSTMMemoryCache.m */; };
+		BEF8F78624C69E6800650CAD /* AWSTMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6C624C69E6700650CAD /* AWSTMDiskCache.m */; };
+		BEF8F78724C69E6800650CAD /* AWSTMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6C724C69E6700650CAD /* AWSTMCache.m */; };
+		BEF8F78924C69E6800650CAD /* AWSTMDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6C924C69E6700650CAD /* AWSTMDiskCache.h */; };
+		BEF8F78A24C69E6800650CAD /* AWSTMMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6CA24C69E6700650CAD /* AWSTMMemoryCache.h */; };
+		BEF8F78C24C69E6800650CAD /* AWSTMCacheBackgroundTaskManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6CC24C69E6700650CAD /* AWSTMCacheBackgroundTaskManager.h */; };
+		BEF8F78D24C69E6800650CAD /* AWSTMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6CD24C69E6700650CAD /* AWSTMCache.h */; };
+		BEF8F79024C69E6800650CAD /* Fabric.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6D224C69E6700650CAD /* Fabric.h */; };
+		BEF8F79124C69E6800650CAD /* FABKitProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6D324C69E6700650CAD /* FABKitProtocol.h */; };
+		BEF8F79224C69E6800650CAD /* Fabric+FABKits.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6D424C69E6700650CAD /* Fabric+FABKits.h */; };
+		BEF8F79324C69E6800650CAD /* FABAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6D524C69E6700650CAD /* FABAttributes.h */; };
+		BEF8F79424C69E6800650CAD /* AWSFMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6D724C69E6700650CAD /* AWSFMDatabasePool.m */; };
+		BEF8F79524C69E6800650CAD /* AWSFMDB+AWSHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6D824C69E6700650CAD /* AWSFMDB+AWSHelpers.h */; };
+		BEF8F79624C69E6800650CAD /* AWSFMDatabase+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6D924C69E6700650CAD /* AWSFMDatabase+Private.h */; };
+		BEF8F79724C69E6800650CAD /* AWSFMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6DA24C69E6700650CAD /* AWSFMResultSet.m */; };
+		BEF8F79824C69E6800650CAD /* AWSFMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6DB24C69E6700650CAD /* AWSFMDatabaseQueue.m */; };
+		BEF8F79924C69E6800650CAD /* AWSFMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6DC24C69E6700650CAD /* AWSFMDatabase.m */; };
+		BEF8F79A24C69E6800650CAD /* AWSFMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6DD24C69E6700650CAD /* AWSFMDatabaseAdditions.m */; };
+		BEF8F79C24C69E6800650CAD /* AWSFMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6DF24C69E6700650CAD /* AWSFMDB.h */; };
+		BEF8F79D24C69E6800650CAD /* AWSFMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6E024C69E6700650CAD /* AWSFMDatabasePool.h */; };
+		BEF8F79E24C69E6800650CAD /* AWSFMDB+AWSHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6E124C69E6700650CAD /* AWSFMDB+AWSHelpers.m */; };
+		BEF8F7A024C69E6800650CAD /* AWSFMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6E324C69E6700650CAD /* AWSFMDatabaseAdditions.h */; };
+		BEF8F7A124C69E6800650CAD /* AWSFMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6E424C69E6700650CAD /* AWSFMDatabaseQueue.h */; };
+		BEF8F7A224C69E6800650CAD /* AWSFMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6E524C69E6700650CAD /* AWSFMDatabase.h */; };
+		BEF8F7A324C69E6800650CAD /* AWSFMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6E624C69E6700650CAD /* AWSFMResultSet.h */; };
+		BEF8F7A424C69E6800650CAD /* AWSClientContext.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6E824C69E6700650CAD /* AWSClientContext.h */; };
+		BEF8F7A524C69E6800650CAD /* AWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6E924C69E6700650CAD /* AWSService.m */; };
+		BEF8F7A624C69E6800650CAD /* AWSInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6EA24C69E6700650CAD /* AWSInfo.m */; };
+		BEF8F7A724C69E6800650CAD /* AWSClientContext.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6EB24C69E6700650CAD /* AWSClientContext.m */; };
+		BEF8F7A824C69E6800650CAD /* AWSService.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6EC24C69E6700650CAD /* AWSService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7A924C69E6800650CAD /* AWSServiceEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6ED24C69E6700650CAD /* AWSServiceEnum.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7AA24C69E6800650CAD /* AWSInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6EE24C69E6700650CAD /* AWSInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7AC24C69E6800650CAD /* AWSUICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6F124C69E6700650CAD /* AWSUICKeyChainStore.m */; };
+		BEF8F7AE24C69E6800650CAD /* AWSUICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6F324C69E6700650CAD /* AWSUICKeyChainStore.h */; };
+		BEF8F7AF24C69E6800650CAD /* AWSIdentityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6F524C69E6700650CAD /* AWSIdentityProvider.m */; };
+		BEF8F7B024C69E6800650CAD /* AWSCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6F624C69E6700650CAD /* AWSCredentialsProvider.m */; };
+		BEF8F7B124C69E6800650CAD /* AWSSignature.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6F724C69E6700650CAD /* AWSSignature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7B224C69E6800650CAD /* AWSIdentityProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6F824C69E6700650CAD /* AWSIdentityProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7B324C69E6800650CAD /* AWSCredentialsProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6F924C69E6700650CAD /* AWSCredentialsProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7B424C69E6800650CAD /* AWSSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6FA24C69E6700650CAD /* AWSSignature.m */; };
+		BEF8F7B524C69E6800650CAD /* AWSDDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6FC24C69E6700650CAD /* AWSDDAbstractDatabaseLogger.m */; };
+		BEF8F7B624C69E6800650CAD /* AWSDDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6FD24C69E6700650CAD /* AWSDDTTYLogger.h */; };
+		BEF8F7B724C69E6800650CAD /* AWSDDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F6FE24C69E6700650CAD /* AWSDDLog.m */; };
+		BEF8F7B824C69E6800650CAD /* AWSDDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F6FF24C69E6700650CAD /* AWSDDASLLogCapture.h */; };
+		BEF8F7B924C69E6800650CAD /* AWSDDOSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70024C69E6700650CAD /* AWSDDOSLogger.h */; };
+		BEF8F7BA24C69E6800650CAD /* AWSDDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70124C69E6700650CAD /* AWSDDAssertMacros.h */; };
+		BEF8F7BB24C69E6800650CAD /* AWSDDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F70224C69E6700650CAD /* AWSDDFileLogger.m */; };
+		BEF8F7BC24C69E6800650CAD /* AWSDDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70324C69E6700650CAD /* AWSDDASLLogger.h */; };
+		BEF8F7BD24C69E6800650CAD /* AWSDDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70424C69E6700650CAD /* AWSDDLog+LOGV.h */; };
+		BEF8F7BE24C69E6800650CAD /* AWSDDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70624C69E6700650CAD /* AWSDDContextFilterLogFormatter.h */; };
+		BEF8F7BF24C69E6800650CAD /* AWSDDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70724C69E6700650CAD /* AWSDDDispatchQueueLogFormatter.h */; };
+		BEF8F7C024C69E6800650CAD /* AWSDDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70824C69E6700650CAD /* AWSDDMultiFormatter.h */; };
+		BEF8F7C124C69E6800650CAD /* AWSDDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F70924C69E6700650CAD /* AWSDDContextFilterLogFormatter.m */; };
+		BEF8F7C224C69E6800650CAD /* AWSDDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F70A24C69E6700650CAD /* AWSDDDispatchQueueLogFormatter.m */; };
+		BEF8F7C324C69E6800650CAD /* AWSDDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70B24C69E6700650CAD /* AWSDDAbstractDatabaseLogger.h */; };
+		BEF8F7C424C69E6800650CAD /* AWSDDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F70C24C69E6700650CAD /* AWSDDASLLogCapture.m */; };
+		BEF8F7C524C69E6800650CAD /* AWSDDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70D24C69E6700650CAD /* AWSDDLog.h */; };
+		BEF8F7C624C69E6800650CAD /* AWSDDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F70E24C69E6700650CAD /* AWSDDTTYLogger.m */; };
+		BEF8F7C724C69E6800650CAD /* AWSDDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F70F24C69E6700650CAD /* AWSDDLegacyMacros.h */; };
+		BEF8F7C824C69E6800650CAD /* AWSCocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F71024C69E6700650CAD /* AWSCocoaLumberjack.h */; };
+		BEF8F7C924C69E6800650CAD /* AWSDDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F71124C69E6700650CAD /* AWSDDASLLogger.m */; };
+		BEF8F7CA24C69E6800650CAD /* AWSDDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F71224C69E6700650CAD /* AWSDDMultiFormatter.m */; };
+		BEF8F7CB24C69E6800650CAD /* AWSDDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F71324C69E6700650CAD /* AWSDDFileLogger.h */; };
+		BEF8F7CC24C69E6800650CAD /* AWSDDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F71424C69E6700650CAD /* AWSDDLogMacros.h */; };
+		BEF8F7CD24C69E6800650CAD /* AWSDDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F71524C69E6700650CAD /* AWSDDOSLogger.m */; };
+		BEF8F7CF24C69E6800650CAD /* AWSSTSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F71824C69E6700650CAD /* AWSSTSModel.m */; };
+		BEF8F7D024C69E6800650CAD /* AWSSTSService.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F71924C69E6700650CAD /* AWSSTSService.h */; };
+		BEF8F7D124C69E6800650CAD /* AWSSTS.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F71A24C69E6700650CAD /* AWSSTS.h */; };
+		BEF8F7D224C69E6800650CAD /* AWSSTSResources.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F71B24C69E6700650CAD /* AWSSTSResources.m */; };
+		BEF8F7D324C69E6800650CAD /* AWSSTSModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F71C24C69E6700650CAD /* AWSSTSModel.h */; };
+		BEF8F7D424C69E6800650CAD /* AWSSTSService.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F71D24C69E6700650CAD /* AWSSTSService.m */; };
+		BEF8F7D524C69E6800650CAD /* AWSSTSResources.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F71E24C69E6700650CAD /* AWSSTSResources.h */; };
+		BEF8F7D624C69E6800650CAD /* AWSModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F72024C69E6700650CAD /* AWSModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7D724C69E6800650CAD /* AWSCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F72124C69E6700650CAD /* AWSCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF8F7D824C69E6800650CAD /* AWSSynchronizedMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F72224C69E6700650CAD /* AWSSynchronizedMutableDictionary.m */; };
+		BEF8F7D924C69E6800650CAD /* AWSLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F72324C69E6700650CAD /* AWSLogging.m */; };
+		BEF8F7DA24C69E6800650CAD /* AWSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F72424C69E6700650CAD /* AWSModel.m */; };
+		BEF8F7DB24C69E6800650CAD /* AWSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F72524C69E6700650CAD /* AWSCategory.m */; };
+		BEF8F7DC24C69E6800650CAD /* AWSSynchronizedMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F72624C69E6700650CAD /* AWSSynchronizedMutableDictionary.h */; };
+		BEF8F7DD24C69E6800650CAD /* AWSLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F72724C69E6700650CAD /* AWSLogging.h */; };
+		BEF8F7DE24C69E6800650CAD /* AWSKSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F72924C69E6700650CAD /* AWSKSReachability.h */; };
+		BEF8F7DF24C69E6800650CAD /* AWSKSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F72A24C69E6700650CAD /* AWSKSReachability.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B1D7EC02E2A268800C90D01 /* CHSesame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2.swift; sourceTree = "<group>"; };
+		3B1D7EC12E2A268800C90D01 /* CHSesame2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2Device.swift; sourceTree = "<group>"; };
+		3B1D7EC22E2A268800C90D01 /* CHSesame2Device+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+DFU.swift"; sourceTree = "<group>"; };
+		3B1D7EC32E2A268800C90D01 /* CHSesame2Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Gatt.swift"; sourceTree = "<group>"; };
+		3B1D7EC42E2A268800C90D01 /* CHSesame2Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+History.swift"; sourceTree = "<group>"; };
+		3B1D7EC52E2A268800C90D01 /* CHSesame2Device+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Lock.swift"; sourceTree = "<group>"; };
+		3B1D7EC62E2A268800C90D01 /* CHSesame2Device+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Login.swift"; sourceTree = "<group>"; };
+		3B1D7EC72E2A268800C90D01 /* CHSesame2Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Register.swift"; sourceTree = "<group>"; };
+		3B1D7EC82E2A268800C90D01 /* Sesame2BleCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2BleCipher.swift; sourceTree = "<group>"; };
+		3B1D7EC92E2A268800C90D01 /* Sesame2BleDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sesame2BleDevice+Peripheral.swift"; sourceTree = "<group>"; };
+		3B1D7ECA2E2A268800C90D01 /* Sesame2Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2Payload.swift; sourceTree = "<group>"; };
+		3B1D7ECB2E2A268800C90D01 /* Sesame2Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2Protocols.swift; sourceTree = "<group>"; };
+		3B1D7ECD2E2A268800C90D01 /* BikeLockPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeLockPayload.swift; sourceTree = "<group>"; };
+		3B1D7ECE2E2A268800C90D01 /* CHBikeLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBikeLock.swift; sourceTree = "<group>"; };
+		3B1D7ECF2E2A268800C90D01 /* CHBikeLockDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBikeLockDevice.swift; sourceTree = "<group>"; };
+		3B1D7ED02E2A268800C90D01 /* CHBikeLockDevice+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+DFU.swift"; sourceTree = "<group>"; };
+		3B1D7ED12E2A268800C90D01 /* CHBikeLockDevice+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Gatt.swift"; sourceTree = "<group>"; };
+		3B1D7ED22E2A268800C90D01 /* CHBikeLockDevice+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Lock.swift"; sourceTree = "<group>"; };
+		3B1D7ED32E2A268800C90D01 /* CHBikeLockDevice+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Login.swift"; sourceTree = "<group>"; };
+		3B1D7ED42E2A268800C90D01 /* CHBikeLockDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Peripheral.swift"; sourceTree = "<group>"; };
+		3B1D7ED52E2A268800C90D01 /* CHBikeLockDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Register.swift"; sourceTree = "<group>"; };
+		3B1D7ED62E2A268800C90D01 /* CHBikeLockDevice+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Setting.swift"; sourceTree = "<group>"; };
+		3B1D7ED82E2A268800C90D01 /* CHSesameBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot.swift; sourceTree = "<group>"; };
+		3B1D7ED92E2A268800C90D01 /* CHSesameBotDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBotDevice.swift; sourceTree = "<group>"; };
+		3B1D7EDA2E2A268800C90D01 /* CHSesameBotDevice+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+DFU.swift"; sourceTree = "<group>"; };
+		3B1D7EDB2E2A268800C90D01 /* CHSesameBotDevice+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Gatt.swift"; sourceTree = "<group>"; };
+		3B1D7EDC2E2A268800C90D01 /* CHSesameBotDevice+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+History.swift"; sourceTree = "<group>"; };
+		3B1D7EDD2E2A268800C90D01 /* CHSesameBotDevice+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Lock.swift"; sourceTree = "<group>"; };
+		3B1D7EDE2E2A268800C90D01 /* CHSesameBotDevice+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Login.swift"; sourceTree = "<group>"; };
+		3B1D7EDF2E2A268800C90D01 /* CHSesameBotDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Peripheral.swift"; sourceTree = "<group>"; };
+		3B1D7EE02E2A268800C90D01 /* CHSesameBotDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Register.swift"; sourceTree = "<group>"; };
+		3B1D7EE12E2A268800C90D01 /* CHSesameBotDevice+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Setting.swift"; sourceTree = "<group>"; };
+		3B1D7EE22E2A268800C90D01 /* SesameBotPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBotPayload.swift; sourceTree = "<group>"; };
+		3B1D7EE32E2A268800C90D01 /* SesameBotProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBotProtocols.swift; sourceTree = "<group>"; };
+		3B1D7EE62E2A268800C90D01 /* CHHub3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3.swift; sourceTree = "<group>"; };
+		3B1D7EE72E2A268800C90D01 /* CHHub3Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3Device.swift; sourceTree = "<group>"; };
+		3B1D7EE82E2A268800C90D01 /* CHHub3Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+Gatt.swift"; sourceTree = "<group>"; };
+		3B1D7EE92E2A268800C90D01 /* CHHub3Device+IR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+IR.swift"; sourceTree = "<group>"; };
+		3B1D7EEA2E2A268800C90D01 /* IRDeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRDeviceType.swift; sourceTree = "<group>"; };
+		3B1D7EEC2E2A268800C90D01 /* CHSesame5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5.swift; sourceTree = "<group>"; };
+		3B1D7EED2E2A268800C90D01 /* CHSesame5Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5Device.swift; sourceTree = "<group>"; };
+		3B1D7EEE2E2A268800C90D01 /* CHSesame5Device+Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Command.swift"; sourceTree = "<group>"; };
+		3B1D7EEF2E2A268800C90D01 /* CHSesame5Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+History.swift"; sourceTree = "<group>"; };
+		3B1D7EF02E2A268800C90D01 /* CHSesame5Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Register.swift"; sourceTree = "<group>"; };
+		3B1D7EF22E2A268800C90D01 /* CHSesameBike2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2.swift; sourceTree = "<group>"; };
+		3B1D7EF32E2A268800C90D01 /* CHSesameBike2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2Device.swift; sourceTree = "<group>"; };
+		3B1D7EF52E2A268800C90D01 /* CHCardCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardCapable.swift; sourceTree = "<group>"; };
+		3B1D7EF62E2A268800C90D01 /* CHCardCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardCapableExtension.swift; sourceTree = "<group>"; };
+		3B1D7EF72E2A268800C90D01 /* CHCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardDelegate.swift; sourceTree = "<group>"; };
+		3B1D7EF82E2A268800C90D01 /* CHCardEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardEventHandlers.swift; sourceTree = "<group>"; };
+		3B1D7EFA2E2A268800C90D01 /* CHFaceCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceCapable.swift; sourceTree = "<group>"; };
+		3B1D7EFB2E2A268800C90D01 /* CHFaceCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceCapableExtension.swift; sourceTree = "<group>"; };
+		3B1D7EFC2E2A268800C90D01 /* CHFaceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceDelegate.swift; sourceTree = "<group>"; };
+		3B1D7EFD2E2A268800C90D01 /* CHFaceEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceEventHandlers.swift; sourceTree = "<group>"; };
+		3B1D7EFF2E2A268800C90D01 /* CHFingerPrintCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintCapable.swift; sourceTree = "<group>"; };
+		3B1D7F002E2A268800C90D01 /* CHFingerPrintCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintCapableExtension.swift; sourceTree = "<group>"; };
+		3B1D7F012E2A268800C90D01 /* CHFingerPrintDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintDelegate.swift; sourceTree = "<group>"; };
+		3B1D7F022E2A268800C90D01 /* CHFingerPrintEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintEventHandlers.swift; sourceTree = "<group>"; };
+		3B1D7F042E2A268800C90D01 /* CHPalmCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmCapable.swift; sourceTree = "<group>"; };
+		3B1D7F052E2A268800C90D01 /* CHPalmCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmCapableExtension.swift; sourceTree = "<group>"; };
+		3B1D7F062E2A268800C90D01 /* CHPalmDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmDelegate.swift; sourceTree = "<group>"; };
+		3B1D7F072E2A268800C90D01 /* CHPalmEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmEventHandlers.swift; sourceTree = "<group>"; };
+		3B1D7F092E2A268800C90D01 /* CHPassCodeCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeCapable.swift; sourceTree = "<group>"; };
+		3B1D7F0A2E2A268800C90D01 /* CHPassCodeCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeCapableExtension.swift; sourceTree = "<group>"; };
+		3B1D7F0B2E2A268800C90D01 /* CHPassCodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeDelegate.swift; sourceTree = "<group>"; };
+		3B1D7F0C2E2A268800C90D01 /* CHPassCodeEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeEventHandlers.swift; sourceTree = "<group>"; };
+		3B1D7F0E2E2A268800C90D01 /* CHCapbleRenameBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCapbleRenameBean.swift; sourceTree = "<group>"; };
+		3B1D7F0F2E2A268800C90D01 /* CHServerCapableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHServerCapableHandler.swift; sourceTree = "<group>"; };
+		3B1D7F122E2A268800C90D01 /* CHMechanicalSettingsCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHMechanicalSettingsCapable.swift; sourceTree = "<group>"; };
+		3B1D7F142E2A268800C90D01 /* CHRemoteNanoCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoCapable.swift; sourceTree = "<group>"; };
+		3B1D7F152E2A268800C90D01 /* CHRemoteNanoCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoCapableExtension.swift; sourceTree = "<group>"; };
+		3B1D7F162E2A268800C90D01 /* CHRemoteNanoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoDelegate.swift; sourceTree = "<group>"; };
+		3B1D7F182E2A268800C90D01 /* CHOpenSensorCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHOpenSensorCapable.swift; sourceTree = "<group>"; };
+		3B1D7F192E2A268800C90D01 /* CHOpenSensorCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHOpenSensorCapableExtension.swift; sourceTree = "<group>"; };
+		3B1D7F1C2E2A268800C90D01 /* CHVersionCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHVersionCapable.swift; sourceTree = "<group>"; };
+		3B1D7F1F2E2A268800C90D01 /* CHDelegateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDelegateManager.swift; sourceTree = "<group>"; };
+		3B1D7F222E2A268800C90D01 /* CHSesameBaseDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBaseDevice.swift; sourceTree = "<group>"; };
+		3B1D7F232E2A268800C90D01 /* CHSesameBaseDevice+Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Connector.swift"; sourceTree = "<group>"; };
+		3B1D7F242E2A268800C90D01 /* CHSesameBaseDevice+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Delegate.swift"; sourceTree = "<group>"; };
+		3B1D7F252E2A268800C90D01 /* CHSesameBaseDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Register.swift"; sourceTree = "<group>"; };
+		3B1D7F262E2A268800C90D01 /* CHSesameBaseDevice+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Settings.swift"; sourceTree = "<group>"; };
+		3B1D7F272E2A268800C90D01 /* CHSesameBaseDevice+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Version.swift"; sourceTree = "<group>"; };
+		3B1D7F282E2A268800C90D01 /* CHSesameBasePro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBasePro.swift; sourceTree = "<group>"; };
+		3B1D7F2A2E2A268800C90D01 /* CHSesameFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFace.swift; sourceTree = "<group>"; };
+		3B1D7F2B2E2A268800C90D01 /* CHSesameFaceDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFaceDevice.swift; sourceTree = "<group>"; };
+		3B1D7F2D2E2A268800C90D01 /* CHSesameFacePro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFacePro.swift; sourceTree = "<group>"; };
+		3B1D7F2E2E2A268800C90D01 /* CHSesameFaceProDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFaceProDevice.swift; sourceTree = "<group>"; };
+		3B1D7F302E2A268800C90D01 /* CHSesameTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouch.swift; sourceTree = "<group>"; };
+		3B1D7F312E2A268800C90D01 /* CHSesameTouchDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchDevice.swift; sourceTree = "<group>"; };
+		3B1D7F332E2A268800C90D01 /* CHSesameTouchPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchPro.swift; sourceTree = "<group>"; };
+		3B1D7F342E2A268800C90D01 /* CHSesameTouchProDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchProDevice.swift; sourceTree = "<group>"; };
+		3B1D7F372E2A268800C90D01 /* CHRemoteBaseTriggerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteBaseTriggerSettings.swift; sourceTree = "<group>"; };
+		3B1D7F382E2A268800C90D01 /* CHSesameBaseMechSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBaseMechSettings.swift; sourceTree = "<group>"; };
+		3B1D7F392E2A268800C90D01 /* CHSesameTouchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchCard.swift; sourceTree = "<group>"; };
+		3B1D7F3A2E2A268800C90D01 /* CHSesameTouchProMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchProMechStatus.swift; sourceTree = "<group>"; };
+		3B1D7F3B2E2A268800C90D01 /* OpenSensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSensorData.swift; sourceTree = "<group>"; };
+		3B1D7F3C2E2A268800C90D01 /* OpensensorMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensensorMechStatus.swift; sourceTree = "<group>"; };
+		3B1D7F3F2E2A268800C90D01 /* CHSesameBot2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot2.swift; sourceTree = "<group>"; };
+		3B1D7F402E2A268800C90D01 /* CHSesameBot2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot2Device.swift; sourceTree = "<group>"; };
+		3B1D7F422E2A268800C90D01 /* CHWifiModule2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWifiModule2.swift; sourceTree = "<group>"; };
+		3B1D7F432E2A268800C90D01 /* CHWifiModule2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWifiModule2Device.swift; sourceTree = "<group>"; };
+		3B1D7F442E2A268800C90D01 /* CHWifiModule2Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Gatt.swift"; sourceTree = "<group>"; };
+		3B1D7F452E2A268800C90D01 /* CHWifiModule2Device+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Peripheral.swift"; sourceTree = "<group>"; };
+		3B1D7F462E2A268800C90D01 /* CHWifiModule2Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Register.swift"; sourceTree = "<group>"; };
+		3B1D7F472E2A268800C90D01 /* WifiModule2Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2Payload.swift; sourceTree = "<group>"; };
+		3B1D7F482E2A268800C90D01 /* WifiModule2Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2Protocols.swift; sourceTree = "<group>"; };
+		3B1D7F4A2E2A268800C90D01 /* CHDeviceUtil+OS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceUtil+OS3.swift"; sourceTree = "<group>"; };
+		3B1D7F4B2E2A268800C90D01 /* CHSesameOS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameOS3.swift; sourceTree = "<group>"; };
+		3B1D7F4C2E2A268800C90D01 /* SesameOS3BleCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameOS3BleCipher.swift; sourceTree = "<group>"; };
+		3B1D7F4D2E2A268800C90D01 /* SesameOS3SegmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameOS3SegmentType.swift; sourceTree = "<group>"; };
+		3B1D7F4F2E2A268800C90D01 /* CHBaseDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBaseDevice.swift; sourceTree = "<group>"; };
+		3B1D7F502E2A268800C90D01 /* CHBluetoothCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBluetoothCenter.swift; sourceTree = "<group>"; };
+		3B1D7F512E2A268800C90D01 /* CHDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDevice.swift; sourceTree = "<group>"; };
+		3B1D7F522E2A268800C90D01 /* CHDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceProtocol.swift; sourceTree = "<group>"; };
+		3B1D7F542E2A268800C90D01 /* AWSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfig.swift; sourceTree = "<group>"; };
+		3B1D7F562E2A268800C90D01 /* CHDeviceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceKey.swift; sourceTree = "<group>"; };
+		3B1D7F572E2A268800C90D01 /* CHGuestKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHGuestKey.swift; sourceTree = "<group>"; };
+		3B1D7F582E2A268800C90D01 /* CHSesame2HistoryEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2HistoryEvent.swift; sourceTree = "<group>"; };
+		3B1D7F5B2E2A268800C90D01 /* CHDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceCenter.swift; sourceTree = "<group>"; };
+		3B1D7F5C2E2A268800C90D01 /* CHDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceManager.swift; sourceTree = "<group>"; };
+		3B1D7F5F2E2A268800C90D01 /* CHIoTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIoTManager.swift; sourceTree = "<group>"; };
+		3B1D7F602E2A268800C90D01 /* ShadowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModel.swift; sourceTree = "<group>"; };
+		3B1D7F622E2A268800C90D01 /* CHAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAccountManager.swift; sourceTree = "<group>"; };
+		3B1D7F632E2A268800C90D01 /* CHAccountManager+APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHAccountManager+APIRequest.swift"; sourceTree = "<group>"; };
+		3B1D7F642E2A268800C90D01 /* CHAPICallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAPICallObject.swift; sourceTree = "<group>"; };
+		3B1D7F652E2A268800C90D01 /* CHResultPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHResultPattern.swift; sourceTree = "<group>"; };
+		3B1D7F662E2A268800C90D01 /* ServerBaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBaseType.swift; sourceTree = "<group>"; };
+		3B1D7F682E2A268800C90D01 /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
+		3B1D7F692E2A268800C90D01 /* CHConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHConfiguration.swift; sourceTree = "<group>"; };
+		3B1D7F6A2E2A268800C90D01 /* CHExtensionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHExtensionListener.swift; sourceTree = "<group>"; };
+		3B1D7F6B2E2A268800C90D01 /* CHMulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHMulticastDelegate.swift; sourceTree = "<group>"; };
+		3B1D7F6C2E2A268800C90D01 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		3B1D7F6D2E2A268800C90D01 /* ECC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECC.swift; sourceTree = "<group>"; };
+		3B1D7F6E2E2A268800C90D01 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		3B1D7F6F2E2A268800C90D01 /* NSError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+.swift"; sourceTree = "<group>"; };
+		3B1D7F702E2A268800C90D01 /* SafeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDictionary.swift; sourceTree = "<group>"; };
+		3B1D7F712E2A268800C90D01 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		3B1D7F722E2A268800C90D01 /* SwCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
+		3B1D7F732E2A268800C90D01 /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
+		3B1D7F752E2A268800C90D01 /* CHDeviceModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CHDeviceModel.xcdatamodel; sourceTree = "<group>"; };
+		644E3DC52BC2A4D200385BE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B1429442231F8F98006AA64C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BEE459C3248500D500A886D5 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SesameWatchKitSDK.h; sourceTree = "<group>"; };
+		BEE459C6248500D600A886D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF8F66024C69E6600650CAD /* AWSAPIGatewayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPIGatewayModel.m; sourceTree = "<group>"; };
+		BEF8F66124C69E6600650CAD /* AWSAPIGatewayClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPIGatewayClient.h; sourceTree = "<group>"; };
+		BEF8F66224C69E6600650CAD /* AWSAPIGatewayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPIGatewayModel.h; sourceTree = "<group>"; };
+		BEF8F66324C69E6600650CAD /* AWSAPIGatewayClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPIGatewayClient.m; sourceTree = "<group>"; };
+		BEF8F66424C69E6600650CAD /* AWSAPIGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPIGateway.h; sourceTree = "<group>"; };
+		BEF8F66524C69E6600650CAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF8F66724C69E6600650CAD /* AWSCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCore.h; sourceTree = "<group>"; };
+		BEF8F66924C69E6600650CAD /* AWSCognitoIdentity+Fabric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AWSCognitoIdentity+Fabric.m"; sourceTree = "<group>"; };
+		BEF8F66A24C69E6600650CAD /* AWSCognitoIdentityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCognitoIdentityModel.h; sourceTree = "<group>"; };
+		BEF8F66B24C69E6600650CAD /* AWSCognitoIdentityResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCognitoIdentityResources.h; sourceTree = "<group>"; };
+		BEF8F66C24C69E6600650CAD /* AWSCognitoIdentityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCognitoIdentityService.m; sourceTree = "<group>"; };
+		BEF8F66D24C69E6600650CAD /* AWSCognitoIdentityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCognitoIdentityModel.m; sourceTree = "<group>"; };
+		BEF8F66E24C69E6600650CAD /* AWSCognitoIdentity+Fabric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSCognitoIdentity+Fabric.h"; sourceTree = "<group>"; };
+		BEF8F66F24C69E6600650CAD /* AWSCognitoIdentityResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCognitoIdentityResources.m; sourceTree = "<group>"; };
+		BEF8F67024C69E6600650CAD /* AWSCognitoIdentityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCognitoIdentityService.h; sourceTree = "<group>"; };
+		BEF8F67124C69E6600650CAD /* AWSCognitoIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCognitoIdentity.h; sourceTree = "<group>"; };
+		BEF8F67324C69E6600650CAD /* AWSMTLModel+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSMTLModel+NSCoding.h"; sourceTree = "<group>"; };
+		BEF8F67424C69E6600650CAD /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		BEF8F67524C69E6600650CAD /* AWSMTLManagedObjectAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSMTLManagedObjectAdapter.m; sourceTree = "<group>"; };
+		BEF8F67624C69E6600650CAD /* NSError+AWSMTLModelException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+AWSMTLModelException.m"; sourceTree = "<group>"; };
+		BEF8F67724C69E6600650CAD /* AWSMTLValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMTLValueTransformer.h; sourceTree = "<group>"; };
+		BEF8F67924C69E6600650CAD /* AWSEXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSEXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		BEF8F67A24C69E6600650CAD /* AWSEXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSEXTScope.h; sourceTree = "<group>"; };
+		BEF8F67B24C69E6600650CAD /* AWSmetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSmetamacros.h; sourceTree = "<group>"; };
+		BEF8F67C24C69E6600650CAD /* AWSEXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSEXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		BEF8F67D24C69E6600650CAD /* AWSEXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSEXTKeyPathCoding.h; sourceTree = "<group>"; };
+		BEF8F67E24C69E6600650CAD /* AWSEXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSEXTScope.m; sourceTree = "<group>"; };
+		BEF8F67F24C69E6600650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
+		BEF8F68024C69E6600650CAD /* AWSMTLJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMTLJSONAdapter.h; sourceTree = "<group>"; };
+		BEF8F68124C69E6600650CAD /* NSArray+AWSMTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AWSMTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		BEF8F68224C69E6600650CAD /* AWSMTLReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSMTLReflection.m; sourceTree = "<group>"; };
+		BEF8F68324C69E6600650CAD /* NSObject+AWSMTLComparisonAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AWSMTLComparisonAdditions.m"; sourceTree = "<group>"; };
+		BEF8F68424C69E6600650CAD /* NSValueTransformer+AWSMTLInversionAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+AWSMTLInversionAdditions.h"; sourceTree = "<group>"; };
+		BEF8F68524C69E6600650CAD /* AWSMTLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMTLModel.h; sourceTree = "<group>"; };
+		BEF8F68624C69E6600650CAD /* NSDictionary+AWSMTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AWSMTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		BEF8F68724C69E6600650CAD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEF8F68824C69E6600650CAD /* AWSMTLModel+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AWSMTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		BEF8F68924C69E6600650CAD /* AWSMTLValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSMTLValueTransformer.m; sourceTree = "<group>"; };
+		BEF8F68A24C69E6600650CAD /* NSError+AWSMTLModelException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+AWSMTLModelException.h"; sourceTree = "<group>"; };
+		BEF8F68B24C69E6600650CAD /* AWSMTLManagedObjectAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMTLManagedObjectAdapter.h; sourceTree = "<group>"; };
+		BEF8F68C24C69E6600650CAD /* NSValueTransformer+AWSMTLInversionAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+AWSMTLInversionAdditions.m"; sourceTree = "<group>"; };
+		BEF8F68D24C69E6600650CAD /* NSObject+AWSMTLComparisonAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AWSMTLComparisonAdditions.h"; sourceTree = "<group>"; };
+		BEF8F68E24C69E6700650CAD /* NSArray+AWSMTLManipulationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AWSMTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		BEF8F68F24C69E6700650CAD /* AWSMTLReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMTLReflection.h; sourceTree = "<group>"; };
+		BEF8F69024C69E6700650CAD /* AWSMTLJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSMTLJSONAdapter.m; sourceTree = "<group>"; };
+		BEF8F69124C69E6700650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+AWSMTLPredefinedTransformerAdditions.h"; sourceTree = "<group>"; };
+		BEF8F69224C69E6700650CAD /* NSDictionary+AWSMTLManipulationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AWSMTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		BEF8F69324C69E6700650CAD /* AWSMantle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMantle.h; sourceTree = "<group>"; };
+		BEF8F69424C69E6700650CAD /* AWSMTLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSMTLModel.m; sourceTree = "<group>"; };
+		BEF8F69624C69E6700650CAD /* AWSXMLWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSXMLWriter.m; sourceTree = "<group>"; };
+		BEF8F69724C69E6700650CAD /* AWSXMLWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSXMLWriter.h; sourceTree = "<group>"; };
+		BEF8F69924C69E6700650CAD /* AWSNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNetworking.h; sourceTree = "<group>"; };
+		BEF8F69A24C69E6700650CAD /* AWSURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSURLSessionManager.m; sourceTree = "<group>"; };
+		BEF8F69B24C69E6700650CAD /* AWSNetworkingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSNetworkingHelpers.h; sourceTree = "<group>"; };
+		BEF8F69C24C69E6700650CAD /* AWSNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNetworking.m; sourceTree = "<group>"; };
+		BEF8F69D24C69E6700650CAD /* AWSURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSURLSessionManager.h; sourceTree = "<group>"; };
+		BEF8F69E24C69E6700650CAD /* AWSNetworkingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSNetworkingHelpers.m; sourceTree = "<group>"; };
+		BEF8F6A024C69E6700650CAD /* AWSURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSURLRequestSerialization.m; sourceTree = "<group>"; };
+		BEF8F6A124C69E6700650CAD /* AWSURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSURLResponseSerialization.m; sourceTree = "<group>"; };
+		BEF8F6A224C69E6700650CAD /* AWSValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSValidation.h; sourceTree = "<group>"; };
+		BEF8F6A324C69E6700650CAD /* AWSSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSerialization.m; sourceTree = "<group>"; };
+		BEF8F6A424C69E6700650CAD /* AWSURLRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSURLRequestRetryHandler.m; sourceTree = "<group>"; };
+		BEF8F6A524C69E6700650CAD /* AWSURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSURLRequestSerialization.h; sourceTree = "<group>"; };
+		BEF8F6A624C69E6700650CAD /* AWSValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSValidation.m; sourceTree = "<group>"; };
+		BEF8F6A724C69E6700650CAD /* AWSURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSURLResponseSerialization.h; sourceTree = "<group>"; };
+		BEF8F6A824C69E6700650CAD /* AWSURLRequestRetryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSURLRequestRetryHandler.h; sourceTree = "<group>"; };
+		BEF8F6A924C69E6700650CAD /* AWSSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSerialization.h; sourceTree = "<group>"; };
+		BEF8F6AB24C69E6700650CAD /* AWSGZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSGZIP.h; sourceTree = "<group>"; };
+		BEF8F6AC24C69E6700650CAD /* LICENCE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENCE.md; sourceTree = "<group>"; };
+		BEF8F6AD24C69E6700650CAD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEF8F6AE24C69E6700650CAD /* AWSGZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSGZIP.m; sourceTree = "<group>"; };
+		BEF8F6B024C69E6700650CAD /* AWSCancellationTokenSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCancellationTokenSource.h; sourceTree = "<group>"; };
+		BEF8F6B124C69E6700650CAD /* AWSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSExecutor.h; sourceTree = "<group>"; };
+		BEF8F6B224C69E6700650CAD /* AWSCancellationToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCancellationToken.m; sourceTree = "<group>"; };
+		BEF8F6B324C69E6700650CAD /* AWSTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSTask.h; sourceTree = "<group>"; };
+		BEF8F6B424C69E6700650CAD /* AWSBolts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSBolts.m; sourceTree = "<group>"; };
+		BEF8F6B524C69E6700650CAD /* AWSCancellationTokenRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCancellationTokenRegistration.m; sourceTree = "<group>"; };
+		BEF8F6B624C69E6700650CAD /* AWSTaskCompletionSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSTaskCompletionSource.h; sourceTree = "<group>"; };
+		BEF8F6B724C69E6700650CAD /* AWSGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSGeneric.h; sourceTree = "<group>"; };
+		BEF8F6B824C69E6700650CAD /* AWSCancellationToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCancellationToken.h; sourceTree = "<group>"; };
+		BEF8F6B924C69E6700650CAD /* AWSExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSExecutor.m; sourceTree = "<group>"; };
+		BEF8F6BA24C69E6700650CAD /* AWSCancellationTokenSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCancellationTokenSource.m; sourceTree = "<group>"; };
+		BEF8F6BB24C69E6700650CAD /* AWSCancellationTokenRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCancellationTokenRegistration.h; sourceTree = "<group>"; };
+		BEF8F6BC24C69E6700650CAD /* AWSTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSTask.m; sourceTree = "<group>"; };
+		BEF8F6BD24C69E6700650CAD /* AWSBolts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSBolts.h; sourceTree = "<group>"; };
+		BEF8F6BE24C69E6700650CAD /* AWSTaskCompletionSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSTaskCompletionSource.m; sourceTree = "<group>"; };
+		BEF8F6C024C69E6700650CAD /* AWSXMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSXMLDictionary.m; sourceTree = "<group>"; };
+		BEF8F6C124C69E6700650CAD /* LICENCE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENCE.md; sourceTree = "<group>"; };
+		BEF8F6C224C69E6700650CAD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEF8F6C324C69E6700650CAD /* AWSXMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSXMLDictionary.h; sourceTree = "<group>"; };
+		BEF8F6C524C69E6700650CAD /* AWSTMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSTMMemoryCache.m; sourceTree = "<group>"; };
+		BEF8F6C624C69E6700650CAD /* AWSTMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSTMDiskCache.m; sourceTree = "<group>"; };
+		BEF8F6C724C69E6700650CAD /* AWSTMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSTMCache.m; sourceTree = "<group>"; };
+		BEF8F6C824C69E6700650CAD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEF8F6C924C69E6700650CAD /* AWSTMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSTMDiskCache.h; sourceTree = "<group>"; };
+		BEF8F6CA24C69E6700650CAD /* AWSTMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSTMMemoryCache.h; sourceTree = "<group>"; };
+		BEF8F6CB24C69E6700650CAD /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		BEF8F6CC24C69E6700650CAD /* AWSTMCacheBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSTMCacheBackgroundTaskManager.h; sourceTree = "<group>"; };
+		BEF8F6CD24C69E6700650CAD /* AWSTMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSTMCache.h; sourceTree = "<group>"; };
+		BEF8F6CF24C69E6700650CAD /* LICENCE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.txt; sourceTree = "<group>"; };
+		BEF8F6D024C69E6700650CAD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEF8F6D224C69E6700650CAD /* Fabric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fabric.h; sourceTree = "<group>"; };
+		BEF8F6D324C69E6700650CAD /* FABKitProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FABKitProtocol.h; sourceTree = "<group>"; };
+		BEF8F6D424C69E6700650CAD /* Fabric+FABKits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Fabric+FABKits.h"; sourceTree = "<group>"; };
+		BEF8F6D524C69E6700650CAD /* FABAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FABAttributes.h; sourceTree = "<group>"; };
+		BEF8F6D724C69E6700650CAD /* AWSFMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFMDatabasePool.m; sourceTree = "<group>"; };
+		BEF8F6D824C69E6700650CAD /* AWSFMDB+AWSHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSFMDB+AWSHelpers.h"; sourceTree = "<group>"; };
+		BEF8F6D924C69E6700650CAD /* AWSFMDatabase+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSFMDatabase+Private.h"; sourceTree = "<group>"; };
+		BEF8F6DA24C69E6700650CAD /* AWSFMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFMResultSet.m; sourceTree = "<group>"; };
+		BEF8F6DB24C69E6700650CAD /* AWSFMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFMDatabaseQueue.m; sourceTree = "<group>"; };
+		BEF8F6DC24C69E6700650CAD /* AWSFMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFMDatabase.m; sourceTree = "<group>"; };
+		BEF8F6DD24C69E6700650CAD /* AWSFMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFMDatabaseAdditions.m; sourceTree = "<group>"; };
+		BEF8F6DE24C69E6700650CAD /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
+		BEF8F6DF24C69E6700650CAD /* AWSFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFMDB.h; sourceTree = "<group>"; };
+		BEF8F6E024C69E6700650CAD /* AWSFMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFMDatabasePool.h; sourceTree = "<group>"; };
+		BEF8F6E124C69E6700650CAD /* AWSFMDB+AWSHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AWSFMDB+AWSHelpers.m"; sourceTree = "<group>"; };
+		BEF8F6E224C69E6700650CAD /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		BEF8F6E324C69E6700650CAD /* AWSFMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFMDatabaseAdditions.h; sourceTree = "<group>"; };
+		BEF8F6E424C69E6700650CAD /* AWSFMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFMDatabaseQueue.h; sourceTree = "<group>"; };
+		BEF8F6E524C69E6700650CAD /* AWSFMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFMDatabase.h; sourceTree = "<group>"; };
+		BEF8F6E624C69E6700650CAD /* AWSFMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSFMResultSet.h; sourceTree = "<group>"; };
+		BEF8F6E824C69E6700650CAD /* AWSClientContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSClientContext.h; sourceTree = "<group>"; };
+		BEF8F6E924C69E6700650CAD /* AWSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSService.m; sourceTree = "<group>"; };
+		BEF8F6EA24C69E6700650CAD /* AWSInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSInfo.m; sourceTree = "<group>"; };
+		BEF8F6EB24C69E6700650CAD /* AWSClientContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSClientContext.m; sourceTree = "<group>"; };
+		BEF8F6EC24C69E6700650CAD /* AWSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSService.h; sourceTree = "<group>"; };
+		BEF8F6ED24C69E6700650CAD /* AWSServiceEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSServiceEnum.h; sourceTree = "<group>"; };
+		BEF8F6EE24C69E6700650CAD /* AWSInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSInfo.h; sourceTree = "<group>"; };
+		BEF8F6F024C69E6700650CAD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BEF8F6F124C69E6700650CAD /* AWSUICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSUICKeyChainStore.m; sourceTree = "<group>"; };
+		BEF8F6F224C69E6700650CAD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEF8F6F324C69E6700650CAD /* AWSUICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSUICKeyChainStore.h; sourceTree = "<group>"; };
+		BEF8F6F524C69E6700650CAD /* AWSIdentityProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSIdentityProvider.m; sourceTree = "<group>"; };
+		BEF8F6F624C69E6700650CAD /* AWSCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCredentialsProvider.m; sourceTree = "<group>"; };
+		BEF8F6F724C69E6700650CAD /* AWSSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSignature.h; sourceTree = "<group>"; };
+		BEF8F6F824C69E6700650CAD /* AWSIdentityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSIdentityProvider.h; sourceTree = "<group>"; };
+		BEF8F6F924C69E6700650CAD /* AWSCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCredentialsProvider.h; sourceTree = "<group>"; };
+		BEF8F6FA24C69E6700650CAD /* AWSSignature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSignature.m; sourceTree = "<group>"; };
+		BEF8F6FC24C69E6700650CAD /* AWSDDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		BEF8F6FD24C69E6700650CAD /* AWSDDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDTTYLogger.h; sourceTree = "<group>"; };
+		BEF8F6FE24C69E6700650CAD /* AWSDDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDLog.m; sourceTree = "<group>"; };
+		BEF8F6FF24C69E6700650CAD /* AWSDDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDASLLogCapture.h; sourceTree = "<group>"; };
+		BEF8F70024C69E6700650CAD /* AWSDDOSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDOSLogger.h; sourceTree = "<group>"; };
+		BEF8F70124C69E6700650CAD /* AWSDDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDAssertMacros.h; sourceTree = "<group>"; };
+		BEF8F70224C69E6700650CAD /* AWSDDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDFileLogger.m; sourceTree = "<group>"; };
+		BEF8F70324C69E6700650CAD /* AWSDDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDASLLogger.h; sourceTree = "<group>"; };
+		BEF8F70424C69E6700650CAD /* AWSDDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSDDLog+LOGV.h"; sourceTree = "<group>"; };
+		BEF8F70624C69E6700650CAD /* AWSDDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		BEF8F70724C69E6700650CAD /* AWSDDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		BEF8F70824C69E6700650CAD /* AWSDDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDMultiFormatter.h; sourceTree = "<group>"; };
+		BEF8F70924C69E6700650CAD /* AWSDDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		BEF8F70A24C69E6700650CAD /* AWSDDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		BEF8F70B24C69E6700650CAD /* AWSDDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		BEF8F70C24C69E6700650CAD /* AWSDDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDASLLogCapture.m; sourceTree = "<group>"; };
+		BEF8F70D24C69E6700650CAD /* AWSDDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDLog.h; sourceTree = "<group>"; };
+		BEF8F70E24C69E6700650CAD /* AWSDDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDTTYLogger.m; sourceTree = "<group>"; };
+		BEF8F70F24C69E6700650CAD /* AWSDDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDLegacyMacros.h; sourceTree = "<group>"; };
+		BEF8F71024C69E6700650CAD /* AWSCocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCocoaLumberjack.h; sourceTree = "<group>"; };
+		BEF8F71124C69E6700650CAD /* AWSDDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDASLLogger.m; sourceTree = "<group>"; };
+		BEF8F71224C69E6700650CAD /* AWSDDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDMultiFormatter.m; sourceTree = "<group>"; };
+		BEF8F71324C69E6700650CAD /* AWSDDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDFileLogger.h; sourceTree = "<group>"; };
+		BEF8F71424C69E6700650CAD /* AWSDDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSDDLogMacros.h; sourceTree = "<group>"; };
+		BEF8F71524C69E6700650CAD /* AWSDDOSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSDDOSLogger.m; sourceTree = "<group>"; };
+		BEF8F71624C69E6700650CAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF8F71824C69E6700650CAD /* AWSSTSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSTSModel.m; sourceTree = "<group>"; };
+		BEF8F71924C69E6700650CAD /* AWSSTSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSTSService.h; sourceTree = "<group>"; };
+		BEF8F71A24C69E6700650CAD /* AWSSTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSTS.h; sourceTree = "<group>"; };
+		BEF8F71B24C69E6700650CAD /* AWSSTSResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSTSResources.m; sourceTree = "<group>"; };
+		BEF8F71C24C69E6700650CAD /* AWSSTSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSTSModel.h; sourceTree = "<group>"; };
+		BEF8F71D24C69E6700650CAD /* AWSSTSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSTSService.m; sourceTree = "<group>"; };
+		BEF8F71E24C69E6700650CAD /* AWSSTSResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSTSResources.h; sourceTree = "<group>"; };
+		BEF8F72024C69E6700650CAD /* AWSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSModel.h; sourceTree = "<group>"; };
+		BEF8F72124C69E6700650CAD /* AWSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCategory.h; sourceTree = "<group>"; };
+		BEF8F72224C69E6700650CAD /* AWSSynchronizedMutableDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSynchronizedMutableDictionary.m; sourceTree = "<group>"; };
+		BEF8F72324C69E6700650CAD /* AWSLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSLogging.m; sourceTree = "<group>"; };
+		BEF8F72424C69E6700650CAD /* AWSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSModel.m; sourceTree = "<group>"; };
+		BEF8F72524C69E6700650CAD /* AWSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCategory.m; sourceTree = "<group>"; };
+		BEF8F72624C69E6700650CAD /* AWSSynchronizedMutableDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSynchronizedMutableDictionary.h; sourceTree = "<group>"; };
+		BEF8F72724C69E6700650CAD /* AWSLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSLogging.h; sourceTree = "<group>"; };
+		BEF8F72924C69E6700650CAD /* AWSKSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSKSReachability.h; sourceTree = "<group>"; };
+		BEF8F72A24C69E6700650CAD /* AWSKSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSKSReachability.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEE459C0248500D500A886D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BC918BE2E2A54C700468AAC /* AESc in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B1D7ECC2E2A268800C90D01 /* Sesame2 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EC02E2A268800C90D01 /* CHSesame2.swift */,
+				3B1D7EC12E2A268800C90D01 /* CHSesame2Device.swift */,
+				3B1D7EC22E2A268800C90D01 /* CHSesame2Device+DFU.swift */,
+				3B1D7EC32E2A268800C90D01 /* CHSesame2Device+Gatt.swift */,
+				3B1D7EC42E2A268800C90D01 /* CHSesame2Device+History.swift */,
+				3B1D7EC52E2A268800C90D01 /* CHSesame2Device+Lock.swift */,
+				3B1D7EC62E2A268800C90D01 /* CHSesame2Device+Login.swift */,
+				3B1D7EC72E2A268800C90D01 /* CHSesame2Device+Register.swift */,
+				3B1D7EC82E2A268800C90D01 /* Sesame2BleCipher.swift */,
+				3B1D7EC92E2A268800C90D01 /* Sesame2BleDevice+Peripheral.swift */,
+				3B1D7ECA2E2A268800C90D01 /* Sesame2Payload.swift */,
+				3B1D7ECB2E2A268800C90D01 /* Sesame2Protocols.swift */,
+			);
+			path = Sesame2;
+			sourceTree = "<group>";
+		};
+		3B1D7ED72E2A268800C90D01 /* SesameBike */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7ECD2E2A268800C90D01 /* BikeLockPayload.swift */,
+				3B1D7ECE2E2A268800C90D01 /* CHBikeLock.swift */,
+				3B1D7ECF2E2A268800C90D01 /* CHBikeLockDevice.swift */,
+				3B1D7ED02E2A268800C90D01 /* CHBikeLockDevice+DFU.swift */,
+				3B1D7ED12E2A268800C90D01 /* CHBikeLockDevice+Gatt.swift */,
+				3B1D7ED22E2A268800C90D01 /* CHBikeLockDevice+Lock.swift */,
+				3B1D7ED32E2A268800C90D01 /* CHBikeLockDevice+Login.swift */,
+				3B1D7ED42E2A268800C90D01 /* CHBikeLockDevice+Peripheral.swift */,
+				3B1D7ED52E2A268800C90D01 /* CHBikeLockDevice+Register.swift */,
+				3B1D7ED62E2A268800C90D01 /* CHBikeLockDevice+Setting.swift */,
+			);
+			path = SesameBike;
+			sourceTree = "<group>";
+		};
+		3B1D7EE42E2A268800C90D01 /* SesameBot */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7ED82E2A268800C90D01 /* CHSesameBot.swift */,
+				3B1D7ED92E2A268800C90D01 /* CHSesameBotDevice.swift */,
+				3B1D7EDA2E2A268800C90D01 /* CHSesameBotDevice+DFU.swift */,
+				3B1D7EDB2E2A268800C90D01 /* CHSesameBotDevice+Gatt.swift */,
+				3B1D7EDC2E2A268800C90D01 /* CHSesameBotDevice+History.swift */,
+				3B1D7EDD2E2A268800C90D01 /* CHSesameBotDevice+Lock.swift */,
+				3B1D7EDE2E2A268800C90D01 /* CHSesameBotDevice+Login.swift */,
+				3B1D7EDF2E2A268800C90D01 /* CHSesameBotDevice+Peripheral.swift */,
+				3B1D7EE02E2A268800C90D01 /* CHSesameBotDevice+Register.swift */,
+				3B1D7EE12E2A268800C90D01 /* CHSesameBotDevice+Setting.swift */,
+				3B1D7EE22E2A268800C90D01 /* SesameBotPayload.swift */,
+				3B1D7EE32E2A268800C90D01 /* SesameBotProtocols.swift */,
+			);
+			path = SesameBot;
+			sourceTree = "<group>";
+		};
+		3B1D7EE52E2A268800C90D01 /* SesameOS2 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7ECC2E2A268800C90D01 /* Sesame2 */,
+				3B1D7ED72E2A268800C90D01 /* SesameBike */,
+				3B1D7EE42E2A268800C90D01 /* SesameBot */,
+			);
+			path = SesameOS2;
+			sourceTree = "<group>";
+		};
+		3B1D7EEB2E2A268800C90D01 /* Hub3 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EE62E2A268800C90D01 /* CHHub3.swift */,
+				3B1D7EE72E2A268800C90D01 /* CHHub3Device.swift */,
+				3B1D7EE82E2A268800C90D01 /* CHHub3Device+Gatt.swift */,
+				3B1D7EE92E2A268800C90D01 /* CHHub3Device+IR.swift */,
+				3B1D7EEA2E2A268800C90D01 /* IRDeviceType.swift */,
+			);
+			path = Hub3;
+			sourceTree = "<group>";
+		};
+		3B1D7EF12E2A268800C90D01 /* Sesame5 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EEC2E2A268800C90D01 /* CHSesame5.swift */,
+				3B1D7EED2E2A268800C90D01 /* CHSesame5Device.swift */,
+				3B1D7EEE2E2A268800C90D01 /* CHSesame5Device+Command.swift */,
+				3B1D7EEF2E2A268800C90D01 /* CHSesame5Device+History.swift */,
+				3B1D7EF02E2A268800C90D01 /* CHSesame5Device+Register.swift */,
+			);
+			path = Sesame5;
+			sourceTree = "<group>";
+		};
+		3B1D7EF42E2A268800C90D01 /* SesameBike2 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EF22E2A268800C90D01 /* CHSesameBike2.swift */,
+				3B1D7EF32E2A268800C90D01 /* CHSesameBike2Device.swift */,
+			);
+			path = SesameBike2;
+			sourceTree = "<group>";
+		};
+		3B1D7EF92E2A268800C90D01 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EF52E2A268800C90D01 /* CHCardCapable.swift */,
+				3B1D7EF62E2A268800C90D01 /* CHCardCapableExtension.swift */,
+				3B1D7EF72E2A268800C90D01 /* CHCardDelegate.swift */,
+				3B1D7EF82E2A268800C90D01 /* CHCardEventHandlers.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		3B1D7EFE2E2A268800C90D01 /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EFA2E2A268800C90D01 /* CHFaceCapable.swift */,
+				3B1D7EFB2E2A268800C90D01 /* CHFaceCapableExtension.swift */,
+				3B1D7EFC2E2A268800C90D01 /* CHFaceDelegate.swift */,
+				3B1D7EFD2E2A268800C90D01 /* CHFaceEventHandlers.swift */,
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		3B1D7F032E2A268800C90D01 /* FingerPrint */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EFF2E2A268800C90D01 /* CHFingerPrintCapable.swift */,
+				3B1D7F002E2A268800C90D01 /* CHFingerPrintCapableExtension.swift */,
+				3B1D7F012E2A268800C90D01 /* CHFingerPrintDelegate.swift */,
+				3B1D7F022E2A268800C90D01 /* CHFingerPrintEventHandlers.swift */,
+			);
+			path = FingerPrint;
+			sourceTree = "<group>";
+		};
+		3B1D7F082E2A268800C90D01 /* Palm */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F042E2A268800C90D01 /* CHPalmCapable.swift */,
+				3B1D7F052E2A268800C90D01 /* CHPalmCapableExtension.swift */,
+				3B1D7F062E2A268800C90D01 /* CHPalmDelegate.swift */,
+				3B1D7F072E2A268800C90D01 /* CHPalmEventHandlers.swift */,
+			);
+			path = Palm;
+			sourceTree = "<group>";
+		};
+		3B1D7F0D2E2A268800C90D01 /* PassCode */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F092E2A268800C90D01 /* CHPassCodeCapable.swift */,
+				3B1D7F0A2E2A268800C90D01 /* CHPassCodeCapableExtension.swift */,
+				3B1D7F0B2E2A268800C90D01 /* CHPassCodeDelegate.swift */,
+				3B1D7F0C2E2A268800C90D01 /* CHPassCodeEventHandlers.swift */,
+			);
+			path = PassCode;
+			sourceTree = "<group>";
+		};
+		3B1D7F102E2A268800C90D01 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F0E2E2A268800C90D01 /* CHCapbleRenameBean.swift */,
+				3B1D7F0F2E2A268800C90D01 /* CHServerCapableHandler.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3B1D7F112E2A268800C90D01 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EF92E2A268800C90D01 /* Card */,
+				3B1D7EFE2E2A268800C90D01 /* Face */,
+				3B1D7F032E2A268800C90D01 /* FingerPrint */,
+				3B1D7F082E2A268800C90D01 /* Palm */,
+				3B1D7F0D2E2A268800C90D01 /* PassCode */,
+				3B1D7F102E2A268800C90D01 /* Service */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		3B1D7F132E2A268800C90D01 /* MechanicalSettings */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F122E2A268800C90D01 /* CHMechanicalSettingsCapable.swift */,
+			);
+			path = MechanicalSettings;
+			sourceTree = "<group>";
+		};
+		3B1D7F172E2A268800C90D01 /* Nano */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F142E2A268800C90D01 /* CHRemoteNanoCapable.swift */,
+				3B1D7F152E2A268800C90D01 /* CHRemoteNanoCapableExtension.swift */,
+				3B1D7F162E2A268800C90D01 /* CHRemoteNanoDelegate.swift */,
+			);
+			path = Nano;
+			sourceTree = "<group>";
+		};
+		3B1D7F1A2E2A268800C90D01 /* OpenSensor */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F182E2A268800C90D01 /* CHOpenSensorCapable.swift */,
+				3B1D7F192E2A268800C90D01 /* CHOpenSensorCapableExtension.swift */,
+			);
+			path = OpenSensor;
+			sourceTree = "<group>";
+		};
+		3B1D7F1B2E2A268800C90D01 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F172E2A268800C90D01 /* Nano */,
+				3B1D7F1A2E2A268800C90D01 /* OpenSensor */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		3B1D7F1D2E2A268800C90D01 /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F1C2E2A268800C90D01 /* CHVersionCapable.swift */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		3B1D7F1E2E2A268800C90D01 /* Capabilities */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F112E2A268800C90D01 /* Authentication */,
+				3B1D7F132E2A268800C90D01 /* MechanicalSettings */,
+				3B1D7F1B2E2A268800C90D01 /* Remote */,
+				3B1D7F1D2E2A268800C90D01 /* Version */,
+			);
+			path = Capabilities;
+			sourceTree = "<group>";
+		};
+		3B1D7F202E2A268800C90D01 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F1F2E2A268800C90D01 /* CHDelegateManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		3B1D7F212E2A268800C90D01 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F202E2A268800C90D01 /* Manager */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3B1D7F292E2A268800C90D01 /* BaseDevice */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F222E2A268800C90D01 /* CHSesameBaseDevice.swift */,
+				3B1D7F232E2A268800C90D01 /* CHSesameBaseDevice+Connector.swift */,
+				3B1D7F242E2A268800C90D01 /* CHSesameBaseDevice+Delegate.swift */,
+				3B1D7F252E2A268800C90D01 /* CHSesameBaseDevice+Register.swift */,
+				3B1D7F262E2A268800C90D01 /* CHSesameBaseDevice+Settings.swift */,
+				3B1D7F272E2A268800C90D01 /* CHSesameBaseDevice+Version.swift */,
+				3B1D7F282E2A268800C90D01 /* CHSesameBasePro.swift */,
+			);
+			path = BaseDevice;
+			sourceTree = "<group>";
+		};
+		3B1D7F2C2E2A268800C90D01 /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F2A2E2A268800C90D01 /* CHSesameFace.swift */,
+				3B1D7F2B2E2A268800C90D01 /* CHSesameFaceDevice.swift */,
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		3B1D7F2F2E2A268800C90D01 /* FacePro */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F2D2E2A268800C90D01 /* CHSesameFacePro.swift */,
+				3B1D7F2E2E2A268800C90D01 /* CHSesameFaceProDevice.swift */,
+			);
+			path = FacePro;
+			sourceTree = "<group>";
+		};
+		3B1D7F322E2A268800C90D01 /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F302E2A268800C90D01 /* CHSesameTouch.swift */,
+				3B1D7F312E2A268800C90D01 /* CHSesameTouchDevice.swift */,
+			);
+			path = Touch;
+			sourceTree = "<group>";
+		};
+		3B1D7F352E2A268800C90D01 /* TouchPro */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F332E2A268800C90D01 /* CHSesameTouchPro.swift */,
+				3B1D7F342E2A268800C90D01 /* CHSesameTouchProDevice.swift */,
+			);
+			path = TouchPro;
+			sourceTree = "<group>";
+		};
+		3B1D7F362E2A268800C90D01 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F292E2A268800C90D01 /* BaseDevice */,
+				3B1D7F2C2E2A268800C90D01 /* Face */,
+				3B1D7F2F2E2A268800C90D01 /* FacePro */,
+				3B1D7F322E2A268800C90D01 /* Touch */,
+				3B1D7F352E2A268800C90D01 /* TouchPro */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		3B1D7F3D2E2A268800C90D01 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F372E2A268800C90D01 /* CHRemoteBaseTriggerSettings.swift */,
+				3B1D7F382E2A268800C90D01 /* CHSesameBaseMechSettings.swift */,
+				3B1D7F392E2A268800C90D01 /* CHSesameTouchCard.swift */,
+				3B1D7F3A2E2A268800C90D01 /* CHSesameTouchProMechStatus.swift */,
+				3B1D7F3B2E2A268800C90D01 /* OpenSensorData.swift */,
+				3B1D7F3C2E2A268800C90D01 /* OpensensorMechStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3B1D7F3E2E2A268800C90D01 /* SesameBiometricDevice */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F1E2E2A268800C90D01 /* Capabilities */,
+				3B1D7F212E2A268800C90D01 /* Core */,
+				3B1D7F362E2A268800C90D01 /* Devices */,
+				3B1D7F3D2E2A268800C90D01 /* Models */,
+			);
+			path = SesameBiometricDevice;
+			sourceTree = "<group>";
+		};
+		3B1D7F412E2A268800C90D01 /* SesameBot2 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F3F2E2A268800C90D01 /* CHSesameBot2.swift */,
+				3B1D7F402E2A268800C90D01 /* CHSesameBot2Device.swift */,
+			);
+			path = SesameBot2;
+			sourceTree = "<group>";
+		};
+		3B1D7F492E2A268800C90D01 /* WifiModule2 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F422E2A268800C90D01 /* CHWifiModule2.swift */,
+				3B1D7F432E2A268800C90D01 /* CHWifiModule2Device.swift */,
+				3B1D7F442E2A268800C90D01 /* CHWifiModule2Device+Gatt.swift */,
+				3B1D7F452E2A268800C90D01 /* CHWifiModule2Device+Peripheral.swift */,
+				3B1D7F462E2A268800C90D01 /* CHWifiModule2Device+Register.swift */,
+				3B1D7F472E2A268800C90D01 /* WifiModule2Payload.swift */,
+				3B1D7F482E2A268800C90D01 /* WifiModule2Protocols.swift */,
+			);
+			path = WifiModule2;
+			sourceTree = "<group>";
+		};
+		3B1D7F4E2E2A268800C90D01 /* SesameOS3 */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EEB2E2A268800C90D01 /* Hub3 */,
+				3B1D7EF12E2A268800C90D01 /* Sesame5 */,
+				3B1D7EF42E2A268800C90D01 /* SesameBike2 */,
+				3B1D7F3E2E2A268800C90D01 /* SesameBiometricDevice */,
+				3B1D7F412E2A268800C90D01 /* SesameBot2 */,
+				3B1D7F492E2A268800C90D01 /* WifiModule2 */,
+				3B1D7F4A2E2A268800C90D01 /* CHDeviceUtil+OS3.swift */,
+				3B1D7F4B2E2A268800C90D01 /* CHSesameOS3.swift */,
+				3B1D7F4C2E2A268800C90D01 /* SesameOS3BleCipher.swift */,
+				3B1D7F4D2E2A268800C90D01 /* SesameOS3SegmentType.swift */,
+			);
+			path = SesameOS3;
+			sourceTree = "<group>";
+		};
+		3B1D7F532E2A268800C90D01 /* Ble */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7EE52E2A268800C90D01 /* SesameOS2 */,
+				3B1D7F4E2E2A268800C90D01 /* SesameOS3 */,
+				3B1D7F4F2E2A268800C90D01 /* CHBaseDevice.swift */,
+				3B1D7F502E2A268800C90D01 /* CHBluetoothCenter.swift */,
+				3B1D7F512E2A268800C90D01 /* CHDevice.swift */,
+				3B1D7F522E2A268800C90D01 /* CHDeviceProtocol.swift */,
+			);
+			name = Ble;
+			path = ../SesameSDK/Sources/SesameSDK/Ble;
+			sourceTree = SOURCE_ROOT;
+		};
+		3B1D7F552E2A268800C90D01 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F542E2A268800C90D01 /* AWSConfig.swift */,
+			);
+			name = Configuration;
+			path = ../SesameSDK/Sources/SesameSDK/Configuration;
+			sourceTree = SOURCE_ROOT;
+		};
+		3B1D7F592E2A268800C90D01 /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F562E2A268800C90D01 /* CHDeviceKey.swift */,
+				3B1D7F572E2A268800C90D01 /* CHGuestKey.swift */,
+				3B1D7F582E2A268800C90D01 /* CHSesame2HistoryEvent.swift */,
+			);
+			path = Keys;
+			sourceTree = "<group>";
+		};
+		3B1D7F5A2E2A268800C90D01 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F592E2A268800C90D01 /* Keys */,
+			);
+			name = DataModel;
+			path = ../SesameSDK/Sources/SesameSDK/DataModel;
+			sourceTree = SOURCE_ROOT;
+		};
+		3B1D7F5E2E2A268800C90D01 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F5B2E2A268800C90D01 /* CHDeviceCenter.swift */,
+				3B1D7F5C2E2A268800C90D01 /* CHDeviceManager.swift */,
+				3B1D7F5D2E2A268800C90D01 /* CHDeviceModel.xcdatamodeld */,
+			);
+			name = DB;
+			path = ../SesameSDK/Sources/SesameSDK/DB;
+			sourceTree = SOURCE_ROOT;
+		};
+		3B1D7F612E2A268800C90D01 /* IoT */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F5F2E2A268800C90D01 /* CHIoTManager.swift */,
+				3B1D7F602E2A268800C90D01 /* ShadowModel.swift */,
+			);
+			name = IoT;
+			path = ../SesameSDK/Sources/SesameSDK/IoT;
+			sourceTree = SOURCE_ROOT;
+		};
+		3B1D7F672E2A268800C90D01 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F622E2A268800C90D01 /* CHAccountManager.swift */,
+				3B1D7F632E2A268800C90D01 /* CHAccountManager+APIRequest.swift */,
+				3B1D7F642E2A268800C90D01 /* CHAPICallObject.swift */,
+				3B1D7F652E2A268800C90D01 /* CHResultPattern.swift */,
+				3B1D7F662E2A268800C90D01 /* ServerBaseType.swift */,
+			);
+			name = Server;
+			path = ../SesameSDK/Sources/SesameSDK/Server;
+			sourceTree = SOURCE_ROOT;
+		};
+		3B1D7F742E2A268800C90D01 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F682E2A268800C90D01 /* AES.swift */,
+				3B1D7F692E2A268800C90D01 /* CHConfiguration.swift */,
+				3B1D7F6A2E2A268800C90D01 /* CHExtensionListener.swift */,
+				3B1D7F6B2E2A268800C90D01 /* CHMulticastDelegate.swift */,
+				3B1D7F6C2E2A268800C90D01 /* Data+.swift */,
+				3B1D7F6D2E2A268800C90D01 /* ECC.swift */,
+				3B1D7F6E2E2A268800C90D01 /* Logging.swift */,
+				3B1D7F6F2E2A268800C90D01 /* NSError+.swift */,
+				3B1D7F702E2A268800C90D01 /* SafeDictionary.swift */,
+				3B1D7F712E2A268800C90D01 /* String+.swift */,
+				3B1D7F722E2A268800C90D01 /* SwCrypt.swift */,
+				3B1D7F732E2A268800C90D01 /* URLSession+.swift */,
+			);
+			name = Utils;
+			path = ../SesameSDK/Sources/SesameSDK/Utils;
+			sourceTree = SOURCE_ROOT;
+		};
+		3B52E8C32E29334100BA4F81 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D7F532E2A268800C90D01 /* Ble */,
+				3B1D7F552E2A268800C90D01 /* Configuration */,
+				3B1D7F5A2E2A268800C90D01 /* DataModel */,
+				3B1D7F5E2E2A268800C90D01 /* DB */,
+				3B1D7F612E2A268800C90D01 /* IoT */,
+				3B1D7F672E2A268800C90D01 /* Server */,
+				3B1D7F742E2A268800C90D01 /* Utils */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7CC2E3B815B0A438E67EC568 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				644E3DC52BC2A4D200385BE7 /* SystemConfiguration.framework */,
+				B1429442231F8F98006AA64C /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B142938E231F8D29006AA64C = {
+			isa = PBXGroup;
+			children = (
+				3B52E8C32E29334100BA4F81 /* Shared */,
+				BEE459C4248500D600A886D5 /* SesameWatchKitSDK */,
+				B1429399231F8D29006AA64C /* Products */,
+				7CC2E3B815B0A438E67EC568 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B1429399231F8D29006AA64C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEE459C3248500D500A886D5 /* SesameWatchKitSDK.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEE459C4248500D600A886D5 /* SesameWatchKitSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F65F24C69E6600650CAD /* AWSAPIGateway */,
+				BEF8F66624C69E6600650CAD /* AWSCore */,
+				BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */,
+				BEE459C6248500D600A886D5 /* Info.plist */,
+			);
+			path = SesameWatchKitSDK;
+			sourceTree = "<group>";
+		};
+		BEF8F65F24C69E6600650CAD /* AWSAPIGateway */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F66124C69E6600650CAD /* AWSAPIGatewayClient.h */,
+				BEF8F66024C69E6600650CAD /* AWSAPIGatewayModel.m */,
+				BEF8F66224C69E6600650CAD /* AWSAPIGatewayModel.h */,
+				BEF8F66324C69E6600650CAD /* AWSAPIGatewayClient.m */,
+				BEF8F66424C69E6600650CAD /* AWSAPIGateway.h */,
+				BEF8F66524C69E6600650CAD /* Info.plist */,
+			);
+			path = AWSAPIGateway;
+			sourceTree = "<group>";
+		};
+		BEF8F66624C69E6600650CAD /* AWSCore */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F66724C69E6600650CAD /* AWSCore.h */,
+				BEF8F66824C69E6600650CAD /* CognitoIdentity */,
+				BEF8F67224C69E6600650CAD /* Mantle */,
+				BEF8F69524C69E6700650CAD /* XMLWriter */,
+				BEF8F69824C69E6700650CAD /* Networking */,
+				BEF8F69F24C69E6700650CAD /* Serialization */,
+				BEF8F6AA24C69E6700650CAD /* GZIP */,
+				BEF8F6AF24C69E6700650CAD /* Bolts */,
+				BEF8F6BF24C69E6700650CAD /* XMLDictionary */,
+				BEF8F6C424C69E6700650CAD /* TMCache */,
+				BEF8F6CE24C69E6700650CAD /* Reachability */,
+				BEF8F6D124C69E6700650CAD /* Fabric */,
+				BEF8F6D624C69E6700650CAD /* FMDB */,
+				BEF8F6E724C69E6700650CAD /* Service */,
+				BEF8F6EF24C69E6700650CAD /* UICKeyChainStore */,
+				BEF8F6F424C69E6700650CAD /* Authentication */,
+				BEF8F6FB24C69E6700650CAD /* Logging */,
+				BEF8F71624C69E6700650CAD /* Info.plist */,
+				BEF8F71724C69E6700650CAD /* STS */,
+				BEF8F71F24C69E6700650CAD /* Utility */,
+				BEF8F72824C69E6700650CAD /* KSReachability */,
+			);
+			path = AWSCore;
+			sourceTree = "<group>";
+		};
+		BEF8F66824C69E6600650CAD /* CognitoIdentity */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F66924C69E6600650CAD /* AWSCognitoIdentity+Fabric.m */,
+				BEF8F66A24C69E6600650CAD /* AWSCognitoIdentityModel.h */,
+				BEF8F66B24C69E6600650CAD /* AWSCognitoIdentityResources.h */,
+				BEF8F66C24C69E6600650CAD /* AWSCognitoIdentityService.m */,
+				BEF8F66D24C69E6600650CAD /* AWSCognitoIdentityModel.m */,
+				BEF8F66E24C69E6600650CAD /* AWSCognitoIdentity+Fabric.h */,
+				BEF8F66F24C69E6600650CAD /* AWSCognitoIdentityResources.m */,
+				BEF8F67024C69E6600650CAD /* AWSCognitoIdentityService.h */,
+				BEF8F67124C69E6600650CAD /* AWSCognitoIdentity.h */,
+			);
+			path = CognitoIdentity;
+			sourceTree = "<group>";
+		};
+		BEF8F67224C69E6600650CAD /* Mantle */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F67324C69E6600650CAD /* AWSMTLModel+NSCoding.h */,
+				BEF8F67424C69E6600650CAD /* LICENSE.md */,
+				BEF8F67524C69E6600650CAD /* AWSMTLManagedObjectAdapter.m */,
+				BEF8F67624C69E6600650CAD /* NSError+AWSMTLModelException.m */,
+				BEF8F67724C69E6600650CAD /* AWSMTLValueTransformer.h */,
+				BEF8F67824C69E6600650CAD /* extobjc */,
+				BEF8F67F24C69E6600650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m */,
+				BEF8F68024C69E6600650CAD /* AWSMTLJSONAdapter.h */,
+				BEF8F68124C69E6600650CAD /* NSArray+AWSMTLManipulationAdditions.m */,
+				BEF8F68224C69E6600650CAD /* AWSMTLReflection.m */,
+				BEF8F68324C69E6600650CAD /* NSObject+AWSMTLComparisonAdditions.m */,
+				BEF8F68424C69E6600650CAD /* NSValueTransformer+AWSMTLInversionAdditions.h */,
+				BEF8F68524C69E6600650CAD /* AWSMTLModel.h */,
+				BEF8F68624C69E6600650CAD /* NSDictionary+AWSMTLManipulationAdditions.m */,
+				BEF8F68724C69E6600650CAD /* README.md */,
+				BEF8F68824C69E6600650CAD /* AWSMTLModel+NSCoding.m */,
+				BEF8F68924C69E6600650CAD /* AWSMTLValueTransformer.m */,
+				BEF8F68A24C69E6600650CAD /* NSError+AWSMTLModelException.h */,
+				BEF8F68B24C69E6600650CAD /* AWSMTLManagedObjectAdapter.h */,
+				BEF8F68C24C69E6600650CAD /* NSValueTransformer+AWSMTLInversionAdditions.m */,
+				BEF8F68D24C69E6600650CAD /* NSObject+AWSMTLComparisonAdditions.h */,
+				BEF8F68E24C69E6700650CAD /* NSArray+AWSMTLManipulationAdditions.h */,
+				BEF8F68F24C69E6700650CAD /* AWSMTLReflection.h */,
+				BEF8F69024C69E6700650CAD /* AWSMTLJSONAdapter.m */,
+				BEF8F69124C69E6700650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.h */,
+				BEF8F69224C69E6700650CAD /* NSDictionary+AWSMTLManipulationAdditions.h */,
+				BEF8F69324C69E6700650CAD /* AWSMantle.h */,
+				BEF8F69424C69E6700650CAD /* AWSMTLModel.m */,
+			);
+			path = Mantle;
+			sourceTree = "<group>";
+		};
+		BEF8F67824C69E6600650CAD /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F67924C69E6600650CAD /* AWSEXTRuntimeExtensions.h */,
+				BEF8F67A24C69E6600650CAD /* AWSEXTScope.h */,
+				BEF8F67B24C69E6600650CAD /* AWSmetamacros.h */,
+				BEF8F67C24C69E6600650CAD /* AWSEXTRuntimeExtensions.m */,
+				BEF8F67D24C69E6600650CAD /* AWSEXTKeyPathCoding.h */,
+				BEF8F67E24C69E6600650CAD /* AWSEXTScope.m */,
+			);
+			path = extobjc;
+			sourceTree = "<group>";
+		};
+		BEF8F69524C69E6700650CAD /* XMLWriter */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F69624C69E6700650CAD /* AWSXMLWriter.m */,
+				BEF8F69724C69E6700650CAD /* AWSXMLWriter.h */,
+			);
+			path = XMLWriter;
+			sourceTree = "<group>";
+		};
+		BEF8F69824C69E6700650CAD /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F69924C69E6700650CAD /* AWSNetworking.h */,
+				BEF8F69A24C69E6700650CAD /* AWSURLSessionManager.m */,
+				BEF8F69B24C69E6700650CAD /* AWSNetworkingHelpers.h */,
+				BEF8F69C24C69E6700650CAD /* AWSNetworking.m */,
+				BEF8F69D24C69E6700650CAD /* AWSURLSessionManager.h */,
+				BEF8F69E24C69E6700650CAD /* AWSNetworkingHelpers.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		BEF8F69F24C69E6700650CAD /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6A024C69E6700650CAD /* AWSURLRequestSerialization.m */,
+				BEF8F6A124C69E6700650CAD /* AWSURLResponseSerialization.m */,
+				BEF8F6A224C69E6700650CAD /* AWSValidation.h */,
+				BEF8F6A324C69E6700650CAD /* AWSSerialization.m */,
+				BEF8F6A424C69E6700650CAD /* AWSURLRequestRetryHandler.m */,
+				BEF8F6A524C69E6700650CAD /* AWSURLRequestSerialization.h */,
+				BEF8F6A624C69E6700650CAD /* AWSValidation.m */,
+				BEF8F6A724C69E6700650CAD /* AWSURLResponseSerialization.h */,
+				BEF8F6A824C69E6700650CAD /* AWSURLRequestRetryHandler.h */,
+				BEF8F6A924C69E6700650CAD /* AWSSerialization.h */,
+			);
+			path = Serialization;
+			sourceTree = "<group>";
+		};
+		BEF8F6AA24C69E6700650CAD /* GZIP */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6AB24C69E6700650CAD /* AWSGZIP.h */,
+				BEF8F6AC24C69E6700650CAD /* LICENCE.md */,
+				BEF8F6AD24C69E6700650CAD /* README.md */,
+				BEF8F6AE24C69E6700650CAD /* AWSGZIP.m */,
+			);
+			path = GZIP;
+			sourceTree = "<group>";
+		};
+		BEF8F6AF24C69E6700650CAD /* Bolts */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6B024C69E6700650CAD /* AWSCancellationTokenSource.h */,
+				BEF8F6B124C69E6700650CAD /* AWSExecutor.h */,
+				BEF8F6B224C69E6700650CAD /* AWSCancellationToken.m */,
+				BEF8F6B324C69E6700650CAD /* AWSTask.h */,
+				BEF8F6B424C69E6700650CAD /* AWSBolts.m */,
+				BEF8F6B524C69E6700650CAD /* AWSCancellationTokenRegistration.m */,
+				BEF8F6B624C69E6700650CAD /* AWSTaskCompletionSource.h */,
+				BEF8F6B724C69E6700650CAD /* AWSGeneric.h */,
+				BEF8F6B824C69E6700650CAD /* AWSCancellationToken.h */,
+				BEF8F6B924C69E6700650CAD /* AWSExecutor.m */,
+				BEF8F6BA24C69E6700650CAD /* AWSCancellationTokenSource.m */,
+				BEF8F6BB24C69E6700650CAD /* AWSCancellationTokenRegistration.h */,
+				BEF8F6BC24C69E6700650CAD /* AWSTask.m */,
+				BEF8F6BD24C69E6700650CAD /* AWSBolts.h */,
+				BEF8F6BE24C69E6700650CAD /* AWSTaskCompletionSource.m */,
+			);
+			path = Bolts;
+			sourceTree = "<group>";
+		};
+		BEF8F6BF24C69E6700650CAD /* XMLDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6C024C69E6700650CAD /* AWSXMLDictionary.m */,
+				BEF8F6C124C69E6700650CAD /* LICENCE.md */,
+				BEF8F6C224C69E6700650CAD /* README.md */,
+				BEF8F6C324C69E6700650CAD /* AWSXMLDictionary.h */,
+			);
+			path = XMLDictionary;
+			sourceTree = "<group>";
+		};
+		BEF8F6C424C69E6700650CAD /* TMCache */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6C524C69E6700650CAD /* AWSTMMemoryCache.m */,
+				BEF8F6C624C69E6700650CAD /* AWSTMDiskCache.m */,
+				BEF8F6C724C69E6700650CAD /* AWSTMCache.m */,
+				BEF8F6C824C69E6700650CAD /* README.md */,
+				BEF8F6C924C69E6700650CAD /* AWSTMDiskCache.h */,
+				BEF8F6CA24C69E6700650CAD /* AWSTMMemoryCache.h */,
+				BEF8F6CB24C69E6700650CAD /* LICENSE.txt */,
+				BEF8F6CC24C69E6700650CAD /* AWSTMCacheBackgroundTaskManager.h */,
+				BEF8F6CD24C69E6700650CAD /* AWSTMCache.h */,
+			);
+			path = TMCache;
+			sourceTree = "<group>";
+		};
+		BEF8F6CE24C69E6700650CAD /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6CF24C69E6700650CAD /* LICENCE.txt */,
+				BEF8F6D024C69E6700650CAD /* README.md */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		BEF8F6D124C69E6700650CAD /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6D224C69E6700650CAD /* Fabric.h */,
+				BEF8F6D324C69E6700650CAD /* FABKitProtocol.h */,
+				BEF8F6D424C69E6700650CAD /* Fabric+FABKits.h */,
+				BEF8F6D524C69E6700650CAD /* FABAttributes.h */,
+			);
+			path = Fabric;
+			sourceTree = "<group>";
+		};
+		BEF8F6D624C69E6700650CAD /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6D724C69E6700650CAD /* AWSFMDatabasePool.m */,
+				BEF8F6D824C69E6700650CAD /* AWSFMDB+AWSHelpers.h */,
+				BEF8F6D924C69E6700650CAD /* AWSFMDatabase+Private.h */,
+				BEF8F6DA24C69E6700650CAD /* AWSFMResultSet.m */,
+				BEF8F6DB24C69E6700650CAD /* AWSFMDatabaseQueue.m */,
+				BEF8F6DC24C69E6700650CAD /* AWSFMDatabase.m */,
+				BEF8F6DD24C69E6700650CAD /* AWSFMDatabaseAdditions.m */,
+				BEF8F6DE24C69E6700650CAD /* README.markdown */,
+				BEF8F6DF24C69E6700650CAD /* AWSFMDB.h */,
+				BEF8F6E024C69E6700650CAD /* AWSFMDatabasePool.h */,
+				BEF8F6E124C69E6700650CAD /* AWSFMDB+AWSHelpers.m */,
+				BEF8F6E224C69E6700650CAD /* LICENSE.txt */,
+				BEF8F6E324C69E6700650CAD /* AWSFMDatabaseAdditions.h */,
+				BEF8F6E424C69E6700650CAD /* AWSFMDatabaseQueue.h */,
+				BEF8F6E524C69E6700650CAD /* AWSFMDatabase.h */,
+				BEF8F6E624C69E6700650CAD /* AWSFMResultSet.h */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		BEF8F6E724C69E6700650CAD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6E824C69E6700650CAD /* AWSClientContext.h */,
+				BEF8F6E924C69E6700650CAD /* AWSService.m */,
+				BEF8F6EA24C69E6700650CAD /* AWSInfo.m */,
+				BEF8F6EB24C69E6700650CAD /* AWSClientContext.m */,
+				BEF8F6EC24C69E6700650CAD /* AWSService.h */,
+				BEF8F6ED24C69E6700650CAD /* AWSServiceEnum.h */,
+				BEF8F6EE24C69E6700650CAD /* AWSInfo.h */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BEF8F6EF24C69E6700650CAD /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6F024C69E6700650CAD /* LICENSE */,
+				BEF8F6F124C69E6700650CAD /* AWSUICKeyChainStore.m */,
+				BEF8F6F224C69E6700650CAD /* README.md */,
+				BEF8F6F324C69E6700650CAD /* AWSUICKeyChainStore.h */,
+			);
+			path = UICKeyChainStore;
+			sourceTree = "<group>";
+		};
+		BEF8F6F424C69E6700650CAD /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6F524C69E6700650CAD /* AWSIdentityProvider.m */,
+				BEF8F6F624C69E6700650CAD /* AWSCredentialsProvider.m */,
+				BEF8F6F724C69E6700650CAD /* AWSSignature.h */,
+				BEF8F6F824C69E6700650CAD /* AWSIdentityProvider.h */,
+				BEF8F6F924C69E6700650CAD /* AWSCredentialsProvider.h */,
+				BEF8F6FA24C69E6700650CAD /* AWSSignature.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		BEF8F6FB24C69E6700650CAD /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F6FC24C69E6700650CAD /* AWSDDAbstractDatabaseLogger.m */,
+				BEF8F6FD24C69E6700650CAD /* AWSDDTTYLogger.h */,
+				BEF8F6FE24C69E6700650CAD /* AWSDDLog.m */,
+				BEF8F6FF24C69E6700650CAD /* AWSDDASLLogCapture.h */,
+				BEF8F70024C69E6700650CAD /* AWSDDOSLogger.h */,
+				BEF8F70124C69E6700650CAD /* AWSDDAssertMacros.h */,
+				BEF8F70224C69E6700650CAD /* AWSDDFileLogger.m */,
+				BEF8F70324C69E6700650CAD /* AWSDDASLLogger.h */,
+				BEF8F70424C69E6700650CAD /* AWSDDLog+LOGV.h */,
+				BEF8F70524C69E6700650CAD /* Extensions */,
+				BEF8F70B24C69E6700650CAD /* AWSDDAbstractDatabaseLogger.h */,
+				BEF8F70C24C69E6700650CAD /* AWSDDASLLogCapture.m */,
+				BEF8F70D24C69E6700650CAD /* AWSDDLog.h */,
+				BEF8F70E24C69E6700650CAD /* AWSDDTTYLogger.m */,
+				BEF8F70F24C69E6700650CAD /* AWSDDLegacyMacros.h */,
+				BEF8F71024C69E6700650CAD /* AWSCocoaLumberjack.h */,
+				BEF8F71124C69E6700650CAD /* AWSDDASLLogger.m */,
+				BEF8F71224C69E6700650CAD /* AWSDDMultiFormatter.m */,
+				BEF8F71324C69E6700650CAD /* AWSDDFileLogger.h */,
+				BEF8F71424C69E6700650CAD /* AWSDDLogMacros.h */,
+				BEF8F71524C69E6700650CAD /* AWSDDOSLogger.m */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		BEF8F70524C69E6700650CAD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F70624C69E6700650CAD /* AWSDDContextFilterLogFormatter.h */,
+				BEF8F70724C69E6700650CAD /* AWSDDDispatchQueueLogFormatter.h */,
+				BEF8F70824C69E6700650CAD /* AWSDDMultiFormatter.h */,
+				BEF8F70924C69E6700650CAD /* AWSDDContextFilterLogFormatter.m */,
+				BEF8F70A24C69E6700650CAD /* AWSDDDispatchQueueLogFormatter.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BEF8F71724C69E6700650CAD /* STS */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F71824C69E6700650CAD /* AWSSTSModel.m */,
+				BEF8F71924C69E6700650CAD /* AWSSTSService.h */,
+				BEF8F71A24C69E6700650CAD /* AWSSTS.h */,
+				BEF8F71B24C69E6700650CAD /* AWSSTSResources.m */,
+				BEF8F71C24C69E6700650CAD /* AWSSTSModel.h */,
+				BEF8F71D24C69E6700650CAD /* AWSSTSService.m */,
+				BEF8F71E24C69E6700650CAD /* AWSSTSResources.h */,
+			);
+			path = STS;
+			sourceTree = "<group>";
+		};
+		BEF8F71F24C69E6700650CAD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F72024C69E6700650CAD /* AWSModel.h */,
+				BEF8F72124C69E6700650CAD /* AWSCategory.h */,
+				BEF8F72224C69E6700650CAD /* AWSSynchronizedMutableDictionary.m */,
+				BEF8F72324C69E6700650CAD /* AWSLogging.m */,
+				BEF8F72424C69E6700650CAD /* AWSModel.m */,
+				BEF8F72524C69E6700650CAD /* AWSCategory.m */,
+				BEF8F72624C69E6700650CAD /* AWSSynchronizedMutableDictionary.h */,
+				BEF8F72724C69E6700650CAD /* AWSLogging.h */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		BEF8F72824C69E6700650CAD /* KSReachability */ = {
+			isa = PBXGroup;
+			children = (
+				BEF8F72924C69E6700650CAD /* AWSKSReachability.h */,
+				BEF8F72A24C69E6700650CAD /* AWSKSReachability.m */,
+			);
+			path = KSReachability;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BEE459BE248500D500A886D5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEF8F7AA24C69E6800650CAD /* AWSInfo.h in Headers */,
+				BEF8F77224C69E6800650CAD /* AWSCancellationTokenSource.h in Headers */,
+				BEF8F73124C69E6800650CAD /* AWSCore.h in Headers */,
+				BEF8F7A124C69E6800650CAD /* AWSFMDatabaseQueue.h in Headers */,
+				BEF8F7B224C69E6800650CAD /* AWSIdentityProvider.h in Headers */,
+				BEF8F76D24C69E6800650CAD /* AWSSerialization.h in Headers */,
+				BEF8F78C24C69E6800650CAD /* AWSTMCacheBackgroundTaskManager.h in Headers */,
+				BEF8F73924C69E6800650CAD /* AWSCognitoIdentityService.h in Headers */,
+				BEF8F7A924C69E6800650CAD /* AWSServiceEnum.h in Headers */,
+				BEF8F7D324C69E6800650CAD /* AWSSTSModel.h in Headers */,
+				BEF8F77924C69E6800650CAD /* AWSGeneric.h in Headers */,
+				BEF8F7CB24C69E6800650CAD /* AWSDDFileLogger.h in Headers */,
+				BEF8F7D024C69E6800650CAD /* AWSSTSService.h in Headers */,
+				BEF8F76E24C69E6800650CAD /* AWSGZIP.h in Headers */,
+				BEF8F78424C69E6800650CAD /* AWSXMLDictionary.h in Headers */,
+				BEF8F75124C69E6800650CAD /* NSError+AWSMTLModelException.h in Headers */,
+				BEF8F7A824C69E6800650CAD /* AWSService.h in Headers */,
+				BEF8F7CC24C69E6800650CAD /* AWSDDLogMacros.h in Headers */,
+				BEF8F78A24C69E6800650CAD /* AWSTMMemoryCache.h in Headers */,
+				BEF8F7C724C69E6800650CAD /* AWSDDLegacyMacros.h in Headers */,
+				BEF8F73324C69E6800650CAD /* AWSCognitoIdentityModel.h in Headers */,
+				BEF8F79524C69E6800650CAD /* AWSFMDB+AWSHelpers.h in Headers */,
+				BEF8F76C24C69E6800650CAD /* AWSURLRequestRetryHandler.h in Headers */,
+				BEF8F77524C69E6800650CAD /* AWSTask.h in Headers */,
+				BEF8F74224C69E6800650CAD /* AWSmetamacros.h in Headers */,
+				BEF8F7A324C69E6800650CAD /* AWSFMResultSet.h in Headers */,
+				BEF8F74424C69E6800650CAD /* AWSEXTKeyPathCoding.h in Headers */,
+				BEF8F7A224C69E6800650CAD /* AWSFMDatabase.h in Headers */,
+				BEF8F78D24C69E6800650CAD /* AWSTMCache.h in Headers */,
+				BEE459C7248500D600A886D5 /* SesameWatchKitSDK.h in Headers */,
+				BEF8F78924C69E6800650CAD /* AWSTMDiskCache.h in Headers */,
+				BEF8F75224C69E6800650CAD /* AWSMTLManagedObjectAdapter.h in Headers */,
+				BEF8F7D124C69E6800650CAD /* AWSSTS.h in Headers */,
+				BEF8F7C524C69E6800650CAD /* AWSDDLog.h in Headers */,
+				BEF8F72D24C69E6800650CAD /* AWSAPIGatewayModel.h in Headers */,
+				BEF8F73F24C69E6800650CAD /* AWSMTLValueTransformer.h in Headers */,
+				BEF8F75E24C69E6800650CAD /* AWSNetworking.h in Headers */,
+				BEF8F74724C69E6800650CAD /* AWSMTLJSONAdapter.h in Headers */,
+				BEF8F77324C69E6800650CAD /* AWSExecutor.h in Headers */,
+				BEF8F7B124C69E6800650CAD /* AWSSignature.h in Headers */,
+				BEF8F7C024C69E6800650CAD /* AWSDDMultiFormatter.h in Headers */,
+				BEF8F79C24C69E6800650CAD /* AWSFMDB.h in Headers */,
+				BEF8F76024C69E6800650CAD /* AWSNetworkingHelpers.h in Headers */,
+				BEF8F77824C69E6800650CAD /* AWSTaskCompletionSource.h in Headers */,
+				BEF8F73424C69E6800650CAD /* AWSCognitoIdentityResources.h in Headers */,
+				BEF8F7DC24C69E6800650CAD /* AWSSynchronizedMutableDictionary.h in Headers */,
+				BEF8F7A024C69E6800650CAD /* AWSFMDatabaseAdditions.h in Headers */,
+				BEF8F7B624C69E6800650CAD /* AWSDDTTYLogger.h in Headers */,
+				BEF8F79624C69E6800650CAD /* AWSFMDatabase+Private.h in Headers */,
+				BEF8F7C324C69E6800650CAD /* AWSDDAbstractDatabaseLogger.h in Headers */,
+				BEF8F7D524C69E6800650CAD /* AWSSTSResources.h in Headers */,
+				BEF8F79324C69E6800650CAD /* FABAttributes.h in Headers */,
+				BEF8F76924C69E6800650CAD /* AWSURLRequestSerialization.h in Headers */,
+				BEF8F7DE24C69E6800650CAD /* AWSKSReachability.h in Headers */,
+				BEF8F7AE24C69E6800650CAD /* AWSUICKeyChainStore.h in Headers */,
+				BEF8F74C24C69E6800650CAD /* AWSMTLModel.h in Headers */,
+				BEF8F73724C69E6800650CAD /* AWSCognitoIdentity+Fabric.h in Headers */,
+				BEF8F72F24C69E6800650CAD /* AWSAPIGateway.h in Headers */,
+				BEF8F7D624C69E6800650CAD /* AWSModel.h in Headers */,
+				BEF8F7BC24C69E6800650CAD /* AWSDDASLLogger.h in Headers */,
+				BEF8F79124C69E6800650CAD /* FABKitProtocol.h in Headers */,
+				BEF8F74124C69E6800650CAD /* AWSEXTScope.h in Headers */,
+				BEF8F7C824C69E6800650CAD /* AWSCocoaLumberjack.h in Headers */,
+				BEF8F74B24C69E6800650CAD /* NSValueTransformer+AWSMTLInversionAdditions.h in Headers */,
+				BEF8F7A424C69E6800650CAD /* AWSClientContext.h in Headers */,
+				BEF8F76B24C69E6800650CAD /* AWSURLResponseSerialization.h in Headers */,
+				BEF8F7B324C69E6800650CAD /* AWSCredentialsProvider.h in Headers */,
+				BEF8F7DD24C69E6800650CAD /* AWSLogging.h in Headers */,
+				BEF8F73A24C69E6800650CAD /* AWSCognitoIdentity.h in Headers */,
+				BEF8F75924C69E6800650CAD /* NSDictionary+AWSMTLManipulationAdditions.h in Headers */,
+				BEF8F77F24C69E6800650CAD /* AWSBolts.h in Headers */,
+				BEF8F7BA24C69E6800650CAD /* AWSDDAssertMacros.h in Headers */,
+				BEF8F79D24C69E6800650CAD /* AWSFMDatabasePool.h in Headers */,
+				BEF8F76624C69E6800650CAD /* AWSValidation.h in Headers */,
+				BEF8F74024C69E6800650CAD /* AWSEXTRuntimeExtensions.h in Headers */,
+				BEF8F75524C69E6800650CAD /* NSArray+AWSMTLManipulationAdditions.h in Headers */,
+				BEF8F73B24C69E6800650CAD /* AWSMTLModel+NSCoding.h in Headers */,
+				BEF8F7B924C69E6800650CAD /* AWSDDOSLogger.h in Headers */,
+				BEF8F75624C69E6800650CAD /* AWSMTLReflection.h in Headers */,
+				BEF8F75824C69E6800650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.h in Headers */,
+				BEF8F72C24C69E6800650CAD /* AWSAPIGatewayClient.h in Headers */,
+				BEF8F7BF24C69E6800650CAD /* AWSDDDispatchQueueLogFormatter.h in Headers */,
+				BEF8F79024C69E6800650CAD /* Fabric.h in Headers */,
+				BEF8F77A24C69E6800650CAD /* AWSCancellationToken.h in Headers */,
+				BEF8F75D24C69E6800650CAD /* AWSXMLWriter.h in Headers */,
+				BEF8F77D24C69E6800650CAD /* AWSCancellationTokenRegistration.h in Headers */,
+				BEF8F7B824C69E6800650CAD /* AWSDDASLLogCapture.h in Headers */,
+				BEF8F7D724C69E6800650CAD /* AWSCategory.h in Headers */,
+				BEF8F75424C69E6800650CAD /* NSObject+AWSMTLComparisonAdditions.h in Headers */,
+				BEF8F75A24C69E6800650CAD /* AWSMantle.h in Headers */,
+				BEF8F7BE24C69E6800650CAD /* AWSDDContextFilterLogFormatter.h in Headers */,
+				BEF8F7BD24C69E6800650CAD /* AWSDDLog+LOGV.h in Headers */,
+				BEF8F76224C69E6800650CAD /* AWSURLSessionManager.h in Headers */,
+				BEF8F79224C69E6800650CAD /* Fabric+FABKits.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BEE459C2248500D500A886D5 /* SesameWatchKitSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEE459CA248500D600A886D5 /* Build configuration list for PBXNativeTarget "SesameWatchKitSDK" */;
+			buildPhases = (
+				BEE459BE248500D500A886D5 /* Headers */,
+				BEE459BF248500D500A886D5 /* Sources */,
+				BEE459C0248500D500A886D5 /* Frameworks */,
+				BEE459C1248500D500A886D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SesameWatchKitSDK;
+			productName = SesameWatchKitSDK;
+			productReference = BEE459C3248500D500A886D5 /* SesameWatchKitSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B142938F231F8D29006AA64C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = CandyHouse;
+				TargetAttributes = {
+					BEE459C2248500D500A886D5 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = B1429392231F8D29006AA64C /* Build configuration list for PBXProject "SesameWatchKitSDK" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B142938E231F8D29006AA64C;
+			packageReferences = (
+				3BC918BC2E2A54C700468AAC /* XCLocalSwiftPackageReference "../SesameSDK" */,
+			);
+			productRefGroup = B1429399231F8D29006AA64C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEE459C2248500D500A886D5 /* SesameWatchKitSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEE459C1248500D500A886D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEE459BF248500D500A886D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEF8F7D824C69E6800650CAD /* AWSSynchronizedMutableDictionary.m in Sources */,
+				BEF8F7A524C69E6800650CAD /* AWSService.m in Sources */,
+				BEF8F79E24C69E6800650CAD /* AWSFMDB+AWSHelpers.m in Sources */,
+				BEF8F76824C69E6800650CAD /* AWSURLRequestRetryHandler.m in Sources */,
+				BEF8F7DB24C69E6800650CAD /* AWSCategory.m in Sources */,
+				BEF8F7D224C69E6800650CAD /* AWSSTSResources.m in Sources */,
+				BEF8F77B24C69E6800650CAD /* AWSExecutor.m in Sources */,
+				BEF8F7DF24C69E6800650CAD /* AWSKSReachability.m in Sources */,
+				BEF8F79824C69E6800650CAD /* AWSFMDatabaseQueue.m in Sources */,
+				BEF8F73824C69E6800650CAD /* AWSCognitoIdentityResources.m in Sources */,
+				BEF8F7B724C69E6800650CAD /* AWSDDLog.m in Sources */,
+				BEF8F78124C69E6800650CAD /* AWSXMLDictionary.m in Sources */,
+				BEF8F74524C69E6800650CAD /* AWSEXTScope.m in Sources */,
+				BEF8F73224C69E6800650CAD /* AWSCognitoIdentity+Fabric.m in Sources */,
+				BEF8F7B024C69E6800650CAD /* AWSCredentialsProvider.m in Sources */,
+				BEF8F7C424C69E6800650CAD /* AWSDDASLLogCapture.m in Sources */,
+				BEF8F77C24C69E6800650CAD /* AWSCancellationTokenSource.m in Sources */,
+				BEF8F77424C69E6800650CAD /* AWSCancellationToken.m in Sources */,
+				BEF8F74D24C69E6800650CAD /* NSDictionary+AWSMTLManipulationAdditions.m in Sources */,
+				BEF8F74A24C69E6800650CAD /* NSObject+AWSMTLComparisonAdditions.m in Sources */,
+				BEF8F74824C69E6800650CAD /* NSArray+AWSMTLManipulationAdditions.m in Sources */,
+				BEF8F79724C69E6800650CAD /* AWSFMResultSet.m in Sources */,
+				BEF8F76124C69E6800650CAD /* AWSNetworking.m in Sources */,
+				BEF8F76424C69E6800650CAD /* AWSURLRequestSerialization.m in Sources */,
+				BEF8F7CF24C69E6800650CAD /* AWSSTSModel.m in Sources */,
+				BEF8F79924C69E6800650CAD /* AWSFMDatabase.m in Sources */,
+				BEF8F73E24C69E6800650CAD /* NSError+AWSMTLModelException.m in Sources */,
+				BEF8F7C224C69E6800650CAD /* AWSDDDispatchQueueLogFormatter.m in Sources */,
+				BEF8F77624C69E6800650CAD /* AWSBolts.m in Sources */,
+				BEF8F79424C69E6800650CAD /* AWSFMDatabasePool.m in Sources */,
+				BEF8F72B24C69E6800650CAD /* AWSAPIGatewayModel.m in Sources */,
+				BEF8F76A24C69E6800650CAD /* AWSValidation.m in Sources */,
+				BEF8F75B24C69E6800650CAD /* AWSMTLModel.m in Sources */,
+				BEF8F7DA24C69E6800650CAD /* AWSModel.m in Sources */,
+				BEF8F75024C69E6800650CAD /* AWSMTLValueTransformer.m in Sources */,
+				BEF8F76724C69E6800650CAD /* AWSSerialization.m in Sources */,
+				BEF8F73524C69E6800650CAD /* AWSCognitoIdentityService.m in Sources */,
+				BEF8F74624C69E6800650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m in Sources */,
+				BEF8F7A724C69E6800650CAD /* AWSClientContext.m in Sources */,
+				BEF8F7A624C69E6800650CAD /* AWSInfo.m in Sources */,
+				BEF8F76524C69E6800650CAD /* AWSURLResponseSerialization.m in Sources */,
+				BEF8F78524C69E6800650CAD /* AWSTMMemoryCache.m in Sources */,
+				BEF8F78724C69E6800650CAD /* AWSTMCache.m in Sources */,
+				BEF8F77E24C69E6800650CAD /* AWSTask.m in Sources */,
+				BEF8F75C24C69E6800650CAD /* AWSXMLWriter.m in Sources */,
+				BEF8F77124C69E6800650CAD /* AWSGZIP.m in Sources */,
+				BEF8F7CD24C69E6800650CAD /* AWSDDOSLogger.m in Sources */,
+				BEF8F7AF24C69E6800650CAD /* AWSIdentityProvider.m in Sources */,
+				BEF8F77724C69E6800650CAD /* AWSCancellationTokenRegistration.m in Sources */,
+				BEF8F7C924C69E6800650CAD /* AWSDDASLLogger.m in Sources */,
+				BEF8F74324C69E6800650CAD /* AWSEXTRuntimeExtensions.m in Sources */,
+				BEF8F74F24C69E6800650CAD /* AWSMTLModel+NSCoding.m in Sources */,
+				BEF8F7D924C69E6800650CAD /* AWSLogging.m in Sources */,
+				BEF8F78624C69E6800650CAD /* AWSTMDiskCache.m in Sources */,
+				BEF8F7B524C69E6800650CAD /* AWSDDAbstractDatabaseLogger.m in Sources */,
+				BEF8F7D424C69E6800650CAD /* AWSSTSService.m in Sources */,
+				BEF8F73624C69E6800650CAD /* AWSCognitoIdentityModel.m in Sources */,
+				BEF8F7BB24C69E6800650CAD /* AWSDDFileLogger.m in Sources */,
+				BEF8F73D24C69E6800650CAD /* AWSMTLManagedObjectAdapter.m in Sources */,
+				BEF8F79A24C69E6800650CAD /* AWSFMDatabaseAdditions.m in Sources */,
+				BEF8F7C624C69E6800650CAD /* AWSDDTTYLogger.m in Sources */,
+				BEF8F75324C69E6800650CAD /* NSValueTransformer+AWSMTLInversionAdditions.m in Sources */,
+				BEF8F75F24C69E6800650CAD /* AWSURLSessionManager.m in Sources */,
+				BEF8F7AC24C69E6800650CAD /* AWSUICKeyChainStore.m in Sources */,
+				BEF8F72E24C69E6800650CAD /* AWSAPIGatewayClient.m in Sources */,
+				BEF8F7B424C69E6800650CAD /* AWSSignature.m in Sources */,
+				BEF8F7CA24C69E6800650CAD /* AWSDDMultiFormatter.m in Sources */,
+				BEF8F74924C69E6800650CAD /* AWSMTLReflection.m in Sources */,
+				3B1D7F792E2A268800C90D01 /* CHFingerPrintCapableExtension.swift in Sources */,
+				3B1D7F7A2E2A268800C90D01 /* NSError+.swift in Sources */,
+				3B1D7F7B2E2A268800C90D01 /* CHResultPattern.swift in Sources */,
+				3B1D7F7C2E2A268800C90D01 /* CHAPICallObject.swift in Sources */,
+				3B1D7F7D2E2A268800C90D01 /* Data+.swift in Sources */,
+				3B1D7F7E2E2A268800C90D01 /* CHRemoteNanoCapable.swift in Sources */,
+				3B1D7F7F2E2A268800C90D01 /* CHSesameBot.swift in Sources */,
+				3B1D7F802E2A268800C90D01 /* CHCapbleRenameBean.swift in Sources */,
+				3B1D7F812E2A268800C90D01 /* CHRemoteNanoDelegate.swift in Sources */,
+				3B1D7F822E2A268800C90D01 /* CHBikeLockDevice+Register.swift in Sources */,
+				3B1D7F832E2A268800C90D01 /* CHOpenSensorCapableExtension.swift in Sources */,
+				3B1D7F842E2A268800C90D01 /* CHSesameFacePro.swift in Sources */,
+				3B1D7F852E2A268800C90D01 /* CHSesameBasePro.swift in Sources */,
+				3B1D7F862E2A268800C90D01 /* ShadowModel.swift in Sources */,
+				3B1D7F872E2A268800C90D01 /* CHSesameBotDevice.swift in Sources */,
+				3B1D7F882E2A268800C90D01 /* CHSesame2Device+Lock.swift in Sources */,
+				3B1D7F8A2E2A268800C90D01 /* ECC.swift in Sources */,
+				3B1D7F8B2E2A268800C90D01 /* CHAccountManager.swift in Sources */,
+				3B1D7F8C2E2A268800C90D01 /* CHSesameFaceDevice.swift in Sources */,
+				3B1D7F8D2E2A268800C90D01 /* AWSConfig.swift in Sources */,
+				3B1D7F8E2E2A268800C90D01 /* CHSesameBaseDevice.swift in Sources */,
+				3B1D7F8F2E2A268800C90D01 /* CHSesame5.swift in Sources */,
+				3B1D7F902E2A268800C90D01 /* URLSession+.swift in Sources */,
+				3B1D7F912E2A268800C90D01 /* CHDeviceProtocol.swift in Sources */,
+				3B1D7F922E2A268800C90D01 /* CHSesameTouchCard.swift in Sources */,
+				3B1D7F932E2A268800C90D01 /* CHSesame2Device+Register.swift in Sources */,
+				3B1D7F942E2A268800C90D01 /* CHBluetoothCenter.swift in Sources */,
+				3B1D7F952E2A268800C90D01 /* CHPassCodeCapable.swift in Sources */,
+				3B1D7F962E2A268800C90D01 /* Sesame2Protocols.swift in Sources */,
+				3B1D7F972E2A268800C90D01 /* CHSesame2Device+Login.swift in Sources */,
+				3B1D7F982E2A268800C90D01 /* CHDeviceUtil+OS3.swift in Sources */,
+				3B1D7F992E2A268800C90D01 /* CHFingerPrintDelegate.swift in Sources */,
+				3B1D7F9A2E2A268800C90D01 /* CHSesame2Device+DFU.swift in Sources */,
+				3B1D7F9B2E2A268800C90D01 /* CHAccountManager+APIRequest.swift in Sources */,
+				3B1D7F9C2E2A268800C90D01 /* CHCardCapable.swift in Sources */,
+				3B1D7F9D2E2A268800C90D01 /* CHSesame2Device+History.swift in Sources */,
+				3B1D7F9E2E2A268800C90D01 /* CHFingerPrintCapable.swift in Sources */,
+				3B1D7F9F2E2A268800C90D01 /* CHBikeLockDevice+DFU.swift in Sources */,
+				3B1D7FA02E2A268800C90D01 /* CHServerCapableHandler.swift in Sources */,
+				3B1D7FA12E2A268800C90D01 /* SwCrypt.swift in Sources */,
+				3B1D7FA22E2A268800C90D01 /* CHFaceEventHandlers.swift in Sources */,
+				3B1D7FA32E2A268800C90D01 /* CHSesameTouchProDevice.swift in Sources */,
+				3B1D7FA42E2A268800C90D01 /* CHSesameBaseDevice+Connector.swift in Sources */,
+				3B1D7FA52E2A268800C90D01 /* CHSesame5Device+Command.swift in Sources */,
+				3B1D7FA62E2A268800C90D01 /* CHOpenSensorCapable.swift in Sources */,
+				3B1D7FA72E2A268800C90D01 /* CHSesameBotDevice+Setting.swift in Sources */,
+				3B1D7FA82E2A268800C90D01 /* CHPalmCapableExtension.swift in Sources */,
+				3B1D7FA92E2A268800C90D01 /* CHSesameFace.swift in Sources */,
+				3B1D7FAA2E2A268800C90D01 /* Sesame2BleDevice+Peripheral.swift in Sources */,
+				3B1D7FAB2E2A268800C90D01 /* CHWifiModule2.swift in Sources */,
+				3B1D7FAC2E2A268800C90D01 /* SesameBotPayload.swift in Sources */,
+				3B1D7FAD2E2A268800C90D01 /* CHSesameBotDevice+Peripheral.swift in Sources */,
+				3B1D7FAE2E2A268800C90D01 /* CHHub3Device+Gatt.swift in Sources */,
+				3B1D7FAF2E2A268800C90D01 /* CHHub3Device+IR.swift in Sources */,
+				3B1D7FB02E2A268800C90D01 /* CHBikeLockDevice+Setting.swift in Sources */,
+				3B1D7FB12E2A268800C90D01 /* CHSesameBaseMechSettings.swift in Sources */,
+				3B1D7FB22E2A268800C90D01 /* CHBikeLockDevice+Peripheral.swift in Sources */,
+				3B1D7FB32E2A268800C90D01 /* CHWifiModule2Device+Register.swift in Sources */,
+				3B1D7FB42E2A268800C90D01 /* CHSesameTouchDevice.swift in Sources */,
+				3B1D7FB52E2A268800C90D01 /* CHSesameBaseDevice+Settings.swift in Sources */,
+				3B1D7FB62E2A268800C90D01 /* BikeLockPayload.swift in Sources */,
+				3B1D7FB72E2A268800C90D01 /* CHIoTManager.swift in Sources */,
+				3B1D7FB82E2A268800C90D01 /* CHSesame2Device.swift in Sources */,
+				3B1D7FB92E2A268800C90D01 /* CHSesameBot2Device.swift in Sources */,
+				3B1D7FBA2E2A268800C90D01 /* CHRemoteBaseTriggerSettings.swift in Sources */,
+				3B1D7FBB2E2A268800C90D01 /* CHHub3Device.swift in Sources */,
+				3B1D7FBC2E2A268800C90D01 /* CHConfiguration.swift in Sources */,
+				3B1D7FBD2E2A268800C90D01 /* IRDeviceType.swift in Sources */,
+				3B1D7FBE2E2A268800C90D01 /* CHSesameBike2Device.swift in Sources */,
+				3B1D7FBF2E2A268800C90D01 /* CHCardCapableExtension.swift in Sources */,
+				3B1D7FC02E2A268800C90D01 /* WifiModule2Payload.swift in Sources */,
+				3B1D7FC12E2A268800C90D01 /* SafeDictionary.swift in Sources */,
+				3B1D7FC22E2A268800C90D01 /* CHBikeLockDevice+Lock.swift in Sources */,
+				3B1D7FC32E2A268800C90D01 /* CHSesame2HistoryEvent.swift in Sources */,
+				3B1D7FC42E2A268800C90D01 /* CHSesameBot2.swift in Sources */,
+				3B1D7FC52E2A268800C90D01 /* CHFaceDelegate.swift in Sources */,
+				3B1D7FC62E2A268800C90D01 /* CHFaceCapableExtension.swift in Sources */,
+				3B1D7FC72E2A268800C90D01 /* CHDeviceCenter.swift in Sources */,
+				3B1D7FC82E2A268800C90D01 /* ServerBaseType.swift in Sources */,
+				3B1D7FC92E2A268800C90D01 /* CHSesame5Device.swift in Sources */,
+				3B1D7FCA2E2A268800C90D01 /* AES.swift in Sources */,
+				3B1D7FCB2E2A268800C90D01 /* CHSesame2Device+Gatt.swift in Sources */,
+				3B1D7FCC2E2A268800C90D01 /* CHGuestKey.swift in Sources */,
+				3B1D7FCD2E2A268800C90D01 /* CHSesame2.swift in Sources */,
+				3B1D7FCE2E2A268800C90D01 /* WifiModule2Protocols.swift in Sources */,
+				3B1D7FCF2E2A268800C90D01 /* SesameOS3BleCipher.swift in Sources */,
+				3B1D7FD02E2A268800C90D01 /* CHSesame5Device+Register.swift in Sources */,
+				3B1D7FD12E2A268800C90D01 /* CHBikeLockDevice.swift in Sources */,
+				3B1D7FD22E2A268800C90D01 /* CHSesameBotDevice+History.swift in Sources */,
+				3B1D7FD32E2A268800C90D01 /* CHSesameTouch.swift in Sources */,
+				3B1D7FD42E2A268800C90D01 /* CHSesameFaceProDevice.swift in Sources */,
+				3B1D7FD52E2A268800C90D01 /* CHCardEventHandlers.swift in Sources */,
+				3B1D7FD62E2A268800C90D01 /* OpensensorMechStatus.swift in Sources */,
+				3B1D7FD82E2A268800C90D01 /* CHSesameTouchPro.swift in Sources */,
+				3B1D7FD92E2A268800C90D01 /* CHSesameBotDevice+Gatt.swift in Sources */,
+				3B1D7FDA2E2A268800C90D01 /* CHSesameBotDevice+DFU.swift in Sources */,
+				3B1D7FDB2E2A268800C90D01 /* CHDeviceKey.swift in Sources */,
+				3B1D7FDC2E2A268800C90D01 /* CHWifiModule2Device+Peripheral.swift in Sources */,
+				3B1D7FDD2E2A268800C90D01 /* CHDevice.swift in Sources */,
+				3B1D7FDE2E2A268800C90D01 /* CHSesameTouchProMechStatus.swift in Sources */,
+				3B1D7FDF2E2A268800C90D01 /* CHSesameBaseDevice+Version.swift in Sources */,
+				3B1D7FE02E2A268800C90D01 /* CHBaseDevice.swift in Sources */,
+				3B1D7FE12E2A268800C90D01 /* CHSesameBotDevice+Lock.swift in Sources */,
+				3B1D7FE22E2A268800C90D01 /* CHDeviceModel.xcdatamodeld in Sources */,
+				3B1D7FE32E2A268800C90D01 /* CHPassCodeCapableExtension.swift in Sources */,
+				3B1D7FE42E2A268800C90D01 /* CHCardDelegate.swift in Sources */,
+				3B1D7FE52E2A268800C90D01 /* CHFaceCapable.swift in Sources */,
+				3B1D7FE62E2A268800C90D01 /* Sesame2Payload.swift in Sources */,
+				3B1D7FE72E2A268800C90D01 /* CHPalmDelegate.swift in Sources */,
+				3B1D7FE82E2A268800C90D01 /* SesameBotProtocols.swift in Sources */,
+				3B1D7FE92E2A268800C90D01 /* OpenSensorData.swift in Sources */,
+				3B1D7FEA2E2A268800C90D01 /* CHSesameOS3.swift in Sources */,
+				3B1D7FEB2E2A268800C90D01 /* CHSesameBotDevice+Login.swift in Sources */,
+				3B1D7FEC2E2A268800C90D01 /* CHSesameBaseDevice+Delegate.swift in Sources */,
+				3B1D7FED2E2A268800C90D01 /* CHSesameBaseDevice+Register.swift in Sources */,
+				3B1D7FEE2E2A268800C90D01 /* SesameOS3SegmentType.swift in Sources */,
+				3B1D7FEF2E2A268800C90D01 /* CHMulticastDelegate.swift in Sources */,
+				3B1D7FF02E2A268800C90D01 /* CHMechanicalSettingsCapable.swift in Sources */,
+				3B1D7FF12E2A268800C90D01 /* CHBikeLockDevice+Gatt.swift in Sources */,
+				3B1D7FF22E2A268800C90D01 /* CHPalmEventHandlers.swift in Sources */,
+				3B1D7FF32E2A268800C90D01 /* CHVersionCapable.swift in Sources */,
+				3B1D7FF42E2A268800C90D01 /* CHDelegateManager.swift in Sources */,
+				3B1D7FF52E2A268800C90D01 /* CHBikeLock.swift in Sources */,
+				3B1D7FF62E2A268800C90D01 /* String+.swift in Sources */,
+				3B1D7FF72E2A268800C90D01 /* Sesame2BleCipher.swift in Sources */,
+				3B1D7FF82E2A268800C90D01 /* CHRemoteNanoCapableExtension.swift in Sources */,
+				3B1D7FF92E2A268800C90D01 /* Logging.swift in Sources */,
+				3B1D7FFA2E2A268800C90D01 /* CHExtensionListener.swift in Sources */,
+				3B1D7FFB2E2A268800C90D01 /* CHDeviceManager.swift in Sources */,
+				3B1D7FFC2E2A268800C90D01 /* CHWifiModule2Device.swift in Sources */,
+				3B1D7FFD2E2A268800C90D01 /* CHSesameBike2.swift in Sources */,
+				3B1D7FFE2E2A268800C90D01 /* CHSesameBotDevice+Register.swift in Sources */,
+				3B1D7FFF2E2A268800C90D01 /* CHHub3.swift in Sources */,
+				3B1D80002E2A268800C90D01 /* CHFingerPrintEventHandlers.swift in Sources */,
+				3B1D80012E2A268800C90D01 /* CHBikeLockDevice+Login.swift in Sources */,
+				3B1D80022E2A268800C90D01 /* CHWifiModule2Device+Gatt.swift in Sources */,
+				3B1D80032E2A268800C90D01 /* CHPassCodeDelegate.swift in Sources */,
+				3B1D80042E2A268800C90D01 /* CHSesame5Device+History.swift in Sources */,
+				3B1D80052E2A268800C90D01 /* CHPalmCapable.swift in Sources */,
+				3B1D80062E2A268800C90D01 /* CHPassCodeEventHandlers.swift in Sources */,
+				BEF8F76324C69E6800650CAD /* AWSNetworkingHelpers.m in Sources */,
+				BEF8F75724C69E6800650CAD /* AWSMTLJSONAdapter.m in Sources */,
+				BEF8F78024C69E6800650CAD /* AWSTaskCompletionSource.m in Sources */,
+				BEF8F7C124C69E6800650CAD /* AWSDDContextFilterLogFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B14293AA231F8D29006AA64C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B14293AB231F8D29006AA64C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BEE459C8248500D600A886D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = SesameWatchKitSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.SesameWatchKitSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Debug;
+		};
+		BEE459C9248500D600A886D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = SesameWatchKitSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.SesameWatchKitSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1429392231F8D29006AA64C /* Build configuration list for PBXProject "SesameWatchKitSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B14293AA231F8D29006AA64C /* Debug */,
+				B14293AB231F8D29006AA64C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEE459CA248500D600A886D5 /* Build configuration list for PBXNativeTarget "SesameWatchKitSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEE459C8248500D600A886D5 /* Debug */,
+				BEE459C9248500D600A886D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		3BC918BC2E2A54C700468AAC /* XCLocalSwiftPackageReference "../SesameSDK" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SesameSDK;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3BC918BD2E2A54C700468AAC /* AESc */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AESc;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		3B1D7F5D2E2A268800C90D01 /* CHDeviceModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3B1D7F752E2A268800C90D01 /* CHDeviceModel.xcdatamodel */,
+			);
+			currentVersion = 3B1D7F752E2A268800C90D01 /* CHDeviceModel.xcdatamodel */;
+			path = CHDeviceModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B142938F231F8D29006AA64C /* Project object */;
+}

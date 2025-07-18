@@ -5,6 +5,6 @@
       location = "group:SesameUI/SesameUI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SesameSDK/SesameSDK.xcodeproj">
+      location = "container:SesameWatchKitSDK/SesameWatchKitSDK.xcodeproj">
    </FileRef>
 </Workspace>
