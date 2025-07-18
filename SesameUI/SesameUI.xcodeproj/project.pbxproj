@@ -42,6 +42,11 @@
 		3B1D804A2E2A2DBC00C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */; };
 		3BC91C582E2A7DE200468AAC /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3BC91C572E2A7DE200468AAC /* SesameSDK */; };
 		3BC91C5D2E2A7F1400468AAC /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */; };
+		3BC91DF52E2AA0FB00468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
+		3BC91DF62E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
+		3BC91DF72E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
+		3BC91DF82E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
+		3BC91DF92E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4102FAF223C2E17A00ECA735 /* ScanAnimationView.swift */; };
 		41030330237902D400785311 /* UIColorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColorShared+.swift */; };
 		4103033C23790CB800785311 /* PopUpMenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103033B23790CB800785311 /* PopUpMenuControl.swift */; };
@@ -586,6 +591,7 @@
 		3BC3297F2E28C76E00786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC329852E28C77B00786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IRDeviceType.swift; path = ../Sources/SesameSDK/Ble/SesameOS3/Hub3/IRDeviceType.swift; sourceTree = SOURCE_ROOT; };
+		3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSSharedConfig.swift; sourceTree = "<group>"; };
 		3BD14CEC2E29095300A39299 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD14CF02E29095A00A39299 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD14CF62E29096700A39299 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1157,6 +1163,14 @@
 			path = DeviceRemoteMatchControl;
 			sourceTree = "<group>";
 		};
+		3BC91CA62E2A8EFA00468AAC /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		4103032E237902C700785311 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1195,6 +1209,7 @@
 		4120B5D12362893000828A4D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3BC91CA62E2A8EFA00468AAC /* Configuration */,
 				BE88590A26C398E4002D17E0 /* Model */,
 				BE386D7D2562A5720001D5AA /* API */,
 				4103032E237902C700785311 /* Extensions */,
@@ -2743,6 +2758,7 @@
 				BE88594826C3B48A002D17E0 /* Functions.swift in Sources */,
 				BE88590226C3964F002D17E0 /* CHDeviceInfo.swift in Sources */,
 				BE30813A248E3BEE00152D66 /* UIImageShared+.swift in Sources */,
+				3BC91DF62E2AA12000468AAC /* AWSSharedConfig.swift in Sources */,
 				BE88591726C3A2CA002D17E0 /* UIColorShared+.swift in Sources */,
 				642E36052B20A12500ACF341 /* Sesame5ListCell.swift in Sources */,
 				64ADDE3D2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */,
@@ -2763,6 +2779,7 @@
 				BE3A724325CAB0AC002FF80E /* LockSesameIntentHandler.swift in Sources */,
 				643A9C4C2B313FD1008214BD /* CHProductModel+.swift in Sources */,
 				64ADDE392DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */,
+				3BC91DF82E2AA12000468AAC /* AWSSharedConfig.swift in Sources */,
 				B027BB8D2508DE4500391DC0 /* IntentHandler.swift in Sources */,
 				BE6D8B3125CCF05F00A3A606 /* IntentHandler+.swift in Sources */,
 				BE88593F26C3AEDC002D17E0 /* CHDeviceShared+.swift in Sources */,
@@ -2804,6 +2821,7 @@
 				64547DE42C086B89001CEF88 /* ControlSoundSystem.swift in Sources */,
 				6440C3B52B61F87000F74E52 /* DeviceControllerHolder.swift in Sources */,
 				64498EA22BD65EFB00806D0F /* FloatingTipView.swift in Sources */,
+				3BC91DF52E2AA0FB00468AAC /* AWSSharedConfig.swift in Sources */,
 				6479BD8B2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift in Sources */,
 				BE308139248E3BEE00152D66 /* UIImageShared+.swift in Sources */,
 				BE8245E6250E65F100AA3E23 /* Sesame2SettingViewController.swift in Sources */,
@@ -3013,6 +3031,7 @@
 				BE9F2A4B26FD59A500F0E9AB /* NSErrorShared+.swift in Sources */,
 				BE9F2A3726FD596100F0E9AB /* SesameUI.xcdatamodeld in Sources */,
 				BE9F2A3426FD595200F0E9AB /* WatchKitFile.swift in Sources */,
+				3BC91DF92E2AA12000468AAC /* AWSSharedConfig.swift in Sources */,
 				BE9F2A2A26FD587E00F0E9AB /* IntentHandler+.swift in Sources */,
 				BE9F2A3626FD595700F0E9AB /* QRCodeURLType.swift in Sources */,
 				BE9F2A2B26FD587E00F0E9AB /* LockSesameIntentHandler.swift in Sources */,
@@ -3033,6 +3052,7 @@
 				BE5794F024AF1BE200E96B72 /* NSErrorShared+.swift in Sources */,
 				BE88591B26C3A3A3002D17E0 /* URL+Sesame2.swift in Sources */,
 				BE88592E26C3A9F7002D17E0 /* DataShared+.swift in Sources */,
+				3BC91DF72E2AA12000468AAC /* AWSSharedConfig.swift in Sources */,
 				B09CCAF424D95F00008B8E16 /* SesameListViewModel.swift in Sources */,
 				B09CCAF224D95EF0008B8E16 /* SesameListView.swift in Sources */,
 				BED74C7324AC79C90052F04D /* SesameLockView.swift in Sources */,

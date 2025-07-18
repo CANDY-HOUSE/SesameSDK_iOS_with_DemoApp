@@ -13,8 +13,8 @@ import AWSCore
 
 public final class CHConfiguration {
     public static let shared = CHConfiguration()
-    public let apiKey = AWSConfig.apiKey
-    public let clientId = AWSConfig.clientId
+    public let apiKey = AWSConfigManager.config.apiKey
+    public let clientId = AWSConfigManager.config.clientId
     public let appGroup = "group.candyhouse.widget"
     
     func region() -> AWSRegionType {

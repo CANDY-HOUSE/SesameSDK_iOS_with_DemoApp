@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.setValue(true, forKey: "refreshDevice")
+        // 配置 AWS
+        AWSConfigManager.configure(with: AWSSharedConfig())
         // 啟動通知
         let center = UNUserNotificationCenter.current()
         center.delegate = self

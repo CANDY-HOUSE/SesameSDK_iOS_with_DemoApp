@@ -7,147 +7,147 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BC91BCA2E2A7DA400468AAC /* SafeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC42E2A7DA400468AAC /* SafeDictionary.swift */; };
-		3BC91BCB2E2A7DA400468AAC /* CHAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB62E2A7DA400468AAC /* CHAccountManager.swift */; };
-		3BC91BCC2E2A7DA400468AAC /* SesameBotProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B372E2A7DA400468AAC /* SesameBotProtocols.swift */; };
-		3BC91BCD2E2A7DA400468AAC /* CHRemoteBaseTriggerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B8B2E2A7DA400468AAC /* CHRemoteBaseTriggerSettings.swift */; };
-		3BC91BCE2E2A7DA400468AAC /* CHBikeLockDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B2A2E2A7DA400468AAC /* CHBikeLockDevice+Setting.swift */; };
-		3BC91BCF2E2A7DA400468AAC /* CHWifiModule2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B962E2A7DA400468AAC /* CHWifiModule2.swift */; };
-		3BC91BD02E2A7DA400468AAC /* CHCardCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B492E2A7DA400468AAC /* CHCardCapable.swift */; };
-		3BC91BD12E2A7DA400468AAC /* CHDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B732E2A7DA400468AAC /* CHDelegateManager.swift */; };
-		3BC91BD22E2A7DA400468AAC /* CHSesame5Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B442E2A7DA400468AAC /* CHSesame5Device+Register.swift */; };
-		3BC91BD32E2A7DA400468AAC /* CHSesameTouchProDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B882E2A7DA400468AAC /* CHSesameTouchProDevice.swift */; };
-		3BC91BD42E2A7DA400468AAC /* ECC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC12E2A7DA400468AAC /* ECC.swift */; };
-		3BC91BD52E2A7DA400468AAC /* CHSesameTouchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B8D2E2A7DA400468AAC /* CHSesameTouchCard.swift */; };
-		3BC91BD62E2A7DA400468AAC /* Sesame2BleCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B1C2E2A7DA400468AAC /* Sesame2BleCipher.swift */; };
-		3BC91BD72E2A7DA400468AAC /* CHSesame5Device+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B432E2A7DA400468AAC /* CHSesame5Device+History.swift */; };
-		3BC91BD82E2A7DA400468AAC /* CHDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB02E2A7DA400468AAC /* CHDeviceManager.swift */; };
-		3BC91BD92E2A7DA400468AAC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC52E2A7DA400468AAC /* String+.swift */; };
-		3BC91BDA2E2A7DA400468AAC /* CHSesameBotDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B342E2A7DA400468AAC /* CHSesameBotDevice+Register.swift */; };
-		3BC91BDB2E2A7DA400468AAC /* CHWifiModule2Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B982E2A7DA400468AAC /* CHWifiModule2Device+Gatt.swift */; };
-		3BC91BDC2E2A7DA400468AAC /* CHSesameBaseDevice+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B782E2A7DA400468AAC /* CHSesameBaseDevice+Delegate.swift */; };
-		3BC91BDD2E2A7DA400468AAC /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BBC2E2A7DA400468AAC /* AES.swift */; };
-		3BC91BDE2E2A7DA400468AAC /* CHWifiModule2Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B9A2E2A7DA400468AAC /* CHWifiModule2Device+Register.swift */; };
-		3BC91BDF2E2A7DA400468AAC /* ShadowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB42E2A7DA400468AAC /* ShadowModel.swift */; };
-		3BC91BE02E2A7DA400468AAC /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC22E2A7DA400468AAC /* Logging.swift */; };
-		3BC91BE12E2A7DA400468AAC /* CHVersionCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B702E2A7DA400468AAC /* CHVersionCapable.swift */; };
-		3BC91BE22E2A7DA400468AAC /* CHDeviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BA62E2A7DA400468AAC /* CHDeviceProtocol.swift */; };
-		3BC91BE32E2A7DA400468AAC /* CHSesameTouchProMechStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B8E2E2A7DA400468AAC /* CHSesameTouchProMechStatus.swift */; };
-		3BC91BE42E2A7DA400468AAC /* CHBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BA32E2A7DA400468AAC /* CHBaseDevice.swift */; };
-		3BC91BE52E2A7DA400468AAC /* CHCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B4B2E2A7DA400468AAC /* CHCardDelegate.swift */; };
-		3BC91BE62E2A7DA400468AAC /* CHSesameBotDevice+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B312E2A7DA400468AAC /* CHSesameBotDevice+Lock.swift */; };
-		3BC91BE72E2A7DA400468AAC /* CHFaceEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B512E2A7DA400468AAC /* CHFaceEventHandlers.swift */; };
-		3BC91BE82E2A7DA400468AAC /* AWSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BA82E2A7DA400468AAC /* AWSConfig.swift */; };
-		3BC91BE92E2A7DA400468AAC /* SesameBotPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B362E2A7DA400468AAC /* SesameBotPayload.swift */; };
-		3BC91BEA2E2A7DA400468AAC /* CHPassCodeCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B5D2E2A7DA400468AAC /* CHPassCodeCapable.swift */; };
-		3BC91BEB2E2A7DA400468AAC /* CHSesame2HistoryEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BAC2E2A7DA400468AAC /* CHSesame2HistoryEvent.swift */; };
-		3BC91BEC2E2A7DA400468AAC /* CHSesameBotDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B352E2A7DA400468AAC /* CHSesameBotDevice+Setting.swift */; };
-		3BC91BED2E2A7DA400468AAC /* CHSesameOS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B9F2E2A7DA400468AAC /* CHSesameOS3.swift */; };
-		3BC91BEE2E2A7DA400468AAC /* CHSesameBotDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B332E2A7DA400468AAC /* CHSesameBotDevice+Peripheral.swift */; };
-		3BC91BEF2E2A7DA400468AAC /* CHDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BA52E2A7DA400468AAC /* CHDevice.swift */; };
-		3BC91BF02E2A7DA400468AAC /* CHSesameBasePro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B7C2E2A7DA400468AAC /* CHSesameBasePro.swift */; };
-		3BC91BF12E2A7DA400468AAC /* Sesame2BleDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B1D2E2A7DA400468AAC /* Sesame2BleDevice+Peripheral.swift */; };
-		3BC91BF22E2A7DA400468AAC /* CHSesameBot2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B932E2A7DA400468AAC /* CHSesameBot2.swift */; };
-		3BC91BF32E2A7DA400468AAC /* CHCardCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B4A2E2A7DA400468AAC /* CHCardCapableExtension.swift */; };
-		3BC91BF42E2A7DA400468AAC /* CHBikeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B222E2A7DA400468AAC /* CHBikeLock.swift */; };
-		3BC91BF52E2A7DA400468AAC /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B3E2E2A7DA400468AAC /* IRDeviceType.swift */; };
-		3BC91BF62E2A7DA400468AAC /* CHHub3Device+IR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B3D2E2A7DA400468AAC /* CHHub3Device+IR.swift */; };
-		3BC91BF72E2A7DA400468AAC /* CHConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BBD2E2A7DA400468AAC /* CHConfiguration.swift */; };
-		3BC91BF82E2A7DA400468AAC /* CHBluetoothCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BA42E2A7DA400468AAC /* CHBluetoothCenter.swift */; };
-		3BC91BF92E2A7DA400468AAC /* CHRemoteNanoCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B682E2A7DA400468AAC /* CHRemoteNanoCapable.swift */; };
-		3BC91BFA2E2A7DA400468AAC /* CHRemoteNanoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B6A2E2A7DA400468AAC /* CHRemoteNanoDelegate.swift */; };
-		3BC91BFB2E2A7DA400468AAC /* CHDeviceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BAA2E2A7DA400468AAC /* CHDeviceKey.swift */; };
-		3BC91BFC2E2A7DA400468AAC /* CHHub3Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B3C2E2A7DA400468AAC /* CHHub3Device+Gatt.swift */; };
-		3BC91BFD2E2A7DA400468AAC /* CHSesame2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B152E2A7DA400468AAC /* CHSesame2Device.swift */; };
-		3BC91BFE2E2A7DA400468AAC /* CHSesameBotDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B322E2A7DA400468AAC /* CHSesameBotDevice+Login.swift */; };
-		3BC91BFF2E2A7DA400468AAC /* CHIoTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB32E2A7DA400468AAC /* CHIoTManager.swift */; };
-		3BC91C002E2A7DA400468AAC /* CHBikeLockDevice+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B262E2A7DA400468AAC /* CHBikeLockDevice+Lock.swift */; };
-		3BC91C012E2A7DA400468AAC /* CHPalmCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B592E2A7DA400468AAC /* CHPalmCapableExtension.swift */; };
-		3BC91C022E2A7DA400468AAC /* CHResultPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB92E2A7DA400468AAC /* CHResultPattern.swift */; };
-		3BC91C032E2A7DA400468AAC /* CHPalmCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B582E2A7DA400468AAC /* CHPalmCapable.swift */; };
-		3BC91C042E2A7DA400468AAC /* CHSesameBike2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B472E2A7DA400468AAC /* CHSesameBike2Device.swift */; };
-		3BC91C052E2A7DA400468AAC /* CHSesame2Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B172E2A7DA400468AAC /* CHSesame2Device+Gatt.swift */; };
-		3BC91C062E2A7DA400468AAC /* CHSesame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B142E2A7DA400468AAC /* CHSesame2.swift */; };
-		3BC91C072E2A7DA400468AAC /* CHWifiModule2Device+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B992E2A7DA400468AAC /* CHWifiModule2Device+Peripheral.swift */; };
-		3BC91C082E2A7DA400468AAC /* CHSesameFacePro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B812E2A7DA400468AAC /* CHSesameFacePro.swift */; };
-		3BC91C092E2A7DA400468AAC /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC02E2A7DA400468AAC /* Data+.swift */; };
-		3BC91C0A2E2A7DA400468AAC /* CHSesameBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B762E2A7DA400468AAC /* CHSesameBaseDevice.swift */; };
-		3BC91C0B2E2A7DA400468AAC /* CHSesame2Device+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B1A2E2A7DA400468AAC /* CHSesame2Device+Login.swift */; };
-		3BC91C0C2E2A7DA400468AAC /* CHExtensionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BBE2E2A7DA400468AAC /* CHExtensionListener.swift */; };
-		3BC91C0D2E2A7DA400468AAC /* CHFingerPrintCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B532E2A7DA400468AAC /* CHFingerPrintCapable.swift */; };
-		3BC91C0E2E2A7DA400468AAC /* CHPassCodeEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B602E2A7DA400468AAC /* CHPassCodeEventHandlers.swift */; };
-		3BC91C0F2E2A7DA400468AAC /* SesameOS3BleCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BA02E2A7DA400468AAC /* SesameOS3BleCipher.swift */; };
-		3BC91C102E2A7DA400468AAC /* CHDeviceUtil+OS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B9E2E2A7DA400468AAC /* CHDeviceUtil+OS3.swift */; };
-		3BC91C112E2A7DA400468AAC /* CHSesameTouchPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B872E2A7DA400468AAC /* CHSesameTouchPro.swift */; };
-		3BC91C122E2A7DA400468AAC /* CHFaceCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B4E2E2A7DA400468AAC /* CHFaceCapable.swift */; };
-		3BC91C132E2A7DA400468AAC /* CHSesameBaseDevice+Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B772E2A7DA400468AAC /* CHSesameBaseDevice+Connector.swift */; };
-		3BC91C142E2A7DA400468AAC /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC32E2A7DA400468AAC /* NSError+.swift */; };
-		3BC91C152E2A7DA400468AAC /* SwCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC62E2A7DA400468AAC /* SwCrypt.swift */; };
-		3BC91C162E2A7DA400468AAC /* CHFaceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B502E2A7DA400468AAC /* CHFaceDelegate.swift */; };
-		3BC91C172E2A7DA400468AAC /* CHSesame5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B402E2A7DA400468AAC /* CHSesame5.swift */; };
-		3BC91C182E2A7DA400468AAC /* CHFingerPrintDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B552E2A7DA400468AAC /* CHFingerPrintDelegate.swift */; };
-		3BC91C192E2A7DA400468AAC /* OpensensorMechStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B902E2A7DA400468AAC /* OpensensorMechStatus.swift */; };
-		3BC91C1A2E2A7DA400468AAC /* ServerBaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BBA2E2A7DA400468AAC /* ServerBaseType.swift */; };
-		3BC91C1B2E2A7DA400468AAC /* CHBikeLockDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B252E2A7DA400468AAC /* CHBikeLockDevice+Gatt.swift */; };
-		3BC91C1C2E2A7DA400468AAC /* CHAccountManager+APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB72E2A7DA400468AAC /* CHAccountManager+APIRequest.swift */; };
-		3BC91C1D2E2A7DA400468AAC /* CHRemoteNanoCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B692E2A7DA400468AAC /* CHRemoteNanoCapableExtension.swift */; };
-		3BC91C1E2E2A7DA400468AAC /* CHSesameBot2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B942E2A7DA400468AAC /* CHSesameBot2Device.swift */; };
-		3BC91C1F2E2A7DA400468AAC /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BC72E2A7DA400468AAC /* URLSession+.swift */; };
-		3BC91C202E2A7DA400468AAC /* CHSesameFaceProDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B822E2A7DA400468AAC /* CHSesameFaceProDevice.swift */; };
-		3BC91C212E2A7DA400468AAC /* CHSesame2Device+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B182E2A7DA400468AAC /* CHSesame2Device+History.swift */; };
-		3BC91C222E2A7DA400468AAC /* OpenSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B8F2E2A7DA400468AAC /* OpenSensorData.swift */; };
-		3BC91C232E2A7DA400468AAC /* CHSesameBotDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B2F2E2A7DA400468AAC /* CHSesameBotDevice+Gatt.swift */; };
-		3BC91C242E2A7DA400468AAC /* CHMulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BBF2E2A7DA400468AAC /* CHMulticastDelegate.swift */; };
-		3BC91C252E2A7DA400468AAC /* WifiModule2Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B9B2E2A7DA400468AAC /* WifiModule2Payload.swift */; };
-		3BC91C262E2A7DA400468AAC /* CHCapbleRenameBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B622E2A7DA400468AAC /* CHCapbleRenameBean.swift */; };
-		3BC91C272E2A7DA400468AAC /* CHPassCodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B5F2E2A7DA400468AAC /* CHPassCodeDelegate.swift */; };
-		3BC91C282E2A7DA400468AAC /* WifiModule2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B9C2E2A7DA400468AAC /* WifiModule2Protocols.swift */; };
-		3BC91C292E2A7DA400468AAC /* CHDeviceModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB12E2A7DA400468AAC /* CHDeviceModel.xcdatamodeld */; };
-		3BC91C2A2E2A7DA400468AAC /* CHAPICallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BB82E2A7DA400468AAC /* CHAPICallObject.swift */; };
-		3BC91C2B2E2A7DA400468AAC /* CHSesame2Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B1B2E2A7DA400468AAC /* CHSesame2Device+Register.swift */; };
-		3BC91C2C2E2A7DA400468AAC /* CHSesameTouchDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B852E2A7DA400468AAC /* CHSesameTouchDevice.swift */; };
-		3BC91C2D2E2A7DA400468AAC /* CHOpenSensorCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B6C2E2A7DA400468AAC /* CHOpenSensorCapable.swift */; };
-		3BC91C2E2E2A7DA400468AAC /* CHSesameBaseDevice+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B7B2E2A7DA400468AAC /* CHSesameBaseDevice+Version.swift */; };
-		3BC91C2F2E2A7DA400468AAC /* CHSesame2Device+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B162E2A7DA400468AAC /* CHSesame2Device+DFU.swift */; };
-		3BC91C302E2A7DA400468AAC /* CHSesameBaseMechSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B8C2E2A7DA400468AAC /* CHSesameBaseMechSettings.swift */; };
-		3BC91C312E2A7DA400468AAC /* SesameOS3SegmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BA12E2A7DA400468AAC /* SesameOS3SegmentType.swift */; };
-		3BC91C322E2A7DA400468AAC /* CHSesameFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B7E2E2A7DA400468AAC /* CHSesameFace.swift */; };
-		3BC91C332E2A7DA400468AAC /* CHSesameFaceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B7F2E2A7DA400468AAC /* CHSesameFaceDevice.swift */; };
-		3BC91C342E2A7DA400468AAC /* Sesame2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B1F2E2A7DA400468AAC /* Sesame2Protocols.swift */; };
-		3BC91C352E2A7DA400468AAC /* BikeLockPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B212E2A7DA400468AAC /* BikeLockPayload.swift */; };
-		3BC91C362E2A7DA400468AAC /* CHPalmDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B5A2E2A7DA400468AAC /* CHPalmDelegate.swift */; };
-		3BC91C372E2A7DA400468AAC /* CHSesameBike2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B462E2A7DA400468AAC /* CHSesameBike2.swift */; };
-		3BC91C382E2A7DA400468AAC /* CHGuestKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BAB2E2A7DA400468AAC /* CHGuestKey.swift */; };
-		3BC91C392E2A7DA400468AAC /* CHWifiModule2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B972E2A7DA400468AAC /* CHWifiModule2Device.swift */; };
-		3BC91C3A2E2A7DA400468AAC /* CHFingerPrintEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B562E2A7DA400468AAC /* CHFingerPrintEventHandlers.swift */; };
-		3BC91C3B2E2A7DA400468AAC /* CHSesameBotDevice+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B302E2A7DA400468AAC /* CHSesameBotDevice+History.swift */; };
-		3BC91C3C2E2A7DA400468AAC /* CHFaceCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B4F2E2A7DA400468AAC /* CHFaceCapableExtension.swift */; };
-		3BC91C3D2E2A7DA400468AAC /* CHSesame2Device+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B192E2A7DA400468AAC /* CHSesame2Device+Lock.swift */; };
-		3BC91C3E2E2A7DA400468AAC /* CHSesameBotDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B2D2E2A7DA400468AAC /* CHSesameBotDevice.swift */; };
-		3BC91C3F2E2A7DA400468AAC /* CHSesameTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B842E2A7DA400468AAC /* CHSesameTouch.swift */; };
-		3BC91C402E2A7DA400468AAC /* CHSesame5Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B412E2A7DA400468AAC /* CHSesame5Device.swift */; };
-		3BC91C412E2A7DA400468AAC /* CHSesame5Device+Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B422E2A7DA400468AAC /* CHSesame5Device+Command.swift */; };
-		3BC91C422E2A7DA400468AAC /* CHHub3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B3A2E2A7DA400468AAC /* CHHub3.swift */; };
-		3BC91C432E2A7DA400468AAC /* CHSesameBaseDevice+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B7A2E2A7DA400468AAC /* CHSesameBaseDevice+Settings.swift */; };
-		3BC91C442E2A7DA400468AAC /* CHSesameBaseDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B792E2A7DA400468AAC /* CHSesameBaseDevice+Register.swift */; };
-		3BC91C452E2A7DA400468AAC /* CHFingerPrintCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B542E2A7DA400468AAC /* CHFingerPrintCapableExtension.swift */; };
-		3BC91C462E2A7DA400468AAC /* CHBikeLockDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B232E2A7DA400468AAC /* CHBikeLockDevice.swift */; };
-		3BC91C472E2A7DA400468AAC /* CHSesameBotDevice+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B2E2E2A7DA400468AAC /* CHSesameBotDevice+DFU.swift */; };
-		3BC91C482E2A7DA400468AAC /* CHPassCodeCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B5E2E2A7DA400468AAC /* CHPassCodeCapableExtension.swift */; };
-		3BC91C492E2A7DA400468AAC /* CHPalmEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B5B2E2A7DA400468AAC /* CHPalmEventHandlers.swift */; };
-		3BC91C4A2E2A7DA400468AAC /* CHHub3Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B3B2E2A7DA400468AAC /* CHHub3Device.swift */; };
-		3BC91C4B2E2A7DA400468AAC /* CHServerCapableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B632E2A7DA400468AAC /* CHServerCapableHandler.swift */; };
-		3BC91C4C2E2A7DA400468AAC /* Sesame2Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B1E2E2A7DA400468AAC /* Sesame2Payload.swift */; };
-		3BC91C4D2E2A7DA400468AAC /* CHBikeLockDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B282E2A7DA400468AAC /* CHBikeLockDevice+Peripheral.swift */; };
-		3BC91C4E2E2A7DA400468AAC /* CHSesameBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B2C2E2A7DA400468AAC /* CHSesameBot.swift */; };
-		3BC91C4F2E2A7DA400468AAC /* CHMechanicalSettingsCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B662E2A7DA400468AAC /* CHMechanicalSettingsCapable.swift */; };
-		3BC91C502E2A7DA400468AAC /* CHBikeLockDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B272E2A7DA400468AAC /* CHBikeLockDevice+Login.swift */; };
-		3BC91C512E2A7DA400468AAC /* CHBikeLockDevice+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B242E2A7DA400468AAC /* CHBikeLockDevice+DFU.swift */; };
-		3BC91C522E2A7DA400468AAC /* CHCardEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B4C2E2A7DA400468AAC /* CHCardEventHandlers.swift */; };
-		3BC91C532E2A7DA400468AAC /* CHBikeLockDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B292E2A7DA400468AAC /* CHBikeLockDevice+Register.swift */; };
-		3BC91C542E2A7DA400468AAC /* CHDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91BAF2E2A7DA400468AAC /* CHDeviceCenter.swift */; };
-		3BC91C552E2A7DA400468AAC /* CHOpenSensorCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91B6D2E2A7DA400468AAC /* CHOpenSensorCapableExtension.swift */; };
 		3BC91C5B2E2A7DFF00468AAC /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3BC91C5A2E2A7DFF00468AAC /* AESc */; };
+		3BC91D632E2A92F800468AAC /* ECC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D5A2E2A92F800468AAC /* ECC.swift */; };
+		3BC91D642E2A92F800468AAC /* CHSesameBaseMechSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D252E2A92F800468AAC /* CHSesameBaseMechSettings.swift */; };
+		3BC91D652E2A92F800468AAC /* CHSesameBaseDevice+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D112E2A92F800468AAC /* CHSesameBaseDevice+Delegate.swift */; };
+		3BC91D662E2A92F800468AAC /* SesameBotProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CD02E2A92F800468AAC /* SesameBotProtocols.swift */; };
+		3BC91D672E2A92F800468AAC /* CHDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D0C2E2A92F800468AAC /* CHDelegateManager.swift */; };
+		3BC91D682E2A92F800468AAC /* CHRemoteBaseTriggerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D242E2A92F800468AAC /* CHRemoteBaseTriggerSettings.swift */; };
+		3BC91D692E2A92F800468AAC /* CHWifiModule2Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D332E2A92F800468AAC /* CHWifiModule2Device+Register.swift */; };
+		3BC91D6A2E2A92F800468AAC /* CHSesameBotDevice+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CCA2E2A92F800468AAC /* CHSesameBotDevice+Lock.swift */; };
+		3BC91D6B2E2A92F800468AAC /* CHRemoteNanoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D032E2A92F800468AAC /* CHRemoteNanoDelegate.swift */; };
+		3BC91D6C2E2A92F800468AAC /* CHSesameBike2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE02E2A92F800468AAC /* CHSesameBike2Device.swift */; };
+		3BC91D6D2E2A92F800468AAC /* CHSesameBotDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC82E2A92F800468AAC /* CHSesameBotDevice+Gatt.swift */; };
+		3BC91D6E2E2A92F800468AAC /* CHSesame2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CAE2E2A92F800468AAC /* CHSesame2Device.swift */; };
+		3BC91D6F2E2A92F800468AAC /* CHSesameBotDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CCB2E2A92F800468AAC /* CHSesameBotDevice+Login.swift */; };
+		3BC91D702E2A92F800468AAC /* CHFaceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE92E2A92F800468AAC /* CHFaceDelegate.swift */; };
+		3BC91D712E2A92F800468AAC /* WifiModule2Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D342E2A92F800468AAC /* WifiModule2Payload.swift */; };
+		3BC91D722E2A92F800468AAC /* SesameOS3SegmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D3A2E2A92F800468AAC /* SesameOS3SegmentType.swift */; };
+		3BC91D732E2A92F800468AAC /* CHSesameBotDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC62E2A92F800468AAC /* CHSesameBotDevice.swift */; };
+		3BC91D742E2A92F800468AAC /* CHVersionCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D092E2A92F800468AAC /* CHVersionCapable.swift */; };
+		3BC91D752E2A92F800468AAC /* CHRemoteNanoCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D022E2A92F800468AAC /* CHRemoteNanoCapableExtension.swift */; };
+		3BC91D762E2A92F800468AAC /* CHDeviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D3F2E2A92F800468AAC /* CHDeviceProtocol.swift */; };
+		3BC91D772E2A92F800468AAC /* CHDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D482E2A92F800468AAC /* CHDeviceCenter.swift */; };
+		3BC91D782E2A92F800468AAC /* CHSesame2Device+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB32E2A92F800468AAC /* CHSesame2Device+Login.swift */; };
+		3BC91D792E2A92F800468AAC /* CHSesameBaseDevice+Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D102E2A92F800468AAC /* CHSesameBaseDevice+Connector.swift */; };
+		3BC91D7A2E2A92F800468AAC /* CHPassCodeCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF62E2A92F800468AAC /* CHPassCodeCapable.swift */; };
+		3BC91D7B2E2A92F800468AAC /* SesameOS3BleCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D392E2A92F800468AAC /* SesameOS3BleCipher.swift */; };
+		3BC91D7C2E2A92F800468AAC /* CHGuestKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D442E2A92F800468AAC /* CHGuestKey.swift */; };
+		3BC91D7D2E2A92F800468AAC /* CHHub3Device+IR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CD62E2A92F800468AAC /* CHHub3Device+IR.swift */; };
+		3BC91D7E2E2A92F800468AAC /* CHHub3Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CD42E2A92F800468AAC /* CHHub3Device.swift */; };
+		3BC91D7F2E2A92F800468AAC /* CHPassCodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF82E2A92F800468AAC /* CHPassCodeDelegate.swift */; };
+		3BC91D802E2A92F800468AAC /* CHOpenSensorCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D052E2A92F800468AAC /* CHOpenSensorCapable.swift */; };
+		3BC91D812E2A92F800468AAC /* CHSesameTouchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D262E2A92F800468AAC /* CHSesameTouchCard.swift */; };
+		3BC91D822E2A92F800468AAC /* CHMechanicalSettingsCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CFF2E2A92F800468AAC /* CHMechanicalSettingsCapable.swift */; };
+		3BC91D832E2A92F800468AAC /* CHAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D4F2E2A92F800468AAC /* CHAccountManager.swift */; };
+		3BC91D842E2A92F800468AAC /* CHSesameBike2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CDF2E2A92F800468AAC /* CHSesameBike2.swift */; };
+		3BC91D852E2A92F800468AAC /* CHFaceCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE72E2A92F800468AAC /* CHFaceCapable.swift */; };
+		3BC91D862E2A92F800468AAC /* CHWifiModule2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D2F2E2A92F800468AAC /* CHWifiModule2.swift */; };
+		3BC91D872E2A92F800468AAC /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D552E2A92F800468AAC /* AES.swift */; };
+		3BC91D882E2A92F800468AAC /* CHHub3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CD32E2A92F800468AAC /* CHHub3.swift */; };
+		3BC91D892E2A92F800468AAC /* Sesame2Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB72E2A92F800468AAC /* Sesame2Payload.swift */; };
+		3BC91D8A2E2A92F800468AAC /* CHBikeLockDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC02E2A92F800468AAC /* CHBikeLockDevice+Login.swift */; };
+		3BC91D8B2E2A92F800468AAC /* CHDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D492E2A92F800468AAC /* CHDeviceManager.swift */; };
+		3BC91D8C2E2A92F800468AAC /* CHBikeLockDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC12E2A92F800468AAC /* CHBikeLockDevice+Peripheral.swift */; };
+		3BC91D8D2E2A92F800468AAC /* CHSesame2HistoryEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D452E2A92F800468AAC /* CHSesame2HistoryEvent.swift */; };
+		3BC91D8E2E2A92F800468AAC /* CHSesameBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC52E2A92F800468AAC /* CHSesameBot.swift */; };
+		3BC91D8F2E2A92F800468AAC /* CHSesameOS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D382E2A92F800468AAC /* CHSesameOS3.swift */; };
+		3BC91D902E2A92F800468AAC /* CHConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D562E2A92F800468AAC /* CHConfiguration.swift */; };
+		3BC91D912E2A92F800468AAC /* CHSesame5Device+Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CDB2E2A92F800468AAC /* CHSesame5Device+Command.swift */; };
+		3BC91D922E2A92F800468AAC /* CHHub3Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CD52E2A92F800468AAC /* CHHub3Device+Gatt.swift */; };
+		3BC91D932E2A92F800468AAC /* CHSesameTouchDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D1E2E2A92F800468AAC /* CHSesameTouchDevice.swift */; };
+		3BC91D942E2A92F800468AAC /* CHSesameTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D1D2E2A92F800468AAC /* CHSesameTouch.swift */; };
+		3BC91D952E2A92F800468AAC /* WifiModule2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D352E2A92F800468AAC /* WifiModule2Protocols.swift */; };
+		3BC91D962E2A92F800468AAC /* CHFingerPrintCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CEC2E2A92F800468AAC /* CHFingerPrintCapable.swift */; };
+		3BC91D972E2A92F800468AAC /* CHWifiModule2Device+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D322E2A92F800468AAC /* CHWifiModule2Device+Peripheral.swift */; };
+		3BC91D982E2A92F800468AAC /* SwCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D5F2E2A92F800468AAC /* SwCrypt.swift */; };
+		3BC91D992E2A92F800468AAC /* Sesame2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB82E2A92F800468AAC /* Sesame2Protocols.swift */; };
+		3BC91D9A2E2A92F800468AAC /* CHFaceCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE82E2A92F800468AAC /* CHFaceCapableExtension.swift */; };
+		3BC91D9B2E2A92F800468AAC /* CHCardEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE52E2A92F800468AAC /* CHCardEventHandlers.swift */; };
+		3BC91D9C2E2A92F800468AAC /* CHWifiModule2Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D312E2A92F800468AAC /* CHWifiModule2Device+Gatt.swift */; };
+		3BC91D9D2E2A92F800468AAC /* CHBikeLockDevice+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CBD2E2A92F800468AAC /* CHBikeLockDevice+DFU.swift */; };
+		3BC91D9E2E2A92F800468AAC /* CHPalmEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF42E2A92F800468AAC /* CHPalmEventHandlers.swift */; };
+		3BC91D9F2E2A92F800468AAC /* CHSesameTouchProDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D212E2A92F800468AAC /* CHSesameTouchProDevice.swift */; };
+		3BC91DA02E2A92F800468AAC /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D5B2E2A92F800468AAC /* Logging.swift */; };
+		3BC91DA12E2A92F800468AAC /* CHSesameBaseDevice+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D142E2A92F800468AAC /* CHSesameBaseDevice+Version.swift */; };
+		3BC91DA22E2A92F800468AAC /* CHSesame5Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CDD2E2A92F800468AAC /* CHSesame5Device+Register.swift */; };
+		3BC91DA32E2A92F800468AAC /* CHSesameTouchPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D202E2A92F800468AAC /* CHSesameTouchPro.swift */; };
+		3BC91DA42E2A92F800468AAC /* CHSesameBotDevice+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC72E2A92F800468AAC /* CHSesameBotDevice+DFU.swift */; };
+		3BC91DA52E2A92F800468AAC /* CHAccountManager+APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D502E2A92F800468AAC /* CHAccountManager+APIRequest.swift */; };
+		3BC91DA62E2A92F800468AAC /* CHSesameBotDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CCE2E2A92F800468AAC /* CHSesameBotDevice+Setting.swift */; };
+		3BC91DA72E2A92F800468AAC /* AWSConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D412E2A92F800468AAC /* AWSConfigurable.swift */; };
+		3BC91DA82E2A92F800468AAC /* CHPalmCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF22E2A92F800468AAC /* CHPalmCapableExtension.swift */; };
+		3BC91DA92E2A92F800468AAC /* ServerBaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D532E2A92F800468AAC /* ServerBaseType.swift */; };
+		3BC91DAA2E2A92F800468AAC /* CHWifiModule2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D302E2A92F800468AAC /* CHWifiModule2Device.swift */; };
+		3BC91DAB2E2A92F800468AAC /* CHSesame5Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CDA2E2A92F800468AAC /* CHSesame5Device.swift */; };
+		3BC91DAC2E2A92F800468AAC /* CHOpenSensorCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D062E2A92F800468AAC /* CHOpenSensorCapableExtension.swift */; };
+		3BC91DAD2E2A92F800468AAC /* CHPalmDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF32E2A92F800468AAC /* CHPalmDelegate.swift */; };
+		3BC91DAE2E2A92F800468AAC /* CHSesame5Device+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CDC2E2A92F800468AAC /* CHSesame5Device+History.swift */; };
+		3BC91DAF2E2A92F800468AAC /* CHFaceEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CEA2E2A92F800468AAC /* CHFaceEventHandlers.swift */; };
+		3BC91DB02E2A92F800468AAC /* CHPassCodeCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF72E2A92F800468AAC /* CHPassCodeCapableExtension.swift */; };
+		3BC91DB12E2A92F800468AAC /* CHSesameBasePro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D152E2A92F800468AAC /* CHSesameBasePro.swift */; };
+		3BC91DB22E2A92F800468AAC /* CHRemoteNanoCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D012E2A92F800468AAC /* CHRemoteNanoCapable.swift */; };
+		3BC91DB32E2A92F800468AAC /* CHBikeLockDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CBE2E2A92F800468AAC /* CHBikeLockDevice+Gatt.swift */; };
+		3BC91DB42E2A92F800468AAC /* CHCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE42E2A92F800468AAC /* CHCardDelegate.swift */; };
+		3BC91DB52E2A92F800468AAC /* OpensensorMechStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D292E2A92F800468AAC /* OpensensorMechStatus.swift */; };
+		3BC91DB62E2A92F800468AAC /* CHBikeLockDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CBC2E2A92F800468AAC /* CHBikeLockDevice.swift */; };
+		3BC91DB72E2A92F800468AAC /* CHSesame2Device+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB12E2A92F800468AAC /* CHSesame2Device+History.swift */; };
+		3BC91DB82E2A92F800468AAC /* CHFingerPrintDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CEE2E2A92F800468AAC /* CHFingerPrintDelegate.swift */; };
+		3BC91DB92E2A92F800468AAC /* CHBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D3C2E2A92F800468AAC /* CHBaseDevice.swift */; };
+		3BC91DBA2E2A92F800468AAC /* CHResultPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D522E2A92F800468AAC /* CHResultPattern.swift */; };
+		3BC91DBB2E2A92F800468AAC /* CHSesame2Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB02E2A92F800468AAC /* CHSesame2Device+Gatt.swift */; };
+		3BC91DBC2E2A92F800468AAC /* CHSesameTouchProMechStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D272E2A92F800468AAC /* CHSesameTouchProMechStatus.swift */; };
+		3BC91DBD2E2A92F800468AAC /* OpenSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D282E2A92F800468AAC /* OpenSensorData.swift */; };
+		3BC91DBE2E2A92F800468AAC /* CHDeviceUtil+OS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D372E2A92F800468AAC /* CHDeviceUtil+OS3.swift */; };
+		3BC91DBF2E2A92F800468AAC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D5E2E2A92F800468AAC /* String+.swift */; };
+		3BC91DC02E2A92F800468AAC /* BikeLockPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CBA2E2A92F800468AAC /* BikeLockPayload.swift */; };
+		3BC91DC12E2A92F800468AAC /* CHSesameFaceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D182E2A92F800468AAC /* CHSesameFaceDevice.swift */; };
+		3BC91DC22E2A92F800468AAC /* CHSesameBot2Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D2D2E2A92F800468AAC /* CHSesameBot2Device.swift */; };
+		3BC91DC32E2A92F800468AAC /* Sesame2BleCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB52E2A92F800468AAC /* Sesame2BleCipher.swift */; };
+		3BC91DC42E2A92F800468AAC /* CHPalmCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF12E2A92F800468AAC /* CHPalmCapable.swift */; };
+		3BC91DC52E2A92F800468AAC /* CHDeviceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D432E2A92F800468AAC /* CHDeviceKey.swift */; };
+		3BC91DC62E2A92F800468AAC /* CHPassCodeEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CF92E2A92F800468AAC /* CHPassCodeEventHandlers.swift */; };
+		3BC91DC72E2A92F800468AAC /* CHDeviceModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D4A2E2A92F800468AAC /* CHDeviceModel.xcdatamodeld */; };
+		3BC91DC82E2A92F800468AAC /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D5C2E2A92F800468AAC /* NSError+.swift */; };
+		3BC91DC92E2A92F800468AAC /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D592E2A92F800468AAC /* Data+.swift */; };
+		3BC91DCA2E2A92F800468AAC /* CHSesame2Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB42E2A92F800468AAC /* CHSesame2Device+Register.swift */; };
+		3BC91DCB2E2A92F800468AAC /* CHSesameBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D0F2E2A92F800468AAC /* CHSesameBaseDevice.swift */; };
+		3BC91DCC2E2A92F800468AAC /* CHSesameBot2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D2C2E2A92F800468AAC /* CHSesameBot2.swift */; };
+		3BC91DCD2E2A92F800468AAC /* CHIoTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D4C2E2A92F800468AAC /* CHIoTManager.swift */; };
+		3BC91DCE2E2A92F800468AAC /* CHCapbleRenameBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CFB2E2A92F800468AAC /* CHCapbleRenameBean.swift */; };
+		3BC91DCF2E2A92F800468AAC /* SafeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D5D2E2A92F800468AAC /* SafeDictionary.swift */; };
+		3BC91DD02E2A92F800468AAC /* CHBikeLockDevice+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CBF2E2A92F800468AAC /* CHBikeLockDevice+Lock.swift */; };
+		3BC91DD12E2A92F800468AAC /* SesameBotPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CCF2E2A92F800468AAC /* SesameBotPayload.swift */; };
+		3BC91DD22E2A92F800468AAC /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D602E2A92F800468AAC /* URLSession+.swift */; };
+		3BC91DD32E2A92F800468AAC /* CHSesameBotDevice+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC92E2A92F800468AAC /* CHSesameBotDevice+History.swift */; };
+		3BC91DD42E2A92F800468AAC /* Sesame2BleDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB62E2A92F800468AAC /* Sesame2BleDevice+Peripheral.swift */; };
+		3BC91DD52E2A92F800468AAC /* CHSesameFacePro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D1A2E2A92F800468AAC /* CHSesameFacePro.swift */; };
+		3BC91DD62E2A92F800468AAC /* CHBluetoothCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D3D2E2A92F800468AAC /* CHBluetoothCenter.swift */; };
+		3BC91DD72E2A92F800468AAC /* CHDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D3E2E2A92F800468AAC /* CHDevice.swift */; };
+		3BC91DD82E2A92F800468AAC /* CHFingerPrintCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CED2E2A92F800468AAC /* CHFingerPrintCapableExtension.swift */; };
+		3BC91DD92E2A92F800468AAC /* CHExtensionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D572E2A92F800468AAC /* CHExtensionListener.swift */; };
+		3BC91DDA2E2A92F800468AAC /* CHSesameFaceProDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D1B2E2A92F800468AAC /* CHSesameFaceProDevice.swift */; };
+		3BC91DDB2E2A92F800468AAC /* CHSesame5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CD92E2A92F800468AAC /* CHSesame5.swift */; };
+		3BC91DDC2E2A92F800468AAC /* CHSesameBaseDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D122E2A92F800468AAC /* CHSesameBaseDevice+Register.swift */; };
+		3BC91DDD2E2A92F800468AAC /* CHSesameFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D172E2A92F800468AAC /* CHSesameFace.swift */; };
+		3BC91DDE2E2A92F800468AAC /* CHSesameBaseDevice+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D132E2A92F800468AAC /* CHSesameBaseDevice+Settings.swift */; };
+		3BC91DDF2E2A92F800468AAC /* ShadowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D4D2E2A92F800468AAC /* ShadowModel.swift */; };
+		3BC91DE02E2A92F800468AAC /* CHAPICallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D512E2A92F800468AAC /* CHAPICallObject.swift */; };
+		3BC91DE12E2A92F800468AAC /* CHFingerPrintEventHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CEF2E2A92F800468AAC /* CHFingerPrintEventHandlers.swift */; };
+		3BC91DE22E2A92F800468AAC /* CHSesame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CAD2E2A92F800468AAC /* CHSesame2.swift */; };
+		3BC91DE32E2A92F800468AAC /* CHCardCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE32E2A92F800468AAC /* CHCardCapableExtension.swift */; };
+		3BC91DE42E2A92F800468AAC /* CHCardCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CE22E2A92F800468AAC /* CHCardCapable.swift */; };
+		3BC91DE52E2A92F800468AAC /* CHBikeLockDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC32E2A92F800468AAC /* CHBikeLockDevice+Setting.swift */; };
+		3BC91DE62E2A92F800468AAC /* CHServerCapableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CFC2E2A92F800468AAC /* CHServerCapableHandler.swift */; };
+		3BC91DE72E2A92F800468AAC /* CHBikeLockDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CC22E2A92F800468AAC /* CHBikeLockDevice+Register.swift */; };
+		3BC91DE82E2A92F800468AAC /* CHSesameBotDevice+Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CCC2E2A92F800468AAC /* CHSesameBotDevice+Peripheral.swift */; };
+		3BC91DE92E2A92F800468AAC /* CHSesame2Device+DFU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CAF2E2A92F800468AAC /* CHSesame2Device+DFU.swift */; };
+		3BC91DEA2E2A92F800468AAC /* CHMulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91D582E2A92F800468AAC /* CHMulticastDelegate.swift */; };
+		3BC91DEB2E2A92F800468AAC /* CHSesameBotDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CCD2E2A92F800468AAC /* CHSesameBotDevice+Register.swift */; };
+		3BC91DEC2E2A92F800468AAC /* CHSesame2Device+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CB22E2A92F800468AAC /* CHSesame2Device+Lock.swift */; };
+		3BC91DED2E2A92F800468AAC /* CHBikeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CBB2E2A92F800468AAC /* CHBikeLock.swift */; };
+		3BC91DEE2E2A92F800468AAC /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91CD72E2A92F800468AAC /* IRDeviceType.swift */; };
 		BEE459C7248500D600A886D5 /* SesameWatchKitSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEF8F72B24C69E6800650CAD /* AWSAPIGatewayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66024C69E6600650CAD /* AWSAPIGatewayModel.m */; };
 		BEF8F72C24C69E6800650CAD /* AWSAPIGatewayClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66124C69E6600650CAD /* AWSAPIGatewayClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -317,146 +317,146 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3BC91B142E2A7DA400468AAC /* CHSesame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2.swift; sourceTree = "<group>"; };
-		3BC91B152E2A7DA400468AAC /* CHSesame2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2Device.swift; sourceTree = "<group>"; };
-		3BC91B162E2A7DA400468AAC /* CHSesame2Device+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+DFU.swift"; sourceTree = "<group>"; };
-		3BC91B172E2A7DA400468AAC /* CHSesame2Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Gatt.swift"; sourceTree = "<group>"; };
-		3BC91B182E2A7DA400468AAC /* CHSesame2Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+History.swift"; sourceTree = "<group>"; };
-		3BC91B192E2A7DA400468AAC /* CHSesame2Device+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Lock.swift"; sourceTree = "<group>"; };
-		3BC91B1A2E2A7DA400468AAC /* CHSesame2Device+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Login.swift"; sourceTree = "<group>"; };
-		3BC91B1B2E2A7DA400468AAC /* CHSesame2Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Register.swift"; sourceTree = "<group>"; };
-		3BC91B1C2E2A7DA400468AAC /* Sesame2BleCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2BleCipher.swift; sourceTree = "<group>"; };
-		3BC91B1D2E2A7DA400468AAC /* Sesame2BleDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sesame2BleDevice+Peripheral.swift"; sourceTree = "<group>"; };
-		3BC91B1E2E2A7DA400468AAC /* Sesame2Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2Payload.swift; sourceTree = "<group>"; };
-		3BC91B1F2E2A7DA400468AAC /* Sesame2Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2Protocols.swift; sourceTree = "<group>"; };
-		3BC91B212E2A7DA400468AAC /* BikeLockPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeLockPayload.swift; sourceTree = "<group>"; };
-		3BC91B222E2A7DA400468AAC /* CHBikeLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBikeLock.swift; sourceTree = "<group>"; };
-		3BC91B232E2A7DA400468AAC /* CHBikeLockDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBikeLockDevice.swift; sourceTree = "<group>"; };
-		3BC91B242E2A7DA400468AAC /* CHBikeLockDevice+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+DFU.swift"; sourceTree = "<group>"; };
-		3BC91B252E2A7DA400468AAC /* CHBikeLockDevice+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Gatt.swift"; sourceTree = "<group>"; };
-		3BC91B262E2A7DA400468AAC /* CHBikeLockDevice+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Lock.swift"; sourceTree = "<group>"; };
-		3BC91B272E2A7DA400468AAC /* CHBikeLockDevice+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Login.swift"; sourceTree = "<group>"; };
-		3BC91B282E2A7DA400468AAC /* CHBikeLockDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Peripheral.swift"; sourceTree = "<group>"; };
-		3BC91B292E2A7DA400468AAC /* CHBikeLockDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Register.swift"; sourceTree = "<group>"; };
-		3BC91B2A2E2A7DA400468AAC /* CHBikeLockDevice+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Setting.swift"; sourceTree = "<group>"; };
-		3BC91B2C2E2A7DA400468AAC /* CHSesameBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot.swift; sourceTree = "<group>"; };
-		3BC91B2D2E2A7DA400468AAC /* CHSesameBotDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBotDevice.swift; sourceTree = "<group>"; };
-		3BC91B2E2E2A7DA400468AAC /* CHSesameBotDevice+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+DFU.swift"; sourceTree = "<group>"; };
-		3BC91B2F2E2A7DA400468AAC /* CHSesameBotDevice+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Gatt.swift"; sourceTree = "<group>"; };
-		3BC91B302E2A7DA400468AAC /* CHSesameBotDevice+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+History.swift"; sourceTree = "<group>"; };
-		3BC91B312E2A7DA400468AAC /* CHSesameBotDevice+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Lock.swift"; sourceTree = "<group>"; };
-		3BC91B322E2A7DA400468AAC /* CHSesameBotDevice+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Login.swift"; sourceTree = "<group>"; };
-		3BC91B332E2A7DA400468AAC /* CHSesameBotDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Peripheral.swift"; sourceTree = "<group>"; };
-		3BC91B342E2A7DA400468AAC /* CHSesameBotDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Register.swift"; sourceTree = "<group>"; };
-		3BC91B352E2A7DA400468AAC /* CHSesameBotDevice+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Setting.swift"; sourceTree = "<group>"; };
-		3BC91B362E2A7DA400468AAC /* SesameBotPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBotPayload.swift; sourceTree = "<group>"; };
-		3BC91B372E2A7DA400468AAC /* SesameBotProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBotProtocols.swift; sourceTree = "<group>"; };
-		3BC91B3A2E2A7DA400468AAC /* CHHub3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3.swift; sourceTree = "<group>"; };
-		3BC91B3B2E2A7DA400468AAC /* CHHub3Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3Device.swift; sourceTree = "<group>"; };
-		3BC91B3C2E2A7DA400468AAC /* CHHub3Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+Gatt.swift"; sourceTree = "<group>"; };
-		3BC91B3D2E2A7DA400468AAC /* CHHub3Device+IR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+IR.swift"; sourceTree = "<group>"; };
-		3BC91B3E2E2A7DA400468AAC /* IRDeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRDeviceType.swift; sourceTree = "<group>"; };
-		3BC91B402E2A7DA400468AAC /* CHSesame5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5.swift; sourceTree = "<group>"; };
-		3BC91B412E2A7DA400468AAC /* CHSesame5Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5Device.swift; sourceTree = "<group>"; };
-		3BC91B422E2A7DA400468AAC /* CHSesame5Device+Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Command.swift"; sourceTree = "<group>"; };
-		3BC91B432E2A7DA400468AAC /* CHSesame5Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+History.swift"; sourceTree = "<group>"; };
-		3BC91B442E2A7DA400468AAC /* CHSesame5Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Register.swift"; sourceTree = "<group>"; };
-		3BC91B462E2A7DA400468AAC /* CHSesameBike2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2.swift; sourceTree = "<group>"; };
-		3BC91B472E2A7DA400468AAC /* CHSesameBike2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2Device.swift; sourceTree = "<group>"; };
-		3BC91B492E2A7DA400468AAC /* CHCardCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardCapable.swift; sourceTree = "<group>"; };
-		3BC91B4A2E2A7DA400468AAC /* CHCardCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardCapableExtension.swift; sourceTree = "<group>"; };
-		3BC91B4B2E2A7DA400468AAC /* CHCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardDelegate.swift; sourceTree = "<group>"; };
-		3BC91B4C2E2A7DA400468AAC /* CHCardEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardEventHandlers.swift; sourceTree = "<group>"; };
-		3BC91B4E2E2A7DA400468AAC /* CHFaceCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceCapable.swift; sourceTree = "<group>"; };
-		3BC91B4F2E2A7DA400468AAC /* CHFaceCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceCapableExtension.swift; sourceTree = "<group>"; };
-		3BC91B502E2A7DA400468AAC /* CHFaceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceDelegate.swift; sourceTree = "<group>"; };
-		3BC91B512E2A7DA400468AAC /* CHFaceEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceEventHandlers.swift; sourceTree = "<group>"; };
-		3BC91B532E2A7DA400468AAC /* CHFingerPrintCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintCapable.swift; sourceTree = "<group>"; };
-		3BC91B542E2A7DA400468AAC /* CHFingerPrintCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintCapableExtension.swift; sourceTree = "<group>"; };
-		3BC91B552E2A7DA400468AAC /* CHFingerPrintDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintDelegate.swift; sourceTree = "<group>"; };
-		3BC91B562E2A7DA400468AAC /* CHFingerPrintEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintEventHandlers.swift; sourceTree = "<group>"; };
-		3BC91B582E2A7DA400468AAC /* CHPalmCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmCapable.swift; sourceTree = "<group>"; };
-		3BC91B592E2A7DA400468AAC /* CHPalmCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmCapableExtension.swift; sourceTree = "<group>"; };
-		3BC91B5A2E2A7DA400468AAC /* CHPalmDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmDelegate.swift; sourceTree = "<group>"; };
-		3BC91B5B2E2A7DA400468AAC /* CHPalmEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmEventHandlers.swift; sourceTree = "<group>"; };
-		3BC91B5D2E2A7DA400468AAC /* CHPassCodeCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeCapable.swift; sourceTree = "<group>"; };
-		3BC91B5E2E2A7DA400468AAC /* CHPassCodeCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeCapableExtension.swift; sourceTree = "<group>"; };
-		3BC91B5F2E2A7DA400468AAC /* CHPassCodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeDelegate.swift; sourceTree = "<group>"; };
-		3BC91B602E2A7DA400468AAC /* CHPassCodeEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeEventHandlers.swift; sourceTree = "<group>"; };
-		3BC91B622E2A7DA400468AAC /* CHCapbleRenameBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCapbleRenameBean.swift; sourceTree = "<group>"; };
-		3BC91B632E2A7DA400468AAC /* CHServerCapableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHServerCapableHandler.swift; sourceTree = "<group>"; };
-		3BC91B662E2A7DA400468AAC /* CHMechanicalSettingsCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHMechanicalSettingsCapable.swift; sourceTree = "<group>"; };
-		3BC91B682E2A7DA400468AAC /* CHRemoteNanoCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoCapable.swift; sourceTree = "<group>"; };
-		3BC91B692E2A7DA400468AAC /* CHRemoteNanoCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoCapableExtension.swift; sourceTree = "<group>"; };
-		3BC91B6A2E2A7DA400468AAC /* CHRemoteNanoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoDelegate.swift; sourceTree = "<group>"; };
-		3BC91B6C2E2A7DA400468AAC /* CHOpenSensorCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHOpenSensorCapable.swift; sourceTree = "<group>"; };
-		3BC91B6D2E2A7DA400468AAC /* CHOpenSensorCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHOpenSensorCapableExtension.swift; sourceTree = "<group>"; };
-		3BC91B702E2A7DA400468AAC /* CHVersionCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHVersionCapable.swift; sourceTree = "<group>"; };
-		3BC91B732E2A7DA400468AAC /* CHDelegateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDelegateManager.swift; sourceTree = "<group>"; };
-		3BC91B762E2A7DA400468AAC /* CHSesameBaseDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBaseDevice.swift; sourceTree = "<group>"; };
-		3BC91B772E2A7DA400468AAC /* CHSesameBaseDevice+Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Connector.swift"; sourceTree = "<group>"; };
-		3BC91B782E2A7DA400468AAC /* CHSesameBaseDevice+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Delegate.swift"; sourceTree = "<group>"; };
-		3BC91B792E2A7DA400468AAC /* CHSesameBaseDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Register.swift"; sourceTree = "<group>"; };
-		3BC91B7A2E2A7DA400468AAC /* CHSesameBaseDevice+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Settings.swift"; sourceTree = "<group>"; };
-		3BC91B7B2E2A7DA400468AAC /* CHSesameBaseDevice+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Version.swift"; sourceTree = "<group>"; };
-		3BC91B7C2E2A7DA400468AAC /* CHSesameBasePro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBasePro.swift; sourceTree = "<group>"; };
-		3BC91B7E2E2A7DA400468AAC /* CHSesameFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFace.swift; sourceTree = "<group>"; };
-		3BC91B7F2E2A7DA400468AAC /* CHSesameFaceDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFaceDevice.swift; sourceTree = "<group>"; };
-		3BC91B812E2A7DA400468AAC /* CHSesameFacePro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFacePro.swift; sourceTree = "<group>"; };
-		3BC91B822E2A7DA400468AAC /* CHSesameFaceProDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFaceProDevice.swift; sourceTree = "<group>"; };
-		3BC91B842E2A7DA400468AAC /* CHSesameTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouch.swift; sourceTree = "<group>"; };
-		3BC91B852E2A7DA400468AAC /* CHSesameTouchDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchDevice.swift; sourceTree = "<group>"; };
-		3BC91B872E2A7DA400468AAC /* CHSesameTouchPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchPro.swift; sourceTree = "<group>"; };
-		3BC91B882E2A7DA400468AAC /* CHSesameTouchProDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchProDevice.swift; sourceTree = "<group>"; };
-		3BC91B8B2E2A7DA400468AAC /* CHRemoteBaseTriggerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteBaseTriggerSettings.swift; sourceTree = "<group>"; };
-		3BC91B8C2E2A7DA400468AAC /* CHSesameBaseMechSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBaseMechSettings.swift; sourceTree = "<group>"; };
-		3BC91B8D2E2A7DA400468AAC /* CHSesameTouchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchCard.swift; sourceTree = "<group>"; };
-		3BC91B8E2E2A7DA400468AAC /* CHSesameTouchProMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchProMechStatus.swift; sourceTree = "<group>"; };
-		3BC91B8F2E2A7DA400468AAC /* OpenSensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSensorData.swift; sourceTree = "<group>"; };
-		3BC91B902E2A7DA400468AAC /* OpensensorMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensensorMechStatus.swift; sourceTree = "<group>"; };
-		3BC91B932E2A7DA400468AAC /* CHSesameBot2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot2.swift; sourceTree = "<group>"; };
-		3BC91B942E2A7DA400468AAC /* CHSesameBot2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot2Device.swift; sourceTree = "<group>"; };
-		3BC91B962E2A7DA400468AAC /* CHWifiModule2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWifiModule2.swift; sourceTree = "<group>"; };
-		3BC91B972E2A7DA400468AAC /* CHWifiModule2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWifiModule2Device.swift; sourceTree = "<group>"; };
-		3BC91B982E2A7DA400468AAC /* CHWifiModule2Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Gatt.swift"; sourceTree = "<group>"; };
-		3BC91B992E2A7DA400468AAC /* CHWifiModule2Device+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Peripheral.swift"; sourceTree = "<group>"; };
-		3BC91B9A2E2A7DA400468AAC /* CHWifiModule2Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Register.swift"; sourceTree = "<group>"; };
-		3BC91B9B2E2A7DA400468AAC /* WifiModule2Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2Payload.swift; sourceTree = "<group>"; };
-		3BC91B9C2E2A7DA400468AAC /* WifiModule2Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2Protocols.swift; sourceTree = "<group>"; };
-		3BC91B9E2E2A7DA400468AAC /* CHDeviceUtil+OS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceUtil+OS3.swift"; sourceTree = "<group>"; };
-		3BC91B9F2E2A7DA400468AAC /* CHSesameOS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameOS3.swift; sourceTree = "<group>"; };
-		3BC91BA02E2A7DA400468AAC /* SesameOS3BleCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameOS3BleCipher.swift; sourceTree = "<group>"; };
-		3BC91BA12E2A7DA400468AAC /* SesameOS3SegmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameOS3SegmentType.swift; sourceTree = "<group>"; };
-		3BC91BA32E2A7DA400468AAC /* CHBaseDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBaseDevice.swift; sourceTree = "<group>"; };
-		3BC91BA42E2A7DA400468AAC /* CHBluetoothCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBluetoothCenter.swift; sourceTree = "<group>"; };
-		3BC91BA52E2A7DA400468AAC /* CHDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDevice.swift; sourceTree = "<group>"; };
-		3BC91BA62E2A7DA400468AAC /* CHDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceProtocol.swift; sourceTree = "<group>"; };
-		3BC91BA82E2A7DA400468AAC /* AWSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfig.swift; sourceTree = "<group>"; };
-		3BC91BAA2E2A7DA400468AAC /* CHDeviceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceKey.swift; sourceTree = "<group>"; };
-		3BC91BAB2E2A7DA400468AAC /* CHGuestKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHGuestKey.swift; sourceTree = "<group>"; };
-		3BC91BAC2E2A7DA400468AAC /* CHSesame2HistoryEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2HistoryEvent.swift; sourceTree = "<group>"; };
-		3BC91BAF2E2A7DA400468AAC /* CHDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceCenter.swift; sourceTree = "<group>"; };
-		3BC91BB02E2A7DA400468AAC /* CHDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceManager.swift; sourceTree = "<group>"; };
-		3BC91BB32E2A7DA400468AAC /* CHIoTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIoTManager.swift; sourceTree = "<group>"; };
-		3BC91BB42E2A7DA400468AAC /* ShadowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModel.swift; sourceTree = "<group>"; };
-		3BC91BB62E2A7DA400468AAC /* CHAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAccountManager.swift; sourceTree = "<group>"; };
-		3BC91BB72E2A7DA400468AAC /* CHAccountManager+APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHAccountManager+APIRequest.swift"; sourceTree = "<group>"; };
-		3BC91BB82E2A7DA400468AAC /* CHAPICallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAPICallObject.swift; sourceTree = "<group>"; };
-		3BC91BB92E2A7DA400468AAC /* CHResultPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHResultPattern.swift; sourceTree = "<group>"; };
-		3BC91BBA2E2A7DA400468AAC /* ServerBaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBaseType.swift; sourceTree = "<group>"; };
-		3BC91BBC2E2A7DA400468AAC /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
-		3BC91BBD2E2A7DA400468AAC /* CHConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHConfiguration.swift; sourceTree = "<group>"; };
-		3BC91BBE2E2A7DA400468AAC /* CHExtensionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHExtensionListener.swift; sourceTree = "<group>"; };
-		3BC91BBF2E2A7DA400468AAC /* CHMulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHMulticastDelegate.swift; sourceTree = "<group>"; };
-		3BC91BC02E2A7DA400468AAC /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
-		3BC91BC12E2A7DA400468AAC /* ECC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECC.swift; sourceTree = "<group>"; };
-		3BC91BC22E2A7DA400468AAC /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		3BC91BC32E2A7DA400468AAC /* NSError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+.swift"; sourceTree = "<group>"; };
-		3BC91BC42E2A7DA400468AAC /* SafeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDictionary.swift; sourceTree = "<group>"; };
-		3BC91BC52E2A7DA400468AAC /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		3BC91BC62E2A7DA400468AAC /* SwCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
-		3BC91BC72E2A7DA400468AAC /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
-		3BC91BC92E2A7DA400468AAC /* CHDeviceModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CHDeviceModel.xcdatamodel; sourceTree = "<group>"; };
+		3BC91CAD2E2A92F800468AAC /* CHSesame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2.swift; sourceTree = "<group>"; };
+		3BC91CAE2E2A92F800468AAC /* CHSesame2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2Device.swift; sourceTree = "<group>"; };
+		3BC91CAF2E2A92F800468AAC /* CHSesame2Device+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+DFU.swift"; sourceTree = "<group>"; };
+		3BC91CB02E2A92F800468AAC /* CHSesame2Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Gatt.swift"; sourceTree = "<group>"; };
+		3BC91CB12E2A92F800468AAC /* CHSesame2Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+History.swift"; sourceTree = "<group>"; };
+		3BC91CB22E2A92F800468AAC /* CHSesame2Device+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Lock.swift"; sourceTree = "<group>"; };
+		3BC91CB32E2A92F800468AAC /* CHSesame2Device+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Login.swift"; sourceTree = "<group>"; };
+		3BC91CB42E2A92F800468AAC /* CHSesame2Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2Device+Register.swift"; sourceTree = "<group>"; };
+		3BC91CB52E2A92F800468AAC /* Sesame2BleCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2BleCipher.swift; sourceTree = "<group>"; };
+		3BC91CB62E2A92F800468AAC /* Sesame2BleDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sesame2BleDevice+Peripheral.swift"; sourceTree = "<group>"; };
+		3BC91CB72E2A92F800468AAC /* Sesame2Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2Payload.swift; sourceTree = "<group>"; };
+		3BC91CB82E2A92F800468AAC /* Sesame2Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2Protocols.swift; sourceTree = "<group>"; };
+		3BC91CBA2E2A92F800468AAC /* BikeLockPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeLockPayload.swift; sourceTree = "<group>"; };
+		3BC91CBB2E2A92F800468AAC /* CHBikeLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBikeLock.swift; sourceTree = "<group>"; };
+		3BC91CBC2E2A92F800468AAC /* CHBikeLockDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBikeLockDevice.swift; sourceTree = "<group>"; };
+		3BC91CBD2E2A92F800468AAC /* CHBikeLockDevice+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+DFU.swift"; sourceTree = "<group>"; };
+		3BC91CBE2E2A92F800468AAC /* CHBikeLockDevice+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Gatt.swift"; sourceTree = "<group>"; };
+		3BC91CBF2E2A92F800468AAC /* CHBikeLockDevice+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Lock.swift"; sourceTree = "<group>"; };
+		3BC91CC02E2A92F800468AAC /* CHBikeLockDevice+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Login.swift"; sourceTree = "<group>"; };
+		3BC91CC12E2A92F800468AAC /* CHBikeLockDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Peripheral.swift"; sourceTree = "<group>"; };
+		3BC91CC22E2A92F800468AAC /* CHBikeLockDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Register.swift"; sourceTree = "<group>"; };
+		3BC91CC32E2A92F800468AAC /* CHBikeLockDevice+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBikeLockDevice+Setting.swift"; sourceTree = "<group>"; };
+		3BC91CC52E2A92F800468AAC /* CHSesameBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot.swift; sourceTree = "<group>"; };
+		3BC91CC62E2A92F800468AAC /* CHSesameBotDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBotDevice.swift; sourceTree = "<group>"; };
+		3BC91CC72E2A92F800468AAC /* CHSesameBotDevice+DFU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+DFU.swift"; sourceTree = "<group>"; };
+		3BC91CC82E2A92F800468AAC /* CHSesameBotDevice+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Gatt.swift"; sourceTree = "<group>"; };
+		3BC91CC92E2A92F800468AAC /* CHSesameBotDevice+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+History.swift"; sourceTree = "<group>"; };
+		3BC91CCA2E2A92F800468AAC /* CHSesameBotDevice+Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Lock.swift"; sourceTree = "<group>"; };
+		3BC91CCB2E2A92F800468AAC /* CHSesameBotDevice+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Login.swift"; sourceTree = "<group>"; };
+		3BC91CCC2E2A92F800468AAC /* CHSesameBotDevice+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Peripheral.swift"; sourceTree = "<group>"; };
+		3BC91CCD2E2A92F800468AAC /* CHSesameBotDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Register.swift"; sourceTree = "<group>"; };
+		3BC91CCE2E2A92F800468AAC /* CHSesameBotDevice+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBotDevice+Setting.swift"; sourceTree = "<group>"; };
+		3BC91CCF2E2A92F800468AAC /* SesameBotPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBotPayload.swift; sourceTree = "<group>"; };
+		3BC91CD02E2A92F800468AAC /* SesameBotProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBotProtocols.swift; sourceTree = "<group>"; };
+		3BC91CD32E2A92F800468AAC /* CHHub3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3.swift; sourceTree = "<group>"; };
+		3BC91CD42E2A92F800468AAC /* CHHub3Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3Device.swift; sourceTree = "<group>"; };
+		3BC91CD52E2A92F800468AAC /* CHHub3Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+Gatt.swift"; sourceTree = "<group>"; };
+		3BC91CD62E2A92F800468AAC /* CHHub3Device+IR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+IR.swift"; sourceTree = "<group>"; };
+		3BC91CD72E2A92F800468AAC /* IRDeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRDeviceType.swift; sourceTree = "<group>"; };
+		3BC91CD92E2A92F800468AAC /* CHSesame5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5.swift; sourceTree = "<group>"; };
+		3BC91CDA2E2A92F800468AAC /* CHSesame5Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5Device.swift; sourceTree = "<group>"; };
+		3BC91CDB2E2A92F800468AAC /* CHSesame5Device+Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Command.swift"; sourceTree = "<group>"; };
+		3BC91CDC2E2A92F800468AAC /* CHSesame5Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+History.swift"; sourceTree = "<group>"; };
+		3BC91CDD2E2A92F800468AAC /* CHSesame5Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Register.swift"; sourceTree = "<group>"; };
+		3BC91CDF2E2A92F800468AAC /* CHSesameBike2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2.swift; sourceTree = "<group>"; };
+		3BC91CE02E2A92F800468AAC /* CHSesameBike2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2Device.swift; sourceTree = "<group>"; };
+		3BC91CE22E2A92F800468AAC /* CHCardCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardCapable.swift; sourceTree = "<group>"; };
+		3BC91CE32E2A92F800468AAC /* CHCardCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardCapableExtension.swift; sourceTree = "<group>"; };
+		3BC91CE42E2A92F800468AAC /* CHCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardDelegate.swift; sourceTree = "<group>"; };
+		3BC91CE52E2A92F800468AAC /* CHCardEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardEventHandlers.swift; sourceTree = "<group>"; };
+		3BC91CE72E2A92F800468AAC /* CHFaceCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceCapable.swift; sourceTree = "<group>"; };
+		3BC91CE82E2A92F800468AAC /* CHFaceCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceCapableExtension.swift; sourceTree = "<group>"; };
+		3BC91CE92E2A92F800468AAC /* CHFaceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceDelegate.swift; sourceTree = "<group>"; };
+		3BC91CEA2E2A92F800468AAC /* CHFaceEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFaceEventHandlers.swift; sourceTree = "<group>"; };
+		3BC91CEC2E2A92F800468AAC /* CHFingerPrintCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintCapable.swift; sourceTree = "<group>"; };
+		3BC91CED2E2A92F800468AAC /* CHFingerPrintCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintCapableExtension.swift; sourceTree = "<group>"; };
+		3BC91CEE2E2A92F800468AAC /* CHFingerPrintDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintDelegate.swift; sourceTree = "<group>"; };
+		3BC91CEF2E2A92F800468AAC /* CHFingerPrintEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintEventHandlers.swift; sourceTree = "<group>"; };
+		3BC91CF12E2A92F800468AAC /* CHPalmCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmCapable.swift; sourceTree = "<group>"; };
+		3BC91CF22E2A92F800468AAC /* CHPalmCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmCapableExtension.swift; sourceTree = "<group>"; };
+		3BC91CF32E2A92F800468AAC /* CHPalmDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmDelegate.swift; sourceTree = "<group>"; };
+		3BC91CF42E2A92F800468AAC /* CHPalmEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPalmEventHandlers.swift; sourceTree = "<group>"; };
+		3BC91CF62E2A92F800468AAC /* CHPassCodeCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeCapable.swift; sourceTree = "<group>"; };
+		3BC91CF72E2A92F800468AAC /* CHPassCodeCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeCapableExtension.swift; sourceTree = "<group>"; };
+		3BC91CF82E2A92F800468AAC /* CHPassCodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeDelegate.swift; sourceTree = "<group>"; };
+		3BC91CF92E2A92F800468AAC /* CHPassCodeEventHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHPassCodeEventHandlers.swift; sourceTree = "<group>"; };
+		3BC91CFB2E2A92F800468AAC /* CHCapbleRenameBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCapbleRenameBean.swift; sourceTree = "<group>"; };
+		3BC91CFC2E2A92F800468AAC /* CHServerCapableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHServerCapableHandler.swift; sourceTree = "<group>"; };
+		3BC91CFF2E2A92F800468AAC /* CHMechanicalSettingsCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHMechanicalSettingsCapable.swift; sourceTree = "<group>"; };
+		3BC91D012E2A92F800468AAC /* CHRemoteNanoCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoCapable.swift; sourceTree = "<group>"; };
+		3BC91D022E2A92F800468AAC /* CHRemoteNanoCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoCapableExtension.swift; sourceTree = "<group>"; };
+		3BC91D032E2A92F800468AAC /* CHRemoteNanoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteNanoDelegate.swift; sourceTree = "<group>"; };
+		3BC91D052E2A92F800468AAC /* CHOpenSensorCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHOpenSensorCapable.swift; sourceTree = "<group>"; };
+		3BC91D062E2A92F800468AAC /* CHOpenSensorCapableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHOpenSensorCapableExtension.swift; sourceTree = "<group>"; };
+		3BC91D092E2A92F800468AAC /* CHVersionCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHVersionCapable.swift; sourceTree = "<group>"; };
+		3BC91D0C2E2A92F800468AAC /* CHDelegateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDelegateManager.swift; sourceTree = "<group>"; };
+		3BC91D0F2E2A92F800468AAC /* CHSesameBaseDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBaseDevice.swift; sourceTree = "<group>"; };
+		3BC91D102E2A92F800468AAC /* CHSesameBaseDevice+Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Connector.swift"; sourceTree = "<group>"; };
+		3BC91D112E2A92F800468AAC /* CHSesameBaseDevice+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Delegate.swift"; sourceTree = "<group>"; };
+		3BC91D122E2A92F800468AAC /* CHSesameBaseDevice+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Register.swift"; sourceTree = "<group>"; };
+		3BC91D132E2A92F800468AAC /* CHSesameBaseDevice+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Settings.swift"; sourceTree = "<group>"; };
+		3BC91D142E2A92F800468AAC /* CHSesameBaseDevice+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameBaseDevice+Version.swift"; sourceTree = "<group>"; };
+		3BC91D152E2A92F800468AAC /* CHSesameBasePro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBasePro.swift; sourceTree = "<group>"; };
+		3BC91D172E2A92F800468AAC /* CHSesameFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFace.swift; sourceTree = "<group>"; };
+		3BC91D182E2A92F800468AAC /* CHSesameFaceDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFaceDevice.swift; sourceTree = "<group>"; };
+		3BC91D1A2E2A92F800468AAC /* CHSesameFacePro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFacePro.swift; sourceTree = "<group>"; };
+		3BC91D1B2E2A92F800468AAC /* CHSesameFaceProDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameFaceProDevice.swift; sourceTree = "<group>"; };
+		3BC91D1D2E2A92F800468AAC /* CHSesameTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouch.swift; sourceTree = "<group>"; };
+		3BC91D1E2E2A92F800468AAC /* CHSesameTouchDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchDevice.swift; sourceTree = "<group>"; };
+		3BC91D202E2A92F800468AAC /* CHSesameTouchPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchPro.swift; sourceTree = "<group>"; };
+		3BC91D212E2A92F800468AAC /* CHSesameTouchProDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchProDevice.swift; sourceTree = "<group>"; };
+		3BC91D242E2A92F800468AAC /* CHRemoteBaseTriggerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRemoteBaseTriggerSettings.swift; sourceTree = "<group>"; };
+		3BC91D252E2A92F800468AAC /* CHSesameBaseMechSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBaseMechSettings.swift; sourceTree = "<group>"; };
+		3BC91D262E2A92F800468AAC /* CHSesameTouchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchCard.swift; sourceTree = "<group>"; };
+		3BC91D272E2A92F800468AAC /* CHSesameTouchProMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameTouchProMechStatus.swift; sourceTree = "<group>"; };
+		3BC91D282E2A92F800468AAC /* OpenSensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSensorData.swift; sourceTree = "<group>"; };
+		3BC91D292E2A92F800468AAC /* OpensensorMechStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensensorMechStatus.swift; sourceTree = "<group>"; };
+		3BC91D2C2E2A92F800468AAC /* CHSesameBot2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot2.swift; sourceTree = "<group>"; };
+		3BC91D2D2E2A92F800468AAC /* CHSesameBot2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBot2Device.swift; sourceTree = "<group>"; };
+		3BC91D2F2E2A92F800468AAC /* CHWifiModule2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWifiModule2.swift; sourceTree = "<group>"; };
+		3BC91D302E2A92F800468AAC /* CHWifiModule2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWifiModule2Device.swift; sourceTree = "<group>"; };
+		3BC91D312E2A92F800468AAC /* CHWifiModule2Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Gatt.swift"; sourceTree = "<group>"; };
+		3BC91D322E2A92F800468AAC /* CHWifiModule2Device+Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Peripheral.swift"; sourceTree = "<group>"; };
+		3BC91D332E2A92F800468AAC /* CHWifiModule2Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWifiModule2Device+Register.swift"; sourceTree = "<group>"; };
+		3BC91D342E2A92F800468AAC /* WifiModule2Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2Payload.swift; sourceTree = "<group>"; };
+		3BC91D352E2A92F800468AAC /* WifiModule2Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2Protocols.swift; sourceTree = "<group>"; };
+		3BC91D372E2A92F800468AAC /* CHDeviceUtil+OS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceUtil+OS3.swift"; sourceTree = "<group>"; };
+		3BC91D382E2A92F800468AAC /* CHSesameOS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameOS3.swift; sourceTree = "<group>"; };
+		3BC91D392E2A92F800468AAC /* SesameOS3BleCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameOS3BleCipher.swift; sourceTree = "<group>"; };
+		3BC91D3A2E2A92F800468AAC /* SesameOS3SegmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameOS3SegmentType.swift; sourceTree = "<group>"; };
+		3BC91D3C2E2A92F800468AAC /* CHBaseDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBaseDevice.swift; sourceTree = "<group>"; };
+		3BC91D3D2E2A92F800468AAC /* CHBluetoothCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBluetoothCenter.swift; sourceTree = "<group>"; };
+		3BC91D3E2E2A92F800468AAC /* CHDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDevice.swift; sourceTree = "<group>"; };
+		3BC91D3F2E2A92F800468AAC /* CHDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceProtocol.swift; sourceTree = "<group>"; };
+		3BC91D412E2A92F800468AAC /* AWSConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfigurable.swift; sourceTree = "<group>"; };
+		3BC91D432E2A92F800468AAC /* CHDeviceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceKey.swift; sourceTree = "<group>"; };
+		3BC91D442E2A92F800468AAC /* CHGuestKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHGuestKey.swift; sourceTree = "<group>"; };
+		3BC91D452E2A92F800468AAC /* CHSesame2HistoryEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2HistoryEvent.swift; sourceTree = "<group>"; };
+		3BC91D482E2A92F800468AAC /* CHDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceCenter.swift; sourceTree = "<group>"; };
+		3BC91D492E2A92F800468AAC /* CHDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceManager.swift; sourceTree = "<group>"; };
+		3BC91D4C2E2A92F800468AAC /* CHIoTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIoTManager.swift; sourceTree = "<group>"; };
+		3BC91D4D2E2A92F800468AAC /* ShadowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModel.swift; sourceTree = "<group>"; };
+		3BC91D4F2E2A92F800468AAC /* CHAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAccountManager.swift; sourceTree = "<group>"; };
+		3BC91D502E2A92F800468AAC /* CHAccountManager+APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHAccountManager+APIRequest.swift"; sourceTree = "<group>"; };
+		3BC91D512E2A92F800468AAC /* CHAPICallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAPICallObject.swift; sourceTree = "<group>"; };
+		3BC91D522E2A92F800468AAC /* CHResultPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHResultPattern.swift; sourceTree = "<group>"; };
+		3BC91D532E2A92F800468AAC /* ServerBaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBaseType.swift; sourceTree = "<group>"; };
+		3BC91D552E2A92F800468AAC /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
+		3BC91D562E2A92F800468AAC /* CHConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHConfiguration.swift; sourceTree = "<group>"; };
+		3BC91D572E2A92F800468AAC /* CHExtensionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHExtensionListener.swift; sourceTree = "<group>"; };
+		3BC91D582E2A92F800468AAC /* CHMulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHMulticastDelegate.swift; sourceTree = "<group>"; };
+		3BC91D592E2A92F800468AAC /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		3BC91D5A2E2A92F800468AAC /* ECC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECC.swift; sourceTree = "<group>"; };
+		3BC91D5B2E2A92F800468AAC /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		3BC91D5C2E2A92F800468AAC /* NSError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+.swift"; sourceTree = "<group>"; };
+		3BC91D5D2E2A92F800468AAC /* SafeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeDictionary.swift; sourceTree = "<group>"; };
+		3BC91D5E2E2A92F800468AAC /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		3BC91D5F2E2A92F800468AAC /* SwCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
+		3BC91D602E2A92F800468AAC /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
+		3BC91D622E2A92F800468AAC /* CHDeviceModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CHDeviceModel.xcdatamodel; sourceTree = "<group>"; };
 		644E3DC52BC2A4D200385BE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B1429442231F8F98006AA64C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		BEE459C3248500D500A886D5 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -660,480 +660,480 @@
 		3B52E8C32E29334100BA4F81 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BA72E2A7DA400468AAC /* Ble */,
-				3BC91BA92E2A7DA400468AAC /* Configuration */,
-				3BC91BAE2E2A7DA400468AAC /* DataModel */,
-				3BC91BB22E2A7DA400468AAC /* DB */,
-				3BC91BB52E2A7DA400468AAC /* IoT */,
-				3BC91BBB2E2A7DA400468AAC /* Server */,
-				3BC91BC82E2A7DA400468AAC /* Utils */,
+				3BC91D402E2A92F800468AAC /* Ble */,
+				3BC91D422E2A92F800468AAC /* Configuration */,
+				3BC91D472E2A92F800468AAC /* DataModel */,
+				3BC91D4B2E2A92F800468AAC /* DB */,
+				3BC91D4E2E2A92F800468AAC /* IoT */,
+				3BC91D542E2A92F800468AAC /* Server */,
+				3BC91D612E2A92F800468AAC /* Utils */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		3BC91B202E2A7DA400468AAC /* Sesame2 */ = {
+		3BC91CB92E2A92F800468AAC /* Sesame2 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B142E2A7DA400468AAC /* CHSesame2.swift */,
-				3BC91B152E2A7DA400468AAC /* CHSesame2Device.swift */,
-				3BC91B162E2A7DA400468AAC /* CHSesame2Device+DFU.swift */,
-				3BC91B172E2A7DA400468AAC /* CHSesame2Device+Gatt.swift */,
-				3BC91B182E2A7DA400468AAC /* CHSesame2Device+History.swift */,
-				3BC91B192E2A7DA400468AAC /* CHSesame2Device+Lock.swift */,
-				3BC91B1A2E2A7DA400468AAC /* CHSesame2Device+Login.swift */,
-				3BC91B1B2E2A7DA400468AAC /* CHSesame2Device+Register.swift */,
-				3BC91B1C2E2A7DA400468AAC /* Sesame2BleCipher.swift */,
-				3BC91B1D2E2A7DA400468AAC /* Sesame2BleDevice+Peripheral.swift */,
-				3BC91B1E2E2A7DA400468AAC /* Sesame2Payload.swift */,
-				3BC91B1F2E2A7DA400468AAC /* Sesame2Protocols.swift */,
+				3BC91CAD2E2A92F800468AAC /* CHSesame2.swift */,
+				3BC91CAE2E2A92F800468AAC /* CHSesame2Device.swift */,
+				3BC91CAF2E2A92F800468AAC /* CHSesame2Device+DFU.swift */,
+				3BC91CB02E2A92F800468AAC /* CHSesame2Device+Gatt.swift */,
+				3BC91CB12E2A92F800468AAC /* CHSesame2Device+History.swift */,
+				3BC91CB22E2A92F800468AAC /* CHSesame2Device+Lock.swift */,
+				3BC91CB32E2A92F800468AAC /* CHSesame2Device+Login.swift */,
+				3BC91CB42E2A92F800468AAC /* CHSesame2Device+Register.swift */,
+				3BC91CB52E2A92F800468AAC /* Sesame2BleCipher.swift */,
+				3BC91CB62E2A92F800468AAC /* Sesame2BleDevice+Peripheral.swift */,
+				3BC91CB72E2A92F800468AAC /* Sesame2Payload.swift */,
+				3BC91CB82E2A92F800468AAC /* Sesame2Protocols.swift */,
 			);
 			path = Sesame2;
 			sourceTree = "<group>";
 		};
-		3BC91B2B2E2A7DA400468AAC /* SesameBike */ = {
+		3BC91CC42E2A92F800468AAC /* SesameBike */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B212E2A7DA400468AAC /* BikeLockPayload.swift */,
-				3BC91B222E2A7DA400468AAC /* CHBikeLock.swift */,
-				3BC91B232E2A7DA400468AAC /* CHBikeLockDevice.swift */,
-				3BC91B242E2A7DA400468AAC /* CHBikeLockDevice+DFU.swift */,
-				3BC91B252E2A7DA400468AAC /* CHBikeLockDevice+Gatt.swift */,
-				3BC91B262E2A7DA400468AAC /* CHBikeLockDevice+Lock.swift */,
-				3BC91B272E2A7DA400468AAC /* CHBikeLockDevice+Login.swift */,
-				3BC91B282E2A7DA400468AAC /* CHBikeLockDevice+Peripheral.swift */,
-				3BC91B292E2A7DA400468AAC /* CHBikeLockDevice+Register.swift */,
-				3BC91B2A2E2A7DA400468AAC /* CHBikeLockDevice+Setting.swift */,
+				3BC91CBA2E2A92F800468AAC /* BikeLockPayload.swift */,
+				3BC91CBB2E2A92F800468AAC /* CHBikeLock.swift */,
+				3BC91CBC2E2A92F800468AAC /* CHBikeLockDevice.swift */,
+				3BC91CBD2E2A92F800468AAC /* CHBikeLockDevice+DFU.swift */,
+				3BC91CBE2E2A92F800468AAC /* CHBikeLockDevice+Gatt.swift */,
+				3BC91CBF2E2A92F800468AAC /* CHBikeLockDevice+Lock.swift */,
+				3BC91CC02E2A92F800468AAC /* CHBikeLockDevice+Login.swift */,
+				3BC91CC12E2A92F800468AAC /* CHBikeLockDevice+Peripheral.swift */,
+				3BC91CC22E2A92F800468AAC /* CHBikeLockDevice+Register.swift */,
+				3BC91CC32E2A92F800468AAC /* CHBikeLockDevice+Setting.swift */,
 			);
 			path = SesameBike;
 			sourceTree = "<group>";
 		};
-		3BC91B382E2A7DA400468AAC /* SesameBot */ = {
+		3BC91CD12E2A92F800468AAC /* SesameBot */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B2C2E2A7DA400468AAC /* CHSesameBot.swift */,
-				3BC91B2D2E2A7DA400468AAC /* CHSesameBotDevice.swift */,
-				3BC91B2E2E2A7DA400468AAC /* CHSesameBotDevice+DFU.swift */,
-				3BC91B2F2E2A7DA400468AAC /* CHSesameBotDevice+Gatt.swift */,
-				3BC91B302E2A7DA400468AAC /* CHSesameBotDevice+History.swift */,
-				3BC91B312E2A7DA400468AAC /* CHSesameBotDevice+Lock.swift */,
-				3BC91B322E2A7DA400468AAC /* CHSesameBotDevice+Login.swift */,
-				3BC91B332E2A7DA400468AAC /* CHSesameBotDevice+Peripheral.swift */,
-				3BC91B342E2A7DA400468AAC /* CHSesameBotDevice+Register.swift */,
-				3BC91B352E2A7DA400468AAC /* CHSesameBotDevice+Setting.swift */,
-				3BC91B362E2A7DA400468AAC /* SesameBotPayload.swift */,
-				3BC91B372E2A7DA400468AAC /* SesameBotProtocols.swift */,
+				3BC91CC52E2A92F800468AAC /* CHSesameBot.swift */,
+				3BC91CC62E2A92F800468AAC /* CHSesameBotDevice.swift */,
+				3BC91CC72E2A92F800468AAC /* CHSesameBotDevice+DFU.swift */,
+				3BC91CC82E2A92F800468AAC /* CHSesameBotDevice+Gatt.swift */,
+				3BC91CC92E2A92F800468AAC /* CHSesameBotDevice+History.swift */,
+				3BC91CCA2E2A92F800468AAC /* CHSesameBotDevice+Lock.swift */,
+				3BC91CCB2E2A92F800468AAC /* CHSesameBotDevice+Login.swift */,
+				3BC91CCC2E2A92F800468AAC /* CHSesameBotDevice+Peripheral.swift */,
+				3BC91CCD2E2A92F800468AAC /* CHSesameBotDevice+Register.swift */,
+				3BC91CCE2E2A92F800468AAC /* CHSesameBotDevice+Setting.swift */,
+				3BC91CCF2E2A92F800468AAC /* SesameBotPayload.swift */,
+				3BC91CD02E2A92F800468AAC /* SesameBotProtocols.swift */,
 			);
 			path = SesameBot;
 			sourceTree = "<group>";
 		};
-		3BC91B392E2A7DA400468AAC /* SesameOS2 */ = {
+		3BC91CD22E2A92F800468AAC /* SesameOS2 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B202E2A7DA400468AAC /* Sesame2 */,
-				3BC91B2B2E2A7DA400468AAC /* SesameBike */,
-				3BC91B382E2A7DA400468AAC /* SesameBot */,
+				3BC91CB92E2A92F800468AAC /* Sesame2 */,
+				3BC91CC42E2A92F800468AAC /* SesameBike */,
+				3BC91CD12E2A92F800468AAC /* SesameBot */,
 			);
 			path = SesameOS2;
 			sourceTree = "<group>";
 		};
-		3BC91B3F2E2A7DA400468AAC /* Hub3 */ = {
+		3BC91CD82E2A92F800468AAC /* Hub3 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B3A2E2A7DA400468AAC /* CHHub3.swift */,
-				3BC91B3B2E2A7DA400468AAC /* CHHub3Device.swift */,
-				3BC91B3C2E2A7DA400468AAC /* CHHub3Device+Gatt.swift */,
-				3BC91B3D2E2A7DA400468AAC /* CHHub3Device+IR.swift */,
-				3BC91B3E2E2A7DA400468AAC /* IRDeviceType.swift */,
+				3BC91CD32E2A92F800468AAC /* CHHub3.swift */,
+				3BC91CD42E2A92F800468AAC /* CHHub3Device.swift */,
+				3BC91CD52E2A92F800468AAC /* CHHub3Device+Gatt.swift */,
+				3BC91CD62E2A92F800468AAC /* CHHub3Device+IR.swift */,
+				3BC91CD72E2A92F800468AAC /* IRDeviceType.swift */,
 			);
 			path = Hub3;
 			sourceTree = "<group>";
 		};
-		3BC91B452E2A7DA400468AAC /* Sesame5 */ = {
+		3BC91CDE2E2A92F800468AAC /* Sesame5 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B402E2A7DA400468AAC /* CHSesame5.swift */,
-				3BC91B412E2A7DA400468AAC /* CHSesame5Device.swift */,
-				3BC91B422E2A7DA400468AAC /* CHSesame5Device+Command.swift */,
-				3BC91B432E2A7DA400468AAC /* CHSesame5Device+History.swift */,
-				3BC91B442E2A7DA400468AAC /* CHSesame5Device+Register.swift */,
+				3BC91CD92E2A92F800468AAC /* CHSesame5.swift */,
+				3BC91CDA2E2A92F800468AAC /* CHSesame5Device.swift */,
+				3BC91CDB2E2A92F800468AAC /* CHSesame5Device+Command.swift */,
+				3BC91CDC2E2A92F800468AAC /* CHSesame5Device+History.swift */,
+				3BC91CDD2E2A92F800468AAC /* CHSesame5Device+Register.swift */,
 			);
 			path = Sesame5;
 			sourceTree = "<group>";
 		};
-		3BC91B482E2A7DA400468AAC /* SesameBike2 */ = {
+		3BC91CE12E2A92F800468AAC /* SesameBike2 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B462E2A7DA400468AAC /* CHSesameBike2.swift */,
-				3BC91B472E2A7DA400468AAC /* CHSesameBike2Device.swift */,
+				3BC91CDF2E2A92F800468AAC /* CHSesameBike2.swift */,
+				3BC91CE02E2A92F800468AAC /* CHSesameBike2Device.swift */,
 			);
 			path = SesameBike2;
 			sourceTree = "<group>";
 		};
-		3BC91B4D2E2A7DA400468AAC /* Card */ = {
+		3BC91CE62E2A92F800468AAC /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B492E2A7DA400468AAC /* CHCardCapable.swift */,
-				3BC91B4A2E2A7DA400468AAC /* CHCardCapableExtension.swift */,
-				3BC91B4B2E2A7DA400468AAC /* CHCardDelegate.swift */,
-				3BC91B4C2E2A7DA400468AAC /* CHCardEventHandlers.swift */,
+				3BC91CE22E2A92F800468AAC /* CHCardCapable.swift */,
+				3BC91CE32E2A92F800468AAC /* CHCardCapableExtension.swift */,
+				3BC91CE42E2A92F800468AAC /* CHCardDelegate.swift */,
+				3BC91CE52E2A92F800468AAC /* CHCardEventHandlers.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
 		};
-		3BC91B522E2A7DA400468AAC /* Face */ = {
+		3BC91CEB2E2A92F800468AAC /* Face */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B4E2E2A7DA400468AAC /* CHFaceCapable.swift */,
-				3BC91B4F2E2A7DA400468AAC /* CHFaceCapableExtension.swift */,
-				3BC91B502E2A7DA400468AAC /* CHFaceDelegate.swift */,
-				3BC91B512E2A7DA400468AAC /* CHFaceEventHandlers.swift */,
+				3BC91CE72E2A92F800468AAC /* CHFaceCapable.swift */,
+				3BC91CE82E2A92F800468AAC /* CHFaceCapableExtension.swift */,
+				3BC91CE92E2A92F800468AAC /* CHFaceDelegate.swift */,
+				3BC91CEA2E2A92F800468AAC /* CHFaceEventHandlers.swift */,
 			);
 			path = Face;
 			sourceTree = "<group>";
 		};
-		3BC91B572E2A7DA400468AAC /* FingerPrint */ = {
+		3BC91CF02E2A92F800468AAC /* FingerPrint */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B532E2A7DA400468AAC /* CHFingerPrintCapable.swift */,
-				3BC91B542E2A7DA400468AAC /* CHFingerPrintCapableExtension.swift */,
-				3BC91B552E2A7DA400468AAC /* CHFingerPrintDelegate.swift */,
-				3BC91B562E2A7DA400468AAC /* CHFingerPrintEventHandlers.swift */,
+				3BC91CEC2E2A92F800468AAC /* CHFingerPrintCapable.swift */,
+				3BC91CED2E2A92F800468AAC /* CHFingerPrintCapableExtension.swift */,
+				3BC91CEE2E2A92F800468AAC /* CHFingerPrintDelegate.swift */,
+				3BC91CEF2E2A92F800468AAC /* CHFingerPrintEventHandlers.swift */,
 			);
 			path = FingerPrint;
 			sourceTree = "<group>";
 		};
-		3BC91B5C2E2A7DA400468AAC /* Palm */ = {
+		3BC91CF52E2A92F800468AAC /* Palm */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B582E2A7DA400468AAC /* CHPalmCapable.swift */,
-				3BC91B592E2A7DA400468AAC /* CHPalmCapableExtension.swift */,
-				3BC91B5A2E2A7DA400468AAC /* CHPalmDelegate.swift */,
-				3BC91B5B2E2A7DA400468AAC /* CHPalmEventHandlers.swift */,
+				3BC91CF12E2A92F800468AAC /* CHPalmCapable.swift */,
+				3BC91CF22E2A92F800468AAC /* CHPalmCapableExtension.swift */,
+				3BC91CF32E2A92F800468AAC /* CHPalmDelegate.swift */,
+				3BC91CF42E2A92F800468AAC /* CHPalmEventHandlers.swift */,
 			);
 			path = Palm;
 			sourceTree = "<group>";
 		};
-		3BC91B612E2A7DA400468AAC /* PassCode */ = {
+		3BC91CFA2E2A92F800468AAC /* PassCode */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B5D2E2A7DA400468AAC /* CHPassCodeCapable.swift */,
-				3BC91B5E2E2A7DA400468AAC /* CHPassCodeCapableExtension.swift */,
-				3BC91B5F2E2A7DA400468AAC /* CHPassCodeDelegate.swift */,
-				3BC91B602E2A7DA400468AAC /* CHPassCodeEventHandlers.swift */,
+				3BC91CF62E2A92F800468AAC /* CHPassCodeCapable.swift */,
+				3BC91CF72E2A92F800468AAC /* CHPassCodeCapableExtension.swift */,
+				3BC91CF82E2A92F800468AAC /* CHPassCodeDelegate.swift */,
+				3BC91CF92E2A92F800468AAC /* CHPassCodeEventHandlers.swift */,
 			);
 			path = PassCode;
 			sourceTree = "<group>";
 		};
-		3BC91B642E2A7DA400468AAC /* Service */ = {
+		3BC91CFD2E2A92F800468AAC /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B622E2A7DA400468AAC /* CHCapbleRenameBean.swift */,
-				3BC91B632E2A7DA400468AAC /* CHServerCapableHandler.swift */,
+				3BC91CFB2E2A92F800468AAC /* CHCapbleRenameBean.swift */,
+				3BC91CFC2E2A92F800468AAC /* CHServerCapableHandler.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
 		};
-		3BC91B652E2A7DA400468AAC /* Authentication */ = {
+		3BC91CFE2E2A92F800468AAC /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B4D2E2A7DA400468AAC /* Card */,
-				3BC91B522E2A7DA400468AAC /* Face */,
-				3BC91B572E2A7DA400468AAC /* FingerPrint */,
-				3BC91B5C2E2A7DA400468AAC /* Palm */,
-				3BC91B612E2A7DA400468AAC /* PassCode */,
-				3BC91B642E2A7DA400468AAC /* Service */,
+				3BC91CE62E2A92F800468AAC /* Card */,
+				3BC91CEB2E2A92F800468AAC /* Face */,
+				3BC91CF02E2A92F800468AAC /* FingerPrint */,
+				3BC91CF52E2A92F800468AAC /* Palm */,
+				3BC91CFA2E2A92F800468AAC /* PassCode */,
+				3BC91CFD2E2A92F800468AAC /* Service */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		3BC91B672E2A7DA400468AAC /* MechanicalSettings */ = {
+		3BC91D002E2A92F800468AAC /* MechanicalSettings */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B662E2A7DA400468AAC /* CHMechanicalSettingsCapable.swift */,
+				3BC91CFF2E2A92F800468AAC /* CHMechanicalSettingsCapable.swift */,
 			);
 			path = MechanicalSettings;
 			sourceTree = "<group>";
 		};
-		3BC91B6B2E2A7DA400468AAC /* Nano */ = {
+		3BC91D042E2A92F800468AAC /* Nano */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B682E2A7DA400468AAC /* CHRemoteNanoCapable.swift */,
-				3BC91B692E2A7DA400468AAC /* CHRemoteNanoCapableExtension.swift */,
-				3BC91B6A2E2A7DA400468AAC /* CHRemoteNanoDelegate.swift */,
+				3BC91D012E2A92F800468AAC /* CHRemoteNanoCapable.swift */,
+				3BC91D022E2A92F800468AAC /* CHRemoteNanoCapableExtension.swift */,
+				3BC91D032E2A92F800468AAC /* CHRemoteNanoDelegate.swift */,
 			);
 			path = Nano;
 			sourceTree = "<group>";
 		};
-		3BC91B6E2E2A7DA400468AAC /* OpenSensor */ = {
+		3BC91D072E2A92F800468AAC /* OpenSensor */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B6C2E2A7DA400468AAC /* CHOpenSensorCapable.swift */,
-				3BC91B6D2E2A7DA400468AAC /* CHOpenSensorCapableExtension.swift */,
+				3BC91D052E2A92F800468AAC /* CHOpenSensorCapable.swift */,
+				3BC91D062E2A92F800468AAC /* CHOpenSensorCapableExtension.swift */,
 			);
 			path = OpenSensor;
 			sourceTree = "<group>";
 		};
-		3BC91B6F2E2A7DA400468AAC /* Remote */ = {
+		3BC91D082E2A92F800468AAC /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B6B2E2A7DA400468AAC /* Nano */,
-				3BC91B6E2E2A7DA400468AAC /* OpenSensor */,
+				3BC91D042E2A92F800468AAC /* Nano */,
+				3BC91D072E2A92F800468AAC /* OpenSensor */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
 		};
-		3BC91B712E2A7DA400468AAC /* Version */ = {
+		3BC91D0A2E2A92F800468AAC /* Version */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B702E2A7DA400468AAC /* CHVersionCapable.swift */,
+				3BC91D092E2A92F800468AAC /* CHVersionCapable.swift */,
 			);
 			path = Version;
 			sourceTree = "<group>";
 		};
-		3BC91B722E2A7DA400468AAC /* Capabilities */ = {
+		3BC91D0B2E2A92F800468AAC /* Capabilities */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B652E2A7DA400468AAC /* Authentication */,
-				3BC91B672E2A7DA400468AAC /* MechanicalSettings */,
-				3BC91B6F2E2A7DA400468AAC /* Remote */,
-				3BC91B712E2A7DA400468AAC /* Version */,
+				3BC91CFE2E2A92F800468AAC /* Authentication */,
+				3BC91D002E2A92F800468AAC /* MechanicalSettings */,
+				3BC91D082E2A92F800468AAC /* Remote */,
+				3BC91D0A2E2A92F800468AAC /* Version */,
 			);
 			path = Capabilities;
 			sourceTree = "<group>";
 		};
-		3BC91B742E2A7DA400468AAC /* Manager */ = {
+		3BC91D0D2E2A92F800468AAC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B732E2A7DA400468AAC /* CHDelegateManager.swift */,
+				3BC91D0C2E2A92F800468AAC /* CHDelegateManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		3BC91B752E2A7DA400468AAC /* Core */ = {
+		3BC91D0E2E2A92F800468AAC /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B742E2A7DA400468AAC /* Manager */,
+				3BC91D0D2E2A92F800468AAC /* Manager */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		3BC91B7D2E2A7DA400468AAC /* BaseDevice */ = {
+		3BC91D162E2A92F800468AAC /* BaseDevice */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B762E2A7DA400468AAC /* CHSesameBaseDevice.swift */,
-				3BC91B772E2A7DA400468AAC /* CHSesameBaseDevice+Connector.swift */,
-				3BC91B782E2A7DA400468AAC /* CHSesameBaseDevice+Delegate.swift */,
-				3BC91B792E2A7DA400468AAC /* CHSesameBaseDevice+Register.swift */,
-				3BC91B7A2E2A7DA400468AAC /* CHSesameBaseDevice+Settings.swift */,
-				3BC91B7B2E2A7DA400468AAC /* CHSesameBaseDevice+Version.swift */,
-				3BC91B7C2E2A7DA400468AAC /* CHSesameBasePro.swift */,
+				3BC91D0F2E2A92F800468AAC /* CHSesameBaseDevice.swift */,
+				3BC91D102E2A92F800468AAC /* CHSesameBaseDevice+Connector.swift */,
+				3BC91D112E2A92F800468AAC /* CHSesameBaseDevice+Delegate.swift */,
+				3BC91D122E2A92F800468AAC /* CHSesameBaseDevice+Register.swift */,
+				3BC91D132E2A92F800468AAC /* CHSesameBaseDevice+Settings.swift */,
+				3BC91D142E2A92F800468AAC /* CHSesameBaseDevice+Version.swift */,
+				3BC91D152E2A92F800468AAC /* CHSesameBasePro.swift */,
 			);
 			path = BaseDevice;
 			sourceTree = "<group>";
 		};
-		3BC91B802E2A7DA400468AAC /* Face */ = {
+		3BC91D192E2A92F800468AAC /* Face */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B7E2E2A7DA400468AAC /* CHSesameFace.swift */,
-				3BC91B7F2E2A7DA400468AAC /* CHSesameFaceDevice.swift */,
+				3BC91D172E2A92F800468AAC /* CHSesameFace.swift */,
+				3BC91D182E2A92F800468AAC /* CHSesameFaceDevice.swift */,
 			);
 			path = Face;
 			sourceTree = "<group>";
 		};
-		3BC91B832E2A7DA400468AAC /* FacePro */ = {
+		3BC91D1C2E2A92F800468AAC /* FacePro */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B812E2A7DA400468AAC /* CHSesameFacePro.swift */,
-				3BC91B822E2A7DA400468AAC /* CHSesameFaceProDevice.swift */,
+				3BC91D1A2E2A92F800468AAC /* CHSesameFacePro.swift */,
+				3BC91D1B2E2A92F800468AAC /* CHSesameFaceProDevice.swift */,
 			);
 			path = FacePro;
 			sourceTree = "<group>";
 		};
-		3BC91B862E2A7DA400468AAC /* Touch */ = {
+		3BC91D1F2E2A92F800468AAC /* Touch */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B842E2A7DA400468AAC /* CHSesameTouch.swift */,
-				3BC91B852E2A7DA400468AAC /* CHSesameTouchDevice.swift */,
+				3BC91D1D2E2A92F800468AAC /* CHSesameTouch.swift */,
+				3BC91D1E2E2A92F800468AAC /* CHSesameTouchDevice.swift */,
 			);
 			path = Touch;
 			sourceTree = "<group>";
 		};
-		3BC91B892E2A7DA400468AAC /* TouchPro */ = {
+		3BC91D222E2A92F800468AAC /* TouchPro */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B872E2A7DA400468AAC /* CHSesameTouchPro.swift */,
-				3BC91B882E2A7DA400468AAC /* CHSesameTouchProDevice.swift */,
+				3BC91D202E2A92F800468AAC /* CHSesameTouchPro.swift */,
+				3BC91D212E2A92F800468AAC /* CHSesameTouchProDevice.swift */,
 			);
 			path = TouchPro;
 			sourceTree = "<group>";
 		};
-		3BC91B8A2E2A7DA400468AAC /* Devices */ = {
+		3BC91D232E2A92F800468AAC /* Devices */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B7D2E2A7DA400468AAC /* BaseDevice */,
-				3BC91B802E2A7DA400468AAC /* Face */,
-				3BC91B832E2A7DA400468AAC /* FacePro */,
-				3BC91B862E2A7DA400468AAC /* Touch */,
-				3BC91B892E2A7DA400468AAC /* TouchPro */,
+				3BC91D162E2A92F800468AAC /* BaseDevice */,
+				3BC91D192E2A92F800468AAC /* Face */,
+				3BC91D1C2E2A92F800468AAC /* FacePro */,
+				3BC91D1F2E2A92F800468AAC /* Touch */,
+				3BC91D222E2A92F800468AAC /* TouchPro */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
 		};
-		3BC91B912E2A7DA400468AAC /* Models */ = {
+		3BC91D2A2E2A92F800468AAC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B8B2E2A7DA400468AAC /* CHRemoteBaseTriggerSettings.swift */,
-				3BC91B8C2E2A7DA400468AAC /* CHSesameBaseMechSettings.swift */,
-				3BC91B8D2E2A7DA400468AAC /* CHSesameTouchCard.swift */,
-				3BC91B8E2E2A7DA400468AAC /* CHSesameTouchProMechStatus.swift */,
-				3BC91B8F2E2A7DA400468AAC /* OpenSensorData.swift */,
-				3BC91B902E2A7DA400468AAC /* OpensensorMechStatus.swift */,
+				3BC91D242E2A92F800468AAC /* CHRemoteBaseTriggerSettings.swift */,
+				3BC91D252E2A92F800468AAC /* CHSesameBaseMechSettings.swift */,
+				3BC91D262E2A92F800468AAC /* CHSesameTouchCard.swift */,
+				3BC91D272E2A92F800468AAC /* CHSesameTouchProMechStatus.swift */,
+				3BC91D282E2A92F800468AAC /* OpenSensorData.swift */,
+				3BC91D292E2A92F800468AAC /* OpensensorMechStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3BC91B922E2A7DA400468AAC /* SesameBiometricDevice */ = {
+		3BC91D2B2E2A92F800468AAC /* SesameBiometricDevice */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B722E2A7DA400468AAC /* Capabilities */,
-				3BC91B752E2A7DA400468AAC /* Core */,
-				3BC91B8A2E2A7DA400468AAC /* Devices */,
-				3BC91B912E2A7DA400468AAC /* Models */,
+				3BC91D0B2E2A92F800468AAC /* Capabilities */,
+				3BC91D0E2E2A92F800468AAC /* Core */,
+				3BC91D232E2A92F800468AAC /* Devices */,
+				3BC91D2A2E2A92F800468AAC /* Models */,
 			);
 			path = SesameBiometricDevice;
 			sourceTree = "<group>";
 		};
-		3BC91B952E2A7DA400468AAC /* SesameBot2 */ = {
+		3BC91D2E2E2A92F800468AAC /* SesameBot2 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B932E2A7DA400468AAC /* CHSesameBot2.swift */,
-				3BC91B942E2A7DA400468AAC /* CHSesameBot2Device.swift */,
+				3BC91D2C2E2A92F800468AAC /* CHSesameBot2.swift */,
+				3BC91D2D2E2A92F800468AAC /* CHSesameBot2Device.swift */,
 			);
 			path = SesameBot2;
 			sourceTree = "<group>";
 		};
-		3BC91B9D2E2A7DA400468AAC /* WifiModule2 */ = {
+		3BC91D362E2A92F800468AAC /* WifiModule2 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B962E2A7DA400468AAC /* CHWifiModule2.swift */,
-				3BC91B972E2A7DA400468AAC /* CHWifiModule2Device.swift */,
-				3BC91B982E2A7DA400468AAC /* CHWifiModule2Device+Gatt.swift */,
-				3BC91B992E2A7DA400468AAC /* CHWifiModule2Device+Peripheral.swift */,
-				3BC91B9A2E2A7DA400468AAC /* CHWifiModule2Device+Register.swift */,
-				3BC91B9B2E2A7DA400468AAC /* WifiModule2Payload.swift */,
-				3BC91B9C2E2A7DA400468AAC /* WifiModule2Protocols.swift */,
+				3BC91D2F2E2A92F800468AAC /* CHWifiModule2.swift */,
+				3BC91D302E2A92F800468AAC /* CHWifiModule2Device.swift */,
+				3BC91D312E2A92F800468AAC /* CHWifiModule2Device+Gatt.swift */,
+				3BC91D322E2A92F800468AAC /* CHWifiModule2Device+Peripheral.swift */,
+				3BC91D332E2A92F800468AAC /* CHWifiModule2Device+Register.swift */,
+				3BC91D342E2A92F800468AAC /* WifiModule2Payload.swift */,
+				3BC91D352E2A92F800468AAC /* WifiModule2Protocols.swift */,
 			);
 			path = WifiModule2;
 			sourceTree = "<group>";
 		};
-		3BC91BA22E2A7DA400468AAC /* SesameOS3 */ = {
+		3BC91D3B2E2A92F800468AAC /* SesameOS3 */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B3F2E2A7DA400468AAC /* Hub3 */,
-				3BC91B452E2A7DA400468AAC /* Sesame5 */,
-				3BC91B482E2A7DA400468AAC /* SesameBike2 */,
-				3BC91B922E2A7DA400468AAC /* SesameBiometricDevice */,
-				3BC91B952E2A7DA400468AAC /* SesameBot2 */,
-				3BC91B9D2E2A7DA400468AAC /* WifiModule2 */,
-				3BC91B9E2E2A7DA400468AAC /* CHDeviceUtil+OS3.swift */,
-				3BC91B9F2E2A7DA400468AAC /* CHSesameOS3.swift */,
-				3BC91BA02E2A7DA400468AAC /* SesameOS3BleCipher.swift */,
-				3BC91BA12E2A7DA400468AAC /* SesameOS3SegmentType.swift */,
+				3BC91CD82E2A92F800468AAC /* Hub3 */,
+				3BC91CDE2E2A92F800468AAC /* Sesame5 */,
+				3BC91CE12E2A92F800468AAC /* SesameBike2 */,
+				3BC91D2B2E2A92F800468AAC /* SesameBiometricDevice */,
+				3BC91D2E2E2A92F800468AAC /* SesameBot2 */,
+				3BC91D362E2A92F800468AAC /* WifiModule2 */,
+				3BC91D372E2A92F800468AAC /* CHDeviceUtil+OS3.swift */,
+				3BC91D382E2A92F800468AAC /* CHSesameOS3.swift */,
+				3BC91D392E2A92F800468AAC /* SesameOS3BleCipher.swift */,
+				3BC91D3A2E2A92F800468AAC /* SesameOS3SegmentType.swift */,
 			);
 			path = SesameOS3;
 			sourceTree = "<group>";
 		};
-		3BC91BA72E2A7DA400468AAC /* Ble */ = {
+		3BC91D402E2A92F800468AAC /* Ble */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91B392E2A7DA400468AAC /* SesameOS2 */,
-				3BC91BA22E2A7DA400468AAC /* SesameOS3 */,
-				3BC91BA32E2A7DA400468AAC /* CHBaseDevice.swift */,
-				3BC91BA42E2A7DA400468AAC /* CHBluetoothCenter.swift */,
-				3BC91BA52E2A7DA400468AAC /* CHDevice.swift */,
-				3BC91BA62E2A7DA400468AAC /* CHDeviceProtocol.swift */,
+				3BC91CD22E2A92F800468AAC /* SesameOS2 */,
+				3BC91D3B2E2A92F800468AAC /* SesameOS3 */,
+				3BC91D3C2E2A92F800468AAC /* CHBaseDevice.swift */,
+				3BC91D3D2E2A92F800468AAC /* CHBluetoothCenter.swift */,
+				3BC91D3E2E2A92F800468AAC /* CHDevice.swift */,
+				3BC91D3F2E2A92F800468AAC /* CHDeviceProtocol.swift */,
 			);
 			name = Ble;
 			path = ../Sources/SesameSDK/Ble;
 			sourceTree = SOURCE_ROOT;
 		};
-		3BC91BA92E2A7DA400468AAC /* Configuration */ = {
+		3BC91D422E2A92F800468AAC /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BA82E2A7DA400468AAC /* AWSConfig.swift */,
+				3BC91D412E2A92F800468AAC /* AWSConfigurable.swift */,
 			);
 			name = Configuration;
 			path = ../Sources/SesameSDK/Configuration;
 			sourceTree = SOURCE_ROOT;
 		};
-		3BC91BAD2E2A7DA400468AAC /* Keys */ = {
+		3BC91D462E2A92F800468AAC /* Keys */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BAA2E2A7DA400468AAC /* CHDeviceKey.swift */,
-				3BC91BAB2E2A7DA400468AAC /* CHGuestKey.swift */,
-				3BC91BAC2E2A7DA400468AAC /* CHSesame2HistoryEvent.swift */,
+				3BC91D432E2A92F800468AAC /* CHDeviceKey.swift */,
+				3BC91D442E2A92F800468AAC /* CHGuestKey.swift */,
+				3BC91D452E2A92F800468AAC /* CHSesame2HistoryEvent.swift */,
 			);
 			path = Keys;
 			sourceTree = "<group>";
 		};
-		3BC91BAE2E2A7DA400468AAC /* DataModel */ = {
+		3BC91D472E2A92F800468AAC /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BAD2E2A7DA400468AAC /* Keys */,
+				3BC91D462E2A92F800468AAC /* Keys */,
 			);
 			name = DataModel;
 			path = ../Sources/SesameSDK/DataModel;
 			sourceTree = SOURCE_ROOT;
 		};
-		3BC91BB22E2A7DA400468AAC /* DB */ = {
+		3BC91D4B2E2A92F800468AAC /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BAF2E2A7DA400468AAC /* CHDeviceCenter.swift */,
-				3BC91BB02E2A7DA400468AAC /* CHDeviceManager.swift */,
-				3BC91BB12E2A7DA400468AAC /* CHDeviceModel.xcdatamodeld */,
+				3BC91D482E2A92F800468AAC /* CHDeviceCenter.swift */,
+				3BC91D492E2A92F800468AAC /* CHDeviceManager.swift */,
+				3BC91D4A2E2A92F800468AAC /* CHDeviceModel.xcdatamodeld */,
 			);
 			name = DB;
 			path = ../Sources/SesameSDK/DB;
 			sourceTree = SOURCE_ROOT;
 		};
-		3BC91BB52E2A7DA400468AAC /* IoT */ = {
+		3BC91D4E2E2A92F800468AAC /* IoT */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BB32E2A7DA400468AAC /* CHIoTManager.swift */,
-				3BC91BB42E2A7DA400468AAC /* ShadowModel.swift */,
+				3BC91D4C2E2A92F800468AAC /* CHIoTManager.swift */,
+				3BC91D4D2E2A92F800468AAC /* ShadowModel.swift */,
 			);
 			name = IoT;
 			path = ../Sources/SesameSDK/IoT;
 			sourceTree = SOURCE_ROOT;
 		};
-		3BC91BBB2E2A7DA400468AAC /* Server */ = {
+		3BC91D542E2A92F800468AAC /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BB62E2A7DA400468AAC /* CHAccountManager.swift */,
-				3BC91BB72E2A7DA400468AAC /* CHAccountManager+APIRequest.swift */,
-				3BC91BB82E2A7DA400468AAC /* CHAPICallObject.swift */,
-				3BC91BB92E2A7DA400468AAC /* CHResultPattern.swift */,
-				3BC91BBA2E2A7DA400468AAC /* ServerBaseType.swift */,
+				3BC91D4F2E2A92F800468AAC /* CHAccountManager.swift */,
+				3BC91D502E2A92F800468AAC /* CHAccountManager+APIRequest.swift */,
+				3BC91D512E2A92F800468AAC /* CHAPICallObject.swift */,
+				3BC91D522E2A92F800468AAC /* CHResultPattern.swift */,
+				3BC91D532E2A92F800468AAC /* ServerBaseType.swift */,
 			);
 			name = Server;
 			path = ../Sources/SesameSDK/Server;
 			sourceTree = SOURCE_ROOT;
 		};
-		3BC91BC82E2A7DA400468AAC /* Utils */ = {
+		3BC91D612E2A92F800468AAC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3BC91BBC2E2A7DA400468AAC /* AES.swift */,
-				3BC91BBD2E2A7DA400468AAC /* CHConfiguration.swift */,
-				3BC91BBE2E2A7DA400468AAC /* CHExtensionListener.swift */,
-				3BC91BBF2E2A7DA400468AAC /* CHMulticastDelegate.swift */,
-				3BC91BC02E2A7DA400468AAC /* Data+.swift */,
-				3BC91BC12E2A7DA400468AAC /* ECC.swift */,
-				3BC91BC22E2A7DA400468AAC /* Logging.swift */,
-				3BC91BC32E2A7DA400468AAC /* NSError+.swift */,
-				3BC91BC42E2A7DA400468AAC /* SafeDictionary.swift */,
-				3BC91BC52E2A7DA400468AAC /* String+.swift */,
-				3BC91BC62E2A7DA400468AAC /* SwCrypt.swift */,
-				3BC91BC72E2A7DA400468AAC /* URLSession+.swift */,
+				3BC91D552E2A92F800468AAC /* AES.swift */,
+				3BC91D562E2A92F800468AAC /* CHConfiguration.swift */,
+				3BC91D572E2A92F800468AAC /* CHExtensionListener.swift */,
+				3BC91D582E2A92F800468AAC /* CHMulticastDelegate.swift */,
+				3BC91D592E2A92F800468AAC /* Data+.swift */,
+				3BC91D5A2E2A92F800468AAC /* ECC.swift */,
+				3BC91D5B2E2A92F800468AAC /* Logging.swift */,
+				3BC91D5C2E2A92F800468AAC /* NSError+.swift */,
+				3BC91D5D2E2A92F800468AAC /* SafeDictionary.swift */,
+				3BC91D5E2E2A92F800468AAC /* String+.swift */,
+				3BC91D5F2E2A92F800468AAC /* SwCrypt.swift */,
+				3BC91D602E2A92F800468AAC /* URLSession+.swift */,
 			);
 			name = Utils;
 			path = ../Sources/SesameSDK/Utils;
@@ -1751,149 +1751,149 @@
 				BEF8F75B24C69E6800650CAD /* AWSMTLModel.m in Sources */,
 				BEF8F7DA24C69E6800650CAD /* AWSModel.m in Sources */,
 				BEF8F75024C69E6800650CAD /* AWSMTLValueTransformer.m in Sources */,
+				3BC91D632E2A92F800468AAC /* ECC.swift in Sources */,
+				3BC91D642E2A92F800468AAC /* CHSesameBaseMechSettings.swift in Sources */,
+				3BC91D652E2A92F800468AAC /* CHSesameBaseDevice+Delegate.swift in Sources */,
+				3BC91D662E2A92F800468AAC /* SesameBotProtocols.swift in Sources */,
+				3BC91D672E2A92F800468AAC /* CHDelegateManager.swift in Sources */,
+				3BC91D682E2A92F800468AAC /* CHRemoteBaseTriggerSettings.swift in Sources */,
+				3BC91D692E2A92F800468AAC /* CHWifiModule2Device+Register.swift in Sources */,
+				3BC91D6A2E2A92F800468AAC /* CHSesameBotDevice+Lock.swift in Sources */,
+				3BC91D6B2E2A92F800468AAC /* CHRemoteNanoDelegate.swift in Sources */,
+				3BC91D6C2E2A92F800468AAC /* CHSesameBike2Device.swift in Sources */,
+				3BC91D6D2E2A92F800468AAC /* CHSesameBotDevice+Gatt.swift in Sources */,
+				3BC91D6E2E2A92F800468AAC /* CHSesame2Device.swift in Sources */,
+				3BC91D6F2E2A92F800468AAC /* CHSesameBotDevice+Login.swift in Sources */,
+				3BC91D702E2A92F800468AAC /* CHFaceDelegate.swift in Sources */,
+				3BC91D712E2A92F800468AAC /* WifiModule2Payload.swift in Sources */,
+				3BC91D722E2A92F800468AAC /* SesameOS3SegmentType.swift in Sources */,
+				3BC91D732E2A92F800468AAC /* CHSesameBotDevice.swift in Sources */,
+				3BC91D742E2A92F800468AAC /* CHVersionCapable.swift in Sources */,
+				3BC91D752E2A92F800468AAC /* CHRemoteNanoCapableExtension.swift in Sources */,
+				3BC91D762E2A92F800468AAC /* CHDeviceProtocol.swift in Sources */,
+				3BC91D772E2A92F800468AAC /* CHDeviceCenter.swift in Sources */,
+				3BC91D782E2A92F800468AAC /* CHSesame2Device+Login.swift in Sources */,
+				3BC91D792E2A92F800468AAC /* CHSesameBaseDevice+Connector.swift in Sources */,
+				3BC91D7A2E2A92F800468AAC /* CHPassCodeCapable.swift in Sources */,
+				3BC91D7B2E2A92F800468AAC /* SesameOS3BleCipher.swift in Sources */,
+				3BC91D7C2E2A92F800468AAC /* CHGuestKey.swift in Sources */,
+				3BC91D7D2E2A92F800468AAC /* CHHub3Device+IR.swift in Sources */,
+				3BC91D7E2E2A92F800468AAC /* CHHub3Device.swift in Sources */,
+				3BC91D7F2E2A92F800468AAC /* CHPassCodeDelegate.swift in Sources */,
+				3BC91D802E2A92F800468AAC /* CHOpenSensorCapable.swift in Sources */,
+				3BC91D812E2A92F800468AAC /* CHSesameTouchCard.swift in Sources */,
+				3BC91D822E2A92F800468AAC /* CHMechanicalSettingsCapable.swift in Sources */,
+				3BC91D832E2A92F800468AAC /* CHAccountManager.swift in Sources */,
+				3BC91D842E2A92F800468AAC /* CHSesameBike2.swift in Sources */,
+				3BC91D852E2A92F800468AAC /* CHFaceCapable.swift in Sources */,
+				3BC91D862E2A92F800468AAC /* CHWifiModule2.swift in Sources */,
+				3BC91D872E2A92F800468AAC /* AES.swift in Sources */,
+				3BC91D882E2A92F800468AAC /* CHHub3.swift in Sources */,
+				3BC91D892E2A92F800468AAC /* Sesame2Payload.swift in Sources */,
+				3BC91D8A2E2A92F800468AAC /* CHBikeLockDevice+Login.swift in Sources */,
+				3BC91D8B2E2A92F800468AAC /* CHDeviceManager.swift in Sources */,
+				3BC91D8C2E2A92F800468AAC /* CHBikeLockDevice+Peripheral.swift in Sources */,
+				3BC91D8D2E2A92F800468AAC /* CHSesame2HistoryEvent.swift in Sources */,
+				3BC91D8E2E2A92F800468AAC /* CHSesameBot.swift in Sources */,
+				3BC91D8F2E2A92F800468AAC /* CHSesameOS3.swift in Sources */,
+				3BC91D902E2A92F800468AAC /* CHConfiguration.swift in Sources */,
+				3BC91D912E2A92F800468AAC /* CHSesame5Device+Command.swift in Sources */,
+				3BC91D922E2A92F800468AAC /* CHHub3Device+Gatt.swift in Sources */,
+				3BC91D932E2A92F800468AAC /* CHSesameTouchDevice.swift in Sources */,
+				3BC91D942E2A92F800468AAC /* CHSesameTouch.swift in Sources */,
+				3BC91D952E2A92F800468AAC /* WifiModule2Protocols.swift in Sources */,
+				3BC91D962E2A92F800468AAC /* CHFingerPrintCapable.swift in Sources */,
+				3BC91D972E2A92F800468AAC /* CHWifiModule2Device+Peripheral.swift in Sources */,
+				3BC91D982E2A92F800468AAC /* SwCrypt.swift in Sources */,
+				3BC91D992E2A92F800468AAC /* Sesame2Protocols.swift in Sources */,
+				3BC91D9A2E2A92F800468AAC /* CHFaceCapableExtension.swift in Sources */,
+				3BC91D9B2E2A92F800468AAC /* CHCardEventHandlers.swift in Sources */,
+				3BC91D9C2E2A92F800468AAC /* CHWifiModule2Device+Gatt.swift in Sources */,
+				3BC91D9D2E2A92F800468AAC /* CHBikeLockDevice+DFU.swift in Sources */,
+				3BC91D9E2E2A92F800468AAC /* CHPalmEventHandlers.swift in Sources */,
+				3BC91D9F2E2A92F800468AAC /* CHSesameTouchProDevice.swift in Sources */,
+				3BC91DA02E2A92F800468AAC /* Logging.swift in Sources */,
+				3BC91DA12E2A92F800468AAC /* CHSesameBaseDevice+Version.swift in Sources */,
+				3BC91DA22E2A92F800468AAC /* CHSesame5Device+Register.swift in Sources */,
+				3BC91DA32E2A92F800468AAC /* CHSesameTouchPro.swift in Sources */,
+				3BC91DA42E2A92F800468AAC /* CHSesameBotDevice+DFU.swift in Sources */,
+				3BC91DA52E2A92F800468AAC /* CHAccountManager+APIRequest.swift in Sources */,
+				3BC91DA62E2A92F800468AAC /* CHSesameBotDevice+Setting.swift in Sources */,
+				3BC91DA72E2A92F800468AAC /* AWSConfigurable.swift in Sources */,
+				3BC91DA82E2A92F800468AAC /* CHPalmCapableExtension.swift in Sources */,
+				3BC91DA92E2A92F800468AAC /* ServerBaseType.swift in Sources */,
+				3BC91DAA2E2A92F800468AAC /* CHWifiModule2Device.swift in Sources */,
+				3BC91DAB2E2A92F800468AAC /* CHSesame5Device.swift in Sources */,
+				3BC91DAC2E2A92F800468AAC /* CHOpenSensorCapableExtension.swift in Sources */,
+				3BC91DAD2E2A92F800468AAC /* CHPalmDelegate.swift in Sources */,
+				3BC91DAE2E2A92F800468AAC /* CHSesame5Device+History.swift in Sources */,
+				3BC91DAF2E2A92F800468AAC /* CHFaceEventHandlers.swift in Sources */,
+				3BC91DB02E2A92F800468AAC /* CHPassCodeCapableExtension.swift in Sources */,
+				3BC91DB12E2A92F800468AAC /* CHSesameBasePro.swift in Sources */,
+				3BC91DB22E2A92F800468AAC /* CHRemoteNanoCapable.swift in Sources */,
+				3BC91DB32E2A92F800468AAC /* CHBikeLockDevice+Gatt.swift in Sources */,
+				3BC91DB42E2A92F800468AAC /* CHCardDelegate.swift in Sources */,
+				3BC91DB52E2A92F800468AAC /* OpensensorMechStatus.swift in Sources */,
+				3BC91DB62E2A92F800468AAC /* CHBikeLockDevice.swift in Sources */,
+				3BC91DB72E2A92F800468AAC /* CHSesame2Device+History.swift in Sources */,
+				3BC91DB82E2A92F800468AAC /* CHFingerPrintDelegate.swift in Sources */,
+				3BC91DB92E2A92F800468AAC /* CHBaseDevice.swift in Sources */,
+				3BC91DBA2E2A92F800468AAC /* CHResultPattern.swift in Sources */,
+				3BC91DBB2E2A92F800468AAC /* CHSesame2Device+Gatt.swift in Sources */,
+				3BC91DBC2E2A92F800468AAC /* CHSesameTouchProMechStatus.swift in Sources */,
+				3BC91DBD2E2A92F800468AAC /* OpenSensorData.swift in Sources */,
+				3BC91DBE2E2A92F800468AAC /* CHDeviceUtil+OS3.swift in Sources */,
+				3BC91DBF2E2A92F800468AAC /* String+.swift in Sources */,
+				3BC91DC02E2A92F800468AAC /* BikeLockPayload.swift in Sources */,
+				3BC91DC12E2A92F800468AAC /* CHSesameFaceDevice.swift in Sources */,
+				3BC91DC22E2A92F800468AAC /* CHSesameBot2Device.swift in Sources */,
+				3BC91DC32E2A92F800468AAC /* Sesame2BleCipher.swift in Sources */,
+				3BC91DC42E2A92F800468AAC /* CHPalmCapable.swift in Sources */,
+				3BC91DC52E2A92F800468AAC /* CHDeviceKey.swift in Sources */,
+				3BC91DC62E2A92F800468AAC /* CHPassCodeEventHandlers.swift in Sources */,
+				3BC91DC72E2A92F800468AAC /* CHDeviceModel.xcdatamodeld in Sources */,
+				3BC91DC82E2A92F800468AAC /* NSError+.swift in Sources */,
+				3BC91DC92E2A92F800468AAC /* Data+.swift in Sources */,
+				3BC91DCA2E2A92F800468AAC /* CHSesame2Device+Register.swift in Sources */,
+				3BC91DCB2E2A92F800468AAC /* CHSesameBaseDevice.swift in Sources */,
+				3BC91DCC2E2A92F800468AAC /* CHSesameBot2.swift in Sources */,
+				3BC91DCD2E2A92F800468AAC /* CHIoTManager.swift in Sources */,
+				3BC91DCE2E2A92F800468AAC /* CHCapbleRenameBean.swift in Sources */,
+				3BC91DCF2E2A92F800468AAC /* SafeDictionary.swift in Sources */,
+				3BC91DD02E2A92F800468AAC /* CHBikeLockDevice+Lock.swift in Sources */,
+				3BC91DD12E2A92F800468AAC /* SesameBotPayload.swift in Sources */,
+				3BC91DD22E2A92F800468AAC /* URLSession+.swift in Sources */,
+				3BC91DD32E2A92F800468AAC /* CHSesameBotDevice+History.swift in Sources */,
+				3BC91DD42E2A92F800468AAC /* Sesame2BleDevice+Peripheral.swift in Sources */,
+				3BC91DD52E2A92F800468AAC /* CHSesameFacePro.swift in Sources */,
+				3BC91DD62E2A92F800468AAC /* CHBluetoothCenter.swift in Sources */,
+				3BC91DD72E2A92F800468AAC /* CHDevice.swift in Sources */,
+				3BC91DD82E2A92F800468AAC /* CHFingerPrintCapableExtension.swift in Sources */,
+				3BC91DD92E2A92F800468AAC /* CHExtensionListener.swift in Sources */,
+				3BC91DDA2E2A92F800468AAC /* CHSesameFaceProDevice.swift in Sources */,
+				3BC91DDB2E2A92F800468AAC /* CHSesame5.swift in Sources */,
+				3BC91DDC2E2A92F800468AAC /* CHSesameBaseDevice+Register.swift in Sources */,
+				3BC91DDD2E2A92F800468AAC /* CHSesameFace.swift in Sources */,
+				3BC91DDE2E2A92F800468AAC /* CHSesameBaseDevice+Settings.swift in Sources */,
+				3BC91DDF2E2A92F800468AAC /* ShadowModel.swift in Sources */,
+				3BC91DE02E2A92F800468AAC /* CHAPICallObject.swift in Sources */,
+				3BC91DE12E2A92F800468AAC /* CHFingerPrintEventHandlers.swift in Sources */,
+				3BC91DE22E2A92F800468AAC /* CHSesame2.swift in Sources */,
+				3BC91DE32E2A92F800468AAC /* CHCardCapableExtension.swift in Sources */,
+				3BC91DE42E2A92F800468AAC /* CHCardCapable.swift in Sources */,
+				3BC91DE52E2A92F800468AAC /* CHBikeLockDevice+Setting.swift in Sources */,
+				3BC91DE62E2A92F800468AAC /* CHServerCapableHandler.swift in Sources */,
+				3BC91DE72E2A92F800468AAC /* CHBikeLockDevice+Register.swift in Sources */,
+				3BC91DE82E2A92F800468AAC /* CHSesameBotDevice+Peripheral.swift in Sources */,
+				3BC91DE92E2A92F800468AAC /* CHSesame2Device+DFU.swift in Sources */,
+				3BC91DEA2E2A92F800468AAC /* CHMulticastDelegate.swift in Sources */,
+				3BC91DEB2E2A92F800468AAC /* CHSesameBotDevice+Register.swift in Sources */,
+				3BC91DEC2E2A92F800468AAC /* CHSesame2Device+Lock.swift in Sources */,
+				3BC91DED2E2A92F800468AAC /* CHBikeLock.swift in Sources */,
+				3BC91DEE2E2A92F800468AAC /* IRDeviceType.swift in Sources */,
 				BEF8F76724C69E6800650CAD /* AWSSerialization.m in Sources */,
 				BEF8F73524C69E6800650CAD /* AWSCognitoIdentityService.m in Sources */,
 				BEF8F74624C69E6800650CAD /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m in Sources */,
-				3BC91BCA2E2A7DA400468AAC /* SafeDictionary.swift in Sources */,
-				3BC91BCB2E2A7DA400468AAC /* CHAccountManager.swift in Sources */,
-				3BC91BCC2E2A7DA400468AAC /* SesameBotProtocols.swift in Sources */,
-				3BC91BCD2E2A7DA400468AAC /* CHRemoteBaseTriggerSettings.swift in Sources */,
-				3BC91BCE2E2A7DA400468AAC /* CHBikeLockDevice+Setting.swift in Sources */,
-				3BC91BCF2E2A7DA400468AAC /* CHWifiModule2.swift in Sources */,
-				3BC91BD02E2A7DA400468AAC /* CHCardCapable.swift in Sources */,
-				3BC91BD12E2A7DA400468AAC /* CHDelegateManager.swift in Sources */,
-				3BC91BD22E2A7DA400468AAC /* CHSesame5Device+Register.swift in Sources */,
-				3BC91BD32E2A7DA400468AAC /* CHSesameTouchProDevice.swift in Sources */,
-				3BC91BD42E2A7DA400468AAC /* ECC.swift in Sources */,
-				3BC91BD52E2A7DA400468AAC /* CHSesameTouchCard.swift in Sources */,
-				3BC91BD62E2A7DA400468AAC /* Sesame2BleCipher.swift in Sources */,
-				3BC91BD72E2A7DA400468AAC /* CHSesame5Device+History.swift in Sources */,
-				3BC91BD82E2A7DA400468AAC /* CHDeviceManager.swift in Sources */,
-				3BC91BD92E2A7DA400468AAC /* String+.swift in Sources */,
-				3BC91BDA2E2A7DA400468AAC /* CHSesameBotDevice+Register.swift in Sources */,
-				3BC91BDB2E2A7DA400468AAC /* CHWifiModule2Device+Gatt.swift in Sources */,
-				3BC91BDC2E2A7DA400468AAC /* CHSesameBaseDevice+Delegate.swift in Sources */,
-				3BC91BDD2E2A7DA400468AAC /* AES.swift in Sources */,
-				3BC91BDE2E2A7DA400468AAC /* CHWifiModule2Device+Register.swift in Sources */,
-				3BC91BDF2E2A7DA400468AAC /* ShadowModel.swift in Sources */,
-				3BC91BE02E2A7DA400468AAC /* Logging.swift in Sources */,
-				3BC91BE12E2A7DA400468AAC /* CHVersionCapable.swift in Sources */,
-				3BC91BE22E2A7DA400468AAC /* CHDeviceProtocol.swift in Sources */,
-				3BC91BE32E2A7DA400468AAC /* CHSesameTouchProMechStatus.swift in Sources */,
-				3BC91BE42E2A7DA400468AAC /* CHBaseDevice.swift in Sources */,
-				3BC91BE52E2A7DA400468AAC /* CHCardDelegate.swift in Sources */,
-				3BC91BE62E2A7DA400468AAC /* CHSesameBotDevice+Lock.swift in Sources */,
-				3BC91BE72E2A7DA400468AAC /* CHFaceEventHandlers.swift in Sources */,
-				3BC91BE82E2A7DA400468AAC /* AWSConfig.swift in Sources */,
-				3BC91BE92E2A7DA400468AAC /* SesameBotPayload.swift in Sources */,
-				3BC91BEA2E2A7DA400468AAC /* CHPassCodeCapable.swift in Sources */,
-				3BC91BEB2E2A7DA400468AAC /* CHSesame2HistoryEvent.swift in Sources */,
-				3BC91BEC2E2A7DA400468AAC /* CHSesameBotDevice+Setting.swift in Sources */,
-				3BC91BED2E2A7DA400468AAC /* CHSesameOS3.swift in Sources */,
-				3BC91BEE2E2A7DA400468AAC /* CHSesameBotDevice+Peripheral.swift in Sources */,
-				3BC91BEF2E2A7DA400468AAC /* CHDevice.swift in Sources */,
-				3BC91BF02E2A7DA400468AAC /* CHSesameBasePro.swift in Sources */,
-				3BC91BF12E2A7DA400468AAC /* Sesame2BleDevice+Peripheral.swift in Sources */,
-				3BC91BF22E2A7DA400468AAC /* CHSesameBot2.swift in Sources */,
-				3BC91BF32E2A7DA400468AAC /* CHCardCapableExtension.swift in Sources */,
-				3BC91BF42E2A7DA400468AAC /* CHBikeLock.swift in Sources */,
-				3BC91BF52E2A7DA400468AAC /* IRDeviceType.swift in Sources */,
-				3BC91BF62E2A7DA400468AAC /* CHHub3Device+IR.swift in Sources */,
-				3BC91BF72E2A7DA400468AAC /* CHConfiguration.swift in Sources */,
-				3BC91BF82E2A7DA400468AAC /* CHBluetoothCenter.swift in Sources */,
-				3BC91BF92E2A7DA400468AAC /* CHRemoteNanoCapable.swift in Sources */,
-				3BC91BFA2E2A7DA400468AAC /* CHRemoteNanoDelegate.swift in Sources */,
-				3BC91BFB2E2A7DA400468AAC /* CHDeviceKey.swift in Sources */,
-				3BC91BFC2E2A7DA400468AAC /* CHHub3Device+Gatt.swift in Sources */,
-				3BC91BFD2E2A7DA400468AAC /* CHSesame2Device.swift in Sources */,
-				3BC91BFE2E2A7DA400468AAC /* CHSesameBotDevice+Login.swift in Sources */,
-				3BC91BFF2E2A7DA400468AAC /* CHIoTManager.swift in Sources */,
-				3BC91C002E2A7DA400468AAC /* CHBikeLockDevice+Lock.swift in Sources */,
-				3BC91C012E2A7DA400468AAC /* CHPalmCapableExtension.swift in Sources */,
-				3BC91C022E2A7DA400468AAC /* CHResultPattern.swift in Sources */,
-				3BC91C032E2A7DA400468AAC /* CHPalmCapable.swift in Sources */,
-				3BC91C042E2A7DA400468AAC /* CHSesameBike2Device.swift in Sources */,
-				3BC91C052E2A7DA400468AAC /* CHSesame2Device+Gatt.swift in Sources */,
-				3BC91C062E2A7DA400468AAC /* CHSesame2.swift in Sources */,
-				3BC91C072E2A7DA400468AAC /* CHWifiModule2Device+Peripheral.swift in Sources */,
-				3BC91C082E2A7DA400468AAC /* CHSesameFacePro.swift in Sources */,
-				3BC91C092E2A7DA400468AAC /* Data+.swift in Sources */,
-				3BC91C0A2E2A7DA400468AAC /* CHSesameBaseDevice.swift in Sources */,
-				3BC91C0B2E2A7DA400468AAC /* CHSesame2Device+Login.swift in Sources */,
-				3BC91C0C2E2A7DA400468AAC /* CHExtensionListener.swift in Sources */,
-				3BC91C0D2E2A7DA400468AAC /* CHFingerPrintCapable.swift in Sources */,
-				3BC91C0E2E2A7DA400468AAC /* CHPassCodeEventHandlers.swift in Sources */,
-				3BC91C0F2E2A7DA400468AAC /* SesameOS3BleCipher.swift in Sources */,
-				3BC91C102E2A7DA400468AAC /* CHDeviceUtil+OS3.swift in Sources */,
-				3BC91C112E2A7DA400468AAC /* CHSesameTouchPro.swift in Sources */,
-				3BC91C122E2A7DA400468AAC /* CHFaceCapable.swift in Sources */,
-				3BC91C132E2A7DA400468AAC /* CHSesameBaseDevice+Connector.swift in Sources */,
-				3BC91C142E2A7DA400468AAC /* NSError+.swift in Sources */,
-				3BC91C152E2A7DA400468AAC /* SwCrypt.swift in Sources */,
-				3BC91C162E2A7DA400468AAC /* CHFaceDelegate.swift in Sources */,
-				3BC91C172E2A7DA400468AAC /* CHSesame5.swift in Sources */,
-				3BC91C182E2A7DA400468AAC /* CHFingerPrintDelegate.swift in Sources */,
-				3BC91C192E2A7DA400468AAC /* OpensensorMechStatus.swift in Sources */,
-				3BC91C1A2E2A7DA400468AAC /* ServerBaseType.swift in Sources */,
-				3BC91C1B2E2A7DA400468AAC /* CHBikeLockDevice+Gatt.swift in Sources */,
-				3BC91C1C2E2A7DA400468AAC /* CHAccountManager+APIRequest.swift in Sources */,
-				3BC91C1D2E2A7DA400468AAC /* CHRemoteNanoCapableExtension.swift in Sources */,
-				3BC91C1E2E2A7DA400468AAC /* CHSesameBot2Device.swift in Sources */,
-				3BC91C1F2E2A7DA400468AAC /* URLSession+.swift in Sources */,
-				3BC91C202E2A7DA400468AAC /* CHSesameFaceProDevice.swift in Sources */,
-				3BC91C212E2A7DA400468AAC /* CHSesame2Device+History.swift in Sources */,
-				3BC91C222E2A7DA400468AAC /* OpenSensorData.swift in Sources */,
-				3BC91C232E2A7DA400468AAC /* CHSesameBotDevice+Gatt.swift in Sources */,
-				3BC91C242E2A7DA400468AAC /* CHMulticastDelegate.swift in Sources */,
-				3BC91C252E2A7DA400468AAC /* WifiModule2Payload.swift in Sources */,
-				3BC91C262E2A7DA400468AAC /* CHCapbleRenameBean.swift in Sources */,
-				3BC91C272E2A7DA400468AAC /* CHPassCodeDelegate.swift in Sources */,
-				3BC91C282E2A7DA400468AAC /* WifiModule2Protocols.swift in Sources */,
-				3BC91C292E2A7DA400468AAC /* CHDeviceModel.xcdatamodeld in Sources */,
-				3BC91C2A2E2A7DA400468AAC /* CHAPICallObject.swift in Sources */,
-				3BC91C2B2E2A7DA400468AAC /* CHSesame2Device+Register.swift in Sources */,
-				3BC91C2C2E2A7DA400468AAC /* CHSesameTouchDevice.swift in Sources */,
-				3BC91C2D2E2A7DA400468AAC /* CHOpenSensorCapable.swift in Sources */,
-				3BC91C2E2E2A7DA400468AAC /* CHSesameBaseDevice+Version.swift in Sources */,
-				3BC91C2F2E2A7DA400468AAC /* CHSesame2Device+DFU.swift in Sources */,
-				3BC91C302E2A7DA400468AAC /* CHSesameBaseMechSettings.swift in Sources */,
-				3BC91C312E2A7DA400468AAC /* SesameOS3SegmentType.swift in Sources */,
-				3BC91C322E2A7DA400468AAC /* CHSesameFace.swift in Sources */,
-				3BC91C332E2A7DA400468AAC /* CHSesameFaceDevice.swift in Sources */,
-				3BC91C342E2A7DA400468AAC /* Sesame2Protocols.swift in Sources */,
-				3BC91C352E2A7DA400468AAC /* BikeLockPayload.swift in Sources */,
-				3BC91C362E2A7DA400468AAC /* CHPalmDelegate.swift in Sources */,
-				3BC91C372E2A7DA400468AAC /* CHSesameBike2.swift in Sources */,
-				3BC91C382E2A7DA400468AAC /* CHGuestKey.swift in Sources */,
-				3BC91C392E2A7DA400468AAC /* CHWifiModule2Device.swift in Sources */,
-				3BC91C3A2E2A7DA400468AAC /* CHFingerPrintEventHandlers.swift in Sources */,
-				3BC91C3B2E2A7DA400468AAC /* CHSesameBotDevice+History.swift in Sources */,
-				3BC91C3C2E2A7DA400468AAC /* CHFaceCapableExtension.swift in Sources */,
-				3BC91C3D2E2A7DA400468AAC /* CHSesame2Device+Lock.swift in Sources */,
-				3BC91C3E2E2A7DA400468AAC /* CHSesameBotDevice.swift in Sources */,
-				3BC91C3F2E2A7DA400468AAC /* CHSesameTouch.swift in Sources */,
-				3BC91C402E2A7DA400468AAC /* CHSesame5Device.swift in Sources */,
-				3BC91C412E2A7DA400468AAC /* CHSesame5Device+Command.swift in Sources */,
-				3BC91C422E2A7DA400468AAC /* CHHub3.swift in Sources */,
-				3BC91C432E2A7DA400468AAC /* CHSesameBaseDevice+Settings.swift in Sources */,
-				3BC91C442E2A7DA400468AAC /* CHSesameBaseDevice+Register.swift in Sources */,
-				3BC91C452E2A7DA400468AAC /* CHFingerPrintCapableExtension.swift in Sources */,
-				3BC91C462E2A7DA400468AAC /* CHBikeLockDevice.swift in Sources */,
-				3BC91C472E2A7DA400468AAC /* CHSesameBotDevice+DFU.swift in Sources */,
-				3BC91C482E2A7DA400468AAC /* CHPassCodeCapableExtension.swift in Sources */,
-				3BC91C492E2A7DA400468AAC /* CHPalmEventHandlers.swift in Sources */,
-				3BC91C4A2E2A7DA400468AAC /* CHHub3Device.swift in Sources */,
-				3BC91C4B2E2A7DA400468AAC /* CHServerCapableHandler.swift in Sources */,
-				3BC91C4C2E2A7DA400468AAC /* Sesame2Payload.swift in Sources */,
-				3BC91C4D2E2A7DA400468AAC /* CHBikeLockDevice+Peripheral.swift in Sources */,
-				3BC91C4E2E2A7DA400468AAC /* CHSesameBot.swift in Sources */,
-				3BC91C4F2E2A7DA400468AAC /* CHMechanicalSettingsCapable.swift in Sources */,
-				3BC91C502E2A7DA400468AAC /* CHBikeLockDevice+Login.swift in Sources */,
-				3BC91C512E2A7DA400468AAC /* CHBikeLockDevice+DFU.swift in Sources */,
-				3BC91C522E2A7DA400468AAC /* CHCardEventHandlers.swift in Sources */,
-				3BC91C532E2A7DA400468AAC /* CHBikeLockDevice+Register.swift in Sources */,
-				3BC91C542E2A7DA400468AAC /* CHDeviceCenter.swift in Sources */,
-				3BC91C552E2A7DA400468AAC /* CHOpenSensorCapableExtension.swift in Sources */,
 				BEF8F7A724C69E6800650CAD /* AWSClientContext.m in Sources */,
 				BEF8F7A624C69E6800650CAD /* AWSInfo.m in Sources */,
 				BEF8F76524C69E6800650CAD /* AWSURLResponseSerialization.m in Sources */,
@@ -2162,12 +2162,12 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		3BC91BB12E2A7DA400468AAC /* CHDeviceModel.xcdatamodeld */ = {
+		3BC91D4A2E2A92F800468AAC /* CHDeviceModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3BC91BC92E2A7DA400468AAC /* CHDeviceModel.xcdatamodel */,
+				3BC91D622E2A92F800468AAC /* CHDeviceModel.xcdatamodel */,
 			);
-			currentVersion = 3BC91BC92E2A7DA400468AAC /* CHDeviceModel.xcdatamodel */;
+			currentVersion = 3BC91D622E2A92F800468AAC /* CHDeviceModel.xcdatamodel */;
 			path = CHDeviceModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
