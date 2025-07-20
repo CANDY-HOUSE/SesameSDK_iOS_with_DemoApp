@@ -112,17 +112,6 @@ amplifyxc.config
 SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes/SesameWatchKit Extension.xcscheme
 SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes/SesameWatchKit.xcscheme
 SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes
-Package.resolved
-
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
-*.xcworkspace/contents.xcworkspacedata
-*.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
 # macOS
 .DS_Store

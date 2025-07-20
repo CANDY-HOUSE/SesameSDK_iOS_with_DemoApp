@@ -1,0 +1,42 @@
+{
+  "originHash" : "4090d7d0e9b7f90a2e959f3d877f9d3fc53835b52bee0c8b1be1e038e469bce3",
+  "pins" : [
+    {
+      "identity" : "aws-sdk-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aws-amplify/aws-sdk-ios-spm",
+      "state" : {
+        "revision" : "f2e9fbed08dd14a962f8d62d7e302d73b9ecb429",
+        "version" : "2.41.0"
+      }
+    },
+    {
+      "identity" : "ios-dfu-library",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NordicSemiconductor/IOS-DFU-Library",
+      "state" : {
+        "revision" : "4773d7eed944684dfdd177a4a91af8a89ebbaac8",
+        "version" : "4.16.0"
+      }
+    },
+    {
+      "identity" : "sesamesdk_ios_with_demoapp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp",
+      "state" : {
+        "branch" : "master",
+        "revision" : "98d0db8b6fdc27f0ab1110dfe8123d293c6b4bcb"
+      }
+    },
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/weichsel/ZIPFoundation",
+      "state" : {
+        "revision" : "02b6abe5f6eef7e3cbd5f247c5cc24e246efcfe0",
+        "version" : "0.9.19"
+      }
+    }
+  ],
+  "version" : 3
+}
