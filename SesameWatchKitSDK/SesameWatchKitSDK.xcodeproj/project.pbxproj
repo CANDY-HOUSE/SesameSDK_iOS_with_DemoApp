@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B6F006D2E2AA7DC0020224B /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3B6F006C2E2AA7DC0020224B /* AESc */; };
+		3B689B452E2D40EC00AE7E2E /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3B689B442E2D40EC00AE7E2E /* AESc */; };
 		3B8D5CFC2E2D174200FE456E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D5CFA2E2D174200FE456E /* .gitkeep */; };
 		3B8D5DB32E2D176D00FE456E /* CHHub3Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */; };
 		3B8D5DB42E2D176D00FE456E /* CHDeviceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D932E2D176D00FE456E /* CHDeviceKey.swift */; };
@@ -652,7 +652,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B6F006D2E2AA7DC0020224B /* AESc in Frameworks */,
+				3B689B452E2D40EC00AE7E2E /* AESc in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,7 +1693,7 @@
 			);
 			mainGroup = B142938E231F8D29006AA64C;
 			packageReferences = (
-				3B6F006B2E2AA7DC0020224B /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */,
+				3B689B432E2D40EC00AE7E2E /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */,
 			);
 			productRefGroup = B1429399231F8D29006AA64C /* Products */;
 			projectDirPath = "";
@@ -2152,20 +2152,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3B6F006B2E2AA7DC0020224B /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */ = {
+		3B689B432E2D40EC00AE7E2E /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3B6F006C2E2AA7DC0020224B /* AESc */ = {
+		3B689B442E2D40EC00AE7E2E /* AESc */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3B6F006B2E2AA7DC0020224B /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */;
+			package = 3B689B432E2D40EC00AE7E2E /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */;
 			productName = AESc;
 		};
 /* End XCSwiftPackageProductDependency section */

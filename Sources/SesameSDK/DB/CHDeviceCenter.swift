@@ -36,6 +36,7 @@ class CHDeviceCenter {
     }
 
     private init() {
+        // SPM和framework编译模式不同，导致modelURL的获取方式有区别。
         #if SWIFT_PACKAGE
         let modelURL = Bundle.module.url(forResource: "CHDeviceModel", withExtension: "momd")
         #else
