@@ -1,5 +1,5 @@
 {
-  "originHash" : "3385fe53dfb128075fe84146466bf8b8d3d0f6469631c5d7ab9500f7a86b3d02",
+  "originHash" : "9e9f7a7267b7b959c25c9acb776aa6764f59e0589b90a7ea04e9d03a7df68b3a",
   "pins" : [
     {
       "identity" : "aws-sdk-ios-spm",
@@ -17,15 +17,6 @@
       "state" : {
         "revision" : "4773d7eed944684dfdd177a4a91af8a89ebbaac8",
         "version" : "4.16.0"
-      }
-    },
-    {
-      "identity" : "sesamesdk_ios_with_demoapp",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp",
-      "state" : {
-        "revision" : "788a2959f8d6a0f18e61ad205781f47cb2f1a020",
-        "version" : "1.0.0"
       }
     },
     {
