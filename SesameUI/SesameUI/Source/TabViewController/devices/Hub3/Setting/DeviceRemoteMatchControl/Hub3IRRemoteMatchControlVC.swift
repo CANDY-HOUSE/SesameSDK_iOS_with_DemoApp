@@ -74,11 +74,23 @@ class Hub3IRRemoteMatchControlCell: UICollectionViewCell {
     
     private func setupBorders() {
         backgroundColor = .white
-        bottomBorder.backgroundColor = UIColor.sesameBackgroundColor.cgColor
+        bottomBorder.backgroundColor = UIColor.sesameRemoteBackgroundColor.cgColor
         layer.addSublayer(bottomBorder)
-        rightBorder.backgroundColor = UIColor.sesameBackgroundColor.cgColor
+        rightBorder.backgroundColor = UIColor.sesameRemoteBackgroundColor.cgColor
         layer.addSublayer(rightBorder)
     }
+    
+    func configureBordersForPosition(indexPath: IndexPath, totalItems: Int, numberOfColumns: Int = 3) {
+        let currentRow = indexPath.item / numberOfColumns
+        let currentColumn = indexPath.item % numberOfColumns
+        let totalRows = (totalItems + numberOfColumns - 1) / numberOfColumns
+        let showRightBorder = (currentColumn != numberOfColumns - 1)
+        let showBottomBorder = currentRow != totalRows - 1
+        
+        bottomBorder.isHidden = !showBottomBorder
+        rightBorder.isHidden = !showRightBorder
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         bottomBorder.frame = CGRect(
@@ -133,7 +145,7 @@ class Hub3IRRemoteMatchControlVC: CHBaseViewController, ShareAlertConfigurator {
     private var tag:String = "Hub3IRRemoteMatchControlVC"
     typealias MatchCompletionHandler = (Bool, [String: Any]?) -> Void
     var matchCompletionHandler: MatchCompletionHandler?
-    private let topBorderView = UIView()
+
     // MARK: - UI Components
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -277,9 +289,6 @@ class Hub3IRRemoteMatchControlVC: CHBaseViewController, ShareAlertConfigurator {
         view.addSubview(hintLabel)
         view.addSubview(collectionView)
         
-        topBorderView.backgroundColor = .sesameBackgroundColor
-        topBorderView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(topBorderView)
         view.addSubview(footerLabel)
         view.addSubview(buttonContainerView)
         buttonContainerView.addSubview(buttonStackView)
@@ -311,11 +320,6 @@ class Hub3IRRemoteMatchControlVC: CHBaseViewController, ShareAlertConfigurator {
             footerLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -1),
             footerLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            topBorderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            topBorderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topBorderView.topAnchor.constraint(equalTo: collectionView.topAnchor),
-            topBorderView.heightAnchor.constraint(equalToConstant: 2),
-            
             buttonContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             buttonContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             buttonContainerViewHeight,
@@ -327,7 +331,6 @@ class Hub3IRRemoteMatchControlVC: CHBaseViewController, ShareAlertConfigurator {
         buttonContainerViewBottomConstraint = buttonContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         buttonContainerViewBottomConstraint.isActive = true
         
-        view.bringSubviewToFront(topBorderView)
     }
     
     private func updateHintText() {
@@ -480,7 +483,8 @@ extension Hub3IRRemoteMatchControlVC: UICollectionViewDelegate, UICollectionView
         } else {
             cell.stateIcon.isHidden = true
         }
-        
+        let totalItems = collectionView.numberOfItems(inSection: indexPath.section)
+        cell.configureBordersForPosition(indexPath: indexPath, totalItems: totalItems)
         return cell
     }
     

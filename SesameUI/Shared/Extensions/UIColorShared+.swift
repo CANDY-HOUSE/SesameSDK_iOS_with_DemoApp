@@ -29,6 +29,7 @@ extension UIColor {
     public static let placeHolderColor = UIColor(red: 0, green: 0, blue: 0.0980392, alpha: 0.22)
     public static let secondaryLabelColor = UIColor(red: 0.23529411764705882, green: 0.23529411764705882, blue: 0.2627450980392157, alpha: 0.6)
     public static let sesameBackgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
+    public static let sesameRemoteBackgroundColor = UIColor(red: 0.933, green: 0.933, blue: 0.933, alpha: 0.533)
 
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")

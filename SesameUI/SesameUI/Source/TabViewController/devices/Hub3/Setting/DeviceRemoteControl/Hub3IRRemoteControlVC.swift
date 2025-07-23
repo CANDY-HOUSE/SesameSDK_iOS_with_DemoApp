@@ -159,7 +159,7 @@ class Hub3IRRemoteControlVC: CHBaseViewController {
         guard viewModel.getIrRemoteDevice()?.haveSave == false else {
             return
         }
-        saveButton = UIBarButtonItem(title: "co.candyhouse.sesame2.SaveScript".localized, style: .plain, target: self, action: #selector(saveButtonTapped))
+        saveButton = UIBarButtonItem(image: UIImage.SVGImage(named: "icons_remote_save"), style: .plain, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveButton
     }
     
@@ -336,6 +336,8 @@ extension Hub3IRRemoteControlVC: UICollectionViewDataSource, UICollectionViewDel
         cell.funcLabel.textColor = (cooldownIndex == indexPath.row) ? .sesame2LightGray : .black
         cell.stateIcon.isHidden = item.iconRes == ""
         cell.stateIcon.image = cell.stateIcon.isHidden ? nil : UIImage(named: item.iconRes)
+        let totalItems = collectionView.numberOfItems(inSection: indexPath.section)
+        cell.configureBordersForPosition(indexPath: indexPath, totalItems: totalItems)
         return cell
     }
     

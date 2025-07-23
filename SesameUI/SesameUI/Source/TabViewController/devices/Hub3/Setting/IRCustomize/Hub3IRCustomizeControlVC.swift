@@ -258,6 +258,8 @@ extension Hub3IRCustomizeControlVC: UICollectionViewDataSource, UICollectionView
         cell.longPressHandler = !isPresentedVc ? { [unowned self] in
             self.handleSelectRow(model,cell:cell)
         } : nil
+        let totalItems = collectionView.numberOfItems(inSection: indexPath.section)
+        cell.configureBordersForPosition(indexPath: indexPath, totalItems: totalItems)
         return cell
     }
 

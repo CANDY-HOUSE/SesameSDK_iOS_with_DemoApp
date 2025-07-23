@@ -33,7 +33,8 @@ class Hub3IRDeviceBrandModelsVC: CHBaseViewController {
         let table = UITableView(frame: .zero, style: .grouped)
         table.sectionIndexColor = .sesame2Green
         table.backgroundColor = .white
-        table.rowHeight = 50
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 50
         table.sectionHeaderHeight = 45
         table.sectionFooterHeight = 0
         table.delegate = self
@@ -53,10 +54,7 @@ class Hub3IRDeviceBrandModelsVC: CHBaseViewController {
         let textView = UITextView()
         textView.isEditable = false
         textView.isScrollEnabled = false
-        textView.backgroundColor = navigationController?.navigationBar.barTintColor
-        if textView.backgroundColor == nil {
-            textView.backgroundColor = UIColor(rgb: 0xf2f2f7)
-        }
+        textView.backgroundColor = UIColor.white
         textView.textColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.6)
         textView.font = .systemFont(ofSize: 14)
         textView.text = "co.candyhouse.sesame2.ir_company_notice".localized
@@ -205,9 +203,16 @@ class Hub3IRDeviceBrandModelsVC: CHBaseViewController {
         }
         irRemote.type = deviceType
         irRemote.haveSave = false
+        updateIRRemoteAlias(irRemote)
         let vc = Hub3IRRemoteControlVC(irRemote: irRemote)
         vc.chDevice = device
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func updateIRRemoteAlias(_ irRemote: IRRemote) { // 当存在多行遥控器名称时，只取第一行，防止后续界面显示溢出控件异常
+        if let firstLine = irRemote.alias.split(separator: "\n").first {
+            irRemote.updateAlias(String(firstLine))
+        }
     }
 }
 
@@ -258,7 +263,16 @@ extension Hub3IRDeviceBrandModelsVC: UITableViewDelegate, UITableViewDataSource 
             cell!.textLabel?.font = .systemFont(ofSize: 15)
             cell!.textLabel?.numberOfLines = 0
             cell!.textLabel?.lineBreakMode = .byWordWrapping
-            cell!.textLabel?.minimumScaleFactor = 0.5
+            if let textLabel = cell!.textLabel {
+                textLabel.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    textLabel.topAnchor.constraint(equalTo: cell!.contentView.topAnchor, constant: 12),
+                    textLabel.leadingAnchor.constraint(equalTo: cell!.contentView.leadingAnchor, constant: 16),
+                    textLabel.trailingAnchor.constraint(equalTo: cell!.contentView.trailingAnchor, constant: -16),
+                    textLabel.bottomAnchor.constraint(equalTo: cell!.contentView.bottomAnchor, constant: -12)
+                ])
+            }
+            
             cell!.setSeperatorLineEnable(trailingConstant: -16)
         }
         let irRemote = isSearchActive ? filteredModels[indexPath.row] : modelGroupsTuple.modelsDict[modelGroupsTuple.titles[indexPath.section]]![indexPath.row]

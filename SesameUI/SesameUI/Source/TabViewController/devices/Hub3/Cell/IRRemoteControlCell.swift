@@ -22,9 +22,9 @@ class IRRemoteControlCell: UICollectionViewCell {
         
         backgroundColor = .white
         contentView.backgroundColor = .white
-        bottomBorder.backgroundColor = UIColor.sesameBackgroundColor.cgColor
+        bottomBorder.backgroundColor = UIColor.sesameRemoteBackgroundColor.cgColor
         layer.addSublayer(bottomBorder)
-        rightBorder.backgroundColor = UIColor.sesameBackgroundColor.cgColor
+        rightBorder.backgroundColor = UIColor.sesameRemoteBackgroundColor.cgColor
         layer.addSublayer(rightBorder)
         
         contentView.isUserInteractionEnabled = true
@@ -49,5 +49,15 @@ class IRRemoteControlCell: UICollectionViewCell {
         }
     }
     
+    func configureBordersForPosition(indexPath: IndexPath, totalItems: Int, numberOfColumns: Int = 3) {
+        let currentRow = indexPath.item / numberOfColumns
+        let currentColumn = indexPath.item % numberOfColumns
+        let totalRows = (totalItems + numberOfColumns - 1) / numberOfColumns
+        let showRightBorder = (currentColumn != numberOfColumns - 1)
+        let showBottomBorder = currentRow != totalRows - 1
+        
+        bottomBorder.isHidden = !showBottomBorder
+        rightBorder.isHidden = !showRightBorder
+    }
     
 }
