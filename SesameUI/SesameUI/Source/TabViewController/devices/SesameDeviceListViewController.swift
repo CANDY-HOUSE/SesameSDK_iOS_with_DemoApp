@@ -189,7 +189,7 @@ class SesameDeviceListViewController: CHBaseViewController {
             } else {
                 navigateToSesame2History(sesame2)
             }
-        case .sesame5, .sesame5Pro, .sesame5US:
+        case .sesame5, .sesame5Pro, .sesame5US, .sesame6Pro, .bleConnector:
             guard let sesame5 = device as? CHSesame5 else { return }
             if sesame5.keyLevel == KeyLevel.guest.rawValue {
                 navigateToSesame5Setting(sesame5)
@@ -227,7 +227,7 @@ class SesameDeviceListViewController: CHBaseViewController {
         case .openSensor, .remoteNano:
             guard let device = device as? CHSesameTouchPro else { return }
             navigateToOpenSensorResetVC(device)
-        case .bleConnector, .remote:
+        case .remote:
             guard let device = device as? CHSesameTouchPro else { return }
             navigateToBleConnectorVC(device)
         case .sesameTouchPro:
@@ -241,6 +241,12 @@ class SesameDeviceListViewController: CHBaseViewController {
             navigateToCHSesameBiometricSettingVC(device)
         case .sesameFace:
             guard let device = device as? CHSesameFace else { return }
+            navigateToCHSesameBiometricSettingVC(device)
+        case .sesameFaceAI:
+            guard let device = device as? CHSesameFacePro else { return }
+            navigateToCHSesameBiometricSettingVC(device)
+        case .sesameFaceProAI:
+            guard let device = device as? CHSesameFacePro else { return }
             navigateToCHSesameBiometricSettingVC(device)
         }
     }

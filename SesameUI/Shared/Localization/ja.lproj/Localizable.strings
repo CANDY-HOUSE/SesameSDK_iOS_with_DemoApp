@@ -351,8 +351,10 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.ir_search_result" = "検索結果";
 "co.candyhouse.sesame2.nonetwork" = "インターネットとの接続が切断されたようです";
 
-"co.candyhouse.sesame2.SSMFacePro" = "Sesame Face Pro";
-"co.candyhouse.sesame2.SSMFace" = "Sesame Face";
+"co.candyhouse.sesame2.SSMFacePro" = "セサミフェイス Pro";
+"co.candyhouse.sesame2.SSMFace" = "セサミフェイス";
+"co.candyhouse.sesame2.SSMFaceProAI" = "セサミフェイス Pro AI";
+"co.candyhouse.sesame2.SSMFaceAI" = "セサミフェイス AI";
 "co.candyhouse.sesame2.faceView" = "顔認識の管理";
 "co.candyhouse.sesame2.palmView" = "手のひら静脈の管理";
 "co.candyhouse.sesame2.default_palm_name" = "手のひら静脈🖋️";

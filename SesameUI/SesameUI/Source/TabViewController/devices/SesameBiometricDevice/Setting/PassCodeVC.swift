@@ -102,7 +102,7 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
             }
         }
         mDevice.passCodes(){ _ in}
-        let deviceName = mDevice.getDeviceName()
+        let deviceName = mDevice.deviceName
         let emptyHit = String(format:"co.candyhouse.sesame2.TouchEmptyPasscodeHint".localized,
                                  arguments:[deviceName,deviceName])
         let floatView = FloatingTipView.showIn(superView: view, style:  .textOnly(text:emptyHit))

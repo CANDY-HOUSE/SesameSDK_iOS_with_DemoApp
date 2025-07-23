@@ -29,7 +29,11 @@ class Hub3KeysListViewController: CHBaseViewController {
                     .sesameTouch,
                     .sesameTouchPro,
                     .sesameFace,
-                    .sesameFacePro].contains($0.productModel) }
+                    .sesameFacePro,
+                    .sesame6Pro,
+                    .sesameFaceAI,
+                    .sesameFaceProAI,
+                    .bleConnector].contains($0.productModel) }
             }
         }
         return chDevices

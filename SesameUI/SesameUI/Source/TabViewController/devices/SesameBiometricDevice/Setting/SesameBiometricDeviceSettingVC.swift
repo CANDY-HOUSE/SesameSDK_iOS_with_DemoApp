@@ -245,7 +245,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
-        let deviceModelName = mDevice.getDeviceName()
+        let deviceModelName = mDevice.deviceName
         
         // MARK: top status
         statusView = CHUIViewGenerator.plain()
@@ -373,7 +373,8 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Radar View
-        if self.mDevice.productModel == .sesameFace || self.mDevice.productModel == .sesameFacePro {
+        if self.mDevice.productModel == .sesameFace || self.mDevice.productModel == .sesameFacePro
+            || self.mDevice.productModel == .sesameFaceAI || self.mDevice.productModel == .sesameFaceProAI {
             sliderView = CHUIViewGenerator.slider(
                 defaultValue: 270,
                 maximumValue: 270,
@@ -503,78 +504,72 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     func setupNFCCardView() {
-        if mDevice is CHCardCapable {
-            if let capable = mDevice as? CHCardCapable {
-                let nfcCardView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-                    navigationController?.pushViewController(NFCCardVC.instance(capable),animated: true)
-                }
-                nfcCardView.title = "co.candyhouse.sesame2.nfcCard".localized
-                contentStackView.addArrangedSubview(nfcCardView)
-                contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-            }
-        } else {
-            L.d(tag,"don't support Card Capable !")
+        guard let capable = mDevice as? CHCardCapable else {
+            return
         }
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI else {
+            return
+        }
+        let nfcCardView = CHUIViewGenerator.arrow { [unowned self] _,_ in
+            navigationController?.pushViewController(NFCCardVC.instance(capable),animated: true)
+        }
+        nfcCardView.title = "co.candyhouse.sesame2.nfcCard".localized
+        contentStackView.addArrangedSubview(nfcCardView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
     }
     
     func setupFingerView() {
-        if mDevice is CHFingerPrintCapable {
-            if let capable = mDevice as? CHFingerPrintCapable {
-                let fingerView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-                    navigationController?.pushViewController(FingerPrintListVC.instance(capable),animated: true)
-                }
-                fingerView.title = "co.candyhouse.sesame2.fingerprint".localized
-                contentStackView.addArrangedSubview(fingerView)
-                contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-            }
-        } else {
-            L.d(tag,"don't support FingerPrint Capable !")
+        guard let capable = mDevice as? CHFingerPrintCapable else {
+            return
         }
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI else {
+            return
+        }
+        let fingerView = CHUIViewGenerator.arrow { [unowned self] _,_ in
+            navigationController?.pushViewController(FingerPrintListVC.instance(capable),animated: true)
+        }
+        fingerView.title = "co.candyhouse.sesame2.fingerprint".localized
+        contentStackView.addArrangedSubview(fingerView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
     }
     
     func setupPassCodeView() {
-        if mDevice is CHPassCodeCapable {
-            if let capable = mDevice as? CHPassCodeCapable {
-                let passcodeView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-                    navigationController?.pushViewController(PassCodeVC.instance(capable),animated: true)
-                }
-                passcodeView.title = "co.candyhouse.sesame2.passcodes".localized
-                contentStackView.addArrangedSubview(passcodeView)
-                contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-            }
-        } else {
-            L.d(tag,"don't support PassCode Capable !")
+        guard let capable = mDevice as? CHPassCodeCapable else {
+            return
         }
+        guard mDevice.productModel != .sesameFaceAI else {
+            return
+        }
+        let passcodeView = CHUIViewGenerator.arrow { [weak self] _, _ in
+            self?.navigationController?.pushViewController(PassCodeVC.instance(capable), animated: true)
+        }
+        passcodeView.title = "co.candyhouse.sesame2.passcodes".localized
+        contentStackView.addArrangedSubview(passcodeView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
     }
     
     func setupFaceView() {
-        if mDevice is CHFaceCapable {
-            if let capable = mDevice as? CHFaceCapable {
-                let faceView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-                    navigationController?.pushViewController(FaceListVC.instance(capable),animated: true)
-                }
-                faceView.title = "co.candyhouse.sesame2.faceView".localized
-                contentStackView.addArrangedSubview(faceView)
-                contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-            }
-        } else {
-            L.d(tag,"don't support Face Capable !")
+        guard let capable = mDevice as? CHFaceCapable else {
+            return
         }
+        let faceView = CHUIViewGenerator.arrow { [unowned self] _,_ in
+            navigationController?.pushViewController(FaceListVC.instance(capable),animated: true)
+        }
+        faceView.title = "co.candyhouse.sesame2.faceView".localized
+        contentStackView.addArrangedSubview(faceView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
     }
     
     func setupPamView() {
-        if mDevice is CHPalmCapable {
-            if let capable = mDevice as? CHPalmCapable {
-                let palmView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-                    navigationController?.pushViewController(PalmListVC.instance(capable),animated: true)
-                }
-                palmView.title = "co.candyhouse.sesame2.palmView".localized
-                contentStackView.addArrangedSubview(palmView)
-                contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-            }
-        } else {
-            L.d(tag,"don't support Palm Capable !")
+        guard let capable = mDevice as? CHPalmCapable else {
+            return
         }
+        let palmView = CHUIViewGenerator.arrow { [unowned self] _,_ in
+            navigationController?.pushViewController(PalmListVC.instance(capable),animated: true)
+        }
+        palmView.title = "co.candyhouse.sesame2.palmView".localized
+        contentStackView.addArrangedSubview(palmView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
     }
     
     func setRadarUI(tag: String, payload: Data){

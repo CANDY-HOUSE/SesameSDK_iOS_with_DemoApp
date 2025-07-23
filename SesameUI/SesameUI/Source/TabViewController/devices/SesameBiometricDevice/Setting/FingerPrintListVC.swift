@@ -102,7 +102,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
             }
         }
         mDevice.fingerPrints(){ _ in}
-        let deviceName = mDevice.getDeviceName()
+        let deviceName = mDevice.deviceName
         let emptyHit = String(format:"co.candyhouse.sesame2.TouchEmptyFingerHint".localized,
                               arguments:[deviceName,deviceName])
         let floatView = FloatingTipView.showIn(superView: view, style: .imageText(gifImagePathName: "finger_print", text: emptyHit))

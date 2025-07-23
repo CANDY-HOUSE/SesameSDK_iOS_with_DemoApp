@@ -100,9 +100,8 @@ class FaceListVC: CHBaseTableVC ,CHFaceDelegate, CHDeviceStatusDelegate{
             }
         }
         mDevice.faces(){ _ in}
-        let deviceName = mDevice.getDeviceName()
         let emptyHit = String(format:"co.candyhouse.sesame2.faceProFaceHint".localized,
-                              arguments:[deviceName])
+                              arguments:[mDevice.deviceName])
         let imageName: String
         switch self.mDevice.productModel {
         case .sesameFace:

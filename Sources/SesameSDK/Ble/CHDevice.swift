@@ -89,6 +89,12 @@ public extension CHDevice {
             filePrefix = "sesameFace1_"
         case .sesameFacePro:
             filePrefix = "sesameFace1Pro_"
+        case .sesame6Pro:
+            filePrefix = "sesame6pro_"
+        case .sesameFaceAI:
+            filePrefix = "sesameface1ai_"
+        case .sesameFaceProAI:
+            filePrefix = "sesameface1proai_"
         }
         var zips: [URL] = []
         if  let fileURLs = Bundle.main.urls(forResourcesWithExtension: "zip", subdirectory: nil) {

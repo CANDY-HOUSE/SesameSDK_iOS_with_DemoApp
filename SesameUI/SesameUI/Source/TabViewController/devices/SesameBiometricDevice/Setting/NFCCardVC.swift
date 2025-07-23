@@ -113,7 +113,7 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
         }
 
         mDevice.cards(){ _ in}
-        let deviceName = mDevice.getDeviceName()
+        let deviceName = mDevice.deviceName
         let emptyNFCHit = String(format:"co.candyhouse.sesame2.TouchEmptyNFCHint".localized,
                                  arguments:[deviceName,deviceName])
         let floatView = FloatingTipView.showIn(superView: view, style:  .textOnly(text:emptyNFCHit))

@@ -64,19 +64,4 @@ extension CHDevice {
             cell.configure(item: self)
         }
     }
-    
-    func getDeviceName() -> String {
-        switch productModel {
-        case .sesameTouchPro:
-            return "co.candyhouse.sesame2.SSMTouchPro".localized
-        case .sesameTouch:
-            return "co.candyhouse.sesame2.SSMTouch".localized
-        case .sesameFace:
-            return "co.candyhouse.sesame2.SSMFace".localized
-        case .sesameFacePro:
-            return "co.candyhouse.sesame2.SSMFacePro".localized
-        default:
-            return productModel.deviceModelName()
-        }
-    }
 }
