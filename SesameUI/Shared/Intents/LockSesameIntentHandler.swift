@@ -15,6 +15,13 @@ import SesameWatchKitSDK
 #endif
 
 class LockSesameIntentHandler: NSObject, LockSesameIntentHandling {
+    
+    override init() {
+        super.init()
+        // 配置 AWS
+        AWSConfigManager.configure(with: AWSSharedConfig())
+    }
+    
     func resolveName(for intent: LockSesameIntent, with completion: @escaping (INStringResolutionResult) -> Void) {
         CHDeviceManager.shared.getCHDevices { getResult in
             if case let .success(devices) = getResult, let sesameLock = devices.data.filter({$0.deviceName.lowercased() == intent.name?.lowercased() && $0 is CHSesameLock}).first {

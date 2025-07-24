@@ -11,6 +11,7 @@ import SesameSDK
 import AWSCognitoIdentityProvider
 import WatchConnectivity
 import CoreLocation
+import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -70,12 +71,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = rootNavigationController
         window!.makeKeyAndVisible()
+        // 检查订阅
+        PushNotificationManager.shared.checkAndSubscribeToTopics()
         return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         L.d("[noti][deviceToken:\(deviceToken.toHexString())]")
         UserDefaults.standard.setValue(deviceToken.toHexString(), forKey: "devicePushToken")
+        PushNotificationManager.shared.handleAPNsToken(deviceToken)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -173,6 +177,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
+        
+        // 处理 announcement 类型的推送
+        if let messageType = userInfo["messageType"] as? String,
+           messageType == "announcement" {
+            // 前台直接显示通知
+            completionHandler([.alert, .sound, .badge])
+            return
+        }
+        
 //        L.d("[noti][willPresent]",userInfo)
         if let event = userInfo["event"] as? String {
 //            L.d("[noti][willPresent] event:",event)
@@ -209,6 +222,39 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             }
         }
         completionHandler([.alert, .sound, .badge])
+    }
+    
+    // 用户点击通知
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        
+        // 处理 announcement 类型的推送点击
+        if let messageType = userInfo["messageType"] as? String,
+           messageType == "announcement" {
+            
+            let messageAction = userInfo["messageAction"] as? String ?? "open_webview"
+            let urlString = userInfo["url"] as? String ?? "https://jp.candyhouse.co/"
+            
+            // 根据 messageAction 处理
+            if messageAction == "open_webview" {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    let topVC = self.iterateViewControllers()
+                    
+                    if let topVC = topVC {
+                        let webViewScreen = WebViewScreen(urlString: urlString)
+                        let hostingController = UIHostingController(rootView: webViewScreen)
+                        
+                        if topVC.presentedViewController == nil {
+                            topVC.present(hostingController, animated: true)
+                        }
+                    }
+                }
+            }
+        }
+        
+        completionHandler()
     }
 }
 

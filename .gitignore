@@ -116,3 +116,6 @@ SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes
 # macOS
 .DS_Store
 **/.DS_Store
+
+.swiftpm/
+

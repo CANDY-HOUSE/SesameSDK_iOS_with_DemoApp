@@ -64,6 +64,46 @@ extension CHAccountManager {
             return NSError(domain: "Sesame2SDK", code: response.statusCode, userInfo: ["message": response.rawResponse])
         }
     }
+    
+    /// 订阅 SNS 主题
+    /// - Parameters:
+    ///   - topicName: 主题名称
+    ///   - token: APNs token (iOS) 或 FCM token (Android)
+    ///   - deviceId: 设备唯一标识
+    ///   - platform: 平台类型 (ios, ios_sandbox, android)
+    ///   - completion: 完成回调
+    public func subscribeToSNSTopic(
+        topicName: String,
+        token: String,
+        deviceId: String,
+        platform: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        let parameters: [String: Any] = [
+            "topicName": topicName,
+            "token": token,
+            "appDeviceId": deviceId,
+            "platform": platform
+        ]
+        
+        let payload = try! JSONSerialization.data(withJSONObject: parameters)
+        
+        self.API(request: .init(.post, "/device/v1/subscribe", payload)) { response in
+            switch response {
+            case .success(let data):
+                if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any],
+                   let bodyString = jsonObj["body"] as? String,
+                   bodyString.contains("\"success\":true") {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            case .failure(let error):
+                L.d("sf", "Subscribe error: \(error)")
+                completion(false)
+            }
+        }
+    }
 }
 
 public class CHServerError: Codable {
