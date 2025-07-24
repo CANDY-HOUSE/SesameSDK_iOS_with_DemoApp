@@ -11,7 +11,7 @@ import os.log
 
 public class L {
     public static func d(_ items: Any..., file: String = #file, function: String = #function,
-                 line: Int = #line, tag: String = "hcia") {
+                 line: Int = #line, tag: String = "CANDYHOUSE") {
         #if DEBUG
         let fileName = (file as NSString).lastPathComponent
         
