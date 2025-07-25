@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B5C633C2E3336B1007892FD /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5C633B2E3336B1007892FD /* AESc */; };
 		3B8D5CFC2E2D174200FE456E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D5CFA2E2D174200FE456E /* .gitkeep */; };
 		3B8D5DB32E2D176D00FE456E /* CHHub3Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */; };
 		3B8D5DB42E2D176D00FE456E /* CHDeviceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D932E2D176D00FE456E /* CHDeviceKey.swift */; };
@@ -148,7 +149,6 @@
 		3B8D5E3C2E2D176D00FE456E /* CHSesameBotDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D182E2D176D00FE456E /* CHSesameBotDevice+Gatt.swift */; };
 		3B8D5E3D2E2D176D00FE456E /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DAC2E2D176D00FE456E /* NSError+.swift */; };
 		3B8D5E3E2E2D176D00FE456E /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DA92E2D176D00FE456E /* Data+.swift */; };
-		3B9DC5992E2DE51E008EBF76 /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5982E2DE51E008EBF76 /* AESc */; };
 		BEE459C7248500D600A886D5 /* SesameWatchKitSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEF8F72B24C69E6800650CAD /* AWSAPIGatewayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66024C69E6600650CAD /* AWSAPIGatewayModel.m */; };
 		BEF8F72C24C69E6800650CAD /* AWSAPIGatewayClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66124C69E6600650CAD /* AWSAPIGatewayClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -652,7 +652,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B9DC5992E2DE51E008EBF76 /* AESc in Frameworks */,
+				3B5C633C2E3336B1007892FD /* AESc in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,7 +1693,7 @@
 			);
 			mainGroup = B142938E231F8D29006AA64C;
 			packageReferences = (
-				3B9DC5972E2DE51E008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */,
+				3B5C633A2E3336B1007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */,
 			);
 			productRefGroup = B1429399231F8D29006AA64C /* Products */;
 			projectDirPath = "";
@@ -2151,16 +2151,21 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		3B9DC5972E2DE51E008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../SesameOS3_iOS;
+/* Begin XCRemoteSwiftPackageReference section */
+		3B5C633A2E3336B1007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.1;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3B9DC5982E2DE51E008EBF76 /* AESc */ = {
+		3B5C633B2E3336B1007892FD /* AESc */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 3B5C633A2E3336B1007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */;
 			productName = AESc;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -40,11 +40,11 @@
 		3B1D80452E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B1D80482E2A2DB600C90D01 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1D80472E2A2DB600C90D01 /* SesameSDK */; };
 		3B1D804A2E2A2DBC00C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */; };
+		3B5C63392E333664007892FD /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5C63382E333664007892FD /* SesameSDK */; };
 		3B8B7C242E2E47DD00F5A2F7 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */; };
 		3B8B7C482E2FBB0200F5A2F7 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B8B7C4F2E2FC0A600F5A2F7 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C4D2E2FC0A300F5A2F7 /* WebView.swift */; };
 		3B8B7C512E2FC0AB00F5A2F7 /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C502E2FC0AA00F5A2F7 /* WebViewScreen.swift */; };
-		3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5952E2DE4F8008EBF76 /* SesameSDK */; };
 		3BC91C5D2E2A7F1400468AAC /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */; };
 		3BC91DF52E2AA0FB00468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		3BC91DF62E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
@@ -1018,7 +1018,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				416837362A42D9C2000FB434 /* AWSAPIGateway in Frameworks */,
-				3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */,
+				3B5C63392E333664007892FD /* SesameSDK in Frameworks */,
 				416837332A42CF39000FB434 /* NordicDFU in Frameworks */,
 				416837492A42DB8E000FB434 /* AWSIoT in Frameworks */,
 				416837472A42DAEB000FB434 /* AWSCognitoIdentityProviderASF in Frameworks */,
@@ -2410,7 +2410,7 @@
 				416837442A42DAEB000FB434 /* AWSCognitoIdentityProvider */,
 				416837462A42DAEB000FB434 /* AWSCognitoIdentityProviderASF */,
 				416837482A42DB8E000FB434 /* AWSIoT */,
-				3B9DC5952E2DE4F8008EBF76 /* SesameSDK */,
+				3B5C63382E333664007892FD /* SesameSDK */,
 			);
 			productName = "sesame-sdk-test-app";
 			productReference = B179690722F7CE9300E91996 /* Sesame.app */;
@@ -2525,7 +2525,7 @@
 			packageReferences = (
 				416837312A42CF39000FB434 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */,
 				416837342A42D9C2000FB434 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */,
-				3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */,
+				3B5C63372E333664007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */,
 			);
 			productRefGroup = B179690822F7CE9300E91996 /* Products */;
 			projectDirPath = "";
@@ -4068,13 +4068,17 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../SesameSDK;
 		};
-		3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../SesameOS3_iOS;
-		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3B5C63372E333664007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.1;
+			};
+		};
 		416837312A42CF39000FB434 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/NordicSemiconductor/IOS-DFU-Library";
@@ -4104,8 +4108,9 @@
 			package = 3B1D803A2E2A2D9900C90D01 /* XCLocalSwiftPackageReference "../SesameSDK" */;
 			productName = SesameSDK;
 		};
-		3B9DC5952E2DE4F8008EBF76 /* SesameSDK */ = {
+		3B5C63382E333664007892FD /* SesameSDK */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 3B5C63372E333664007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */;
 			productName = SesameSDK;
 		};
 		416837322A42CF39000FB434 /* NordicDFU */ = {

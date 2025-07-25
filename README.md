@@ -40,13 +40,11 @@ To integrate SesameSDK into your Xcode project using Swift Package Manager:
 
 ```
 dependencies: [
-    .package(url: "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git", .branch("master"))
+    .package(url: "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git", .upToNextMajor(from: "3.0.1"))
 ]
 ```
+![img](./doc/src/resources/spm_add.png)
 ![img](./doc/src/resources/spm.png)
-### Manually
-If you don't want to use any dependency manager, you can manually integrate SesameSDK into your project.
-![img](./doc/src/resources/manually.png)
 
 ## Usage
 ### 1. Add Permissions
@@ -58,6 +56,31 @@ If you don't want to use any dependency manager, you can manually integrate Sesa
 ```
 
 ### 2. Initialization
+SesameSDK requires AWS services. Please configure initialization parameters before use.Free quota parameters are provided here.<br>
+Swift Example
+```swift
+// SimpleSesameDemo.swift
+import UIKit
+import SesameSDK
+
+// step 1
+struct AWSConfig: AWSConfigurable {
+    let apiKey = "iGgXj9GorS4PeH90mAysg1l7kdvoIPxM25mPFl3k"
+    let clientId = "ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae"
+    let iotEndpoint = "https://d06107753ay3c67v7y9pa-ats.iot.ap-northeast-1.amazonaws.com"
+}
+
+// step 2
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    func application(_ application: UIApplication, 
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        AWSConfigManager.configure(with: AWSConfig())
+
+        return true
+    }
+}
+```
 Please start the Bluetooth scan at the appropriate time
 ```swift
 CHBluetoothCenter.shared.enableScan { res in }
