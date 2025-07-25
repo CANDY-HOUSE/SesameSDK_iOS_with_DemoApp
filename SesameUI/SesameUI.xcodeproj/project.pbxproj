@@ -40,11 +40,11 @@
 		3B1D80452E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B1D80482E2A2DB600C90D01 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1D80472E2A2DB600C90D01 /* SesameSDK */; };
 		3B1D804A2E2A2DBC00C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */; };
-		3B5C63392E333664007892FD /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5C63382E333664007892FD /* SesameSDK */; };
 		3B8B7C242E2E47DD00F5A2F7 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */; };
 		3B8B7C482E2FBB0200F5A2F7 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B8B7C4F2E2FC0A600F5A2F7 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C4D2E2FC0A300F5A2F7 /* WebView.swift */; };
 		3B8B7C512E2FC0AB00F5A2F7 /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C502E2FC0AA00F5A2F7 /* WebViewScreen.swift */; };
+		3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5952E2DE4F8008EBF76 /* SesameSDK */; };
 		3BC91C5D2E2A7F1400468AAC /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */; };
 		3BC91DF52E2AA0FB00468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		3BC91DF62E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
@@ -403,9 +403,9 @@
 		D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E33295A908300C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
-		D06A08F92E2FCF460040C331 /* sesame6pro_30_21_eaea28.zip in Resources */ = {isa = PBXBuildFile; fileRef = D06A08F82E2FCF460040C331 /* sesame6pro_30_21_eaea28.zip */; };
 		D06C4FD12E02EF4600BD3A0C /* sesameface1ai_30_23_321ab0.zip in Resources */ = {isa = PBXBuildFile; fileRef = D06C4FD02E02EF4600BD3A0C /* sesameface1ai_30_23_321ab0.zip */; };
 		D06C4FD32E02EF4D00BD3A0C /* sesameface1proai_30_22_321ab0.zip in Resources */ = {isa = PBXBuildFile; fileRef = D06C4FD22E02EF4D00BD3A0C /* sesameface1proai_30_22_321ab0.zip */; };
+		D0A528412E33A191007C9564 /* sesame6pro_30_21_7cf21c.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0A528402E33A191007C9564 /* sesame6pro_30_21_7cf21c.zip */; };
 		D0B26FC22E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */; };
 		D0B26FC42E0C60FD0029F15A /* sesamebot2_30_17_18a8e4.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0B26FC32E0C60FD0029F15A /* sesamebot2_30_17_18a8e4.zip */; };
 		D0C18BED2E26B55A00BBF89A /* opensensor1_30_8_8ec498.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0C18BEC2E26B55A00BBF89A /* opensensor1_30_8_8ec498.zip */; };
@@ -940,9 +940,9 @@
 		D02B2E8F2DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_c44362.zip; sourceTree = "<group>"; };
 		D03F7F362E2E6C8F006BFF21 /* remote_30_14_cb5c5a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remote_30_14_cb5c5a.zip; sourceTree = "<group>"; };
 		D03F7F382E2E6CBF006BFF21 /* remoten_30_15_cb5c5a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remoten_30_15_cb5c5a.zip; sourceTree = "<group>"; };
-		D06A08F82E2FCF460040C331 /* sesame6pro_30_21_eaea28.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_eaea28.zip; sourceTree = "<group>"; };
 		D06C4FD02E02EF4600BD3A0C /* sesameface1ai_30_23_321ab0.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1ai_30_23_321ab0.zip; sourceTree = "<group>"; };
 		D06C4FD22E02EF4D00BD3A0C /* sesameface1proai_30_22_321ab0.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1proai_30_22_321ab0.zip; sourceTree = "<group>"; };
+		D0A528402E33A191007C9564 /* sesame6pro_30_21_7cf21c.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_7cf21c.zip; sourceTree = "<group>"; };
 		D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_18a8e4.zip; sourceTree = "<group>"; };
 		D0B26FC32E0C60FD0029F15A /* sesamebot2_30_17_18a8e4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot2_30_17_18a8e4.zip; sourceTree = "<group>"; };
 		D0C18BEC2E26B55A00BBF89A /* opensensor1_30_8_8ec498.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor1_30_8_8ec498.zip; sourceTree = "<group>"; };
@@ -1018,7 +1018,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				416837362A42D9C2000FB434 /* AWSAPIGateway in Frameworks */,
-				3B5C63392E333664007892FD /* SesameSDK in Frameworks */,
+				3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */,
 				416837332A42CF39000FB434 /* NordicDFU in Frameworks */,
 				416837492A42DB8E000FB434 /* AWSIoT in Frameworks */,
 				416837472A42DAEB000FB434 /* AWSCognitoIdentityProviderASF in Frameworks */,
@@ -1772,7 +1772,7 @@
 				D0C18BEE2E26B57E00BBF89A /* sesame5_30_5_8ec498.zip */,
 				D0C18BF02E26B58500BBF89A /* sesame5pro_30_7_8ec498.zip */,
 				D0C18BF22E26B58B00BBF89A /* sesame5us_30_16_8ec498.zip */,
-				D06A08F82E2FCF460040C331 /* sesame6pro_30_21_eaea28.zip */,
+				D0A528402E33A191007C9564 /* sesame6pro_30_21_7cf21c.zip */,
 				643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */,
 				D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */,
 				643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */,
@@ -2410,7 +2410,7 @@
 				416837442A42DAEB000FB434 /* AWSCognitoIdentityProvider */,
 				416837462A42DAEB000FB434 /* AWSCognitoIdentityProviderASF */,
 				416837482A42DB8E000FB434 /* AWSIoT */,
-				3B5C63382E333664007892FD /* SesameSDK */,
+				3B9DC5952E2DE4F8008EBF76 /* SesameSDK */,
 			);
 			productName = "sesame-sdk-test-app";
 			productReference = B179690722F7CE9300E91996 /* Sesame.app */;
@@ -2525,7 +2525,7 @@
 			packageReferences = (
 				416837312A42CF39000FB434 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */,
 				416837342A42D9C2000FB434 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */,
-				3B5C63372E333664007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */,
+				3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */,
 			);
 			productRefGroup = B179690822F7CE9300E91996 /* Products */;
 			projectDirPath = "";
@@ -2594,7 +2594,6 @@
 				E8819C0F2913630D00431939 /* Localizable.strings in Resources */,
 				643F069F2BCD12400045D789 /* sesame_421_4_50ce5b.zip in Resources */,
 				64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */,
-				D06A08F92E2FCF460040C331 /* sesame6pro_30_21_eaea28.zip in Resources */,
 				E8819C0C291360D800431939 /* Localizable.strings in Resources */,
 				E8819C0B29135D2E00431939 /* Localizable.strings in Resources */,
 				D0B26FC22E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip in Resources */,
@@ -2613,6 +2612,7 @@
 				BE97F4082561215C00E9FDC4 /* SignUpViewController.xib in Resources */,
 				6483C9312B68F9CA00D8B68D /* strings_hw_type.xml in Resources */,
 				6483C9492B68FA0800D8B68D /* strings_stb_type.xml in Resources */,
+				D0A528412E33A191007C9564 /* sesame6pro_30_21_7cf21c.zip in Resources */,
 				D02B2E902DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip in Resources */,
 				6483C9432B68F9FA00D8B68D /* strings_iptv_type.xml in Resources */,
 				646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */,
@@ -4068,17 +4068,13 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../SesameSDK;
 		};
+		3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../SesameOS3_iOS;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3B5C63372E333664007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.1;
-			};
-		};
 		416837312A42CF39000FB434 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/NordicSemiconductor/IOS-DFU-Library";
@@ -4108,9 +4104,8 @@
 			package = 3B1D803A2E2A2D9900C90D01 /* XCLocalSwiftPackageReference "../SesameSDK" */;
 			productName = SesameSDK;
 		};
-		3B5C63382E333664007892FD /* SesameSDK */ = {
+		3B9DC5952E2DE4F8008EBF76 /* SesameSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3B5C63372E333664007892FD /* XCRemoteSwiftPackageReference "SesameSDK_iOS_with_DemoApp" */;
 			productName = SesameSDK;
 		};
 		416837322A42CF39000FB434 /* NordicDFU */ = {
