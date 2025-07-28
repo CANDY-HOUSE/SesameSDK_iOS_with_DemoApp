@@ -133,7 +133,7 @@ class Sesame5ListCell: UITableViewCell {
             batteryPercentLab.text = "\(mechStatus.getBatteryPrecentage()) %"
             batteryIndicator.backgroundColor =  mechStatus.getBatteryPrecentage() < 15 ?  UIColor.lockRed:  UIColor.sesame2Green
             batteryIndicatorWidth.constant = device.batteryIndicatorWidth() //電量色塊顯示
-            if device.productModel == .sesame5 || device.productModel == .sesame5Pro || device.productModel == .sesame5US {
+            if device.productModel == .sesame5 || device.productModel == .sesame5Pro || device.productModel == .sesame5US || device.productModel == .sesame6Pro {
                 self.sesame2Circle.refreshUI(newPointerAngle: CGFloat(reverseDegree(angle: mechStatus.position)),lockColor: device.lockColor())
             } else if device.productModel == .sesame2 || device.productModel == .sesame4 {
                 self.sesame2Circle.refreshUI(newPointerAngle: CGFloat(angle2degree(angle: mechStatus.position)),lockColor: device.lockColor())

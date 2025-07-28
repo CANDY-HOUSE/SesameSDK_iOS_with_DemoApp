@@ -25,7 +25,7 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
     
     lazy var keys: [CHDevice] = {
         var chDevices = [CHDevice]()
-        let os3Lockers: [CHProductModel] = [.bikeLock2, .sesame5, .sesame5Pro, .sesame5US, .sesameBot2, .bleConnector]
+        let os3Lockers: [CHProductModel] = [.bikeLock2, .sesame5, .sesame5Pro, .sesame5US, .sesameBot2, .bleConnector, .sesame6Pro]
         var productMappingKeys: [CHProductModel: [CHProductModel]] = [
             .openSensor:        [.hub3] + os3Lockers,
             .sesameTouch:       [.sesame2, .sesame4, .bikeLock] + os3Lockers,
