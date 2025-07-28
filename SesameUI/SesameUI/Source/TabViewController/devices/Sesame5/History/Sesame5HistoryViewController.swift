@@ -311,7 +311,7 @@ class Sesame5HistoryViewController: CHBaseTableViewController {
         let historyModel = tableViewData[key]!.sorted(by: <)[indexPath.row]
 
         cell.eventImageView.image = UIImage.SVGImage(named: historyModel.avatarImage)
-        cell.dateTimeLabel.text = historyModel.dateTime
+        cell.dateTimeLabel.text = historyModel.dateTime + historyModel.isCriticalText
         cell.historyTypeImageView.image = UIImage.SVGImage(named: historyModel.historyTypeImage, fillColor: .lockGray)
         cell.historyTagLabel.text = historyModel.historyTagText
     }

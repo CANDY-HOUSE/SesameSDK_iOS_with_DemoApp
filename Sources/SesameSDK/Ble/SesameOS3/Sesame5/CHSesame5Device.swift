@@ -97,6 +97,7 @@ struct Sesame5MechStatus: CHSesameProtocolMechStatus {
     var isInUnlockRange: Bool { return flags & 4 > 0 }
     var isStop: Bool? { return flags & 16 > 0 }
     var isBatteryCritical: Bool { return flags & 32 > 0 }
+    var isCritical: Bool? { return flags & 8 > 0 }
 
 //    public func getBatteryPrecentage() -> Int { 有必要可以自己複寫電量。這裡是範例
 //        return 0

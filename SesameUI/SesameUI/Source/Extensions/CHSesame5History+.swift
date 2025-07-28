@@ -104,4 +104,7 @@ extension CHSesame5History {
         dateFormatter.pmSymbol = "PM"
         return "\(dateFormatter.string(from: historyData.date))"
     }
+    var isCriticalText: String {
+        return historyData.mechStatus?.isCritical == true ? " ⚠️" : ""
+    }
 }

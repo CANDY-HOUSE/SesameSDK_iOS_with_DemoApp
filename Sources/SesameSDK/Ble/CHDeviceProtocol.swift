@@ -289,6 +289,7 @@ public protocol CHSesameProtocolMechStatus {
     var isInUnlockRange : Bool { get }
     var isBatteryCritical: Bool { get }
     var isStop: Bool?  { get }
+    var isCritical: Bool?  { get }
     func getBatteryVoltage() -> Float
     func getBatteryPrecentage() -> Int
     
@@ -300,6 +301,7 @@ public extension CHSesameProtocolMechStatus{
     var isInUnlockRange: Bool { return false }
     var isInLockRange: Bool { return false }
     var isStop: Bool?  { return true }
+    var isCritical: Bool?  { return false }
     var position: Int16 {0}
     var target: Int16 {0}
     var data: Data { return Data() }
