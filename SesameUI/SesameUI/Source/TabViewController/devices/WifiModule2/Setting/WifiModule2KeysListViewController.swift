@@ -24,8 +24,7 @@ class WifiModule2KeysListViewController: UITableViewController {
                     .sesameBot,
                     .bikeLock,
                     .sesame2,
-                    .sesame5US,
-                    .sesame6Pro].contains($0.productModel) }
+                    .sesame5US].contains($0.productModel) }
             }
         }
         return chDevices
