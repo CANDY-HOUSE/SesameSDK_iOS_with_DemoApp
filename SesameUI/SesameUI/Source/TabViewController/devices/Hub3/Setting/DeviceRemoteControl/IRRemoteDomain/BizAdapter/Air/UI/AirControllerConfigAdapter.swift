@@ -426,7 +426,7 @@ class AirControllerConfigAdapter: UIConfigAdapter {
         guard checkConfig() else { return false }
         
         guard canAdjustTemperature() else {
-            BaseUtils.showToast(message: "air_conditioner_temperature_refuse_change".localized)
+            BaseUtils.showToast(message: "co.candyhouse.hub3.air_temperature_refuse_change".localized)
             return false
         }
         
