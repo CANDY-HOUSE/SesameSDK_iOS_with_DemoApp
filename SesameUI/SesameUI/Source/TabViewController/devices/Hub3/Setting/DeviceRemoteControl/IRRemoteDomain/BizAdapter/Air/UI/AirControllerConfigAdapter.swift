@@ -23,7 +23,7 @@ class AirControllerConfigAdapter: UIConfigAdapter {
     private var currentTemperature: Int = 25
     
     private var isPowerOn: Bool = false
-    private var currentModeIndex: Int = 0
+    private var currentModeIndex: Int = 1
     private var currentFanSpeedIndex: Int = 0
     private var currentVerticalSwingIndex: Int = 0
     private var currentSwingSwitchIndex: Int = 0
@@ -559,7 +559,7 @@ class AirControllerConfigAdapter: UIConfigAdapter {
     
     private func canAdjustTemperature() -> Bool {
         guard checkConfig() else { return false }
-        return currentModeIndex == 1 || currentModeIndex == 4
+        return currentModeIndex == 0 || currentModeIndex == 1 || currentModeIndex == 4
     }
     
     // MARK: - Air Processor Helpers
