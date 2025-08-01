@@ -5,6 +5,7 @@
 //  Created by wuying on 2025/4/1.
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
+import Foundation
 
 public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableHandler {
     
@@ -19,4 +20,6 @@ public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableH
     func registerEventDelegate(_ delegate: CHPassCodeDelegate)
     
     func unregisterEventDelegate(_ delegate: CHPassCodeDelegate)
+    
+    func passCodeBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>))
 }

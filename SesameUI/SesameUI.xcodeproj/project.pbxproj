@@ -40,6 +40,7 @@
 		3B1D80452E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B1D80482E2A2DB600C90D01 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1D80472E2A2DB600C90D01 /* SesameSDK */; };
 		3B1D804A2E2A2DBC00C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */; };
+		3B203FDE2E3CF307004E2606 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */; };
 		3B8B7C242E2E47DD00F5A2F7 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */; };
 		3B8B7C482E2FBB0200F5A2F7 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B8B7C4F2E2FC0A600F5A2F7 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C4D2E2FC0A300F5A2F7 /* WebView.swift */; };
@@ -596,6 +597,7 @@
 		3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8B7C4D2E2FC0A300F5A2F7 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -1317,6 +1319,7 @@
 				4155E80923CC473F00CA093E /* ChangeValueDialog.swift */,
 				649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */,
 				B08CBE7D2509F06C00050E7B /* CHUIView.swift */,
+				3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */,
 				414C3CFF2A1FBC0800AB59CF /* LongPressReorder.swift */,
 				646B86DB2B443D520042589E /* PlayLoadingView.swift */,
 				64498EA12BD65EFB00806D0F /* FloatingTipView.swift */,
@@ -2964,6 +2967,7 @@
 				645211E72B282A440091DDE3 /* ShareAlertConfigurator.swift in Sources */,
 				645B1B272BDB4C0100D5E491 /* FrameStore.swift in Sources */,
 				B0710A8025359E3F007B4F48 /* SesameBotSettingViewController.swift in Sources */,
+				3B203FDE2E3CF307004E2606 /* CircularProgressView.swift in Sources */,
 				BE0636892567A0AB00135D25 /* CHDevice+.swift in Sources */,
 				BE30813D248E3C1F00152D66 /* URL+Sesame2.swift in Sources */,
 				B081436E25270E1C00A634C8 /* Sesame2Intents.intentdefinition in Sources */,

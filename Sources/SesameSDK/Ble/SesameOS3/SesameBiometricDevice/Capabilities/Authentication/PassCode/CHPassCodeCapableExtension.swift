@@ -76,4 +76,73 @@ extension CHPassCodeCapable where Self: CHSesameBaseDevice {
         unregisterProtocolDelegate(delegate, for: CHPassCodeDelegate.self)
     }
     
+    func passCodeBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>)) {
+            if (!self.isBleAvailable(result)) { return }
+            
+            DispatchQueue.global().async {
+                let dataSize = UInt16(data.count)
+                var dataIndex: UInt16 = 0
+                let MAX_PAYLOAD_SIZE = 209
+                
+                // 计算总包数
+                let dataSizeInt = Int(dataSize)
+                let maxPayloadInt = Int(MAX_PAYLOAD_SIZE)
+                let totalPackets = (dataSizeInt + maxPayloadInt - 1) / maxPayloadInt
+                var currentPacket = 0
+                
+                L.d("totalPackets: \(totalPackets), dataSize: \(dataSize)")
+                
+                while dataIndex < dataSize {
+                    currentPacket += 1
+                    
+                    // 通知进度
+                    DispatchQueue.main.async {
+                        progressCallback?(currentPacket, totalPackets)
+                    }
+                    
+                    var tempList = Data()
+                    tempList.append(dataIndex.reversedBytes) // 需要反转字节序
+                    tempList.append(dataSize.reversedBytes)  // 需要反转字节序
+                    
+                    let remainingSize = Int(dataSize - dataIndex)
+                    let chunkSize = min(remainingSize, MAX_PAYLOAD_SIZE)
+                    
+                    let endIndex = Int(dataIndex) + chunkSize
+                    tempList.append(data[Int(dataIndex)..<endIndex])
+                    dataIndex += UInt16(chunkSize)
+                    
+                    L.d("Packet \(currentPacket)/\(totalPackets) - size: \(tempList.count)")
+                    
+                    let semaphore = DispatchSemaphore(value: 0)
+                    var sendSuccess = false
+                    
+                    self.sendCommand(.init(.STP_ITEM_CODE_PASSCODES_ADD, tempList)) { _ in
+                        sendSuccess = true
+                        semaphore.signal()
+                    }
+                    
+                    semaphore.wait()
+                    
+                    if !sendSuccess {
+                        result(.failure(NSError(domain: "PassCodeBatchAdd", code: -1,
+                                              userInfo: [NSLocalizedDescriptionKey: "Failed at packet \(currentPacket)"])))
+                        return
+                    }
+                    
+                    // 如果还有数据要发送，延迟4秒
+                    if dataIndex < dataSize {
+                        Thread.sleep(forTimeInterval: 4.0)
+                    }
+                }
+                
+                result(.success(CHResultStateNetworks(input: CHEmpty())))
+            }
+        }
+}
+
+extension UInt16 {
+    var reversedBytes: Data {
+        var value = self.littleEndian // 转换为小端字节序
+        return Data(bytes: &value, count: MemoryLayout<UInt16>.size)
+    }
 }

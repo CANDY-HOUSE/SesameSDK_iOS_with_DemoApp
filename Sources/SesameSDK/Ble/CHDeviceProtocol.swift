@@ -138,6 +138,9 @@ enum SesameItemCode: UInt8 {
     case SSM_OS3_PALM_MODE_GET = 168
     case SSM_OS3_PALM_MODE_SET = 169
     
+    // 批量添加密码
+    case STP_ITEM_CODE_PASSCODES_ADD = 184
+    
     case SSM_OS3_FACE_MODE_DELETE_NOTIFY = 192
     case SSM_OS3_PALM_MODE_DELETE_NOTIFY = 193
     

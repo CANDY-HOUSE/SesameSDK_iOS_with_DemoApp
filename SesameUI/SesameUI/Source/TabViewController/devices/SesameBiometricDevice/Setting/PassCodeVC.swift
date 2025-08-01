@@ -8,6 +8,7 @@
 
 import UIKit
 import SesameSDK
+import SwiftUI
 
 struct KeyboardPassCode {
     var id: String
@@ -48,11 +49,17 @@ extension BiometricData {
     }
 }
 
-extension PassCodeVC {
+extension PassCodeVC: UIDocumentPickerDelegate {
     static func instance(_ device: CHPassCodeCapable) -> PassCodeVC {
         let vc = PassCodeVC(nibName: nil, bundle: nil)
         vc.mDevice = device
         return vc
+    }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else { return }
+        
+        readJsonAndWriteToBluetooth(url)
     }
 }
 
@@ -105,6 +112,8 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
         let deviceName = mDevice.deviceName
         let emptyHit = String(format:"co.candyhouse.sesame2.TouchEmptyPasscodeHint".localized,
                                  arguments:[deviceName,deviceName])
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        dismissButton.addGestureRecognizer(longPressGesture)
         let floatView = FloatingTipView.showIn(superView: view, style:  .textOnly(text:emptyHit))
         executeOnMainThread { [weak self] in
             self?.tableView.contentInset = .init(top: floatView.FloatingHeight, left: 0, bottom: 0, right: 0)
@@ -116,7 +125,149 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
             isRegistrerMode = !isRegistrerMode
         }
     }
+    
+    @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        guard !isRegistrerMode, gesture.state == .began else { return }
+        
+        let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+        impactFeedback.impactOccurred()
+        
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.json])
+        documentPicker.delegate = self
+        present(documentPicker, animated: true)
+    }
+    
+    func readJsonAndWriteToBluetooth(_ url: URL) {
+        do {
+            // 检查文件扩展名
+            let fileName = url.lastPathComponent
+            guard fileName.lowercased().hasSuffix(".json") else {
+                showToast("Please select a JSON file")
+                return
+            }
+            
+            // 获取文件访问权限
+            guard url.startAccessingSecurityScopedResource() else {
+                showToast("Cannot access file")
+                return
+            }
+            defer { url.stopAccessingSecurityScopedResource() }
+            
+            // 读取JSON数据
+            let jsonData = try Data(contentsOf: url)
+            let jsonObject = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any]
+            guard let passcodesArray = jsonObject?["passcodes"] as? [[String: String]] else {
+                showToast("Invalid JSON format")
+                return
+            }
+            
+            var tempList = [UInt8]()
+            
+            // 处理每个密码条目
+            for passcode in passcodesArray {
+                guard let account = passcode["account"],
+                      let password = passcode["password"] else { continue }
+                // 处理密码
+                let hexPassword = convertPasswordToHex(password)
+                var tempPasscodeValueList = [UInt8]()
+                
+                for i in stride(from: 0, to: hexPassword.count, by: 2) {
+                    let startIndex = hexPassword.index(hexPassword.startIndex, offsetBy: i)
+                    let endIndex = hexPassword.index(startIndex, offsetBy: 2)
+                    let hexPair = String(hexPassword[startIndex..<endIndex])
+                    if let hexValue = UInt8(hexPair, radix: 16) {
+                        tempPasscodeValueList.append(hexValue)
+                    }
+                }
+                
+                tempList.append(UInt8(tempPasscodeValueList.count))
+                tempList.append(contentsOf: tempPasscodeValueList)
+                
+                // 处理账号名称
+                let MAX_PASSCODE_NAME_SIZE = 20
+                var passcodeName = Array(account.utf8)
+                var passcodeNameSize = passcodeName.count
+                
+                if passcodeNameSize > MAX_PASSCODE_NAME_SIZE {
+                    passcodeNameSize = MAX_PASSCODE_NAME_SIZE
+                    passcodeName = Array(passcodeName.prefix(MAX_PASSCODE_NAME_SIZE))
+                }
+                
+                tempList.append(UInt8(passcodeNameSize))
+                tempList.append(contentsOf: passcodeName)
+            }
+            
+            let payloadData = Data(tempList)
+            L.d("DataSize: \(payloadData.count)")
+            
+            // 显示进度对话框
+            showProgressDialog()
+            
+            // 调用蓝牙写入方法
+            mDevice.passCodeBatchAdd(
+                data: payloadData,
+                progressCallback: { (current: Int, total: Int) in
+                    let percentage = Float(current) / Float(total)
+                    self.updateProgress(percentage)
+                }
+            ) { result in
+                self.hideProgressDialog()
+                switch result {
+                case .success:
+                    self.mDevice.passCodes { _ in }
+                case .failure(let error):
+                    self.showToast("Password import failed: \(error.localizedDescription)")
+                }
+            }
+        } catch {
+            L.e("Failed to read JSON file: \(error)")
+            showToast("Failed to read file: \(error.localizedDescription)")
+        }
+    }
 
+    func convertPasswordToHex(_ password: String) -> String {
+        var hexBuilder = ""
+        for char in password {
+            guard let digit = char.wholeNumberValue else {
+                showToast("Invalid password digit: \(char)")
+                return ""
+            }
+            hexBuilder += String(format: "%02x", digit)
+        }
+        return hexBuilder
+    }
+
+    // 显示Toast消息
+    func showToast(_ message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            alert.dismiss(animated: true)
+        }
+    }
+    
+    var progressModal: ProgressModalViewController?
+    
+    func showProgressDialog() {
+        progressModal = ProgressModalViewController()
+        progressModal?.modalPresentationStyle = .overFullScreen
+        progressModal?.modalTransitionStyle = .crossDissolve
+        present(progressModal!, animated: true)
+    }
+    
+    func updateProgress(_ progress: Float) {
+        DispatchQueue.main.async { [weak self] in
+            self?.progressModal?.updateProgress(Double(progress))
+        }
+    }
+    
+    func hideProgressDialog() {
+        DispatchQueue.main.async { [weak self] in
+            self?.progressModal?.dismiss(animated: true) {
+                self?.progressModal = nil
+            }
+        }
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         mDevice.passCodeModeSet(mode: 0x00){_ in  }
@@ -297,4 +448,35 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
         }
     }
 
+}
+
+class ProgressModalViewController: UIViewController {
+    private let progressView = CircularProgressView(progress: 0)
+    private var hostingController: UIHostingController<CircularProgressView>!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        
+        // 创建 SwiftUI 托管控制器
+        hostingController = UIHostingController(rootView: progressView)
+        hostingController.view.backgroundColor = .clear
+        
+        // 添加子视图
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        hostingController.didMove(toParent: self)
+        
+        // 设置约束
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            hostingController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            hostingController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    func updateProgress(_ progress: Double) {
+        hostingController.rootView = CircularProgressView(progress: progress)
+    }
 }
