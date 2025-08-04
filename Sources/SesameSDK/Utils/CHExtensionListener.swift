@@ -13,10 +13,6 @@ public protocol CHExtensionListenerDelegate: AnyObject {
 }
 
 final public class CHExtensionListener {
-    public static let containingAppDidBecomeActive = "containingAppDidBecomeActive"
-    public static let containingAppWillResignActive = "containingAppWillResignActive"
-    public static let widgetDidBecomeActive = "widgetDidBecomeActive"
-    public static let widgetWillResignActive = "widgetWillResignActive"
     public static let shortcutDidBecomeActive = "shortcutDidBecomeActive"
     public static let shortcutWillResignActive = "shortcutWillResignActive"
 

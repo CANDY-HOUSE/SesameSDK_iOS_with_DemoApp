@@ -46,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WatchKitFileTransfer.shared.active()
         
         // 系統級通知 為了與 today extension, siri short cut 的互動
-        extensionListener.registerObserver(self, withIdentifier: CHExtensionListener.widgetDidBecomeActive)
-        extensionListener.registerObserver(self, withIdentifier: CHExtensionListener.widgetWillResignActive)
         extensionListener.registerObserver(self, withIdentifier: CHExtensionListener.shortcutDidBecomeActive)
         extensionListener.registerObserver(self, withIdentifier: CHExtensionListener.shortcutWillResignActive)
         
@@ -83,10 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // [系統級通知] 通知 app 要進入背景
-        CHExtensionListener.post(notification: CHExtensionListener.containingAppWillResignActive)
-//        (iterateViewControllers() as? DFUAlertController)?.didEnterBackground()
-        
         // 啟動 auto unlock
         CHDeviceManager.shared.getCHDevices(result: {
             if case let .success(devices) = $0 {
@@ -132,7 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // [系統級通知] 通知 app 要回到前景
         CHBluetoothCenter.shared.enableScan { res in }
-        CHExtensionListener.post(notification: CHExtensionListener.containingAppDidBecomeActive)
         Sesame2Store.shared.refreshDB() // 刷新 DB
         locationManager.stopUpdatingLocation()// 停止更新地理位置
         autoUnlockTimer?.invalidate() // 移除 auto unlock timer
@@ -262,7 +255,7 @@ extension AppDelegate: CHExtensionListenerDelegate {
     /// [系統級別通知]
     func receiveExtensionNotification(_ notificationIdentifier: String) {
         /// Today extension 或 Siri short cut 開始
-        if notificationIdentifier == CHExtensionListener.widgetDidBecomeActive || notificationIdentifier == CHExtensionListener.shortcutDidBecomeActive {
+        if notificationIdentifier == CHExtensionListener.shortcutDidBecomeActive {
             switch UIApplication.shared.applicationState {
             case .active:
                 break
@@ -276,8 +269,7 @@ extension AppDelegate: CHExtensionListenerDelegate {
         }
         
         /// Today extension 或 Siri short cut 結束工作
-        if notificationIdentifier == CHExtensionListener.widgetWillResignActive ||
-                    notificationIdentifier == CHExtensionListener.shortcutWillResignActive {
+        if notificationIdentifier == CHExtensionListener.shortcutWillResignActive {
             switch UIApplication.shared.applicationState {
             case .active:
                 break

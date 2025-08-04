@@ -34,7 +34,6 @@
 		2CA5DEBE2D801418006E99BE /* Hub3IRRemoteMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5DEBD2D80140A006E99BE /* Hub3IRRemoteMatchViewModel.swift */; };
 		2CD6CDBD2D92AD750060AE19 /* Hub3IRRemoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6CDBC2D92AD5E0060AE19 /* Hub3IRRemoteViewModel.swift */; };
 		2CFFBE372D93A5C9005FE14B /* IrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFBE362D93A5C4005FE14B /* IrController.swift */; };
-		3B1D803E2E2A2DA400C90D01 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1D803D2E2A2DA400C90D01 /* SesameSDK */; };
 		3B1D80402E2A2DA900C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80442E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80452E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -48,7 +47,6 @@
 		3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5952E2DE4F8008EBF76 /* SesameSDK */; };
 		3BC91C5D2E2A7F1400468AAC /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */; };
 		3BC91DF52E2AA0FB00468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
-		3BC91DF62E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		3BC91DF72E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		3BC91DF82E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		3BC91DF92E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
@@ -57,9 +55,7 @@
 		4103033C23790CB800785311 /* PopUpMenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103033B23790CB800785311 /* PopUpMenuControl.swift */; };
 		4103033E23790CE500785311 /* PopUpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103033D23790CE500785311 /* PopUpMenu.swift */; };
 		4103034D2379108D00785311 /* UIImage+SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103034C2379108D00785311 /* UIImage+SVG.swift */; };
-		412D23702355E4F700D1B51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B179691122F7CE9400E91996 /* Assets.xcassets */; };
 		4137C8CC2350276300211F43 /* lockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137C8CB2350276300211F43 /* lockView.swift */; };
-		41499E9A2A12A06000944CDC /* Sesame2Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C6C9624B3378B00C7318B /* Sesame2Store.swift */; };
 		414C3CFA2A1EF6DC00AB59CF /* CHBaseTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C3CF92A1EF6DC00AB59CF /* CHBaseTableVC.swift */; };
 		414C3D002A1FBC0800AB59CF /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C3CFF2A1FBC0800AB59CF /* LongPressReorder.swift */; };
 		4152907823224C2300F7E0E5 /* GeneralTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4152906B23224C2300F7E0E5 /* GeneralTabViewController.swift */; };
@@ -88,18 +84,13 @@
 		41E51F472A36E06E00D3BB2F /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F402A36E06E00D3BB2F /* RefreshHeaderView.swift */; };
 		41E51F482A36E06E00D3BB2F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F412A36E06E00D3BB2F /* RefreshView.swift */; };
 		41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */; };
-		41E6850A235597380042B159 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E68509235597380042B159 /* NotificationCenter.framework */; };
-		41E6850D235597380042B159 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E6850C235597380042B159 /* TodayViewController.swift */; };
-		41E68510235597380042B159 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E6850E235597380042B159 /* MainInterface.storyboard */; };
 		41FFFE1129E129AD004BB381 /* Sesame5HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* Sesame5HistoryViewController.swift */; };
 		41FFFE1729E6BB5E004BB381 /* CHSesame5History+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1629E6BB5E004BB381 /* CHSesame5History+.swift */; };
 		641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641326832B57A3F0008B1AC1 /* PickerController.swift */; };
 		64187F702B3E9B8600086321 /* IRLearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */; };
 		64190A142C2D54DC00B89592 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64190A132C2D54DC00B89592 /* AirData.swift */; };
-		642E36052B20A12500ACF341 /* Sesame5ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */; };
 		643A9C472B3027A9008214BD /* IndicatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C462B3027A9008214BD /* IndicatorGenerator.swift */; };
 		643A9C492B313970008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
-		643A9C4A2B313FCC008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4B2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4C2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4D2B313FD2008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
@@ -109,7 +100,6 @@
 		643F06A02BCD12400045D789 /* sesamebike1_21_3_d7162a.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */; };
 		643F06A12BCD12400045D789 /* sesame_221_0_8c080c.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06932BCD12400045D789 /* sesame_221_0_8c080c.zip */; };
 		643F06AC2BD2065E0045D789 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F06AB2BD2065E0045D789 /* NSObject+.swift */; };
-		643F06AD2BD2065E0045D789 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F06AB2BD2065E0045D789 /* NSObject+.swift */; };
 		644053582C1839BF001CDCCE /* IRDeviceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644053572C1839BF001CDCCE /* IRDeviceType+.swift */; };
 		6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */; };
 		6440C3B32B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B22B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift */; };
@@ -159,7 +149,6 @@
 		646CF3EF2C8AB3A90022C724 /* strings_air_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 646CF3EE2C8AB3A80022C724 /* strings_air_type.xml */; };
 		646F796B2B3E5E4B0055E0B2 /* Hub3IRCustomizeControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F796A2B3E5E4B0055E0B2 /* Hub3IRCustomizeControlVC.swift */; };
 		647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */; };
-		647719262BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */; };
 		6479BD8B2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD8A2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift */; };
 		6479BD912B62569D00DE5845 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD902B62569D00DE5845 /* XMLParser.swift */; };
 		6479BD962B63580C00DE5845 /* Hub3IRDeviceBrandModelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD952B63580C00DE5845 /* Hub3IRDeviceBrandModelsVC.swift */; };
@@ -179,16 +168,12 @@
 		6483C96D2B68FA5E00D8B68D /* strings_audio_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C96F2B68FA5E00D8B68D /* strings_audio_type.xml */; };
 		6483C9732B68FA6C00D8B68D /* strings_robot_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9752B68FA6C00D8B68D /* strings_robot_type.xml */; };
 		648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648461BB2BC7B6370000E9A7 /* UITableView+.swift */; };
-		649666302B54C29F00B64D67 /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
 		649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */; };
-		64A5778F2B2164DF00E82BB6 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09C1A142510A72300871F7E /* UIView+AutoLayout.swift */; };
 		64ADDE392DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
 		64ADDE3A2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
 		64ADDE3B2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
 		64ADDE3C2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
-		64ADDE3D2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
 		64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */; };
-		64AE88352B1F6A5600E2278A /* CHCellDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */; };
 		64AE88382B2014AA00E2278A /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE88362B2014AA00E2278A /* FriendListCell.swift */; };
 		64AE88392B2014AA00E2278A /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE88372B2014AA00E2278A /* FriendListCell.xib */; };
 		64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */; };
@@ -196,7 +181,6 @@
 		64AF23AB2C353DBE009614F9 /* ControlAirPurifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AF23AA2C353DBE009614F9 /* ControlAirPurifier.swift */; };
 		64CD4E5C2BF5AC7100733D29 /* FindFriendHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CD4E5B2BF5AC7100733D29 /* FindFriendHandler.swift */; };
 		64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
-		64D5B3A82CBA7B7D00C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
 		64D9F8BA2B8305E10020B4EB /* Hub3OneclickMatchingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D9F8B92B8305E10020B4EB /* Hub3OneclickMatchingVC.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
 		64DE0CD32B64B00400EB7C85 /* Hub3IRRemoteControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CD22B64B00400EB7C85 /* Hub3IRRemoteControlVC.swift */; };
@@ -242,7 +226,6 @@
 		B09F5839250F5DAC0034759A /* HistoryTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09F5838250F5DAC0034759A /* HistoryTagView.xib */; };
 		B09F583B250F6EB30034759A /* HistoryTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F583A250F6EB30034759A /* HistoryTagView.swift */; };
 		B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6138F247680FD00A797E5 /* VersionLabel.swift */; };
-		B0AD874724A89AA300330BCD /* SesameUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F49C24A4EBBF00D04651 /* SesameUI.xcdatamodeld */; };
 		B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D669AC25394B8E002602F4 /* QRCodeViewController.swift */; };
 		B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D669AD25394B8E002602F4 /* QRCodeViewController.xib */; };
 		B0DF09252522F878005E17BD /* ToggleSesameIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF09242522F878005E17BD /* ToggleSesameIntentHandler.swift */; };
@@ -253,25 +236,16 @@
 		B179691522F7CE9400E91996 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B179691322F7CE9400E91996 /* LaunchScreen.storyboard */; };
 		BE037A91246981DB00ED2611 /* DFUHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE037A90246981DB00ED2611 /* DFUHelper.swift */; };
 		BE0636892567A0AB00135D25 /* CHDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0636882567A0AB00135D25 /* CHDevice+.swift */; };
-		BE14F7D224A88330005130F6 /* Sesame2Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FA1E7237BD2C100C7C408 /* Sesame2Circle.swift */; };
 		BE166B8824912755007CDC29 /* UIStoryboard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE166B8724912755007CDC29 /* UIStoryboard+.swift */; };
 		BE1C653426E5AEC50060349D /* ScreenNotify.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1C653326E5AEC50060349D /* ScreenNotify.m */; };
 		BE1C653A26E710AD0060349D /* URL+Sesame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30813C248E3C1F00152D66 /* URL+Sesame2.swift */; };
-		BE1C653B26E710AE0060349D /* URL+Sesame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30813C248E3C1F00152D66 /* URL+Sesame2.swift */; };
 		BE1C653C26E711930060349D /* DataShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308144248E3C8C00152D66 /* DataShared+.swift */; };
-		BE1C653D26E711940060349D /* DataShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308144248E3C8C00152D66 /* DataShared+.swift */; };
-		BE1C653E26E711B40060349D /* ArrayShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308148248E3CA800152D66 /* ArrayShared+.swift */; };
 		BE1C653F26E711B50060349D /* ArrayShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308148248E3CA800152D66 /* ArrayShared+.swift */; };
-		BE1C654026E711CB0060349D /* QRCodeURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0908524A9F281006E188E /* QRCodeURLType.swift */; };
 		BE1C654126E711CB0060349D /* QRCodeURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0908524A9F281006E188E /* QRCodeURLType.swift */; };
-		BE1C654226E711DB0060349D /* KeyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB58CBB256CA122001505E3 /* KeyLevel.swift */; };
 		BE1C654326E711DB0060349D /* KeyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB58CBB256CA122001505E3 /* KeyLevel.swift */; };
 		BE1C654426E711EA0060349D /* UIColorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColorShared+.swift */; };
-		BE1C654526E7120A0060349D /* StringShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30814C248E3CCF00152D66 /* StringShared+.swift */; };
 		BE1C654626E7120B0060349D /* StringShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30814C248E3CCF00152D66 /* StringShared+.swift */; };
-		BE2B4B792463FA8900B9ACF4 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 419FE7852446BADF000D31CD /* awsconfiguration.json */; };
 		BE308139248E3BEE00152D66 /* UIImageShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308138248E3BEE00152D66 /* UIImageShared+.swift */; };
-		BE30813A248E3BEE00152D66 /* UIImageShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308138248E3BEE00152D66 /* UIImageShared+.swift */; };
 		BE30813D248E3C1F00152D66 /* URL+Sesame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30813C248E3C1F00152D66 /* URL+Sesame2.swift */; };
 		BE308145248E3C8C00152D66 /* DataShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308144248E3C8C00152D66 /* DataShared+.swift */; };
 		BE308149248E3CA800152D66 /* ArrayShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308148248E3CA800152D66 /* ArrayShared+.swift */; };
@@ -292,7 +266,6 @@
 		BE562E4F2564B815004617DE /* KeyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE562E4D2564B815004617DE /* KeyCollectionViewController.xib */; };
 		BE562E552564B873004617DE /* KeyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E532564B873004617DE /* KeyCollectionViewCell.swift */; };
 		BE562E562564B873004617DE /* KeyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE562E542564B873004617DE /* KeyCollectionViewCell.xib */; };
-		BE5794EF24AF1BE200E96B72 /* NSErrorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C5346245EC30000252F00 /* NSErrorShared+.swift */; };
 		BE5794F024AF1BE200E96B72 /* NSErrorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C5346245EC30000252F00 /* NSErrorShared+.swift */; };
 		BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E268225623D0B00F8B0DD /* CHDeviceShared+.swift */; };
 		BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6978DC2483E30F0089141E /* ToastUtil.swift */; };
@@ -300,7 +273,6 @@
 		BE6978ED2483E37D0089141E /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6978E62483E37D0089141E /* ViewHelper.swift */; };
 		BE6D8B3125CCF05F00A3A606 /* IntentHandler+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D8B2D25CCF05F00A3A606 /* IntentHandler+.swift */; };
 		BE6EE4CA259990F000C77E99 /* SesameBotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6EE4C9259990F000C77E99 /* SesameBotMode.swift */; };
-		BE70FBB52556445B00B38D54 /* RegisterSesameDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01728DB250CA8D300F87ED6 /* RegisterSesameDeviceCell.xib */; };
 		BE70FBEE2558D4B000B38D54 /* WifiModule2SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70FBEC2558D4B000B38D54 /* WifiModule2SettingViewController.swift */; };
 		BE70FBEF2558D4B000B38D54 /* WifiModule2SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE70FBED2558D4B000B38D54 /* WifiModule2SettingViewController.xib */; };
 		BE7E5A9F2583686F00280893 /* WifiModule2KeysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7E5A9E2583686F00280893 /* WifiModule2KeysListViewController.swift */; };
@@ -311,14 +283,10 @@
 		BE85D3042580A8030091D3A6 /* WifiModule2SSIDScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85D3022580A8030091D3A6 /* WifiModule2SSIDScanCell.swift */; };
 		BE85D3052580A8030091D3A6 /* WifiModule2SSIDScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE85D3032580A8030091D3A6 /* WifiModule2SSIDScanCell.xib */; };
 		BE8858FA26C39483002D17E0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8858F926C39483002D17E0 /* Response.swift */; };
-		BE8858FB26C39493002D17E0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8858F926C39483002D17E0 /* Response.swift */; };
-		BE88590126C39628002D17E0 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F9213264A1364001DF645 /* UserLocationManager.swift */; };
-		BE88590226C3964F002D17E0 /* CHDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F920F264A0F82001DF645 /* CHDeviceInfo.swift */; };
 		BE88590826C396EA002D17E0 /* CHUserAPIManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88590726C396EA002D17E0 /* CHUserAPIManager+.swift */; };
 		BE88590F26C39EB1002D17E0 /* SesameBot+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88590E26C39EB1002D17E0 /* SesameBot+.swift */; };
 		BE88591126C39F99002D17E0 /* CHSesameLock+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88591026C39F99002D17E0 /* CHSesameLock+.swift */; };
 		BE88591626C3A22A002D17E0 /* CHDeviceManagerShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */; };
-		BE88591726C3A2CA002D17E0 /* UIColorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColorShared+.swift */; };
 		BE88591826C3A2CA002D17E0 /* UIColorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColorShared+.swift */; };
 		BE88591A26C3A339002D17E0 /* KeyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB58CBB256CA122001505E3 /* KeyLevel.swift */; };
 		BE88591B26C3A3A3002D17E0 /* URL+Sesame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE30813C248E3C1F00152D66 /* URL+Sesame2.swift */; };
@@ -329,15 +297,11 @@
 		BE88592F26C3A9FC002D17E0 /* ArrayShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308148248E3CA800152D66 /* ArrayShared+.swift */; };
 		BE88593C26C3ACA1002D17E0 /* CHSesame2+AutoUnlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88593B26C3ACA1002D17E0 /* CHSesame2+AutoUnlock.swift */; };
 		BE88593F26C3AEDC002D17E0 /* CHDeviceShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E268225623D0B00F8B0DD /* CHDeviceShared+.swift */; };
-		BE88594126C3AEE7002D17E0 /* CHDeviceShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E268225623D0B00F8B0DD /* CHDeviceShared+.swift */; };
 		BE88594626C3B45B002D17E0 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D0B5E2494A44C00B99987 /* Functions.swift */; };
 		BE88594726C3B471002D17E0 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D0B5E2494A44C00B99987 /* Functions.swift */; };
-		BE88594826C3B48A002D17E0 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D0B5E2494A44C00B99987 /* Functions.swift */; };
 		BE88594B26C3BDED002D17E0 /* QRCodeURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0908524A9F281006E188E /* QRCodeURLType.swift */; };
 		BE88594D26C3CCDE002D17E0 /* CHAPIManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88594C26C3CCDE002D17E0 /* CHAPIManagerType.swift */; };
-		BE88594E26C3CCE2002D17E0 /* CHAPIManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88594C26C3CCDE002D17E0 /* CHAPIManagerType.swift */; };
 		BE88595026C3CF46002D17E0 /* CHUserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88594F26C3CF45002D17E0 /* CHUserAPIManager.swift */; };
-		BE88595226C3D113002D17E0 /* CHUserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88594F26C3CF45002D17E0 /* CHUserAPIManager.swift */; };
 		BE8D0B5F2494A44C00B99987 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D0B5E2494A44C00B99987 /* Functions.swift */; };
 		BE8F9210264A0F82001DF645 /* CHDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F920F264A0F82001DF645 /* CHDeviceInfo.swift */; };
 		BE8F9212264A0F82001DF645 /* CHDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F920F264A0F82001DF645 /* CHDeviceInfo.swift */; };
@@ -379,7 +343,6 @@
 		BEB58CBC256CA122001505E3 /* KeyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB58CBB256CA122001505E3 /* KeyLevel.swift */; };
 		BEB7F49E24A4EBBF00D04651 /* SesameUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F49C24A4EBBF00D04651 /* SesameUI.xcdatamodeld */; };
 		BEC0908624A9F281006E188E /* QRCodeURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0908524A9F281006E188E /* QRCodeURLType.swift */; };
-		BEC9D0EC2499CE6F001AE8EE /* SesameTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 41E68508235597380042B159 /* SesameTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BED189F625591C72006544A0 /* WifiModule2SesameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED189F425591C72006544A0 /* WifiModule2SesameCell.swift */; };
 		BED189F725591C72006544A0 /* WifiModule2SesameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED189F525591C72006544A0 /* WifiModule2SesameCell.xib */; };
 		BED74C5724AC760E0052F04D /* SesameWatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BED74C5624AC760E0052F04D /* SesameWatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -393,14 +356,12 @@
 		BED74C8024AC79C90052F04D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3DD9A424829E0000EEA3B1 /* ComplicationController.swift */; };
 		BED74C8D24AC7F270052F04D /* UIImageShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE308138248E3BEE00152D66 /* UIImageShared+.swift */; };
 		BED74C9824AC7F420052F04D /* SesameUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F49C24A4EBBF00D04651 /* SesameUI.xcdatamodeld */; };
-		BEE4BF9725A02E8C00F896C8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF00CBC2565483100E5DECD /* Request.swift */; };
 		BEF00CBD2565483100E5DECD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF00CBC2565483100E5DECD /* Request.swift */; };
 		BEFB1DE1256A6AEF00BF95CB /* CHDeviceManagerShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */; };
 		BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */; };
 		D02B2E902DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip in Resources */ = {isa = PBXBuildFile; fileRef = D02B2E8F2DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip */; };
 		D03F7F372E2E6C8F006BFF21 /* remote_30_14_cb5c5a.zip in Resources */ = {isa = PBXBuildFile; fileRef = D03F7F362E2E6C8F006BFF21 /* remote_30_14_cb5c5a.zip */; };
 		D03F7F392E2E6CBF006BFF21 /* remoten_30_15_cb5c5a.zip in Resources */ = {isa = PBXBuildFile; fileRef = D03F7F382E2E6CBF006BFF21 /* remoten_30_15_cb5c5a.zip */; };
-		D0424E30295A908000C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E33295A908300C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
@@ -429,35 +390,28 @@
 		E8A6F1D42A60E56800AED9AD /* OpenSensorSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6F1D32A60E56800AED9AD /* OpenSensorSettingVC.swift */; };
 		E8A6F1D62A61361800AED9AD /* OpenSensorResetHintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6F1D52A61361800AED9AD /* OpenSensorResetHintVC.swift */; };
 		E8A6F1DC2A6E55E100AED9AD /* BleConnectorSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6F1DB2A6E55E100AED9AD /* BleConnectorSettingVC.swift */; };
-		E8F2B7C4293707EF00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94889238B6D58009469B0 /* Localizable.strings */; };
 		E8F2B7C62937080C00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94889238B6D58009469B0 /* Localizable.strings */; };
 		E8F2B7C72937080C00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94889238B6D58009469B0 /* Localizable.strings */; };
 		E8F2B7C82937080E00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94889238B6D58009469B0 /* Localizable.strings */; };
-		E8F2B7CA2937084C00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94886238B6CB2009469B0 /* Localizable.strings */; };
 		E8F2B7CB2937084D00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94886238B6CB2009469B0 /* Localizable.strings */; };
 		E8F2B7CC2937084D00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94886238B6CB2009469B0 /* Localizable.strings */; };
 		E8F2B7CD2937084E00970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94886238B6CB2009469B0 /* Localizable.strings */; };
-		E8F2B7CE2937085600970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
 		E8F2B7CF2937085600970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
 		E8F2B7D02937085700970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
 		E8F2B7D12937085700970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
-		E8F2B7D22937088000970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
 		E8F2B7D32937088000970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
 		E8F2B7D42937088000970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
 		E8F2B7D52937088100970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
 		E8F2B7D6293708A500970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
 		E8F2B7D7293708A500970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
 		E8F2B7D8293708A600970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
-		E8F2B7D9293708A600970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
 		E8F2B7DA293708A700970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
 		E8F2B7DB293708B000970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
 		E8F2B7DC293708B100970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
 		E8F2B7DD293708B100970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
-		E8F2B7DE293708B100970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
 		E8F2B7DF293708B600970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1EC237C04EF00C7C408 /* InfoPlist.strings */; };
 		E8F2B7E0293708B700970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1EC237C04EF00C7C408 /* InfoPlist.strings */; };
 		E8F2B7E1293708B700970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1EC237C04EF00C7C408 /* InfoPlist.strings */; };
-		E8F2B7E2293708B700970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1EC237C04EF00C7C408 /* InfoPlist.strings */; };
 		E8F2B80D293717CC00970E10 /* Sesame2Intents.intentdefinition in Resources */ = {isa = PBXBuildFile; fileRef = B081437125270E1C00A634C8 /* Sesame2Intents.intentdefinition */; };
 		E8F2B80F2937318C00970E10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3DD9A624829E0100EEA3B1 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -483,13 +437,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = BE9F2A1926FD574E00F0E9AB;
 			remoteInfo = SesameIntentsWatch;
-		};
-		BEC9D0ED2499CE6F001AE8EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B17968FF22F7CE9300E91996 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 41E68507235597380042B159;
-			remoteInfo = SesameWidget;
 		};
 		BED74C5824AC760E0052F04D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -549,7 +496,6 @@
 			files = (
 				B027BB912508DE4500391DC0 /* SesameIntents.appex in Embed App Extensions */,
 				3B8B7C482E2FBB0200F5A2F7 /* NotificationService.appex in Embed App Extensions */,
-				BEC9D0EC2499CE6F001AE8EE /* SesameTodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,7 +587,6 @@
 		41A0F59629FAB3B7008CEB0C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Interface.strings; sourceTree = "<group>"; };
 		41A57CED2328D13600FEFF60 /* QRScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		41A7E4B523B5A30100752C99 /* SesameUI.Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.Debug.entitlements; sourceTree = "<group>"; };
-		41A7E4B623B5A39E00752C99 /* SesameTodayExtension.Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameTodayExtension.Debug.entitlements; sourceTree = "<group>"; };
 		41ACFD0329B86A07001153DB /* Sesame5SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5SettingViewController.swift; sourceTree = "<group>"; };
 		41ACFD0529B8B962001153DB /* Sesame5LockAngleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5LockAngleViewController.swift; sourceTree = "<group>"; };
 		41ACFD0729B8B982001153DB /* Sesame5LockAngle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5LockAngle.xib; sourceTree = "<group>"; };
@@ -652,12 +597,7 @@
 		41E51F402A36E06E00D3BB2F /* RefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshHeaderView.swift; sourceTree = "<group>"; };
 		41E51F412A36E06E00D3BB2F /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshFootView.swift; sourceTree = "<group>"; };
-		41E68508235597380042B159 /* SesameTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SesameTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E68509235597380042B159 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		41E6850C235597380042B159 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		41E6850F235597380042B159 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		41E68511235597380042B159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41E6851B23559C030042B159 /* SesameTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameTodayExtension.entitlements; sourceTree = "<group>"; };
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
 		41FFFE1029E129AD004BB381 /* Sesame5HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5HistoryViewController.swift; sourceTree = "<group>"; };
 		41FFFE1629E6BB5E004BB381 /* CHSesame5History+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5History+.swift"; sourceTree = "<group>"; };
@@ -995,15 +935,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		41E68505235597380042B159 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				41E6850A235597380042B159 /* NotificationCenter.framework in Frameworks */,
-				3B1D803E2E2A2DA400C90D01 /* SesameSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1444,18 +1375,6 @@
 				643A9C462B3027A9008214BD /* IndicatorGenerator.swift */,
 			);
 			path = LoadingView;
-			sourceTree = "<group>";
-		};
-		41E6850B235597380042B159 /* SesameTodayExtension */ = {
-			isa = PBXGroup;
-			children = (
-				41A7E4B623B5A39E00752C99 /* SesameTodayExtension.Debug.entitlements */,
-				41E6851B23559C030042B159 /* SesameTodayExtension.entitlements */,
-				41E6850C235597380042B159 /* TodayViewController.swift */,
-				41E6850E235597380042B159 /* MainInterface.storyboard */,
-				41E68511235597380042B159 /* Info.plist */,
-			);
-			path = SesameTodayExtension;
 			sourceTree = "<group>";
 		};
 		641326822B57A3D1008B1AC1 /* View */ = {
@@ -1901,7 +1820,6 @@
 			children = (
 				BE73373B2488E494006E0346 /* Shared */,
 				B179690922F7CE9300E91996 /* SesameUI */,
-				41E6850B235597380042B159 /* SesameTodayExtension */,
 				BED74C4B24AC760D0052F04D /* SesameWatchKit */,
 				BE3DD99924829E0000EEA3B1 /* SesameWatchKit Extension */,
 				B027BB8B2508DE4500391DC0 /* SesameIntents */,
@@ -1917,7 +1835,6 @@
 			isa = PBXGroup;
 			children = (
 				B179690722F7CE9300E91996 /* Sesame.app */,
-				41E68508235597380042B159 /* SesameTodayExtension.appex */,
 				BED74C4A24AC760D0052F04D /* SesameWatchKit.app */,
 				BED74C5624AC760E0052F04D /* SesameWatchKit Extension.appex */,
 				B027BB8A2508DE4500391DC0 /* SesameIntents.appex */,
@@ -2347,23 +2264,6 @@
 			productReference = 3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		41E68507235597380042B159 /* SesameTodayExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 41E68518235597380042B159 /* Build configuration list for PBXNativeTarget "SesameTodayExtension" */;
-			buildPhases = (
-				41E68504235597380042B159 /* Sources */,
-				41E68505235597380042B159 /* Frameworks */,
-				41E68506235597380042B159 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SesameTodayExtension;
-			productName = locker;
-			productReference = 41E68508235597380042B159 /* SesameTodayExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		B027BB892508DE4500391DC0 /* SesameIntents */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B027BB922508DE4500391DC0 /* Build configuration list for PBXNativeTarget "SesameIntents" */;
@@ -2396,7 +2296,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BEC9D0EE2499CE6F001AE8EE /* PBXTargetDependency */,
 				BED74C6824AC760F0052F04D /* PBXTargetDependency */,
 				B027BB902508DE4500391DC0 /* PBXTargetDependency */,
 				3B8B7C472E2FBB0200F5A2F7 /* PBXTargetDependency */,
@@ -2490,9 +2389,6 @@
 					3B8B7C402E2FBB0200F5A2F7 = {
 						CreatedOnToolsVersion = 16.4;
 					};
-					41E68507235597380042B159 = {
-						CreatedOnToolsVersion = 11.0;
-					};
 					B027BB892508DE4500391DC0 = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -2535,7 +2431,6 @@
 			projectRoot = "";
 			targets = (
 				B179690622F7CE9300E91996 /* SesameUI */,
-				41E68507235597380042B159 /* SesameTodayExtension */,
 				BED74C4924AC760D0052F04D /* SesameWatchKit */,
 				BED74C5524AC760E0052F04D /* SesameWatchKit Extension */,
 				B027BB892508DE4500391DC0 /* SesameIntents */,
@@ -2550,27 +2445,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		41E68506235597380042B159 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE70FBB52556445B00B38D54 /* RegisterSesameDeviceCell.xib in Resources */,
-				D0424E30295A908000C3FB9D /* InfoPlist.strings in Resources */,
-				649666302B54C29F00B64D67 /* Sesame5ListCell.xib in Resources */,
-				E8F2B7DE293708B100970E10 /* InfoPlist.strings in Resources */,
-				E8F2B7D22937088000970E10 /* Localizable.strings in Resources */,
-				412D23702355E4F700D1B51B /* Assets.xcassets in Resources */,
-				E8F2B7E2293708B700970E10 /* InfoPlist.strings in Resources */,
-				E8F2B7D9293708A600970E10 /* InfoPlist.strings in Resources */,
-				647719262BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
-				E8F2B7CE2937085600970E10 /* Localizable.strings in Resources */,
-				BE2B4B792463FA8900B9ACF4 /* awsconfiguration.json in Resources */,
-				E8F2B7C4293707EF00970E10 /* Localizable.strings in Resources */,
-				E8F2B7CA2937084C00970E10 /* Localizable.strings in Resources */,
-				41E68510235597380042B159 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2815,42 +2689,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		41E68504235597380042B159 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE5794EF24AF1BE200E96B72 /* NSErrorShared+.swift in Sources */,
-				BE88594E26C3CCE2002D17E0 /* CHAPIManagerType.swift in Sources */,
-				41499E9A2A12A06000944CDC /* Sesame2Store.swift in Sources */,
-				BE1C653D26E711940060349D /* DataShared+.swift in Sources */,
-				BEE4BF9725A02E8C00F896C8 /* Request.swift in Sources */,
-				BE88595226C3D113002D17E0 /* CHUserAPIManager.swift in Sources */,
-				41E6850D235597380042B159 /* TodayViewController.swift in Sources */,
-				64A5778F2B2164DF00E82BB6 /* UIView+AutoLayout.swift in Sources */,
-				BE1C654026E711CB0060349D /* QRCodeURLType.swift in Sources */,
-				64AE88352B1F6A5600E2278A /* CHCellDisplayProtocol.swift in Sources */,
-				BE88594126C3AEE7002D17E0 /* CHDeviceShared+.swift in Sources */,
-				BE1C654526E7120A0060349D /* StringShared+.swift in Sources */,
-				643A9C4A2B313FCC008214BD /* CHProductModel+.swift in Sources */,
-				BE1C654226E711DB0060349D /* KeyLevel.swift in Sources */,
-				64D5B3A82CBA7B7D00C7AF5A /* CHSesameTouchPro+.swift in Sources */,
-				B0AD874724A89AA300330BCD /* SesameUI.xcdatamodeld in Sources */,
-				BE88594826C3B48A002D17E0 /* Functions.swift in Sources */,
-				BE88590226C3964F002D17E0 /* CHDeviceInfo.swift in Sources */,
-				BE30813A248E3BEE00152D66 /* UIImageShared+.swift in Sources */,
-				3BC91DF62E2AA12000468AAC /* AWSSharedConfig.swift in Sources */,
-				BE88591726C3A2CA002D17E0 /* UIColorShared+.swift in Sources */,
-				642E36052B20A12500ACF341 /* Sesame5ListCell.swift in Sources */,
-				64ADDE3D2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */,
-				BE88590126C39628002D17E0 /* UserLocationManager.swift in Sources */,
-				BE14F7D224A88330005130F6 /* Sesame2Circle.swift in Sources */,
-				BE1C653E26E711B40060349D /* ArrayShared+.swift in Sources */,
-				643F06AD2BD2065E0045D789 /* NSObject+.swift in Sources */,
-				BE1C653B26E710AE0060349D /* URL+Sesame2.swift in Sources */,
-				BE8858FB26C39493002D17E0 /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3184,11 +3022,6 @@
 			target = BE9F2A1926FD574E00F0E9AB /* SesameIntentsWatch */;
 			targetProxy = BE9F2A2126FD574E00F0E9AB /* PBXContainerItemProxy */;
 		};
-		BEC9D0EE2499CE6F001AE8EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 41E68507235597380042B159 /* SesameTodayExtension */;
-			targetProxy = BEC9D0ED2499CE6F001AE8EE /* PBXContainerItemProxy */;
-		};
 		BED74C5924AC760E0052F04D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BED74C5524AC760E0052F04D /* SesameWatchKit Extension */;
@@ -3232,14 +3065,6 @@
 				41C9488A238B6D58009469B0 /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		41E6850E235597380042B159 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				41E6850F235597380042B159 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		6483C9272B68F98800D8B68D /* strings.xml */ = {
@@ -3513,60 +3338,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		41E68516235597380042B159 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = SesameTodayExtension/SesameTodayExtension.Debug.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = 59M5HB7F95;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = SesameTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.0.103;
-				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.todayExtension;
-				PRODUCT_NAME = SesameTodayExtension;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		41E68517235597380042B159 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = SesameTodayExtension/SesameTodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = 59M5HB7F95;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = SesameTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.0.103;
-				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.todayExtension;
-				PRODUCT_NAME = SesameTodayExtension;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -4002,15 +3773,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41E68518235597380042B159 /* Build configuration list for PBXNativeTarget "SesameTodayExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				41E68516235597380042B159 /* Debug */,
-				41E68517235597380042B159 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B027BB922508DE4500391DC0 /* Build configuration list for PBXNativeTarget "SesameIntents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -4098,11 +3860,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3B1D803D2E2A2DA400C90D01 /* SesameSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3B1D803A2E2A2D9900C90D01 /* XCLocalSwiftPackageReference "../SesameSDK" */;
-			productName = SesameSDK;
-		};
 		3B1D80472E2A2DB600C90D01 /* SesameSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3B1D803A2E2A2D9900C90D01 /* XCLocalSwiftPackageReference "../SesameSDK" */;
