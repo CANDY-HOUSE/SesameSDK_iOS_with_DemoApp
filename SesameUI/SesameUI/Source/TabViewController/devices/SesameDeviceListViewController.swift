@@ -133,7 +133,7 @@ class SesameDeviceListViewController: CHBaseViewController {
         
         // 创建搜索框
         searchBar = UISearchBar()
-        searchBar.placeholder = "搜索设备"
+        searchBar.placeholder = "デバイス検索"
         searchBar.delegate = self
         searchBar.showsCancelButton = false
         
