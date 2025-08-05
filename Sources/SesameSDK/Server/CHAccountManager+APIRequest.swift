@@ -80,6 +80,7 @@ extension CHAccountManager {
         completion: @escaping (Bool) -> Void
     ) {
         let parameters: [String: Any] = [
+            "action": "subscribeToTopic",
             "topicName": topicName,
             "token": token,
             "appDeviceId": deviceId,

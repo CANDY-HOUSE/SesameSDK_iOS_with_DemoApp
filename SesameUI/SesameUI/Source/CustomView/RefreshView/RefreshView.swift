@@ -13,6 +13,12 @@ extension UIScrollView {
         static var refreshFootView: String = "RefreshFootView"
     }
     
+    var isRefreshing: Bool {
+        if let refreshControl = self.refreshControl {
+            return refreshControl.isRefreshing
+        }
+        return false
+    }
     
     /// 头部刷新控件
     var refreshHeaderView: RefreshHeaderView? {

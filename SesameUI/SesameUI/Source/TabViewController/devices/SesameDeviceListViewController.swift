@@ -11,8 +11,16 @@ class SesameDeviceListViewController: CHBaseViewController {
     var tableViewProxy: CHTableViewProxy!
     var isDraggingCell = false
     let debouncer = Debouncer(interval: 0.5)
-
-//    var mUserState: UserState = AWSMobileClient.default().currentUserState { // 這行要留著
+    // 搜索框相关属性
+    var searchBar: UISearchBar!
+    var searchBarContainer: UIView!
+    var searchBarTopConstraint: NSLayoutConstraint!
+    let searchBarHeight: CGFloat = 56
+    private var lastContentOffset: CGFloat = 0
+    private var isInitialLoading = true
+    private var isAnimatingSearchBar = false
+    private var allDevices: [CHDevice] = []
+    private var lastSearchQuery = ""
     
     func reloadTableView() {
         tableViewProxy.reload()
@@ -34,10 +42,15 @@ class SesameDeviceListViewController: CHBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.SVGImage(named: "icons_outlined_addoutline"),style: .done, target: self, action: #selector(handleRightBarButtonTapped(_:)))
-
+        
         // 應先同步 app & aws 的狀態到一致
         monitorAWSMobileClientUserState()
         configureTable()
+        
+        // 确保搜索框初始隐藏
+        view.layoutIfNeeded()
+        searchBarTopConstraint.constant = -searchBarHeight
+        
         checkIfNeedsRefresh()
     }
     
@@ -53,7 +66,6 @@ class SesameDeviceListViewController: CHBaseViewController {
     func monitorAWSMobileClientUserState() {
         let statusChangeHandler: (_ state: AWSMobileClientXCF.UserState) -> Void = { state in
             if (state == .signedIn) {
-                //                    L.d("[mUserState] => signedIn")
                 CHUserAPIManager.shared.getSubId { subId in
                     guard let subId = subId else { return }
                     let newKeys = CHUserAPIManager.shared.getLocalUserKeys().map { (userKey: CHUserKey) -> CHUserKey in
@@ -104,7 +116,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                         self.present(UINavigationController(rootViewController: Hub3IRCustomizeControlVC.instance(device: (device as! CHHub3))), animated: true)
                         break
                     case IRDeviceType.DEVICE_REMOTE_AIR, IRDeviceType.DEVICE_REMOTE_TV, IRDeviceType.DEVICE_REMOTE_LIGHT:
-                        let handler = IRDeviceType.controlFactory(remote.type, remote.state)
+                        _ = IRDeviceType.controlFactory(remote.type, remote.state)
                         let vc = Hub3IRRemoteControlVC(irRemote: remote)
                         vc.chDevice = (device as! CHHub3)
                         self.present(UINavigationController(rootViewController: vc), animated: true)
@@ -114,12 +126,162 @@ class SesameDeviceListViewController: CHBaseViewController {
                 }
             }
         } ,emptyPlaceholder: "co.candyhouse.sesame2.NoDevices".localized)
+        
+        searchBarContainer = UIView()
+        searchBarContainer.backgroundColor = .systemBackground
+        searchBarContainer.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 创建搜索框
+        searchBar = UISearchBar()
+        searchBar.placeholder = "搜索设备"
+        searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        
+        // 自定义搜索框样式
+        searchBar.searchBarStyle = .minimal
+        searchBar.backgroundColor = .clear
+        searchBar.barTintColor = .clear
+        searchBar.isTranslucent = true
+        
+        // 自定义搜索文本框
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = UIColor(white: 0.97, alpha: 1.0) // 淡灰色背景
+            textField.font = UIFont.systemFont(ofSize: 16)
+            textField.layer.cornerRadius = 24
+            textField.layer.masksToBounds = true
+            textField.borderStyle = .none
+            textField.layer.borderWidth = 0
+        }
+        
+        // 移除所有默认图片
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        searchBar.setSearchFieldBackgroundImage(UIImage(), for: .normal)
+        
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBarContainer.addSubview(searchBar)
+        
+        // 将搜索框容器添加到 view 上
+        view.addSubview(searchBarContainer)
+        
+        // 设置搜索框在容器内的约束
+        NSLayoutConstraint.activate([
+            searchBar.leadingAnchor.constraint(equalTo: searchBarContainer.leadingAnchor, constant: 8),
+            searchBar.trailingAnchor.constraint(equalTo: searchBarContainer.trailingAnchor, constant: -8),
+            searchBar.topAnchor.constraint(equalTo: searchBarContainer.topAnchor),
+            searchBar.bottomAnchor.constraint(equalTo: searchBarContainer.bottomAnchor)
+        ])
+        
+        // 设置搜索框容器约束
+        NSLayoutConstraint.activate([
+            searchBarContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBarContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBarContainer.heightAnchor.constraint(equalToConstant: searchBarHeight)
+        ])
+        
+        // 初始隐藏在导航栏上方
+        searchBarTopConstraint = searchBarContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -searchBarHeight)
+        searchBarTopConstraint.isActive = true
+        
+        // 初始时 tableView 不需要额外的 contentInset
+        tableViewProxy.tableView.contentInset = UIEdgeInsets.zero
+        if #available(iOS 13.0, *) {
+            tableViewProxy.tableView.verticalScrollIndicatorInsets = .zero
+        }
+        
+        // 下拉刷新配置
         tableViewProxy.configureTableHeader({
             self.getKeysFromServer()
         }, nil)
+        
+        // 滚动时自动收起键盘
+        tableViewProxy.tableView.keyboardDismissMode = .onDrag
+        
         reorderTableView = LongPressReorderTableView(tableViewProxy.tableView,selectedRowScale: .big)
         reorderTableView.delegate = self
         reorderTableView.enableLongPressReorder()
+        
+        // KVO监听tableView的滚动
+        tableViewProxy.tableView.addObserver(self, forKeyPath: "contentOffset", options: [.new, .old], context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentOffset", let scrollView = object as? UIScrollView {
+            // 初始加载时或正在动画时不处理
+            guard !isInitialLoading && !isAnimatingSearchBar else { return }
+            
+            // 初始加载时设备列表为空，不显示搜索框
+            guard !devices.isEmpty else {
+                lastContentOffset = scrollView.contentOffset.y
+                return
+            }
+            
+            let offsetY = scrollView.contentOffset.y
+            let scrollDiff = offsetY - lastContentOffset
+            
+            // 如果是刷新控件或非用户操作，不处理
+            if scrollView.isRefreshing || (!scrollView.isDragging && !scrollView.isDecelerating) {
+                lastContentOffset = offsetY
+                return
+            }
+            
+            // 下拉显示搜索框 - 调整阈值，考虑contentInset
+            let showThreshold = searchBarTopConstraint.constant == 0 ? -20 : -20 - searchBarHeight
+            if offsetY < showThreshold {
+                showSearchBar()
+            }
+            // 上滑隐藏搜索框
+            else if scrollDiff > 0 && offsetY > -10 {
+                hideSearchBar()
+            }
+            
+            lastContentOffset = offsetY
+        }
+    }
+    
+    private func showSearchBar() {
+        guard searchBarTopConstraint.constant != 0 && !isAnimatingSearchBar else { return }
+        
+        isAnimatingSearchBar = true
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBarTopConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }) { _ in
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tableViewProxy.tableView.contentInset.top = self.searchBarHeight
+                if #available(iOS 13.0, *) {
+                    self.tableViewProxy.tableView.verticalScrollIndicatorInsets.top = self.searchBarHeight
+                }
+            }) { _ in
+                self.isAnimatingSearchBar = false
+                // 更新lastContentOffset，避免contentInset改变导致的偏移
+                self.lastContentOffset = self.tableViewProxy.tableView.contentOffset.y
+            }
+        }
+    }
+    
+    private func hideSearchBar() {
+        guard searchBarTopConstraint.constant != -searchBarHeight && !isAnimatingSearchBar else { return }
+        
+        isAnimatingSearchBar = true
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBarTopConstraint.constant = -self.searchBarHeight
+            self.view.layoutIfNeeded()
+        }) { _ in
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tableViewProxy.tableView.contentInset.top = 0
+                if #available(iOS 13.0, *) {
+                    self.tableViewProxy.tableView.verticalScrollIndicatorInsets.top = 0
+                }
+            }) { _ in
+                self.isAnimatingSearchBar = false
+                // 更新lastContentOffset，避免contentInset改变导致的偏移
+                self.lastContentOffset = self.tableViewProxy.tableView.contentOffset.y
+            }
+        }
+    }
+    
+    deinit {
+        tableViewProxy?.tableView.removeObserver(self, forKeyPath: "contentOffset")
     }
     
     @objc func getKeysFromServer() {
@@ -135,7 +297,6 @@ class SesameDeviceListViewController: CHBaseViewController {
                     Sesame2Store.shared.setHistoryTag(nickname)
                     CHDeviceManager.shared.setHistoryTag()
                     for userKey in userKeys.data {
-//                        L.d("[DeviceList][登出]刷新列表FromServer",userKey.deviceName,userKey.deviceModel,userKey.keyLevel)
                         let device = userKey.toCHDevice()
                         if let keyLevel = userKey.keyLevel {
                             device?.setKeyLevel(keyLevel)
@@ -162,24 +323,52 @@ class SesameDeviceListViewController: CHBaseViewController {
             L.d("[DeviceList][登入][登出]getKeysFromCache")
             switch getResult {
             case .success(let devices):
-                self.devices = devices.data.sorted { left, right -> Bool in
-                    left.compare(right)// 排序
+                // 保存所有设备
+                self.allDevices = devices.data.sorted { left, right -> Bool in
+                    left.compare(right)
                 }
-                for (index, device) in self.devices.enumerated() {
-                    print("Device[\(index)]: name=\(device.deviceName ?? "Unknown"), id=\(device.deviceId?.uuidString ?? "Unknown")")
-                    if let productModel = device.productModel {
-                        print("    Model: \(productModel), ModelName: \(productModel.deviceModelName())")
-                    }
+                
+                // 如果有搜索词，重新过滤
+                if !self.lastSearchQuery.isEmpty {
+                    self.performSearch(query: self.lastSearchQuery)
+                } else {
+                    self.devices = self.allDevices
+                    self.rebuildData()
                 }
-                self.rebuildData()
+                
+                // 数据加载完成后，设置标记
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isInitialLoading = false
+                }
             case .failure(let error):
                 executeOnMainThread {
                     self.view.makeToast(error.errorDescription())
+                    self.isInitialLoading = false
                 }
             }
         }
     }
-
+    
+    private func performSearch(query: String) {
+        L.d("performSearch","keys = \(query)")
+        
+        if query.isEmpty {
+            // 空查询，显示所有设备
+            devices = allDevices
+        } else {
+            // 过滤设备（名称和UUID，忽略大小写）
+            devices = allDevices.filter { device in
+                let nameMatch = device.deviceName.localizedCaseInsensitiveContains(query)
+                let uuidMatch = device.deviceId.uuidString.localizedCaseInsensitiveContains(query)
+                return nameMatch || uuidMatch
+            }
+        }
+        
+        executeOnMainThread { [weak self] in
+            self?.rebuildData()
+        }
+    }
+    
     func handleSelectDeviceItem(_ device: CHDevice, _ indexPath: IndexPath) {
         switch device.productModel! {
         case .sesame2, .sesame4:
@@ -252,11 +441,36 @@ class SesameDeviceListViewController: CHBaseViewController {
     }
 }
 
-extension SesameDeviceListViewController {
+extension SesameDeviceListViewController: UISearchBarDelegate {
+    
     static func instance() -> SesameDeviceListViewController {
         let vc = SesameDeviceListViewController(nibName: nil, bundle: nil)
         let nv = UINavigationController()
         nv.pushViewController(vc, animated: false)
         return vc
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let currentQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // 避免重复搜索
+        guard currentQuery != lastSearchQuery else { return }
+        lastSearchQuery = currentQuery
+        
+        debouncer.debounce { [weak self] in
+            self?.performSearch(query: currentQuery)
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // 点击搜索按钮隐藏键盘
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        lastSearchQuery = ""
+        performSearch(query: "")
     }
 }

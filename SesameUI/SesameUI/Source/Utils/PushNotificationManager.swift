@@ -84,9 +84,6 @@ class PushNotificationManager {
                 L.d("sf", "Topic:\(topic) Token:\(token.suffix(10)) 已经订阅过了")
             }
         }
-        
-        // 检查是否所有主题都已订阅
-        checkIfAllTopicsSubscribed(token: token)
     }
     
     private func isTopicSubscribed(topic: String, token: String) -> Bool {
@@ -115,6 +112,8 @@ class PushNotificationManager {
             } else {
                 L.d("sf", "订阅失败: \(topic)")
             }
+            
+            checkIfAllTopicsSubscribed(token: token)
         }
     }
     
