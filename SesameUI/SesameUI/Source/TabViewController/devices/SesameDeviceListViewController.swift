@@ -225,7 +225,7 @@ class SesameDeviceListViewController: CHBaseViewController {
             }
             
             // 下拉显示搜索框
-            if scrollDiff < 0 && offsetY < 100 {
+            if scrollDiff < -3 {
                 showSearchBar()
             }
             // 上滑隐藏搜索框

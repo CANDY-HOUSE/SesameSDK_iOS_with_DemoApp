@@ -88,6 +88,17 @@ class FriendKeyListViewController: CHBaseViewController, UICollectionViewDelegat
             self.addSesameTapped(button)
         }
         addSesameButton.title = "co.candyhouse.sesame2.shareSesameToFriends".localized
+        // 添加一个"+"标签到按钮右侧
+        let plusLabel = UILabel()
+        plusLabel.text = "+"
+        plusLabel.font = UIFont.systemFont(ofSize: 40, weight: .light)
+        plusLabel.textColor = .black
+        plusLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSesameButton.addSubview(plusLabel)
+        NSLayoutConstraint.activate([
+            plusLabel.trailingAnchor.constraint(equalTo: addSesameButton.trailingAnchor, constant: -17),
+            plusLabel.centerYAnchor.constraint(equalTo: addSesameButton.centerYAnchor)
+        ])
         contentStackView.addArrangedSubview(addSesameButton)
         
         // MARK: Drop key
