@@ -133,7 +133,7 @@ class SesameDeviceListViewController: CHBaseViewController {
         
         // 创建搜索框
         searchBar = UISearchBar()
-        searchBar.placeholder = "デバイス検索"
+        searchBar.placeholder = "co.candyhouse.sesame2.search_devices".localized
         searchBar.delegate = self
         searchBar.showsCancelButton = false
         
@@ -224,9 +224,8 @@ class SesameDeviceListViewController: CHBaseViewController {
                 return
             }
             
-            // 下拉显示搜索框 - 调整阈值，考虑contentInset
-            let showThreshold = searchBarTopConstraint.constant == 0 ? -20 : -20 - searchBarHeight
-            if offsetY < showThreshold {
+            // 下拉显示搜索框
+            if scrollDiff < 0 && offsetY < 100 {
                 showSearchBar()
             }
             // 上滑隐藏搜索框
