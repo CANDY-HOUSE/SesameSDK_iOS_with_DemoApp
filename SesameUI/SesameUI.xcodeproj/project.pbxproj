@@ -359,7 +359,6 @@
 		BEF00CBD2565483100E5DECD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF00CBC2565483100E5DECD /* Request.swift */; };
 		BEFB1DE1256A6AEF00BF95CB /* CHDeviceManagerShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */; };
 		BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */; };
-		D01127CA2E436CAD00061421 /* sesame6pro_30_21_8734fa.zip in Resources */ = {isa = PBXBuildFile; fileRef = D01127C92E436CAD00061421 /* sesame6pro_30_21_8734fa.zip */; };
 		D02B2E902DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip in Resources */ = {isa = PBXBuildFile; fileRef = D02B2E8F2DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip */; };
 		D03F7F372E2E6C8F006BFF21 /* remote_30_14_cb5c5a.zip in Resources */ = {isa = PBXBuildFile; fileRef = D03F7F362E2E6C8F006BFF21 /* remote_30_14_cb5c5a.zip */; };
 		D03F7F392E2E6CBF006BFF21 /* remoten_30_15_cb5c5a.zip in Resources */ = {isa = PBXBuildFile; fileRef = D03F7F382E2E6CBF006BFF21 /* remoten_30_15_cb5c5a.zip */; };
@@ -367,6 +366,7 @@
 		D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E33295A908300C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D04962422E3A4F6D00184F1C /* opensensor1_30_8_db7924.zip in Resources */ = {isa = PBXBuildFile; fileRef = D04962412E3A4F6D00184F1C /* opensensor1_30_8_db7924.zip */; };
+		D04DC71D2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip in Resources */ = {isa = PBXBuildFile; fileRef = D04DC71C2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip */; };
 		D06C4FD12E02EF4600BD3A0C /* sesameface1ai_30_23_321ab0.zip in Resources */ = {isa = PBXBuildFile; fileRef = D06C4FD02E02EF4600BD3A0C /* sesameface1ai_30_23_321ab0.zip */; };
 		D06C4FD32E02EF4D00BD3A0C /* sesameface1proai_30_22_321ab0.zip in Resources */ = {isa = PBXBuildFile; fileRef = D06C4FD22E02EF4D00BD3A0C /* sesameface1proai_30_22_321ab0.zip */; };
 		D0B26FC22E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */; };
@@ -879,11 +879,11 @@
 		BEF00CBC2565483100E5DECD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceManagerShared+.swift"; sourceTree = "<group>"; };
 		BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
-		D01127C92E436CAD00061421 /* sesame6pro_30_21_8734fa.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_8734fa.zip; sourceTree = "<group>"; };
 		D02B2E8F2DFD8F3000BFE305 /* bleconnector_30_11_c44362.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_c44362.zip; sourceTree = "<group>"; };
 		D03F7F362E2E6C8F006BFF21 /* remote_30_14_cb5c5a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remote_30_14_cb5c5a.zip; sourceTree = "<group>"; };
 		D03F7F382E2E6CBF006BFF21 /* remoten_30_15_cb5c5a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remoten_30_15_cb5c5a.zip; sourceTree = "<group>"; };
 		D04962412E3A4F6D00184F1C /* opensensor1_30_8_db7924.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor1_30_8_db7924.zip; sourceTree = "<group>"; };
+		D04DC71C2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_0f1f11.zip; sourceTree = "<group>"; };
 		D06C4FD02E02EF4600BD3A0C /* sesameface1ai_30_23_321ab0.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1ai_30_23_321ab0.zip; sourceTree = "<group>"; };
 		D06C4FD22E02EF4D00BD3A0C /* sesameface1proai_30_22_321ab0.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1proai_30_22_321ab0.zip; sourceTree = "<group>"; };
 		D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_18a8e4.zip; sourceTree = "<group>"; };
@@ -1694,7 +1694,7 @@
 				D0C954CA2E3BA3C500592C92 /* sesame5_30_5_2a1f8e.zip */,
 				D0C954CC2E3BA3CE00592C92 /* sesame5pro_30_7_2a1f8e.zip */,
 				D0C954CE2E3BA3D600592C92 /* sesame5us_30_16_2a1f8e.zip */,
-				D01127C92E436CAD00061421 /* sesame6pro_30_21_8734fa.zip */,
+				D04DC71C2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip */,
 				643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */,
 				D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */,
 				643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */,
@@ -2468,6 +2468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8819C102913633800431939 /* InfoPlist.strings in Resources */,
+				D04DC71D2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip in Resources */,
 				E8819C0F2913630D00431939 /* Localizable.strings in Resources */,
 				643F069F2BCD12400045D789 /* sesame_421_4_50ce5b.zip in Resources */,
 				64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */,
@@ -2492,7 +2493,6 @@
 				6483C9432B68F9FA00D8B68D /* strings_iptv_type.xml in Resources */,
 				646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */,
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
-				D01127CA2E436CAD00061421 /* sesame6pro_30_21_8734fa.zip in Resources */,
 				D0ECE0832E142794003F1C3D /* sesameface1pro_30_18_1d18be.zip in Resources */,
 				D0F85DCF2E39FF76007C1497 /* sesametouch1pro_30_9_151cd6.zip in Resources */,
 				BE562E4F2564B815004617DE /* KeyCollectionViewController.xib in Resources */,
