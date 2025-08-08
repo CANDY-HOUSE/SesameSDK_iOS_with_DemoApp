@@ -107,6 +107,12 @@ enum SesameItemCode: UInt8 {
     case HUB3_UPDATE_WIFI_SSID = 136
     case HUB3_MATTER_PAIRING_CODE = 137
     
+    // 添加密码
+    case SSM_OS3_PASSCODE_ADD = 138
+    
+    // 添加卡片
+    case SSM_OS3_CARD_ADD = 140
+    
     case SSM_OS3_IR_MODE_SET = 143
     case SSM_OS3_IR_CODE_CHANGE = 144
     case SSM_OS3_IR_CODE_EMIT = 145
@@ -137,6 +143,9 @@ enum SesameItemCode: UInt8 {
     case SSM_OS3_PALM_FIRST = 167
     case SSM_OS3_PALM_MODE_GET = 168
     case SSM_OS3_PALM_MODE_SET = 169
+    
+    // 批量添加卡片
+    case STP_ITEM_CODE_CARDS_ADD = 182
     
     // 批量添加密码
     case STP_ITEM_CODE_PASSCODES_ADD = 184

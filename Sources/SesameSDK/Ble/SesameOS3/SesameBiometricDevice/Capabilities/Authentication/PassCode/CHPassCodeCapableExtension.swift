@@ -76,6 +76,19 @@ extension CHPassCodeCapable where Self: CHSesameBaseDevice {
         unregisterProtocolDelegate(delegate, for: CHPassCodeDelegate.self)
     }
     
+    func passCodeAdd(id: Data, name: String, result: @escaping (CHResult<CHEmpty>)) {
+        if (!self.isBleAvailable(result)) { return }
+        
+        let nameData = name.data(using: .utf8) ?? Data()
+        
+        sendCommand(.init(.SSM_OS3_PASSCODE_ADD,
+                          Data([0xF0, 0x00, UInt8(id.count)]) + id + Data(repeating: 0, count: max(0, 16-id.count)) +
+                          Data([UInt8(nameData.count)]) + nameData + Data(repeating: 0, count: max(0, 16-nameData.count))
+                         )) { _ in
+            result(.success(CHResultStateNetworks(input: CHEmpty())))
+        }
+    }
+    
     func passCodeBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>)) {
             if (!self.isBleAvailable(result)) { return }
             

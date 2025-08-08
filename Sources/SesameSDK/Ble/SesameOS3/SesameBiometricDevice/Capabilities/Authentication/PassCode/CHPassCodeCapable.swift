@@ -22,4 +22,6 @@ public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableH
     func unregisterEventDelegate(_ delegate: CHPassCodeDelegate)
     
     func passCodeBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>))
+    
+    func passCodeAdd(id: Data, name: String, result: @escaping (CHResult<CHEmpty>))
 }

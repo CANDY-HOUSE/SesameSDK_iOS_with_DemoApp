@@ -9,6 +9,8 @@
 
 import UIKit
 import SesameSDK
+import SwiftUI
+
 struct SuiCard {
     var id: String
     var name: String
@@ -57,11 +59,17 @@ extension BiometricData {
     }
 }
 
-extension NFCCardVC {
+extension NFCCardVC: UIDocumentPickerDelegate {
     static func instance(_ device: CHCardCapable) -> NFCCardVC {
         let vc = NFCCardVC(nibName: nil, bundle: nil)
         vc.mDevice = device
         return vc
+    }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else { return }
+        
+        readJsonAndWriteToBluetooth(url)
     }
 }
 
@@ -116,6 +124,8 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
         let deviceName = mDevice.deviceName
         let emptyNFCHit = String(format:"co.candyhouse.sesame2.TouchEmptyNFCHint".localized,
                                  arguments:[deviceName,deviceName])
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        dismissButton.addGestureRecognizer(longPressGesture)
         let floatView = FloatingTipView.showIn(superView: view, style:  .textOnly(text:emptyNFCHit))
         executeOnMainThread { [weak self] in
             self?.tableView.contentInset = .init(top: floatView.FloatingHeight, left: 0, bottom: 0, right: 0)
@@ -127,6 +137,205 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
             isRegistrerMode = !isRegistrerMode
         }
 
+    }
+    
+    @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        guard !isRegistrerMode, gesture.state == .began else { return }
+        
+        let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+        impactFeedback.impactOccurred()
+        
+        showCustomInputDialog()
+    }
+    
+    private func showCustomInputDialog(
+        passwordLabel: String = "co.candyhouse.sesame2.card_id".localized,
+        passwordPlaceholder: String = "co.candyhouse.sesame2.hint_enter_card_id_hex".localized,
+        passwordErrorHint: String = "co.candyhouse.sesame2.hint_enter_card_id".localized
+    ) {
+        let swiftUIView = CustomInputDialog(
+            passwordLabel: passwordLabel,
+            passwordPlaceholder: passwordPlaceholder,
+            passwordErrorHint: passwordErrorHint,
+            passwordFilter: { newValue in
+                newValue.filter { char in
+                    "0123456789ABCDEFabcdef".contains(char)
+                }
+            },
+            passwordKeyboardType: .asciiCapable,
+            onConfirm: { name, password in
+                self.handleConfirm(name: name, id: password)
+            },
+            onBatchAdd: {
+                self.handleBatchAdd()
+            },
+            onDismiss: {
+                self.dismiss(animated: true)
+            }
+        )
+        
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        hostingController.modalPresentationStyle = .overCurrentContext
+        hostingController.modalTransitionStyle = .crossDissolve
+        hostingController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+        present(hostingController, animated: true)
+    }
+    
+    private func handleConfirm(name: String, id: String) {
+        var tempIdValueList = [UInt8]()
+        
+        for i in stride(from: 0, to: id.count, by: 2) {
+            let startIndex = id.index(id.startIndex, offsetBy: i)
+            let endIndex = id.index(startIndex, offsetBy: 2)
+            let hexPair = String(id[startIndex..<endIndex])
+            if let hexValue = UInt8(hexPair, radix: 16) {
+                tempIdValueList.append(hexValue)
+            }
+        }
+        
+        mDevice.cardAdd(id: Data(tempIdValueList), name: name) { result in
+            switch result {
+            case .success:
+                L.d("CardId added successfully")
+            case .failure(let error):
+                self.showToast("CardId add failed: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func handleBatchAdd() {
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.json])
+        documentPicker.delegate = self
+        present(documentPicker, animated: true)
+    }
+    
+    func readJsonAndWriteToBluetooth(_ url: URL) {
+        do {
+            // 检查文件扩展名
+            let fileName = url.lastPathComponent
+            guard fileName.lowercased().hasSuffix(".json") else {
+                showToast("Please select a JSON file")
+                return
+            }
+            
+            // 获取文件访问权限
+            guard url.startAccessingSecurityScopedResource() else {
+                showToast("Cannot access file")
+                return
+            }
+            defer { url.stopAccessingSecurityScopedResource() }
+            
+            // 读取JSON数据
+            let jsonData = try Data(contentsOf: url)
+            let jsonObject = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any]
+            guard let nfcCardsArray = jsonObject?["nfc_cards"] as? [[String: String]] else {
+                showToast("Invalid JSON format")
+                return
+            }
+            
+            var tempList = [UInt8]()
+            
+            for nfcCard in nfcCardsArray {
+                guard let name = nfcCard["name"],
+                      let id = nfcCard["id"] else { continue }
+                // 处理ID
+                var tempCardsValueList = [UInt8]()
+                
+                for i in stride(from: 0, to: id.count, by: 2) {
+                    let startIndex = id.index(id.startIndex, offsetBy: i)
+                    let endIndex = id.index(startIndex, offsetBy: 2)
+                    let hexPair = String(id[startIndex..<endIndex])
+                    if let hexValue = UInt8(hexPair, radix: 16) {
+                        tempCardsValueList.append(hexValue)
+                    }
+                }
+                
+                tempList.append(UInt8(tempCardsValueList.count))
+                tempList.append(contentsOf: tempCardsValueList)
+                
+                // 处理账号名称
+                let MAX_PASSCODE_NAME_SIZE = 20
+                var cardName = Array(name.utf8)
+                var cardNameSize = cardName.count
+                
+                if cardNameSize > MAX_PASSCODE_NAME_SIZE {
+                    cardNameSize = MAX_PASSCODE_NAME_SIZE
+                    cardName = Array(cardName.prefix(MAX_PASSCODE_NAME_SIZE))
+                }
+                
+                tempList.append(UInt8(cardNameSize))
+                tempList.append(contentsOf: cardName)
+            }
+            
+            let payloadData = Data(tempList)
+            L.d("DataSize: \(payloadData.count)")
+            
+            // 显示进度对话框
+            showProgressDialog()
+            
+            // 调用蓝牙写入方法
+            mDevice.cardBatchAdd(
+                data: payloadData,
+                progressCallback: { (current: Int, total: Int) in
+                    let percentage = Float(current) / Float(total)
+                    self.updateProgress(percentage)
+                }
+            ) { result in
+                self.hideProgressDialog()
+                switch result {
+                case .success:
+                    self.mDevice.cards(){ _ in}
+                case .failure(let error):
+                    self.showToast("Cards import failed: \(error.localizedDescription)")
+                }
+            }
+        } catch {
+            L.e("Failed to read JSON file: \(error)")
+            showToast("Failed to read file: \(error.localizedDescription)")
+        }
+    }
+
+    // 显示Toast消息
+    func showToast(_ message: String) {
+        let showAlert = {
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            self.present(alert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                alert.dismiss(animated: true)
+            }
+        }
+        
+        if Thread.isMainThread {
+            showAlert()
+        } else {
+            DispatchQueue.main.async {
+                showAlert()
+            }
+        }
+    }
+    
+    var progressModal: ProgressModalViewController?
+    
+    func showProgressDialog() {
+        progressModal = ProgressModalViewController()
+        progressModal?.modalPresentationStyle = .overFullScreen
+        progressModal?.modalTransitionStyle = .crossDissolve
+        present(progressModal!, animated: true)
+    }
+    
+    func updateProgress(_ progress: Float) {
+        DispatchQueue.main.async { [weak self] in
+            self?.progressModal?.updateProgress(Double(progress))
+        }
+    }
+    
+    func hideProgressDialog() {
+        DispatchQueue.main.async { [weak self] in
+            self?.progressModal?.dismiss(animated: true) {
+                self?.progressModal = nil
+            }
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

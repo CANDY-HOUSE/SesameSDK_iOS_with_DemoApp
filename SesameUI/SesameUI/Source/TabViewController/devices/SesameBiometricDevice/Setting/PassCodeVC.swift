@@ -132,6 +132,54 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
         let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
         impactFeedback.impactOccurred()
         
+        showCustomInputDialog()
+    }
+    
+    private func showCustomInputDialog() {
+        let swiftUIView = CustomInputDialog(
+            onConfirm: { name, password in
+                self.handleConfirm(name: name, password: password)
+            },
+            onBatchAdd: {
+                self.handleBatchAdd()
+            },
+            onDismiss: {
+                self.dismiss(animated: true)
+            }
+        )
+        
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        hostingController.modalPresentationStyle = .overCurrentContext
+        hostingController.modalTransitionStyle = .crossDissolve
+        hostingController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+        present(hostingController, animated: true)
+    }
+    
+    private func handleConfirm(name: String, password: String) {
+        let hexPassword = convertPasswordToHex(password)
+        var tempPasscodeValueList = [UInt8]()
+        
+        for i in stride(from: 0, to: hexPassword.count, by: 2) {
+            let startIndex = hexPassword.index(hexPassword.startIndex, offsetBy: i)
+            let endIndex = hexPassword.index(startIndex, offsetBy: 2)
+            let hexPair = String(hexPassword[startIndex..<endIndex])
+            if let hexValue = UInt8(hexPair, radix: 16) {
+                tempPasscodeValueList.append(hexValue)
+            }
+        }
+        
+        mDevice.passCodeAdd(id: Data(tempPasscodeValueList), name: name) { result in
+            switch result {
+            case .success:
+                L.d("Password added successfully")
+            case .failure(let error):
+                self.showToast("Password add failed: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func handleBatchAdd() {
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.json])
         documentPicker.delegate = self
         present(documentPicker, animated: true)
@@ -239,10 +287,20 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
 
     // 显示Toast消息
     func showToast(_ message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        present(alert, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            alert.dismiss(animated: true)
+        let showAlert = {
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            self.present(alert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                alert.dismiss(animated: true)
+            }
+        }
+        
+        if Thread.isMainThread {
+            showAlert()
+        } else {
+            DispatchQueue.main.async {
+                showAlert()
+            }
         }
     }
     

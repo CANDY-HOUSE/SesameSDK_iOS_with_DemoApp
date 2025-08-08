@@ -376,3 +376,16 @@
 "co.candyhouse.sesame2.face.radar_distance_description" = "・这是雷达唤醒系统的侦测距离。\n・每日人流量超过10次之地方, 设置短距以省电！\n・每日人流量10次以下之地方, 设置最长距离以获得最爽体验。\n・即使为最短距离，按下「开锁按钮/侧面按钮」将立即启动人脸或掌静脉识别，兼顾极度省电与最爽体验。";
 
 "co.candyhouse.sesame2.search_devices" = "搜索设备";
+
+"co.candyhouse.sesame2.ssm_name" = "名称";
+"co.candyhouse.sesame2.ssm_hint_enter_name" = "请输入名称";
+"co.candyhouse.sesame2.ssm_password" = "密码";
+"co.candyhouse.sesame2.ssm_hint_enter_password" = "请输入密码（仅数字）";
+"co.candyhouse.sesame2.ssm_hint_enter_password_tips" = "请输入密码";
+"co.candyhouse.sesame2.ssm_batch_add" = "批量添加";
+"co.candyhouse.sesame2.ssm_cancel" = "取消";
+"co.candyhouse.sesame2.ssm_confirm" = "确认";
+
+"co.candyhouse.sesame2.card_id" = "卡ID";
+"co.candyhouse.sesame2.hint_enter_card_id_hex" = "输入卡ID（0-9,A-F,a-f）";
+"co.candyhouse.sesame2.hint_enter_card_id" = "请输入卡ID";

@@ -6,6 +6,8 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 
+import Foundation
+
 public protocol CHCardCapable: CHDevice ,CHSesameConnector, CHServerCapableHandler {
     
     func cards(result: @escaping(CHResult<CHEmpty>))
@@ -19,4 +21,6 @@ public protocol CHCardCapable: CHDevice ,CHSesameConnector, CHServerCapableHandl
     func registerEventDelegate(_ delegate: CHCardDelegate)
     func unregisterEventDelegate(_ delegate: CHCardDelegate)
     
+    func cardAdd(id: Data, name: String, result: @escaping (CHResult<CHEmpty>))
+    func cardBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>))
 }
