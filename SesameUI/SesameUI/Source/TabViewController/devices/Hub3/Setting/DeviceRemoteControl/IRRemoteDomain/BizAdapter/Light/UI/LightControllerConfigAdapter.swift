@@ -274,7 +274,7 @@ class LightControllerConfigAdapter: UIConfigAdapter {
         
         if irRow.isEmpty || code != currentCode {
             currentCode = code
-            irRow = irTable[code]
+            irRow = irTable[min(code, irTable.count - 1)]
         }
         
         if !isMatched {

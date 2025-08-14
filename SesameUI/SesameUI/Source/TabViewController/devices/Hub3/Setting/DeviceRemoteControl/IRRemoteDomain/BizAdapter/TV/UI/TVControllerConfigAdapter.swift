@@ -247,12 +247,12 @@ class TVControllerConfigAdapter: UIConfigAdapter {
         
         if irRow.isEmpty || code != currentCode {
             currentCode = code
-            irRow = irTable[code]
+            irRow = irTable[min(code, irTable.count - 1)]
             // 处理特殊情况
             if code == SpecialCode.sharpCode {
-                specialIrRow = irTable[SpecialCode.sharpCodeRelocation]
+                specialIrRow = irTable[min(SpecialCode.sharpCodeRelocation, irTable.count - 1)]
             } else if code == SpecialCode.xiaomiCode {
-                specialIrRow = irTable[SpecialCode.xiaomiCodeRelocation]
+                specialIrRow = irTable[min(SpecialCode.sharpCodeRelocation, irTable.count - 1)]
             }
         }
         
