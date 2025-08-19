@@ -366,6 +366,7 @@
 		D00CD4A92E4A210A0037A56B /* sesameface1pro_30_18_ad4096.zip in Resources */ = {isa = PBXBuildFile; fileRef = D00CD4A82E4A210A0037A56B /* sesameface1pro_30_18_ad4096.zip */; };
 		D00CD4AB2E4A211E0037A56B /* sesametouch1_30_10_ad4096.zip in Resources */ = {isa = PBXBuildFile; fileRef = D00CD4AA2E4A211E0037A56B /* sesametouch1_30_10_ad4096.zip */; };
 		D00CD4AD2E4A21230037A56B /* sesametouch1pro_30_9_ad4096.zip in Resources */ = {isa = PBXBuildFile; fileRef = D00CD4AC2E4A21230037A56B /* sesametouch1pro_30_9_ad4096.zip */; };
+		D03B85ED2E5461AE0009B163 /* bleconnector_30_11_1fc7a8.zip in Resources */ = {isa = PBXBuildFile; fileRef = D03B85EC2E5461AE0009B163 /* bleconnector_30_11_1fc7a8.zip */; };
 		D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E33295A908300C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
@@ -373,7 +374,6 @@
 		D04DC71D2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip in Resources */ = {isa = PBXBuildFile; fileRef = D04DC71C2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip */; };
 		D0B26FC22E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */; };
 		D0B26FC42E0C60FD0029F15A /* sesamebot2_30_17_18a8e4.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0B26FC32E0C60FD0029F15A /* sesamebot2_30_17_18a8e4.zip */; };
-		D0C3ECDD2E4E16AA00331815 /* bleconnector_30_11_a4b84d.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0C3ECDC2E4E16AA00331815 /* bleconnector_30_11_a4b84d.zip */; };
 		D0C954CB2E3BA3C500592C92 /* sesame5_30_5_2a1f8e.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0C954CA2E3BA3C500592C92 /* sesame5_30_5_2a1f8e.zip */; };
 		D0C954CD2E3BA3CE00592C92 /* sesame5pro_30_7_2a1f8e.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0C954CC2E3BA3CE00592C92 /* sesame5pro_30_7_2a1f8e.zip */; };
 		D0C954CF2E3BA3D600592C92 /* sesame5us_30_16_2a1f8e.zip in Resources */ = {isa = PBXBuildFile; fileRef = D0C954CE2E3BA3D600592C92 /* sesame5us_30_16_2a1f8e.zip */; };
@@ -887,11 +887,11 @@
 		D00CD4A82E4A210A0037A56B /* sesameface1pro_30_18_ad4096.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1pro_30_18_ad4096.zip; sourceTree = "<group>"; };
 		D00CD4AA2E4A211E0037A56B /* sesametouch1_30_10_ad4096.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesametouch1_30_10_ad4096.zip; sourceTree = "<group>"; };
 		D00CD4AC2E4A21230037A56B /* sesametouch1pro_30_9_ad4096.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesametouch1pro_30_9_ad4096.zip; sourceTree = "<group>"; };
+		D03B85EC2E5461AE0009B163 /* bleconnector_30_11_1fc7a8.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_1fc7a8.zip; sourceTree = "<group>"; };
 		D04962412E3A4F6D00184F1C /* opensensor1_30_8_db7924.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor1_30_8_db7924.zip; sourceTree = "<group>"; };
 		D04DC71C2E44BE6A0066D28E /* sesame6pro_30_21_0f1f11.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_0f1f11.zip; sourceTree = "<group>"; };
 		D0B26FC12E0C60EE0029F15A /* sesamebike2_30_6_18a8e4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_18a8e4.zip; sourceTree = "<group>"; };
 		D0B26FC32E0C60FD0029F15A /* sesamebot2_30_17_18a8e4.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot2_30_17_18a8e4.zip; sourceTree = "<group>"; };
-		D0C3ECDC2E4E16AA00331815 /* bleconnector_30_11_a4b84d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_a4b84d.zip; sourceTree = "<group>"; };
 		D0C954CA2E3BA3C500592C92 /* sesame5_30_5_2a1f8e.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame5_30_5_2a1f8e.zip; sourceTree = "<group>"; };
 		D0C954CC2E3BA3CE00592C92 /* sesame5pro_30_7_2a1f8e.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame5pro_30_7_2a1f8e.zip; sourceTree = "<group>"; };
 		D0C954CE2E3BA3D600592C92 /* sesame5us_30_16_2a1f8e.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame5us_30_16_2a1f8e.zip; sourceTree = "<group>"; };
@@ -1688,7 +1688,7 @@
 		B04D1D1824EA37BB0021ACA2 /* application_dfu */ = {
 			isa = PBXGroup;
 			children = (
-				D0C3ECDC2E4E16AA00331815 /* bleconnector_30_11_a4b84d.zip */,
+				D03B85EC2E5461AE0009B163 /* bleconnector_30_11_1fc7a8.zip */,
 				D04962412E3A4F6D00184F1C /* opensensor1_30_8_db7924.zip */,
 				D00CD4A22E4A20B40037A56B /* remote_30_14_03d244.zip */,
 				D00CD4A42E4A20BA0037A56B /* remoten_30_15_03d244.zip */,
@@ -2518,6 +2518,7 @@
 				6483C9252B68F98800D8B68D /* strings.xml in Resources */,
 				6483C95B2B68FA3500D8B68D /* strings_pjt_type.xml in Resources */,
 				BE85D3052580A8030091D3A6 /* WifiModule2SSIDScanCell.xib in Resources */,
+				D03B85ED2E5461AE0009B163 /* bleconnector_30_11_1fc7a8.zip in Resources */,
 				BED189F725591C72006544A0 /* WifiModule2SesameCell.xib in Resources */,
 				D00CD4A52E4A20BA0037A56B /* remoten_30_15_03d244.zip in Resources */,
 				D0C954CB2E3BA3C500592C92 /* sesame5_30_5_2a1f8e.zip in Resources */,
@@ -2539,7 +2540,6 @@
 				643F06A02BCD12400045D789 /* sesamebike1_21_3_d7162a.zip in Resources */,
 				BE562E422563C62D004617DE /* FriendKeyListCell.xib in Resources */,
 				6483C9552B68FA2600D8B68D /* strings_fans_type.xml in Resources */,
-				D0C3ECDD2E4E16AA00331815 /* bleconnector_30_11_a4b84d.zip in Resources */,
 				646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */,
 				D0C954CD2E3BA3CE00592C92 /* sesame5pro_30_7_2a1f8e.zip in Resources */,
 				B07FAF96251B54F400FB5821 /* Media.xcassets in Resources */,
