@@ -87,6 +87,14 @@ class ECC {
         return bytes
 
     }
+    
+    public func havePubKey(remotePublicKey: [UInt8]) -> Bool {
+        return SecKeyCreateWithData(Data(hex: "04") + Data(remotePublicKey) as CFData, [
+                kSecAttrKeyType as String: kSecAttrKeyTypeEC,
+                kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
+                SecKeyKeyExchangeParameter.requestedSize.rawValue as String: 32
+            ] as CFDictionary, nil) != nil
+    }
 }
 
 

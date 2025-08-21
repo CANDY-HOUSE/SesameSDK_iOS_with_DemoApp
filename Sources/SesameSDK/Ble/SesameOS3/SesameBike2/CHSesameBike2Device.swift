@@ -184,9 +184,14 @@ extension CHSesameBike2Device {
                 case .success(_):
                     // sendCommand內容已在CHSesameOS3裡
                     self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
-                        self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...2])!
-
-                        let ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[3...66].bytes))[0...15]
+                        var ecdhSecretPre16 = Data()
+                        if (self.appKeyPair.havePubKey(remotePublicKey: response.data[13...76].bytes)) { // 新协议
+                            ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[13...76].bytes))[0...15]
+                            self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...6])!
+                        } else {
+                            ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[3...66].bytes))[0...15]
+                            self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...2])!
+                        }
 
                         self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString, sessionKey: CC.CMAC.AESCMAC(self.mSesameToken!, key: ecdhSecretPre16),sessionToken: ("00"+self.mSesameToken!.toHexString()).hexStringtoData())
 
