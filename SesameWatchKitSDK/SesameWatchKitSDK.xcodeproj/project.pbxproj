@@ -120,7 +120,6 @@
 		3B8D5E202E2D176D00FE456E /* CHRemoteBaseTriggerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D742E2D176D00FE456E /* CHRemoteBaseTriggerSettings.swift */; };
 		3B8D5E212E2D176D00FE456E /* CHBikeLockDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D102E2D176D00FE456E /* CHBikeLockDevice+Login.swift */; };
 		3B8D5E222E2D176D00FE456E /* CHAPICallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DA12E2D176D00FE456E /* CHAPICallObject.swift */; };
-		3B8D5E232E2D176D00FE456E /* CHSesame5Device+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D2D2E2D176D00FE456E /* CHSesame5Device+Register.swift */; };
 		3B8D5E242E2D176D00FE456E /* CHOpenSensorCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D552E2D176D00FE456E /* CHOpenSensorCapable.swift */; };
 		3B8D5E252E2D176D00FE456E /* SesameOS3SegmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D8A2E2D176D00FE456E /* SesameOS3SegmentType.swift */; };
 		3B8D5E262E2D176D00FE456E /* SafeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DAD2E2D176D00FE456E /* SafeDictionary.swift */; };
@@ -362,7 +361,6 @@
 		3B8D5D2A2E2D176D00FE456E /* CHSesame5Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5Device.swift; sourceTree = "<group>"; };
 		3B8D5D2B2E2D176D00FE456E /* CHSesame5Device+Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Command.swift"; sourceTree = "<group>"; };
 		3B8D5D2C2E2D176D00FE456E /* CHSesame5Device+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+History.swift"; sourceTree = "<group>"; };
-		3B8D5D2D2E2D176D00FE456E /* CHSesame5Device+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Register.swift"; sourceTree = "<group>"; };
 		3B8D5D2F2E2D176D00FE456E /* CHSesameBike2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2.swift; sourceTree = "<group>"; };
 		3B8D5D302E2D176D00FE456E /* CHSesameBike2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike2Device.swift; sourceTree = "<group>"; };
 		3B8D5D322E2D176D00FE456E /* CHCardCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCardCapable.swift; sourceTree = "<group>"; };
@@ -758,7 +756,6 @@
 				3B8D5D2A2E2D176D00FE456E /* CHSesame5Device.swift */,
 				3B8D5D2B2E2D176D00FE456E /* CHSesame5Device+Command.swift */,
 				3B8D5D2C2E2D176D00FE456E /* CHSesame5Device+History.swift */,
-				3B8D5D2D2E2D176D00FE456E /* CHSesame5Device+Register.swift */,
 			);
 			path = Sesame5;
 			sourceTree = "<group>";
@@ -1838,7 +1835,6 @@
 				3B8D5E202E2D176D00FE456E /* CHRemoteBaseTriggerSettings.swift in Sources */,
 				3B8D5E212E2D176D00FE456E /* CHBikeLockDevice+Login.swift in Sources */,
 				3B8D5E222E2D176D00FE456E /* CHAPICallObject.swift in Sources */,
-				3B8D5E232E2D176D00FE456E /* CHSesame5Device+Register.swift in Sources */,
 				3B8D5E242E2D176D00FE456E /* CHOpenSensorCapable.swift in Sources */,
 				3B8D5E252E2D176D00FE456E /* SesameOS3SegmentType.swift in Sources */,
 				3B8D5E262E2D176D00FE456E /* SafeDictionary.swift in Sources */,
