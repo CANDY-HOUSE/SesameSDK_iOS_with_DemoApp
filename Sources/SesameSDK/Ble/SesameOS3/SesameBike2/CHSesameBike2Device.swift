@@ -58,7 +58,7 @@ class CHSesameBike2Device: CHSesameOS3 ,CHSesameBike2, CHDeviceUtil {
         let data = payload.payload
         switch itemCode {
         case .mechStatus:
-            mechStatus = CHSesameBike2MechStatus.fromData(data)!
+            mechStatus = Sesame5MechStatus.fromData(data)!
             self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
 
         default:
