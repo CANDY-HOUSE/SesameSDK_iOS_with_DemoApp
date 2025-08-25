@@ -36,7 +36,11 @@ class CHSesameBot2Device: CHSesameOS3, CHSesameBot2, CHDeviceUtil {
         let data = payload.payload
         switch itemCode {
         case .mechStatus:
-            mechStatus = CHSesameBike2MechStatus.fromData(data)!
+            if data.count == 7 {
+                mechStatus = Sesame5MechStatus.fromData(data)!
+            } else {
+                mechStatus = CHSesameBike2MechStatus.fromData(data)!
+            }
             self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
         default:
             L.d("[bot2][publish]!![\(data.bytes)]")
@@ -132,63 +136,5 @@ extension CHSesameBot2Device {
     
     func getScriptNameList(result: @escaping (CHResult<CHSesamebot2Status>)) {
         result(.success(CHResultStateBLE(input: self.scripts)))
-    }
-}
-
-extension CHSesameBot2Device {
-    func register(result: @escaping CHResult<CHEmpty>)  {
-        if deviceStatus != .readyToRegister() {
-            result(.failure(NSError.deviceStatusNotReadyToRegister))
-            return
-        }
-        deviceStatus = .registering()
-        
-        let date = Date()
-        var timestamp: UInt32 = UInt32(date.timeIntervalSince1970)
-        let timestampData = Data(bytes: &timestamp,count: MemoryLayout.size(ofValue: timestamp))
-        let payload = Data(appKeyPair.publicKey)+timestampData
-        self.commandQueue = DispatchQueue(label:deviceId.uuidString, qos: .userInitiated)
-        //        L.d("[bk2]register item",deviceId.uuidString)
-        let request = CHAPICallObject(.post, "/device/v1/sesame5/\(self.deviceId.uuidString)", [
-            "t": self.advertisement!.productType!.rawValue,
-            "pk": self.mSesameToken!.toHexString()
-        ])
-        
-        CHAccountManager
-            .shared
-            .API(request: request) { response in
-                switch response {
-                case .success(_):
-                    self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
-                        var ecdhSecretPre16 = Data()
-                        if (self.appKeyPair.havePubKey(remotePublicKey: response.data[13...76].bytes)) { // 新协议
-                            ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[13...76].bytes))[0...15]
-                            self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...6])!
-                        } else {
-                            ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[3...66].bytes))[0...15]
-                            self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...2])!
-                        }
-                        self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString, sessionKey: CC.CMAC.AESCMAC(self.mSesameToken!, key: ecdhSecretPre16),sessionToken: ("00"+self.mSesameToken!.toHexString()).hexStringtoData())
-                        self.sesame2KeyData = CHDeviceKey(// 建立設備
-                            deviceUUID: self.deviceId,
-                            deviceModel: self.productModel.deviceModel(),
-                            historyTag: nil,
-                            keyIndex: "0000",
-                            secretKey: ecdhSecretPre16.toHexString(),
-                            sesame2PublicKey: self.mSesameToken!.toHexString()
-                        )
-                        self.isRegistered = true // 設定為已註冊
-                        self.goIOT()
-                        self.deviceStatus = self.mechStatus!.isInLockRange  ? .locked() :.unlocked()
-                        CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!) // 存到SDK層的DB中(why?!
-                        result(.success(CHResultStateNetworks(input: CHEmpty())))
-                    }
-                case .failure(let error):
-                    L.d("[stp][bk2]register error",error)
-                    result(.failure(error))
-                    //                    self.deviceStatus = .waitingForAuth()
-                    self.disconnect(){_ in}
-                }
-            }
     }
 }

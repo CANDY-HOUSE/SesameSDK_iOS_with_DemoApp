@@ -60,10 +60,10 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
         let timestampData = Data(bytes: &timestamp,count: MemoryLayout.size(ofValue: timestamp))
         let payload = Data(appKeyPair.publicKey)+timestampData
         self.commandQueue = DispatchQueue(label:deviceId.uuidString, qos: .userInitiated)
-        //        L.d("[bk2]register item",deviceId.uuidString)
+        
         let request = CHAPICallObject(.post, "/device/v1/sesame5/\(self.deviceId.uuidString)", [
-            "t": self.advertisement!.productType!.rawValue,
-            "pk": self.mSesameToken!.toHexString()
+            "t":advertisement!.productType!.rawValue,
+            "pk":self.mSesameToken!.toHexString()
         ])
         
         CHAccountManager
@@ -71,12 +71,24 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
             .API(request: request) { response in
                 switch response {
                 case .success(_):
-                    // sendCommand內容已在CHSesameOS3裡
                     self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
-                        self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...2])!
+                        // 检查是否为错误响应 长度为4且最后一位为09（错误标记位）
+                        // [1001297]嵌入设备在多App同时并发注册时，后注册的设备会返回4个字节长度且最后一位为09的数据。
+                        if(response.data.count == 4 && response.data[3] == 0x09){
+                            return
+                        }
+                        var ecdhSecretPre16 = Data()
+                        if (self.appKeyPair.havePubKey(remotePublicKey: response.data[13...76].bytes)) { // 新协议
+                            ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[13...76].bytes))[0...15]
+                            self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...6])!
+                        } else {
+                            ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[3...66].bytes))[0...15]
+                            self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...2])!
+                        }
                         
-                        let ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[3...66].bytes))[0...15]
-                        
+                        if let sesame5Device = self as? CHSesame5Device {
+                            sesame5Device.mechSetting = CHSesame5MechSettings.fromData(response.data[7...12])!
+                        }
                         self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString, sessionKey: CC.CMAC.AESCMAC(self.mSesameToken!, key: ecdhSecretPre16),sessionToken: ("00"+self.mSesameToken!.toHexString()).hexStringtoData())
                         
                         self.sesame2KeyData = CHDeviceKey(// 建立設備
@@ -90,11 +102,11 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
                         self.isRegistered = true // 設定為已註冊
                         self.goIOT()
                         self.deviceStatus = self.mechStatus!.isInLockRange  ? .locked() :.unlocked()
-                        CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!) // 存到SDK層的DB中(why?!
+                        CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!) // 存到SDK層的DB中
                         result(.success(CHResultStateNetworks(input: CHEmpty())))
                     }
                 case .failure(let error):
-                    L.d("[stp][bk2]register error",error)
+                    L.d("[stp]register error",error)
                     result(.failure(error))
                     //                    self.deviceStatus = .waitingForAuth()
                     self.disconnect(){_ in}
