@@ -58,9 +58,16 @@ class CHSesameBot2Device: CHSesameOS3, CHSesameBot2, CHDeviceUtil {
                     isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
                 }
                 if isConnectedByWM2,
-                   let mechStatusData = content.data.mechStatus?.hexStringtoData(),
-                   let mechStatus = CHSesameBike2MechStatus.fromData(mechStatusData) {
-                    self.mechStatus = mechStatus
+                   let mechStatusData = content.data.mechStatus?.hexStringtoData() {
+                    if mechStatusData.count >= 7 { // 新固件蓝牙上报长度为7，iot下发的长度为8
+                        if let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
+                            self.mechStatus = mechStatus
+                        }
+                    } else {
+                        if let mechStatus = CHSesameBike2MechStatus.fromData(mechStatusData) {
+                            self.mechStatus = mechStatus
+                        }
+                    }
                 }
                 if isConnectedByWM2 {
                     self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
