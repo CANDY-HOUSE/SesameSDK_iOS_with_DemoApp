@@ -80,7 +80,7 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
                         var ecdhSecretPre16 = Data()
                         if (self.appKeyPair.havePubKey(remotePublicKey: response.data[13...76].bytes)) { // 新协议
                             ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[13...76].bytes))[0...15]
-                            self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...6])!
+                            self.mechStatus = Sesame5MechStatus.fromData(response.data[0...6])!
                         } else {
                             ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[3...66].bytes))[0...15]
                             self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...2])!
