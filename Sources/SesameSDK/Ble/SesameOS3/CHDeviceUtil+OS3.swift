@@ -114,6 +114,47 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
             }
     }
     
+    func goIOT() {
+//        L.d("[bk2][iot]=>[goIOT]")
+        if( self.isGuestKey){ return }
+        
+#if os(iOS)
+        CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
+            switch result {
+            case .success(let content):
+                var isConnectedByWM2 = false
+                if let wm2s = content.data.wifiModule2s {
+                    isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
+                }
+                
+                if isConnectedByWM2,
+                   let mechStatusData = content.data.mechStatus?.hexStringtoData() {
+                    if mechStatusData.count >= 7 { // 新固件蓝牙上报长度为7，iot下发的长度为8
+                        if let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
+                            self.mechStatus = mechStatus
+                        }
+                    } else {
+                        if let mechStatus = CHSesameBike2MechStatus.fromData(mechStatusData) {
+                            self.mechStatus = mechStatus
+                        }
+                    }
+                }
+                
+                if isConnectedByWM2 {
+                    self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
+                } else {
+                    self.deviceShadowStatus = nil
+                }
+                
+                if let sesame5Device = self as? CHSesame5Device {
+                    sesame5Device.isConnectedByWM2 = isConnectedByWM2
+                }
+            case .failure( _): break
+            }
+        }
+#endif
+    }
+    
     /// 更新固件
     /// - Parameter result: 返回 peripheral
     func updateFirmware(result: @escaping CHResult<CBPeripheral?>) {

@@ -34,37 +34,6 @@ class CHSesame5Device: CHSesameOS3, CHDeviceUtil ,CHSesame5 {
             }
         }
     }
-   
-    func goIOT() {
-        L.d("[ss5][iot]goIOT <=")
-        if (self.isGuestKey){ return }
-        
-#if os(iOS)
-        CHIoTManager.shared.subscribeCHDeviceShadow(self) { [self] result in
-            switch result {
-            case .success(let content):
-//                L.d("[s5 pro][iot]goiot成功拉！！")
-                if let wm2s = content.data.wifiModule2s {
-                    isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
-                }
-                if isConnectedByWM2,
-                   let mechStatusData = content.data.mechStatus?.hexStringtoData(),
-                   let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
-                    self.mechStatus = mechStatus
-                }
-//                L.d("[s5 pro][iot]",isConnectedByWM2)
-                if isConnectedByWM2 {
-                    self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
-                }else{
-                    self.deviceShadowStatus = nil
-                }
-            case .failure( _):
-                L.d("[s5 pro][iot]goiot錯誤！！")
-                break
-            }
-        }
-#endif
-    }
 
     override func onGattSesamePublish(_ payload: SesameOS3PublishPayload) {
         super.onGattSesamePublish(payload)

@@ -48,6 +48,9 @@ extension SesameDeviceListViewController {
             return false
         }
         let (irItems, indexPaths) = handleSubItems(indexPath.row, device)
+        guard irItems.first != nil else {
+            return true
+        }
         tableViewProxy.registCells(irItems.first!.cellCls)
         tableViewProxy.tableView.performBatchUpdates {
             if !device.preference.expanded {
@@ -74,7 +77,7 @@ extension SesameDeviceListViewController {
     }
     
     func isExpandable(_ device: CHDevice) -> Bool {
-        if let hub3 = device as? CHHub3, hub3.irRemotes.count > 0 {
+        if let hub3 = device as? CHHub3 {
             return true
         }
         if let bot2 = device as? CHSesameBot2, bot2.scripts.eventLength > 0 {

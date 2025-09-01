@@ -123,6 +123,7 @@ final class CHUIPlainSettingView: UIView, CHUIView {
     private let contentView = UIStackView()
     private let titleLabel = UILabel()
     private let valueLabel = UILabel()
+    private let plusLabel = UILabel() // "+" 标签
     private let button = UIButton(type: .custom)
     private var action: Action?
     private var titleWidth: NSLayoutConstraint!
@@ -141,6 +142,7 @@ final class CHUIPlainSettingView: UIView, CHUIView {
         contentView.addArrangedSubview(titleLabel)
         contentView.addArrangedSubview(exclamation)
         contentView.addArrangedSubview(valueLabel)
+        contentView.addArrangedSubview(plusLabel)
 
         exclamation.autoLayoutWidth(20)
         exclamation.autoLayoutHeight(20).priority = .required - 1
@@ -158,6 +160,17 @@ final class CHUIPlainSettingView: UIView, CHUIView {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 1
         titleLabel.minimumScaleFactor = 0.1
+        
+        // 配置 plusLabel
+        plusLabel.text = "+"
+        plusLabel.textAlignment = .center
+        plusLabel.textColor = .black
+        plusLabel.font = UIFont.systemFont(ofSize: 24)
+        plusLabel.isHidden = true // 默认隐藏
+        plusLabel.setContentHuggingPriority(.required, for: .horizontal)
+        plusLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        containerView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 6)
+        containerView.isLayoutMarginsRelativeArrangement = true
         
         backgroundColor = .white
         
@@ -182,6 +195,10 @@ final class CHUIPlainSettingView: UIView, CHUIView {
     
     func setColor(_ color: UIColor) {
         titleLabel.textColor = color
+    }
+    
+    func hidePlusLable(_ hide: Bool) {
+        plusLabel.isHidden = hide
     }
 }
 

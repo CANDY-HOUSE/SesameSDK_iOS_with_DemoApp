@@ -399,6 +399,7 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
             }
         }
         sesameExclamationContainerView.isHidden = wifiModuleDeviceModels.count > 0 || (wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == false
+        addSesameButtonView.hidePlusLable(wifiModuleDeviceModels.count == 0 || (wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == false)
         changeNameView.value = wifiModule2.deviceName
     }
     

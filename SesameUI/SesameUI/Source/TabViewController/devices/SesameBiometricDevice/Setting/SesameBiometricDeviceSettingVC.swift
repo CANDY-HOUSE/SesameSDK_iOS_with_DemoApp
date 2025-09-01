@@ -106,6 +106,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
                 self.addSesameButtonView.setColor(.sesame2Gray)
             }
             self.addSesameButtonView.exclamation.isHidden = (self.mySesames.count != 0)
+            self.addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
         }
     }
     
@@ -131,6 +132,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
                 self.addSesameButtonView.setColor(.sesame2Gray)
             }
             self.addSesameButtonView.exclamation.isHidden = (self.mySesames.count != 0)
+            self.addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
         }
     }
     @discardableResult
@@ -458,8 +460,8 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         }
         
         addSesameButtonView.exclamation.isHidden = self.mySesames.count > 0
+        addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
         addSesameButtonView.title = "co.candyhouse.sesame2.addSesameToWM2".localized
-        addSesameButtonView.exclamation.isHidden = false
         contentStackView.addArrangedSubview(addSesameButtonView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         
