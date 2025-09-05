@@ -1,7 +1,7 @@
 // Sesame5HistoryViewController.swift
 import UIKit
 import SesameSDK
-import SwiftUI
+import WebKit
 
 class SesameHistoryViewController: CHBaseViewController {
 
@@ -15,6 +15,7 @@ class SesameHistoryViewController: CHBaseViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setNavigationRightItem("icons_filled_more", #selector(navigateToSesame2SettingView(_:)))
         loadWebView()
     }
@@ -38,33 +39,60 @@ class SesameHistoryViewController: CHBaseViewController {
         ]) { [weak self] result in
             executeOnMainThread {
                 guard let self = self else { return }
+                ViewHelper.hideLoadingView(view: self.view)
                 if case let .success(urlStr) = result {
-                    self.showWebView(urlString: urlStr.data)
+                    self.setupWebView(urlString: urlStr.data)
                 } else if case let .failure(error) = result {
                     self.view.makeToast(error.errorDescription())
                 }
             }
         }
     }
-    
-    private func showWebView(urlString: String) {
-        let webViewScreen = WebViewScreen(urlString: urlString, isModal: false)
-        let hostingController = UIHostingController(rootView: webViewScreen)
-        addChild(hostingController)
-        view.addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        hostingController.didMove(toParent: self)
-    }
 
-    // MARK: - Navigation (保留的唯一逻辑)
+    // MARK: - Navigation
     @objc private func navigateToSesame2SettingView(_ sender: Any) {
         settingClickHandler?()
+    }
+}
+
+// MARK: - WebView Setup
+extension SesameHistoryViewController {
+    private func setupWebView(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        let configuration = WKWebViewConfiguration()
+        configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.navigationDelegate = self
+        webView.scrollView.isScrollEnabled = true
+        if #available(iOS 17.4, *) {
+            webView.scrollView.bouncesVertically = false
+        }
+        webView.allowsBackForwardNavigationGestures = true
+        view.addSubview(webView)
+        webView.autoPinEdgesToSuperview()
+        let request = URLRequest(url: url)
+        webView.load(request)
+    }
+}
+
+// MARK: - WKNavigationDelegate
+extension SesameHistoryViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        ViewHelper.showLoadingInView(view: view)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        ViewHelper.hideLoadingView(view: view)
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        ViewHelper.hideLoadingView(view: view)
+        self.view.makeToast(error.errorDescription())
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        ViewHelper.hideLoadingView(view: view)
+        self.view.makeToast(error.errorDescription())
     }
 }
 
