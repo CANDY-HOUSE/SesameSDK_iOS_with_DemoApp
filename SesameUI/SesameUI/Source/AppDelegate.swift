@@ -236,7 +236,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                     let topVC = self.iterateViewControllers()
                     
                     if let topVC = topVC {
-                        let webViewScreen = WebViewScreen(urlString: urlString)
+                        let webViewScreen = WebViewScreen(urlString: urlString, isModal: true)
                         let hostingController = UIHostingController(rootView: webViewScreen)
                         
                         if topVC.presentedViewController == nil {

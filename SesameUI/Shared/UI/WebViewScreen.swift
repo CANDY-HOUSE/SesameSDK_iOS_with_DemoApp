@@ -12,6 +12,7 @@ import WebKit
 // WebView 视图
 struct WebViewScreen: View {
     let urlString: String
+    let isModal: Bool
     @State private var isLoading = true
     @Environment(\.presentationMode) var presentationMode
     
@@ -27,9 +28,9 @@ struct WebViewScreen: View {
                         .progressViewStyle(CircularProgressViewStyle())
                 }
             }
-            .navigationBarItems(leading: Button("Close") {
+            .navigationBarItems(leading: isModal ? Button("Close") {
                 presentationMode.wrappedValue.dismiss()
-            })
+            } : nil)
             .navigationBarTitleDisplayMode(.inline)
         }
     }

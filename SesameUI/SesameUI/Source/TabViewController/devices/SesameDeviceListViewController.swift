@@ -4,6 +4,8 @@
 import UIKit
 import SesameSDK
 import AWSMobileClientXCF
+import SafariServices
+import SwiftUI
 
 class SesameDeviceListViewController: CHBaseViewController {
     var devices: [CHDevice] = []

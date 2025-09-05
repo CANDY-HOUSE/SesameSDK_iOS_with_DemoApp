@@ -174,11 +174,15 @@ public extension CHRouteCoordinator where Self: UIViewController {
     }
     
     func navigateToSesame2History(_ sesame2: CHSesame2) {
-        navigationController?.pushViewController(Sesame2HistoryViewController.instanceWithSesame2(sesame2) {/** self.getKeysFromCache()*/}, animated: true)
+        navigationController?.pushViewController(SesameHistoryViewController.instance(sesame2, dismissHandler: nil, settingClickHandler: { [weak self] in
+            self?.navigationController?.pushViewController(Sesame2SettingViewController.instanceWithSesame2(sesame2) { _ in }, animated: true)
+        }), animated: true)
     }
     
     func navigateToSesame5History(_ sesame5: CHSesame5) {
-        navigationController?.pushViewController(Sesame5HistoryViewController.instance(sesame5) { /** self.getKeysFromCache()*/}, animated: true)
+        navigationController?.pushViewController(SesameHistoryViewController.instance(sesame5, dismissHandler: nil, settingClickHandler: { [weak self] in
+            self?.navigationController?.pushViewController(Sesame5SettingViewController.instance(sesame5) { _ in }, animated: true)
+        }), animated: true)
     }
     
     func navigateToSesame5Setting(_ sesame5: CHSesame5) {

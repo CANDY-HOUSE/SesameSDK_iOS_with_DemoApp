@@ -85,7 +85,7 @@
 		41E51F472A36E06E00D3BB2F /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F402A36E06E00D3BB2F /* RefreshHeaderView.swift */; };
 		41E51F482A36E06E00D3BB2F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F412A36E06E00D3BB2F /* RefreshView.swift */; };
 		41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */; };
-		41FFFE1129E129AD004BB381 /* Sesame5HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* Sesame5HistoryViewController.swift */; };
+		41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */; };
 		41FFFE1729E6BB5E004BB381 /* CHSesame5History+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1629E6BB5E004BB381 /* CHSesame5History+.swift */; };
 		641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641326832B57A3F0008B1AC1 /* PickerController.swift */; };
 		64187F702B3E9B8600086321 /* IRLearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */; };
@@ -277,9 +277,6 @@
 		BE70FBEE2558D4B000B38D54 /* WifiModule2SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70FBEC2558D4B000B38D54 /* WifiModule2SettingViewController.swift */; };
 		BE70FBEF2558D4B000B38D54 /* WifiModule2SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE70FBED2558D4B000B38D54 /* WifiModule2SettingViewController.xib */; };
 		BE7E5A9F2583686F00280893 /* WifiModule2KeysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7E5A9E2583686F00280893 /* WifiModule2KeysListViewController.swift */; };
-		BE8245DE250DC37B00AA3E23 /* Sesame2HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8245DD250DC37B00AA3E23 /* Sesame2HistoryViewController.swift */; };
-		BE8245E1250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8245DF250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.swift */; };
-		BE8245E2250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE8245E0250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib */; };
 		BE8245E6250E65F100AA3E23 /* Sesame2SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8245E5250E65F100AA3E23 /* Sesame2SettingViewController.swift */; };
 		BE85D3042580A8030091D3A6 /* WifiModule2SSIDScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85D3022580A8030091D3A6 /* WifiModule2SSIDScanCell.swift */; };
 		BE85D3052580A8030091D3A6 /* WifiModule2SSIDScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE85D3032580A8030091D3A6 /* WifiModule2SSIDScanCell.xib */; };
@@ -601,7 +598,7 @@
 		41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshFootView.swift; sourceTree = "<group>"; };
 		41E68509235597380042B159 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
-		41FFFE1029E129AD004BB381 /* Sesame5HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5HistoryViewController.swift; sourceTree = "<group>"; };
+		41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameHistoryViewController.swift; sourceTree = "<group>"; };
 		41FFFE1629E6BB5E004BB381 /* CHSesame5History+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5History+.swift"; sourceTree = "<group>"; };
 		641326832B57A3F0008B1AC1 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRLearningViewModel.swift; sourceTree = "<group>"; };
@@ -834,9 +831,6 @@
 		BE7CFD9D26CBB90400A1D906 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7D3D6D25F9B2F500BD6BA4 /* SesameUI 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SesameUI 10.xcdatamodel"; sourceTree = "<group>"; };
 		BE7E5A9E2583686F00280893 /* WifiModule2KeysListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2KeysListViewController.swift; sourceTree = "<group>"; };
-		BE8245DD250DC37B00AA3E23 /* Sesame2HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2HistoryViewController.swift; sourceTree = "<group>"; };
-		BE8245DF250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2HistoryTableViewCell.swift; sourceTree = "<group>"; };
-		BE8245E0250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame2HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		BE8245E5250E65F100AA3E23 /* Sesame2SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame2SettingViewController.swift; sourceTree = "<group>"; };
 		BE85D3022580A8030091D3A6 /* WifiModule2SSIDScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiModule2SSIDScanCell.swift; sourceTree = "<group>"; };
 		BE85D3032580A8030091D3A6 /* WifiModule2SSIDScanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiModule2SSIDScanCell.xib; sourceTree = "<group>"; };
@@ -1219,16 +1213,6 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		4130A36E235836000025A31E /* History */ = {
-			isa = PBXGroup;
-			children = (
-				BE8245DD250DC37B00AA3E23 /* Sesame2HistoryViewController.swift */,
-				BE8245DF250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.swift */,
-				BE8245E0250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib */,
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
 		4151165629BA248E00B1DE1F /* ListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1264,7 +1248,6 @@
 		416BE68123667AAC0003C7DA /* Sesame2 */ = {
 			isa = PBXGroup;
 			children = (
-				4130A36E235836000025A31E /* History */,
 				4130A36D235818610025A31E /* Setting */,
 			);
 			path = Sesame2;
@@ -1343,7 +1326,7 @@
 		41ACFD0129B8698E001153DB /* History */ = {
 			isa = PBXGroup;
 			children = (
-				41FFFE1029E129AD004BB381 /* Sesame5HistoryViewController.swift */,
+				41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -2502,7 +2485,6 @@
 				41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */,
 				D0C6F2DF2E61D02900909C41 /* sesameface1pro_30_18_67c53b.zip in Resources */,
 				6483C94F2B68FA1700D8B68D /* strings_dvd_type.xml in Resources */,
-				BE8245E2250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.xib in Resources */,
 				B179691522F7CE9400E91996 /* LaunchScreen.storyboard in Resources */,
 				D0C6F2DD2E61D02000909C41 /* sesameface1ai_30_23_67c53b.zip in Resources */,
 				64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */,
@@ -2802,7 +2784,6 @@
 				41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */,
 				418FA1E8237BD2C100C7C408 /* Sesame2Circle.swift in Sources */,
 				BE562E2E2563AD63004617DE /* CHUser.swift in Sources */,
-				BE8245E1250DF76D00AA3E23 /* Sesame2HistoryTableViewCell.swift in Sources */,
 				64ADDE3C2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */,
 				3B8B7C4F2E2FC0A600F5A2F7 /* WebView.swift in Sources */,
 				414C3CFA2A1EF6DC00AB59CF /* CHBaseTableVC.swift in Sources */,
@@ -2863,7 +2844,6 @@
 				B01728D9250CA67D00F87ED6 /* RegisterSesameDeviceViewController.swift in Sources */,
 				B0534AE524FA360500219D08 /* QRCodeExtractor.swift in Sources */,
 				647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */,
-				BE8245DE250DC37B00AA3E23 /* Sesame2HistoryViewController.swift in Sources */,
 				6479BD912B62569D00DE5845 /* XMLParser.swift in Sources */,
 				BE8F9210264A0F82001DF645 /* CHDeviceInfo.swift in Sources */,
 				B087E57224E126830087D978 /* CHWifiModule2+.swift in Sources */,
@@ -2899,7 +2879,7 @@
 				64AE88382B2014AA00E2278A /* FriendListCell.swift in Sources */,
 				BE9127EB25B7D863004D4488 /* BikeLockSettingViewController.swift in Sources */,
 				B01728D3250C78D200F87ED6 /* CHBaseTableViewController.swift in Sources */,
-				41FFFE1129E129AD004BB381 /* Sesame5HistoryViewController.swift in Sources */,
+				41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */,
 				645211F22B29B1820091DDE3 /* Bot2SettingViewController.swift in Sources */,
 				4103033C23790CB800785311 /* PopUpMenuControl.swift in Sources */,
 				BE8858FA26C39483002D17E0 /* Response.swift in Sources */,

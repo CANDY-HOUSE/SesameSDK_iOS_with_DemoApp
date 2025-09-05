@@ -387,4 +387,38 @@ extension CHUserAPIManager {
             }
         }
     }
+    
+    struct scenePayload: Codable {
+        var scene: String
+        var token: String?
+        var extInfo: [String: String]? = nil
+    }
+    func getWebUrlByScene(scene: String, extInfo: [String: String]?, _ result: @escaping CHResult<String>){
+        let sendRequest: (String?) -> Void = {[self] token in
+            let requestParam = scenePayload(scene: scene, token: token, extInfo: extInfo)
+            let jsonData = try! JSONEncoder().encode(requestParam)
+            API(request: .init(.post, "/web_route", jsonData)){ uploadResult in
+                switch uploadResult {
+                case .success(let data):
+                    result(.success(.init(input: String(data: data!, encoding: .utf8)!)))
+                case .failure(let error):
+                    result(.failure(error))
+                }
+            }
+        }
+        if AWSMobileClient.default().isSignedIn {
+            AWSMobileClient.default().getTokens { (tokens, error) in
+                if let error = error {
+                    result(.failure(error))
+                    return
+                }
+                
+                let jwtToken = tokens?.idToken?.tokenString
+                sendRequest(jwtToken)
+            }
+        } else {
+            sendRequest(nil)
+        }
+    }
+
 }
