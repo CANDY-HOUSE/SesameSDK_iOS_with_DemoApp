@@ -86,7 +86,6 @@
 		41E51F482A36E06E00D3BB2F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F412A36E06E00D3BB2F /* RefreshView.swift */; };
 		41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */; };
 		41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */; };
-		41FFFE1729E6BB5E004BB381 /* CHSesame5History+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1629E6BB5E004BB381 /* CHSesame5History+.swift */; };
 		641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641326832B57A3F0008B1AC1 /* PickerController.swift */; };
 		64187F702B3E9B8600086321 /* IRLearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */; };
 		64190A142C2D54DC00B89592 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64190A132C2D54DC00B89592 /* AirData.swift */; };
@@ -198,7 +197,6 @@
 		890D330B2DA0E7FF0031F0AF /* PassCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D33002DA0E7FF0031F0AF /* PassCodeVC.swift */; };
 		890D330E2DA0E85A0031F0AF /* PalmListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D330D2DA0E85A0031F0AF /* PalmListVC.swift */; };
 		890D330F2DA0E85A0031F0AF /* FaceListVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D330C2DA0E85A0031F0AF /* FaceListVC .swift */; };
-		B00662912542CC9600F62D9B /* CHSesame2History+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00662902542CC9600F62D9B /* CHSesame2History+.swift */; };
 		B01728D1250C700500F87ED6 /* SesameDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D0250C700500F87ED6 /* SesameDeviceListViewController.swift */; };
 		B01728D3250C78D200F87ED6 /* CHBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D2250C78D200F87ED6 /* CHBaseTableViewController.swift */; };
 		B01728D9250CA67D00F87ED6 /* RegisterSesameDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D8250CA67D00F87ED6 /* RegisterSesameDeviceViewController.swift */; };
@@ -599,7 +597,6 @@
 		41E68509235597380042B159 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
 		41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameHistoryViewController.swift; sourceTree = "<group>"; };
-		41FFFE1629E6BB5E004BB381 /* CHSesame5History+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5History+.swift"; sourceTree = "<group>"; };
 		641326832B57A3F0008B1AC1 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRLearningViewModel.swift; sourceTree = "<group>"; };
 		64190A132C2D54DC00B89592 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
@@ -735,7 +732,6 @@
 		96B2196629111F26006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Sesame2Intents.strings"; sourceTree = "<group>"; };
 		96B2197929111F55006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		96B2198929112461006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		B00662902542CC9600F62D9B /* CHSesame2History+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame2History+.swift"; sourceTree = "<group>"; };
 		B01728AD250B6D7E00F87ED6 /* SiriShortCutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortCutViewController.swift; sourceTree = "<group>"; };
 		B01728AF250B8AEF00F87ED6 /* GPSMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSMapViewController.swift; sourceTree = "<group>"; };
 		B01728D0250C700500F87ED6 /* SesameDeviceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameDeviceListViewController.swift; sourceTree = "<group>"; };
@@ -1139,8 +1135,6 @@
 			children = (
 				BE0636882567A0AB00135D25 /* CHDevice+.swift */,
 				BE88593B26C3ACA1002D17E0 /* CHSesame2+AutoUnlock.swift */,
-				B00662902542CC9600F62D9B /* CHSesame2History+.swift */,
-				41FFFE1629E6BB5E004BB381 /* CHSesame5History+.swift */,
 				BE88591026C39F99002D17E0 /* CHSesameLock+.swift */,
 				64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */,
 				B087E57124E126830087D978 /* CHWifiModule2+.swift */,
@@ -2778,7 +2772,6 @@
 				64187F702B3E9B8600086321 /* IRLearningViewModel.swift in Sources */,
 				E8A6F1D62A61361800AED9AD /* OpenSensorResetHintVC.swift in Sources */,
 				41E51F452A36E06E00D3BB2F /* ActivityIndicatorView.swift in Sources */,
-				B00662912542CC9600F62D9B /* CHSesame2History+.swift in Sources */,
 				64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */,
 				64547DE22C086B7A001CEF88 /* ControlDigitalCamera.swift in Sources */,
 				41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */,
@@ -2900,7 +2893,6 @@
 				645E2D292B5BC83300D39E66 /* Hub3IREmitCell.swift in Sources */,
 				64547DD42C086AF3001CEF88 /* ControlTV.swift in Sources */,
 				645B1B292BDB4C0100D5E491 /* AnimatedFrame.swift in Sources */,
-				41FFFE1729E6BB5E004BB381 /* CHSesame5History+.swift in Sources */,
 				4152907823224C2300F7E0E5 /* GeneralTabViewController.swift in Sources */,
 				645B1B2F2BDB4C0100D5E491 /* UIImageView.swift in Sources */,
 				BE6EE4CA259990F000C77E99 /* SesameBotMode.swift in Sources */,

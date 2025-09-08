@@ -20,53 +20,8 @@ extension CHSesameBotDevice {
                 
                 if result.cmdResultCode == .success {
                     
-                    let histitem = result.data.copyData
-                    
-                    guard let recordId = histitem[safeBound: 0...3]?.copyData,
-                          let type = histitem[safeBound: 4...4]?.copyData,
-                          let timeData = histitem[safeBound: 5...12]?.copyData else {
-                        return
-                    }
-                    let hisContent = histitem[13...].copyData
-                    
-                    let record_id_Int32: Int32 = recordId.withUnsafeBytes({ $0.bindMemory(to: Int32.self).first! })
-                    let timestampInt64: UInt64 = timeData.withUnsafeBytes({ $0.bindMemory(to: UInt64.self).first! })
-                    
-                    guard var historyType: Sesame2HistoryTypeEnum = Sesame2HistoryTypeEnum(rawValue: type.bytes[0]) else {
-                        return
-                    }
-                    
-                    var historyContent = hisContent
-                    
-                    if historyType == .BLE_LOCK || historyType == .BLE_UNLOCK {
-                        let histag = hisContent[18...]
-                        let tagcount_historyTag = histag.copyData
-                        let tagcount = UInt8(tagcount_historyTag[0])
-                        
-                        // Parse lock types
-                        let originalTagCount = tagcount % Sesame2HistoryLockOpType.BASE.rawValue
-                        let historyOpType = Sesame2HistoryLockOpType(rawValue: tagcount / Sesame2HistoryLockOpType.BASE.rawValue)
-                        if historyType == .BLE_LOCK, historyOpType == .WM2 {
-                            historyType = Sesame2HistoryTypeEnum.WM2_LOCK
-                        } else if historyType == .BLE_LOCK, historyOpType == .WEB {
-                            historyType = Sesame2HistoryTypeEnum.WEB_LOCK
-                        } else if historyType == .BLE_UNLOCK, historyOpType == .WM2 {
-                            historyType = Sesame2HistoryTypeEnum.WM2_UNLOCK
-                        } else if historyType == .BLE_UNLOCK, historyOpType == .WEB {
-                            historyType = Sesame2HistoryTypeEnum.WEB_UNLOCK
-                        }
-                        
-                        if historyOpType == .WEB || historyOpType == .WM2 {
-                            if let type = Sesame2HistoryTypeEnum(rawValue: tagcount / 30) {
-                                historyType = type
-                            } else {
-                                historyType = .NONE
-                            }
-                        }
-                        
-                        historyContent = hisContent[...17].copyData + originalTagCount.data + hisContent[19...].copyData
-                    }
-                    
+//                    let histitem = result.data.copyData
+                   
                     //                    let chHistoryEvent = CHSesame2HistoryEvent(type: historyType,
                     //                                                               time: timestampInt64,
                     //                                                               recordID: record_id_Int32,

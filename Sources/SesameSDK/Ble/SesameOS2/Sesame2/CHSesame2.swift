@@ -8,10 +8,10 @@
 import CoreBluetooth
 
 public protocol CHSesame2Delegate: CHDeviceStatusDelegate {
-    func onHistoryReceived(device: CHSesame2, result: Result<CHResultState<[CHSesame2History]>, Error>)
+    func onHistoryReceived(device: CHSesame2, result: Result<CHResultState<Data>, Error>)
 }
 public extension CHSesame2Delegate {
-    func onHistoryReceived(device: CHSesame2, result: Result<CHResultState<[CHSesame2History]>, Error>) {}
+    func onHistoryReceived(device: CHSesame2, result: Result<CHResultState<Data>, Error>) {}
 }
 
 public protocol CHSesame2: CHSesameLock {
@@ -23,7 +23,6 @@ public protocol CHSesame2: CHSesameLock {
     func lock(historytag:Data? ,result: @escaping (CHResult<CHEmpty>))
     func unlock(historytag:Data? ,result: @escaping (CHResult<CHEmpty>))
     func toggle(historytag:Data? ,result: @escaping (CHResult<CHEmpty>))
-    func getHistories(cursor: UInt?, _ result: @escaping CHResult<CHSesameHistoryPayload>)
     func enableAutolock(historytag:Data? ,delay: Int, result: @escaping (CHResult<Int>))
     func configureLockPosition(historytag:Data? ,lockTarget: Int16, unlockTarget: Int16,result: @escaping (CHResult<CHEmpty>))
 }

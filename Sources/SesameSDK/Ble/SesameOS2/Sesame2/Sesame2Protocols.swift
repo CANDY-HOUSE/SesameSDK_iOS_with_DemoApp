@@ -86,94 +86,94 @@ extension Sesame2OpCode {
         }
     }
 }
-
-enum Sesame2HistoryTypeEnum:UInt8
-{
-    case NONE = 0
-    // Trigger by BLE
-    case BLE_LOCK = 1
-    case BLE_UNLOCK = 2
-//    case TIME_CHANGED = 3
-//    case AUTOLOCK_UPDATED = 4
-//    case MECH_SETTING_UPDATED = 5
-    // Trigger by INTERNAL
-    case AUTOLOCK = 6
-    // Trigger by SENSOR/MOTOR when detected stopped state
-    case MANUAL_LOCKED = 7
-    case MANUAL_UNLOCKED = 8
-    case MANUAL_ELSE = 9
-    case DRIVE_LOCKED = 10
-    case DRIVE_UNLOCKED = 11
-    case DRIVE_FAILED = 12
-//    case BLE_ADV_PARAM_UPDATED = 13
-    case WM2_LOCK = 14
-    case WM2_UNLOCK = 15
-    case WEB_LOCK = 16
-    case WEB_UNLOCK = 17
-    
-    case BLE_CLICK = 18
-    case WM2_CLICK = 19             // Server, client解析用
-    case WEB_CLICK = 20              // Server, client解析用
-    case DRIVE_CLICK = 21
-    case MANUAL_CLICK = 22
-    case DOOR_OPEN = 90
-    case DOOR_CLOSE = 91
-}
-
-enum Sesame2HistoryLockOpType: UInt8 {
-    case BLE = 0
-    case WM2 = 1
-    case WEB = 2
-    case BASE = 30
-}
-
-extension Sesame2HistoryTypeEnum {
-
-    var plainName: String {
-        switch self {
-
-        case .NONE:
-            return "NONE"
-        case .BLE_LOCK:
-            return "BLE_LOCK"
-        case .BLE_UNLOCK:
-            return "BLE_UNLOCK"
-        case .AUTOLOCK:
-            return "AUTOLOCK"
-        case .MANUAL_LOCKED:
-            return "MANUAL_LOCKED"
-        case .MANUAL_UNLOCKED:
-            return "MANUAL_UNLOCKED"
-        case .MANUAL_ELSE:
-            return "MANUAL_ELSE"
-        case .DRIVE_LOCKED:
-            return "DRIVE_LOCKED"
-        case .DRIVE_UNLOCKED:
-            return "DRIVE_UNLOCKED"
-        case .DRIVE_FAILED:
-            return "DRIVE_FAILED"
-        case .WM2_LOCK:
-            return "WM2_LOCK"
-        case .WM2_UNLOCK:
-            return "WM2_UNLOCK"
-        case .WEB_LOCK:
-            return "WEB_LOCK"
-        case .WEB_UNLOCK:
-            return "WEB_UNLOCK"
-        case .BLE_CLICK:
-            return "BLE_CLICK"
-        case .WM2_CLICK:
-            return "WM2_CLICK"
-        case .WEB_CLICK:
-            return "WEB_CLICK"
-        case .DRIVE_CLICK:
-            return "DRIVE_CLICK"
-        case .MANUAL_CLICK:
-            return "MANUAL_CLICK"
-        case .DOOR_OPEN:
-            return "DOOR_OPEN"
-        case .DOOR_CLOSE:
-            return "DOOR_CLOSE"
-        }
-    }
-}
+//
+//enum Sesame2HistoryTypeEnum:UInt8
+//{
+//    case NONE = 0
+//    // Trigger by BLE
+//    case BLE_LOCK = 1
+//    case BLE_UNLOCK = 2
+////    case TIME_CHANGED = 3
+////    case AUTOLOCK_UPDATED = 4
+////    case MECH_SETTING_UPDATED = 5
+//    // Trigger by INTERNAL
+//    case AUTOLOCK = 6
+//    // Trigger by SENSOR/MOTOR when detected stopped state
+//    case MANUAL_LOCKED = 7
+//    case MANUAL_UNLOCKED = 8
+//    case MANUAL_ELSE = 9
+//    case DRIVE_LOCKED = 10
+//    case DRIVE_UNLOCKED = 11
+//    case DRIVE_FAILED = 12
+////    case BLE_ADV_PARAM_UPDATED = 13
+//    case WM2_LOCK = 14
+//    case WM2_UNLOCK = 15
+//    case WEB_LOCK = 16
+//    case WEB_UNLOCK = 17
+//    
+//    case BLE_CLICK = 18
+//    case WM2_CLICK = 19             // Server, client解析用
+//    case WEB_CLICK = 20              // Server, client解析用
+//    case DRIVE_CLICK = 21
+//    case MANUAL_CLICK = 22
+//    case DOOR_OPEN = 90
+//    case DOOR_CLOSE = 91
+//}
+//
+//enum Sesame2HistoryLockOpType: UInt8 {
+//    case BLE = 0
+//    case WM2 = 1
+//    case WEB = 2
+//    case BASE = 30
+//}
+//
+//extension Sesame2HistoryTypeEnum {
+//
+//    var plainName: String {
+//        switch self {
+//
+//        case .NONE:
+//            return "NONE"
+//        case .BLE_LOCK:
+//            return "BLE_LOCK"
+//        case .BLE_UNLOCK:
+//            return "BLE_UNLOCK"
+//        case .AUTOLOCK:
+//            return "AUTOLOCK"
+//        case .MANUAL_LOCKED:
+//            return "MANUAL_LOCKED"
+//        case .MANUAL_UNLOCKED:
+//            return "MANUAL_UNLOCKED"
+//        case .MANUAL_ELSE:
+//            return "MANUAL_ELSE"
+//        case .DRIVE_LOCKED:
+//            return "DRIVE_LOCKED"
+//        case .DRIVE_UNLOCKED:
+//            return "DRIVE_UNLOCKED"
+//        case .DRIVE_FAILED:
+//            return "DRIVE_FAILED"
+//        case .WM2_LOCK:
+//            return "WM2_LOCK"
+//        case .WM2_UNLOCK:
+//            return "WM2_UNLOCK"
+//        case .WEB_LOCK:
+//            return "WEB_LOCK"
+//        case .WEB_UNLOCK:
+//            return "WEB_UNLOCK"
+//        case .BLE_CLICK:
+//            return "BLE_CLICK"
+//        case .WM2_CLICK:
+//            return "WM2_CLICK"
+//        case .WEB_CLICK:
+//            return "WEB_CLICK"
+//        case .DRIVE_CLICK:
+//            return "DRIVE_CLICK"
+//        case .MANUAL_CLICK:
+//            return "MANUAL_CLICK"
+//        case .DOOR_OPEN:
+//            return "DOOR_OPEN"
+//        case .DOOR_CLOSE:
+//            return "DOOR_CLOSE"
+//        }
+//    }
+//}

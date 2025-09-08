@@ -64,6 +64,7 @@ extension SesameHistoryViewController {
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = self
         webView.scrollView.isScrollEnabled = true
+        webView.scrollView.bounces = false
         if #available(iOS 17.4, *) {
             webView.scrollView.bouncesVertically = false
         }

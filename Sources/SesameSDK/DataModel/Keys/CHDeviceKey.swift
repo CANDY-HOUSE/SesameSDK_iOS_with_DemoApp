@@ -62,10 +62,3 @@ public class CHDeviceKey: NSObject, NSCopying, Codable {
         return copy
     }
 }
-
-class CHSesame2HistoryContainer: Codable {
-    public var his: [CHSesame2HistoryEvent]
-    enum CodingKeys : String, CodingKey {
-        case his
-    }
-}
