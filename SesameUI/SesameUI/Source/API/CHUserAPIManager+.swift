@@ -400,7 +400,13 @@ extension CHUserAPIManager {
             API(request: .init(.post, "/web_route", jsonData)){ uploadResult in
                 switch uploadResult {
                 case .success(let data):
-                    result(.success(.init(input: String(data: data!, encoding: .utf8)!)))
+                    if let jsonData = data,
+                       let json = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any],
+                       let urlString = json["url"] as? String {
+                        result(.success(.init(input: urlString)))
+                    } else {
+                        result(.failure(NSError(domain: "ParseError", code: -1)))
+                    }
                 case .failure(let error):
                     result(.failure(error))
                 }

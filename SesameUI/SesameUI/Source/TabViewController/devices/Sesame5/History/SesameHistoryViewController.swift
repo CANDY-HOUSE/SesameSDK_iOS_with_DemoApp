@@ -54,9 +54,10 @@ class SesameHistoryViewController: CHBaseViewController {
             executeOnMainThread {
                 guard let self = self else { return }
                 ViewHelper.hideLoadingView(view: self.view)
-                if case let .success(urlStr) = result {
-                    self.setupWebView(urlString: urlStr.data)
-                } else if case let .failure(error) = result {
+                switch result {
+                case .success(let response):
+                    self.setupWebView(urlString: response.data)
+                case .failure(let error):
                     self.view.makeToast(error.errorDescription())
                 }
             }
