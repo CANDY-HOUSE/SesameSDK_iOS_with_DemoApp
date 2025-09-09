@@ -285,7 +285,8 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.hub3.saveIRDeviceTitle" = "Please confirm the remote control name";
 "co.candyhouse.hub3.irRenameHint" = "About 20 characters";
 "co.candyhouse.hub3.matterPairingHint" = "Hub3 has entered Matter Pairing Mode. Please complete the Matter Pairing within %@ minutes. If the setup fails, please return to this page to re-enter Matter Pairing Mode.";
-"co.candyhouse.hub3.air_match_introduction" = "Please press the highlighted button in the list below to test if the device responds correctly";
+"co.candyhouse.hub3.air_match_introduction" = "Point the Remote Control to the LED side of Hub3, then press the power　ON button.";
+"co.candyhouse.hub3.ir_auto_searching_remote" = "Searching for the most likely remote control...";
 "co.candyhouse.hub3.air_control_match" = "Can't control AC? Auto-match remote";
 "co.candyhouse.hub3.ir_match_key" = "Matching button %1$d of group %2$d (Total: %3$d groups, %4$d buttons per group)";
 "co.candyhouse.hub3.air_match_responded" = "Responded, continue matching";

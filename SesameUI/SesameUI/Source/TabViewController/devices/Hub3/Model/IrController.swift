@@ -110,8 +110,8 @@ enum ItemType: String, Codable {
     case tempControlReduce = "TEMP_CONTROL_REDUCE"
     case mode = "MODE"
     case fanSpeed = "FAN_SPEED"
-    case swingVertical = "SWING_VERTICAL"
-    case swingHorizontal = "SWING_HORIZONTAL"
+    case windDirection = "SWING_VERTICAL"
+    case autoWindDirection = "SWING_HORIZONTAL"
     
     // 电视
     case mute = "MUTE"

@@ -93,6 +93,7 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
     // MARK: life cycle
     deinit {
         wifiModule2.disconnect(result: {_ in })
+        removeRemoteUpdateListener()
     }
     
     override func viewDidLoad() {

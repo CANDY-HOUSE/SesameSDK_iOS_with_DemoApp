@@ -33,4 +33,6 @@ public class CHResultStateBLE<T>: CHResultState<T> {
     }
 }
 
-public class CHEmpty {}
+public class CHEmpty {
+    public init() {}
+}

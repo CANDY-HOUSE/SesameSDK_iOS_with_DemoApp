@@ -90,7 +90,6 @@
 		3B8D5E022E2D176D00FE456E /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DA52E2D176D00FE456E /* AES.swift */; };
 		3B8D5E032E2D176D00FE456E /* Sesame2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D082E2D176D00FE456E /* Sesame2Protocols.swift */; };
 		3B8D5E042E2D176D00FE456E /* CHSesameBotDevice+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D1E2E2D176D00FE456E /* CHSesameBotDevice+Setting.swift */; };
-		3B8D5E052E2D176D00FE456E /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D272E2D176D00FE456E /* IRDeviceType.swift */; };
 		3B8D5E062E2D176D00FE456E /* CHDeviceModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D9A2E2D176D00FE456E /* CHDeviceModel.xcdatamodeld */; };
 		3B8D5E072E2D176D00FE456E /* CHRemoteNanoCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D522E2D176D00FE456E /* CHRemoteNanoCapableExtension.swift */; };
 		3B8D5E082E2D176D00FE456E /* CHAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D9F2E2D176D00FE456E /* CHAccountManager.swift */; };
@@ -355,7 +354,6 @@
 		3B8D5D242E2D176D00FE456E /* CHHub3Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3Device.swift; sourceTree = "<group>"; };
 		3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+Gatt.swift"; sourceTree = "<group>"; };
 		3B8D5D262E2D176D00FE456E /* CHHub3Device+IR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+IR.swift"; sourceTree = "<group>"; };
-		3B8D5D272E2D176D00FE456E /* IRDeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRDeviceType.swift; sourceTree = "<group>"; };
 		3B8D5D292E2D176D00FE456E /* CHSesame5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5.swift; sourceTree = "<group>"; };
 		3B8D5D2A2E2D176D00FE456E /* CHSesame5Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5Device.swift; sourceTree = "<group>"; };
 		3B8D5D2B2E2D176D00FE456E /* CHSesame5Device+Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Command.swift"; sourceTree = "<group>"; };
@@ -742,7 +740,6 @@
 				3B8D5D242E2D176D00FE456E /* CHHub3Device.swift */,
 				3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */,
 				3B8D5D262E2D176D00FE456E /* CHHub3Device+IR.swift */,
-				3B8D5D272E2D176D00FE456E /* IRDeviceType.swift */,
 			);
 			path = Hub3;
 			sourceTree = "<group>";
@@ -1802,7 +1799,6 @@
 				3B8D5E022E2D176D00FE456E /* AES.swift in Sources */,
 				3B8D5E032E2D176D00FE456E /* Sesame2Protocols.swift in Sources */,
 				3B8D5E042E2D176D00FE456E /* CHSesameBotDevice+Setting.swift in Sources */,
-				3B8D5E052E2D176D00FE456E /* IRDeviceType.swift in Sources */,
 				3B8D5E062E2D176D00FE456E /* CHDeviceModel.xcdatamodeld in Sources */,
 				3B8D5E072E2D176D00FE456E /* CHRemoteNanoCapableExtension.swift in Sources */,
 				3B8D5E082E2D176D00FE456E /* CHAccountManager.swift in Sources */,

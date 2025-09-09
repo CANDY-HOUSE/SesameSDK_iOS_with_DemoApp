@@ -8,33 +8,6 @@
 
 import Foundation
 
-/// 新增红外设备
-public typealias IRDeviceCode = Int
-public struct IRDevicePayload: Codable {
-    public let uuid: String
-    public let model: String
-    public var alias: String
-    public let deviceUUID: String
-    public let state: String
-    public let type: IRDeviceCode
-    public var keys: [CHHub3IRCode]
-    public var code: Int
-    
-    public init(uuid: String, model: String, alias: String, deviceUUID: String, state: String, type: IRDeviceCode, keys: [CHHub3IRCode], code:Int) {
-        self.uuid = uuid
-        self.model = model
-        self.alias = alias
-        self.deviceUUID = deviceUUID
-        self.state = state
-        self.type = type
-        self.keys = keys
-        self.code = code
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case uuid, model, alias, deviceUUID, keys, type, state, code
-    }
-}
 
 public class IRRemote: Codable {
     public let uuid: String
@@ -121,76 +94,25 @@ public class IRRemote: Codable {
     }
 }
 
-
-public protocol IRRemoteHandler {
-    
-    /// 红外设备
-    var irRemotes: [IRRemote] { get set }
-    
-    /// 获取红外设备
-    /// - Parameter result: 结果
-    func fetchIRDevices(_ result: @escaping CHResult<[IRRemote]>)
-    
-    /// 创建红外设备
-    /// - Parameters:
-    ///   - payload: 红外对象
-    ///   - result: 结果
-    func postIRDevice(_ payload: IRDevicePayload, _ result: @escaping CHResult<CHEmpty>)
-    
-    /// 更新红外设备
-    /// - Parameters:
-    ///   - payload: 要更新的字段
-    ///   - result: 结果
-    func updateIRDevice(_ payload: [String: String], _ result: @escaping CHResult<CHEmpty>)
-    
-    /// uuid 获取红外按键
-    /// - Parameters:
-    ///   - uuid: 遥控器id
-    ///   - result: 结果
-    func getIRDeviceKeysByUid(_ uuid: String, _ result: @escaping CHResult<[CHHub3IRCode]>)
-    
-    /// 删除红外设备
-    /// - Parameters:
-    ///   - uuid: 遥控器id
-    ///   - result: 结果
-    func deleteIRDevice(_ uuid: String, _ result: @escaping CHResult<CHEmpty>)
-    
-    /// IR 码刪除
-    /// - Parameters:
-    ///   - id: ir id
-    ///   - result: 結果
-    func irCodeDelete(uuid: String, keyUUID: String, result: @escaping CHResult<CHEmpty>)
-    
-    /// IR 碼的編輯
-    /// - Parameters:
-    ///   - id: ir id
-    ///   - name: ir name
-    ///   - result: 結果
-    func irCodeChange(uid: String, keyUUID: String, name: String, result: @escaping CHResult<CHEmpty>)
-    
-    
-    ///  订阅红外学习数据主题
-    /// - Parameters:
-    ///   - result: 結果
-    func subscribeLearnData(result: @escaping CHResult<Data>)
-    
-    ///  取消红外学习数据主题订阅
-    /// - Parameters:
-    func unsubscribeLearnData()
-    
-    ///  上传红外自学习数据
-    /// - Parameters:
-    ///   - data: 红外码流
-    ///   - hub3DeviceUUID:  hub3 device uuid
-    ///   - irDataNameUUID:  自学习码流对应 uuid
-    ///   - irDeviceUUID:  自学习设备对应 uuid
-    ///   - keyUUID:  自学习按键 uuid
-    ///   - result:  結果
-    func addLearnData(data:Data, hub3DeviceUUID: String, irDataNameUUID:String, irDeviceUUID:String, keyUUID: String, result: @escaping CHResult<CHEmpty>)
+extension IRRemote {
+    public func swapRemote(_ irType: Int) -> IRRemote {
+       return IRRemote(
+            uuid: UUID().uuidString.uppercased(),
+            alias: self.alias,
+            model: self.model,
+            type: irType,
+            timestamp: 0,
+            state: self.state,
+            code: self.code,
+            direction: self.direction
+        )
+    }
 }
 
-public protocol CHHub3: CHWifiModule2, IRRemoteHandler {
-    
+
+public protocol CHHub3: CHWifiModule2 {
+    /// Hub3 持有红外设备列表
+    var irRemotes: [IRRemote] { get set }
     var status: Hub3Status { get }
     var hub3Brightness: UInt8 { get }
     /// 添加SSM 設備
@@ -200,27 +122,6 @@ public protocol CHHub3: CHWifiModule2, IRRemoteHandler {
     ///   - matterProductModel: matter 模式
     ///   - result: 結果
     func insertSesame(_ device: CHDevice, nickName: String, matterProductModel: MatterProductModel, result: @escaping CHResult<CHEmpty>)
-    
-    /// IR 模式獲取
-    /// - Parameter result: 0 正常模式，1 讀取模式
-    func irModeGet(result: @escaping CHResult<UInt8>)
-    
-    /// 設置IR 模式
-    /// - Parameters:
-    ///   - mode: 0 正常模式，1 讀取模式
-    ///   - result: 結果
-    func irModeSet(mode: UInt8, result: @escaping CHResult<CHEmpty>)
-    
-    /// IR 發射
-    /// - Parameters:
-    ///   - id: ir id
-    ///   - irDeviceUUID: ir 设备 uuid
-    ///   - result: 結果
-    func irCodeEmit(id: String, irDeviceUUID: String, result: @escaping CHResult<CHEmpty>)
-    
-    /// IR 碼的獲取，以 publish 形式返回
-    /// - Parameter result: 發送結果
-    func irCodesGet(result: @escaping CHResult<CHEmpty>)
     
     /// 獲取matter配對碼
     /// - Parameter result: 結果
@@ -235,38 +136,19 @@ public protocol CHHub3: CHWifiModule2, IRRemoteHandler {
     ///   - brightness: 亮度值，范围：0-255
     ///   - result: 結果
     func setHub3Brightness(brightness: UInt8, result: @escaping CHResult<UInt8>)
+    
+    /// 删除红外设备
+    /// - Parameters:
+    ///   - uuid: 遥控器id
+    ///   - result: 结果
+    func deleteIRDevice(_ uuid: String, _ result: @escaping CHResult<CHEmpty>)
+    
+    /// 获取红外设备
+    /// - Parameter result: 结果
+    func fetchIRDevices(_ result: @escaping CHResult<[IRRemote]>)
 }
 
 public protocol CHHub3Delegate: CHWifiModule2Delegate {
-    
-    /// IR 指令改變
-    /// - Parameters:
-    ///   - device: 設備對象
-    ///   - id: ir id
-    ///   - name: ir name
-    func onIRCodeChanged(device: CHHub3, ir: CHHub3IRCode)
-    
-    /// IR 接受
-    /// - Parameters:
-    ///   - device: 設備對象
-    ///   - id: ir id
-    ///   - name: ir name
-    func onIRCodeReceive(device: CHHub3, ir: CHHub3IRCode)
-    
-    /// IR 開始接受
-    /// - Parameter device: 設備對象
-    func onIRCodeReceiveStart(device: CHHub3)
-    
-    /// IR 完成接受
-    /// - Parameter device: 設備對象
-    func onIRCodeReceiveEnd(device: CHHub3)
-    
-    /// 接收到 mode 改變
-    /// - Parameters:
-    ///   - device: 設備對象
-    ///   - mode: 模式 ，0 正常模式 1 錄入模式
-    func onIRModeReceive(device: CHHub3, mode: UInt8)
-
     /// 接收到Hub 3 LED亮度
     /// - Parameters:
     ///   - device: 設備對象
@@ -275,35 +157,6 @@ public protocol CHHub3Delegate: CHWifiModule2Delegate {
 }
 
 public extension CHHub3Delegate {
-    
-    /// IR 指令改變
-    /// - Parameters:
-    ///   - device: 設備對象
-    ///   - id: ir id
-    ///   - name: ir name
-    func onIRCodeChanged(device: CHHub3, ir: CHHub3IRCode){}
-    
-    /// IR 接受
-    /// - Parameters:
-    ///   - device: 設備對象
-    ///   - id: ir id
-    ///   - name: ir name
-    func onIRCodeReceive(device: CHHub3, ir: CHHub3IRCode){}
-    
-    /// IR 開始接受
-    /// - Parameter device: 設備對象
-    func onIRCodeReceiveStart(device: CHHub3){}
-    
-    /// IR 完成接受
-    /// - Parameter device: 設備對象
-    func onIRCodeReceiveEnd(device: CHHub3){}
-    
-    /// 接收到 mode 改變
-    /// - Parameters:
-    ///   - device: 設備對象
-    ///   - mode: 模式 ，0 正常模式 1 錄入模式
-    func onIRModeReceive(device: CHHub3, mode: UInt8){}
-    
     /// 接收到Hub 3 LED亮度
     /// - Parameters:
     ///   - device: 設備對象
@@ -311,39 +164,6 @@ public extension CHHub3Delegate {
     func onHub3BrightnessReceive(device: CHHub3, brightness: UInt8){}
 }
 
-public struct CHHub3IRCode: Codable, Equatable {
-    public var keyUUID: String
-    public var name: String?
-    
-    public init(keyUUID: String, name: String?) {
-        self.keyUUID = keyUUID
-        self.name = name
-    }
-    
-    enum CodingKeys: CodingKey {
-        case keyUUID
-        case name
-    }
-    
-    static func fromData(_ buf: Data) -> CHHub3IRCode {
-        let codeId = String(format: "%02X", buf[0])
-        return CHHub3IRCode(keyUUID: codeId, name: nil)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(keyUUID, forKey: .keyUUID)
-        if (name != nil) {
-            try container.encode(name, forKey: .name)
-        }
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        keyUUID = try container.decode(String.self, forKey: .keyUUID)
-        name = try container.decode(String.self, forKey: .name)
-    }
-}
 
 public struct CHHub3MatterSettings {
     public let qrCode: [UInt8]

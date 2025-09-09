@@ -260,31 +260,6 @@ public extension CHRouteCoordinator where Self: UIViewController {
     func navigateToCHSesameBiometricSettingVC(_ device: CHSesameBasePro, isFromRegister: Bool = false) {
         navigationController?.pushViewController(SesameBiometricDeviceSettingVC.instance(device) {},animated: true)
     }
-    
-//    func navigateToRemoteCtlController(_ tuple: (CHHub3, ETDevice), _ homePage: Bool = false) {
-//        // 进入自学习
-//        let device = tuple.1
-//        if device.mType == IRDeviceType.DEVICE_REMOTE_CUSTOM {
-////            IRLearningViewModel.fromRegistry().device = tuple.0
-//            let vc = UINavigationController(rootViewController: Hub3IRCustomizeControlVC.instance())
-//            vc.title = device.mName!
-//            if homePage {
-//                self.navigationController?.present(vc, animated: true)
-//            } else {
-//                navigationController?.pushViewController(Hub3IRCustomizeControlVC.instance(), animated: true)
-//            }
-//        } else {
-//            let dataGenerator = IRDeviceType.controlFactory(device.mType!)
-//            (dataGenerator as! ControlAirRemote).device = (device as! ETDeviceAir)
-//            let vc = UINavigationController(rootViewController: Hub3IRRemoteControlVC(dataGenerator: dataGenerator))
-//            vc.navigationItem.title = device.mName!
-//            if homePage {
-//                self.navigationController?.present(vc, animated: true)
-//            } else {
-//                navigationController?.pushViewController(Hub3IRRemoteControlVC(dataGenerator: dataGenerator), animated: true)
-//            }
-//        }
-//    }
 }
 
 class CustomPresentationController: UIPresentationController {

@@ -281,7 +281,8 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.hub3.saveIRDeviceTitle" = "リモコン名称を確認してください";
 "co.candyhouse.hub3.irRenameHint" = "約6文字";
 "co.candyhouse.hub3.matterPairingHint" = "Matterペアリングモードに入りました。%@分以内にMatterペアリングを完了してください。万が一失敗した場合は、このページに戻ってきて再度Matterペアリングモードに入ってくださいませ";
-"co.candyhouse.hub3.air_match_introduction" = "下のリストの強調表示されたボタンを押して、デバイスが正しく反応するかどうかを確認してください";
+"co.candyhouse.hub3.air_match_introduction" = "リモコンをHub3のLEDが光る側に向けて、リモコンの電源ONボタンを押してくださいませ。";
+"co.candyhouse.hub3.ir_auto_searching_remote" = "最も可能性の高いリモコンを検索中...";
 "co.candyhouse.hub3.air_control_match" = "エアコンを操作できない？リモコンを自動マッチング";
 "co.candyhouse.hub3.ir_match_key" = "グループ%2$dのボタン%1$dを照合中（全%3$dグループ、各グループ%4$dボタン）";
 "co.candyhouse.hub3.air_match_responded" = "反応あり、マッチングを続行";

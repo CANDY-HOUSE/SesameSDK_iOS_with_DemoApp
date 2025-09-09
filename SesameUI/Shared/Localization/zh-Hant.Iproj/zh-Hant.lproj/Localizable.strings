@@ -280,7 +280,8 @@
 "co.candyhouse.hub3.saveIRDeviceTitle" = "请确认遙控器名稱";
 "co.candyhouse.hub3.irRenameHint" = "約6個字";
 "co.candyhouse.hub3.matterPairingHint" = "已進入Matter配網模式，請於%@分鐘內完成配網，萬一失敗 請重新進入此頁以重新進入Matter配網模式";
-"co.candyhouse.hub3.air_match_introduction" = "請點擊下方列表中標示的按鍵，測試裝置是否有正確回應";
+"co.candyhouse.hub3.air_match_introduction" = "請將遙控器對準Hub3 LED發光側，按下電源ON按鍵。";
+"co.candyhouse.hub3.ir_auto_searching_remote" = "正在尋找最可能的遙控器...";
 "co.candyhouse.hub3.air_control_match" = "無法控制冷氣？自動匹配遙控器";
 "co.candyhouse.hub3.ir_match_key" = "正在配對第%2$d組第%1$d個按鍵（共%3$d組，每組%4$d個按鍵）";
 "co.candyhouse.hub3.air_match_responded" = "有回應，繼續匹配";

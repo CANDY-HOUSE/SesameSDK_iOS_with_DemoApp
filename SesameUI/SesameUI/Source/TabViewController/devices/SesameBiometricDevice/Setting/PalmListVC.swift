@@ -288,7 +288,7 @@ class PalmListVC: CHBaseTableVC ,CHPalmDelegate, CHDeviceStatusDelegate{
                     self.reloadTableView()
                 }
             } else {
-                BaseUtils.showToast(message: "co.candyhouse.sesame2.delete_fail".localized)
+                self.view.makeToast("co.candyhouse.sesame2.delete_fail".localized)
             }
         }
     }

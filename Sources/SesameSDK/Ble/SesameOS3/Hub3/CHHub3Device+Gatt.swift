@@ -62,19 +62,6 @@ extension CHHub3Device {
             if let ssid = String(data: ssidData.copyData, encoding: .utf8) {
                 (delegate as? CHWifiModule2Delegate)?.onScanWifiSID(device: self, ssid: CHSSID(name: ssid, rssi: rssi))
             }
-        case .SSM_OS3_IR_CODE_FIRST:
-            (delegate as? CHHub3Delegate)?.onIRCodeReceiveStart(device: self)
-        case .SSM_OS3_IR_CODE_LAST:
-            (delegate as? CHHub3Delegate)?.onIRCodeReceiveEnd(device: self)
-        case .SSM_OS3_IR_CODE_NOTIFY:
-            guard data.count > 0 else { break }
-            (delegate as? CHHub3Delegate)?.onIRCodeReceive(device: self, ir: CHHub3IRCode.fromData(data.copyData))
-        case .SSM_OS3_IR_CODE_CHANGE:
-            (delegate as? CHHub3Delegate)?.onIRCodeChanged(device: self, ir: CHHub3IRCode.fromData(data.copyData))
-        case .SSM_OS3_IR_CODE_DELETE:
-            (delegate as? CHHub3Delegate)?.onIRCodeChanged(device: self, ir: CHHub3IRCode.fromData(data.copyData))
-        case .SSM_OS3_IR_MODE_GET:
-            (delegate as? CHHub3Delegate)?.onIRModeReceive(device: self, mode: data.uint8)
         // 模式匹配语法，判断是否属于Hub3ItemCode.HUB3_ITEM_CODE_LED_DUTY
         case _ where itemCode.rawValue == Hub3ItemCode.HUB3_ITEM_CODE_LED_DUTY.rawValue:
             self.hub3Brightness = data.uint8

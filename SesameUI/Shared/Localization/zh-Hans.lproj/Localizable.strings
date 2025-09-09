@@ -283,7 +283,8 @@
 "co.candyhouse.hub3.saveIRDeviceTitle" = "请确认遥控器名称";
 "co.candyhouse.hub3.irRenameHint" = "约6个字";
 "co.candyhouse.hub3.matterPairingHint" = "已进入Matter配网模式，请于%@分钟内完成配网，万一失败 请重新进入此页以重新进入Matter配网模式";
-"co.candyhouse.hub3.air_match_introduction" = "请点击下方列表中高亮的按键，测试设备是否有正确响应";
+"co.candyhouse.hub3.air_match_introduction" = "请将遥控器对准Hub3 LED发光侧，按下电源ON按键。";
+"co.candyhouse.hub3.ir_auto_searching_remote" = "正在寻找最可能的遥控器...";
 "co.candyhouse.hub3.air_control_match" = "无法控制空调？自动匹配遥控器";
 "co.candyhouse.hub3.ir_match_key" = "正在匹配第%2$d组第%1$d个按键（共%3$d组，每组%4$d个按键）";
 "co.candyhouse.hub3.air_match_responded" = "有反应，继续匹配";

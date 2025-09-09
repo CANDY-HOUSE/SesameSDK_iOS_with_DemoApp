@@ -12,6 +12,7 @@ enum FloatingTipViewStyle {
     case imageText(gifImagePathName: String, text: String)
     case textOnly(text: String)
     case topImageWithText(imageName: String, text: String)
+    case topImageWithTextCompact(imageName: String, text: String) // 更加紧凑的布局，图片和文字间距更小，图片高度更小
 }
 
 class FloatingTipView: UIView {
@@ -98,6 +99,11 @@ class FloatingTipView: UIView {
             addSubview(topImageContainerView)
             topImageContainerView.addSubview(topImageView)
             addSubview(label)
+            
+        case .topImageWithText(_, _), .topImageWithTextCompact(_, _):
+            addSubview(topImageContainerView)
+            topImageContainerView.addSubview(topImageView)
+            addSubview(label)
         }
         
         switch style {
@@ -143,6 +149,26 @@ class FloatingTipView: UIView {
             label.autoPinBottom()    // 紧贴底部，无边距
             
             label.backgroundColor = .sesameBackgroundColor
+            
+        case .topImageWithTextCompact(_, _):
+            // 紧凑布局
+            topImageContainerView.autoPinTop()
+            topImageContainerView.autoPinLeading()
+            topImageContainerView.autoPinTrailing()
+            
+            topImageView.autoPinCenterX()
+            topImageView.autoPinTop()
+            topImageView.autoPinBottom()
+            topImageView.autoLayoutWidth(160)  // 更小的尺寸
+            topImageView.autoLayoutHeight(160)
+            
+            // 文字标签 - 添加边距
+            label.autoPinTopToBottomOfView(topImageContainerView, constant: 4)
+            label.autoPinLeading(constant: layoutGuide.spacing)
+            label.autoPinTrailing(constant: -layoutGuide.spacing)
+            label.autoPinBottom(constant: -16)
+            
+            label.backgroundColor = .white
         }
     }
     
@@ -170,7 +196,7 @@ class FloatingTipView: UIView {
             paragraphStyle.tailIndent = -layoutGuide.spacing
             
             let attributedText = NSAttributedString(
-                string: "\n" + text + "\n",  // 添加换行符实现上下内边距
+                string:  text ,  // 添加换行符实现上下内边距
                 attributes: [
                     .font: UIFont.systemFont(ofSize: 17, weight: .semibold),
                     .foregroundColor: UIColor.placeHolderColor,
@@ -189,7 +215,21 @@ class FloatingTipView: UIView {
             topImageView.image = UIImage(named: imageName)
             
             // 设置图片容器高度 = 300（无上下边距）
-            topImageContainerView.autoLayoutHeight(300)
+            topImageContainerView.autoLayoutHeight(160)
+            
+        case .topImageWithTextCompact(let imageName, let text):
+            // 新的紧凑配置
+            label.text = text
+            label.numberOfLines = 0
+            
+            gifImageView.isHidden = true
+            topImageContainerView.isHidden = false
+            
+            backgroundColor = .white
+            
+            topImageView.image = UIImage(named: imageName)
+            topImageContainerView.autoLayoutHeight(160)
+                
         }
     }
     

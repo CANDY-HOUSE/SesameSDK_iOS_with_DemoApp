@@ -70,15 +70,6 @@ final class ETIR {
 
     private init() {}
     
-    // Builder 函数，返回 IR 类型的实例
-    static func builder(type: Int) -> IR? {
-        switch type {
-        case IRDeviceType.DEVICE_REMOTE_AIR: return Air()
-        default:
-            return nil
-        }
-        return nil
-    }
     
     static func Init() {
         // 调用实际的初始化代码，可能是 C 或 C++ 代码
@@ -98,7 +89,7 @@ final class ETIR {
     static let NonAirPrefixCode: [UInt8] = [0x30, 0x00]
     static func searchKeyData(type: Int, arrayIndex: Int, key: Int) -> [UInt8]? {
         var buf = [UInt8]()
-        if type == IRDeviceType.DEVICE_REMOTE_AIR {
+        if type == IRType.DEVICE_REMOTE_AIR {
             let MaxIndex = arcTable.count - 1
             let searchIndex = min(arrayIndex, MaxIndex)
             buf.append(contentsOf: AirPrefixCode)
@@ -133,7 +124,7 @@ final class ETIR {
     }
     
     static func getTypeArray(type: Int, typeIndex: Int) -> [Int] {
-        if type == IRDeviceType.DEVICE_REMOTE_AIR {
+        if type == IRType.DEVICE_REMOTE_AIR {
             return [typeIndex]
         }
         return []

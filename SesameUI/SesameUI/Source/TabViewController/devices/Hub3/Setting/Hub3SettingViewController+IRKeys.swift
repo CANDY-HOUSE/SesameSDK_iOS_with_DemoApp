@@ -34,7 +34,8 @@ extension Hub3SettingViewController {
         // MARK: Add Sesame Buttom View
         addIRKeysButtonView = CHUIViewGenerator.plain { [unowned self] button,_ in
             if (self.wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == true {
-                self.navigationController?.pushViewController(Hub3IRDeviceTypesVC.instance(self.device as! CHHub3), animated: true)
+                listenRemoteUpdate()
+                self.navigationController?.pushViewController(RemoteTypeListVC.instance((self.device as! CHHub3).deviceId.uuidString.uppercased()), animated: true)
             }
         }
         addIRKeysButtonView.setColor(.darkText)
@@ -51,7 +52,7 @@ extension Hub3SettingViewController {
     func ir_didChangekeys(_ sesame2keys: [String: String]) {
         executeOnMainThread {
             self.refreshIRKeys()
-            if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, 
+            if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController,
                 let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
                 listViewController.reloadTableView()
             }
@@ -90,15 +91,15 @@ extension Hub3SettingViewController {
         optItems.insert(AlertItem(title: "co.candyhouse.hub3.ssmDetail".localized, handler: { [unowned self] _ in
             guard let hub3 = device as? CHHub3 else { return }
             guard let remote = hub3.irRemotes.first(where: { $0.uuid == irDeviceModel.uuid }) else { return }
+            let hub3DeviceId = hub3.deviceId.uuidString.uppercased()
             hub3.preference.updateSelectExpandIndex(indexPath.row)
+            listenRemoteUpdate()
             switch remote.type {
-            case IRDeviceType.DEVICE_REMOTE_CUSTOM:
-                navigationController?.pushViewController(Hub3IRCustomizeControlVC.instance(device: hub3), animated: true)
+            case IRType.DEVICE_REMOTE_CUSTOM:
+                navigationController?.pushViewController(RemoteLearnVC.instance(hub3DeviceId: hub3DeviceId, remote: remote), animated: true)
                 break
-            case IRDeviceType.DEVICE_REMOTE_AIR, IRDeviceType.DEVICE_REMOTE_TV, IRDeviceType.DEVICE_REMOTE_LIGHT:
-                let handler = IRDeviceType.controlFactory(remote.type, remote.state)
-                let vc = Hub3IRRemoteControlVC(irRemote: remote)
-                vc.chDevice = (device as! CHHub3)
+            case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT:
+                let vc = RemoteControlVC(irRemote: remote,hub3DeviceId: hub3DeviceId)
                 self.navigationController?.pushViewController(vc, animated: true)
                 break
             default: break
@@ -106,4 +107,34 @@ extension Hub3SettingViewController {
         }), at: 0)
         modalSheet(AlertModel(title: nil, message: irDeviceModel.alias, sourceView: tableView.cellForRow(at: indexPath), items:optItems ))
     }
+}
+
+
+extension Hub3SettingViewController {
+    
+    func listenRemoteUpdate() {
+        removeRemoteUpdateListener()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleRemoteUpdated(_:)),
+            name: .remoteUpdated,
+            object: nil
+        )
+    }
+    
+    @objc private func handleRemoteUpdated(_ notification: Notification) {
+        handleRemoteUpdate()
+    }
+    
+    func removeRemoteUpdateListener() {
+        NotificationCenter.default.removeObserver(self,name: .remoteUpdated,object: nil)
+    }
+    
+    func handleRemoteUpdate() {
+        fetchIrDevices()
+    }
+}
+
+extension Notification.Name {
+    static let remoteUpdated = Notification.Name("RemoteUpdated")
 }

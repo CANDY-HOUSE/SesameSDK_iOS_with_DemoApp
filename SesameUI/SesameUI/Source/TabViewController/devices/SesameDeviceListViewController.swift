@@ -113,14 +113,13 @@ class SesameDeviceListViewController: CHBaseViewController {
                 }
                 if let device = device {
                     device.preference.updateSelectExpandIndex(((device as! CHHub3).irRemotes.firstIndex(where: { $0.uuid == remote.uuid }))!)
+                    let hub3DeviceId = (device as! CHHub3).deviceId.uuidString.uppercased()
                     switch remote.type {
-                    case IRDeviceType.DEVICE_REMOTE_CUSTOM:
-                        self.present(UINavigationController(rootViewController: Hub3IRCustomizeControlVC.instance(device: (device as! CHHub3))), animated: true)
+                    case IRType.DEVICE_REMOTE_CUSTOM:
+                        self.present(UINavigationController(rootViewController: RemoteLearnVC.instance(hub3DeviceId: hub3DeviceId, remote: remote)), animated: true)
                         break
-                    case IRDeviceType.DEVICE_REMOTE_AIR, IRDeviceType.DEVICE_REMOTE_TV, IRDeviceType.DEVICE_REMOTE_LIGHT:
-                        _ = IRDeviceType.controlFactory(remote.type, remote.state)
-                        let vc = Hub3IRRemoteControlVC(irRemote: remote)
-                        vc.chDevice = (device as! CHHub3)
+                    case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT:
+                        let vc = RemoteControlVC(irRemote: remote, hub3DeviceId: hub3DeviceId)
                         self.present(UINavigationController(rootViewController: vc), animated: true)
                         break
                     default: break

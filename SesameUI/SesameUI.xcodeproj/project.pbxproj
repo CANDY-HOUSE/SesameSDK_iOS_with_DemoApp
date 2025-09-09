@@ -9,30 +9,38 @@
 /* Begin PBXBuildFile section */
 		0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
 		0A0B3FEE278D4D8F00BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
-		2C5282002DBFAF1B00BE8BD7 /* AirControllerHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281DC2DBFAF1B00BE8BD7 /* AirControllerHandlerAdapter.swift */; };
-		2C5282012DBFAF1B00BE8BD7 /* AirProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281DD2DBFAF1B00BE8BD7 /* AirProcessor.swift */; };
-		2C5282022DBFAF1B00BE8BD7 /* IrAirTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281DE2DBFAF1B00BE8BD7 /* IrAirTool.swift */; };
-		2C5282032DBFAF1B00BE8BD7 /* AirControllerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281E02DBFAF1B00BE8BD7 /* AirControllerConfigAdapter.swift */; };
-		2C5282042DBFAF1B00BE8BD7 /* AirControllerRemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281E22DBFAF1B00BE8BD7 /* AirControllerRemoteAdapterFactory.swift */; };
-		2C5282052DBFAF1B00BE8BD7 /* HandlerCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281E42DBFAF1B00BE8BD7 /* HandlerCallback.swift */; };
-		2C5282062DBFAF1B00BE8BD7 /* HandlerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281E52DBFAF1B00BE8BD7 /* HandlerConfigAdapter.swift */; };
-		2C5282072DBFAF1B00BE8BD7 /* ConfigUpdateCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281E72DBFAF1B00BE8BD7 /* ConfigUpdateCallback.swift */; };
-		2C5282082DBFAF1B00BE8BD7 /* UIConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281E82DBFAF1B00BE8BD7 /* UIConfigAdapter.swift */; };
-		2C5282092DBFAF1B00BE8BD7 /* BastUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281EA2DBFAF1B00BE8BD7 /* BastUtils.swift */; };
-		2C52820A2DBFAF1B00BE8BD7 /* IrInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281EB2DBFAF1B00BE8BD7 /* IrInterface.swift */; };
-		2C52820B2DBFAF1B00BE8BD7 /* IRType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281EC2DBFAF1B00BE8BD7 /* IRType.swift */; };
-		2C52820C2DBFAF1B00BE8BD7 /* RemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281ED2DBFAF1B00BE8BD7 /* RemoteAdapterFactory.swift */; };
-		2C52820D2DBFAF1B00BE8BD7 /* LightControllerHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281EF2DBFAF1B00BE8BD7 /* LightControllerHandlerAdapter.swift */; };
-		2C52820E2DBFAF1B00BE8BD7 /* LightControllerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281F12DBFAF1B00BE8BD7 /* LightControllerConfigAdapter.swift */; };
-		2C52820F2DBFAF1B00BE8BD7 /* LightControllerRemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281F32DBFAF1B00BE8BD7 /* LightControllerRemoteAdapterFactory.swift */; };
-		2C5282102DBFAF1B00BE8BD7 /* TVControllerHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281F52DBFAF1B00BE8BD7 /* TVControllerHandlerAdapter.swift */; };
-		2C5282112DBFAF1B00BE8BD7 /* TVControllerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281F72DBFAF1B00BE8BD7 /* TVControllerConfigAdapter.swift */; };
-		2C5282122DBFAF1B00BE8BD7 /* TVControllerRemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281F92DBFAF1B00BE8BD7 /* TVControllerRemoteAdapterFactory.swift */; };
-		2C5282132DBFAF1B00BE8BD7 /* RemoteAdapterFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281FC2DBFAF1B00BE8BD7 /* RemoteAdapterFactoryManager.swift */; };
-		2C5282142DBFAF1B00BE8BD7 /* RemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5281FD2DBFAF1B00BE8BD7 /* RemoteRepository.swift */; };
-		2CA5DEB92D7EC19F006E99BE /* Hub3IRRemoteMatchControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5DEB82D7EC199006E99BE /* Hub3IRRemoteMatchControlVC.swift */; };
-		2CA5DEBE2D801418006E99BE /* Hub3IRRemoteMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5DEBD2D80140A006E99BE /* Hub3IRRemoteMatchViewModel.swift */; };
-		2CD6CDBD2D92AD750060AE19 /* Hub3IRRemoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6CDBC2D92AD5E0060AE19 /* Hub3IRRemoteViewModel.swift */; };
+		2C15AD552E6FC63A00E37918 /* RemoteControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4A2E6FC63A00E37918 /* RemoteControlViewModel.swift */; };
+		2C15AD562E6FC63A00E37918 /* HandlerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2C2E6FC63A00E37918 /* HandlerConfigAdapter.swift */; };
+		2C15AD572E6FC63A00E37918 /* HXDParametersSwapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD322E6FC63A00E37918 /* HXDParametersSwapper.swift */; };
+		2C15AD582E6FC63A00E37918 /* IRType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD342E6FC63A00E37918 /* IRType+.swift */; };
+		2C15AD592E6FC63A00E37918 /* IRType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD332E6FC63A00E37918 /* IRType.swift */; };
+		2C15AD5A2E6FC63A00E37918 /* HXDCommandProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD312E6FC63A00E37918 /* HXDCommandProcessor.swift */; };
+		2C15AD5B2E6FC63A00E37918 /* RemoteLearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD222E6FC63A00E37918 /* RemoteLearnVC.swift */; };
+		2C15AD5C2E6FC63A00E37918 /* LightControllerHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD382E6FC63A00E37918 /* LightControllerHandlerAdapter.swift */; };
+		2C15AD5D2E6FC63A00E37918 /* RemoteLearnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD232E6FC63A00E37918 /* RemoteLearnViewModel.swift */; };
+		2C15AD5E2E6FC63A00E37918 /* RemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD362E6FC63A00E37918 /* RemoteAdapterFactory.swift */; };
+		2C15AD5F2E6FC63A00E37918 /* RemoteTypeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD202E6FC63A00E37918 /* RemoteTypeListVC.swift */; };
+		2C15AD602E6FC63A00E37918 /* RemoteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD502E6FC63A00E37918 /* RemoteListVC.swift */; };
+		2C15AD612E6FC63A00E37918 /* AirControllerHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD252E6FC63A00E37918 /* AirControllerHandlerAdapter.swift */; };
+		2C15AD622E6FC63A00E37918 /* RemoteControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD492E6FC63A00E37918 /* RemoteControlVC.swift */; };
+		2C15AD632E6FC63A00E37918 /* LoadRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD352E6FC63A00E37918 /* LoadRemoteConfig.swift */; };
+		2C15AD642E6FC63A00E37918 /* HandlerCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2B2E6FC63A00E37918 /* HandlerCallback.swift */; };
+		2C15AD652E6FC63A00E37918 /* RemoteListCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4F2E6FC63A00E37918 /* RemoteListCacheManager.swift */; };
+		2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD1E2E6FC63A00E37918 /* RemoteBean.swift */; };
+		2C15AD672E6FC63A00E37918 /* LightControllerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD3A2E6FC63A00E37918 /* LightControllerConfigAdapter.swift */; };
+		2C15AD682E6FC63A00E37918 /* ConfigUpdateCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2E2E6FC63A00E37918 /* ConfigUpdateCallback.swift */; };
+		2C15AD692E6FC63A00E37918 /* TVControllerRemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD422E6FC63A00E37918 /* TVControllerRemoteAdapterFactory.swift */; };
+		2C15AD6A2E6FC63A00E37918 /* RemoteMatchControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4C2E6FC63A00E37918 /* RemoteMatchControlVC.swift */; };
+		2C15AD6B2E6FC63A00E37918 /* TVControllerHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD3E2E6FC63A00E37918 /* TVControllerHandlerAdapter.swift */; };
+		2C15AD6C2E6FC63A00E37918 /* RemoteMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4D2E6FC63A00E37918 /* RemoteMatchViewModel.swift */; };
+		2C15AD6D2E6FC63A00E37918 /* CHIRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD522E6FC63A00E37918 /* CHIRManager.swift */; };
+		2C15AD6E2E6FC63A00E37918 /* RemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD462E6FC63A00E37918 /* RemoteRepository.swift */; };
+		2C15AD6F2E6FC63A00E37918 /* TVControllerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD402E6FC63A00E37918 /* TVControllerConfigAdapter.swift */; };
+		2C15AD702E6FC63A00E37918 /* UIConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2F2E6FC63A00E37918 /* UIConfigAdapter.swift */; };
+		2C15AD712E6FC63A00E37918 /* AirControllerRemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD292E6FC63A00E37918 /* AirControllerRemoteAdapterFactory.swift */; };
+		2C15AD722E6FC63A00E37918 /* LightControllerRemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD3C2E6FC63A00E37918 /* LightControllerRemoteAdapterFactory.swift */; };
+		2C15AD732E6FC63A00E37918 /* AirControllerConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD272E6FC63A00E37918 /* AirControllerConfigAdapter.swift */; };
+		2C15AD742E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD452E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift */; };
 		2CFFBE372D93A5C9005FE14B /* IrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFBE362D93A5C4005FE14B /* IrController.swift */; };
 		3B1D80402E2A2DA900C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80442E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; };
@@ -46,7 +54,6 @@
 		3B8B7C4F2E2FC0A600F5A2F7 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C4D2E2FC0A300F5A2F7 /* WebView.swift */; };
 		3B8B7C512E2FC0AB00F5A2F7 /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C502E2FC0AA00F5A2F7 /* WebViewScreen.swift */; };
 		3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5952E2DE4F8008EBF76 /* SesameSDK */; };
-		3BC91C5D2E2A7F1400468AAC /* IRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */; };
 		3BC91DF52E2AA0FB00468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		3BC91DF72E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		3BC91DF82E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
@@ -87,7 +94,6 @@
 		41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */; };
 		41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */; };
 		641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641326832B57A3F0008B1AC1 /* PickerController.swift */; };
-		64187F702B3E9B8600086321 /* IRLearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */; };
 		64190A142C2D54DC00B89592 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64190A132C2D54DC00B89592 /* AirData.swift */; };
 		643A9C472B3027A9008214BD /* IndicatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C462B3027A9008214BD /* IndicatorGenerator.swift */; };
 		643A9C492B313970008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
@@ -100,7 +106,6 @@
 		643F06A02BCD12400045D789 /* sesamebike1_21_3_d7162a.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */; };
 		643F06A12BCD12400045D789 /* sesame_221_0_8c080c.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06932BCD12400045D789 /* sesame_221_0_8c080c.zip */; };
 		643F06AC2BD2065E0045D789 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F06AB2BD2065E0045D789 /* NSObject+.swift */; };
-		644053582C1839BF001CDCCE /* IRDeviceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644053572C1839BF001CDCCE /* IRDeviceType+.swift */; };
 		6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */; };
 		6440C3B32B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B22B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift */; };
 		6440C3B52B61F87000F74E52 /* DeviceControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B42B61F87000F74E52 /* DeviceControllerHolder.swift */; };
@@ -111,19 +116,6 @@
 		645211F42B2AF5C50091DDE3 /* PickerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645211F32B2AF5C50091DDE3 /* PickerProxy.swift */; };
 		645211F62B2BFA270091DDE3 /* Bot2ScriptActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645211F52B2BFA270091DDE3 /* Bot2ScriptActionVC.swift */; };
 		64547DCB2C086491001CEF88 /* learning.gif in Resources */ = {isa = PBXBuildFile; fileRef = 64547DCA2C086491001CEF88 /* learning.gif */; };
-		64547DCE2C0869B5001CEF88 /* ControlAirRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DCD2C0869B5001CEF88 /* ControlAirRemote.swift */; };
-		64547DD02C086ACE001CEF88 /* ControlWaterHeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DCF2C086ACE001CEF88 /* ControlWaterHeater.swift */; };
-		64547DD42C086AF3001CEF88 /* ControlTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DD32C086AF3001CEF88 /* ControlTV.swift */; };
-		64547DD62C086B03001CEF88 /* ControlIPTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DD52C086B03001CEF88 /* ControlIPTV.swift */; };
-		64547DD82C086B15001CEF88 /* ControlSTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DD72C086B15001CEF88 /* ControlSTB.swift */; };
-		64547DDA2C086B29001CEF88 /* ControlDVDPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DD92C086B29001CEF88 /* ControlDVDPlayer.swift */; };
-		64547DDC2C086B40001CEF88 /* ControlFans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DDB2C086B40001CEF88 /* ControlFans.swift */; };
-		64547DDE2C086B50001CEF88 /* ControlProjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DDD2C086B50001CEF88 /* ControlProjector.swift */; };
-		64547DE02C086B6A001CEF88 /* ControlRemoteControlLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DDF2C086B6A001CEF88 /* ControlRemoteControlLight.swift */; };
-		64547DE22C086B7A001CEF88 /* ControlDigitalCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DE12C086B7A001CEF88 /* ControlDigitalCamera.swift */; };
-		64547DE42C086B89001CEF88 /* ControlSoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DE32C086B89001CEF88 /* ControlSoundSystem.swift */; };
-		64547DE62C086B99001CEF88 /* ControlVacuumCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DE52C086B99001CEF88 /* ControlVacuumCleaner.swift */; };
-		64547DE82C089080001CEF88 /* ControlDIY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64547DE72C089080001CEF88 /* ControlDIY.swift */; };
 		645B1B272BDB4C0100D5E491 /* FrameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B1B2BDB4C0100D5E491 /* FrameStore.swift */; };
 		645B1B282BDB4C0100D5E491 /* GIFAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B1C2BDB4C0100D5E491 /* GIFAnimatable.swift */; };
 		645B1B292BDB4C0100D5E491 /* AnimatedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B1D2BDB4C0100D5E491 /* AnimatedFrame.swift */; };
@@ -146,27 +138,11 @@
 		646B86EE2B48F0EC0042589E /* Hub3SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */; };
 		646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */; };
 		646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */ = {isa = PBXBuildFile; fileRef = 646CE5652BDF3D9A00898ECA /* finger_print.gif */; };
-		646CF3EF2C8AB3A90022C724 /* strings_air_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 646CF3EE2C8AB3A80022C724 /* strings_air_type.xml */; };
-		646F796B2B3E5E4B0055E0B2 /* Hub3IRCustomizeControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F796A2B3E5E4B0055E0B2 /* Hub3IRCustomizeControlVC.swift */; };
 		647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */; };
-		6479BD8B2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD8A2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift */; };
 		6479BD912B62569D00DE5845 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD902B62569D00DE5845 /* XMLParser.swift */; };
-		6479BD962B63580C00DE5845 /* Hub3IRDeviceBrandModelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD952B63580C00DE5845 /* Hub3IRDeviceBrandModelsVC.swift */; };
 		647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */; };
 		647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */; };
 		6483C9252B68F98800D8B68D /* strings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9272B68F98800D8B68D /* strings.xml */; };
-		6483C9312B68F9CA00D8B68D /* strings_hw_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9332B68F9CA00D8B68D /* strings_hw_type.xml */; };
-		6483C9372B68F9DD00D8B68D /* strings_ap_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9392B68F9DD00D8B68D /* strings_ap_type.xml */; };
-		6483C93D2B68F9EB00D8B68D /* strings_tv_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C93F2B68F9EB00D8B68D /* strings_tv_type.xml */; };
-		6483C9432B68F9FA00D8B68D /* strings_iptv_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9452B68F9FA00D8B68D /* strings_iptv_type.xml */; };
-		6483C9492B68FA0800D8B68D /* strings_stb_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C94B2B68FA0800D8B68D /* strings_stb_type.xml */; };
-		6483C94F2B68FA1700D8B68D /* strings_dvd_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9512B68FA1700D8B68D /* strings_dvd_type.xml */; };
-		6483C9552B68FA2600D8B68D /* strings_fans_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9572B68FA2600D8B68D /* strings_fans_type.xml */; };
-		6483C95B2B68FA3500D8B68D /* strings_pjt_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C95D2B68FA3500D8B68D /* strings_pjt_type.xml */; };
-		6483C9612B68FA4300D8B68D /* strings_light_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9632B68FA4300D8B68D /* strings_light_type.xml */; };
-		6483C9672B68FA5100D8B68D /* strings_dc_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9692B68FA5100D8B68D /* strings_dc_type.xml */; };
-		6483C96D2B68FA5E00D8B68D /* strings_audio_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C96F2B68FA5E00D8B68D /* strings_audio_type.xml */; };
-		6483C9732B68FA6C00D8B68D /* strings_robot_type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9752B68FA6C00D8B68D /* strings_robot_type.xml */; };
 		648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648461BB2BC7B6370000E9A7 /* UITableView+.swift */; };
 		649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */; };
 		64ADDE392DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
@@ -178,12 +154,9 @@
 		64AE88392B2014AA00E2278A /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE88372B2014AA00E2278A /* FriendListCell.xib */; };
 		64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */; };
 		64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
-		64AF23AB2C353DBE009614F9 /* ControlAirPurifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AF23AA2C353DBE009614F9 /* ControlAirPurifier.swift */; };
 		64CD4E5C2BF5AC7100733D29 /* FindFriendHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CD4E5B2BF5AC7100733D29 /* FindFriendHandler.swift */; };
 		64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
-		64D9F8BA2B8305E10020B4EB /* Hub3OneclickMatchingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D9F8B92B8305E10020B4EB /* Hub3OneclickMatchingVC.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
-		64DE0CD32B64B00400EB7C85 /* Hub3IRRemoteControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CD22B64B00400EB7C85 /* Hub3IRRemoteControlVC.swift */; };
 		64DE0CD92B64D53400EB7C85 /* IRRemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */; };
 		64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */; };
 		64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */; };
@@ -511,30 +484,38 @@
 
 /* Begin PBXFileReference section */
 		0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleHelper.swift; sourceTree = "<group>"; };
-		2C5281DC2DBFAF1B00BE8BD7 /* AirControllerHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControllerHandlerAdapter.swift; sourceTree = "<group>"; };
-		2C5281DD2DBFAF1B00BE8BD7 /* AirProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirProcessor.swift; sourceTree = "<group>"; };
-		2C5281DE2DBFAF1B00BE8BD7 /* IrAirTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrAirTool.swift; sourceTree = "<group>"; };
-		2C5281E02DBFAF1B00BE8BD7 /* AirControllerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControllerConfigAdapter.swift; sourceTree = "<group>"; };
-		2C5281E22DBFAF1B00BE8BD7 /* AirControllerRemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControllerRemoteAdapterFactory.swift; sourceTree = "<group>"; };
-		2C5281E42DBFAF1B00BE8BD7 /* HandlerCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerCallback.swift; sourceTree = "<group>"; };
-		2C5281E52DBFAF1B00BE8BD7 /* HandlerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerConfigAdapter.swift; sourceTree = "<group>"; };
-		2C5281E72DBFAF1B00BE8BD7 /* ConfigUpdateCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigUpdateCallback.swift; sourceTree = "<group>"; };
-		2C5281E82DBFAF1B00BE8BD7 /* UIConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfigAdapter.swift; sourceTree = "<group>"; };
-		2C5281EA2DBFAF1B00BE8BD7 /* BastUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BastUtils.swift; sourceTree = "<group>"; };
-		2C5281EB2DBFAF1B00BE8BD7 /* IrInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrInterface.swift; sourceTree = "<group>"; };
-		2C5281EC2DBFAF1B00BE8BD7 /* IRType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRType.swift; sourceTree = "<group>"; };
-		2C5281ED2DBFAF1B00BE8BD7 /* RemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAdapterFactory.swift; sourceTree = "<group>"; };
-		2C5281EF2DBFAF1B00BE8BD7 /* LightControllerHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightControllerHandlerAdapter.swift; sourceTree = "<group>"; };
-		2C5281F12DBFAF1B00BE8BD7 /* LightControllerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightControllerConfigAdapter.swift; sourceTree = "<group>"; };
-		2C5281F32DBFAF1B00BE8BD7 /* LightControllerRemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightControllerRemoteAdapterFactory.swift; sourceTree = "<group>"; };
-		2C5281F52DBFAF1B00BE8BD7 /* TVControllerHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVControllerHandlerAdapter.swift; sourceTree = "<group>"; };
-		2C5281F72DBFAF1B00BE8BD7 /* TVControllerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVControllerConfigAdapter.swift; sourceTree = "<group>"; };
-		2C5281F92DBFAF1B00BE8BD7 /* TVControllerRemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVControllerRemoteAdapterFactory.swift; sourceTree = "<group>"; };
-		2C5281FC2DBFAF1B00BE8BD7 /* RemoteAdapterFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAdapterFactoryManager.swift; sourceTree = "<group>"; };
-		2C5281FD2DBFAF1B00BE8BD7 /* RemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRepository.swift; sourceTree = "<group>"; };
-		2CA5DEB82D7EC199006E99BE /* Hub3IRRemoteMatchControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3IRRemoteMatchControlVC.swift; sourceTree = "<group>"; };
-		2CA5DEBD2D80140A006E99BE /* Hub3IRRemoteMatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3IRRemoteMatchViewModel.swift; sourceTree = "<group>"; };
-		2CD6CDBC2D92AD5E0060AE19 /* Hub3IRRemoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3IRRemoteViewModel.swift; sourceTree = "<group>"; };
+		2C15AD1E2E6FC63A00E37918 /* RemoteBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBean.swift; sourceTree = "<group>"; };
+		2C15AD202E6FC63A00E37918 /* RemoteTypeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTypeListVC.swift; sourceTree = "<group>"; };
+		2C15AD222E6FC63A00E37918 /* RemoteLearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLearnVC.swift; sourceTree = "<group>"; };
+		2C15AD232E6FC63A00E37918 /* RemoteLearnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLearnViewModel.swift; sourceTree = "<group>"; };
+		2C15AD252E6FC63A00E37918 /* AirControllerHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControllerHandlerAdapter.swift; sourceTree = "<group>"; };
+		2C15AD272E6FC63A00E37918 /* AirControllerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControllerConfigAdapter.swift; sourceTree = "<group>"; };
+		2C15AD292E6FC63A00E37918 /* AirControllerRemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControllerRemoteAdapterFactory.swift; sourceTree = "<group>"; };
+		2C15AD2B2E6FC63A00E37918 /* HandlerCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerCallback.swift; sourceTree = "<group>"; };
+		2C15AD2C2E6FC63A00E37918 /* HandlerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerConfigAdapter.swift; sourceTree = "<group>"; };
+		2C15AD2E2E6FC63A00E37918 /* ConfigUpdateCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigUpdateCallback.swift; sourceTree = "<group>"; };
+		2C15AD2F2E6FC63A00E37918 /* UIConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfigAdapter.swift; sourceTree = "<group>"; };
+		2C15AD312E6FC63A00E37918 /* HXDCommandProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXDCommandProcessor.swift; sourceTree = "<group>"; };
+		2C15AD322E6FC63A00E37918 /* HXDParametersSwapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXDParametersSwapper.swift; sourceTree = "<group>"; };
+		2C15AD332E6FC63A00E37918 /* IRType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRType.swift; sourceTree = "<group>"; };
+		2C15AD342E6FC63A00E37918 /* IRType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IRType+.swift"; sourceTree = "<group>"; };
+		2C15AD352E6FC63A00E37918 /* LoadRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRemoteConfig.swift; sourceTree = "<group>"; };
+		2C15AD362E6FC63A00E37918 /* RemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAdapterFactory.swift; sourceTree = "<group>"; };
+		2C15AD382E6FC63A00E37918 /* LightControllerHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightControllerHandlerAdapter.swift; sourceTree = "<group>"; };
+		2C15AD3A2E6FC63A00E37918 /* LightControllerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightControllerConfigAdapter.swift; sourceTree = "<group>"; };
+		2C15AD3C2E6FC63A00E37918 /* LightControllerRemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightControllerRemoteAdapterFactory.swift; sourceTree = "<group>"; };
+		2C15AD3E2E6FC63A00E37918 /* TVControllerHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVControllerHandlerAdapter.swift; sourceTree = "<group>"; };
+		2C15AD402E6FC63A00E37918 /* TVControllerConfigAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVControllerConfigAdapter.swift; sourceTree = "<group>"; };
+		2C15AD422E6FC63A00E37918 /* TVControllerRemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVControllerRemoteAdapterFactory.swift; sourceTree = "<group>"; };
+		2C15AD452E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAdapterFactoryManager.swift; sourceTree = "<group>"; };
+		2C15AD462E6FC63A00E37918 /* RemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRepository.swift; sourceTree = "<group>"; };
+		2C15AD492E6FC63A00E37918 /* RemoteControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlVC.swift; sourceTree = "<group>"; };
+		2C15AD4A2E6FC63A00E37918 /* RemoteControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlViewModel.swift; sourceTree = "<group>"; };
+		2C15AD4C2E6FC63A00E37918 /* RemoteMatchControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMatchControlVC.swift; sourceTree = "<group>"; };
+		2C15AD4D2E6FC63A00E37918 /* RemoteMatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMatchViewModel.swift; sourceTree = "<group>"; };
+		2C15AD4F2E6FC63A00E37918 /* RemoteListCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListCacheManager.swift; sourceTree = "<group>"; };
+		2C15AD502E6FC63A00E37918 /* RemoteListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListVC.swift; sourceTree = "<group>"; };
+		2C15AD522E6FC63A00E37918 /* CHIRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIRManager.swift; sourceTree = "<group>"; };
 		2CFFBE362D93A5C4005FE14B /* IrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrController.swift; sourceTree = "<group>"; };
 		3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -551,7 +532,6 @@
 		3BC3297B2E28C76700786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC3297F2E28C76E00786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC329852E28C77B00786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IRDeviceType.swift; path = ../Sources/SesameSDK/Ble/SesameOS3/Hub3/IRDeviceType.swift; sourceTree = SOURCE_ROOT; };
 		3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSSharedConfig.swift; sourceTree = "<group>"; };
 		3BD14CEC2E29095300A39299 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD14CF02E29095A00A39299 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -598,7 +578,6 @@
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
 		41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameHistoryViewController.swift; sourceTree = "<group>"; };
 		641326832B57A3F0008B1AC1 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
-		64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRLearningViewModel.swift; sourceTree = "<group>"; };
 		64190A132C2D54DC00B89592 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
 		643A9C462B3027A9008214BD /* IndicatorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorGenerator.swift; sourceTree = "<group>"; };
 		643A9C482B313970008214BD /* CHProductModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHProductModel+.swift"; sourceTree = "<group>"; };
@@ -607,7 +586,6 @@
 		643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike1_21_3_d7162a.zip; sourceTree = "<group>"; };
 		643F06932BCD12400045D789 /* sesame_221_0_8c080c.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame_221_0_8c080c.zip; sourceTree = "<group>"; };
 		643F06AB2BD2065E0045D789 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
-		644053572C1839BF001CDCCE /* IRDeviceType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IRDeviceType+.swift"; sourceTree = "<group>"; };
 		6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hub3SettingViewController+SSMKeys.swift"; sourceTree = "<group>"; };
 		6440C3B22B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hub3SettingViewController+IRKeys.swift"; sourceTree = "<group>"; };
 		6440C3B42B61F87000F74E52 /* DeviceControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControllerHolder.swift; sourceTree = "<group>"; };
@@ -618,19 +596,6 @@
 		645211F32B2AF5C50091DDE3 /* PickerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerProxy.swift; sourceTree = "<group>"; };
 		645211F52B2BFA270091DDE3 /* Bot2ScriptActionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot2ScriptActionVC.swift; sourceTree = "<group>"; };
 		64547DCA2C086491001CEF88 /* learning.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = learning.gif; sourceTree = "<group>"; };
-		64547DCD2C0869B5001CEF88 /* ControlAirRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlAirRemote.swift; sourceTree = "<group>"; };
-		64547DCF2C086ACE001CEF88 /* ControlWaterHeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlWaterHeater.swift; sourceTree = "<group>"; };
-		64547DD32C086AF3001CEF88 /* ControlTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTV.swift; sourceTree = "<group>"; };
-		64547DD52C086B03001CEF88 /* ControlIPTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlIPTV.swift; sourceTree = "<group>"; };
-		64547DD72C086B15001CEF88 /* ControlSTB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSTB.swift; sourceTree = "<group>"; };
-		64547DD92C086B29001CEF88 /* ControlDVDPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDVDPlayer.swift; sourceTree = "<group>"; };
-		64547DDB2C086B40001CEF88 /* ControlFans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlFans.swift; sourceTree = "<group>"; };
-		64547DDD2C086B50001CEF88 /* ControlProjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlProjector.swift; sourceTree = "<group>"; };
-		64547DDF2C086B6A001CEF88 /* ControlRemoteControlLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlRemoteControlLight.swift; sourceTree = "<group>"; };
-		64547DE12C086B7A001CEF88 /* ControlDigitalCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDigitalCamera.swift; sourceTree = "<group>"; };
-		64547DE32C086B89001CEF88 /* ControlSoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSoundSystem.swift; sourceTree = "<group>"; };
-		64547DE52C086B99001CEF88 /* ControlVacuumCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlVacuumCleaner.swift; sourceTree = "<group>"; };
-		64547DE72C089080001CEF88 /* ControlDIY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDIY.swift; sourceTree = "<group>"; };
 		645B1B1B2BDB4C0100D5E491 /* FrameStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameStore.swift; sourceTree = "<group>"; };
 		645B1B1C2BDB4C0100D5E491 /* GIFAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFAnimatable.swift; sourceTree = "<group>"; };
 		645B1B1D2BDB4C0100D5E491 /* AnimatedFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedFrame.swift; sourceTree = "<group>"; };
@@ -653,12 +618,8 @@
 		646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3SettingViewController.swift; sourceTree = "<group>"; };
 		646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hub3SettingViewController.xib; sourceTree = "<group>"; };
 		646CE5652BDF3D9A00898ECA /* finger_print.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = finger_print.gif; sourceTree = "<group>"; };
-		646CF3EE2C8AB3A80022C724 /* strings_air_type.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = strings_air_type.xml; sourceTree = "<group>"; };
-		646F796A2B3E5E4B0055E0B2 /* Hub3IRCustomizeControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3IRCustomizeControlVC.swift; sourceTree = "<group>"; };
 		647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		6479BD8A2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3IRDeviceTypesVC.swift; sourceTree = "<group>"; };
 		6479BD902B62569D00DE5845 /* XMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
-		6479BD952B63580C00DE5845 /* Hub3IRDeviceBrandModelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3IRDeviceBrandModelsVC.swift; sourceTree = "<group>"; };
 		647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot2ScriptActionCell.swift; sourceTree = "<group>"; };
 		647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bot2ScriptActionCell.xib; sourceTree = "<group>"; };
 		647DF0B42CB6664200A02F47 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
@@ -666,42 +627,6 @@
 		6483C9282B68F99200D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings.xml"; sourceTree = "<group>"; };
 		6483C9292B68F99F00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings.xml"; sourceTree = "<group>"; };
 		6483C92A2B68F9A500D8B68D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ja; path = ja.lproj/strings.xml; sourceTree = "<group>"; };
-		6483C9322B68F9CA00D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_hw_type.xml"; sourceTree = "<group>"; };
-		6483C9342B68F9CD00D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_hw_type.xml; sourceTree = "<group>"; };
-		6483C9352B68F9D000D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_hw_type.xml"; sourceTree = "<group>"; };
-		6483C9382B68F9DD00D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_ap_type.xml"; sourceTree = "<group>"; };
-		6483C93A2B68F9DF00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_ap_type.xml"; sourceTree = "<group>"; };
-		6483C93B2B68F9E200D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_ap_type.xml; sourceTree = "<group>"; };
-		6483C93E2B68F9EB00D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_tv_type.xml"; sourceTree = "<group>"; };
-		6483C9402B68F9ED00D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_tv_type.xml; sourceTree = "<group>"; };
-		6483C9412B68F9F000D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_tv_type.xml"; sourceTree = "<group>"; };
-		6483C9442B68F9FA00D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_iptv_type.xml"; sourceTree = "<group>"; };
-		6483C9462B68F9FC00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_iptv_type.xml"; sourceTree = "<group>"; };
-		6483C9482B68FA0200D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_iptv_type.xml; sourceTree = "<group>"; };
-		6483C94A2B68FA0800D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_stb_type.xml"; sourceTree = "<group>"; };
-		6483C94C2B68FA0B00D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_stb_type.xml; sourceTree = "<group>"; };
-		6483C94D2B68FA0D00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_stb_type.xml"; sourceTree = "<group>"; };
-		6483C9502B68FA1700D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_dvd_type.xml"; sourceTree = "<group>"; };
-		6483C9522B68FA1A00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_dvd_type.xml"; sourceTree = "<group>"; };
-		6483C9542B68FA1F00D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_dvd_type.xml; sourceTree = "<group>"; };
-		6483C9562B68FA2600D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_fans_type.xml"; sourceTree = "<group>"; };
-		6483C9582B68FA2800D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_fans_type.xml; sourceTree = "<group>"; };
-		6483C9592B68FA2A00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_fans_type.xml"; sourceTree = "<group>"; };
-		6483C95C2B68FA3500D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_pjt_type.xml"; sourceTree = "<group>"; };
-		6483C95E2B68FA3800D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_pjt_type.xml; sourceTree = "<group>"; };
-		6483C95F2B68FA3A00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_pjt_type.xml"; sourceTree = "<group>"; };
-		6483C9622B68FA4300D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_light_type.xml"; sourceTree = "<group>"; };
-		6483C9642B68FA4500D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_light_type.xml; sourceTree = "<group>"; };
-		6483C9652B68FA4700D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_light_type.xml"; sourceTree = "<group>"; };
-		6483C9682B68FA5100D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_dc_type.xml"; sourceTree = "<group>"; };
-		6483C96A2B68FA5400D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_dc_type.xml; sourceTree = "<group>"; };
-		6483C96B2B68FA5600D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_dc_type.xml"; sourceTree = "<group>"; };
-		6483C96E2B68FA5E00D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_audio_type.xml"; sourceTree = "<group>"; };
-		6483C9702B68FA6100D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_audio_type.xml; sourceTree = "<group>"; };
-		6483C9712B68FA6400D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_audio_type.xml"; sourceTree = "<group>"; };
-		6483C9742B68FA6C00D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings_robot_type.xml"; sourceTree = "<group>"; };
-		6483C9762B68FA6E00D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings_robot_type.xml; sourceTree = "<group>"; };
-		6483C9772B68FA7000D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings_robot_type.xml"; sourceTree = "<group>"; };
 		648461BB2BC7B6370000E9A7 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIRControlDialog.swift; sourceTree = "<group>"; };
 		64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDataToHistoryTag+.swift"; sourceTree = "<group>"; };
@@ -710,12 +635,9 @@
 		64AE88372B2014AA00E2278A /* FriendListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListCell.xib; sourceTree = "<group>"; };
 		64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5ListCell.swift; sourceTree = "<group>"; };
 		64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5ListCell.xib; sourceTree = "<group>"; };
-		64AF23AA2C353DBE009614F9 /* ControlAirPurifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlAirPurifier.swift; sourceTree = "<group>"; };
 		64CD4E5B2BF5AC7100733D29 /* FindFriendHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendHandler.swift; sourceTree = "<group>"; };
 		64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameTouchPro+.swift"; sourceTree = "<group>"; };
-		64D9F8B92B8305E10020B4EB /* Hub3OneclickMatchingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3OneclickMatchingVC.swift; sourceTree = "<group>"; };
 		64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTableViewProxy.swift; sourceTree = "<group>"; };
-		64DE0CD22B64B00400EB7C85 /* Hub3IRRemoteControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3IRRemoteControlVC.swift; sourceTree = "<group>"; };
 		64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteControl.swift; sourceTree = "<group>"; };
 		64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteControlCell.swift; sourceTree = "<group>"; };
 		64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IRRemoteControlCell.xib; sourceTree = "<group>"; };
@@ -973,153 +895,219 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C5281DF2DBFAF1B00BE8BD7 /* Handler */ = {
+		2C15AD1F2E6FC63A00E37918 /* bean */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281DC2DBFAF1B00BE8BD7 /* AirControllerHandlerAdapter.swift */,
-				2C5281DD2DBFAF1B00BE8BD7 /* AirProcessor.swift */,
-				2C5281DE2DBFAF1B00BE8BD7 /* IrAirTool.swift */,
+				2C15AD1E2E6FC63A00E37918 /* RemoteBean.swift */,
+			);
+			path = bean;
+			sourceTree = "<group>";
+		};
+		2C15AD212E6FC63A00E37918 /* DeviceTypes */ = {
+			isa = PBXGroup;
+			children = (
+				2C15AD202E6FC63A00E37918 /* RemoteTypeListVC.swift */,
+			);
+			path = DeviceTypes;
+			sourceTree = "<group>";
+		};
+		2C15AD242E6FC63A00E37918 /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				2C15AD222E6FC63A00E37918 /* RemoteLearnVC.swift */,
+				2C15AD232E6FC63A00E37918 /* RemoteLearnViewModel.swift */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
+		2C15AD262E6FC63A00E37918 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				2C15AD252E6FC63A00E37918 /* AirControllerHandlerAdapter.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
 		};
-		2C5281E12DBFAF1B00BE8BD7 /* UI */ = {
+		2C15AD282E6FC63A00E37918 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281E02DBFAF1B00BE8BD7 /* AirControllerConfigAdapter.swift */,
+				2C15AD272E6FC63A00E37918 /* AirControllerConfigAdapter.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		2C5281E32DBFAF1B00BE8BD7 /* Air */ = {
+		2C15AD2A2E6FC63A00E37918 /* Air */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281DF2DBFAF1B00BE8BD7 /* Handler */,
-				2C5281E12DBFAF1B00BE8BD7 /* UI */,
-				2C5281E22DBFAF1B00BE8BD7 /* AirControllerRemoteAdapterFactory.swift */,
+				2C15AD262E6FC63A00E37918 /* Handler */,
+				2C15AD282E6FC63A00E37918 /* UI */,
+				2C15AD292E6FC63A00E37918 /* AirControllerRemoteAdapterFactory.swift */,
 			);
 			path = Air;
 			sourceTree = "<group>";
 		};
-		2C5281E62DBFAF1B00BE8BD7 /* HandleBase */ = {
+		2C15AD2D2E6FC63A00E37918 /* HandleBase */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281E42DBFAF1B00BE8BD7 /* HandlerCallback.swift */,
-				2C5281E52DBFAF1B00BE8BD7 /* HandlerConfigAdapter.swift */,
+				2C15AD2B2E6FC63A00E37918 /* HandlerCallback.swift */,
+				2C15AD2C2E6FC63A00E37918 /* HandlerConfigAdapter.swift */,
 			);
 			path = HandleBase;
 			sourceTree = "<group>";
 		};
-		2C5281E92DBFAF1B00BE8BD7 /* UIBase */ = {
+		2C15AD302E6FC63A00E37918 /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281E72DBFAF1B00BE8BD7 /* ConfigUpdateCallback.swift */,
-				2C5281E82DBFAF1B00BE8BD7 /* UIConfigAdapter.swift */,
+				2C15AD2E2E6FC63A00E37918 /* ConfigUpdateCallback.swift */,
+				2C15AD2F2E6FC63A00E37918 /* UIConfigAdapter.swift */,
 			);
 			path = UIBase;
 			sourceTree = "<group>";
 		};
-		2C5281EE2DBFAF1B00BE8BD7 /* BizBase */ = {
+		2C15AD372E6FC63A00E37918 /* BizBase */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281E62DBFAF1B00BE8BD7 /* HandleBase */,
-				2C5281E92DBFAF1B00BE8BD7 /* UIBase */,
-				2C5281EA2DBFAF1B00BE8BD7 /* BastUtils.swift */,
-				2C5281EB2DBFAF1B00BE8BD7 /* IrInterface.swift */,
-				2C5281EC2DBFAF1B00BE8BD7 /* IRType.swift */,
-				2C5281ED2DBFAF1B00BE8BD7 /* RemoteAdapterFactory.swift */,
+				2C15AD2D2E6FC63A00E37918 /* HandleBase */,
+				2C15AD302E6FC63A00E37918 /* UIBase */,
+				2C15AD312E6FC63A00E37918 /* HXDCommandProcessor.swift */,
+				2C15AD322E6FC63A00E37918 /* HXDParametersSwapper.swift */,
+				2C15AD332E6FC63A00E37918 /* IRType.swift */,
+				2C15AD342E6FC63A00E37918 /* IRType+.swift */,
+				2C15AD352E6FC63A00E37918 /* LoadRemoteConfig.swift */,
+				2C15AD362E6FC63A00E37918 /* RemoteAdapterFactory.swift */,
 			);
 			path = BizBase;
 			sourceTree = "<group>";
 		};
-		2C5281F02DBFAF1B00BE8BD7 /* Handler */ = {
+		2C15AD392E6FC63A00E37918 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281EF2DBFAF1B00BE8BD7 /* LightControllerHandlerAdapter.swift */,
+				2C15AD382E6FC63A00E37918 /* LightControllerHandlerAdapter.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
 		};
-		2C5281F22DBFAF1B00BE8BD7 /* UI */ = {
+		2C15AD3B2E6FC63A00E37918 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281F12DBFAF1B00BE8BD7 /* LightControllerConfigAdapter.swift */,
+				2C15AD3A2E6FC63A00E37918 /* LightControllerConfigAdapter.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		2C5281F42DBFAF1B00BE8BD7 /* Light */ = {
+		2C15AD3D2E6FC63A00E37918 /* Light */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281F02DBFAF1B00BE8BD7 /* Handler */,
-				2C5281F22DBFAF1B00BE8BD7 /* UI */,
-				2C5281F32DBFAF1B00BE8BD7 /* LightControllerRemoteAdapterFactory.swift */,
+				2C15AD392E6FC63A00E37918 /* Handler */,
+				2C15AD3B2E6FC63A00E37918 /* UI */,
+				2C15AD3C2E6FC63A00E37918 /* LightControllerRemoteAdapterFactory.swift */,
 			);
 			path = Light;
 			sourceTree = "<group>";
 		};
-		2C5281F62DBFAF1B00BE8BD7 /* Handler */ = {
+		2C15AD3F2E6FC63A00E37918 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281F52DBFAF1B00BE8BD7 /* TVControllerHandlerAdapter.swift */,
+				2C15AD3E2E6FC63A00E37918 /* TVControllerHandlerAdapter.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
 		};
-		2C5281F82DBFAF1B00BE8BD7 /* UI */ = {
+		2C15AD412E6FC63A00E37918 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281F72DBFAF1B00BE8BD7 /* TVControllerConfigAdapter.swift */,
+				2C15AD402E6FC63A00E37918 /* TVControllerConfigAdapter.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		2C5281FA2DBFAF1B00BE8BD7 /* TV */ = {
+		2C15AD432E6FC63A00E37918 /* TV */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281F62DBFAF1B00BE8BD7 /* Handler */,
-				2C5281F82DBFAF1B00BE8BD7 /* UI */,
-				2C5281F92DBFAF1B00BE8BD7 /* TVControllerRemoteAdapterFactory.swift */,
+				2C15AD3F2E6FC63A00E37918 /* Handler */,
+				2C15AD412E6FC63A00E37918 /* UI */,
+				2C15AD422E6FC63A00E37918 /* TVControllerRemoteAdapterFactory.swift */,
 			);
 			path = TV;
 			sourceTree = "<group>";
 		};
-		2C5281FB2DBFAF1B00BE8BD7 /* BizAdapter */ = {
+		2C15AD442E6FC63A00E37918 /* BizAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281E32DBFAF1B00BE8BD7 /* Air */,
-				2C5281EE2DBFAF1B00BE8BD7 /* BizBase */,
-				2C5281F42DBFAF1B00BE8BD7 /* Light */,
-				2C5281FA2DBFAF1B00BE8BD7 /* TV */,
+				2C15AD2A2E6FC63A00E37918 /* Air */,
+				2C15AD372E6FC63A00E37918 /* BizBase */,
+				2C15AD3D2E6FC63A00E37918 /* Light */,
+				2C15AD432E6FC63A00E37918 /* TV */,
 			);
 			path = BizAdapter;
 			sourceTree = "<group>";
 		};
-		2C5281FE2DBFAF1B00BE8BD7 /* Repository */ = {
+		2C15AD472E6FC63A00E37918 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281FC2DBFAF1B00BE8BD7 /* RemoteAdapterFactoryManager.swift */,
-				2C5281FD2DBFAF1B00BE8BD7 /* RemoteRepository.swift */,
+				2C15AD452E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift */,
+				2C15AD462E6FC63A00E37918 /* RemoteRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		2C5281FF2DBFAF1B00BE8BD7 /* IRRemoteDomain */ = {
+		2C15AD482E6FC63A00E37918 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				2C5281FB2DBFAF1B00BE8BD7 /* BizAdapter */,
-				2C5281FE2DBFAF1B00BE8BD7 /* Repository */,
+				2C15AD442E6FC63A00E37918 /* BizAdapter */,
+				2C15AD472E6FC63A00E37918 /* Repository */,
 			);
-			path = IRRemoteDomain;
+			path = Domain;
 			sourceTree = "<group>";
 		};
-		2CA5DEB42D7EC129006E99BE /* DeviceRemoteMatchControl */ = {
+		2C15AD4B2E6FC63A00E37918 /* RemoteControl */ = {
 			isa = PBXGroup;
 			children = (
-				2CA5DEBD2D80140A006E99BE /* Hub3IRRemoteMatchViewModel.swift */,
-				2CA5DEB82D7EC199006E99BE /* Hub3IRRemoteMatchControlVC.swift */,
+				2C15AD482E6FC63A00E37918 /* Domain */,
+				2C15AD492E6FC63A00E37918 /* RemoteControlVC.swift */,
+				2C15AD4A2E6FC63A00E37918 /* RemoteControlViewModel.swift */,
 			);
-			path = DeviceRemoteMatchControl;
+			path = RemoteControl;
+			sourceTree = "<group>";
+		};
+		2C15AD4E2E6FC63A00E37918 /* RemoteMatch */ = {
+			isa = PBXGroup;
+			children = (
+				2C15AD4C2E6FC63A00E37918 /* RemoteMatchControlVC.swift */,
+				2C15AD4D2E6FC63A00E37918 /* RemoteMatchViewModel.swift */,
+			);
+			path = RemoteMatch;
+			sourceTree = "<group>";
+		};
+		2C15AD512E6FC63A00E37918 /* Remotes */ = {
+			isa = PBXGroup;
+			children = (
+				2C15AD4F2E6FC63A00E37918 /* RemoteListCacheManager.swift */,
+				2C15AD502E6FC63A00E37918 /* RemoteListVC.swift */,
+			);
+			path = Remotes;
+			sourceTree = "<group>";
+		};
+		2C15AD532E6FC63A00E37918 /* RemoteServer */ = {
+			isa = PBXGroup;
+			children = (
+				2C15AD522E6FC63A00E37918 /* CHIRManager.swift */,
+			);
+			path = RemoteServer;
+			sourceTree = "<group>";
+		};
+		2C15AD542E6FC63A00E37918 /* ir */ = {
+			isa = PBXGroup;
+			children = (
+				2C15AD1F2E6FC63A00E37918 /* bean */,
+				2C15AD212E6FC63A00E37918 /* DeviceTypes */,
+				2C15AD242E6FC63A00E37918 /* Learn */,
+				2C15AD4B2E6FC63A00E37918 /* RemoteControl */,
+				2C15AD4E2E6FC63A00E37918 /* RemoteMatch */,
+				2C15AD512E6FC63A00E37918 /* Remotes */,
+				2C15AD532E6FC63A00E37918 /* RemoteServer */,
+			);
+			path = ir;
 			sourceTree = "<group>";
 		};
 		3BC91CA62E2A8EFA00468AAC /* Configuration */ = {
@@ -1369,10 +1357,7 @@
 			isa = PBXGroup;
 			children = (
 				2CFFBE362D93A5C4005FE14B /* IrController.swift */,
-				64547DCC2C086970001CEF88 /* Types */,
 				64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */,
-				3BC91C5C2E2A7F1400468AAC /* IRDeviceType.swift */,
-				644053572C1839BF001CDCCE /* IRDeviceType+.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1403,27 +1388,6 @@
 				645211F52B2BFA270091DDE3 /* Bot2ScriptActionVC.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		64547DCC2C086970001CEF88 /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				64AF23AA2C353DBE009614F9 /* ControlAirPurifier.swift */,
-				64547DCD2C0869B5001CEF88 /* ControlAirRemote.swift */,
-				64547DE12C086B7A001CEF88 /* ControlDigitalCamera.swift */,
-				64547DE72C089080001CEF88 /* ControlDIY.swift */,
-				64547DD92C086B29001CEF88 /* ControlDVDPlayer.swift */,
-				64547DDB2C086B40001CEF88 /* ControlFans.swift */,
-				64547DD52C086B03001CEF88 /* ControlIPTV.swift */,
-				64547DDD2C086B50001CEF88 /* ControlProjector.swift */,
-				64547DDF2C086B6A001CEF88 /* ControlRemoteControlLight.swift */,
-				64547DE32C086B89001CEF88 /* ControlSoundSystem.swift */,
-				64547DD72C086B15001CEF88 /* ControlSTB.swift */,
-				64547DD32C086AF3001CEF88 /* ControlTV.swift */,
-				64547DE52C086B99001CEF88 /* ControlVacuumCleaner.swift */,
-				64547DCF2C086ACE001CEF88 /* ControlWaterHeater.swift */,
-			);
-			path = Types;
 			sourceTree = "<group>";
 		};
 		645B1B192BDB4C0100D5E491 /* Gifu */ = {
@@ -1505,11 +1469,7 @@
 		646F79692B3D76980055E0B2 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				2CA5DEB42D7EC129006E99BE /* DeviceRemoteMatchControl */,
-				6479BD872B62497600DE5845 /* DeviceTypes */,
-				6479BD882B624D7D00DE5845 /* DeviceBrandModel */,
-				6479BD892B624DB100DE5845 /* DeviceRemoteControl */,
-				64B0737E2B68CC16005A38FE /* IRCustomize */,
+				2C15AD542E6FC63A00E37918 /* ir */,
 				646B86E22B47F3890042589E /* Hub3MatterTypeSelectVC.swift */,
 				646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */,
 				646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */,
@@ -1528,50 +1488,11 @@
 			path = cLib;
 			sourceTree = "<group>";
 		};
-		6479BD872B62497600DE5845 /* DeviceTypes */ = {
-			isa = PBXGroup;
-			children = (
-				6479BD8A2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift */,
-			);
-			path = DeviceTypes;
-			sourceTree = "<group>";
-		};
-		6479BD882B624D7D00DE5845 /* DeviceBrandModel */ = {
-			isa = PBXGroup;
-			children = (
-				6479BD952B63580C00DE5845 /* Hub3IRDeviceBrandModelsVC.swift */,
-			);
-			path = DeviceBrandModel;
-			sourceTree = "<group>";
-		};
-		6479BD892B624DB100DE5845 /* DeviceRemoteControl */ = {
-			isa = PBXGroup;
-			children = (
-				2C5281FF2DBFAF1B00BE8BD7 /* IRRemoteDomain */,
-				2CD6CDBC2D92AD5E0060AE19 /* Hub3IRRemoteViewModel.swift */,
-				64DE0CD22B64B00400EB7C85 /* Hub3IRRemoteControlVC.swift */,
-			);
-			path = DeviceRemoteControl;
-			sourceTree = "<group>";
-		};
 		6479BD922B6350B700DE5845 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				64759B912C2AC4B300D5EFB8 /* cLib */,
 				6483C9272B68F98800D8B68D /* strings.xml */,
-				646CF3EE2C8AB3A80022C724 /* strings_air_type.xml */,
-				6483C9332B68F9CA00D8B68D /* strings_hw_type.xml */,
-				6483C9392B68F9DD00D8B68D /* strings_ap_type.xml */,
-				6483C93F2B68F9EB00D8B68D /* strings_tv_type.xml */,
-				6483C9452B68F9FA00D8B68D /* strings_iptv_type.xml */,
-				6483C94B2B68FA0800D8B68D /* strings_stb_type.xml */,
-				6483C9512B68FA1700D8B68D /* strings_dvd_type.xml */,
-				6483C9572B68FA2600D8B68D /* strings_fans_type.xml */,
-				6483C95D2B68FA3500D8B68D /* strings_pjt_type.xml */,
-				6483C9632B68FA4300D8B68D /* strings_light_type.xml */,
-				6483C9692B68FA5100D8B68D /* strings_dc_type.xml */,
-				6483C96F2B68FA5E00D8B68D /* strings_audio_type.xml */,
-				6483C9752B68FA6C00D8B68D /* strings_robot_type.xml */,
 				6479BD902B62569D00DE5845 /* XMLParser.swift */,
 			);
 			path = Assets;
@@ -1584,16 +1505,6 @@
 				647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		64B0737E2B68CC16005A38FE /* IRCustomize */ = {
-			isa = PBXGroup;
-			children = (
-				64187F6F2B3E9B8600086321 /* IRLearningViewModel.swift */,
-				646F796A2B3E5E4B0055E0B2 /* Hub3IRCustomizeControlVC.swift */,
-				64D9F8B92B8305E10020B4EB /* Hub3OneclickMatchingVC.swift */,
-			);
-			path = IRCustomize;
 			sourceTree = "<group>";
 		};
 		64CD4E5A2BF5AC6100733D29 /* Find */ = {
@@ -2459,30 +2370,20 @@
 				643F06A12BCD12400045D789 /* sesame_221_0_8c080c.zip in Resources */,
 				BE70FBEF2558D4B000B38D54 /* WifiModule2SettingViewController.xib in Resources */,
 				647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */,
-				6483C9732B68FA6C00D8B68D /* strings_robot_type.xml in Resources */,
 				D01005DA2E571DCC00144E7E /* sesame5us_30_16_01be3d.zip in Resources */,
 				D049584A2E5DCEB700E3290B /* sesamebike2_30_6_990e7f.zip in Resources */,
-				646CF3EF2C8AB3A90022C724 /* strings_air_type.xml in Resources */,
 				D09C4B732E5C4C810031F6A2 /* sesamebot2_30_17_990e7f.zip in Resources */,
-				6483C96D2B68FA5E00D8B68D /* strings_audio_type.xml in Resources */,
-				6483C9672B68FA5100D8B68D /* strings_dc_type.xml in Resources */,
 				BE97F4082561215C00E9FDC4 /* SignUpViewController.xib in Resources */,
-				6483C9312B68F9CA00D8B68D /* strings_hw_type.xml in Resources */,
 				D01005D62E571DB800144E7E /* sesame5_30_5_01be3d.zip in Resources */,
-				6483C9492B68FA0800D8B68D /* strings_stb_type.xml in Resources */,
 				D01005D82E571DC100144E7E /* sesame5pro_30_7_01be3d.zip in Resources */,
-				6483C9432B68F9FA00D8B68D /* strings_iptv_type.xml in Resources */,
 				646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */,
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
 				BE562E4F2564B815004617DE /* KeyCollectionViewController.xib in Resources */,
-				6483C9372B68F9DD00D8B68D /* strings_ap_type.xml in Resources */,
 				41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */,
 				D0C6F2DF2E61D02900909C41 /* sesameface1pro_30_18_67c53b.zip in Resources */,
-				6483C94F2B68FA1700D8B68D /* strings_dvd_type.xml in Resources */,
 				B179691522F7CE9400E91996 /* LaunchScreen.storyboard in Resources */,
 				D0C6F2DD2E61D02000909C41 /* sesameface1ai_30_23_67c53b.zip in Resources */,
 				64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */,
-				6483C9612B68FA4300D8B68D /* strings_light_type.xml in Resources */,
 				64AE88392B2014AA00E2278A /* FriendListCell.xib in Resources */,
 				B01728DD250CA8D300F87ED6 /* RegisterSesameDeviceCell.xib in Resources */,
 				419FE7862446BADF000D31CD /* awsconfiguration.json in Resources */,
@@ -2492,7 +2393,6 @@
 				419F15582363E48400C09D62 /* bee.mp3 in Resources */,
 				D03BE3192E549498000E724C /* bleconnector_30_11_01be3d.zip in Resources */,
 				6483C9252B68F98800D8B68D /* strings.xml in Resources */,
-				6483C95B2B68FA3500D8B68D /* strings_pjt_type.xml in Resources */,
 				BE85D3052580A8030091D3A6 /* WifiModule2SSIDScanCell.xib in Resources */,
 				D08C739F2E5F334100DAFFE8 /* sesametouch1pro_30_9_4d0bf8.zip in Resources */,
 				BED189F725591C72006544A0 /* WifiModule2SesameCell.xib in Resources */,
@@ -2500,7 +2400,6 @@
 				64547DCB2C086491001CEF88 /* learning.gif in Resources */,
 				B179691022F7CE9300E91996 /* Main.storyboard in Resources */,
 				B09F5835250F47FC0034759A /* LockAngleSettingViewController.xib in Resources */,
-				6483C93D2B68F9EB00D8B68D /* strings_tv_type.xml in Resources */,
 				B179691222F7CE9400E91996 /* Assets.xcassets in Resources */,
 				D0D2B8D42E57034E00876151 /* opensensor1_30_8_01be3d.zip in Resources */,
 				645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */,
@@ -2517,7 +2416,6 @@
 				890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */,
 				643F06A02BCD12400045D789 /* sesamebike1_21_3_d7162a.zip in Resources */,
 				BE562E422563C62D004617DE /* FriendKeyListCell.xib in Resources */,
-				6483C9552B68FA2600D8B68D /* strings_fans_type.xml in Resources */,
 				646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */,
 				B07FAF96251B54F400FB5821 /* Media.xcassets in Resources */,
 			);
@@ -2710,6 +2608,38 @@
 				B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */,
 				645B1B2E2BDB4C0100D5E491 /* UIImage.swift in Sources */,
 				645211F62B2BFA270091DDE3 /* Bot2ScriptActionVC.swift in Sources */,
+				2C15AD552E6FC63A00E37918 /* RemoteControlViewModel.swift in Sources */,
+				2C15AD562E6FC63A00E37918 /* HandlerConfigAdapter.swift in Sources */,
+				2C15AD572E6FC63A00E37918 /* HXDParametersSwapper.swift in Sources */,
+				2C15AD582E6FC63A00E37918 /* IRType+.swift in Sources */,
+				2C15AD592E6FC63A00E37918 /* IRType.swift in Sources */,
+				2C15AD5A2E6FC63A00E37918 /* HXDCommandProcessor.swift in Sources */,
+				2C15AD5B2E6FC63A00E37918 /* RemoteLearnVC.swift in Sources */,
+				2C15AD5C2E6FC63A00E37918 /* LightControllerHandlerAdapter.swift in Sources */,
+				2C15AD5D2E6FC63A00E37918 /* RemoteLearnViewModel.swift in Sources */,
+				2C15AD5E2E6FC63A00E37918 /* RemoteAdapterFactory.swift in Sources */,
+				2C15AD5F2E6FC63A00E37918 /* RemoteTypeListVC.swift in Sources */,
+				2C15AD602E6FC63A00E37918 /* RemoteListVC.swift in Sources */,
+				2C15AD612E6FC63A00E37918 /* AirControllerHandlerAdapter.swift in Sources */,
+				2C15AD622E6FC63A00E37918 /* RemoteControlVC.swift in Sources */,
+				2C15AD632E6FC63A00E37918 /* LoadRemoteConfig.swift in Sources */,
+				2C15AD642E6FC63A00E37918 /* HandlerCallback.swift in Sources */,
+				2C15AD652E6FC63A00E37918 /* RemoteListCacheManager.swift in Sources */,
+				2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */,
+				2C15AD672E6FC63A00E37918 /* LightControllerConfigAdapter.swift in Sources */,
+				2C15AD682E6FC63A00E37918 /* ConfigUpdateCallback.swift in Sources */,
+				2C15AD692E6FC63A00E37918 /* TVControllerRemoteAdapterFactory.swift in Sources */,
+				2C15AD6A2E6FC63A00E37918 /* RemoteMatchControlVC.swift in Sources */,
+				2C15AD6B2E6FC63A00E37918 /* TVControllerHandlerAdapter.swift in Sources */,
+				2C15AD6C2E6FC63A00E37918 /* RemoteMatchViewModel.swift in Sources */,
+				2C15AD6D2E6FC63A00E37918 /* CHIRManager.swift in Sources */,
+				2C15AD6E2E6FC63A00E37918 /* RemoteRepository.swift in Sources */,
+				2C15AD6F2E6FC63A00E37918 /* TVControllerConfigAdapter.swift in Sources */,
+				2C15AD702E6FC63A00E37918 /* UIConfigAdapter.swift in Sources */,
+				2C15AD712E6FC63A00E37918 /* AirControllerRemoteAdapterFactory.swift in Sources */,
+				2C15AD722E6FC63A00E37918 /* LightControllerRemoteAdapterFactory.swift in Sources */,
+				2C15AD732E6FC63A00E37918 /* AirControllerConfigAdapter.swift in Sources */,
+				2C15AD742E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift in Sources */,
 				64CD4E5C2BF5AC7100733D29 /* FindFriendHandler.swift in Sources */,
 				6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */,
 				3B8B7C512E2FC0AB00F5A2F7 /* WebViewScreen.swift in Sources */,
@@ -2719,38 +2649,28 @@
 				BE8F9214264A1364001DF645 /* UserLocationManager.swift in Sources */,
 				41E51F432A36E06E00D3BB2F /* BaseAnimation.swift in Sources */,
 				BE308145248E3C8C00152D66 /* DataShared+.swift in Sources */,
-				64547DE42C086B89001CEF88 /* ControlSoundSystem.swift in Sources */,
 				6440C3B52B61F87000F74E52 /* DeviceControllerHolder.swift in Sources */,
 				64498EA22BD65EFB00806D0F /* FloatingTipView.swift in Sources */,
 				3BC91DF52E2AA0FB00468AAC /* AWSSharedConfig.swift in Sources */,
-				6479BD8B2B624EBE00DE5845 /* Hub3IRDeviceTypesVC.swift in Sources */,
 				BE308139248E3BEE00152D66 /* UIImageShared+.swift in Sources */,
 				BE8245E6250E65F100AA3E23 /* Sesame2SettingViewController.swift in Sources */,
 				646B86E12B47995D0042589E /* UIView+.swift in Sources */,
 				B035418524D8152100C44C1D /* WatchKitFileTransfer.swift in Sources */,
-				64547DD62C086B03001CEF88 /* ControlIPTV.swift in Sources */,
 				BE92A9BB25DB9C23008C7694 /* GPSMapViewController.swift in Sources */,
 				BE308149248E3CA800152D66 /* ArrayShared+.swift in Sources */,
 				B179690B22F7CE9300E91996 /* AppDelegate.swift in Sources */,
 				BED189F625591C72006544A0 /* WifiModule2SesameCell.swift in Sources */,
 				64DE0CD92B64D53400EB7C85 /* IRRemoteControl.swift in Sources */,
 				648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */,
-				64547DDC2C086B40001CEF88 /* ControlFans.swift in Sources */,
 				BEC0908624A9F281006E188E /* QRCodeURLType.swift in Sources */,
-				646F796B2B3E5E4B0055E0B2 /* Hub3IRCustomizeControlVC.swift in Sources */,
 				BE99CAAD257F65990098F3A1 /* WifiModule2SSIDScanViewController.swift in Sources */,
 				414C3D002A1FBC0800AB59CF /* LongPressReorder.swift in Sources */,
-				644053582C1839BF001CDCCE /* IRDeviceType+.swift in Sources */,
 				BE6978EA2483E37D0089141E /* CHBaseViewController.swift in Sources */,
-				64547DD02C086ACE001CEF88 /* ControlWaterHeater.swift in Sources */,
 				B09C1A152510A72300871F7E /* UIView+AutoLayout.swift in Sources */,
 				890D330E2DA0E85A0031F0AF /* PalmListVC.swift in Sources */,
 				890D330F2DA0E85A0031F0AF /* FaceListVC .swift in Sources */,
 				BE33ED1825823F0A00A73D6A /* WatchKitFile.swift in Sources */,
 				3B41364D2E45D5710044E33F /* CustomInputDialog.swift in Sources */,
-				64547DD82C086B15001CEF88 /* ControlSTB.swift in Sources */,
-				2CA5DEBE2D801418006E99BE /* Hub3IRRemoteMatchViewModel.swift in Sources */,
-				64547DDE2C086B50001CEF88 /* ControlProjector.swift in Sources */,
 				2CFFBE372D93A5C9005FE14B /* IrController.swift in Sources */,
 				646B86EC2B48EBDB0042589E /* Hub3KeysListViewController.swift in Sources */,
 				BEB36CAB258DCF3D00EDB9FB /* FriendKeyShareSelectionViewController.swift in Sources */,
@@ -2766,14 +2686,11 @@
 				BE9C6C9724B3378B00C7318B /* Sesame2Store.swift in Sources */,
 				64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */,
 				64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */,
-				64D9F8BA2B8305E10020B4EB /* Hub3OneclickMatchingVC.swift in Sources */,
 				BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */,
 				4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */,
-				64187F702B3E9B8600086321 /* IRLearningViewModel.swift in Sources */,
 				E8A6F1D62A61361800AED9AD /* OpenSensorResetHintVC.swift in Sources */,
 				41E51F452A36E06E00D3BB2F /* ActivityIndicatorView.swift in Sources */,
 				64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */,
-				64547DE22C086B7A001CEF88 /* ControlDigitalCamera.swift in Sources */,
 				41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */,
 				418FA1E8237BD2C100C7C408 /* Sesame2Circle.swift in Sources */,
 				BE562E2E2563AD63004617DE /* CHUser.swift in Sources */,
@@ -2788,31 +2705,9 @@
 				BE30813D248E3C1F00152D66 /* URL+Sesame2.swift in Sources */,
 				B081436E25270E1C00A634C8 /* Sesame2Intents.intentdefinition in Sources */,
 				B01728D1250C700500F87ED6 /* SesameDeviceListViewController.swift in Sources */,
-				2C5282002DBFAF1B00BE8BD7 /* AirControllerHandlerAdapter.swift in Sources */,
-				2C5282012DBFAF1B00BE8BD7 /* AirProcessor.swift in Sources */,
-				2C5282022DBFAF1B00BE8BD7 /* IrAirTool.swift in Sources */,
-				2C5282032DBFAF1B00BE8BD7 /* AirControllerConfigAdapter.swift in Sources */,
-				2C5282042DBFAF1B00BE8BD7 /* AirControllerRemoteAdapterFactory.swift in Sources */,
-				2C5282052DBFAF1B00BE8BD7 /* HandlerCallback.swift in Sources */,
-				2C5282062DBFAF1B00BE8BD7 /* HandlerConfigAdapter.swift in Sources */,
-				2C5282072DBFAF1B00BE8BD7 /* ConfigUpdateCallback.swift in Sources */,
-				2C5282082DBFAF1B00BE8BD7 /* UIConfigAdapter.swift in Sources */,
-				2C5282092DBFAF1B00BE8BD7 /* BastUtils.swift in Sources */,
-				2C52820A2DBFAF1B00BE8BD7 /* IrInterface.swift in Sources */,
-				2C52820B2DBFAF1B00BE8BD7 /* IRType.swift in Sources */,
-				2C52820C2DBFAF1B00BE8BD7 /* RemoteAdapterFactory.swift in Sources */,
-				2C52820D2DBFAF1B00BE8BD7 /* LightControllerHandlerAdapter.swift in Sources */,
-				2C52820E2DBFAF1B00BE8BD7 /* LightControllerConfigAdapter.swift in Sources */,
-				2C52820F2DBFAF1B00BE8BD7 /* LightControllerRemoteAdapterFactory.swift in Sources */,
-				2C5282102DBFAF1B00BE8BD7 /* TVControllerHandlerAdapter.swift in Sources */,
-				2C5282112DBFAF1B00BE8BD7 /* TVControllerConfigAdapter.swift in Sources */,
 				3B8B7C242E2E47DD00F5A2F7 /* PushNotificationManager.swift in Sources */,
-				2C5282122DBFAF1B00BE8BD7 /* TVControllerRemoteAdapterFactory.swift in Sources */,
-				2C5282132DBFAF1B00BE8BD7 /* RemoteAdapterFactoryManager.swift in Sources */,
-				2C5282142DBFAF1B00BE8BD7 /* RemoteRepository.swift in Sources */,
 				BE85D3042580A8030091D3A6 /* WifiModule2SSIDScanCell.swift in Sources */,
 				BE88593C26C3ACA1002D17E0 /* CHSesame2+AutoUnlock.swift in Sources */,
-				64547DE62C086B99001CEF88 /* ControlVacuumCleaner.swift in Sources */,
 				BE30814D248E3CCF00152D66 /* StringShared+.swift in Sources */,
 				4103034D2379108D00785311 /* UIImage+SVG.swift in Sources */,
 				BE88590826C396EA002D17E0 /* CHUserAPIManager+.swift in Sources */,
@@ -2823,7 +2718,6 @@
 				BE562E4E2564B815004617DE /* KeyCollectionViewController.swift in Sources */,
 				BE562E1F2563A4E7004617DE /* FriendListViewController.swift in Sources */,
 				0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */,
-				64DE0CD32B64B00400EB7C85 /* Hub3IRRemoteControlVC.swift in Sources */,
 				890D33062DA0E7FF0031F0AF /* FingerPrintListVC.swift in Sources */,
 				890D33072DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift in Sources */,
 				890D33082DA0E7FF0031F0AF /* FingerPrintCell.swift in Sources */,
@@ -2841,7 +2735,6 @@
 				BE8F9210264A0F82001DF645 /* CHDeviceInfo.swift in Sources */,
 				B087E57224E126830087D978 /* CHWifiModule2+.swift in Sources */,
 				41E51F442A36E06E00D3BB2F /* BallClipRotatePulseAnimation.swift in Sources */,
-				64547DE02C086B6A001CEF88 /* ControlRemoteControlLight.swift in Sources */,
 				BE6978ED2483E37D0089141E /* ViewHelper.swift in Sources */,
 				41E51F482A36E06E00D3BB2F /* RefreshView.swift in Sources */,
 				64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */,
@@ -2850,8 +2743,6 @@
 				E86587F62A2768150091D77F /* BikeLock2SettingViewController.swift in Sources */,
 				B09F5837250F5D3B0034759A /* MeViewController.swift in Sources */,
 				645211F42B2AF5C50091DDE3 /* PickerProxy.swift in Sources */,
-				2CD6CDBD2D92AD750060AE19 /* Hub3IRRemoteViewModel.swift in Sources */,
-				3BC91C5D2E2A7F1400468AAC /* IRDeviceType.swift in Sources */,
 				BE166B8824912755007CDC29 /* UIStoryboard+.swift in Sources */,
 				643F06AC2BD2065E0045D789 /* NSObject+.swift in Sources */,
 				B09F5831250F36930034759A /* LockAngleSettingViewController.swift in Sources */,
@@ -2861,9 +2752,7 @@
 				BE88592B26C3A7F0002D17E0 /* String+.swift in Sources */,
 				645B1B2D2BDB4C0100D5E491 /* CGSize.swift in Sources */,
 				41030330237902D400785311 /* UIColorShared+.swift in Sources */,
-				64547DE82C089080001CEF88 /* ControlDIY.swift in Sources */,
 				4103033E23790CE500785311 /* PopUpMenu.swift in Sources */,
-				64547DCE2C0869B5001CEF88 /* ControlAirRemote.swift in Sources */,
 				BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */,
 				E8A6F1DC2A6E55E100AED9AD /* BleConnectorSettingVC.swift in Sources */,
 				646B86EE2B48F0EC0042589E /* Hub3SettingViewController.swift in Sources */,
@@ -2878,20 +2767,16 @@
 				BE8858FA26C39483002D17E0 /* Response.swift in Sources */,
 				41913AC929DA73E00028604C /* lockViewSS5.swift in Sources */,
 				643A9C472B3027A9008214BD /* IndicatorGenerator.swift in Sources */,
-				64547DDA2C086B29001CEF88 /* ControlDVDPlayer.swift in Sources */,
 				649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */,
 				BE037A91246981DB00ED2611 /* DFUHelper.swift in Sources */,
-				64AF23AB2C353DBE009614F9 /* ControlAirPurifier.swift in Sources */,
 				BE562E382563C5F8004617DE /* FriendKeyListViewController.swift in Sources */,
 				B01728DC250CA8D300F87ED6 /* RegisterSesameDeviceCell.swift in Sources */,
-				2CA5DEB92D7EC19F006E99BE /* Hub3IRRemoteMatchControlVC.swift in Sources */,
 				41ACFD0629B8B962001153DB /* Sesame5LockAngleViewController.swift in Sources */,
 				BE3A732E25CB9EAE002FF80E /* SignInViewController.swift in Sources */,
 				64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */,
 				4155E80A23CC473F00CA093E /* ChangeValueDialog.swift in Sources */,
 				BE7E5A9F2583686F00280893 /* WifiModule2KeysListViewController.swift in Sources */,
 				645E2D292B5BC83300D39E66 /* Hub3IREmitCell.swift in Sources */,
-				64547DD42C086AF3001CEF88 /* ControlTV.swift in Sources */,
 				645B1B292BDB4C0100D5E491 /* AnimatedFrame.swift in Sources */,
 				4152907823224C2300F7E0E5 /* GeneralTabViewController.swift in Sources */,
 				645B1B2F2BDB4C0100D5E491 /* UIImageView.swift in Sources */,
@@ -2905,7 +2790,6 @@
 				BEB36C7D2589C04000EDB9FB /* UIViewController+.swift in Sources */,
 				41A57CEF2328D13600FEFF60 /* QRScannerView.swift in Sources */,
 				645B1B2A2BDB4C0100D5E491 /* Animator.swift in Sources */,
-				6479BD962B63580C00DE5845 /* Hub3IRDeviceBrandModelsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3052,126 +2936,6 @@
 				6483C92A2B68F9A500D8B68D /* ja */,
 			);
 			name = strings.xml;
-			sourceTree = "<group>";
-		};
-		6483C9332B68F9CA00D8B68D /* strings_hw_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9322B68F9CA00D8B68D /* zh-Hans */,
-				6483C9342B68F9CD00D8B68D /* en */,
-				6483C9352B68F9D000D8B68D /* zh-Hant */,
-			);
-			name = strings_hw_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C9392B68F9DD00D8B68D /* strings_ap_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9382B68F9DD00D8B68D /* zh-Hans */,
-				6483C93A2B68F9DF00D8B68D /* zh-Hant */,
-				6483C93B2B68F9E200D8B68D /* en */,
-			);
-			name = strings_ap_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C93F2B68F9EB00D8B68D /* strings_tv_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C93E2B68F9EB00D8B68D /* zh-Hans */,
-				6483C9402B68F9ED00D8B68D /* en */,
-				6483C9412B68F9F000D8B68D /* zh-Hant */,
-			);
-			name = strings_tv_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C9452B68F9FA00D8B68D /* strings_iptv_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9442B68F9FA00D8B68D /* zh-Hans */,
-				6483C9462B68F9FC00D8B68D /* zh-Hant */,
-				6483C9482B68FA0200D8B68D /* en */,
-			);
-			name = strings_iptv_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C94B2B68FA0800D8B68D /* strings_stb_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C94A2B68FA0800D8B68D /* zh-Hans */,
-				6483C94C2B68FA0B00D8B68D /* en */,
-				6483C94D2B68FA0D00D8B68D /* zh-Hant */,
-			);
-			name = strings_stb_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C9512B68FA1700D8B68D /* strings_dvd_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9502B68FA1700D8B68D /* zh-Hans */,
-				6483C9522B68FA1A00D8B68D /* zh-Hant */,
-				6483C9542B68FA1F00D8B68D /* en */,
-			);
-			name = strings_dvd_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C9572B68FA2600D8B68D /* strings_fans_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9562B68FA2600D8B68D /* zh-Hans */,
-				6483C9582B68FA2800D8B68D /* en */,
-				6483C9592B68FA2A00D8B68D /* zh-Hant */,
-			);
-			name = strings_fans_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C95D2B68FA3500D8B68D /* strings_pjt_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C95C2B68FA3500D8B68D /* zh-Hans */,
-				6483C95E2B68FA3800D8B68D /* en */,
-				6483C95F2B68FA3A00D8B68D /* zh-Hant */,
-			);
-			name = strings_pjt_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C9632B68FA4300D8B68D /* strings_light_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9622B68FA4300D8B68D /* zh-Hans */,
-				6483C9642B68FA4500D8B68D /* en */,
-				6483C9652B68FA4700D8B68D /* zh-Hant */,
-			);
-			name = strings_light_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C9692B68FA5100D8B68D /* strings_dc_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9682B68FA5100D8B68D /* zh-Hans */,
-				6483C96A2B68FA5400D8B68D /* en */,
-				6483C96B2B68FA5600D8B68D /* zh-Hant */,
-			);
-			name = strings_dc_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C96F2B68FA5E00D8B68D /* strings_audio_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C96E2B68FA5E00D8B68D /* zh-Hans */,
-				6483C9702B68FA6100D8B68D /* en */,
-				6483C9712B68FA6400D8B68D /* zh-Hant */,
-			);
-			name = strings_audio_type.xml;
-			sourceTree = "<group>";
-		};
-		6483C9752B68FA6C00D8B68D /* strings_robot_type.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9742B68FA6C00D8B68D /* zh-Hans */,
-				6483C9762B68FA6E00D8B68D /* en */,
-				6483C9772B68FA7000D8B68D /* zh-Hant */,
-			);
-			name = strings_robot_type.xml;
 			sourceTree = "<group>";
 		};
 		96B2197A29111F55006B68AB /* Localizable.strings */ = {

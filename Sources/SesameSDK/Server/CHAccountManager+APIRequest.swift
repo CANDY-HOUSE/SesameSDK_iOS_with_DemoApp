@@ -113,3 +113,29 @@ public class CHServerError: Codable {
         case message
     }
 }
+
+
+extension CHAccountManager {
+    public func publicAPI(request: PublicAPICallObject,
+                         handler: @escaping (Result<Data?, Error>) -> Void) {
+        // 将公开的请求转换为内部请求
+        let internalRequest = request.toCHAPICallObject()
+        self.API(request: internalRequest, handler: handler)
+    }
+    
+    public func subscribeTopic(topic: String, result: @escaping CHResult<Data>) {
+        L.d("CHHub3Device", "[hub3] subscribeTopic \(topic)")
+        CHIoTManager.shared.subscribeTopic(topic) {data in
+            guard let data = data as? Data else {
+                L.d("CHHub3Device", "[hub3] subscribeTopic 格式錯誤")
+                return
+            }
+            result(.success(CHResultStateNetworks(input: Data(data))))
+        }
+    }
+    
+   public func unsubscribeTopic(topic: String) {
+//        let topic = "hub3/\(deviceId.uuidString.uppercased())/ir/learned/data"
+        CHIoTManager.shared.unsubscribeTopic(topic)
+    }
+}

@@ -293,46 +293,6 @@ extension CHHub3Device {
         }
     }
     
-    func irModeGet(result: @escaping CHResult<UInt8>) {
-        if (!self.isBleAvailable(result)) { return }
-        L.d("[hub3][irModeGet]")
-        sendCommand(.init(SesameItemCode.SSM_OS3_IR_MODE_GET)) { payload in
-            if payload.cmdResultCode == .success {
-                result(.success(CHResultStateBLE(input:payload.data[0])))
-            } else {
-                result(.failure(self.errorFromResultCode(payload.cmdResultCode)))
-            }
-        }
-    }
-    
-    func irModeSet(mode: UInt8, result: @escaping CHResult<CHEmpty>) {
-        if (!self.isBleAvailable(result)) { return }
-        L.d("[hub3][irModeSet]",mode)
-        sendCommand(.init(SesameItemCode.SSM_OS3_IR_MODE_SET, mode.data)) { payload in
-            if payload.cmdResultCode == .success {
-                result(.success(CHResultStateBLE(input:CHEmpty())))
-            } else {
-                result(.failure(self.errorFromResultCode(payload.cmdResultCode)))
-            }
-        }
-    }
-    
-    func irCodeEmit(id: String, irDeviceUUID: String, result: @escaping CHResult<CHEmpty>) {
-        emitIRCode(id, irDeviceUUID: irDeviceUUID, result: result)
-    }
-    
-    func irCodesGet(result: @escaping CHResult<CHEmpty>) {
-        if (!self.isBleAvailable(result)) { return }
-        L.d("[hub3][irCodesGet]")
-        sendCommand(.init(SesameItemCode.SSM_OS3_IR_CODE_GET)) { payload in
-            if payload.cmdResultCode == .success {
-                result(.success(CHResultStateBLE(input:CHEmpty())))
-            } else {
-                result(.failure(self.errorFromResultCode(payload.cmdResultCode)))
-            }
-        }
-    }
-    
     func getMatterParingCode(result: @escaping CHResult<CHHub3MatterSettings>) {
         if (!self.isBleAvailable(result)) { return }
         L.d("[hub3][getMatterParingCode]")
