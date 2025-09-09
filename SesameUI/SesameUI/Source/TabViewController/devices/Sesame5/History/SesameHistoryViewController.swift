@@ -11,8 +11,22 @@ class SesameHistoryViewController: CHBaseViewController {
     // MARK: - Callback
     var dismissHandler: (()->Void)?
     var settingClickHandler: (()->Void)?
+    private weak var webView: WKWebView!
 
     // MARK: - Life cycle
+    deinit {
+        if webView != nil {
+            webView.navigationDelegate = nil
+            webView.uiDelegate = nil
+            
+            let dataStore = webView.configuration.websiteDataStore
+            dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(),
+                                 modifiedSince: Date(timeIntervalSince1970: 0)) { }
+            
+            webView.removeFromSuperview()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -62,6 +76,7 @@ extension SesameHistoryViewController {
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
         let webView = WKWebView(frame: .zero, configuration: configuration)
+        self.webView = webView
         webView.navigationDelegate = self
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = false
