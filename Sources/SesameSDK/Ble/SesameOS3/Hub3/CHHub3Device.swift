@@ -36,13 +36,6 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
         }
     }
     
-    var irRemotes: [IRRemote] = [] {
-        didSet {
-            (self.delegate as? CHWifiModule2Delegate)?.onSesame2KeysChanged(device: self, sesame2keys: sesame2Keys)
-            notifySesameKeysChanged()
-        }
-    }
-    
     var sesame2Keys = [String: String]() {
         didSet {
             (self.delegate as? CHWifiModule2Delegate)?.onSesame2KeysChanged(device: self, sesame2keys: sesame2Keys)
@@ -81,7 +74,6 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
                 L.d(error)
             }
         }
-        fetchIRDevices { _ in }
 #endif
     }
     

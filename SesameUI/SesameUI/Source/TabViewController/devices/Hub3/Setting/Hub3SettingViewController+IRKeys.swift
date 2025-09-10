@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 import SesameSDK
+import Combine
 
 extension Hub3SettingViewController {
+    
+    private var cancellables: Set<AnyCancellable> {
+        get { return objc_getAssociatedObject(self, "hub3_settings_ir") as? Set<AnyCancellable> ?? Set<AnyCancellable>() }
+        set { objc_setAssociatedObject(self, "hub3_settings_ir", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
     
     func configureIRKeysTableView() {
         irKeysListView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -34,17 +40,39 @@ extension Hub3SettingViewController {
         // MARK: Add Sesame Buttom View
         addIRKeysButtonView = CHUIViewGenerator.plain { [unowned self] button,_ in
             if (self.wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == true {
-                listenRemoteUpdate()
                 self.navigationController?.pushViewController(RemoteTypeListVC.instance((self.device as! CHHub3).deviceId.uuidString.uppercased()), animated: true)
             }
         }
         addIRKeysButtonView.setColor(.darkText)
         addIRKeysButtonView.title = "co.candyhouse.hub3.bindIRDeviceTitle".localized
         contentStackView.addArrangedSubview(addIRKeysButtonView)
+        setupIRDeviceObserver()
+    }
+    
+    private func setupIRDeviceObserver() {
+        let hub3DeviceId:String = (device as! CHHub3).deviceId.uuidString.uppercased()
+        IRRemoteRepository.shared.statePublisher
+            .map { [weak self] state in
+                guard let self = self else { return [] }
+                return state.remoteMap[String(hub3DeviceId)] ?? []
+            }
+//            .removeDuplicates { (oldList: [IRRemote], newList: [IRRemote]) in
+//                guard oldList.count == newList.count else { return false }
+//                return zip(oldList, newList).allSatisfy { $0.uuid == $1.uuid }
+//            }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] remoteList in
+                self?.refreshIRKeys()
+            }
+            .store(in: &cancellables)
+    }
+    
+    func removeRemoteUpdateListener() {
+        cancellables.removeAll()
     }
     
     func refreshIRKeys() {
-        wifiModuleIRModels = wifiModule2.irRemotes
+        wifiModuleIRModels = getCurrentHub3IRDeviceList()
         self.irKeysViewHeight.constant = CGFloat(self.wifiModuleIRModels.count) * 50
         self.irKeysListView.reloadData()
     }
@@ -57,6 +85,15 @@ extension Hub3SettingViewController {
                 listViewController.reloadTableView()
             }
         }
+    }
+    
+    func getCurrentHub3IRDeviceList() -> [IRRemote] {
+       return IRRemoteRepository.shared.getRemotesByKey((device as! CHHub3).deviceId.uuidString.uppercased())
+    }
+    
+    //bug【1001351】iOS 与 Android 双端一致：在进入详情界面时更新最新的红外设备列表
+    func fetchIrDevices() {
+        CHIRManager.shared.fetchIRDevices((device as! CHHub3).deviceId.uuidString.uppercased()) { _ in }
     }
 }
 
@@ -78,7 +115,8 @@ extension Hub3SettingViewController {
         guard let irDeviceModel = wifiModuleIRModels[safe: indexPath.row] else { return }
         var optItems = [
             AlertItem(title: "co.candyhouse.sesame2.Delete".localized, style: .destructive, handler: { [self] _ in
-                (device as! CHHub3).deleteIRDevice(irDeviceModel.uuid) { [weak self] response in
+                let hub3DeviceId = (device as! CHHub3).deviceId.uuidString.uppercased()
+                CHIRManager.shared.deleteIRDevice(hub3DeviceId, irDeviceModel.uuid) { [weak self] response in
                     executeOnMainThread {
                         if case let .failure(err) = response {
                             self?.view.makeToast(err.errorDescription())
@@ -90,10 +128,9 @@ extension Hub3SettingViewController {
         ]
         optItems.insert(AlertItem(title: "co.candyhouse.hub3.ssmDetail".localized, handler: { [unowned self] _ in
             guard let hub3 = device as? CHHub3 else { return }
-            guard let remote = hub3.irRemotes.first(where: { $0.uuid == irDeviceModel.uuid }) else { return }
+            guard let remote = getCurrentHub3IRDeviceList().first(where: { $0.uuid == irDeviceModel.uuid }) else { return }
             let hub3DeviceId = hub3.deviceId.uuidString.uppercased()
             hub3.preference.updateSelectExpandIndex(indexPath.row)
-            listenRemoteUpdate()
             switch remote.type {
             case IRType.DEVICE_REMOTE_CUSTOM:
                 navigationController?.pushViewController(RemoteLearnVC.instance(hub3DeviceId: hub3DeviceId, remote: remote), animated: true)
@@ -107,34 +144,4 @@ extension Hub3SettingViewController {
         }), at: 0)
         modalSheet(AlertModel(title: nil, message: irDeviceModel.alias, sourceView: tableView.cellForRow(at: indexPath), items:optItems ))
     }
-}
-
-
-extension Hub3SettingViewController {
-    
-    func listenRemoteUpdate() {
-        removeRemoteUpdateListener()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleRemoteUpdated(_:)),
-            name: .remoteUpdated,
-            object: nil
-        )
-    }
-    
-    @objc private func handleRemoteUpdated(_ notification: Notification) {
-        handleRemoteUpdate()
-    }
-    
-    func removeRemoteUpdateListener() {
-        NotificationCenter.default.removeObserver(self,name: .remoteUpdated,object: nil)
-    }
-    
-    func handleRemoteUpdate() {
-        fetchIrDevices()
-    }
-}
-
-extension Notification.Name {
-    static let remoteUpdated = Notification.Name("RemoteUpdated")
 }

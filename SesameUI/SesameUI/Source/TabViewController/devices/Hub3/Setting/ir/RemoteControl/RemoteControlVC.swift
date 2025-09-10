@@ -120,7 +120,11 @@ class RemoteControlVC: CHBaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isPresentedVc { return }
-        NotificationCenter.default.post( name: .remoteUpdated, object: nil, userInfo: ["irRemote": viewModel.irRemote])
+        fetchIRDeviceList()
+    }
+    
+    func fetchIRDeviceList() { // 此处更新hub3已有的红外设备
+        CHIRManager.shared.fetchIRDevices(viewModel.getHub3DeviceId()){ _ in }
     }
     
     private func setupViewModelObservers() {

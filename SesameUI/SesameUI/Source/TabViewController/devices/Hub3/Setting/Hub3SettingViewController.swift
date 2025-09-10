@@ -424,10 +424,6 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         present(ssidScanViewController!.navigationController!, animated: true, completion: nil)
     }
     
-    //bug【1001351】iOS 与 Android 双端一致：在进入详情界面时更新最新的红外设备列表
-    func fetchIrDevices() {
-        wifiModule2.fetchIRDevices { _ in }
-    }
 }
 
 extension Hub3SettingViewController: KeyCollectionViewControllerDelegate {

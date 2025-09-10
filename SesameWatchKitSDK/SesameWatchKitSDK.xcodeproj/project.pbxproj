@@ -31,7 +31,6 @@
 		3B8D5DC72E2D176D00FE456E /* CHBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D8C2E2D176D00FE456E /* CHBaseDevice.swift */; };
 		3B8D5DC82E2D176D00FE456E /* CHFaceCapableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D382E2D176D00FE456E /* CHFaceCapableExtension.swift */; };
 		3B8D5DC92E2D176D00FE456E /* CHPassCodeCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D462E2D176D00FE456E /* CHPassCodeCapable.swift */; };
-		3B8D5DCA2E2D176D00FE456E /* CHHub3Device+IR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D262E2D176D00FE456E /* CHHub3Device+IR.swift */; };
 		3B8D5DCB2E2D176D00FE456E /* CHSesame2Device+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D032E2D176D00FE456E /* CHSesame2Device+Login.swift */; };
 		3B8D5DCC2E2D176D00FE456E /* CHPalmDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D432E2D176D00FE456E /* CHPalmDelegate.swift */; };
 		3B8D5DCD2E2D176D00FE456E /* WifiModule2Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D852E2D176D00FE456E /* WifiModule2Protocols.swift */; };
@@ -353,7 +352,6 @@
 		3B8D5D232E2D176D00FE456E /* CHHub3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3.swift; sourceTree = "<group>"; };
 		3B8D5D242E2D176D00FE456E /* CHHub3Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHHub3Device.swift; sourceTree = "<group>"; };
 		3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+Gatt.swift"; sourceTree = "<group>"; };
-		3B8D5D262E2D176D00FE456E /* CHHub3Device+IR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHHub3Device+IR.swift"; sourceTree = "<group>"; };
 		3B8D5D292E2D176D00FE456E /* CHSesame5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5.swift; sourceTree = "<group>"; };
 		3B8D5D2A2E2D176D00FE456E /* CHSesame5Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame5Device.swift; sourceTree = "<group>"; };
 		3B8D5D2B2E2D176D00FE456E /* CHSesame5Device+Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesame5Device+Command.swift"; sourceTree = "<group>"; };
@@ -739,7 +737,6 @@
 				3B8D5D232E2D176D00FE456E /* CHHub3.swift */,
 				3B8D5D242E2D176D00FE456E /* CHHub3Device.swift */,
 				3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */,
-				3B8D5D262E2D176D00FE456E /* CHHub3Device+IR.swift */,
 			);
 			path = Hub3;
 			sourceTree = "<group>";
@@ -1740,7 +1737,6 @@
 				3B8D5DC72E2D176D00FE456E /* CHBaseDevice.swift in Sources */,
 				3B8D5DC82E2D176D00FE456E /* CHFaceCapableExtension.swift in Sources */,
 				3B8D5DC92E2D176D00FE456E /* CHPassCodeCapable.swift in Sources */,
-				3B8D5DCA2E2D176D00FE456E /* CHHub3Device+IR.swift in Sources */,
 				3B8D5DCB2E2D176D00FE456E /* CHSesame2Device+Login.swift in Sources */,
 				3B8D5DCC2E2D176D00FE456E /* CHPalmDelegate.swift in Sources */,
 				3B8D5DCD2E2D176D00FE456E /* WifiModule2Protocols.swift in Sources */,

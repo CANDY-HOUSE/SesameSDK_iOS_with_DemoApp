@@ -240,7 +240,11 @@ class RemoteLearnVC: CHBaseViewController, ShareAlertConfigurator {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isPresentedVc { return }
-        NotificationCenter.default.post( name: .remoteUpdated, object: nil, userInfo: ["irRemote": viewModel.remote])
+        fetchIRDeviceList()
+    }
+    
+    func fetchIRDeviceList() { // 此处更新hub3已有的红外设备
+        CHIRManager.shared.fetchIRDevices(viewModel.hub3DeviceId){ _ in }
     }
 }
 

@@ -19,11 +19,12 @@ extension SesameDeviceListViewController {
     func handleSubItems(_ cellRow: Int, _ device: CHDevice) -> (dataSource: [CHCellDescriptor], indexPaths: [IndexPath]) {
         var rowIndex = cellRow
         if let hub3 = device as? CHHub3 {
-            guard hub3.irRemotes.isEmpty == false else {
+            let irRemotes = IRRemoteRepository.shared.getRemotesByKey(hub3.deviceId.uuidString.uppercased())
+            guard irRemotes.isEmpty == false else {
                 return ([], [])
             }
             var indexPaths = [IndexPath]()
-            let irItems = hub3.irRemotes.enumerated().map{(index, val) -> CHCellDescriptor in
+            let irItems = irRemotes.enumerated().map{(index, val) -> CHCellDescriptor in
                 rowIndex += 1
                 indexPaths.append(IndexPath(row: rowIndex, section: 0))
                 return val.convertToCellDescriptorModel(device: device, cellCls:Hub3IREmitCell.self)

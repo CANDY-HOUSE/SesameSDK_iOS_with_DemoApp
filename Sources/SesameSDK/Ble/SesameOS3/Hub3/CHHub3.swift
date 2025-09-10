@@ -8,111 +8,8 @@
 
 import Foundation
 
-
-public class IRRemote: Codable {
-    public let uuid: String
-    public private(set) var alias: String
-    public var model: String
-    public var type: Int
-    public let timestamp: Int
-    public private(set) var state: String?
-    public var code: Int = 0
-    public var haveSave: Bool = true
-    public var direction: String = "" // 新添加的字段，默认值为空字符串
-    
-    public func updateState(_ newState: String?) {
-        self.state = newState
-    }
-    
-    public func updateAlias(_ newAlias: String) {
-        self.alias = newAlias
-    }
-    
-    public init(uuid: String, alias: String, model: String, type: Int, timestamp: Int, state: String? = nil, code: Int = 0, direction: String = "") {
-        self.uuid = uuid
-        self.alias = alias
-        self.model = model
-        self.type = type
-        self.timestamp = timestamp
-        self.state = state
-        self.code = code
-        self.haveSave = true
-        self.direction = direction
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case uuid
-        case alias
-        case model
-        case type
-        case timestamp
-        case state
-        case code
-        case direction
-    }
-    
-    public func clone() -> IRRemote {
-        let cloned = IRRemote(
-            uuid: self.uuid,
-            alias: self.alias,
-            model: self.model,
-            type: self.type,
-            timestamp: self.timestamp,
-            state: self.state,
-            direction: self.direction
-        )
-        cloned.code = self.code
-        cloned.haveSave = self.haveSave
-        return cloned
-    }
-    
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        uuid = try container.decodeIfPresent(String.self, forKey: .uuid) ?? UUID().uuidString
-        alias = try container.decode(String.self, forKey: .alias)
-        model = try container.decode(String.self, forKey: .model)
-        type = try container.decodeIfPresent(Int.self, forKey: .type) ?? 0
-        timestamp = try container.decodeIfPresent(Int.self, forKey: .timestamp) ?? Int(Date().timeIntervalSince1970)
-        state = try container.decodeIfPresent(String.self, forKey: .state)
-        code = try container.decodeIfPresent(Int.self, forKey: .code) ?? 0
-        direction = try container.decodeIfPresent(String.self, forKey: .direction) ?? ""
-        haveSave = true
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(uuid, forKey: .uuid)
-        try container.encode(alias, forKey: .alias)
-        try container.encode(model, forKey: .model)
-        try container.encode(type, forKey: .type)
-        try container.encode(timestamp, forKey: .timestamp)
-        try container.encodeIfPresent(state, forKey: .state)
-        try container.encode(code, forKey: .code)
-        try container.encode(direction, forKey: .direction)
-    }
-}
-
-extension IRRemote {
-    public func swapRemote(_ irType: Int) -> IRRemote {
-       return IRRemote(
-            uuid: UUID().uuidString.uppercased(),
-            alias: self.alias,
-            model: self.model,
-            type: irType,
-            timestamp: 0,
-            state: self.state,
-            code: self.code,
-            direction: self.direction
-        )
-    }
-}
-
-
 public protocol CHHub3: CHWifiModule2 {
-    /// Hub3 持有红外设备列表
-    var irRemotes: [IRRemote] { get set }
+
     var status: Hub3Status { get }
     var hub3Brightness: UInt8 { get }
     /// 添加SSM 設備
@@ -136,16 +33,7 @@ public protocol CHHub3: CHWifiModule2 {
     ///   - brightness: 亮度值，范围：0-255
     ///   - result: 結果
     func setHub3Brightness(brightness: UInt8, result: @escaping CHResult<UInt8>)
-    
-    /// 删除红外设备
-    /// - Parameters:
-    ///   - uuid: 遥控器id
-    ///   - result: 结果
-    func deleteIRDevice(_ uuid: String, _ result: @escaping CHResult<CHEmpty>)
-    
-    /// 获取红外设备
-    /// - Parameter result: 结果
-    func fetchIRDevices(_ result: @escaping CHResult<[IRRemote]>)
+
 }
 
 public protocol CHHub3Delegate: CHWifiModule2Delegate {
