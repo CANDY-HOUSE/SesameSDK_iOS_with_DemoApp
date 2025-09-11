@@ -14,8 +14,26 @@ import Combine
 extension Hub3SettingViewController {
     
     private var cancellables: Set<AnyCancellable> {
-        get { return objc_getAssociatedObject(self, "hub3_settings_ir") as? Set<AnyCancellable> ?? Set<AnyCancellable>() }
-        set { objc_setAssociatedObject(self, "hub3_settings_ir", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get {
+            let nsSet = objc_getAssociatedObject(self, "hub3_settings_ir") as? NSMutableSet
+            if let nsSet = nsSet {
+                var swiftSet = Set<AnyCancellable>()
+                for obj in nsSet {
+                    if let cancellable = obj as? AnyCancellable {
+                        swiftSet.insert(cancellable)
+                    }
+                }
+                return swiftSet
+            }
+            return Set<AnyCancellable>()
+        }
+        set {
+            let nsSet = NSMutableSet()
+            for cancellable in newValue {
+                nsSet.add(cancellable)
+            }
+            objc_setAssociatedObject(self, "hub3_settings_ir", nsSet, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
     
     func configureIRKeysTableView() {
