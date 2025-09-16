@@ -5,8 +5,7 @@
       "type": "POWER_STATUS_ON",
       "titleIndex": 0,
       "titles": [
-          "co.candyhouse.tvremote.power",
-          "co.candyhouse.tvremote.power"
+          "co.candyhouse.remote.power"
         ],
       "icons": [
           "air_power_0",

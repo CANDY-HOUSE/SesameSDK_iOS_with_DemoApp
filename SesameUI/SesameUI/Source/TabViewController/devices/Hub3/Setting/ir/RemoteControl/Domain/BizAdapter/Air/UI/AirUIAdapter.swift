@@ -12,32 +12,43 @@ import UIKit
 import SesameSDK
 
 
-class AirControllerConfigAdapter: UIConfigAdapter {
+class AirUIAdapter: RemoteUIAdapter {
     
-    private let tag = String(describing: AirControllerConfigAdapter.self)
+    private let tag = String(describing: AirUIAdapter.self)
     private var config: UIControlConfig?
     private var updateCallback: ConfigUpdateCallback?
     private var currentState: String = ""
     
     let commandProcessor = HXDCommandProcessor()
     let paramsSwapper = HXDParametersSwapper()
+    let uiType: RemoteUIType
+    
+    init(_ uiType: RemoteUIType) {
+        self.uiType = uiType
+    }
     
     // MARK: - UIConfigAdapter Protocol
     
     func loadConfig(completion: @escaping ConfigResult<UIControlConfig>) {
-        if config == nil {
-            var loadedConfig: UIControlConfig?
-            guard LoadRemoteConfig.loadJsonObject("air_control_config", result: &loadedConfig) else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to load config"])))
-                return
-            }
-            config = loadedConfig
+        if let config = self.config {
+            completion(.success(config))
+            return
         }
         
-        if let config = config {
-            completion(.success(config))
-        } else {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Config is null"])))
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            
+            var config: UIControlConfig?
+            let result = LoadRemoteConfig.loadJsonObject(uiType.rawValue, result: &config)
+            
+            executeOnMainThread {
+                if result, let config = config {
+                    self.config = config
+                    completion(.success(config))
+                } else {
+                    completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to load config"])))
+                }
+            }
         }
     }
     

@@ -27,7 +27,7 @@ public class L {
         function: String = #function,
         line: Int = #line
     ) {
-#if DEBUG
+//#if DEBUG
         let fileName = (file as NSString).lastPathComponent
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
@@ -40,7 +40,7 @@ public class L {
         
         // 控制台输出
         print(logContent)
-#endif
+//#endif
     }
     
     public static func d(_ items: Any..., tag: String = "CANDYHOUSE", file: String = #file, function: String = #function, line: Int = #line) {

@@ -120,7 +120,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                     case IRType.DEVICE_REMOTE_CUSTOM:
                         self.present(UINavigationController(rootViewController: RemoteLearnVC.instance(hub3DeviceId: hub3DeviceId, remote: remote)), animated: true)
                         break
-                    case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT:
+                    case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT, IRType.DEVICE_REMOTE_FANS:
                         let vc = RemoteControlVC(irRemote: remote, hub3DeviceId: hub3DeviceId)
                         self.present(UINavigationController(rootViewController: vc), animated: true)
                         break

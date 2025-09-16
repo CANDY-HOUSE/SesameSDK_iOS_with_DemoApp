@@ -1,0 +1,87 @@
+{
+  "controls": [
+    {
+      "id": 1,
+      "type": "POWER_STATUS_ON",
+      "titleIndex": 0,
+      "titles": [
+          "co.candyhouse.remote.power",
+          "co.candyhouse.remote.power"
+        ],
+      "icons": [
+          "air_power_0",
+          "air_power_1"
+        ],
+      "defaultValue": "",
+      "operateCode": "49153"
+    },
+    {
+      "id": 2,
+      "type": "MODE",
+      "titleIndex": 1,
+      "titles": [
+        "co.candyhouse.remote.mode"
+      ],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49154"
+    },
+    {
+      "id": 3,
+      "type": "SHAKE_HEAD",
+      "titleIndex": 2,
+      "titles": [
+          "co.candyhouse.remote.shake_head",
+          "co.candyhouse.remote.shake_head"
+      ],
+      "icons": [
+          "air_power_1",
+          "air_power_0"
+      ],
+      "defaultValue": "",
+      "operateCode": "49155"
+    },
+    {
+      "id": 4,
+      "type": "LOW",
+      "titleIndex": 3,
+      "titles": ["co.candyhouse.remote.low"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49156"
+    },
+    {
+      "id": 5,
+      "type": "MIDDLE",
+      "titleIndex": 4,
+      "titles": ["co.candyhouse.remote.middle"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49157"
+    },
+    {
+      "id": 6,
+      "type": "HIGH",
+      "titleIndex": 5,
+      "titles": ["co.candyhouse.remote.high"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49158"
+    },
+    {
+      "id": 7,
+      "type": "FAN_SPEED",
+      "titleIndex": 6,
+      "titles": ["co.candyhouse.remote.fan_speed"],
+      "icons": [],
+      "defaultValue": "",
+      "operateCode": "49159"
+    }
+  ],
+  "settings": {
+    "layout": {
+      "columns": 3,
+      "spacing": 16
+    }
+  }
+}

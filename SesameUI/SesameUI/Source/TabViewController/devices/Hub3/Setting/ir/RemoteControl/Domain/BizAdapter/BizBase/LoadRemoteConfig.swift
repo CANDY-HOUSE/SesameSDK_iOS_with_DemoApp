@@ -52,23 +52,12 @@ class LoadRemoteConfig {
         do {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
-            
-            // 添加更详细的错误处理
             do {
                 result = try decoder.decode(T.self, from: data)
                 return true
-            } catch DecodingError.keyNotFound(let key, let context) {
-                L.d("JsonLoader", "Missing key: \(key.stringValue) - \(context.debugDescription)")
-            } catch DecodingError.typeMismatch(let type, let context) {
-                L.d("JsonLoader", "Type mismatch: \(type) - \(context.debugDescription)")
-            } catch DecodingError.valueNotFound(let type, let context) {
-                L.d("JsonLoader", "Value not found: \(type) - \(context.debugDescription)")
-            } catch DecodingError.dataCorrupted(let context) {
-                L.d("JsonLoader", "Data corrupted: \(context.debugDescription)")
             } catch {
                 L.d("JsonLoader", "Other decoding error: \(error)")
             }
-            
             return false
         } catch {
             L.d("JsonLoader", "Failed to load data: \(error)")

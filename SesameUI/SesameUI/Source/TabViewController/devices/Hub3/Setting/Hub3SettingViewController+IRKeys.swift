@@ -153,7 +153,7 @@ extension Hub3SettingViewController {
             case IRType.DEVICE_REMOTE_CUSTOM:
                 navigationController?.pushViewController(RemoteLearnVC.instance(hub3DeviceId: hub3DeviceId, remote: remote), animated: true)
                 break
-            case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT:
+            case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT, IRType.DEVICE_REMOTE_FANS:
                 let vc = RemoteControlVC(irRemote: remote,hub3DeviceId: hub3DeviceId)
                 self.navigationController?.pushViewController(vc, animated: true)
                 break

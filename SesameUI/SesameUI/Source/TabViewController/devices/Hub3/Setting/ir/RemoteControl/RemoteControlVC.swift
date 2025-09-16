@@ -246,8 +246,8 @@ class RemoteControlVC: CHBaseViewController {
             existingMatchList: cachedIrMatchList){[weak self] successful, irRemote, irMatchList in
             guard let self = self else { return }
             if successful {
-                updateReomteDeviceInfo()
-                hideAddIrDeviceEntrance()
+                updateReomteDeviceInfo(irRemote)
+//                hideAddIrDeviceEntrance()
                 self.cachedIrMatchList = irMatchList
             }
         }

@@ -10,18 +10,20 @@ import Foundation
 import UIKit
 import SesameSDK
 
-class AirControllerHandlerAdapter: HandlerConfigAdapter {
+class AirHandlerAdapter: RemoteHandlerAdapter {
     
-    private let tag = String(describing: AirControllerHandlerAdapter.self)
+    private let tag = String(describing: AirHandlerAdapter.self)
 
-    private let uiConfigAdapter: UIConfigAdapter
+    private let uiAdapter: RemoteUIAdapter
+    private var uiType: RemoteUIType
     
     // 错误和成功列表
     private var errorList: [String] = []
     private var successList: [String] = []
     
-    init(uiConfigAdapter: UIConfigAdapter) {
-        self.uiConfigAdapter = uiConfigAdapter
+    init(_ uiAdapter: RemoteUIAdapter) {
+        self.uiAdapter = uiAdapter
+        self.uiType = (uiAdapter as? AirUIAdapter)!.uiType
     }
     
     func handleItemClick(item: IrControlItem, hub3DeviceId: String, remoteDevice: IRRemote) {
@@ -35,7 +37,7 @@ class AirControllerHandlerAdapter: HandlerConfigAdapter {
             }
             
             executeOnMainThread {
-                self.uiConfigAdapter.setCurrentState(command)
+                self.uiAdapter.setCurrentState(command)
             }
             
             self.postCommand(hub3DeviceId: hub3DeviceId,command: command)
@@ -74,7 +76,7 @@ class AirControllerHandlerAdapter: HandlerConfigAdapter {
     
     private func buildCommand(item: IrControlItem, remoteDevice: IRRemote) -> String {
         do {
-            guard let configAdapter = uiConfigAdapter as? AirControllerConfigAdapter else {
+            guard let configAdapter = uiAdapter as? AirUIAdapter else {
                 throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid adapter type"])
             }
             let key = configAdapter.paramsSwapper.getAirKey(item.type)
@@ -91,10 +93,10 @@ class AirControllerHandlerAdapter: HandlerConfigAdapter {
     }
     
     func getCurrentState(remoteDevice: IRRemote) -> String {
-        return (uiConfigAdapter as? AirControllerConfigAdapter)?.getCurrentState() ?? ""
+        return (uiAdapter as? AirUIAdapter)?.getCurrentState() ?? ""
     }
     
     func getCurrentIRDeviceType() -> Int {
-        return IRType.DEVICE_REMOTE_AIR
+        return uiType.irType
     }
 }

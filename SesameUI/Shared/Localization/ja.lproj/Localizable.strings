@@ -330,9 +330,9 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.tvremote.volumeDown" = "音量-";
 "co.candyhouse.tvremote.home" = "ホーム";
 "co.candyhouse.tvremote.channelDown" = "チャンネル-";
-"co.candyhouse.tvremote.power" = "電源";
+"co.candyhouse.remote.power" = "電源";
 
-"co.candyhouse.light.mode" = "モード";
+"co.candyhouse.remote.mode" = "モード";
 "co.candyhouse.light.modeNormal" = "標準モード";
 "co.candyhouse.light.modeReading" = "読書モード";
 "co.candyhouse.light.modeWorking" = "作業モード";
@@ -341,6 +341,12 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.light.brightnessDown" = "明るさ-";
 "co.candyhouse.light.colorTempUp" = "色温度+";
 "co.candyhouse.light.colorTempDown" = "色温度-";
+
+"co.candyhouse.remote.shake_head" = "スイング";
+"co.candyhouse.remote.high" = "強";
+"co.candyhouse.remote.middle" = "中";
+"co.candyhouse.remote.low" = "弱";
+"co.candyhouse.remote.fan_speed" = "風量";
 
 "co.candyhouse.sesame2.ResetHub3Module" = "このHub3を初期化、そして鍵を捨てる";
 "co.candyhouse.sesame2.inputEMailWarn" = "正しいメールアドレスを入力してください";

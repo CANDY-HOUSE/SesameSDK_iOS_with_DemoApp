@@ -332,9 +332,9 @@
 "co.candyhouse.tvremote.volumeDown" = "音量-";
 "co.candyhouse.tvremote.home" = "主页";
 "co.candyhouse.tvremote.channelDown" = "频道-";
-"co.candyhouse.tvremote.power" = "电源";
+"co.candyhouse.remote.power" = "电源";
 
-"co.candyhouse.light.mode" = "模式";
+"co.candyhouse.remote.mode" = "模式";
 "co.candyhouse.light.modeNormal" = "标准模式";
 "co.candyhouse.light.modeReading" = "阅读模式";
 "co.candyhouse.light.modeWorking" = "工作模式";
@@ -343,6 +343,12 @@
 "co.candyhouse.light.brightnessDown" = "亮度-";
 "co.candyhouse.light.colorTempUp" = "色温+";
 "co.candyhouse.light.colorTempDown" = "色温-";
+
+"co.candyhouse.remote.shake_head" = "摇头";
+"co.candyhouse.remote.high" = "高";
+"co.candyhouse.remote.middle" = "中";
+"co.candyhouse.remote.low" = "低";
+"co.candyhouse.remote.fan_speed" = "风速";
 
 "co.candyhouse.sesame2.inputEMailWarn" = "请输入正确的邮箱";
 "co.candyhouse.sesame2.ir_ble_invalid" = "请返回Hub3详情界面，以便触发自动连接蓝牙。";

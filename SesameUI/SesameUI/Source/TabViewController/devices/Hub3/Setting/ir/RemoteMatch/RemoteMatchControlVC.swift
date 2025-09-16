@@ -184,31 +184,30 @@ extension Hub3IRRemoteMatchControlVC: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "IRRemoteCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-        
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
-            cell!.textLabel?.font = .systemFont(ofSize: 15)
-            cell!.textLabel?.numberOfLines = 0
-            cell!.textLabel?.lineBreakMode = .byWordWrapping
+            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
             
-            if let textLabel = cell!.textLabel {
-                textLabel.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    textLabel.topAnchor.constraint(equalTo: cell!.contentView.topAnchor, constant: 12),
-                    textLabel.leadingAnchor.constraint(equalTo: cell!.contentView.leadingAnchor, constant: 16),
-                    textLabel.trailingAnchor.constraint(equalTo: cell!.contentView.trailingAnchor, constant: -16),
-                    textLabel.bottomAnchor.constraint(equalTo: cell!.contentView.bottomAnchor, constant: -12)
-                ])
+            if cell == nil {
+                // 使用 .value1 样式，自动支持左侧主标题和右侧详细信息
+                cell = UITableViewCell(style: .value1, reuseIdentifier: cellIdentifier)
+                cell!.textLabel?.font = .systemFont(ofSize: 15)
+                cell!.textLabel?.numberOfLines = 0
+                cell!.textLabel?.lineBreakMode = .byWordWrapping
+                
+                // 设置右侧详细标签的样式
+                cell!.detailTextLabel?.font = .systemFont(ofSize: 14)
+                cell!.detailTextLabel?.textColor = .black
+                
+                cell!.setSeperatorLineEnable(trailingConstant: -16)
             }
-            cell!.setSeperatorLineEnable(trailingConstant: -16)
-        }
-        
-        let irRemote = viewModel.irMatchItemList[indexPath.row]
-        cell!.textLabel?.text = irRemote.remote.alias
-        cell!.textLabel?.textColor = .black
-        
-        return cell!
+            
+            let irRemote = viewModel.irMatchItemList[indexPath.row]
+            
+            cell!.textLabel?.text = irRemote.remote.alias
+            cell!.textLabel?.textColor = .black
+            
+            cell!.detailTextLabel?.text = "\(irRemote.matchPercent)%"
+            
+            return cell!
     }
 }
 

@@ -12,6 +12,7 @@ extension IRType {
             IRType.DEVICE_REMOTE_AIR,
             IRType.DEVICE_REMOTE_TV,
             IRType.DEVICE_REMOTE_LIGHT,
+            IRType.DEVICE_REMOTE_FANS,
             IRType.DEVICE_REMOTE_CUSTOM
         ]
     }

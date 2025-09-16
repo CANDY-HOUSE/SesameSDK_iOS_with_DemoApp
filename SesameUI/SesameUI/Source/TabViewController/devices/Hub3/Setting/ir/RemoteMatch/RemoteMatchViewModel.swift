@@ -99,6 +99,9 @@ class Hub3IRRemoteMatchViewModel  {
                         unsubscribeLearnData()
                         return
                     }
+                    if (!isRegisterMode) {
+                        
+                    }
                     subscribeIR()
                 }
             }
@@ -146,7 +149,7 @@ class Hub3IRRemoteMatchViewModel  {
     private func subscribeIR() {
         CHIRManager.shared.subscribeTopic(topic: getLearnDataTopic()) { [weak self] onResult in
             guard let self = self else { return }
-            
+            unsubscribeLearnData()
             if case let .failure(err) = onResult {
                 L.d(self.tag, "subscribeServerForPostIRData error: \(err)")
                 startAutoMatch()
@@ -154,19 +157,28 @@ class Hub3IRRemoteMatchViewModel  {
             }
             
             if case let .success(result) = onResult {
-                if self.irMatchItemList.isEmpty {
+                
+                if self.irMatchItemList.isEmpty && !self.isSearching {
                     self.isSearching = true
                 }
                 CHIRManager.shared.matchIrCode(data: result.data, type: irRemoteDevice!.type, brandName: irRemoteDevice!.model) { [weak self] getResult in
+                    guard let self = self else { return }
                     if case let .success(codes) = getResult {
-                        self?.irMatchItemList = codes.data
-                        self?.isSearching = false
+                        self.isSearching = false
+                        if codes.data.count == 0 && self.irMatchItemList.count > 0 {
+                            return
+                        }
+                        self.irMatchItemList = codes.data
+                        startAutoMatch()
                     } else if case let .failure(err) = getResult {
-                        L.e(self?.tag ?? "", "matchIrCode", err)
-                        self?.isSearching = false
+                        L.e(self.tag, "matchIrCode", err)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                            guard let self = self else { return }
+                            self.isSearching = false
+                            startAutoMatch()
+                        }
                     }
                 }
-                startAutoMatch()
             }
         }
     }

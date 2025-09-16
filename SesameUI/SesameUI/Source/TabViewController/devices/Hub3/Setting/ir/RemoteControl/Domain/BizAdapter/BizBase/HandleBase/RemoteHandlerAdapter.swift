@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SesameSDK
 
-protocol HandlerConfigAdapter {
+protocol RemoteHandlerAdapter {
     func handleItemClick(item: IrControlItem, hub3DeviceId: String, remoteDevice: IRRemote)
     func modifyIRDeviceInfo(hub3DeviceId: String, remoteDevice: IRRemote, onResponse: @escaping CHResult<CHEmpty>)
     func clearHandlerCache()

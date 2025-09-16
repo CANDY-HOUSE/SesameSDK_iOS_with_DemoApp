@@ -28,8 +28,8 @@ public class CHIRManager {
         
         let operation = code.hasPrefix("300") ? "remoteEmit" : "learnEmit"
         let data = ["operation": operation, "data": code, "irDeviceUUID": irDeviceUUID, "irType": String(irType)]
-        L.d("emitIRCode", data)
         let send = try! JSONEncoder().encode(data)
+        
         CHAccountManager.shared.publicAPI(request: .init(.post, "/device/v2/ir/\(hub3DeviceId)/send", send)) { uploadResult in
             switch uploadResult {
             case .success(_):
@@ -89,24 +89,6 @@ public class CHIRManager {
             switch uploadResult {
             case .success(_):
                 L.d("删除按键成功", uuid, keyUUID)
-                result(.success(.init(input: .init())))
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-    
-    func emitIRCode(hub3DeviceId: String, _ code: String, irDeviceUUID: String, irType:Int, result: @escaping CHResult<CHEmpty>) {
-        let keyName = code.hasPrefix("300") ? "hxd" : "learned"
-//        let data = [keyName: code, "operation": "emit", "irDeviceUUID": irDeviceUUID]
-        
-        let operation = code.hasPrefix("300") ? "remoteEmit" : "learnEmit"
-        let data = ["operation": operation, "data": code, "irDeviceUUID": irDeviceUUID, "irType": String(irType)]
-        L.d("emitIRCode", data)
-        let send = try! JSONEncoder().encode(data)
-        CHAccountManager.shared.publicAPI(request: .init(.post, "/device/v2/ir/\(hub3DeviceId)/send", send)) { uploadResult in
-            switch uploadResult {
-            case .success(_):
                 result(.success(.init(input: .init())))
             case .failure(let error):
                 result(.failure(error))

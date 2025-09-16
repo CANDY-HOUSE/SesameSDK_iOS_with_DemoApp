@@ -12,7 +12,7 @@ import SesameSDK
 
 typealias ConfigResult<T> = (Result<T, Error>) -> Void
 
-protocol UIConfigAdapter {
+protocol RemoteUIAdapter {
     /**
      加载界面配置
      - Parameter completion: 完成回调，返回配置或错误

@@ -1,8 +1,8 @@
 //
-//  TVControllerHandlerAdapter.swift
+//  NonAirHandlerAdapter.swift
 //  SesameUI
 //
-//  Created by wuying on 2025/3/26.
+//  Created by wuying on 2025/9/12.
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 
@@ -12,15 +12,17 @@ import SesameSDK
 
 
 /// TV控制器处理适配器
-final class TVControllerHandlerAdapter: HandlerConfigAdapter {
+final class NonAirHandlerAdapter: RemoteHandlerAdapter {
     // MARK: - Private Properties
-    private let tag = String(describing: TVControllerHandlerAdapter.self)
-    private let uiConfigAdapter: UIConfigAdapter
+    private let tag = String(describing: NonAirHandlerAdapter.self)
+    private let uiAdapter: RemoteUIAdapter
     private var handlerCallback: HandlerCallback?
+    private var uiType: RemoteUIType
     
     // MARK: - Initialization
-    init(uiConfigAdapter: UIConfigAdapter) {
-        self.uiConfigAdapter = uiConfigAdapter
+    init(_ uiConfigAdapter: RemoteUIAdapter) {
+        self.uiAdapter = uiConfigAdapter
+        self.uiType = (uiConfigAdapter as? NonAirUIAdapter)!.uiType
     }
     
     // MARK: - HandlerConfigAdapter Implementation
@@ -32,13 +34,8 @@ final class TVControllerHandlerAdapter: HandlerConfigAdapter {
                 L.d(self.tag, "handleItemClick buildCommand is empty!")
                 return
             }
-            // 更新UI状态
-            executeOnMainThread {
-                self.uiConfigAdapter.setCurrentState(command)
-            }
-            // 发送命令
+            executeOnMainThread { self.uiAdapter.setCurrentState(command) }
             self.postCommand(hub3DeviceId: hub3DeviceId, command: command)
-            // 更新设备状态
             if !remoteDevice.uuid.isEmpty && remoteDevice.haveSave {
                 self.updateDeviceState(hub3DeviceId: hub3DeviceId, remoteDevice: remoteDevice, command: command)
             }
@@ -60,15 +57,15 @@ final class TVControllerHandlerAdapter: HandlerConfigAdapter {
     }
     
     func getCurrentState(remoteDevice: IRRemote) -> String {
-        guard let tvAdapter = uiConfigAdapter as? TVControllerConfigAdapter else {
+        guard let adapter = uiAdapter as? NonAirUIAdapter else {
             L.d(tag, "Invalid adapter type")
             return ""
         }
-        return tvAdapter.getCurrentState()
+        return adapter.getCurrentState()
     }
     
     func getCurrentIRDeviceType() -> Int {
-        return IRType.DEVICE_REMOTE_TV
+        return uiType.irType
     }
     
     // MARK: - Private Methods
@@ -96,11 +93,22 @@ final class TVControllerHandlerAdapter: HandlerConfigAdapter {
     
     private func buildCommand(item: IrControlItem, remoteDevice: IRRemote) -> String {
         do {
-            guard let configAdapter = uiConfigAdapter as? TVControllerConfigAdapter else {
+            guard let configAdapter = uiAdapter as? NonAirUIAdapter else {
                 throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid adapter type"])
             }
             
-            let key = configAdapter.paramsSwapper.getTVKey(item.type)
+            let key: Int
+            switch uiType {
+            case .light:
+                key = configAdapter.paramsSwapper.getLightKey(item.type)
+            case .tv:
+                key = configAdapter.paramsSwapper.getTVKey(item.type)
+            case .fan:
+                key = configAdapter.paramsSwapper.getFanKey(item.type)
+            default :
+                key = 0
+            }
+            
             let command = configAdapter.commandProcessor.setKey(key).setCode(remoteDevice.code).buildNoneAirCommand()
             guard !command.isEmpty else {
                 L.d(tag, "buildCommand buildNoneAirCommand is empty!")

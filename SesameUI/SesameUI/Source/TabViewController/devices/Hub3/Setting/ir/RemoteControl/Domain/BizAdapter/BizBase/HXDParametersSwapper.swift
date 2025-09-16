@@ -275,4 +275,28 @@ class HXDParametersSwapper {
             return 0x01
         }
     }
+    
+    func getFanKey(_ type: ItemType) -> Int {
+        switch type {
+        case .powerStatusOn:
+            return 0x01
+        case .powerStatusOff:
+            return 0x01
+        case .fanSpeed:
+            return 0x02
+        case .shakeHead:
+            return 0x03
+        case .mode:
+            return 0x04
+        case .low:
+            return 0x14
+        case .middle:
+            return 0x15
+        case .Hight:
+            return 0x16
+        default:
+            print("\(tag) Unknown item type")
+            return 0x01
+        }
+    }
 }

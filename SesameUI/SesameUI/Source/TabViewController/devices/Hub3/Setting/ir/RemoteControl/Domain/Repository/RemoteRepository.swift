@@ -14,8 +14,8 @@ import SesameSDK
 /// 红外远程控制器
 class RemoteRepository {
     // MARK: - Private Properties
-    private var uiConfigAdapter: UIConfigAdapter!
-    private var handlerConfigAdapter: HandlerConfigAdapter!
+    private var uiAdapter: RemoteUIAdapter!
+    private var handlerAdapter: RemoteHandlerAdapter!
     private var haveInitialized = false
     
     private let tag = String(describing: RemoteRepository.self)
@@ -35,10 +35,13 @@ class RemoteRepository {
             L.d(tag, "Failed to create factory for type: \(type)")
             return
         }
-        uiConfigAdapter = factory.createUIConfigAdapter()
-        handlerConfigAdapter = factory.createHandlerConfigAdapter(uiConfigAdapter: uiConfigAdapter)
+        guard let uiType = RemoteAdapterFactoryManager.getUIType(type: type) else {
+            return
+        }
+        uiAdapter = factory.createUIAdapter(uiType)
+        handlerAdapter = factory.createHandlerAdapter(uiAdapter)
         
-        uiConfigAdapter.setConfigUpdateCallback(uiItemCallback: uiItemCallback)
+        uiAdapter.setConfigUpdateCallback(uiItemCallback: uiItemCallback)
         
         haveInitialized = true
         clearHandlerCache()
@@ -55,7 +58,7 @@ class RemoteRepository {
             return
         }
         
-        uiConfigAdapter.loadConfig(completion: completion)
+        uiAdapter.loadConfig(completion: completion)
     }
     
     /// 加载界面参数
@@ -67,7 +70,7 @@ class RemoteRepository {
             return
         }
         
-        uiConfigAdapter.loadUIParams(completion: completion)
+        uiAdapter.loadUIParams(completion: completion)
     }
     
     /// 处理按键点击事件
@@ -81,9 +84,9 @@ class RemoteRepository {
             return
         }
         
-        let handleSuccess = uiConfigAdapter.handleItemClick(item: item, remoteDevice: remoteDevice)
+        let handleSuccess = uiAdapter.handleItemClick(item: item, remoteDevice: remoteDevice)
         if handleSuccess {
-            handlerConfigAdapter.handleItemClick(item: item, hub3DeviceId: hub3DeviceId, remoteDevice: remoteDevice)
+            handlerAdapter.handleItemClick(item: item, hub3DeviceId: hub3DeviceId, remoteDevice: remoteDevice)
         }
     }
     
@@ -93,7 +96,7 @@ class RemoteRepository {
             L.d(tag, "RemoteRepository not initialized")
             return
         }
-        uiConfigAdapter.clearConfigCache()
+        uiAdapter.clearConfigCache()
     }
     
     /// 清除处理器缓存
@@ -102,7 +105,7 @@ class RemoteRepository {
             L.d(tag, "RemoteRepository not initialized")
             return
         }
-        handlerConfigAdapter.clearHandlerCache()
+        handlerAdapter.clearHandlerCache()
     }
     
     /// 获取当前状态
@@ -110,27 +113,27 @@ class RemoteRepository {
         if(!haveInitialized) {
             return remoteDevice.state ?? ""
         }
-        return handlerConfigAdapter.getCurrentState(remoteDevice: remoteDevice)
+        return handlerAdapter.getCurrentState(remoteDevice: remoteDevice)
     }
     
     /// 获取当前设备类型
     func getCurrentIRDeviceType() -> Int {
-        return handlerConfigAdapter.getCurrentIRDeviceType()
+        return handlerAdapter.getCurrentIRDeviceType()
     }
     
     /// 修改遥控设备信息
     func modifyRemoteIrDeviceInfo(hub3DeviceId: String, remoteDevice: IRRemote, onResponse: @escaping CHResult<CHEmpty>) {
-        handlerConfigAdapter.modifyIRDeviceInfo(hub3DeviceId: hub3DeviceId, remoteDevice: remoteDevice, onResponse: onResponse)
+        handlerAdapter.modifyIRDeviceInfo(hub3DeviceId: hub3DeviceId, remoteDevice: remoteDevice, onResponse: onResponse)
     }
     
     /// 设置当前状态
     func setCurrentState(_ state: String?) {
-        uiConfigAdapter.setCurrentState(state)
+        uiAdapter.setCurrentState(state)
     }
     
     /// 获取UI配置适配器
-    func getUiConfigAdapter() -> UIConfigAdapter {
-        return uiConfigAdapter
+    func getUiConfigAdapter() -> RemoteUIAdapter {
+        return uiAdapter
     }
 }
 

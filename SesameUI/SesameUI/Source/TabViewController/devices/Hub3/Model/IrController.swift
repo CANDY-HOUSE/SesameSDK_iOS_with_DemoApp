@@ -135,4 +135,10 @@ enum ItemType: String, Codable {
     case colorTempDown = "COLOR_TEMP_DOWN"
     
     case power = "POWER"
+    
+    //风扇
+    case shakeHead = "SHAKE_HEAD"
+    case Hight = "HIGH"
+    case low = "LOW"
+    case middle = "MIDDLE"
 }

@@ -334,9 +334,9 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.tvremote.volumeDown" = "Volume-";
 "co.candyhouse.tvremote.home" = "Home";
 "co.candyhouse.tvremote.channelDown" = "Channel-";
-"co.candyhouse.tvremote.power" = "Power";
+"co.candyhouse.remote.power" = "Power";
 
-"co.candyhouse.light.mode" = "Mode";
+"co.candyhouse.remote.mode" = "Mode";
 "co.candyhouse.light.modeNormal" = "Normal Mode";
 "co.candyhouse.light.modeReading" = "Reading Mode";
 "co.candyhouse.light.modeWorking" = "Working Mode";
@@ -345,6 +345,12 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.light.brightnessDown" = "Brightness-";
 "co.candyhouse.light.colorTempUp" = "Color Temp+";
 "co.candyhouse.light.colorTempDown" = "Color Temp-";
+
+"co.candyhouse.remote.shake_head" = "Swing";
+"co.candyhouse.remote.high" = "High";
+"co.candyhouse.remote.middle" = "Medium";
+"co.candyhouse.remote.low" = "Low";
+"co.candyhouse.remote.fan_speed" = "Fan Speed";
 
 "co.candyhouse.sesame2.ResetHub3Module" = "Reset the Hub3 and trash the key";
 "co.candyhouse.sesame2.inputEMailWarn" = "Please enter a valid email address";

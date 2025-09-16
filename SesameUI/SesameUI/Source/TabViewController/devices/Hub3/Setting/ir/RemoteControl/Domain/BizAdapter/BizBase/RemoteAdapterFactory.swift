@@ -13,8 +13,8 @@
  */
 protocol RemoteAdapterFactory {
     /// 创建界面配置适配器
-    func createUIConfigAdapter() -> UIConfigAdapter
+    func createUIAdapter(_ uiType: RemoteUIType) -> RemoteUIAdapter
     
     /// 创建业务处理适配器
-    func createHandlerConfigAdapter(uiConfigAdapter: UIConfigAdapter) -> HandlerConfigAdapter
+    func createHandlerAdapter(_ uiAdapter: RemoteUIAdapter) -> RemoteHandlerAdapter
 }
