@@ -40,9 +40,6 @@ public protocol CHDevice: AnyObject {
     func reset(result: @escaping CHResult<CHEmpty>)
     func register(result: @escaping CHResult<CHEmpty>)
     func createGuestKey(result: @escaping CHResult<String>)
-    func getGuestKeys(result: @escaping CHResult<[CHGuestKey]>)
-    func removeGuestKey(_ guestKeyId: String, result: @escaping CHResult<CHEmpty>)
-    func updateGuestKey(_ guestKeyId: String, name: String, result: @escaping CHResult<CHEmpty>)
 //    #endif
 }
 
@@ -202,61 +199,6 @@ internal extension CHDevice {
     func iotCustomVerification(result: @escaping CHResult<CHEmpty>) {
         CHAccountManager.shared.API(request: .init(.get, "/device/v1/iot/sesame2/\(deviceId.uuidString)", queryParameters: ["a": getTimeSignature()])) { verifyResult in
             switch verifyResult {
-            case .success(_):
-                result(.success(.init(input: .init())))
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-
-    func getGuestKeys(result: @escaping CHResult<[CHGuestKey]>) {
-        CHAccountManager.shared.API(request: .init(.get, "/device/v1/sesame2/\(deviceId.uuidString)/guestkeys")) { getResult in
-            switch getResult {
-            case .success(let data):
-                if let jsonData = data {
-                    do {
-                        let guestKeys = try JSONDecoder().decode([CHGuestKey].self, from: jsonData)
-                        result(.success(.init(input: guestKeys)))
-                    } catch {
-                        result(.failure(NSError.parseError))
-                    }
-                } else {
-                    result(.failure(NSError.parseError))
-                }
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-
-    func updateGuestKey(_ guestKeyId: String, name: String, result: @escaping CHResult<CHEmpty>) {
-        CHAccountManager.shared.API(request: .init(.put, "/device/v1/sesame2/\(deviceId.uuidString)/guestkey", ["guestKeyId": guestKeyId, "keyName": name])) { modifyResult in
-            switch modifyResult {
-            case .success(_):
-                result(.success(.init(input: .init())))
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-
-    func removeGuestKey(_ guestKeyId: String, result: @escaping CHResult<CHEmpty>) {
-        guard let secretKey = getKey()?.secretKey.hexStringtoData() else {
-            result(.failure(NSError.noSecretKeyError))
-            return
-        }
-
-        var timestamp: UInt32 = UInt32(Date().timeIntervalSince1970)
-        let timestampData = Data(bytes: &timestamp,
-                                 count: MemoryLayout.size(ofValue: timestamp))
-
-        let randomTag = Data(timestampData.arrayOfBytes()[1...3])
-        let keyCheck = CC.CMAC.AESCMAC(randomTag,
-                                       key: secretKey)
-
-        CHAccountManager.shared.API(request: .init(.delete, "/device/v1/sesame2/\(deviceId.uuidString)/guestkey", [ "guestKeyId": guestKeyId, "randomTag": keyCheck[0...3].toHexString()])) { deleteResult in
-            switch deleteResult {
             case .success(_):
                 result(.success(.init(input: .init())))
             case .failure(let error):

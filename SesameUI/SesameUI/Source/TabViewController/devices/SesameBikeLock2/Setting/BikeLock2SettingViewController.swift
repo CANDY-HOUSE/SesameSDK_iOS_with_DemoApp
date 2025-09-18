@@ -29,8 +29,6 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var statusView: CHUIPlainSettingView!
-    var deviceMembersView: KeyCollectionViewController!
-    var friendListHeight: NSLayoutConstraint!
     var changeNameView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var siriButton: CHUISettingButtonView?
@@ -93,7 +91,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     }
     
     @objc func reloadFriends() {
-        deviceMembersView?.getMembers()
+        reloadMembers()
         refreshControl.endRefreshing()
     }
     
@@ -108,19 +106,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, bikeLock2.keyLevel != KeyLevel.guest.rawValue {
-            deviceMembersView = KeyCollectionViewController.instanceWithDevice(bikeLock2)
-            addChild(deviceMembersView)
-            let collectionViewContainer = UIView(frame: .zero)
-            friendListHeight = collectionViewContainer.autoLayoutHeight(90)
-            collectionViewContainer.addSubview(deviceMembersView.view)
-            deviceMembersView.view.autoPinTop()
-            deviceMembersView.view.autoPinBottom()
-            deviceMembersView.view.autoPinLeading()
-            deviceMembersView.view.autoPinTrailing()
-            contentStackView.addArrangedSubview(collectionViewContainer)
-            
-            deviceMembersView.didMove(toParent: self)
-//            deviceMembersView.delegate = self
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         
@@ -318,7 +304,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
             let ownerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.ownerKey".localized, style: .default) { _ in
                 executeOnMainThread {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock2, keyLevel: KeyLevel.owner.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -330,7 +316,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
             let managerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.managerKey".localized, style: .default) { _ in
                 executeOnMainThread {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock2, keyLevel: KeyLevel.manager.rawValue)  {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -345,7 +331,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 } else {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock2, keyLevel: KeyLevel.guest.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -435,19 +421,6 @@ extension BikeLock2SettingViewController: DFUHelperDelegate {
         dfuView.value = "\(progress)%"
     }
 }
-extension BikeLock2SettingViewController: KeyCollectionViewControllerDelegate {
-    func collectionViewHeightDidChanged(_ height: CGFloat) {
-        friendListHeight.constant = height
-    }
-    
-    func noPermission() {
-        executeOnMainThread {
-            self.deviceMembersView.view.isHidden = true
-            self.friendListHeight.constant = 0
-        }
-    }
-}
-
 
 // MARK: INUI Add ShortcutVC Delegate
 extension BikeLock2SettingViewController: INUIAddVoiceShortcutViewControllerDelegate {

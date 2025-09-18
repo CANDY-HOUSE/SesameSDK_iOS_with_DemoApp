@@ -250,28 +250,6 @@ extension CHUserAPIManager {
             }
         }
     }
-    
-    /// 設備 members
-    func getDeviceMembers(_ deviceId: String, _ result: @escaping CHResult<[CHUser]>) {
-        CHDeviceManager.shared.getCHDevices { getResult in
-            if case let .success(chDevices) = getResult {
-                if let device = chDevices.data.filter({ $0.deviceId.uuidString == deviceId }).first.flatMap({ $0  }) {
-                    let queryParams: [AnyHashable : Any] = ["device_id": deviceId, "a": device.getTimeSignature()]
-                    self.API(request: .init(.get, "/device/member", queryParameters:queryParams)) { getResult in
-                        switch getResult {
-                        case .success(let data):
-                            let users = try! JSONDecoder().decode([CHUser].self, from: data!)
-                            result(.success(.init(input: users)))
-                        case .failure(let error):
-                            result(.failure(error))
-                        }
-                    }
-                }
-            } else {
-                result(.failure(NSError.noDeviceError))
-            }
-        }
-    }
 }
 
 // MARK: - Friend

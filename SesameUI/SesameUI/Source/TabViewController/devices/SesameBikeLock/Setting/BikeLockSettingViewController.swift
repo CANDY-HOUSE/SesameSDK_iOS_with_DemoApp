@@ -31,7 +31,6 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
     var uuidView: CHUIPlainSettingView!
     var changeNameView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
-    var deviceMembersView: KeyCollectionViewController!
     var statusView: CHUIPlainSettingView!
     var voiceShortcutButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
@@ -51,9 +50,7 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
     
     // MARK: - Callback
     var dismissHandler: (()->Void)?
-    
-    var friendListHeight: NSLayoutConstraint!
-    
+        
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +74,7 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
     }
     
     @objc func reloadFriends() {
-        deviceMembersView?.getMembers()
+        reloadMembers()
         refreshControl.endRefreshing()
     }
     
@@ -91,21 +88,7 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, bikeLock.keyLevel != KeyLevel.guest.rawValue {
-            deviceMembersView = KeyCollectionViewController.instanceWithDevice(bikeLock)
-            addChild(deviceMembersView)
-            
-            let collectionViewContainer = UIView(frame: .zero)
-            friendListHeight = collectionViewContainer.autoLayoutHeight(90)
-            collectionViewContainer.addSubview(deviceMembersView.view)
-            deviceMembersView.view.autoPinTop()
-            deviceMembersView.view.autoPinBottom()
-            deviceMembersView.view.autoPinLeading()
-            deviceMembersView.view.autoPinTrailing()
-            contentStackView.addArrangedSubview(collectionViewContainer)
-            
-            deviceMembersView.didMove(toParent: self)
-            deviceMembersView.delegate = self
-            
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
 
@@ -338,7 +321,7 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
             let ownerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.ownerKey".localized, style: .default) { _ in
                 DispatchQueue.main.async {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock, keyLevel: KeyLevel.owner.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -365,7 +348,7 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 } else {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock, keyLevel: KeyLevel.guest.rawValue) {
-                        self.deviceMembersView?.getGuestKeys()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -442,18 +425,6 @@ extension BikeLockSettingViewController: DFUHelperDelegate {
                               to progress: Int,
                               currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
         dfuView.value = "\(progress)%"
-    }
-}
-
-extension BikeLockSettingViewController: KeyCollectionViewControllerDelegate {
-    func collectionViewHeightDidChanged(_ height: CGFloat) {
-        friendListHeight.constant = height
-    }
-    
-    func noPermission() {
-        executeOnMainThread {
-            self.friendListHeight.constant = 0
-        }
     }
 }
 

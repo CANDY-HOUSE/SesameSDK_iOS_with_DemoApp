@@ -34,8 +34,6 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var statusView: CHUIPlainSettingView!
-    var deviceMembersView: KeyCollectionViewController!
-    var friendListHeight: NSLayoutConstraint!
     var changeNameView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var siriButton: CHUISettingButtonView?
@@ -102,7 +100,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     }
     
     @objc func reloadFriends() {
-        deviceMembersView?.getMembers()
+        reloadMembers()
         refreshControl.endRefreshing()
     }
     
@@ -117,19 +115,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, bikeLock2.keyLevel != KeyLevel.guest.rawValue {
-            deviceMembersView = KeyCollectionViewController.instanceWithDevice(bikeLock2)
-            addChild(deviceMembersView)
-            let collectionViewContainer = UIView(frame: .zero)
-            friendListHeight = collectionViewContainer.autoLayoutHeight(90)
-            collectionViewContainer.addSubview(deviceMembersView.view)
-            deviceMembersView.view.autoPinTop()
-            deviceMembersView.view.autoPinBottom()
-            deviceMembersView.view.autoPinLeading()
-            deviceMembersView.view.autoPinTrailing()
-            contentStackView.addArrangedSubview(collectionViewContainer)
-            
-            deviceMembersView.didMove(toParent: self)
-            deviceMembersView.delegate = self
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         
@@ -371,7 +357,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     func presentQRCodeSharingView(sender: UIButton) {
         modalSheetToQRControlByRoleLevel(device: self.bikeLock2, sender: sender) { isComplete in
             if isComplete {
-                self.deviceMembersView?.getMembers()
+                self.reloadMembers()
             }
         }
     }
@@ -451,18 +437,6 @@ extension Bot2SettingViewController: DFUHelperDelegate {
                               to progress: Int,
                               currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
         dfuView.value = "\(progress)%"
-    }
-}
-extension Bot2SettingViewController: KeyCollectionViewControllerDelegate {
-    func collectionViewHeightDidChanged(_ height: CGFloat) {
-        friendListHeight.constant = height
-    }
-    
-    func noPermission() {
-        executeOnMainThread {
-            self.deviceMembersView.view.isHidden = true
-            self.friendListHeight.constant = 0
-        }
     }
 }
 

@@ -39,18 +39,7 @@ extension SesameBiometricDeviceSettingVC: DFUHelperDelegate {
         dfuView.value = "\(progress)%"
     }
 }
-extension SesameBiometricDeviceSettingVC: KeyCollectionViewControllerDelegate {
-    func collectionViewHeightDidChanged(_ height: CGFloat) {
-        friendListHeight.constant = height
-    }
-    
-    func noPermission() {
-        executeOnMainThread {
-            self.deviceMembersView.view.isHidden = true
-            self.friendListHeight.constant = 0
-        }
-    }
-}
+
 extension SesameBiometricDeviceSettingVC {
     static func instance(_ device: CHSesameBasePro, dismissHandler: (()->Void)? = nil) -> SesameBiometricDeviceSettingVC {
         let vc = SesameBiometricDeviceSettingVC(nibName: nil, bundle: nil)
@@ -179,13 +168,11 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     var sesame2ListViewHeight: NSLayoutConstraint!
     
     // MARK: - UI Componets
-    var friendListHeight: NSLayoutConstraint!
     var statusView: CHUIPlainSettingView!
     var changeNameView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var addSesameButtonView: CHUIPlainSettingView!
     let batteryView = CHUIViewGenerator.plain ()
-    var deviceMembersView: KeyCollectionViewController!
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var sesame2ListView = UITableView(frame: .zero)
@@ -223,7 +210,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     @objc func reloadFriends() {
-        deviceMembersView?.getMembers()
+        reloadMembers()
         refreshControl.endRefreshing()
     }
     
@@ -258,21 +245,12 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, mDevice.keyLevel != KeyLevel.guest.rawValue {
-            deviceMembersView = KeyCollectionViewController.instanceWithDevice(mDevice)
-            addChild(deviceMembersView)
-            let collectionViewContainer = UIView(frame: .zero)
-            friendListHeight = collectionViewContainer.autoLayoutHeight(90)
-            collectionViewContainer.addSubview(deviceMembersView.view)
-            deviceMembersView.view.autoPinTop()
-            deviceMembersView.view.autoPinBottom()
-            deviceMembersView.view.autoPinLeading()
-            deviceMembersView.view.autoPinTrailing()
-            contentStackView.addArrangedSubview(collectionViewContainer)
-            
-            deviceMembersView.didMove(toParent: self)
-            deviceMembersView.delegate = self
-            
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+            
+            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
         }
         
         // MARK: Change name
@@ -665,7 +643,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             let ownerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.ownerKey".localized, style: .default) { _ in
                 executeOnMainThread {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.mDevice, keyLevel: KeyLevel.owner.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                         
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
@@ -678,7 +656,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             let managerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.managerKey".localized, style: .default) { _ in
                 executeOnMainThread {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.mDevice, keyLevel: KeyLevel.manager.rawValue)  {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -694,7 +672,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 } else {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.mDevice, keyLevel: KeyLevel.guest.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }

@@ -54,6 +54,12 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         contentStackView.distribution = .fill
         UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
         
+        if device.keyLevel != KeyLevel.guest.rawValue {
+            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
+        
         self.arrangeSubviews()
     }
 
@@ -62,9 +68,20 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
+    
+    @objc func reloadFriends() {
+        reloadMembers()
+        refreshControl.endRefreshing()
+    }
+    
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
+        // MARK: Group
+        if AWSMobileClient.default().currentUserState == .signedIn, device.keyLevel != KeyLevel.guest.rawValue {
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        }
+        
         // MARK: Change name
         changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
             ChangeValueDialog.show(mDevice.deviceName, title: "co.candyhouse.sesame2.EditName".localized) { name in

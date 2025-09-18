@@ -156,6 +156,9 @@
 		64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */; };
 		64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */; };
 		64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */; };
+		64E854372E7A85A400399FED /* CHWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854362E7A85A300399FED /* CHWebView.swift */; };
+		64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854382E7A99B300399FED /* CHWebViewController.swift */; };
+		64E8543B2E7B972100399FED /* CHBaseViewController+DeviceMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E8543A2E7B971200399FED /* CHBaseViewController+DeviceMember.swift */; };
 		890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890D33032DA0E7FF0031F0AF /* FingerPrintCell.xib */; };
 		890D33062DA0E7FF0031F0AF /* FingerPrintListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D32FE2DA0E7FF0031F0AF /* FingerPrintListVC.swift */; };
 		890D33072DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D32FC2DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift */; };
@@ -233,10 +236,6 @@
 		BE562E382563C5F8004617DE /* FriendKeyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E372563C5F8004617DE /* FriendKeyListViewController.swift */; };
 		BE562E412563C62D004617DE /* FriendKeyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E3F2563C62D004617DE /* FriendKeyListCell.swift */; };
 		BE562E422563C62D004617DE /* FriendKeyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE562E402563C62D004617DE /* FriendKeyListCell.xib */; };
-		BE562E4E2564B815004617DE /* KeyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E4C2564B815004617DE /* KeyCollectionViewController.swift */; };
-		BE562E4F2564B815004617DE /* KeyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE562E4D2564B815004617DE /* KeyCollectionViewController.xib */; };
-		BE562E552564B873004617DE /* KeyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E532564B873004617DE /* KeyCollectionViewCell.swift */; };
-		BE562E562564B873004617DE /* KeyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE562E542564B873004617DE /* KeyCollectionViewCell.xib */; };
 		BE5794F024AF1BE200E96B72 /* NSErrorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C5346245EC30000252F00 /* NSErrorShared+.swift */; };
 		BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E268225623D0B00F8B0DD /* CHDeviceShared+.swift */; };
 		BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6978DC2483E30F0089141E /* ToastUtil.swift */; };
@@ -636,6 +635,9 @@
 		64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteControlCell.swift; sourceTree = "<group>"; };
 		64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IRRemoteControlCell.xib; sourceTree = "<group>"; };
 		64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SesameDeviceList+Control.swift"; sourceTree = "<group>"; };
+		64E854362E7A85A300399FED /* CHWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebView.swift; sourceTree = "<group>"; };
+		64E854382E7A99B300399FED /* CHWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebViewController.swift; sourceTree = "<group>"; };
+		64E8543A2E7B971200399FED /* CHBaseViewController+DeviceMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBaseViewController+DeviceMember.swift"; sourceTree = "<group>"; };
 		890D32FC2DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBiometricDeviceSettingVC.swift; sourceTree = "<group>"; };
 		890D32FD2DA0E7FF0031F0AF /* SesameBiometricDeviceKeysListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBiometricDeviceKeysListVC.swift; sourceTree = "<group>"; };
 		890D32FE2DA0E7FF0031F0AF /* FingerPrintListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerPrintListVC.swift; sourceTree = "<group>"; };
@@ -729,10 +731,6 @@
 		BE562E372563C5F8004617DE /* FriendKeyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendKeyListViewController.swift; sourceTree = "<group>"; };
 		BE562E3F2563C62D004617DE /* FriendKeyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendKeyListCell.swift; sourceTree = "<group>"; };
 		BE562E402563C62D004617DE /* FriendKeyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendKeyListCell.xib; sourceTree = "<group>"; };
-		BE562E4C2564B815004617DE /* KeyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCollectionViewController.swift; sourceTree = "<group>"; };
-		BE562E4D2564B815004617DE /* KeyCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyCollectionViewController.xib; sourceTree = "<group>"; };
-		BE562E532564B873004617DE /* KeyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCollectionViewCell.swift; sourceTree = "<group>"; };
-		BE562E542564B873004617DE /* KeyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyCollectionViewCell.xib; sourceTree = "<group>"; };
 		BE5E268225623D0B00F8B0DD /* CHDeviceShared+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceShared+.swift"; sourceTree = "<group>"; };
 		BE6978DC2483E30F0089141E /* ToastUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
 		BE6978E22483E37D0089141E /* CHBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHBaseViewController.swift; sourceTree = "<group>"; };
@@ -1091,6 +1089,7 @@
 				646B86E02B47995D0042589E /* UIView+.swift */,
 				B09C1A142510A72300871F7E /* UIView+AutoLayout.swift */,
 				BEB36C7C2589C04000EDB9FB /* UIViewController+.swift */,
+				64E8543A2E7B971200399FED /* CHBaseViewController+DeviceMember.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1162,10 +1161,10 @@
 		41650F26236A6F8E005BDEF1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				64E854352E7A859900399FED /* WebView */,
 				41E51F3A2A36E06E00D3BB2F /* RefreshView */,
 				B0F6CC9B25105BFD00028219 /* QRCode */,
 				B0E60907251093D0000C36DF /* PopUpMenu */,
-				BE22E25B25809FE9006FE439 /* KeyCollectionView */,
 				BE6978DC2483E30F0089141E /* ToastUtil.swift */,
 				4137C8CB2350276300211F43 /* lockView.swift */,
 				41913AC829DA73E00028604C /* lockViewSS5.swift */,
@@ -1468,6 +1467,15 @@
 				64CD4E5B2BF5AC7100733D29 /* FindFriendHandler.swift */,
 			);
 			path = Find;
+			sourceTree = "<group>";
+		};
+		64E854352E7A859900399FED /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				64E854382E7A99B300399FED /* CHWebViewController.swift */,
+				64E854362E7A85A300399FED /* CHWebView.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		890D32FB2DA0E78F0031F0AF /* SesameBiometricDevice */ = {
@@ -1797,17 +1805,6 @@
 				646F79682B3D76800055E0B2 /* Hub3 */,
 			);
 			path = devices;
-			sourceTree = "<group>";
-		};
-		BE22E25B25809FE9006FE439 /* KeyCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				BE562E4C2564B815004617DE /* KeyCollectionViewController.swift */,
-				BE562E4D2564B815004617DE /* KeyCollectionViewController.xib */,
-				BE562E532564B873004617DE /* KeyCollectionViewCell.swift */,
-				BE562E542564B873004617DE /* KeyCollectionViewCell.xib */,
-			);
-			path = KeyCollectionView;
 			sourceTree = "<group>";
 		};
 		BE308150248E3D6700152D66 /* Extensions */ = {
@@ -2359,7 +2356,6 @@
 				D01005D82E571DC100144E7E /* sesame5pro_30_7_01be3d.zip in Resources */,
 				646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */,
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
-				BE562E4F2564B815004617DE /* KeyCollectionViewController.xib in Resources */,
 				41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */,
 				B179691522F7CE9400E91996 /* LaunchScreen.storyboard in Resources */,
 				D0C6F2DD2E61D02000909C41 /* sesameface1ai_30_23_67c53b.zip in Resources */,
@@ -2390,7 +2386,6 @@
 				B09F5839250F5DAC0034759A /* HistoryTagView.xib in Resources */,
 				D0FF38B12E798A5500E4BFF7 /* sesameface1_30_19_001481.zip in Resources */,
 				D0FF38AF2E798A4D00E4BFF7 /* sesameface1pro_30_18_001481.zip in Resources */,
-				BE562E562564B873004617DE /* KeyCollectionViewCell.xib in Resources */,
 				B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */,
 				643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */,
 				D026C7152E719CDC00B49A63 /* sesame6pro_30_21_c77013.zip in Resources */,
@@ -2586,7 +2581,6 @@
 				645B1B282BDB4C0100D5E491 /* GIFAnimatable.swift in Sources */,
 				898EB2A02E76E4AB00FB632D /* RemoteUIType.swift in Sources */,
 				B08C5347245EC30000252F00 /* NSErrorShared+.swift in Sources */,
-				BE562E552564B873004617DE /* KeyCollectionViewCell.swift in Sources */,
 				B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */,
 				645B1B2E2BDB4C0100D5E491 /* UIImage.swift in Sources */,
 				645211F62B2BFA270091DDE3 /* Bot2ScriptActionVC.swift in Sources */,
@@ -2607,6 +2601,8 @@
 				2C15AD632E6FC63A00E37918 /* LoadRemoteConfig.swift in Sources */,
 				2C15AD642E6FC63A00E37918 /* HandlerCallback.swift in Sources */,
 				2C15AD652E6FC63A00E37918 /* RemoteListCacheManager.swift in Sources */,
+				64E8543B2E7B972100399FED /* CHBaseViewController+DeviceMember.swift in Sources */,
+				64E854372E7A85A400399FED /* CHWebView.swift in Sources */,
 				2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */,
 				2C15AD682E6FC63A00E37918 /* ConfigUpdateCallback.swift in Sources */,
 				2C15AD6A2E6FC63A00E37918 /* RemoteMatchControlVC.swift in Sources */,
@@ -2621,6 +2617,7 @@
 				6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */,
 				3B8B7C512E2FC0AB00F5A2F7 /* WebViewScreen.swift in Sources */,
 				645B1B2C2BDB4C0100D5E491 /* Array.swift in Sources */,
+				64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */,
 				64190A142C2D54DC00B89592 /* AirData.swift in Sources */,
 				645B1B2B2BDB4C0100D5E491 /* GIFImageView.swift in Sources */,
 				BE8F9214264A1364001DF645 /* UserLocationManager.swift in Sources */,
@@ -2694,7 +2691,6 @@
 				BE88590F26C39EB1002D17E0 /* SesameBot+.swift in Sources */,
 				64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */,
 				646B86DC2B443D520042589E /* PlayLoadingView.swift in Sources */,
-				BE562E4E2564B815004617DE /* KeyCollectionViewController.swift in Sources */,
 				BE562E1F2563A4E7004617DE /* FriendListViewController.swift in Sources */,
 				0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */,
 				890D33062DA0E7FF0031F0AF /* FingerPrintListVC.swift in Sources */,

@@ -30,7 +30,6 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     let contentStackView = UIStackView(frame: .zero)
     var uuidView: CHUIPlainSettingView!
     var changeNameView: CHUIPlainSettingView!
-    var deviceMembersView: KeyCollectionViewController!
     var statusView: CHUIPlainSettingView!
     var sesameBotModeView: CHUISettingButtonView!
     var voiceShortcutButton: CHUISettingButtonView?
@@ -59,8 +58,6 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     // MARK: - Callback
     var dismissHandler: (()->Void)?
     
-    var friendListHeight: NSLayoutConstraint!
-    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +81,7 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     }
     
     @objc func reloadFriends() {
-        deviceMembersView?.getMembers()
+        reloadMembers()
         refreshControl.endRefreshing()
     }
     
@@ -98,21 +95,7 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, sesameBot.keyLevel != KeyLevel.guest.rawValue {
-            deviceMembersView = KeyCollectionViewController.instanceWithDevice(sesameBot)
-            addChild(deviceMembersView)
-            
-            let collectionViewContainer = UIView(frame: .zero)
-            friendListHeight = collectionViewContainer.autoLayoutHeight(90)
-            collectionViewContainer.addSubview(deviceMembersView.view)
-            deviceMembersView.view.autoPinTop()
-            deviceMembersView.view.autoPinBottom()
-            deviceMembersView.view.autoPinLeading()
-            deviceMembersView.view.autoPinTrailing()
-            contentStackView.addArrangedSubview(collectionViewContainer)
-            
-            deviceMembersView.didMove(toParent: self)
-            deviceMembersView.delegate = self
-            
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         
@@ -399,7 +382,7 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
             let ownerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.ownerKey".localized, style: .default) { _ in
                 DispatchQueue.main.async {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesameBot, keyLevel: KeyLevel.owner.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -427,7 +410,7 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 } else {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesameBot, keyLevel: KeyLevel.guest.rawValue) {
-                        self.deviceMembersView?.getGuestKeys()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -513,18 +496,6 @@ extension SesameBotSettingViewController: DFUHelperDelegate {
                               to progress: Int,
                               currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
         dfuView.value = "\(progress)%"
-    }
-}
-
-extension SesameBotSettingViewController: KeyCollectionViewControllerDelegate {
-    func collectionViewHeightDidChanged(_ height: CGFloat) {
-        friendListHeight.constant = height
-    }
-    
-    func noPermission() {
-        executeOnMainThread {
-            self.friendListHeight.constant = 0
-        }
     }
 }
 

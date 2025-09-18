@@ -60,9 +60,6 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
             iotIndicator.startAnimating()
         }
     }
-    var deviceMembersView: KeyCollectionViewController!
-    var friendListHeight: NSLayoutConstraint!
-
     var wifiSSIDView: CHUIPlainSettingView!
     var wifiPasswordView: CHUIPlainSettingView!
     var sesameExclamationContainerView: UIView!
@@ -147,7 +144,7 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
     }
     
     @objc func reloadFriends() {
-        deviceMembersView?.getMembers()
+        reloadMembers()
         scrollView.refreshControl?.endRefreshing()
     }
     
@@ -161,19 +158,7 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, wifiModule2.keyLevel != KeyLevel.guest.rawValue {
-            deviceMembersView = KeyCollectionViewController.instanceWithDevice(wifiModule2)
-            addChild(deviceMembersView)
-            let collectionViewContainer = UIView(frame: .zero)
-            friendListHeight = collectionViewContainer.autoLayoutHeight(90)
-            collectionViewContainer.addSubview(deviceMembersView.view)
-            deviceMembersView.view.autoPinTop()
-            deviceMembersView.view.autoPinBottom()
-            deviceMembersView.view.autoPinLeading()
-            deviceMembersView.view.autoPinTrailing()
-            contentStackView.addArrangedSubview(collectionViewContainer)
-            
-            deviceMembersView.didMove(toParent: self)
-            deviceMembersView.delegate = self
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         
@@ -211,7 +196,7 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
             let shareKeyView = CHUIViewGenerator.arrow(addtionalIcon: "qr-code") { [unowned self] sender,_ in
                 modalSheetToQRControlByRoleLevel(device: self.wifiModule2, sender: sender as? UIView) { isComplete in
                     if isComplete {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                 }
             }
@@ -424,19 +409,6 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         present(ssidScanViewController!.navigationController!, animated: true, completion: nil)
     }
     
-}
-
-extension Hub3SettingViewController: KeyCollectionViewControllerDelegate {
-    func collectionViewHeightDidChanged(_ height: CGFloat) {
-        friendListHeight.constant = height
-    }
-    
-    func noPermission() {
-        executeOnMainThread {
-            self.deviceMembersView.view.isHidden = true
-            self.friendListHeight.constant = 0
-        }
-    }
 }
 
 // MARK: - WifiModule2SSIDScanViewControllerDelegate

@@ -26,8 +26,6 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     var opsLockView: CHUIExpandableSettingView!
     var autoUnLockView: CHUIArrowSettingView!
     var notificationToggleView: CHUIToggleSettingView?
-    var deviceMembersView: KeyCollectionViewController!
-    var friendListHeight: NSLayoutConstraint!
     var voiceShortcutButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var isReset: Bool = false
@@ -139,7 +137,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     }
 
     @objc func reloadFriends() {
-        deviceMembersView?.getMembers()
+        reloadMembers()
         refreshControl.endRefreshing()
     }
     func arrangeSubviews() {
@@ -155,15 +153,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, !isGuest {
-            deviceMembersView = KeyCollectionViewController.instanceWithDevice(sesame5)
-            addChild(deviceMembersView)
-            let collectionViewContainer = UIView(frame: .zero)
-            friendListHeight = collectionViewContainer.autoLayoutHeight(90)
-            collectionViewContainer.addSubview(deviceMembersView.view)
-            deviceMembersView.view.autoPinEdgesToSuperview(safeArea: false)
-            contentStackView.addArrangedSubview(collectionViewContainer)
-            deviceMembersView.didMove(toParent: self)
-            deviceMembersView.delegate = self
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         
@@ -530,7 +520,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
             let ownerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.ownerKey".localized, style: .default) { _ in
                 executeOnMainThread {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesame5, keyLevel: KeyLevel.owner.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -542,7 +532,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
             let managerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.managerKey".localized, style: .default) { _ in
                 executeOnMainThread {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesame5, keyLevel: KeyLevel.manager.rawValue)  {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -558,7 +548,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 } else {
                     let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesame5, keyLevel: KeyLevel.guest.rawValue) {
-                        self.deviceMembersView?.getMembers()
+                        self.reloadMembers()
                     }
                     self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
                 }
@@ -708,18 +698,6 @@ extension Sesame5SettingViewController: DFUHelperDelegate {
                               to progress: Int,
                               currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
         dfuView.value = "\(progress)%"
-    }
-}
-extension Sesame5SettingViewController: KeyCollectionViewControllerDelegate {
-    func collectionViewHeightDidChanged(_ height: CGFloat) {
-        friendListHeight.constant = height
-    }
-
-    func noPermission() {
-        executeOnMainThread {
-            self.deviceMembersView.view.isHidden = true
-            self.friendListHeight.constant = 0
-        }
     }
 }
 
