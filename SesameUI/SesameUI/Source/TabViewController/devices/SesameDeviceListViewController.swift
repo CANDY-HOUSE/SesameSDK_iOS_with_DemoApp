@@ -44,7 +44,7 @@ class SesameDeviceListViewController: CHBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.SVGImage(named: "icons_outlined_addoutline"),style: .done, target: self, action: #selector(handleRightBarButtonTapped(_:)))
+        setNavigationItemRightMenu()
         
         // 應先同步 app & aws 的狀態到一致
         monitorAWSMobileClientUserState()

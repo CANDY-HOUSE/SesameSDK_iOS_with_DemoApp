@@ -55,8 +55,6 @@
 		3BC91DF92E2AA12000468AAC /* AWSSharedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC91DF42E2AA0FB00468AAC /* AWSSharedConfig.swift */; };
 		4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4102FAF223C2E17A00ECA735 /* ScanAnimationView.swift */; };
 		41030330237902D400785311 /* UIColorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColorShared+.swift */; };
-		4103033C23790CB800785311 /* PopUpMenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103033B23790CB800785311 /* PopUpMenuControl.swift */; };
-		4103033E23790CE500785311 /* PopUpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103033D23790CE500785311 /* PopUpMenu.swift */; };
 		4103034D2379108D00785311 /* UIImage+SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103034C2379108D00785311 /* UIImage+SVG.swift */; };
 		4137C8CC2350276300211F43 /* lockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137C8CB2350276300211F43 /* lockView.swift */; };
 		414C3CFA2A1EF6DC00AB59CF /* CHBaseTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C3CF92A1EF6DC00AB59CF /* CHBaseTableVC.swift */; };
@@ -81,16 +79,9 @@
 		41ACFD0429B86A07001153DB /* Sesame5SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACFD0329B86A07001153DB /* Sesame5SettingViewController.swift */; };
 		41ACFD0629B8B962001153DB /* Sesame5LockAngleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ACFD0529B8B962001153DB /* Sesame5LockAngleViewController.swift */; };
 		41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41ACFD0729B8B982001153DB /* Sesame5LockAngle.xib */; };
-		41E51F432A36E06E00D3BB2F /* BaseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F3C2A36E06E00D3BB2F /* BaseAnimation.swift */; };
-		41E51F442A36E06E00D3BB2F /* BallClipRotatePulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F3D2A36E06E00D3BB2F /* BallClipRotatePulseAnimation.swift */; };
-		41E51F452A36E06E00D3BB2F /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F3E2A36E06E00D3BB2F /* ActivityIndicatorView.swift */; };
-		41E51F472A36E06E00D3BB2F /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F402A36E06E00D3BB2F /* RefreshHeaderView.swift */; };
-		41E51F482A36E06E00D3BB2F /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F412A36E06E00D3BB2F /* RefreshView.swift */; };
-		41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */; };
 		41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */; };
 		641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641326832B57A3F0008B1AC1 /* PickerController.swift */; };
 		64190A142C2D54DC00B89592 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64190A132C2D54DC00B89592 /* AirData.swift */; };
-		643A9C472B3027A9008214BD /* IndicatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C462B3027A9008214BD /* IndicatorGenerator.swift */; };
 		643A9C492B313970008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4B2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4C2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
@@ -158,7 +149,14 @@
 		64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */; };
 		64E854372E7A85A400399FED /* CHWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854362E7A85A300399FED /* CHWebView.swift */; };
 		64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854382E7A99B300399FED /* CHWebViewController.swift */; };
-		64E8543B2E7B972100399FED /* CHBaseViewController+DeviceMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E8543A2E7B971200399FED /* CHBaseViewController+DeviceMember.swift */; };
+		64E8543B2E7B972100399FED /* CHBaseViewController+biz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E8543A2E7B971200399FED /* CHBaseViewController+biz.swift */; };
+		64EC068A2E7C00EA0047ED13 /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06872E7C00EA0047ED13 /* RefreshHeaderView.swift */; };
+		64EC068B2E7C00EA0047ED13 /* IndicatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06842E7C00EA0047ED13 /* IndicatorGenerator.swift */; };
+		64EC068C2E7C00EA0047ED13 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06812E7C00EA0047ED13 /* ActivityIndicatorView.swift */; };
+		64EC068D2E7C00EA0047ED13 /* BaseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06832E7C00EA0047ED13 /* BaseAnimation.swift */; };
+		64EC068E2E7C00EA0047ED13 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06882E7C00EA0047ED13 /* RefreshView.swift */; };
+		64EC068F2E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06822E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift */; };
+		64EC06902E7C00EA0047ED13 /* RefreshFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06862E7C00EA0047ED13 /* RefreshFootView.swift */; };
 		890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890D33032DA0E7FF0031F0AF /* FingerPrintCell.xib */; };
 		890D33062DA0E7FF0031F0AF /* FingerPrintListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D32FE2DA0E7FF0031F0AF /* FingerPrintListVC.swift */; };
 		890D33072DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D32FC2DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift */; };
@@ -537,8 +535,6 @@
 		3BEB776C2E28952B0092B219 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4102FAF223C2E17A00ECA735 /* ScanAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAnimationView.swift; sourceTree = "<group>"; };
 		4103032F237902D400785311 /* UIColorShared+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColorShared+.swift"; sourceTree = "<group>"; };
-		4103033B23790CB800785311 /* PopUpMenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpMenuControl.swift; sourceTree = "<group>"; };
-		4103033D23790CE500785311 /* PopUpMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpMenu.swift; sourceTree = "<group>"; };
 		4103034C2379108D00785311 /* UIImage+SVG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+SVG.swift"; sourceTree = "<group>"; };
 		4137C8CB2350276300211F43 /* lockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lockView.swift; sourceTree = "<group>"; };
 		414C3CF92A1EF6DC00AB59CF /* CHBaseTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBaseTableVC.swift; sourceTree = "<group>"; };
@@ -561,18 +557,11 @@
 		41ACFD0529B8B962001153DB /* Sesame5LockAngleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5LockAngleViewController.swift; sourceTree = "<group>"; };
 		41ACFD0729B8B982001153DB /* Sesame5LockAngle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5LockAngle.xib; sourceTree = "<group>"; };
 		41C9488A238B6D58009469B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
-		41E51F3C2A36E06E00D3BB2F /* BaseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAnimation.swift; sourceTree = "<group>"; };
-		41E51F3D2A36E06E00D3BB2F /* BallClipRotatePulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallClipRotatePulseAnimation.swift; sourceTree = "<group>"; };
-		41E51F3E2A36E06E00D3BB2F /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
-		41E51F402A36E06E00D3BB2F /* RefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshHeaderView.swift; sourceTree = "<group>"; };
-		41E51F412A36E06E00D3BB2F /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
-		41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshFootView.swift; sourceTree = "<group>"; };
 		41E68509235597380042B159 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
 		41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameHistoryViewController.swift; sourceTree = "<group>"; };
 		641326832B57A3F0008B1AC1 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		64190A132C2D54DC00B89592 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
-		643A9C462B3027A9008214BD /* IndicatorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorGenerator.swift; sourceTree = "<group>"; };
 		643A9C482B313970008214BD /* CHProductModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHProductModel+.swift"; sourceTree = "<group>"; };
 		643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot1_21_2_369eb9.zip; sourceTree = "<group>"; };
 		643F06912BCD123F0045D789 /* sesame_421_4_50ce5b.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame_421_4_50ce5b.zip; sourceTree = "<group>"; };
@@ -637,7 +626,14 @@
 		64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SesameDeviceList+Control.swift"; sourceTree = "<group>"; };
 		64E854362E7A85A300399FED /* CHWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebView.swift; sourceTree = "<group>"; };
 		64E854382E7A99B300399FED /* CHWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebViewController.swift; sourceTree = "<group>"; };
-		64E8543A2E7B971200399FED /* CHBaseViewController+DeviceMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBaseViewController+DeviceMember.swift"; sourceTree = "<group>"; };
+		64E8543A2E7B971200399FED /* CHBaseViewController+biz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBaseViewController+biz.swift"; sourceTree = "<group>"; };
+		64EC06812E7C00EA0047ED13 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		64EC06822E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallClipRotatePulseAnimation.swift; sourceTree = "<group>"; };
+		64EC06832E7C00EA0047ED13 /* BaseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAnimation.swift; sourceTree = "<group>"; };
+		64EC06842E7C00EA0047ED13 /* IndicatorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorGenerator.swift; sourceTree = "<group>"; };
+		64EC06862E7C00EA0047ED13 /* RefreshFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshFootView.swift; sourceTree = "<group>"; };
+		64EC06872E7C00EA0047ED13 /* RefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshHeaderView.swift; sourceTree = "<group>"; };
+		64EC06882E7C00EA0047ED13 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		890D32FC2DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBiometricDeviceSettingVC.swift; sourceTree = "<group>"; };
 		890D32FD2DA0E7FF0031F0AF /* SesameBiometricDeviceKeysListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBiometricDeviceKeysListVC.swift; sourceTree = "<group>"; };
 		890D32FE2DA0E7FF0031F0AF /* FingerPrintListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerPrintListVC.swift; sourceTree = "<group>"; };
@@ -1089,7 +1085,7 @@
 				646B86E02B47995D0042589E /* UIView+.swift */,
 				B09C1A142510A72300871F7E /* UIView+AutoLayout.swift */,
 				BEB36C7C2589C04000EDB9FB /* UIViewController+.swift */,
-				64E8543A2E7B971200399FED /* CHBaseViewController+DeviceMember.swift */,
+				64E8543A2E7B971200399FED /* CHBaseViewController+biz.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1161,10 +1157,9 @@
 		41650F26236A6F8E005BDEF1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				64EC06892E7C00EA0047ED13 /* RefreshView */,
 				64E854352E7A859900399FED /* WebView */,
-				41E51F3A2A36E06E00D3BB2F /* RefreshView */,
 				B0F6CC9B25105BFD00028219 /* QRCode */,
-				B0E60907251093D0000C36DF /* PopUpMenu */,
 				BE6978DC2483E30F0089141E /* ToastUtil.swift */,
 				4137C8CB2350276300211F43 /* lockView.swift */,
 				41913AC829DA73E00028604C /* lockViewSS5.swift */,
@@ -1275,28 +1270,6 @@
 				41ACFD0729B8B982001153DB /* Sesame5LockAngle.xib */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		41E51F3A2A36E06E00D3BB2F /* RefreshView */ = {
-			isa = PBXGroup;
-			children = (
-				41E51F3B2A36E06E00D3BB2F /* LoadingView */,
-				41E51F402A36E06E00D3BB2F /* RefreshHeaderView.swift */,
-				41E51F412A36E06E00D3BB2F /* RefreshView.swift */,
-				41E51F422A36E06E00D3BB2F /* RefreshFootView.swift */,
-			);
-			path = RefreshView;
-			sourceTree = "<group>";
-		};
-		41E51F3B2A36E06E00D3BB2F /* LoadingView */ = {
-			isa = PBXGroup;
-			children = (
-				41E51F3C2A36E06E00D3BB2F /* BaseAnimation.swift */,
-				41E51F3D2A36E06E00D3BB2F /* BallClipRotatePulseAnimation.swift */,
-				41E51F3E2A36E06E00D3BB2F /* ActivityIndicatorView.swift */,
-				643A9C462B3027A9008214BD /* IndicatorGenerator.swift */,
-			);
-			path = LoadingView;
 			sourceTree = "<group>";
 		};
 		641326822B57A3D1008B1AC1 /* View */ = {
@@ -1478,6 +1451,28 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		64EC06852E7C00EA0047ED13 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				64EC06812E7C00EA0047ED13 /* ActivityIndicatorView.swift */,
+				64EC06822E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift */,
+				64EC06832E7C00EA0047ED13 /* BaseAnimation.swift */,
+				64EC06842E7C00EA0047ED13 /* IndicatorGenerator.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		64EC06892E7C00EA0047ED13 /* RefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				64EC06852E7C00EA0047ED13 /* LoadingView */,
+				64EC06862E7C00EA0047ED13 /* RefreshFootView.swift */,
+				64EC06872E7C00EA0047ED13 /* RefreshHeaderView.swift */,
+				64EC06882E7C00EA0047ED13 /* RefreshView.swift */,
+			);
+			path = RefreshView;
+			sourceTree = "<group>";
+		};
 		890D32FB2DA0E78F0031F0AF /* SesameBiometricDevice */ = {
 			isa = PBXGroup;
 			children = (
@@ -1637,15 +1632,6 @@
 				B0534AE424FA360500219D08 /* QRCodeExtractor.swift */,
 			);
 			path = QRCodeExtractor;
-			sourceTree = "<group>";
-		};
-		B0E60907251093D0000C36DF /* PopUpMenu */ = {
-			isa = PBXGroup;
-			children = (
-				4103033D23790CE500785311 /* PopUpMenu.swift */,
-				4103033B23790CB800785311 /* PopUpMenuControl.swift */,
-			);
-			path = PopUpMenu;
 			sourceTree = "<group>";
 		};
 		B0E60908251094AD000C36DF /* WifiModule2 */ = {
@@ -2601,7 +2587,7 @@
 				2C15AD632E6FC63A00E37918 /* LoadRemoteConfig.swift in Sources */,
 				2C15AD642E6FC63A00E37918 /* HandlerCallback.swift in Sources */,
 				2C15AD652E6FC63A00E37918 /* RemoteListCacheManager.swift in Sources */,
-				64E8543B2E7B972100399FED /* CHBaseViewController+DeviceMember.swift in Sources */,
+				64E8543B2E7B972100399FED /* CHBaseViewController+biz.swift in Sources */,
 				64E854372E7A85A400399FED /* CHWebView.swift in Sources */,
 				2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */,
 				2C15AD682E6FC63A00E37918 /* ConfigUpdateCallback.swift in Sources */,
@@ -2621,7 +2607,6 @@
 				64190A142C2D54DC00B89592 /* AirData.swift in Sources */,
 				645B1B2B2BDB4C0100D5E491 /* GIFImageView.swift in Sources */,
 				BE8F9214264A1364001DF645 /* UserLocationManager.swift in Sources */,
-				41E51F432A36E06E00D3BB2F /* BaseAnimation.swift in Sources */,
 				BE308145248E3C8C00152D66 /* DataShared+.swift in Sources */,
 				6440C3B52B61F87000F74E52 /* DeviceControllerHolder.swift in Sources */,
 				64498EA22BD65EFB00806D0F /* FloatingTipView.swift in Sources */,
@@ -2649,10 +2634,16 @@
 				646B86EC2B48EBDB0042589E /* Hub3KeysListViewController.swift in Sources */,
 				BEB36CAB258DCF3D00EDB9FB /* FriendKeyShareSelectionViewController.swift in Sources */,
 				B08CBE7E2509F06C00050E7B /* CHUIView.swift in Sources */,
+				64EC068A2E7C00EA0047ED13 /* RefreshHeaderView.swift in Sources */,
+				64EC068B2E7C00EA0047ED13 /* IndicatorGenerator.swift in Sources */,
+				64EC068C2E7C00EA0047ED13 /* ActivityIndicatorView.swift in Sources */,
+				64EC068D2E7C00EA0047ED13 /* BaseAnimation.swift in Sources */,
+				64EC068E2E7C00EA0047ED13 /* RefreshView.swift in Sources */,
+				64EC068F2E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift in Sources */,
+				64EC06902E7C00EA0047ED13 /* RefreshFootView.swift in Sources */,
 				BEB58CBC256CA122001505E3 /* KeyLevel.swift in Sources */,
 				4137C8CC2350276300211F43 /* lockView.swift in Sources */,
 				B09F583B250F6EB30034759A /* HistoryTagView.swift in Sources */,
-				41E51F472A36E06E00D3BB2F /* RefreshHeaderView.swift in Sources */,
 				BEB7F49E24A4EBBF00D04651 /* SesameUI.xcdatamodeld in Sources */,
 				BE88594D26C3CCDE002D17E0 /* CHAPIManagerType.swift in Sources */,
 				645E2D2C2B5BC83300D39E66 /* MatterTypeViewCell.swift in Sources */,
@@ -2664,9 +2655,7 @@
 				BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */,
 				4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */,
 				E8A6F1D62A61361800AED9AD /* OpenSensorResetHintVC.swift in Sources */,
-				41E51F452A36E06E00D3BB2F /* ActivityIndicatorView.swift in Sources */,
 				64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */,
-				41E51F492A36E06E00D3BB2F /* RefreshFootView.swift in Sources */,
 				418FA1E8237BD2C100C7C408 /* Sesame2Circle.swift in Sources */,
 				BE562E2E2563AD63004617DE /* CHUser.swift in Sources */,
 				64ADDE3C2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */,
@@ -2710,9 +2699,7 @@
 				BE8F9210264A0F82001DF645 /* CHDeviceInfo.swift in Sources */,
 				B087E57224E126830087D978 /* CHWifiModule2+.swift in Sources */,
 				898EB2A92E76FD8600FB632D /* NonAirHandlerAdapter.swift in Sources */,
-				41E51F442A36E06E00D3BB2F /* BallClipRotatePulseAnimation.swift in Sources */,
 				BE6978ED2483E37D0089141E /* ViewHelper.swift in Sources */,
-				41E51F482A36E06E00D3BB2F /* RefreshView.swift in Sources */,
 				64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */,
 				641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */,
 				BE88591126C39F99002D17E0 /* CHSesameLock+.swift in Sources */,
@@ -2728,7 +2715,6 @@
 				BE88592B26C3A7F0002D17E0 /* String+.swift in Sources */,
 				645B1B2D2BDB4C0100D5E491 /* CGSize.swift in Sources */,
 				41030330237902D400785311 /* UIColorShared+.swift in Sources */,
-				4103033E23790CE500785311 /* PopUpMenu.swift in Sources */,
 				BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */,
 				E8A6F1DC2A6E55E100AED9AD /* BleConnectorSettingVC.swift in Sources */,
 				646B86EE2B48F0EC0042589E /* Hub3SettingViewController.swift in Sources */,
@@ -2739,10 +2725,8 @@
 				B01728D3250C78D200F87ED6 /* CHBaseTableViewController.swift in Sources */,
 				41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */,
 				645211F22B29B1820091DDE3 /* Bot2SettingViewController.swift in Sources */,
-				4103033C23790CB800785311 /* PopUpMenuControl.swift in Sources */,
 				BE8858FA26C39483002D17E0 /* Response.swift in Sources */,
 				41913AC929DA73E00028604C /* lockViewSS5.swift in Sources */,
-				643A9C472B3027A9008214BD /* IndicatorGenerator.swift in Sources */,
 				649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */,
 				BE037A91246981DB00ED2611 /* DFUHelper.swift in Sources */,
 				BE562E382563C5F8004617DE /* FriendKeyListViewController.swift in Sources */,

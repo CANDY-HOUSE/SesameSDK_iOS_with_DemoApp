@@ -44,7 +44,7 @@ class MeViewController: CHBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        L.d("[test]sub", AWSMobileClient.default().userSub!)
-        
+        setNavigationItemRightMenu()
         view.backgroundColor = .white
         
         contentView.axis = .vertical
@@ -72,12 +72,6 @@ class MeViewController: CHBaseViewController {
         // MARK: - Scroll View
         scrollView.addSubview(scrollContentStackView)
         UIView.autoLayoutStackView(scrollContentStackView, inScrollView: scrollView)
-
-        let rightButtonItem = UIBarButtonItem(image: UIImage.SVGImage(named: "icons_outlined_addoutline"),
-                                              style: .done,
-                                              target: self,
-                                              action: #selector(handleRightBarButtonTapped(_:)))
-        navigationItem.rightBarButtonItem = rightButtonItem
         scrollView.backgroundColor = .white
         AWSMobileClient.default().addUserStateListener(self) { state, _ in
             executeOnMainThread {

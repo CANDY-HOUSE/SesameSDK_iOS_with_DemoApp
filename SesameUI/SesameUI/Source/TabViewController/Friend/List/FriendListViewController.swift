@@ -27,7 +27,7 @@ class FriendListViewController: CHBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if dismissHandler == nil {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.SVGImage(named: "icons_outlined_addoutline"), style: .done,target: self,action: #selector(handleRightBarButtonTapped(_:)))
+            setNavigationItemRightMenu()
         }
         AWSMobileClient.default().addUserStateListener(self) { [weak self] state, dic in
             guard let self = self else { return }

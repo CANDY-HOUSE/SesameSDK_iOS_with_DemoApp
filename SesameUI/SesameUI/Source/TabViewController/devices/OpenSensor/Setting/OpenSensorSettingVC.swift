@@ -149,6 +149,11 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
             }
         }
     }
+    
+    @objc func reloadFriends() {
+        reloadMembers()
+        refreshControl.endRefreshing()
+    }
 
     override func viewDidLoad() {
 //        L.d("[op sensor] viewDidLoad!!")
@@ -165,6 +170,12 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         sesame2ListView.delegate = self
         sesame2ListView.dataSource = self
         sesame2ListView.isScrollEnabled = false
+        
+        if device.keyLevel != KeyLevel.guest.rawValue {
+            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
         
         self.arrangeSubviews()
     }
@@ -188,6 +199,11 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
 
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
+        // MARK: Group
+        if AWSMobileClient.default().currentUserState == .signedIn, device.keyLevel != KeyLevel.guest.rawValue {
+            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        }
         // MARK: top status
         statusView = CHUIViewGenerator.plain()
         statusView.backgroundColor = .lockRed

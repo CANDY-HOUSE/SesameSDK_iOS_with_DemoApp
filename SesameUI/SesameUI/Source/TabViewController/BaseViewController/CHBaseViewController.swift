@@ -11,58 +11,7 @@ import SesameSDK
 import CoreBluetooth
 import Foundation
 
-public class CHBaseViewController: UIViewController, CHRouteCoordinator, PopUpMenuDelegate {
-    @objc  func handleRightBarButtonTapped(_ sender: Any) {
-        if self.popUpMenuControl.superview != nil {
-            popUpMenuControl.hide(animated: true)
-
-        } else {
-            popUpMenuControl.show(in: UIApplication.shared.keyWindow!)
-        }
-    }
-
-    func popUpMenu(_ menu: PopUpMenu, didTap item: PopUpMenuItem) { // 點擊(+)按鈕
-        switch item.type {
-        case .addSesame2:
-            presentRegisterSesame2ViewController()
-        case .receiveKey:
-            presentScanViewController()
-        case .findFriend:
-            presentFindFriendsViewController { [weak self] newVal in
-                guard let self = self else { return }
-                ViewHelper.showLoadingInView(view: self.view)
-                FindFriendHandler.shared.addFriendByEmail(newVal.trimmingCharacters(in: .whitespacesAndNewlines)) { [weak self] (friend, err) in
-                    guard let self = self else { return }
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                        if let error = err {
-                            self.view.makeToast(error.errorDescription())
-                        } else {
-                            // 進入詳情
-                            if let navController = GeneralTabViewController.getTabViewControllersBy(1) as? UINavigationController, let listViewController = navController.viewControllers.first as? FriendListViewController {
-                                if listViewController.isViewLoaded {
-                                    listViewController.getFriends()
-                                }
-                            }
-                            let friendKeyListViewController = FriendKeyListViewController.instance(friend!) { _ in }
-                            self.navigationController?.pushViewController(friendKeyListViewController, animated: true)
-                        }
-                    }
-                }
-            }
-        }
-        popUpMenuControl.hide(animated:false)
-
-    }
-    
-    // MARK: - UI components
-    lazy var popUpMenuControl: PopUpMenuControl = {
-        let y = UIApplication.shared.statusBarFrame.height + 25
-        let frame = CGRect(x: 0, y: y, width: view.bounds.width, height: view.bounds.height - y)
-        let popUpMenuControl = PopUpMenuControl(frame: frame)
-        popUpMenuControl.delegate = self
-        return popUpMenuControl
-    }()
+public class CHBaseViewController: UIViewController, CHRouteCoordinator {
     // MARK: - Properties
     private var previouseNavigationTitle = ""
     

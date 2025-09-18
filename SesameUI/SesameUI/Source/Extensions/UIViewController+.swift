@@ -48,7 +48,7 @@ extension UIViewController {
     
     func setNavigationRightItem(_ img: UIImage, _ selector: Selector) {
         let rightButtonItem = UIBarButtonItem(image: img,
-                                              style: .done,
+                                              style: .plain,
                                               target: self,
                                               action: selector)
         navigationItem.rightBarButtonItem = rightButtonItem
@@ -61,7 +61,7 @@ extension UIViewController {
     ///   - selector: 觸發函數
     func setNavigationRightItem(_ iconName: String, _ selector: Selector) {
         let rightButtonItem = UIBarButtonItem(image: UIImage.SVGImage(named: iconName),
-                                              style: .done,
+                                              style: .plain,
                                               target: self,
                                               action: selector)
         navigationItem.rightBarButtonItem = rightButtonItem
@@ -72,7 +72,7 @@ extension UIViewController {
     ///   - title: 標題
     ///   - selector: 觸發函數
     func setNavigationLeftTitleItem(_ title: String, _ selector: Selector) {
-        let rightButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: selector)
+        let rightButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
         navigationItem.leftBarButtonItem = rightButtonItem
     }
     
@@ -81,7 +81,7 @@ extension UIViewController {
     ///   - title: 標題
     ///   - selector: 觸發函數
     func setNavigationRightTitleItem(_ title: String, _ selector: Selector) {
-        let rightButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: selector)
+        let rightButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
         navigationItem.rightBarButtonItem = rightButtonItem
     }
     
