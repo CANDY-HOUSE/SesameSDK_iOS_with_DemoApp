@@ -25,8 +25,8 @@ public extension NSObject {
         }
     }
     
-    func prepareHapticFeedback() {
-        feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+    func prepareHapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle = .heavy) {
+        feedbackGenerator = UIImpactFeedbackGenerator(style: style)
         feedbackGenerator?.prepare()
     }
     

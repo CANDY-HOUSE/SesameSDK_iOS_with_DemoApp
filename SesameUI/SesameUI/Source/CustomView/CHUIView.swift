@@ -507,15 +507,8 @@ final class CHUIToggleSettingView: UIView, CHUIView {
 
 // MARK: - Bubble Indicator View
 final class SliderBubbleView: UIView {
-    private let label = UILabel()
+    let label = UILabel(frame: .init(origin: CGPointZero, size: .init(width: 100, height: 30)))
     private let bubbleLayer = CAShapeLayer()
-    
-    var text: String = "" {
-        didSet {
-            label.text = text
-            setNeedsLayout()
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -528,7 +521,6 @@ final class SliderBubbleView: UIView {
     
     private func setup() {
         backgroundColor = .clear
-        
         // 设置气泡层
         bubbleLayer.fillColor = UIColor.lockGreen.cgColor
         bubbleLayer.strokeColor = UIColor.clear.cgColor
@@ -542,54 +534,39 @@ final class SliderBubbleView: UIView {
         label.adjustsFontSizeToFitWidth = true  // 自动调整字体大小以适应宽度
         label.minimumScaleFactor = 0.75  // 最小缩放比例
         addSubview(label)
-        
         // 布局约束
         label.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
         // 更新标签尺寸
-        label.sizeToFit()
         let labelSize = label.bounds.size
-        
         // 气泡路径（圆角矩形带小三角）
-        let bubbleWidth = max(labelSize.width + 24, 80)
-        let bubbleHeight = labelSize.height + 16
+        let bubbleWidth = labelSize.width
+        let bubbleHeight = labelSize.height
+        let spacing = 8.0
         let bubbleRect = CGRect(
-            x: bounds.midX - bubbleWidth/2,
-            y: 0,
+            x: CGRectGetMinX(bounds) - spacing,
+            y: spacing * -0.5,
             width: bubbleWidth,
             height: bubbleHeight
         )
-        
         // 绘制圆角矩形
-        let cornerRadius: CGFloat = 8
+        let cornerRadius: CGFloat = spacing * 0.7
         let bubblePath = UIBezierPath(roundedRect: bubbleRect, cornerRadius: cornerRadius)
         
         // 添加底部三角形
-        let triangleSize: CGFloat = 8
-        bubblePath.move(to: CGPoint(x: bounds.midX - triangleSize, y: bubbleHeight))
-        bubblePath.addLine(to: CGPoint(x: bounds.midX, y: bubbleHeight + triangleSize))
-        bubblePath.addLine(to: CGPoint(x: bounds.midX + triangleSize, y: bubbleHeight))
+        let triangleSize: CGFloat = spacing
+        let triangleCenterX = CGRectGetMidX(bubbleRect)
+        let triangleTopY = CGRectGetMaxY(bubbleRect)
+        bubblePath.move(to: CGPoint(x: triangleCenterX - triangleSize, y: triangleTopY))
+        bubblePath.addLine(to: CGPoint(x: triangleCenterX + triangleSize, y: triangleTopY))
+        bubblePath.addLine(to: CGPoint(x: triangleCenterX, y: triangleTopY + triangleSize))
         bubblePath.close()
         
         bubbleLayer.path = bubblePath.cgPath
-        
         // 更新自身尺寸
         let newSize = CGSize(width: bubbleWidth, height: bubbleHeight + triangleSize)
         if bounds.size != newSize {
             frame.size = newSize
         }
-        
-        // 重新设置标签约束，确保居中
-        label.frame = CGRect(
-            x: bubbleRect.minX + 12,  // 左右各留12点边距
-            y: bubbleRect.minY + 8,   // 上下各留8点边距
-            width: bubbleRect.width - 24,
-            height: bubbleRect.height - 16
-        )
     }
 }
 
@@ -642,7 +619,7 @@ final class CHUISliderSettingView: UIView, CHUIView {
         addSubview(containerView)
         self.action = action
         self.touchEndAction = touchEndAction
-        
+        self.prepareHapticFeedback(style: .light)
         addSubview(bubbleView)
         bubbleView.isHidden = true
         
@@ -721,7 +698,7 @@ final class CHUISliderSettingView: UIView, CHUIView {
     }
     
     func updateBubble(withValue value: String) {
-        bubbleView.text = value
+        bubbleView.label.text = value
         updateBubblePosition(slider: slider)
     }
     
@@ -732,7 +709,7 @@ final class CHUISliderSettingView: UIView, CHUIView {
         let thumbCenterX = sliderFrame.minX + thumbRect.midX
         
         // 更新气泡位置
-        bubbleView.center = CGPoint(x: thumbCenterX, y: sliderFrame.minY - bubbleView.frame.height/2 - 5)
+        bubbleView.center = CGPoint(x: thumbCenterX + 8, y: sliderFrame.minY - bubbleView.frame.height/2 - 5)
     }
     
     @objc func sliderTouchBegan(_ sender: UISlider) {
@@ -740,7 +717,7 @@ final class CHUISliderSettingView: UIView, CHUIView {
     }
     
     @objc func valueChanged(_ sender: UISlider, forEvent event: UIEvent) {
-        updateBubblePosition(slider: sender)
+        self.triggerHapticFeedback()
         action?(sender, event)
     }
     
