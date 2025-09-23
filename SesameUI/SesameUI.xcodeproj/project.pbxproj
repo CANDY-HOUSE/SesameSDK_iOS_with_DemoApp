@@ -826,7 +826,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2CA5DEBA2D801226006E99BE /* raw */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = raw; sourceTree = "<group>"; };
+		2CA5DEBA2D801226006E99BE /* config */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = config; sourceTree = "<group>"; };
 		3B8B7C422E2FBB0200F5A2F7 /* NotificationService */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (3B8B7C492E2FBB0200F5A2F7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NotificationService; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -1559,7 +1559,7 @@
 			path = SesameIntents;
 			sourceTree = "<group>";
 		};
-		B04D1D1824EA37BB0021ACA2 /* application_dfu */ = {
+		B04D1D1824EA37BB0021ACA2 /* firmware */ = {
 			isa = PBXGroup;
 			children = (
 				D03BE3182E549498000E724C /* bleconnector_30_11_01be3d.zip */,
@@ -1584,7 +1584,7 @@
 				D08C739C2E5F333B00DAFFE8 /* sesametouch1_30_10_4d0bf8.zip */,
 				D08C739E2E5F334100DAFFE8 /* sesametouch1pro_30_9_4d0bf8.zip */,
 			);
-			path = application_dfu;
+			path = firmware;
 			sourceTree = "<group>";
 		};
 		B0710A7E25359E03007B4F48 /* Setting */ = {
@@ -1761,8 +1761,8 @@
 		B1D4726B2327AAF3005454C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2CA5DEBA2D801226006E99BE /* raw */,
-				B04D1D1824EA37BB0021ACA2 /* application_dfu */,
+				2CA5DEBA2D801226006E99BE /* config */,
+				B04D1D1824EA37BB0021ACA2 /* firmware */,
 				B179691122F7CE9400E91996 /* Assets.xcassets */,
 				419FE7852446BADF000D31CD /* awsconfiguration.json */,
 				B179691322F7CE9400E91996 /* LaunchScreen.storyboard */,
@@ -2159,7 +2159,7 @@
 				3B8B7C472E2FBB0200F5A2F7 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				2CA5DEBA2D801226006E99BE /* raw */,
+				2CA5DEBA2D801226006E99BE /* config */,
 			);
 			name = SesameUI;
 			packageProductDependencies = (

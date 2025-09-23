@@ -98,7 +98,7 @@ public extension CHDevice {
             zips = fileURLs.filter{ $0.lastPathComponent.range(of: "^\(filePrefix)", options: [.regularExpression, .caseInsensitive, .diacriticInsensitive]) != nil }
         }
         guard let file = zips.first else {
-            L.d("Mssiing Firmware files, Must be added to the [SesameUI/Resources/application_dfu] path")
+            L.d("Missing Firmware files. Must be added to the project and included in Copy Bundle Resources")
             return URL(fileURLWithPath: "")
         }
         return file
