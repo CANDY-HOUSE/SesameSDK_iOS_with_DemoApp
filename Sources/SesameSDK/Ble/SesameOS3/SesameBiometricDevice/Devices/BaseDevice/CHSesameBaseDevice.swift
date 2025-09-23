@@ -181,7 +181,7 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
     public func goIOT() {
         if( self.isGuestKey){ return }
 #if os(iOS)
-        if productModel == .openSensor {
+        if productModel == .openSensor || productModel == .openSensor2 {
             goIoTWithOpenSensor()
             return
         }

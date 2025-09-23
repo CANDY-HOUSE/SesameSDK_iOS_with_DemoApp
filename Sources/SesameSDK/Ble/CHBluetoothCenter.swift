@@ -254,6 +254,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
     case sesame6Pro = 21
     case sesameFaceProAI = 22
     case sesameFaceAI = 23
+    case openSensor2 = 24
 
     public func deviceModel() -> String {///絕對不要動。ios/server/android必須一致
         switch self {
@@ -279,6 +280,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesame6Pro: return "sesame_6_pro"
         case .sesameFaceProAI: return "sesame_face_pro_ai"
         case .sesameFaceAI: return "sesame_face_ai"
+        case .openSensor2: return "open_sensor_2"
         }
     }
     public func deviceModelName() -> String {//android必須一致
@@ -305,6 +307,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesame6Pro: return "Sesame 6 Pro"
         case .sesameFaceProAI: return "Sesame Face 1 Pro AI"
         case .sesameFaceAI: return "Sesame Face 1 AI"
+        case .openSensor2: return "Open Sensor 2"
         }
     }
 
@@ -330,6 +333,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesameFaceProAI:  return CHSesameFaceProDevice()
         case .sesameFaceAI:  return CHSesameFaceProDevice()
         case .bleConnector: return CHSesame5Device()
+        case .openSensor2: return CHSesameTouchProDevice()
         }
      
     }
@@ -398,7 +402,7 @@ internal class BleAdv {
                     isRegistered = manufacturerData[3] & 1 > 0
                     let macAddress = manufacturerData.copyData[4...9].toHexString()
                     deviceID = ("00000000055afd810d00" + macAddress).noDashtoUUID()
-                case .sesame5, .sesame5Pro, .sesameTouchPro, .sesameTouch, .bikeLock2, .openSensor, .bleConnector, .remote, .remoteNano, .sesame5US, .sesameBot2, .sesameFace, .sesameFacePro, .sesame6Pro, .sesameFaceAI, .sesameFaceProAI:
+                case .sesame5, .sesame5Pro, .sesameTouchPro, .sesameTouch, .bikeLock2, .openSensor, .bleConnector, .remote, .remoteNano, .sesame5US, .sesameBot2, .sesameFace, .sesameFacePro, .sesame6Pro, .sesameFaceAI, .sesameFaceProAI, .openSensor2:
                     deviceID = manufacturerData[5...20].toHexString().noDashtoUUID()
                 }
             }

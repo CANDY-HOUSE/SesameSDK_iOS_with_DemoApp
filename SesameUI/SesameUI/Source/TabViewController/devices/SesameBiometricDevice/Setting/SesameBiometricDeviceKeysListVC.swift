@@ -31,11 +31,12 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
             .sesameTouch:       [.sesame2, .sesame4, .bikeLock] + os3Lockers,
             .sesameTouchPro:    [.sesame2, .sesame4, .bikeLock] + os3Lockers,
             .remote:            os3Lockers,
-            .remoteNano:        os3Lockers
+            .remoteNano:        os3Lockers,
+            .openSensor2:       [.hub3] + os3Lockers,
         ]
         CHDeviceManager.shared.getCHDevices { [self] result in
             if case let .success(devices) = result {
-                if mDevice.productModel == .openSensor {
+                if mDevice.productModel == .openSensor ||  mDevice.productModel == .openSensor2 {
                     let sesame2KeyDevices = devices.data.filter { device in
                         mDevice.sesame2Keys.keys.contains(device.deviceId.uuidString)
                     }
@@ -46,9 +47,9 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
                         [.hub3].contains(device.productModel)
                     }
                     if hasLockInSesame2Keys {
-                        productMappingKeys[.openSensor] = os3Lockers
+                        productMappingKeys[mDevice.productModel] = os3Lockers
                     } else if hasHub3InSesame2Keys {
-                        productMappingKeys[.openSensor] = [.hub3]
+                        productMappingKeys[mDevice.productModel] = [.hub3]
                     }
                 }
                 chDevices = devices.data.filter({ (productMappingKeys[self.mDevice.productModel] ?? os3Lockers).contains($0.productModel)})

@@ -13,7 +13,7 @@ import SesameSDK
 extension CHSesameTouchPro {
     var displayedState: NSAttributedString? {
         get {
-            guard self.productModel == .openSensor, deviceStatus == .noBleSignal() else {
+            guard (self.productModel == .openSensor || self.productModel == .openSensor2), deviceStatus == .noBleSignal() else {
                 return nil
             }
             if let data = mechStatus?.data {

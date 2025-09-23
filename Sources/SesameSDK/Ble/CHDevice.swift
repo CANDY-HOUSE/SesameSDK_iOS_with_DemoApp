@@ -92,6 +92,8 @@ public extension CHDevice {
             filePrefix = "sesameface1ai_"
         case .sesameFaceProAI:
             filePrefix = "sesameface1proai_"
+        case .openSensor2:
+            filePrefix = "opensensor2"
         }
         var zips: [URL] = []
         if  let fileURLs = Bundle.main.urls(forResourcesWithExtension: "zip", subdirectory: nil) {

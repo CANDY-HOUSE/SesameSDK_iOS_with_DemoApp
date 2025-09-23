@@ -4,6 +4,7 @@
 "co.candyhouse.sesame2.BikeLock" = "セサミ サイクル";
 "co.candyhouse.sesame2.BikeLock2" = "セサミ サイクル 2";
 "co.candyhouse.sesame2.OpenSensor" = "オープンセンサー";
+"co.candyhouse.sesame2.OpenSensor2" = "オープンセンサー 2";
 "co.candyhouse.sesame2.WifiModule2" = "WiFi モジュール";
 "co.candyhouse.sesame2.BLEConnector" = "BLE Connector";
 "co.candyhouse.sesame2.CHRemote" = "リモート";

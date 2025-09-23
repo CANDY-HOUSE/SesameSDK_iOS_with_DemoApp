@@ -4,6 +4,7 @@
 "co.candyhouse.sesame2.BikeLock" = "芝麻單車鎖";
 "co.candyhouse.sesame2.BikeLock2" = "芝麻單車鎖2";
 "co.candyhouse.sesame2.OpenSensor" = "開關傳感器";
+"co.candyhouse.sesame2.OpenSensor2" = "開關傳感器2";
 "co.candyhouse.sesame2.WifiModule2" = "WiFi模塊2";
 "co.candyhouse.sesame2.BLEConnector" = "BLE Connector";
 "co.candyhouse.sesame2.CHRemote" = "藍芽遙控器";

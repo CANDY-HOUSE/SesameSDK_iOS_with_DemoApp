@@ -42,6 +42,8 @@ extension CHDevice {
             return device?.name ?? "co.candyhouse.sesame2.SSMTouch".localized
         case .openSensor:
             return device?.name ?? "co.candyhouse.sesame2.OpenSensor".localized
+        case .openSensor2:
+            return device?.name ?? "co.candyhouse.sesame2.OpenSensor2".localized
         case .bleConnector:
             return device?.name ?? "co.candyhouse.sesame2.BLEConnector".localized
         case .remote:
@@ -91,7 +93,7 @@ extension CHDevice {
 
     var uiPriority: Int { // 排序。數字越大排越上方 // TODO 移除以前的排序規則
         switch self.productModel {
-        
+        case .openSensor2: return  18
         case .sesameBot2: return  17
         case .sesame5US: return 16
         case .remoteNano: return 15
@@ -206,7 +208,7 @@ extension CHDevice {
             if self is CHSesameBot || self is CHSesameBot2 {
                 return  "switch-noBleSignal"
             }else{
-                if self.productModel == .openSensor {
+                if self.productModel == .openSensor || self.productModel == .openSensor2 {
                     return "opensensor"
                 }
                 return "noBleSignal"

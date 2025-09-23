@@ -339,7 +339,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Battery View
-        if(mDevice.productModel != .openSensor){
+        if(mDevice.productModel != .openSensor || mDevice.productModel != .openSensor2) {
             batteryView.title = "co.candyhouse.sesame2.battery".localized
             contentStackView.addArrangedSubview(batteryView)
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
@@ -487,7 +487,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         guard let capable = mDevice as? CHCardCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI else {
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .openSensor2 else {
             return
         }
         let nfcCardView = CHUIViewGenerator.arrow { [unowned self] _,_ in
@@ -502,7 +502,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         guard let capable = mDevice as? CHFingerPrintCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI else {
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .openSensor2 else {
             return
         }
         let fingerView = CHUIViewGenerator.arrow { [unowned self] _,_ in
@@ -517,7 +517,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         guard let capable = mDevice as? CHPassCodeCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI else {
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .openSensor2 else {
             return
         }
         let passcodeView = CHUIViewGenerator.arrow { [weak self] _, _ in
