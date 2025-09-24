@@ -120,7 +120,7 @@ class Sesame5ListCell: UITableViewCell {
     
     func configureSesameLockDevice(_ device: CHDevice) {
         UIView.restoreHide(views: sesameUses)
-        sesame2Circle.isHidden = (device is CHSesameConnector && (device.productModel != .openSensor || device.productModel != .openSensor2))//代連裝置右方不用顯示圖標
+        sesame2Circle.isHidden = (device is CHSesameConnector && (device.productModel != .openSensor && device.productModel != .openSensor2))//代連裝置右方不用顯示圖標
         deviceNameMagrinRight.priority = sesame2Circle.isHidden ? .defaultLow : .required
         deviceNameLab.text = device.deviceName //名稱
         deviceBleStatusLab.text = device.bluetoothStatusStr()//藍芽狀態文字
