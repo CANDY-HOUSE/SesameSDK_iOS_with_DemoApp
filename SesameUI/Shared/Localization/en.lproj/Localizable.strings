@@ -40,7 +40,6 @@
 "co.candyhouse.sesame2.AdjustSesameBot" = "Adjust Sesame Bot";
 "co.candyhouse.sesame2.TapToAdjust" = "Tap to adjust";
 "co.candyhouse.sesame2.Cancel" = "Cancel";
-"co.candyhouse.sesame2.DeleteFriend" = "Delete the Contact";
 "co.candyhouse.sesame2.Delete" = "Delete";
 "co.candyhouse.sesame2.Email" = "Email";
 "co.candyhouse.sesame2.FirstName" = "First Name";
@@ -152,9 +151,6 @@
 "co.candyhouse.sesame2.wifissid" = "WiFi SSID";
 "co.candyhouse.sesame2.wifipassword" = "WiFi Password";
 "co.candyhouse.sesame2.wifisetup" = "WiFi Setup";
-
-"co.candyhouse.sesame2.revokeKeyOfFriend" = "Revoke %@";
-"co.candyhouse.sesame2.revoke" = "Revoke";
 
 "co.candyhouse.sesame2.ownerKey" = "Owner Key";
 "co.candyhouse.sesame2.managerKey" = "Manager Key";

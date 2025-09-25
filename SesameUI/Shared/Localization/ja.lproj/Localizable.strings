@@ -40,7 +40,6 @@
 "co.candyhouse.sesame2.AdjustSesameBot" = "Adjust SesameBot";
 "co.candyhouse.sesame2.TapToAdjust" = "Tap to adjust";
 "co.candyhouse.sesame2.Cancel" = "キャンセル";
-"co.candyhouse.sesame2.DeleteFriend" = "連絡先を削除";
 "co.candyhouse.sesame2.Delete" = "削除";
 "co.candyhouse.sesame2.Email" = "Eメール";
 "co.candyhouse.sesame2.FirstName" = "名";
@@ -152,9 +151,6 @@
 "co.candyhouse.sesame2.wifissid" = "WiFi SSID";
 "co.candyhouse.sesame2.wifipassword" = "WiFi パスワード";
 "co.candyhouse.sesame2.wifisetup" = "WiFi Setup";
-
-"co.candyhouse.sesame2.revokeKeyOfFriend" = "%@ の鍵を取り消す";
-"co.candyhouse.sesame2.revoke" = "鍵を取り消す";
 
 "co.candyhouse.sesame2.ownerKey" = "オーナー鍵";
 "co.candyhouse.sesame2.managerKey" = "マネジャー鍵";

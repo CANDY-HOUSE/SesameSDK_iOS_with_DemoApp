@@ -32,10 +32,11 @@ class CHWebView: UIView {
     
     // MARK: - Properties
     private var configuration: Configuration!
-    private weak var webView: WKWebView!
+    weak var webView: WKWebView!
     private var schemeHandlers: [String: CHWebViewSchemeHandler] = [:]
     
     // MARK: - Callbacks
+    var didCreated: ((CHWebView) -> Void)?
     var loadError: ((Error) -> Void)?
     var loadSuccess: (() -> Void)?
     
@@ -155,6 +156,7 @@ extension CHWebView {
         webView.autoPinEdgesToSuperview(safeArea: false)
         let request = URLRequest(url: url)
         webView.load(request)
+        didCreated?(self)
     }
 }
 

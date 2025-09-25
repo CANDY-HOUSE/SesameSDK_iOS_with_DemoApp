@@ -49,10 +49,6 @@ extension CHDevice {
             result(URL.qrCodeURLFromDevice(self, deviceName: self.deviceName, keyLevel: keyLevel))
         }
     }
-    
-    var cellCls: AnyClass! {
-        return FriendListCell.self
-    }
 }
 
 extension CHDevice {

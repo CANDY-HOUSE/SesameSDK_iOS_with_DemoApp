@@ -111,11 +111,10 @@ extension CHBaseViewController {
                             // 進入詳情
                             if let navController = GeneralTabViewController.getTabViewControllersBy(1) as? UINavigationController, let listViewController = navController.viewControllers.first as? FriendListViewController {
                                 if listViewController.isViewLoaded {
-                                    listViewController.getFriends()
+                                    listViewController.reloadFriends()
                                 }
                             }
-                            let friendKeyListViewController = FriendKeyListViewController.instance(friend!) { _ in }
-                            self.navigationController?.pushViewController(friendKeyListViewController, animated: true)
+                            self.navigationController?.pushViewController(CHWebViewController.instanceWithScene("contact-info", extInfo: ["email": friend!.email, "subUUID": friend!.subId.uuidString.lowercased()]), animated: true)
                         }
                     }
                 }

@@ -43,9 +43,3 @@ extension CHUser {
         self.gtag = try? values.decodeIfPresent(String.self, forKey: .gtag)
     }
 }
-
-extension CHUser : CellConfiguration {
-    var cellCls: AnyClass! {
-        return FriendListCell.self
-    }
-}

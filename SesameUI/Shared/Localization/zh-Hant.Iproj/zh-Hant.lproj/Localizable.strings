@@ -40,7 +40,6 @@
 "co.candyhouse.sesame2.AdjustSesameBot" = "調整芝麻手指機器人";
 "co.candyhouse.sesame2.TapToAdjust" = "點擊調整";
 "co.candyhouse.sesame2.Cancel" = "取消";
-"co.candyhouse.sesame2.DeleteFriend" = "刪除聯絡人";
 "co.candyhouse.sesame2.Delete" = "刪除";
 "co.candyhouse.sesame2.Email" = "信箱";
 "co.candyhouse.sesame2.FirstName" = "名";
@@ -151,9 +150,6 @@
 "co.candyhouse.sesame2.wifissid" = "WiFi SSID";
 "co.candyhouse.sesame2.wifipassword" = "WiFi 密碼";
 "co.candyhouse.sesame2.wifisetup" = "設定 WiFi";
-
-"co.candyhouse.sesame2.revokeKeyOfFriend" = "撤銷 %@";
-"co.candyhouse.sesame2.revoke" = "撤銷";
 
 "co.candyhouse.sesame2.ownerKey" = "擁有者鑰匙";
 "co.candyhouse.sesame2.managerKey" = "管理員鑰匙";
