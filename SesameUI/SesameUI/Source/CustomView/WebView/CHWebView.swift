@@ -75,6 +75,11 @@ class CHWebView: UIView {
         schemeHandlers.removeValue(forKey: scheme)
     }
     
+    func refresh() {
+        cleanupWebView()
+        loadWebView()
+    }
+    
     func reload() {
         webView?.reload()
     }

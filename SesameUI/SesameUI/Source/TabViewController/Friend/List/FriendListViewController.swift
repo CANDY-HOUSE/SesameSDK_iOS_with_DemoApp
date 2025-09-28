@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSMobileClientXCF
 
 extension FriendListViewController {
     static func instance() -> FriendListViewController {
@@ -17,12 +18,30 @@ extension FriendListViewController {
 }
 
 class FriendListViewController: CHBaseViewController {
+    private var userState: UserState = .unknown
     private weak var webView: CHWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItemRightMenu()
         view.backgroundColor = .white
         setupWebView()
+        monitorAWSMobileClientUserState()
+    }
+    
+    func monitorAWSMobileClientUserState() {
+        let statusChangeHandler: (_ state: AWSMobileClientXCF.UserState) -> Void = { [weak self] state in
+            if (state == .signedIn && self?.userState == .signedOut) ||
+               (state == .signedOut && self?.userState == .signedIn) {
+                self?.webView.refresh()
+            }
+            self?.userState = state
+        }
+        AWSMobileClient.default().addUserStateListener(self) { state, dic in
+            executeOnMainThread {
+                statusChangeHandler(state)
+            }
+        }
+        userState = AWSMobileClient.default().currentUserState
     }
     
     private func setupWebView() {
