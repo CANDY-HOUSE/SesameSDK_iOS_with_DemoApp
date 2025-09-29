@@ -185,6 +185,11 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         getVersionTag()
     }
 
+    @objc func reloadFriends() {
+        reloadMembers()
+        refreshControl.endRefreshing()
+    }
+    
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
         // MARK: top status
@@ -193,12 +198,14 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
 
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, mDevice.keyLevel != KeyLevel.guest.rawValue {
             contentStackView.addArrangedSubview(deviceMemberView(mDevice.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
         }
         
         // MARK: Change name
