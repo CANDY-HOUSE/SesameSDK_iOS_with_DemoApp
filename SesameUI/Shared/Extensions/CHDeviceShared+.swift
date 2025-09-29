@@ -93,7 +93,6 @@ extension CHDevice {
 
     var uiPriority: Int { // 排序。數字越大排越上方 // TODO 移除以前的排序規則
         switch self.productModel {
-        case .openSensor2: return  18
         case .sesameBot2: return  17
         case .sesame5US: return 16
         case .remoteNano: return 15
@@ -111,6 +110,7 @@ extension CHDevice {
         case .bikeLock: return   2
         case .wifiModule2: return  1
         case .openSensor: return 0
+        case .openSensor2: return 0
         default: return 0
         }
     }
@@ -203,14 +203,14 @@ extension CHDevice {
                 }
             }
         }
+        if self.productModel == .openSensor || self.productModel == .openSensor2 {
+            return "opensensor"
+        }
         switch deviceStatus {
         case .noBleSignal:
             if self is CHSesameBot || self is CHSesameBot2 {
                 return  "switch-noBleSignal"
-            }else{
-                if self.productModel == .openSensor || self.productModel == .openSensor2 {
-                    return "opensensor"
-                }
+            } else {
                 return "noBleSignal"
             }
         case .bleConnecting, .receivedBle:
