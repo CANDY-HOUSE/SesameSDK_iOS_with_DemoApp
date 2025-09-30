@@ -47,7 +47,6 @@ class Sesame5ListCell: UITableViewCell {
     
     lazy var wifiModuleUnuses: [UIView] = {
         [
-            batteryContainer,
             bleImg,
             deviceBleStatusLab,
             sesame2Circle,
@@ -129,10 +128,8 @@ class Sesame5ListCell: UITableViewCell {
         sesame2CircleBtn.setAttributedTitle(opensensorState, for: .normal)
         bleImg.image = UIImage(named: device.bluetoothImageStr())//藍芽小標圖片
         wifiStatusImg.image = UIImage(named: device.wifiImageStr())//wifi小標圖片
+        configureBatteryDisplay(device)//电量处理
         if let mechStatus = device.mechStatus {
-            batteryPercentLab.text = "\(mechStatus.getBatteryPrecentage()) %"
-            batteryIndicator.backgroundColor =  mechStatus.getBatteryPrecentage() < 15 ?  UIColor.lockRed:  UIColor.sesame2Green
-            batteryIndicatorWidth.constant = device.batteryIndicatorWidth() //電量色塊顯示
             if device.productModel == .sesame5 || device.productModel == .sesame5Pro || device.productModel == .sesame5US || device.productModel == .sesame6Pro {
                 self.sesame2Circle.refreshUI(newPointerAngle: CGFloat(reverseDegree(angle: mechStatus.position)),lockColor: device.lockColor())
             } else if device.productModel == .sesame2 || device.productModel == .sesame4 {
@@ -143,12 +140,9 @@ class Sesame5ListCell: UITableViewCell {
             }
         } else {
             self.sesame2Circle.stopShake()
-            batteryPercentLab.text = ""
-            batteryIndicatorWidth.constant = device.batteryIndicatorWidth() //電量色塊顯示
             self.sesame2Circle.removeDot()
         }
         bleImg.isHidden = (device is CHSesameTouchPro) || (device is CHSesameTouch) || (device is CHSesameFace) || (device is CHSesameFacePro)
-        batteryContainer.isHidden = ((device is CHSesameTouchPro || (device is CHSesameTouch) || (device is CHSesameFace) || (device is CHSesameFacePro)) && opensensorState == nil)
     }
     
     func configureWifiModuleDevice(_ device: CHWifiModule2) {
@@ -156,6 +150,40 @@ class Sesame5ListCell: UITableViewCell {
         UIView.hide(views: wifiModuleUnuses)
         deviceNameLab.text = device.deviceName
         wifiStatusImg.image = UIImage(named: device.wifiImageStr())
+        configureBatteryDisplay(device)//电量处理
+    }
+    
+    private func configureBatteryDisplay(_ device: CHDevice) {
+        let batteryLevel = getBatteryLevel(device)
+        if batteryLevel == -1 {
+            batteryContainer.isHidden = true
+            batteryPercentLab.text = ""
+            batteryIndicatorWidth.constant = 0
+        } else {
+            batteryContainer.isHidden = false
+            batteryPercentLab.text = "\(batteryLevel) %"
+            let isLowBattery = batteryLevel < 15
+            batteryIndicator.backgroundColor = isLowBattery ? UIColor.lockRed : UIColor.sesame2Green
+            batteryIndicatorWidth.constant = calculateBatteryWidth(level: batteryLevel)
+        }
+    }
+    
+    private func getBatteryLevel(_ device: CHDevice) -> Int {
+        if device is CHWifiModule2 {
+            return device.stateInfo?.batteryPercentage ?? -1
+        }
+        if let mechStatus = device.mechStatus {
+            return mechStatus.getBatteryPrecentage()
+        }
+        if let serverBattery = device.stateInfo?.batteryPercentage {
+            return serverBattery
+        }
+        return -1
+    }
+    
+    private func calculateBatteryWidth(level: Int) -> CGFloat {
+        let fullBattery: CGFloat = 10.2
+        return fullBattery * CGFloat(level) / 100.0
     }
     
     func triggerExpand(_ yesOrNo: Bool) {

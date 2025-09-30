@@ -299,6 +299,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                     let nickname = CHUserAPIManager.shared.getNickname { _ in }
                     Sesame2Store.shared.setHistoryTag(nickname)
                     CHDeviceManager.shared.setHistoryTag()
+                    CHDeviceWrapperManager.shared.updateUserKeys(userKeys.data)
                     for userKey in userKeys.data {
                         let device = userKey.toCHDevice()
                         if let keyLevel = userKey.keyLevel {
@@ -316,6 +317,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                 }
             }
         } else {
+            CHDeviceWrapperManager.shared.clear()
             WatchKitFileTransfer.shared.transferKeysToWatch()
             self.getKeysFromCache()
         }

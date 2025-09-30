@@ -332,6 +332,7 @@ class MeViewController: CHBaseViewController {
             CHUserAPIManager.shared.signOut {
                 CHDeviceManager.shared.setHistoryTag()
                 Sesame2Store.shared.setSubUuid(Data())
+                CHDeviceWrapperManager.shared.clear()
                 executeOnMainThread {
                     self.arrangeSubview()
                 }

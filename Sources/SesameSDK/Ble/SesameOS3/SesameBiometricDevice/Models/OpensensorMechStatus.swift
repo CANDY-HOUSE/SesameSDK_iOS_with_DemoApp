@@ -17,11 +17,10 @@ struct OpensensorMechStatus: CHSesameProtocolMechStatus {
         if let battery = battery {
             return Float(battery) * 2.0 / 1000.0
         }
-        if let lightLoadVoltage = lightLoadBatteryVoltage,
-           let heavyLoadBatteryVoltage = heavyLoadBatteryVoltage {
-            return Float(lightLoadVoltage + heavyLoadBatteryVoltage) / 1000.0
+        if let lightLoadVoltage = lightLoadBatteryVoltage {
+            return Float(lightLoadVoltage) * 2.0 / 1000.0
         }
-        return 0.0
+        return 6.0
     }
     
     func getBatteryPrecentage() -> Int { // [CHDeviceProtocol]共用電量計算曲線

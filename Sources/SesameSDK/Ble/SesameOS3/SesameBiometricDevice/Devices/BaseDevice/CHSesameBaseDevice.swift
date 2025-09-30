@@ -35,6 +35,26 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
         }
     }
     
+    private let iotBatteryDeviceModels: Set<CHProductModel> = [
+        .remote,
+        .remoteNano,
+        .sesameTouch,
+        .sesameTouchPro,
+        .sesameFace,
+        .sesameFaceAI,
+        .sesameFacePro,
+        .sesameFaceProAI
+    ]
+
+    private let iotDeviceModels: Set<CHProductModel> = [
+        .sesameTouch,
+        .sesameTouchPro,
+        .sesameFace,
+        .sesameFaceAI,
+        .sesameFacePro,
+        .sesameFaceProAI
+    ]
+    
     // 初始化方法
     public override init() {
         super.init()
@@ -180,25 +200,38 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
     // 实现 goIOT 方法
     public func goIOT() {
         if( self.isGuestKey){ return }
+        
+        guard let safeProductModel = self.productModel else {
+            L.d("[goIOT] productModel is nil, skipping IoT setup")
+            return
+        }
+        
 #if os(iOS)
         if productModel == .openSensor || productModel == .openSensor2 {
             goIoTWithOpenSensor()
             return
         }
-        CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
-            switch result {
-            case .success(let content):
-                var isConnectedByWM2 = false
-                if let wm2s = content.data.wifiModule2s {
-                    isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
+        if iotBatteryDeviceModels.contains(productModel) {
+            subscribeBatteryTopic()
+            
+            if iotDeviceModels.contains(productModel) {
+                CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
+                    switch result {
+                    case .success(let content):
+                        var isConnectedByWM2 = false
+                        if let wm2s = content.data.wifiModule2s {
+                            isConnectedByWM2 = wm2s.contains { $0.isConnected == true }
+                        }
+                        
+                        if isConnectedByWM2 {
+                            self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
+                        } else {
+                            self.deviceShadowStatus = nil
+                        }
+                    case .failure(_):
+                        break
+                    }
                 }
-                // [eddy todo] iot 忽略 mechStatus ？
-                if isConnectedByWM2 {
-                    self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
-                }else{
-                    self.deviceShadowStatus = nil
-                }
-            case .failure( _): break
             }
         }
 #endif

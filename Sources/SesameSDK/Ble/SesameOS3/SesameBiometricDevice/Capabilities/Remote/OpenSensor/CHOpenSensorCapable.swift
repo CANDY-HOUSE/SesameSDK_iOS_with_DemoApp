@@ -7,6 +7,4 @@
 //
 
 public protocol CHOpenSensorCapable: CHDevice {
-    func goIoTWithOpenSensor()
-    func getLatestState(result: @escaping (OpenSensorData?) -> Void)
 }

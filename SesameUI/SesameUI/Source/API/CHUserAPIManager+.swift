@@ -170,7 +170,7 @@ extension CHUserAPIManager {
     
     /// 拿網路鑰匙
     func getCHUserKeys(_ result: @escaping CHResult<[CHUserKey]>) {
-        API(request: .init(.get, "/device")) { getResult in
+        API(request: .init(.get, "/device/list")) { getResult in
             switch getResult {
             case .success(let data):
                 do{

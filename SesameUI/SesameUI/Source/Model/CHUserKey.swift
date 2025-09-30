@@ -19,6 +19,7 @@ struct CHUserKey: Codable {
     let sesame2PublicKey: String?
     var deviceName: String?
     var rank: Int?
+    var stateInfo: StateInfo?
 
     func toCHDevice() -> CHDevice? {
         var device: CHDevice?
@@ -97,4 +98,11 @@ struct CHUserKey: Codable {
         }
         return userKey
     }
+}
+
+struct StateInfo: Codable {
+    var batteryPercentage: Int?
+    var CHSesame2Status: String?
+    var timestamp: Int64?
+    var wm2State: Bool?
 }

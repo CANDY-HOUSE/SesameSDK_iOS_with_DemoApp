@@ -11,6 +11,7 @@ import UIKit
 import SesameSDK
 
 extension CHSesameTouchPro {
+    
     var displayedState: NSAttributedString? {
         get {
             guard (self.productModel == .openSensor2 || (self.productModel == .openSensor && deviceStatus == .noBleSignal())) else {
@@ -20,28 +21,42 @@ extension CHSesameTouchPro {
             if let data = mechStatus?.data {
                 do {
                     let state = try JSONDecoder().decode(OpenSensorData.self, from: data)
-                    let status = state.Status
-                    let timeStr = "\(state.TimeStamp)".localizedTime()
-                    let dateString = timeStr?.split(separator: "@").first!
-                    let timeString = timeStr?.split(separator: "@").last!
-                    let attributedString = NSMutableAttributedString(string: "\(status)\n")
-                    let paragraphStyle = NSMutableParagraphStyle()
-                    paragraphStyle.alignment = .center
-                    let attributesCenter: [NSAttributedString.Key: Any] = [
-                        .paragraphStyle: paragraphStyle,
-                    ]
-                    attributedString.append(NSAttributedString(string: "\(dateString!)\n\(timeString!)"))
-                    attributedString.addAttributes(attributesCenter, range: NSRange(location: 0, length: attributedString.length))
-                    let attributesFont: [NSAttributedString.Key: Any] = [
-                        .font: UIFont.boldSystemFont(ofSize: 20),
-                        .foregroundColor: UIColor.lockGray
-                    ]
-                    attributedString.addAttributes(attributesFont, range: (attributedString.string as NSString).range(of: status))
-                    return attributedString
+                    return createOpensensorStateText(status: state.Status, timestamp: Int64(state.TimeStamp))
                 } catch {}
-                return nil
             }
+            
+            if let stateInfo = self.stateInfo,
+               let status = stateInfo.CHSesame2Status,
+               let timestamp = stateInfo.timestamp {
+                return createOpensensorStateText(status: status, timestamp: timestamp)
+            }
+            
             return nil
         }
+    }
+    
+    private func createOpensensorStateText(status: String, timestamp: Int64) -> NSAttributedString {
+        let timeStr = "\(timestamp)".localizedTime()
+        let dateString = timeStr?.split(separator: "@").first ?? ""
+        let timeString = timeStr?.split(separator: "@").last ?? ""
+        
+        let attributedString = NSMutableAttributedString(string: "\(status)\n")
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        let attributesCenter: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle,
+        ]
+        
+        attributedString.append(NSAttributedString(string: "\(dateString)\n\(timeString)"))
+        attributedString.addAttributes(attributesCenter, range: NSRange(location: 0, length: attributedString.length))
+        
+        let attributesFont: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 20),
+            .foregroundColor: UIColor.lockGray
+        ]
+        attributedString.addAttributes(attributesFont, range: (attributedString.string as NSString).range(of: status))
+        
+        return attributedString
     }
 }

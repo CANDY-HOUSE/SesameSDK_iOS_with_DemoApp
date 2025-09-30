@@ -43,6 +43,7 @@
 		3B1D80482E2A2DB600C90D01 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1D80472E2A2DB600C90D01 /* SesameSDK */; };
 		3B1D804A2E2A2DBC00C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */; };
 		3B203FDE2E3CF307004E2606 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */; };
+		3B32750A2E7957340076DCBC /* CHDeviceWrapperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3275092E7957320076DCBC /* CHDeviceWrapperManager.swift */; };
 		3B41364D2E45D5710044E33F /* CustomInputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B41364C2E45D56E0044E33F /* CustomInputDialog.swift */; };
 		3B8B7C242E2E47DD00F5A2F7 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */; };
 		3B8B7C482E2FBB0200F5A2F7 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -509,6 +510,7 @@
 		3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		3B3275092E7957320076DCBC /* CHDeviceWrapperManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceWrapperManager.swift; sourceTree = "<group>"; };
 		3B41364C2E45D56E0044E33F /* CustomInputDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputDialog.swift; sourceTree = "<group>"; };
 		3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1934,6 +1936,7 @@
 		BE8858F226C3617D002D17E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B3275092E7957320076DCBC /* CHDeviceWrapperManager.swift */,
 				BE33ED1725823F0A00A73D6A /* WatchKitFile.swift */,
 				BE8F920F264A0F82001DF645 /* CHDeviceInfo.swift */,
 				BEC0908524A9F281006E188E /* QRCodeURLType.swift */,
@@ -2561,6 +2564,7 @@
 				2C15AD5B2E6FC63A00E37918 /* RemoteLearnVC.swift in Sources */,
 				2C15AD5D2E6FC63A00E37918 /* RemoteLearnViewModel.swift in Sources */,
 				2C15AD5E2E6FC63A00E37918 /* RemoteAdapterFactory.swift in Sources */,
+				3B32750A2E7957340076DCBC /* CHDeviceWrapperManager.swift in Sources */,
 				2C15AD5F2E6FC63A00E37918 /* RemoteTypeListVC.swift in Sources */,
 				2C15AD602E6FC63A00E37918 /* RemoteListVC.swift in Sources */,
 				2C15AD612E6FC63A00E37918 /* AirHandlerAdapter.swift in Sources */,

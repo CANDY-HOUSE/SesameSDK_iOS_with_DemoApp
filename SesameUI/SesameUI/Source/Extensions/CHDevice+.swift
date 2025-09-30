@@ -61,3 +61,13 @@ extension CHDevice {
         }
     }
 }
+
+extension CHDevice {
+    var userKey: CHUserKey? {
+        return CHDeviceWrapperManager.shared.getUserKey(for: deviceId.uuidString)
+    }
+    
+    var stateInfo: StateInfo? {
+        return userKey?.stateInfo
+    }
+}
