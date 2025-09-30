@@ -30,6 +30,17 @@ class CHWebView: UIView {
         }
     }
     
+    struct CHWebViewMessage {
+        let action: String
+        let data: Any?
+        let requestId: String?
+        let callbackName: String?
+    }
+    
+    typealias CHWebViewMessageHandler = (CHWebView, Any?) -> Void
+    private var messageHandlers: [String: CHWebViewMessageHandler] = [:]
+    private let messageHandlerName = "iOSHandler"
+    
     // MARK: - Properties
     private var configuration: Configuration!
     weak var webView: WKWebView!
@@ -73,6 +84,18 @@ class CHWebView: UIView {
     
     func unregisterSchemeHandler(_ scheme: String) {
         schemeHandlers.removeValue(forKey: scheme)
+    }
+    
+    func registerMessageHandler(_ action: String, handler: @escaping CHWebViewMessageHandler) {
+        messageHandlers[action] = handler
+    }
+    
+    func unregisterMessageHandler(_ action: String) {
+        messageHandlers.removeValue(forKey: action)
+    }
+    
+    func unregisterAllHandler(_ action: String) {
+        messageHandlers.removeAll()
     }
     
     func refresh() {
@@ -127,10 +150,10 @@ class CHWebView: UIView {
         guard let webView = webView else { return }
         webView.navigationDelegate = nil
         webView.uiDelegate = nil
-        
+        webView.configuration.userContentController.removeAllScriptMessageHandlers()
         let dataStore = webView.configuration.websiteDataStore
         dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(),
-                           modifiedSince: Date(timeIntervalSince1970: 0)) { }
+                             modifiedSince: Date(timeIntervalSince1970: 0)) { }
         
         webView.removeFromSuperview()
     }
@@ -143,6 +166,11 @@ extension CHWebView {
         webView?.removeFromSuperview()
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+        
+        let userContentController = WKUserContentController()
+        userContentController.add(self, name: messageHandlerName)
+        configuration.userContentController = userContentController
+        
         let webView = WKWebView(frame: .zero, configuration: configuration)
         self.webView = webView
         webView.navigationDelegate = self
@@ -162,6 +190,37 @@ extension CHWebView {
         let request = URLRequest(url: url)
         webView.load(request)
         didCreated?(self)
+    }
+}
+
+// MARK: - WKScriptMessageHandler
+extension CHWebView: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard message.name == messageHandlerName,
+              let body = message.body as? [String: Any],
+              let action = body["action"] as? String else {
+            return
+        }
+        if let handler = messageHandlers[action] {
+            handler(self, body)
+        }
+    }
+}
+
+// MARK: - Public Methods
+extension CHWebView {
+    func callH5(funcName: String, data: Any? = nil) {
+        do {
+            var jsonString = ""
+            if let cbData = data {
+                let jsonData = try JSONSerialization.data(withJSONObject: cbData)
+                jsonString = String(data: jsonData, encoding: .utf8) ?? "null"
+            }
+            let script = "if (window.\(funcName)) { window.\(funcName)(\(jsonString)); }"
+            webView?.evaluateJavaScript(script, completionHandler: nil)
+        } catch {
+            print("回调数据序列化失败: \(error)")
+        }
     }
 }
 

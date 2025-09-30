@@ -32,7 +32,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
     var dfuView: CHUIPlainSettingView!
     var autoLockView: CHUITogglePickerSettingView!
     var autoUnLockView: CHUIArrowSettingView!
-    var notificationToggleView: CHUIToggleSettingView?
     var voiceShortcutButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var versionExclamationContainerView: UIView!
@@ -90,15 +89,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         contentStackView.distribution = .fill
 
         UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
-        if let deviceToken = UserDefaults.standard.string(forKey: "devicePushToken"), sesame2.keyLevel != KeyLevel.guest.rawValue {
-            sesame2.isNotificationEnabled(token: deviceToken, name: "Sesame2") { result in
-                if case let .success(isEnabled) = result {
-                    executeOnMainThread {
-                        self.notificationToggleView?.switchView.isOn = isEnabled.data
-                    }
-                }
-            }
-        }
         arrangeSubviews()
         DFUCenter.shared.confirmDFUDeletegate(self, forDevice: sesame2)
     }
@@ -163,18 +153,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
             }
             angleSettingView.title = "co.candyhouse.sesame2.ConfigureAngles".localized
             contentStackView.addArrangedSubview(angleSettingView)
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        }
-        
-        // MARK: Enable Notification
-        if sesame2.keyLevel != KeyLevel.guest.rawValue {
-            notificationToggleView = CHUIViewGenerator.toggle { [unowned self] sender,_ in
-                if let toggle = sender as? UISwitch {
-                    self.enableNotificationToggled(sender: toggle)
-                }
-            }
-            notificationToggleView!.title = "co.candyhouse.sesame2.enableNotification".localized
-            contentStackView.addArrangedSubview(notificationToggleView!)
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         }
         
@@ -528,30 +506,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
             }
         }
     }
-    
-    // MARK: enableNotificationToggle
-    func enableNotificationToggled(sender: UISwitch) {
-        ViewHelper.showLoadingInView(view: self.notificationToggleView)
-        if let deviceToken = UserDefaults.standard.string(forKey: "devicePushToken") {
-            if sender.isOn == true {
-                CHUserAPIManager.shared.getSubId {  [weak self] subId in
-                    guard let self = self else { return }
-                    sesame2.enableNotification(token: deviceToken, name: "Sesame2", subUUID: subId) { result in
-                        executeOnMainThread {
-                            ViewHelper.hideLoadingView(view: self.notificationToggleView)
-                        }
-                    }
-                }
-            } else {
-                sesame2.disableNotification(token: deviceToken, name: "Sesame2") { result in
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.notificationToggleView)
-                    }
-                }
-            }
-        }
-    }
-
     
     // MARK: presentQRCodeSharingView
     func presentQRCodeSharingView(sender: UIButton) {

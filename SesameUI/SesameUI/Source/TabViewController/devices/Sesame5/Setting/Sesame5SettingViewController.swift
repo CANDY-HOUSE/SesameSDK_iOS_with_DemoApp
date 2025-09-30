@@ -25,7 +25,6 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     var autoLockView: CHUITogglePickerSettingView!
     var opsLockView: CHUIExpandableSettingView!
     var autoUnLockView: CHUIArrowSettingView!
-    var notificationToggleView: CHUIToggleSettingView?
     var voiceShortcutButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var isReset: Bool = false
@@ -99,15 +98,6 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         contentStackView.distribution = .fill
 
         UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
-        if let deviceToken = UserDefaults.standard.string(forKey: "devicePushToken"), sesame5.keyLevel != KeyLevel.guest.rawValue {
-            sesame5.isNotificationEnabled(token: deviceToken, name: "Sesame2") { result in
-                if case let .success(isEnabled) = result {
-                    executeOnMainThread {
-                        self.notificationToggleView?.switchView.isOn = isEnabled.data
-                    }
-                }
-            }
-        }
         arrangeSubviews()
         DFUCenter.shared.confirmDFUDeletegate(self, forDevice: sesame5)
     }
@@ -204,20 +194,6 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
             contentStackView.addArrangedSubview(angleSettingView)
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         }
-
-        
-        // MARK: Enable Notification
-        if !isGuest {
-            notificationToggleView = CHUIViewGenerator.toggle { [unowned self] sender,_ in
-                if let toggle = sender as? UISwitch {
-                    self.enableNotificationToggled(sender: toggle)
-                }
-            }
-            notificationToggleView!.title = "co.candyhouse.sesame2.enableNotification".localized
-            contentStackView.addArrangedSubview(notificationToggleView!)
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        }
-        
         
         // MARK: OP sensor lock
         if !isGuest {
@@ -487,29 +463,6 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
                 }
             }
             WatchKitFileTransfer.shared.transferKeysToWatch()
-        }
-    }
-    
-    // MARK: enableNotificationToggle
-    func enableNotificationToggled(sender: UISwitch) {
-        ViewHelper.showLoadingInView(view: self.notificationToggleView)
-        if let deviceToken = UserDefaults.standard.string(forKey: "devicePushToken") {
-            if sender.isOn == true {
-                CHUserAPIManager.shared.getSubId {  [weak self] subId in
-                    guard let self = self else { return }
-                    sesame5.enableNotification(token: deviceToken, name: "Sesame2", subUUID: subId) { result in
-                        executeOnMainThread {
-                            ViewHelper.hideLoadingView(view: self.notificationToggleView)
-                        }
-                    }
-                }
-            } else {
-                sesame5.disableNotification(token: deviceToken, name: "Sesame2") { result in
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.notificationToggleView)
-                    }
-                }
-            }
         }
     }
     

@@ -30,11 +30,8 @@ class CHWebViewController: CHBaseViewController {
         }
         view.addSubview(webView)
         webView.autoPinEdgesToSuperview()
-        webView.registerSchemeHandler("ssm://UI/webview/notify") { view, url, param in
-            if let notifyName = param["notifyName"] {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: notifyName), object: nil, userInfo: param)
-            }
-        }
+        registerSchemeHandlers(webView: webView)
+        registerMessageHandlers(webView: webView)
     }
 }
 

@@ -218,39 +218,6 @@ public protocol CHSesameLock: CHDevice {
 }
 
 public extension CHSesameLock {
-    func enableNotification(token: String, name: String, subUUID: String?, result: @escaping CHResult<CHEmpty>) {
-        CHAccountManager.shared.API(request: .init(.post, "/device/v1/token",
-                                                   ["token": token,
-                                                    "deviceId":deviceId.uuidString,
-                                                    "name": name,
-                                                    "subUUID": subUUID ?? "",
-                                                   ])) { createResult in
-            if case let .failure(error) = createResult {
-                result(.failure(error))
-            } else {
-                result(.success(.init(input: .init())))
-            }
-        }
-    }
-    
-    func disableNotification(token: String, name: String, result: @escaping CHResult<CHEmpty>) {
-        CHDeviceManager.shared.disableNotification(deviceId: deviceId.uuidString, token: token, name: name, result: result)
-    }
-    
-    func isNotificationEnabled(token: String, name: String, result: @escaping CHResult<Bool>) {
-        CHAccountManager.shared.API(request: .init(.get, "/device/v1/token", queryParameters: ["deviceId": deviceId.uuidString, "deviceToken": token, "name": name])) { getResult in
-            if case let .failure(error) = getResult {
-                if (error as NSError).code == 404 {
-                    result(.success(.init(input: false)))
-                } else {
-                    result(.failure(error))
-                }
-            } else {
-                result(.success(.init(input: true)))
-            }
-        }
-    }
-    
 #if os(watchOS)
     func getSesameLockStatus(result: @escaping CHResult<CHEmpty>) {
         CHIoTManager.shared.getCHDeviceShadow(self) { shadowResult in

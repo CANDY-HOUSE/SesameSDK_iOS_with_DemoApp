@@ -119,6 +119,24 @@ class MeViewController: CHBaseViewController {
             userNameView.qrCodeImageView.isHidden = true
         }
         
+        // MARK: - NotificationCenter
+        scrollContentStackView.addArrangedSubview({
+            let v = UIView()
+            v.backgroundColor = .sesame2Gray
+            v.autoLayoutHeight(1)
+            return v
+        }())
+        let notifyView = CHUIViewGenerator.arrow { [unowned self] _,_ in
+            let token: String = UserDefaults.standard.string(forKey: "devicePushToken") ?? ""
+            let web = CHWebViewController.instanceWithScene("device-notify", extInfo: [
+                "pushToken": token
+            ])
+            navigationController?.pushViewController(web, animated: true)
+        }
+        notifyView.title = "co.candyhouse.sesame2.enableNotification".localized
+        scrollContentStackView.addArrangedSubview(notifyView)
+        
+        
         // MARK: - Padding
         let screenSize = UIScreen.main.bounds
         let screenHeight = screenSize.height
