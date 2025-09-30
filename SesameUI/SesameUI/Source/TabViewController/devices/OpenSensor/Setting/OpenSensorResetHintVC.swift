@@ -169,7 +169,11 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         resetKeyView.title = "co.candyhouse.sesame2.ResetSesame".localized
         contentStackView.addArrangedSubview(resetKeyView)
 #endif
-
+        let spacerView = UIView()
+        contentStackView.addArrangedSubview(spacerView)
+        NSLayoutConstraint.activate([
+            spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
     }
 }
 
