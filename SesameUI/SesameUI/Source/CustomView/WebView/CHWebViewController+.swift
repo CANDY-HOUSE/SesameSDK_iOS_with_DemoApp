@@ -27,7 +27,8 @@ extension CHWebViewController {
                         return [
                             "deviceUUID": device.deviceId.uuidString,
                             "deviceName": device.deviceName,
-                            "deviceModel": device.productModel.deviceModel()
+                            "deviceModel": device.productModel.deviceModel(),
+                            "keyLevel": "\(device.keyLevel)"
                         ]
                     }
                 }

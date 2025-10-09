@@ -119,13 +119,6 @@ class MeViewController: CHBaseViewController {
             userNameView.qrCodeImageView.isHidden = true
         }
         
-        // MARK: - NotificationCenter
-        scrollContentStackView.addArrangedSubview({
-            let v = UIView()
-            v.backgroundColor = .sesame2Gray
-            v.autoLayoutHeight(1)
-            return v
-        }())
         let notifyView = CHUIViewGenerator.arrow { [unowned self] _,_ in
             let token: String = UserDefaults.standard.string(forKey: "devicePushToken") ?? ""
             let web = CHWebViewController.instanceWithScene("device-notify", extInfo: [
