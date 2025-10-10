@@ -155,6 +155,11 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         refreshControl.endRefreshing()
     }
 
+    deinit {
+        mDevice.disconnect(){ _ in}
+        self.deviceMemberWebView?.cleanup()
+    }
+    
     override func viewDidLoad() {
 //        L.d("[op sensor] viewDidLoad!!")
         super.viewDidLoad()
@@ -180,8 +185,6 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         self.arrangeSubviews()
     }
 
-    deinit{ mDevice.disconnect(){ _ in} }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let mDevice = mDevice else {print("mDevice is nil");return}
@@ -201,7 +204,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
     func arrangeSubviews() {
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, device.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         // MARK: top status

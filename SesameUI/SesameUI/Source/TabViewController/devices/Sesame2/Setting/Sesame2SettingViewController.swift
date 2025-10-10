@@ -70,6 +70,10 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
     var dismissHandler: ((_ isReset: Bool)->Void)?
     
     // MARK: - Life cycle
+    deinit {
+        self.deviceMemberWebView?.cleanup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -108,7 +112,7 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         contentStackView.addArrangedSubview(statusView)
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, sesame2.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         

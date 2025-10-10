@@ -171,7 +171,10 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         self.arrangeSubviews()
     }
 
-    deinit{mDevice.disconnect(){ _ in}}
+    deinit{
+        mDevice.disconnect(){ _ in}
+        self.deviceMemberWebView?.cleanup()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -201,7 +204,7 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
 
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, mDevice.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(mDevice.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(mDevice.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
             refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
             refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)

@@ -119,12 +119,12 @@ class MeViewController: CHBaseViewController {
             userNameView.qrCodeImageView.isHidden = true
         }
         
-        let notifyView = CHUIViewGenerator.arrow { [unowned self] _,_ in
+        let notifyView = CHUIViewGenerator.arrow { [weak self] _,_ in
             let token: String = UserDefaults.standard.string(forKey: "devicePushToken") ?? ""
             let web = CHWebViewController.instanceWithScene("device-notify", extInfo: [
                 "pushToken": token
             ])
-            navigationController?.pushViewController(web, animated: true)
+            self?.navigationController?.pushViewController(web, animated: true)
         }
         notifyView.title = "co.candyhouse.sesame2.enableNotification".localized
         scrollContentStackView.addArrangedSubview(notifyView)

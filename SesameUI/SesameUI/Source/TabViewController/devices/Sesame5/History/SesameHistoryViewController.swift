@@ -10,6 +10,10 @@ class SesameHistoryViewController: CHBaseViewController {
     
     private weak var webView: CHWebView!
     
+    deinit {
+        webView?.cleanup()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = sesame2.deviceName
@@ -33,6 +37,7 @@ class SesameHistoryViewController: CHBaseViewController {
                                            extInfo: ["deviceUUID": sesame2.deviceId.uuidString])
         self.webView = webView
         view.addSubview(webView)
+        webView.loadRequest()
         webView.autoPinEdgesToSuperview()
     }
     

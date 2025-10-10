@@ -59,6 +59,10 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     var dismissHandler: (()->Void)?
     
     // MARK: - Life cycle
+    deinit {
+        self.deviceMemberWebView?.cleanup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .sesame2Gray
@@ -95,7 +99,7 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, sesameBot.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         

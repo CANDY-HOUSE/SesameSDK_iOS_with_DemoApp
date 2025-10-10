@@ -20,6 +20,11 @@ extension FriendListViewController {
 class FriendListViewController: CHBaseViewController {
     private var userState: UserState = .unknown
     private weak var webView: CHWebView!
+    
+    deinit {
+        webView?.cleanup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItemRightMenu()
@@ -61,6 +66,7 @@ class FriendListViewController: CHBaseViewController {
         self.webView = webView
         view.addSubview(webView)
         webView.autoPinEdgesToSuperview()
+        webView.loadRequest()
         webView.didCreated = { web in
             web.enablePullToRefresh {
                 self.reloadFriends()

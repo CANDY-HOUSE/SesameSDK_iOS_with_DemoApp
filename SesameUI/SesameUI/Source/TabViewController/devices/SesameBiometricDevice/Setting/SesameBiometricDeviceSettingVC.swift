@@ -192,6 +192,11 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         (270, 16)
     ]
     
+    deinit {
+        mDevice.disconnect(){ _ in}
+        self.deviceMemberWebView?.cleanup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .sesame2Gray
@@ -212,10 +217,6 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     @objc func reloadFriends() {
         reloadMembers()
         refreshControl.endRefreshing()
-    }
-    
-    deinit{
-        mDevice.disconnect(){ _ in}
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -245,7 +246,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, mDevice.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
             
             refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)

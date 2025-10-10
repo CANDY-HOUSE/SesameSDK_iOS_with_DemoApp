@@ -13,7 +13,7 @@ extension CHBaseViewController {
     private struct WebAssociatedKeys {
         static var deviceWebViewKey: UInt8 = 0
     }
-    private var deviceWebView: CHWebView? {
+    var deviceMemberWebView: CHWebView? {
         get {
             return objc_getAssociatedObject(self, &WebAssociatedKeys.deviceWebViewKey) as? CHWebView
         }
@@ -22,11 +22,11 @@ extension CHBaseViewController {
         }
     }
     
-    func deviceMemberView(_ deviceUUID: String) -> UIView {
+    func deviceMemberWebView(_ deviceUUID: String) -> UIView {
         let collectionViewContainer = UIView(frame: .zero)
         collectionViewContainer.autoLayoutHeight(80)
         let web = CHWebView.instanceWithScene("device-user", extInfo: ["deviceUUID": deviceUUID])
-        self.deviceWebView = web
+        self.deviceMemberWebView = web
         web.registerSchemeHandler("ssm://UI/webview/open") { [weak self] view, url, param in
             guard let self = self else {
                 return
@@ -41,6 +41,7 @@ extension CHBaseViewController {
         }
         collectionViewContainer.addSubview(web)
         web.autoPinEdgesToSuperview(safeArea: false)
+        web.loadRequest()
         return collectionViewContainer;
     }
     
@@ -51,7 +52,7 @@ extension CHBaseViewController {
     }
     
     func reloadMembers() {
-        deviceWebView?.reload()
+        deviceMemberWebView?.reload()
     }
 }
 

@@ -65,104 +65,11 @@ class CHWebView: UIView {
     convenience init(configuration: Configuration) {
         self.init(frame: .zero)
         self.configuration = configuration
-        loadWebView()
-    }
-    
-    deinit {
-        cleanupWebView()
     }
     
     // MARK: - Setup
     private func setupView() {
         backgroundColor = .white
-    }
-    
-    // MARK: - Public Methods
-    func registerSchemeHandler(_ scheme: String, handler: @escaping CHWebViewSchemeHandler) {
-        schemeHandlers[scheme] = handler
-    }
-    
-    func unregisterSchemeHandler(_ scheme: String) {
-        schemeHandlers.removeValue(forKey: scheme)
-    }
-    
-    func registerMessageHandler(_ action: String, handler: @escaping CHWebViewMessageHandler) {
-        messageHandlers[action] = handler
-    }
-    
-    func unregisterMessageHandler(_ action: String) {
-        messageHandlers.removeValue(forKey: action)
-    }
-    
-    func unregisterAllHandler(_ action: String) {
-        messageHandlers.removeAll()
-    }
-    
-    func refresh() {
-        cleanupWebView()
-        loadWebView()
-    }
-    
-    func reload() {
-        webView?.reload()
-    }
-    
-    func goBack() {
-        webView?.goBack()
-    }
-    
-    func goForward() {
-        webView?.goForward()
-    }
-    
-    // MARK: - WebView Loading
-    private func loadWebView() {
-        guard let configuration = configuration else { return }
-        if let directURL = configuration.directURL {
-            setupWebView(urlString: directURL)
-        } else if let scene = configuration.scene {
-            CHUserAPIManager.shared.getWebUrlByScene(scene: scene, extInfo: configuration.extInfo ?? [:]) { [weak self] result in
-                executeOnMainThread {
-                    guard let self = self else { return }
-                    self.hideLoading()
-                    switch result {
-                    case .success(let response):
-                        self.setupWebView(urlString: response.data)
-                    case .failure(let error):
-                        self.makeToast(error.errorDescription())
-                    }
-                }
-            }
-        }
-    }
-    
-    // MARK: - Loading States
-    private func showLoading() {
-        ViewHelper.showLoadingInView(view: self)
-    }
-    
-    private func hideLoading() {
-        ViewHelper.hideLoadingView(view: self)
-    }
-    
-    // MARK: - Cleanup
-    private func cleanupWebView() {
-        guard let webView = webView else { return }
-        webView.navigationDelegate = nil
-        webView.uiDelegate = nil
-        webView.configuration.userContentController.removeAllScriptMessageHandlers()
-        let dataStore = webView.configuration.websiteDataStore
-        dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(),
-                             modifiedSince: Date(timeIntervalSince1970: 0)) { }
-        
-        webView.removeFromSuperview()
-    }
-}
-
-// MARK: - WebView Setup
-extension CHWebView {
-    private func setupWebView(urlString: String) {
-        guard let url = URL(string: urlString) else { return }
         webView?.removeFromSuperview()
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
@@ -187,6 +94,94 @@ extension CHWebView {
         webView.allowsBackForwardNavigationGestures = true
         addSubview(webView)
         webView.autoPinEdgesToSuperview(safeArea: false)
+    }
+    
+    // MARK: - Public Methods
+    func registerSchemeHandler(_ scheme: String, handler: @escaping CHWebViewSchemeHandler) {
+        schemeHandlers[scheme] = handler
+    }
+    
+    func unregisterSchemeHandler(_ scheme: String) {
+        schemeHandlers.removeValue(forKey: scheme)
+    }
+    
+    func registerMessageHandler(_ action: String, handler: @escaping CHWebViewMessageHandler) {
+        messageHandlers[action] = handler
+    }
+    
+    func unregisterMessageHandler(_ action: String) {
+        messageHandlers.removeValue(forKey: action)
+    }
+    
+    func unregisterAllHandler(_ action: String) {
+        messageHandlers.removeAll()
+    }
+    
+    func refresh() {
+        cleanup()
+        loadRequest()
+    }
+    
+    func reload() {
+        webView?.reload()
+    }
+    
+    func goBack() {
+        webView?.goBack()
+    }
+    
+    func goForward() {
+        webView?.goForward()
+    }
+    
+    // MARK: - WebView Loading
+    func loadRequest() {
+        guard let configuration = configuration else { return }
+        if let directURL = configuration.directURL {
+            loadURLRequest(urlString: directURL)
+        } else if let scene = configuration.scene {
+            CHUserAPIManager.shared.getWebUrlByScene(scene: scene, extInfo: configuration.extInfo ?? [:]) { [weak self] result in
+                executeOnMainThread {
+                    guard let self = self else { return }
+                    self.hideLoading()
+                    switch result {
+                    case .success(let response):
+                        self.loadURLRequest(urlString: response.data)
+                    case .failure(let error):
+                        self.makeToast(error.errorDescription())
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Loading States
+    private func showLoading() {
+        ViewHelper.showLoadingInView(view: self)
+    }
+    
+    private func hideLoading() {
+        ViewHelper.hideLoadingView(view: self)
+    }
+    
+    // MARK: - Cleanup
+    func cleanup() {
+        guard let webView = webView else { return }
+        webView.navigationDelegate = nil
+        webView.uiDelegate = nil
+        webView.configuration.userContentController.removeAllScriptMessageHandlers()
+        let dataStore = webView.configuration.websiteDataStore
+        dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(),
+                             modifiedSince: Date(timeIntervalSince1970: 0)) { }
+        
+        webView.removeFromSuperview()
+    }
+}
+
+// MARK: - WebView Setup
+extension CHWebView {
+    private func loadURLRequest(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
         didCreated?(self)

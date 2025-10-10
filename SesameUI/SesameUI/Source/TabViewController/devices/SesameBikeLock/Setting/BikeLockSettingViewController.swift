@@ -52,6 +52,10 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
     var dismissHandler: (()->Void)?
         
     // MARK: - Life cycle
+    deinit {
+        self.deviceMemberWebView?.cleanup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .sesame2Gray
@@ -88,7 +92,7 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, bikeLock.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
 

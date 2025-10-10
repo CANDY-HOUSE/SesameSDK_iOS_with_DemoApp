@@ -10,9 +10,11 @@ import Foundation
 class CHWebViewController: CHBaseViewController {
     private var urlStr: String!
     private var sceneInfo: (scene: String, extInfo: [String: String]?)!
+    private weak var webView: CHWebView!
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        webView?.cleanup()
     }
     
     override func viewDidLoad() {
@@ -29,6 +31,8 @@ class CHWebViewController: CHBaseViewController {
             webView = CHWebView.instanceWithScene(sceneInfo.scene, extInfo: sceneInfo.extInfo)
         }
         view.addSubview(webView)
+        webView.loadRequest()
+        self.webView = webView
         webView.autoPinEdgesToSuperview()
         registerSchemeHandlers(webView: webView)
         registerMessageHandlers(webView: webView)

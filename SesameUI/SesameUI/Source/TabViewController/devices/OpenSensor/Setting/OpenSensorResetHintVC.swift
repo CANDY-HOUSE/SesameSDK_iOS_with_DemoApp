@@ -43,6 +43,11 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     var changeNameView: CHUIPlainSettingView!
     var dismissHandler: (()->Void)?
 
+    deinit {
+        mDevice.disconnect(){ _ in}
+        self.deviceMemberWebView?.cleanup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .sesame2Gray
@@ -63,8 +68,6 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         self.arrangeSubviews()
     }
 
-    deinit{ mDevice.disconnect(){ _ in} }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -78,7 +81,7 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     func arrangeSubviews() {
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, device.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         

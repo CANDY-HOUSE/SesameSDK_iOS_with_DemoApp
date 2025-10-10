@@ -79,6 +79,10 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     }
     var dismissHandler: ((_ isReset: Bool)->Void)?
 
+    deinit {
+        self.deviceMemberWebView?.cleanup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        L.d("[UI][ss5][viewDidLoad]")
@@ -143,7 +147,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, !isGuest {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         

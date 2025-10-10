@@ -91,6 +91,7 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
     deinit {
         wifiModule2.disconnect(result: {_ in })
         removeRemoteUpdateListener()
+        self.deviceMemberWebView?.cleanup()
     }
     
     override func viewDidLoad() {
@@ -158,7 +159,7 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         
         // MARK: Group
         if AWSMobileClient.default().currentUserState == .signedIn, wifiModule2.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberView(device.deviceId.uuidString))
+            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         }
         
