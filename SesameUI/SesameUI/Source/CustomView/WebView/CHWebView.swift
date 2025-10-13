@@ -73,7 +73,8 @@ class CHWebView: UIView {
         webView?.removeFromSuperview()
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
-        
+        configuration.processPool = WKProcessPool()
+        configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
         let userContentController = WKUserContentController()
         userContentController.add(self, name: messageHandlerName)
         configuration.userContentController = userContentController
