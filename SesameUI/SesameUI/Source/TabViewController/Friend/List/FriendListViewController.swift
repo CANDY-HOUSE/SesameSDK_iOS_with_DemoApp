@@ -82,6 +82,6 @@ class FriendListViewController: CHBaseViewController {
     }
     
     func reloadFriends() {
-        webView.reload()
+        webView?.reload()
     }
 }
