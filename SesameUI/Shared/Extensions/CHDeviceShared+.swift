@@ -90,43 +90,12 @@ extension CHDevice {
         return value
     }
 
-
-    var uiPriority: Int { // 排序。數字越大排越上方 // TODO 移除以前的排序規則
-        switch self.productModel {
-        case .sesameBot2: return  17
-        case .sesame5US: return 16
-        case .remoteNano: return 15
-        case .hub3: return 13
-        case .remote: return 14
-        case .bleConnector: return 11
-        case .bikeLock2: return 10
-        case .sesameTouch: return 9
-        case .sesameTouchPro: return 8
-        case .sesame5Pro: return 7
-        case .sesame5: return 6
-        case .sesame4: return  5
-        case .sesame2: return  4
-        case .sesameBot: return   3
-        case .bikeLock: return   2
-        case .wifiModule2: return  1
-        case .openSensor: return 0
-        case .openSensor2: return 0
-        default: return 0
-        }
-    }
-
     func compare(_ device: CHDevice) -> Bool {  /// 設備排序
         if self.getRank() == device.getRank(){
-//            L.d("rank",self.getRank(),device.getRank())
-            if self.uiPriority == device.uiPriority{
-                return self.deviceName > device.deviceName //同樣設備依據名稱排序
-            }else{
-                return self.uiPriority > device.uiPriority
-            }
+            return self.deviceName < device.deviceName //改为升序
         }else{
             return self.getRank() > device.getRank() //同樣設備依據名稱排序
         }
-
     }
     func setRank(level: Int) {
         UserDefaults(suiteName: "group.candyhouse.widget")!.set(level, forKey: self.deviceId.uuidString)
@@ -323,18 +292,12 @@ extension CHDevice {
     }
     
     func wifiImageStr() -> String {
-        if keyLevel == KeyLevel.guest.rawValue{
-            return ""
-
-        }else{
-            if wifiColor() == .lockGray {
-                return "wifi_gray"
-            } else if wifiColor() == .sesame2Green {
-                return "wifi_green"
-            }
+        if wifiColor() == .lockGray {
             return "wifi_gray"
+        } else if wifiColor() == .sesame2Green {
+            return "wifi_green"
         }
-
+        return "wifi_gray"
     }
     func bluetoothStatusStr() -> String {
         if(self is CHSesameConnector){
