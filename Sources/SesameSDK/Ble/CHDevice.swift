@@ -208,6 +208,14 @@ internal extension CHDevice {
             }
         }
     }
+    
+    func postBatteryData(_ payload: String) {
+        CHAccountManager.shared.API(request: .init(.post, "/device/v2/sesame5/\(deviceId.uuidString)/battery", ["payload": payload])) { res in
+            if case .failure(let error) = res {
+                L.d("postBattery error", error)
+            }
+        }
+    }
 }
 
 // MARK: - SesameLock
@@ -301,17 +309,6 @@ internal extension CHDevice {
             }
         }
     }
-    
-    //    func putSesameFW(_ fw: String, result: @escaping CHResult<CHEmpty>) {
-    //        CHAccountManager.shared.API(request: .init(.put, "/device/v1/sesame2/\(deviceId.uuidString)", ["fwv": fw])) { modifyResult in
-    //            switch modifyResult {
-    //            case .success(_):
-    //                result(.success(.init(input: .init())))
-    //            case .failure(let error):
-    //                result(.failure(error))
-    //            }
-    //        }
-    //    }
     
     // IoT只驗證一次
     func isServerAuthed() -> Bool {

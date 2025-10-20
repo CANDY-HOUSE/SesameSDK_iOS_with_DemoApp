@@ -60,31 +60,6 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
         super.init()
     }
     
-    // 设置通用事件处理器
-    private func setupCommonEventHandlers() {
-        // 注册机械状态处理器
-        registerEventHandler(for: .mechStatus) { [weak self] _, data in
-            guard let self = self else { return }
-            L.d("[BaseDevice][mechStatus]", data.toHexLog())
-            self.mechStatus = CHSesameTouchProMechStatus.fromData(data)!
-            L.d("[BaseDevice][電量]", self.mechStatus?.getBatteryPrecentage())
-        }
-        
-        // 注册公钥处理器
-        registerEventHandler(for: .pubKeySesame) { [weak self] _, data in
-            guard let self = self else { return }
-            self.handlePubKeySesame(data: data)
-        }
-        
-        // 注册触发延迟时间处理器
-        registerEventHandler(for: .REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME) { [weak self] _, data in
-            guard let self = self else { return }
-            self.triggerDelaySetting = CHRemoteBaseTriggerSettings.fromData(data)!
-            L.d("REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME", data.bytes)
-            (self.delegate as? CHRemoteNanoDelegate)?.onTriggerDelaySecondReceived(device: self, setting: self.triggerDelaySetting!)
-        }
-    }
-    
     // 实现 CHDeviceManagementCapable 要求
     public func getProductType() -> CHProductModel? {
         return advertisement?.productType

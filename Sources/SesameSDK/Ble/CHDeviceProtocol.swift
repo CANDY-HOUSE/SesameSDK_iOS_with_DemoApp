@@ -157,6 +157,8 @@ enum SesameItemCode: UInt8 {
     case SSM_OS3_RADAR_PARAM_SET = 200
     case SSM_OS3_RADAR_PARAM_PUBLISH = 201
     
+    // 重载/轻载 电压值mv
+    case SSM3_ITEM_CODE_BATTERY_VOLTAGE = 202
 }
 
 extension SesameItemCode {

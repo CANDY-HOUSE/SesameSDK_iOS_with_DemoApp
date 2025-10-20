@@ -42,6 +42,8 @@ class CHSesameBot2Device: CHSesameOS3, CHSesameBot2, CHDeviceUtil {
                 mechStatus = CHSesameBike2MechStatus.fromData(data)!
             }
             self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
+        case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
+            postBatteryData(data.toHexString())
         default:
             L.d("[bot2][publish]!![\(data.bytes)]")
         }

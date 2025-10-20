@@ -120,6 +120,7 @@ class CHWebView: UIView {
     
     func refresh() {
         cleanup()
+        setupView()
         loadRequest()
     }
     

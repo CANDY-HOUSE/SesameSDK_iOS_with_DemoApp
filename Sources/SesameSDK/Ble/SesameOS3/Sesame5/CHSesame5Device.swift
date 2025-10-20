@@ -48,6 +48,8 @@ class CHSesame5Device: CHSesameOS3, CHDeviceUtil ,CHSesame5 {
                 mechSetting = CHSesame5MechSettings.fromData(data)!
             case .OPS_CONTROL:
                 opsSetting = CHSesame5OpsSettings.fromData(data)!
+            case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
+                postBatteryData(data.toHexString())
             L.d("[ops]收到上鎖秒數UInt16",opsSetting!.opsLockSecond)
         default:
             L.d("!![ss5][pub][\(itemCode.rawValue)]")
