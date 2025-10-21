@@ -19,6 +19,8 @@ extension CHSesameBaseDevice {
             mechStatus = CHSesameTouchProMechStatus.fromData(payload)!
             //            L.d("[TPO][電壓]",mechStatus?.getBatteryVoltage())
             L.d("[TPO][電量]",mechStatus?.getBatteryPrecentage())
+            postBatteryData(payload[0..<2].toHexString())
+
         case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
             postBatteryData(payload.toHexString())
         case .pubKeySesame:

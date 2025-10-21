@@ -44,6 +44,7 @@ class CHSesame5Device: CHSesameOS3, CHDeviceUtil ,CHSesame5 {
                 mechStatus = Sesame5MechStatus.fromData(data)!
                 self.readHistoryCommand(){_ in}
                 self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
+                postBatteryData(data[0..<2].toHexString())
             case .mechSetting:
                 mechSetting = CHSesame5MechSettings.fromData(data)!
             case .OPS_CONTROL:
