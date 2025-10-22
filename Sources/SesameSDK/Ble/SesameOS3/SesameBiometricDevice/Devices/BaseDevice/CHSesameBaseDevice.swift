@@ -34,17 +34,6 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
             (self.delegate as? CHSesameConnectorDelegate)?.onRadarReceive(device: self, payload: _radarPayload)
         }
     }
-    
-    private let iotBatteryDeviceModels: Set<CHProductModel> = [
-        .remote,
-        .remoteNano,
-        .sesameTouch,
-        .sesameTouchPro,
-        .sesameFace,
-        .sesameFaceAI,
-        .sesameFacePro,
-        .sesameFaceProAI
-    ]
 
     private let iotDeviceModels: Set<CHProductModel> = [
         .sesameTouch,
@@ -176,7 +165,7 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
     public func goIOT() {
         if( self.isGuestKey){ return }
         
-        guard let safeProductModel = self.productModel else {
+        guard self.productModel != nil else {
             L.d("[goIOT] productModel is nil, skipping IoT setup")
             return
         }
@@ -186,26 +175,22 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
             goIoTWithOpenSensor()
             return
         }
-        if iotBatteryDeviceModels.contains(productModel) {
-            subscribeBatteryTopic()
-            
-            if iotDeviceModels.contains(productModel) {
-                CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
-                    switch result {
-                    case .success(let content):
-                        var isConnectedByWM2 = false
-                        if let wm2s = content.data.wifiModule2s {
-                            isConnectedByWM2 = wm2s.contains { $0.isConnected == true }
-                        }
-                        
-                        if isConnectedByWM2 {
-                            self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
-                        } else {
-                            self.deviceShadowStatus = nil
-                        }
-                    case .failure(_):
-                        break
+        if iotDeviceModels.contains(productModel) {
+            CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
+                switch result {
+                case .success(let content):
+                    var isConnectedByWM2 = false
+                    if let wm2s = content.data.wifiModule2s {
+                        isConnectedByWM2 = wm2s.contains { $0.isConnected == true }
                     }
+                    
+                    if isConnectedByWM2 {
+                        self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
+                    } else {
+                        self.deviceShadowStatus = nil
+                    }
+                case .failure(_):
+                    break
                 }
             }
         }

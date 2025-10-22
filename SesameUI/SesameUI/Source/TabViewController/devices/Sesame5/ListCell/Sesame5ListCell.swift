@@ -155,17 +155,20 @@ class Sesame5ListCell: UITableViewCell {
     
     private func configureBatteryDisplay(_ device: CHDevice) {
         let batteryLevel = getBatteryLevel(device)
-        if batteryLevel == -1 {
-            batteryContainer.isHidden = true
+        let isVisible = batteryLevel > 0
+        
+        batteryContainer.isHidden = !isVisible
+        batteryPercentLab.isHidden = !isVisible
+        
+        guard isVisible else {
             batteryPercentLab.text = ""
             batteryIndicatorWidth.constant = 0
-        } else {
-            batteryContainer.isHidden = false
-            batteryPercentLab.text = "\(batteryLevel) %"
-            let isLowBattery = batteryLevel < 15
-            batteryIndicator.backgroundColor = isLowBattery ? UIColor.lockRed : UIColor.sesame2Green
-            batteryIndicatorWidth.constant = calculateBatteryWidth(level: batteryLevel)
+            return
         }
+        
+        batteryPercentLab.text = "\(batteryLevel)%"
+        batteryIndicator.backgroundColor = batteryLevel >= 15 ? UIColor.sesame2Green : UIColor.lockRed
+        batteryIndicatorWidth.constant = calculateBatteryWidth(level: batteryLevel)
     }
     
     private func getBatteryLevel(_ device: CHDevice) -> Int {

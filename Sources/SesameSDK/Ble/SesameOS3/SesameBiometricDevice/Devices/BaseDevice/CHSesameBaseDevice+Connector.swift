@@ -71,34 +71,6 @@ extension CHSesameBaseDevice {
         }
     }
     
-    func subscribeBatteryTopic() {
-        let topic = "battery/\(deviceId.uuidString.uppercased())"
-        
-        CHIoTManager.shared.subscribeTopic(topic) { [weak self] data in
-            guard let self = self else { return }
-            
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                   let voltageValue = json["lightLoadBatteryVoltage_mV"] as? NSNumber {
-                    
-                    let voltage = UInt16(voltageValue.intValue)
-                    // 将 voltage 转换为反序字节（与 Android 的 toReverseBytes 一致）
-                    let batteryData = Data([
-                        UInt8(voltage & 0xFF),        // 低字节在前
-                        UInt8((voltage >> 8) & 0xFF)  // 高字节在后
-                    ])
-                    
-                    // 构造完整的 7 字节 Data（battery:2 + target:2 + position:2 + flags:1）
-                    let fullData = batteryData + Data(repeating: 0, count: 5)
-                    self.mechStatus = CHSesameTouchProMechStatus.fromData(fullData)!
-                    L.d("CHSesameBaseDevice", "subscribeBatteryTopic \(self.mechStatus?.getBatteryPrecentage() ?? 0)%")
-                }
-            } catch {
-                L.d("CHSesameBaseDevice", "Failed to parse: \(error)")
-            }
-        }
-    }
-    
     func setRadarSensitivity(payload: Data, result: @escaping CHResult<CHEmpty>) {
         if (!self.isBleAvailable(result)) { return }
         
