@@ -11,6 +11,7 @@ class CHWebViewController: CHBaseViewController {
     private var urlStr: String!
     private var sceneInfo: (scene: String, extInfo: [String: String]?)!
     private weak var webView: CHWebView!
+    var onWebViewReady: ((CHWebViewController?) -> Void)?
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -33,6 +34,9 @@ class CHWebViewController: CHBaseViewController {
         view.addSubview(webView)
         webView.loadRequest()
         self.webView = webView
+        webView.didCreated = { [weak self] web in
+            self?.onWebViewReady?(self)
+        }
         webView.autoPinEdgesToSuperview()
         registerSchemeHandlers(webView: webView)
         registerMessageHandlers(webView: webView)
@@ -52,5 +56,13 @@ extension CHWebViewController {
         vc.hidesBottomBarWhenPushed = true
         vc.sceneInfo = (scene, extInfo)
         return vc
+    }
+}
+
+extension CHWebViewController {
+    func registerRefresh(handler: @escaping (CHWebView, Any?) -> Void) {
+        webView.registerMessageHandler(WebViewMessageType.requestRefresh.rawValue) { web, message in
+            handler(web, message)
+        }
     }
 }

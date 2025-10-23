@@ -11,6 +11,7 @@ import Foundation
 
 enum WebViewMessageType: String {
     case requestDeviceList = "requestDeviceList"
+    case requestRefresh = "requestRefresh"
 }
 
 enum WebViewSchemeType: String {

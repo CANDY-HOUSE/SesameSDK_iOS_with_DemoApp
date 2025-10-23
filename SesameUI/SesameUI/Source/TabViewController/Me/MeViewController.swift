@@ -28,7 +28,7 @@ class MeViewController: CHBaseViewController {
         let historyTagView = nib!.first as! HistoryTagView
         historyTagView.titleLabel.text = "co.candyhouse.sesame2.LogIn".localized + "/" + "co.candyhouse.sesame2.SignUp".localized
         historyTagView.historyTagButton.addTarget(self, action: #selector(changeNameTapped), for: .touchUpInside)
-        historyTagView.qrCodeButton.addTarget(self, action: #selector(shareUser), for: .touchUpInside)
+        historyTagView.qrCodeButton.isEnabled = false
         historyTagView.qrCodeImageView.image = UIImage(named: "qr-code")!
         return historyTagView
     }()
@@ -202,49 +202,17 @@ class MeViewController: CHBaseViewController {
     
     // MARK: - User events
     @objc func changeNameTapped() {
-        userState = AWSMobileClient.default().currentUserState
-        var oldValue = ""
-        var title = ""
-        
-        if userState == .signedIn {
-            oldValue = userNameView.titleLabel.text ?? ""
-            title = "co.candyhouse.sesame2.FullName".localized
-        } else {
-            oldValue = UserDefaults.standard.string(forKey: "email") ?? ""
-            title = "co.candyhouse.sesame2.Email".localized
-        }
-
-        if self.userState == .signedIn {
-            ChangeValueDialog.show(oldValue,
-                                   title: title) { newValue in
-                
-                guard self.userNameView.titleLabel.text != newValue else {
-                    return
-                }
-                
-                CHUserAPIManager.shared.updateNickname(newValue) { result in
-                    if case let .success(nickName) = result {
-                        executeOnMainThread {
-                            self.userNameView.titleLabel.text = nickName
-                            WatchKitFileTransfer.shared.transferKeysToWatch()
-                        }
-                    } else if case let .failure(error) = result {
-                        executeOnMainThread {
-                            self.view.makeToast(error.errorDescription())
-                        }
-                    }
-                }
-            }
-        } else {
+        if self.userState != .signedIn {
             self.navigateLoginViewController()
+            return
         }
-    }
-    
-    @objc func shareUser() {
-        if userState == .signedIn {
-            let qrCodeViewController = QRCodeViewController.instanceWithUser()
-            self.navigationController?.pushViewController(qrCodeViewController, animated: true)
+        let webController = CHWebViewController.instanceWithScene("me")
+        webController.onWebViewReady = { web in
+            web?.registerRefresh { [weak self]_, _ in
+                self?.reloadNickName();
+            }
         }
+        self.navigationController?.pushViewController(webController, animated: true)
     }
     
     func navigateLoginViewController() {
