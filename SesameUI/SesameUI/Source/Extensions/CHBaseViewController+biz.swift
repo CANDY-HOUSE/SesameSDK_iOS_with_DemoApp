@@ -99,28 +99,9 @@ extension CHBaseViewController {
         case "scan-qrcode":
             presentScanViewController()
         case "add-friend":
-            presentFindFriendsViewController { [weak self] newVal in
-                guard let self = self else { return }
-                ViewHelper.showLoadingInView(view: self.view)
-                FindFriendHandler.shared.addFriendByEmail(newVal.trimmingCharacters(in: .whitespacesAndNewlines)) { [weak self] (friend, err) in
-                    guard let self = self else { return }
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                        if let error = err {
-                            self.view.makeToast(error.errorDescription())
-                        } else {
-                            // 進入詳情
-                            if let navController = GeneralTabViewController.getTabViewControllersBy(1) as? UINavigationController, let listViewController = navController.viewControllers.first as? FriendListViewController {
-                                if listViewController.isViewLoaded {
-                                    listViewController.reloadFriends()
-                                }
-                            }
-                            self.navigationController?.pushViewController(CHWebViewController.instanceWithScene("contact-info", extInfo: ["email": friend!.email, "subUUID": friend!.subId.uuidString.lowercased()]), animated: true)
-                        }
-                    }
-                }
-            }
+            navigationController?.pushViewController(FriendViewController.instanceWithFriendAdd(), animated: true)
         default:break;
+            
         }
     }
 }

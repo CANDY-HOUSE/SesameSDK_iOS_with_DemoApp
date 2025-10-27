@@ -141,7 +141,6 @@
 		64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */; };
 		64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */; };
 		64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
-		64CD4E5C2BF5AC7100733D29 /* FindFriendHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CD4E5B2BF5AC7100733D29 /* FindFriendHandler.swift */; };
 		64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
 		64DE0CD92B64D53400EB7C85 /* IRRemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */; };
@@ -230,7 +229,7 @@
 		BE3A724325CAB0AC002FF80E /* LockSesameIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B61E8252301AF0054F7E0 /* LockSesameIntentHandler.swift */; };
 		BE3A732E25CB9EAE002FF80E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A732C25CB9EAE002FF80E /* SignInViewController.swift */; };
 		BE3A732F25CB9EAE002FF80E /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3A732D25CB9EAE002FF80E /* SignInViewController.xib */; };
-		BE562E1F2563A4E7004617DE /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E1E2563A4E7004617DE /* FriendListViewController.swift */; };
+		BE562E1F2563A4E7004617DE /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E1E2563A4E7004617DE /* FriendViewController.swift */; };
 		BE562E2E2563AD63004617DE /* CHUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562E2D2563AD63004617DE /* CHUser.swift */; };
 		BE5794F024AF1BE200E96B72 /* NSErrorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C5346245EC30000252F00 /* NSErrorShared+.swift */; };
 		BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E268225623D0B00F8B0DD /* CHDeviceShared+.swift */; };
@@ -616,7 +615,6 @@
 		64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCellDisplayProtocol.swift; sourceTree = "<group>"; };
 		64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5ListCell.swift; sourceTree = "<group>"; };
 		64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5ListCell.xib; sourceTree = "<group>"; };
-		64CD4E5B2BF5AC7100733D29 /* FindFriendHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendHandler.swift; sourceTree = "<group>"; };
 		64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameTouchPro+.swift"; sourceTree = "<group>"; };
 		64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTableViewProxy.swift; sourceTree = "<group>"; };
 		64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteControl.swift; sourceTree = "<group>"; };
@@ -721,7 +719,7 @@
 		BE3DD9A624829E0100EEA3B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE3DD9AB24829E0100EEA3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE4242D52487B9A300B776EC /* SesameLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameLockView.swift; sourceTree = "<group>"; };
-		BE562E1E2563A4E7004617DE /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		BE562E1E2563A4E7004617DE /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		BE562E2D2563AD63004617DE /* CHUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHUser.swift; sourceTree = "<group>"; };
 		BE5E268225623D0B00F8B0DD /* CHDeviceShared+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceShared+.swift"; sourceTree = "<group>"; };
 		BE6978DC2483E30F0089141E /* ToastUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
@@ -1431,14 +1429,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		64CD4E5A2BF5AC6100733D29 /* Find */ = {
-			isa = PBXGroup;
-			children = (
-				64CD4E5B2BF5AC7100733D29 /* FindFriendHandler.swift */,
-			);
-			path = Find;
-			sourceTree = "<group>";
-		};
 		64E854352E7A859900399FED /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1840,7 +1830,6 @@
 		BE562E1D2563A4A6004617DE /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				64CD4E5A2BF5AC6100733D29 /* Find */,
 				BE562E322563C5C8004617DE /* List */,
 			);
 			path = Friend;
@@ -1849,7 +1838,7 @@
 		BE562E322563C5C8004617DE /* List */ = {
 			isa = PBXGroup;
 			children = (
-				BE562E1E2563A4E7004617DE /* FriendListViewController.swift */,
+				BE562E1E2563A4E7004617DE /* FriendViewController.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -2586,7 +2575,6 @@
 				2C15AD712E6FC63A00E37918 /* AirAdapterFactory.swift in Sources */,
 				2C15AD732E6FC63A00E37918 /* AirUIAdapter.swift in Sources */,
 				2C15AD742E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift in Sources */,
-				64CD4E5C2BF5AC7100733D29 /* FindFriendHandler.swift in Sources */,
 				6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */,
 				3B8B7C512E2FC0AB00F5A2F7 /* WebViewScreen.swift in Sources */,
 				645B1B2C2BDB4C0100D5E491 /* Array.swift in Sources */,
@@ -2666,7 +2654,7 @@
 				BE88590F26C39EB1002D17E0 /* SesameBot+.swift in Sources */,
 				64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */,
 				646B86DC2B443D520042589E /* PlayLoadingView.swift in Sources */,
-				BE562E1F2563A4E7004617DE /* FriendListViewController.swift in Sources */,
+				BE562E1F2563A4E7004617DE /* FriendViewController.swift in Sources */,
 				0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */,
 				890D33062DA0E7FF0031F0AF /* FingerPrintListVC.swift in Sources */,
 				890D33072DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift in Sources */,

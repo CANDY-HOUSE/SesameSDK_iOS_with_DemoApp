@@ -16,6 +16,7 @@ enum WebViewMessageType: String {
 
 enum WebViewSchemeType: String {
     case notify = "ssm://UI/webview/notify"
+    case registNotify = "ssm://UI/webview/registNotify"
 }
 
 extension CHWebViewController {

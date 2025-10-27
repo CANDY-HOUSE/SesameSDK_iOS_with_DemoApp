@@ -17,10 +17,7 @@ public protocol CHRouteCoordinator {
     
     /// 彈出註冊配對設備控制權
     func presentRegisterSesame2ViewController()
-    
-    /// 彈出添加朋友
-    func presentFindFriendsViewController(callback: @escaping (_ newVal: String) -> Void)
-    
+        
     /// 進入 Sesame2 歷史紀錄
     /// - Parameter sesame2: sesame2對象
     func navigateToSesame2History(_ sesame2: CHSesame2)
@@ -122,7 +119,7 @@ public extension CHRouteCoordinator where Self: UIViewController {
                 }
             } else if qrCodeType == .friend {
                 if let nav = GeneralTabViewController.switchTabByIndex(1) as? UINavigationController,
-                   let friendViewController = nav.viewControllers.first as? FriendListViewController {
+                   let friendViewController = nav.viewControllers.first as? FriendViewController {
                     friendViewController.reloadFriends()
                 }
             }
@@ -166,11 +163,6 @@ public extension CHRouteCoordinator where Self: UIViewController {
             }
         }
         present(registerSesame2ViewController.navigationController!, animated: true, completion: nil)
-    }
-    
-    func presentFindFriendsViewController(callback: @escaping (_ newVal: String) -> Void) {
-        let dialog = ChangeValueDialog.show("", title: "co.candyhouse.sesame2.AddContacts".localized, placeHolder: " friend@email.com", hint: "co.candyhouse.sesame2.findFriendHint".localized, callBack: callback)
-        dialog.valueTextField.keyboardType = .emailAddress
     }
     
     func navigateToSesame2History(_ sesame2: CHSesame2) {

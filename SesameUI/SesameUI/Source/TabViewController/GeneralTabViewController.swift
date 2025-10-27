@@ -85,7 +85,7 @@ extension GeneralTabViewController {
     /// 指定初始方法，產生 instance 並設定 content view controllers
     static func instance() -> GeneralTabViewController {
         let meViewController = MeViewController.instance()
-        let friendListViewController = FriendListViewController.instance()
+        let friendListViewController = FriendViewController.instance()
         let sesame2ListViewController = SesameDeviceListViewController.instance()
         
         let deviceListItem = UITabBarItem(title: "co.candyhouse.sesame2.Sesame".localized,
