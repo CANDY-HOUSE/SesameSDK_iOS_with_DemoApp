@@ -18,6 +18,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
             device = sesame5
         }
     }
+    let scrollView = UIScrollView(frame: .zero)
     var statusView: CHUIPlainSettingView!
     let contentStackView = UIStackView(frame: .zero)
     var dfuView: CHUIPlainSettingView!
@@ -85,15 +86,9 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         //        L.d("[UI][ss5][viewDidLoad]")
-        let scrollView = UIScrollView(frame: .zero)
         view.backgroundColor = .sesame2Gray
         scrollView.addSubview(contentStackView)
         view.addSubview(scrollView)
-        if sesame5.keyLevel != KeyLevel.guest.rawValue {
-            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
-            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
-            scrollView.refreshControl = refreshControl
-        }
 
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
@@ -145,6 +140,9 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
 
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()

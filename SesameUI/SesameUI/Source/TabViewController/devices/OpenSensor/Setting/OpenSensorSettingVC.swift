@@ -174,13 +174,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         sesame2ListView.delegate = self
         sesame2ListView.dataSource = self
         sesame2ListView.isScrollEnabled = false
-        
-        if device.keyLevel != KeyLevel.guest.rawValue {
-            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
-            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
-            scrollView.refreshControl = refreshControl
-        }
-        
+
         self.arrangeSubviews()
     }
 
@@ -204,6 +198,9 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
 
         // MARK: top status
         statusView = CHUIViewGenerator.plain()

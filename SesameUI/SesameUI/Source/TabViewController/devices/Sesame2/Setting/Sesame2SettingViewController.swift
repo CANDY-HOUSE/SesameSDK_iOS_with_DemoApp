@@ -80,12 +80,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         scrollView.addSubview(contentStackView)
         view.addSubview(scrollView)
         
-        if sesame2.keyLevel != KeyLevel.guest.rawValue {
-            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
-            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
-            scrollView.refreshControl = refreshControl
-        }
-        
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = 0
@@ -112,6 +106,9 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
 
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()

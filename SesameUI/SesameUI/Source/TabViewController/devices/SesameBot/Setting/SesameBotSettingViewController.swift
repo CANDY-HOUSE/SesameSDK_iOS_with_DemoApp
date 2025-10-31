@@ -75,12 +75,6 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
         arrangeSubviews()
         DFUCenter.shared.confirmDFUDeletegate(self, forDevice: sesameBot)
         showStatusViewIfNeeded()
-        
-        if sesameBot.keyLevel != KeyLevel.guest.rawValue {
-            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
-            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
-            scrollView.refreshControl = refreshControl
-        }
     }
     
     @objc func reloadFriends() {
@@ -99,7 +93,10 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-     
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized

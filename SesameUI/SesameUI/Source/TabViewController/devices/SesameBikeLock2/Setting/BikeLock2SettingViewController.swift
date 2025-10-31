@@ -58,12 +58,6 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         scrollView.addSubview(contentStackView)
         view.addSubview(scrollView)
         
-        if bikeLock2.keyLevel != KeyLevel.guest.rawValue {
-            refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
-            refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
-            scrollView.refreshControl = refreshControl
-        }
-        
         contentStackView.axis = .vertical
         contentStackView.alignment = .fill
         contentStackView.spacing = 0
@@ -110,7 +104,10 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized

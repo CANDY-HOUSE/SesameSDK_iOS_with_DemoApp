@@ -100,12 +100,6 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         arrangeSubViews()
         configureSesameTableView()
         configureIRKeysTableView()
-        
-        let refreshControl: UIRefreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
-        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
-        scrollView.refreshControl = refreshControl
-        
         showStatusViewIfNeeded()
         checkOSUpgradeByNetworkIfNeeded()
         fetchIrDevices()
@@ -159,6 +153,10 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        let refreshControl: UIRefreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
 
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
