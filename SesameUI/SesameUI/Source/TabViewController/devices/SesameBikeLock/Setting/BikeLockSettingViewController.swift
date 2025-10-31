@@ -29,7 +29,6 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var uuidView: CHUIPlainSettingView!
-    var changeNameView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var statusView: CHUIPlainSettingView!
     var voiceShortcutButton: CHUISettingButtonView?
@@ -91,30 +90,8 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
         contentStackView.addArrangedSubview(statusView)
         
         // MARK: Group
-        if AWSMobileClient.default().currentUserState == .signedIn, bikeLock.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        }
-
-        // MARK: Change name
-        changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
-            self.changeName()
-        }
-        changeNameView.title = "co.candyhouse.sesame2.EditName".localized
-        changeNameView.value = bikeLock.deviceName
-        contentStackView.addArrangedSubview(changeNameView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        
-        // MARK: Share
-        if bikeLock.keyLevel == KeyLevel.owner.rawValue || bikeLock.keyLevel == KeyLevel.manager.rawValue {
-            let shareKeyView = CHUIViewGenerator.arrow(addtionalIcon: "qr-code") { [unowned self] sender,_ in
-                self.presentQRCodeSharingView(sender: sender as! UIButton)
-            }
-            shareKeyView.title = "co.candyhouse.sesame2.ShareTheKey".localized
-            contentStackView.addArrangedSubview(shareKeyView)
-        }
+        contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-
 
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
@@ -123,13 +100,6 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
         contentStackView.addArrangedSubview(modelView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
 
-        // MARK: Permission
-        let permissionView = CHUIViewGenerator.plain()
-        permissionView.title = "co.candyhouse.sesame2.Permission".localized
-        permissionView.value = KeyLevel(rawValue: bikeLock.keyLevel)!.description()
-        contentStackView.addArrangedSubview(permissionView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        
         // MARK: SiriButton
         if #available(iOS 12.0, *) {
             voiceShortcutButton = CHUIViewGenerator.button() { [unowned self] sender,_ in
@@ -267,7 +237,6 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
     // MARK: RefreshUI
     func refreshUI() {
         dfuView.value = versionStr ?? ""
-        changeNameView.value = bikeLock.deviceName
     }
 
     // MARK: getVersionTag
@@ -286,85 +255,6 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
                 L.d("[bk2][getVersionTag]",error.errorDescription())
             }
         }
-    }
-    
-    // MARK: changeName
-    func changeName() {
-        ChangeValueDialog.show(bikeLock.deviceName, title: "co.candyhouse.sesame2.EditName".localized) { name in
-            if name == "" {
-                self.view.makeToast("co.candyhouse.sesame2.EditName".localized)
-                return
-            }
-            self.bikeLock.setDeviceName(name)
-            
-            if AWSMobileClient.default().currentUserState == .signedIn {
-                var userKey = CHUserKey.fromCHDevice(self.bikeLock)
-                CHUserAPIManager.shared.getSubId { subId in
-                    if let subId = subId {
-                        userKey.subUUID = subId
-                        CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
-                            
-                        }
-                    }
-                }
-            }
-            
-            WatchKitFileTransfer.shared.transferKeysToWatch()
-            self.refreshUI()
-            
-            if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                listViewController.reloadTableView()
-            }
-        }
-    }
-    
-    // MARK: presentQRCodeSharingView
-    func presentQRCodeSharingView(sender: UIButton) {
-        let alertController = UIAlertController(title: "", message: "co.candyhouse.sesame2.ShareFriend".localized, preferredStyle: .actionSheet)
-        if bikeLock.keyLevel == 0 {
-            let ownerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.ownerKey".localized, style: .default) { _ in
-                DispatchQueue.main.async {
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock, keyLevel: KeyLevel.owner.rawValue) {
-                        self.reloadMembers()
-                    }
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                }
-            }
-            alertController.addAction(ownerKeyAction)
-        }
-
-        if (bikeLock.keyLevel == 0 || bikeLock.keyLevel == 1) {
-            let managerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.managerKey".localized, style: .default) { _ in
-                DispatchQueue.main.async {
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock, keyLevel: KeyLevel.manager.rawValue)
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                }
-            }
-            alertController.addAction(managerKeyAction)
-        }
-        
-
-        let memberKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.memberKey".localized, style: .default) { _ in
-            DispatchQueue.main.async {
-                if self.bikeLock.keyLevel == KeyLevel.guest.rawValue {
-                    let qrCode = URL.qrCodeURLFromDevice(self.bikeLock, deviceName: self.bikeLock.deviceName, keyLevel: KeyLevel.guest.rawValue)
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock, qrCode: qrCode!)
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                } else {
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.bikeLock, keyLevel: KeyLevel.guest.rawValue) {
-                        self.reloadMembers()
-                    }
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                }
-            }
-        }
-        alertController.addAction(memberKeyAction)
-        
-        
-        let cancel = UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized, style: .cancel, handler: nil)
-        alertController.addAction(cancel)
-        alertController.popoverPresentationController?.sourceView = sender
-        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: OTA

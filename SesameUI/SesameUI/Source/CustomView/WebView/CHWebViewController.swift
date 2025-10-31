@@ -38,8 +38,8 @@ class CHWebViewController: CHBaseViewController {
             self?.onWebViewReady?(self)
         }
         webView.autoPinEdgesToSuperview()
-        registerSchemeHandlers(webView: webView)
-        registerMessageHandlers(webView: webView)
+        webView.registerSchemeHandlers()
+        webView.registerMessageHandlers()
     }
 }
 

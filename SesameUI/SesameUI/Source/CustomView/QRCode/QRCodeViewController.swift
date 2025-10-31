@@ -5,7 +5,7 @@
 //  Created by Wayne Hsiao on 2020/10/16.
 //  Copyright © 2020 CandyHouse. All rights reserved.
 //
-
+ 
 import UIKit
 import SesameSDK
 
@@ -33,12 +33,6 @@ public class QRCodeViewController: CHBaseViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         switch qrCodeType {
-        case .sesameKey:
-            generateDeviceQRCode()
-            deviceNameLabel.text = "\(device.deviceName)"
-            showShareButton()
-        case .friend:
-            generateFriendQRCode()
         case .matter:
             setupMatterViews()
         default:
@@ -61,71 +55,6 @@ public class QRCodeViewController: CHBaseViewController {
         self.navigationItem.rightBarButtonItem = shareButton
     }
     
-    func generateDeviceQRCode() {
-        introductionLabel.text = device.deviceName + "co.candyhouse.sesame2.AddKeyByScan".localized
-        introductionDetailLabel.text = "co.candyhouse.sesame2.AddKeyByScanDetail".localized
-        
-        let circleAppIcon = UIImage(named: "custom-icon")!.circleImage()
-        
-        if let qrCodeString = qrCodeString {
-            self.qrCodeImageView.image = UIImage.generateQRCode(qrCodeString,
-                                                                circleAppIcon!,
-                                                                .black)
-        } else {
-            ViewHelper.showLoadingInView(view: self.qrCodeImageView)
-            device.qrCodeWithKeyLevel(keyLevel) { qrCodeURL in
-                executeOnMainThread {
-                    ViewHelper.hideLoadingView(view: self.qrCodeImageView)
-                    if let qrCodeURL = qrCodeURL {
-                        self.qrCodeImageView.image = UIImage.generateQRCode(qrCodeURL,
-                                                                       circleAppIcon!,
-                                                                       .black)
-                    }
-                }
-            }
-        }
-    }
-    
-    func generateFriendQRCode() {
-        ViewHelper.showLoadingInView(view: self.qrCodeImageView)
-        CHUserAPIManager.shared.getSubId { subId in
-            // [joi todo]簡化
-            guard let subId = subId else {
-                return
-            }
-            let nickname = CHUserAPIManager.shared.getNickname { result in
-                
-            }
-            let email = CHUserAPIManager.shared.getEmail { result in
-                
-            }
-            self.user = CHUser(subId: UUID(uuidString: subId)!, nickname: nickname, email: email, keyLevel: nil, gtag: nil)
-            executeOnMainThread {
-                ViewHelper.hideLoadingView(view: self.qrCodeImageView)
-                self.introductionLabel.text = "co.candyhouse.sesame2.AddFriendByScan".localized
-                self.introductionDetailLabel.text = "co.candyhouse.sesame2.AddFriendByScanDetail".localized
-                let sharedKey = QRcodeType.friend.rawValue
-                var components = URLComponents()
-                components.scheme = URL.sesame2UI.scheme
-                components.host = URL.sesame2UI.host
-                components.path = "/"
-                components.queryItems = [
-                    URLQueryItem(name: "t", value: sharedKey),
-                    URLQueryItem(name: sharedKey, value: self.user.subId.uuidString)
-                ]
-                
-                let circleAppIcon = UIImage(named: "man")!
-                    .addImagePadding(x: 100, y: 100)!
-                    .withBackground(color: .white, opaque: false)
-                    .rectangleImage()!
-                self.qrCodeImageView.image = UIImage.generateQRCode(components.url!.absoluteString,
-                                                                    circleAppIcon,
-                                                                    .black)
-                self.deviceNameLabel.text = self.user.nickname
-                self.showShareButton()
-            }
-        }
-    }
     
     @objc func presentShareViewController(sender: UIView) {
         var imageName = ""
@@ -162,37 +91,6 @@ public class QRCodeViewController: CHBaseViewController {
                                                                                  width: 0,
                                                                                  height: 0)
         self.present(activityViewController, animated: true, completion: nil)
-    }
-}
-
-// MARK: - Designated Initializer
-extension QRCodeViewController {
-    static func instanceWithCHDevice(_ device: CHDevice, qrCode: String, dismissHandler: (()->Void)? = nil) -> QRCodeViewController {
-        let myQRCodeViewController = QRCodeViewController(nibName: "QRCodeViewController", bundle: nil)
-        myQRCodeViewController.device = device
-        myQRCodeViewController.qrCodeType = .sesameKey
-        myQRCodeViewController.keyLevel = KeyLevel.guest.rawValue
-        myQRCodeViewController.qrCodeString = qrCode
-        myQRCodeViewController.dismissHandler = dismissHandler
-        return myQRCodeViewController
-    }
-    
-    static func instanceWithCHDevice(_ device: CHDevice, keyLevel: Int, dismissHandler: (()->Void)? = nil) -> QRCodeViewController {
-        L.d("[qrcode][device][init]")
-        let myQRCodeViewController = QRCodeViewController(nibName: "QRCodeViewController", bundle: nil)
-        myQRCodeViewController.device = device
-        myQRCodeViewController.qrCodeType = .sesameKey
-        myQRCodeViewController.keyLevel = keyLevel
-        myQRCodeViewController.dismissHandler = dismissHandler
-        return myQRCodeViewController
-    }
-    
-    static func instanceWithUser(_ dismissHandler: (()->Void)? = nil) -> QRCodeViewController {
-        let myQRCodeViewController = QRCodeViewController(nibName: "QRCodeViewController", bundle: nil)
-        myQRCodeViewController.qrCodeType = .friend
-        myQRCodeViewController.dismissHandler = dismissHandler
-        myQRCodeViewController.hidesBottomBarWhenPushed = true
-        return myQRCodeViewController
     }
 }
 

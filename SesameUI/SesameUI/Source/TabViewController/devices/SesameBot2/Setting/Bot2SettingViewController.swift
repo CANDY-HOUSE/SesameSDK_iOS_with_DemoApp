@@ -34,7 +34,6 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var statusView: CHUIPlainSettingView!
-    var changeNameView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var siriButton: CHUISettingButtonView?
     var scriptView: CHUIExpandableArrowSettingView!
@@ -118,42 +117,14 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         contentStackView.addArrangedSubview(statusView)
         
         // MARK: Group
-        if AWSMobileClient.default().currentUserState == .signedIn, bikeLock2.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        }
-        
-        // MARK: Change name
-        changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
-            self.changeName()
-        }
-        changeNameView.title = "co.candyhouse.sesame2.EditName".localized
-        changeNameView.value = bikeLock2.deviceName
-        contentStackView.addArrangedSubview(changeNameView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        
-        // MARK: 分享鑰匙
-        if bikeLock2.keyLevel == KeyLevel.owner.rawValue || bikeLock2.keyLevel == KeyLevel.manager.rawValue {
-            let shareKeyView = CHUIViewGenerator.arrow(addtionalIcon: "qr-code") { [unowned self] sender,_ in
-                self.presentQRCodeSharingView(sender: sender as! UIButton)
-            }
-            shareKeyView.title = "co.candyhouse.sesame2.ShareTheKey".localized
-            contentStackView.addArrangedSubview(shareKeyView)
-        }
+        contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        
+
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized
         modelView.value = bikeLock2.productModel.deviceModelName()
         contentStackView.addArrangedSubview(modelView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        
-        // MARK: Permission (角色&權限)
-        let permissionView = CHUIViewGenerator.plain()
-        permissionView.title = "co.candyhouse.sesame2.Permission".localized
-        permissionView.value = KeyLevel(rawValue: bikeLock2.keyLevel)!.description()
-        contentStackView.addArrangedSubview(permissionView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: 动作脚本
@@ -331,37 +302,6 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
                     }
                     self.setupPickerWithEvents(events, currentIndex: Int(bot2Status.data.curIdx))
                 }
-            }
-        }
-    }
-    
-    // MARK: Change Name
-    func changeName() {
-        ChangeValueDialog.show(bikeLock2.deviceName, title: "co.candyhouse.sesame2.EditName".localized) { name in
-            self.bikeLock2.setDeviceName(name)
-            self.changeNameView.value = name
-            if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                listViewController.reloadTableView()
-            }
-
-            if AWSMobileClient.default().currentUserState == .signedIn {
-                var userKey = CHUserKey.fromCHDevice(self.bikeLock2)
-                CHUserAPIManager.shared.getSubId { subId in
-                    if let subId = subId {
-                        userKey.subUUID = subId
-                        CHUserAPIManager.shared.putCHUserKey(userKey) { _ in}
-                    }
-                }
-            }
-            WatchKitFileTransfer.shared.transferKeysToWatch()
-        }
-    }
-    
-    // MARK: presentQRCodeSharingView (Share QR codes)
-    func presentQRCodeSharingView(sender: UIButton) {
-        modalSheetToQRControlByRoleLevel(device: self.bikeLock2, sender: sender) { isComplete in
-            if isComplete {
-                self.reloadMembers()
             }
         }
     }

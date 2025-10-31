@@ -136,7 +136,6 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
     var opsLockView: CHUIExpandableSettingView!
     var sesame2ListView = UITableView(frame: .zero)
     var addSesameButtonView: CHUIPlainSettingView!
-    var changeNameView: CHUIPlainSettingView!
     var dismissHandler: (()->Void)?
     
     var opsUInt: UInt8 = 0 {
@@ -203,40 +202,15 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
         // MARK: Group
-        if AWSMobileClient.default().currentUserState == .signedIn, device.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        }
+        contentStackView.addArrangedSubview(deviceMemberWebView(device))
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+
         // MARK: top status
         statusView = CHUIViewGenerator.plain()
         statusView.backgroundColor = .lockRed
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
-
-        // MARK: Change name
-        changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
-            ChangeValueDialog.show(mDevice.deviceName, title: "co.candyhouse.sesame2.EditName".localized) { name in
-                self.mDevice.setDeviceName(name)
-                self.changeNameView.value = name
-                if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                    listViewController.reloadTableView()
-                }
-                if AWSMobileClient.default().currentUserState == .signedIn {
-                    var userKey = CHUserKey.fromCHDevice(self.mDevice)
-                    CHUserAPIManager.shared.getSubId { subId in
-                        if let subId = subId {
-                            userKey.subUUID = subId
-                            CHUserAPIManager.shared.putCHUserKey(userKey) { _ in}
-                        }
-                    }
-                }
-            }
-        }
-        changeNameView.title = "co.candyhouse.sesame2.EditName".localized
-        changeNameView.value = mDevice.deviceName
-        contentStackView.addArrangedSubview(changeNameView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
@@ -244,13 +218,6 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         modelView.value = mDevice.productModel.deviceModelName()
         modelView.tag = kTagModelView
         contentStackView.addArrangedSubview(modelView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-
-        // MARK: Permission
-        let permissionView = CHUIViewGenerator.plain()
-        permissionView.title = "co.candyhouse.sesame2.Permission".localized
-        permissionView.value = KeyLevel(rawValue: mDevice.keyLevel)!.description()
-        contentStackView.addArrangedSubview(permissionView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: 长按触发按钮

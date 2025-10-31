@@ -40,7 +40,6 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var refreshControl: UIRefreshControl = UIRefreshControl()
-    var changeNameView: CHUIPlainSettingView!
     var dismissHandler: (()->Void)?
 
     deinit {
@@ -80,35 +79,9 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
         // MARK: Group
-        if AWSMobileClient.default().currentUserState == .signedIn, device.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        }
-        
-        // MARK: Change name
-        changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
-            ChangeValueDialog.show(mDevice.deviceName, title: "co.candyhouse.sesame2.EditName".localized) { name in
-                self.mDevice.setDeviceName(name)
-                self.changeNameView.value = name
-                if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                    listViewController.reloadTableView()
-                }
-                if AWSMobileClient.default().currentUserState == .signedIn {
-                    var userKey = CHUserKey.fromCHDevice(self.mDevice)
-                    CHUserAPIManager.shared.getSubId { subId in
-                        if let subId = subId {
-                            userKey.subUUID = subId
-                            CHUserAPIManager.shared.putCHUserKey(userKey) { _ in}
-                        }
-                    }
-                }
-            }
-        }
-        changeNameView.title = "co.candyhouse.sesame2.EditName".localized
-        changeNameView.value = mDevice.deviceName
-        contentStackView.addArrangedSubview(changeNameView)
+        contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        
+    
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized

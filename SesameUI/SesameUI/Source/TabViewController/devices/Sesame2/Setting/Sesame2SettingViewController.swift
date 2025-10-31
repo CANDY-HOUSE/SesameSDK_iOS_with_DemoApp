@@ -28,7 +28,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
     let contentStackView = UIStackView(frame: .zero)
     var uuidView: CHUIPlainSettingView!
     var angleSettingView: CHUIArrowSettingView!
-    var changeNameView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var autoLockView: CHUITogglePickerSettingView!
     var autoUnLockView: CHUIArrowSettingView!
@@ -111,43 +110,14 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
         // MARK: Group
-        if AWSMobileClient.default().currentUserState == .signedIn, sesame2.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        }
-        
-        // MARK: Change name
-        changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
-            self.changeName()
-        }
-        changeNameView.title = "co.candyhouse.sesame2.EditName".localized
-        changeNameView.value = sesame2.deviceName
-        contentStackView.addArrangedSubview(changeNameView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        
-        // MARK: Share
-        if sesame2.keyLevel == KeyLevel.owner.rawValue || sesame2.keyLevel == KeyLevel.manager.rawValue {
-            let shareKeyView = CHUIViewGenerator.arrow(addtionalIcon: "qr-code") { [unowned self] sender,_ in
-                self.presentQRCodeSharingView(sender: sender as! UIButton)
-            }
-            shareKeyView.title = "co.candyhouse.sesame2.ShareTheKey".localized
-            contentStackView.addArrangedSubview(shareKeyView)
-        }
+        contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-
 
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized
         modelView.value = sesame2.productModel.deviceModelName()
         contentStackView.addArrangedSubview(modelView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-
-        // MARK: Permission
-        let permissionView = CHUIViewGenerator.plain()
-        permissionView.title = "co.candyhouse.sesame2.Permission".localized
-        permissionView.value = KeyLevel(rawValue: sesame2.keyLevel)!.description()
-        contentStackView.addArrangedSubview(permissionView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Angle setting
@@ -425,7 +395,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         autoLockView?.pickerView.selectRow(secondPickerSelectedRow, inComponent: 0, animated: false)
         autoUnLockView.value = self.sesame2.autoUnlockStatus() == true ? "co.candyhouse.sesame2.on".localized : "co.candyhouse.sesame2.off".localized
         dfuView.value = version ?? ""
-        changeNameView.value = sesame2.deviceName
         showStatusViewIfNeeded()
     }
     
@@ -463,38 +432,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         }
     }
     
-    // MARK: changeName
-    func changeName() {
-        let placeholder = sesame2.deviceName
-        
-        ChangeValueDialog.show(placeholder, title: "co.candyhouse.sesame2.EditName".localized) { name in
-            if name == "" {
-                self.view.makeToast("co.candyhouse.sesame2.EditName".localized)
-                return
-            }
-            self.sesame2.setDeviceName(name)
-            
-            if AWSMobileClient.default().currentUserState == .signedIn {
-                var userKey = CHUserKey.fromCHDevice(self.sesame2)
-                CHUserAPIManager.shared.getSubId { subId in
-                    if let subId = subId {
-                        userKey.subUUID = subId
-                        CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
-                            
-                        }
-                    }
-                }
-            }
-            
-            WatchKitFileTransfer.shared.transferKeysToWatch()
-            self.refreshUI()
-            
-            if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                listViewController.reloadTableView()
-            }
-        }
-    }
-    
     // MARK: autoLockOff
     func autoLockOff() {
         secondPickerSelectedRow = 0
@@ -509,57 +446,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
                 L.d(error.errorDescription())
             }
         }
-    }
-    
-    // MARK: presentQRCodeSharingView
-    func presentQRCodeSharingView(sender: UIButton) {
-        let alertController = UIAlertController(title: "", message: "co.candyhouse.sesame2.ShareFriend".localized, preferredStyle: .actionSheet)
-        if sesame2.keyLevel == 0 {
-            let ownerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.ownerKey".localized, style: .default) { _ in
-                executeOnMainThread {
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesame2, keyLevel: KeyLevel.owner.rawValue) {
-                        self.reloadMembers()
-                    }
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                }
-            }
-            alertController.addAction(ownerKeyAction)
-        }
-        
-        if (sesame2.keyLevel == 0 || sesame2.keyLevel == 1) {
-            let managerKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.managerKey".localized, style: .default) { _ in
-                executeOnMainThread {
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesame2, keyLevel: KeyLevel.manager.rawValue)  {
-                        self.reloadMembers()
-                    }
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                }
-            }
-            alertController.addAction(managerKeyAction)
-        }
-        
-
-        let memberKeyAction = UIAlertAction(title: "co.candyhouse.sesame2.memberKey".localized, style: .default) { _ in
-            executeOnMainThread {
-                if self.sesame2.keyLevel == KeyLevel.guest.rawValue {
-                    let qrCode = URL.qrCodeURLFromDevice(self.sesame2, deviceName: self.sesame2.deviceName, keyLevel: KeyLevel.guest.rawValue)
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesame2, qrCode: qrCode!)
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                } else {
-                    let sesame2QRCodeViewController = QRCodeViewController.instanceWithCHDevice(self.sesame2, keyLevel: KeyLevel.guest.rawValue) {
-                        self.reloadMembers()
-                    }
-                    self.navigationController?.pushViewController(sesame2QRCodeViewController, animated: true)
-                }
-            }
-        }
-        alertController.addAction(memberKeyAction)
-        
-        
-        let cancel = UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized, style: .cancel, handler: nil)
-        alertController.addAction(cancel)
-        alertController.popoverPresentationController?.sourceView = sender
-        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: OTA

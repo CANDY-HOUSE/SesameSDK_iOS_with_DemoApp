@@ -132,8 +132,8 @@
 		6483C9252B68F98800D8B68D /* strings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9272B68F98800D8B68D /* strings.xml */; };
 		648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648461BB2BC7B6370000E9A7 /* UITableView+.swift */; };
 		649465CA2E84E7920072F7F4 /* CHWebview+RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */; };
-		649466182E8B84450072F7F4 /* CHWebViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649466172E8B843E0072F7F4 /* CHWebViewController+.swift */; };
 		649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */; };
+		649CEA592EB2218F00BF9A5D /* CHWebView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649CEA582EB2218F00BF9A5D /* CHWebView+.swift */; };
 		64ADDE392DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
 		64ADDE3A2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
 		64ADDE3B2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */; };
@@ -609,8 +609,8 @@
 		6483C92A2B68F9A500D8B68D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ja; path = ja.lproj/strings.xml; sourceTree = "<group>"; };
 		648461BB2BC7B6370000E9A7 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+RefreshControl.swift"; sourceTree = "<group>"; };
-		649466172E8B843E0072F7F4 /* CHWebViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebViewController+.swift"; sourceTree = "<group>"; };
 		649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIRControlDialog.swift; sourceTree = "<group>"; };
+		649CEA582EB2218F00BF9A5D /* CHWebView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebView+.swift"; sourceTree = "<group>"; };
 		64ADDE382DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDataToHistoryTag+.swift"; sourceTree = "<group>"; };
 		64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCellDisplayProtocol.swift; sourceTree = "<group>"; };
 		64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5ListCell.swift; sourceTree = "<group>"; };
@@ -1432,9 +1432,9 @@
 		64E854352E7A859900399FED /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				649466172E8B843E0072F7F4 /* CHWebViewController+.swift */,
-				64E854382E7A99B300399FED /* CHWebViewController.swift */,
 				64E854362E7A85A300399FED /* CHWebView.swift */,
+				649CEA582EB2218F00BF9A5D /* CHWebView+.swift */,
+				64E854382E7A99B300399FED /* CHWebViewController.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -2542,6 +2542,7 @@
 				898EB2A02E76E4AB00FB632D /* RemoteUIType.swift in Sources */,
 				B08C5347245EC30000252F00 /* NSErrorShared+.swift in Sources */,
 				B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */,
+				649CEA592EB2218F00BF9A5D /* CHWebView+.swift in Sources */,
 				645B1B2E2BDB4C0100D5E491 /* UIImage.swift in Sources */,
 				645211F62B2BFA270091DDE3 /* Bot2ScriptActionVC.swift in Sources */,
 				2C15AD552E6FC63A00E37918 /* RemoteControlViewModel.swift in Sources */,
@@ -2571,7 +2572,6 @@
 				2C15AD6D2E6FC63A00E37918 /* CHIRManager.swift in Sources */,
 				2C15AD6E2E6FC63A00E37918 /* RemoteRepository.swift in Sources */,
 				2C15AD702E6FC63A00E37918 /* RemoteUIAdapter.swift in Sources */,
-				649466182E8B84450072F7F4 /* CHWebViewController+.swift in Sources */,
 				2C15AD712E6FC63A00E37918 /* AirAdapterFactory.swift in Sources */,
 				2C15AD732E6FC63A00E37918 /* AirUIAdapter.swift in Sources */,
 				2C15AD742E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift in Sources */,

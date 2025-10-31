@@ -18,7 +18,6 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
     var uuidView: CHUIPlainSettingView!
     var versionView: CHUIPlainSettingView!
     var sliderView: CHUISliderSettingView!
-    var changeNameView: CHUIPlainSettingView!
     var statusView: CHUIPlainSettingView!
     var versionTag = ""
     var netVersionTag = ""
@@ -158,54 +157,9 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         contentStackView.addArrangedSubview(statusView)
         
         // MARK: Group
-        if AWSMobileClient.default().currentUserState == .signedIn, wifiModule2.keyLevel != KeyLevel.guest.rawValue {
-            contentStackView.addArrangedSubview(deviceMemberWebView(device.deviceId.uuidString))
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        }
-        
-        // MARK: Change name
-        changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
-            let placeholder = wifiModule2.deviceName
-            ChangeValueDialog.show(placeholder, title: "co.candyhouse.sesame2.EditName".localized) { name in
-                if name == "" {
-                    self.view.makeToast("co.candyhouse.sesame2.EditName".localized)
-                    return
-                }
-                self.wifiModule2.setDeviceName(name)
-                if AWSMobileClient.default().currentUserState == .signedIn {
-                    var userKey = CHUserKey.fromCHDevice(self.wifiModule2)
-                    CHUserAPIManager.shared.getSubId { subId in
-                        if let subId = subId {
-                            userKey.subUUID = subId
-                            CHUserAPIManager.shared.putCHUserKey(userKey) { _ in }
-                        }
-                    }
-                }
-                self.refreshUI()
-                if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                    listViewController.reloadTableView()
-                }
-            }
-        }
-        changeNameView.title = "co.candyhouse.sesame2.EditName".localized
-        changeNameView.value = wifiModule2.deviceName
-        contentStackView.addArrangedSubview(changeNameView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        
-        // MARK: 分享鑰匙
-        if wifiModule2.keyLevel == KeyLevel.owner.rawValue || wifiModule2.keyLevel == KeyLevel.manager.rawValue {
-            let shareKeyView = CHUIViewGenerator.arrow(addtionalIcon: "qr-code") { [unowned self] sender,_ in
-                modalSheetToQRControlByRoleLevel(device: self.wifiModule2, sender: sender as? UIView) { isComplete in
-                    if isComplete {
-                        self.reloadMembers()
-                    }
-                }
-            }
-            shareKeyView.title = "co.candyhouse.sesame2.ShareManagementView".localized
-            contentStackView.addArrangedSubview(shareKeyView)
-        }
+        contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        
+
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized
@@ -351,7 +305,6 @@ class Hub3SettingViewController: CHBaseViewController, UICollectionViewDelegateF
         }
         sesameExclamationContainerView.isHidden = wifiModuleDeviceModels.count > 0 || (wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == false
         addSesameButtonView.hidePlusLable(wifiModuleDeviceModels.count == 0 || (wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == false)
-        changeNameView.value = wifiModule2.deviceName
     }
     
     func setonHub3Brightness(device: CHHub3){
@@ -571,7 +524,6 @@ extension Hub3SettingViewController: CHHub3Delegate {
     }
     
     func onOTAProgress(device: CHWifiModule2, percent: UInt8) {
-        guard self.changeNameView != nil else { return }
         executeOnMainThread { [weak self] in
             guard let self = self else { return }
             self.versionView.value = "\(percent) %"
@@ -585,7 +537,6 @@ extension Hub3SettingViewController: CHHub3Delegate {
     }
     
     func onScanWifiSID(device: CHWifiModule2, ssid: CHSSID) {
-        guard self.changeNameView != nil else { return }
         executeOnMainThread { [weak self] in
             guard let self = self, self.ssidScanViewController != nil else { return }
             if self.ssidScanViewController!.ssids.contains(ssid) == false {

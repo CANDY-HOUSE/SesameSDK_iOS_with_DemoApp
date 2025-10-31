@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import SesameSDK
 
 // Device Owner Manage
 extension CHBaseViewController {
@@ -22,10 +23,11 @@ extension CHBaseViewController {
         }
     }
     
-    func deviceMemberWebView(_ deviceUUID: String) -> UIView {
+    func deviceMemberWebView(_ device: CHDevice) -> UIView {
         let collectionViewContainer = UIView(frame: .zero)
-        collectionViewContainer.autoLayoutHeight(80)
-        let web = CHWebView.instanceWithScene("device-user", extInfo: ["deviceUUID": deviceUUID])
+        let heightConstraint = collectionViewContainer.heightAnchor.constraint(equalToConstant: 80)
+        heightConstraint.isActive = true
+        let web = CHWebView.instanceWithScene("device-setting", extInfo: ["deviceUUID": device.deviceId.uuidString, "keyLevel": "\(device.keyLevel)"])
         self.deviceMemberWebView = web
         web.registerSchemeHandler("ssm://UI/webview/open") { [weak self] view, url, param in
             guard let self = self else {
@@ -39,9 +41,21 @@ extension CHBaseViewController {
             }
             self.navigationController?.pushViewController(CHWebViewController.instanceWithURL(urlStr), animated:true)
         }
+        web.registerMessageHandler(WebViewMessageType.requestAutoLayoutHeight.rawValue) { webView, data in
+            if let requestData = data as? [String: Any],
+               let height = requestData["height"] as? CGFloat {
+                heightConstraint.constant = height
+                UIView.performWithoutAnimation {
+                    if let parentView = collectionViewContainer.superview {
+                        parentView.layoutIfNeeded()
+                    }
+                }
+            }
+        }
         collectionViewContainer.addSubview(web)
         web.autoPinEdgesToSuperview(safeArea: false)
         web.loadRequest()
+        web.registerMessageHandlers()
         return collectionViewContainer;
     }
     

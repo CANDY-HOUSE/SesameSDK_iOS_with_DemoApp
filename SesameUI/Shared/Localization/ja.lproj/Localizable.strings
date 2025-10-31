@@ -12,7 +12,6 @@
 "co.candyhouse.sesame2.Sesame5US" = "セサミ 5 北米北欧版";
 "co.candyhouse.sesame2.SesameBot2" = "セサミ ボット 2";
 "co.candyhouse.sesame2.Hub3" = "ハブ 3";
-
 "co.candyhouse.sesame2.Contacts" = "連絡先";
 "co.candyhouse.sesame2.Me" = "自分";
 "co.candyhouse.sesame2.AddContacts" = "連絡先の追加";
@@ -40,9 +39,6 @@
 "co.candyhouse.sesame2.Cancel" = "キャンセル";
 "co.candyhouse.sesame2.Delete" = "削除";
 "co.candyhouse.sesame2.Email" = "Eメール";
-"co.candyhouse.sesame2.FirstName" = "名";
-"co.candyhouse.sesame2.LastName" = "姓";
-"co.candyhouse.sesame2.NickName" = "Nick Name";
 "co.candyhouse.sesame2.UUID" = "UUID";
 "co.candyhouse.sesame2.VerificationCode" = "メールで届いた認証コード";
 "co.candyhouse.sesame2.ResetSesame" = "このセサミを初期化、そしてこのセサミの鍵を捨てる";
@@ -50,21 +46,9 @@
 "co.candyhouse.sesame2.TrashTheKey" = "このセサミを削除する";
 "co.candyhouse.sesame2.TrashTouch" = "この %@ を削除する";
 "co.candyhouse.sesame2.TrashTheWifiModule2Key" = "このWiFiモジュールを削除する"; // 改用通用的
-"co.candyhouse.sesame2.ShareTheKey" = "このセサミの鍵をシェア";
 "co.candyhouse.sesame2.Scripts" = "台本";
 "co.candyhouse.sesame2.AddScript" = "⊕をクリックし動作を追加してください。\n秒数を「永遠」に設定し実行された場合、他の台本へ切替えて実行しない限り、SesameBot2は止まりません。\nモーター正逆回転スピードに公差があり、押す時間が戻すより少し長くするようお願い。";
-"co.candyhouse.sesame2.ActionSet" = "選んでください";
 "co.candyhouse.sesame2.SaveScript" = "保存";
-"co.candyhouse.sesame2.ShareManagementView" = "この管理画面をシェア";
-"co.candyhouse.sesame2.ShareTheWifiModule2Key" = "WiFiモジュールのキーを共有してください";
-"co.candyhouse.sesame2.ShareFriend" = "鍵のシェア";
-"co.candyhouse.sesame2.ForgotPassword" = "パスワードをお忘れですか？";
-"co.candyhouse.sesame2.Re-sendVerificationCode" = "認証コードを再送信する";
-"co.candyhouse.sesame2.SendVerificationCode" = "認証コードを送信する";
-"co.candyhouse.sesame2.NewPassword" = "新しいパスワード";
-"co.candyhouse.sesame2.SuccessfullyChanged" = "変更成功";
-"co.candyhouse.sesame2.NoContacts" = "連絡先なし";
-"co.candyhouse.sesame2.ScanInTheFrame" = "スキャンする";
 "co.candyhouse.sesame2.OK" = "OK";
 "co.candyhouse.sesame2.immediately" = "すぐに";
 "co.candyhouse.sesame2.sec" = "秒";
@@ -79,20 +63,7 @@
 "co.candyhouse.sesame2.SesameName" = "セサミの名前";
 "co.candyhouse.sesame2.NoDevices" = "⊕から新規デバイスを登録するか、QRコードをスキャンして登録済みデバイスのアクセス権を取得";
 "co.candyhouse.sesame2.ScanTheQRCode" = "QRコードをスキャンする";
-"co.candyhouse.sesame2.GiveSesameAName" = "かっこいい名前をつけてあげてね！😎";
-"co.candyhouse.sesame2.Members" = "メンバー";
-"co.candyhouse.sesame2.AddMember" = "メンバー";
-"co.candyhouse.sesame2.EditName" = "名前を変更";
-"co.candyhouse.sesame2.DeleteTheMember" = "メンバーを削除";
 "co.candyhouse.sesame2.PullToRefresh" = "引っ張って更新する";
-"co.candyhouse.sesame2.AddFriendByScan" = "私を連絡先に追加してください";
-"co.candyhouse.sesame2.AddFriendByScanDetail" = "セサミアプリでQRコードをスキャンしてください";
-"co.candyhouse.sesame2.AddKeyByScan" = "デバイスの鍵";
-"co.candyhouse.sesame2.AddKeyByScanDetail" = "セサミアプリでQRコードをスキャンしてください";
-"co.candyhouse.sesame2.AddWifiModule2KeyByScan" = "Key of the WiFi Module device";
-"co.candyhouse.sesame2.AddWifiModule2KeyByScanDetail" = "セサミアプリでQRコードをスキャンしてください";
-"co.candyhouse.sesame2.EnterSesameName" = "名前未入力";
-"co.candyhouse.sesame2.CompletelySet" = "設定完了";
 "co.candyhouse.sesame2.SesameOSUpdate" = "SesameOS更新と再起動";
 "co.candyhouse.sesame2.WM2OSUpdate" = "OS更新と再起動";
 "co.candyhouse.sesame2.StartingSoon" = "間もなく開始する…";
@@ -103,14 +74,7 @@
 "co.candyhouse.sesame2.Error" = "エラー";
 "co.candyhouse.sesame2.PleaseConfigureAngle" = "施錠・解錠位置を設定してください。";
 "co.candyhouse.sesame2.PleaseCompletelyLockUnlock" = "セサミを完全に施錠・解錠した状態まで手動で回し、画面の設定ボタンをそれぞれタップしてください";
-
-"Transfer ownership to this member" = "オーナー権限をこのメンバーへ譲渡";
-
 "co.candyhouse.sesame2.locker.resignIn" = "セサミアプリにて再度ログインしてください";
-"co.candyhouse.sesame2.locker.noDeviceFound" = "登録デバイスなし";
-
-"co.candyhouse.sesame2app.back" = "Back";
-
 "co.candyhouse.sesame2.reset" = "Reset";
 "co.candyhouse.sesame2.noBleSignal" = "Bluetooth信号見つからず、近づいてください";
 "co.candyhouse.sesame2.receivedBle" = "Received Ble";
@@ -130,106 +94,54 @@
 "co.candyhouse.sesame2.iotConnected" = "iotConnected";
 "co.candyhouse.sesame2.iotDisconnected" = "iotConnected";
 "co.candyhouse.sesame2.busy" = "Busy";
-"co.candyhouse.sesame2.dfu" = "DFU";
-"co.candyhouse.sesame2.application_dfu" = "Application DFU";
-"co.candyhouse.sesame2.bootloader_dfu" = "Bootloader DFU";
-"co.candyhouse.sesame2.application" = "Application";
-"co.candyhouse.sesame2.bootloader" = "Bootloader";
 "co.candyhouse.sesame2.watchkitapp.notSupport" = "Your system does not support Sesame lock.";
 "co.candyhouse.sesame2.watchkitapp.openYourSesame" = "iPhoneセサミアプリを開いてセサミリストを引っ張って同期させてください";
-"co.candyhouse.sesame2.watchkitapp.receivedFile" = "Received file";
-"co.candyhouse.sesame2.watchkitapp.updatingFile" = "Updating file";
-"co.candyhouse.sesame2.watchkitapp.updateDeviceFailed" = "Update devices failed %@";
-"co.candyhouse.sesame2.NewWifiModule2" = "New WiFi Modeule2";
-"co.candyhouse.sesame2.addSesameBot" = "New SesameBot";
-"co.candyhouse.sesame2.addBikeLock" = "New BikeLock";
-"co.candyhouse.sesame2.changeHistoryTag" = "名前";
-"co.candyhouse.sesame2.share" = "シェア";
-
 "co.candyhouse.sesame2.wifissid" = "WiFi SSID";
 "co.candyhouse.sesame2.wifipassword" = "WiFi パスワード";
 "co.candyhouse.sesame2.wifisetup" = "WiFi Setup";
-
-"co.candyhouse.sesame2.ownerKey" = "オーナー鍵";
-"co.candyhouse.sesame2.managerKey" = "マネジャー鍵";
-"co.candyhouse.sesame2.memberKey" = "ゲスト鍵";
-
-"co.candyhouse.sesame2.owner" = "オーナー";
-"co.candyhouse.sesame2.manager" = "マネジャー";
-"co.candyhouse.sesame2.member" = "ゲスト";
-
 "co.candyhouse.sesame2.unknownUser" = "未登録利用者";
 "co.candyhouse.sesame2.loggedInUserDefaultName" = "登録利用者";
-
 "co.candyhouse.sesame2.wm2NetworkConnectionStatus" = "ネット接続状態";
 "co.candyhouse.sesame2.addSesameToWM2" = "セサミを追加…";
-"co.candyhouse.sesame2.shareSesameToFriends" = "デバイスをシェアする";
-
 "co.candyhouse.sesame2.sesameBotMode" = "モード";
 "co.candyhouse.sesame2.sesameBotModeNormal" = "押して戻る";
 "co.candyhouse.sesame2.sesameBotModeReversed" = "Reversed";
 "co.candyhouse.sesame2.sesameBotModeCircle" = "一回りする";
 "co.candyhouse.sesame2.sesameBotModeLongPress" = "離して戻る";
-
-"co.candyhouse.sesame2.modifyGuestKeyTag" = "ゲストキー名の変更";
 "co.candyhouse.sesame2.OpSensorOn" = "オープンセンサーで施錠";
 "co.candyhouse.sesame2.enableNotification" = "通知";
-
-"co.candyhouse.sesame2.Permission" = "役割と権限";
 "co.candyhouse.sesame2.NoBleDevices" = "Bluetooth信号が見つかりません";
 "co.candyhouse.sesame2.NoBleDevicesDetailDescription" = "1. iPhoneのBluetoothがオンになっていますか？\n2. 未登録のデバイスが近くにありますか？\n3. 登録済のデバイスをリセットするには、細い棒でリセットボタンをLED点灯が消えるまで長押ししてください。";
-
 "co.candyhouse.sesame2.selectSSID" = "ご使用のWiFi環境をお選びください";
 "co.candyhouse.sesame2.enterSSIDPassword" = "WiFi環境のパスワードをご入力ください";
 "co.candyhouse.sesame2.bluetoothPoweredOff" = "Bluetoothがオフ";
 "co.candyhouse.sesame2.scanSSIDPullToRefresh" = "↓引っ張って更新できます";
-
-"co.candyhouse.sesame2.friendsKeys" = "この連絡先にシェアされているデバイスの鍵：";
 "co.candyhouse.sesame2.bindSesame2ToWifiModule2" = "このWiFiモジュールと5メートル以内に接続するセサミを追加してください：";
 "co.candyhouse.sesame2.bindSesame2ToHub3" = "このHub3の5メートル以内にセサミを追加して接続してください：";
 "co.candyhouse.sesame2.bindSesame2ToTouch" = "この%@と1メートル以内に接続するセサミを追加してください:";
 "co.candyhouse.sesame2.bindSesame2ToSensor" = "この%@と1メートル以内に接続するセサミを追加してください:";
 "co.candyhouse.sesame2.bindSesame2ToBleConnector" = "このBLE Connectorと1メートル以内に接続するセサミを追加してください:";
 "co.candyhouse.sesame2.bindSesameToBleConnector" = "この%@と1メートル以内に接続するセサミを追加してください:";
-
 "co.candyhouse.sesame2.dropKeyDesc" = "%@を削除しても%@は初期化またリセットされません。%@を初期化またリセットするには、細い棒でリセットボタンをLED点灯が消えるまで長押ししてください。";
 "co.candyhouse.sesame2.holdKeyDesc" = "%@を削除しても%@は初期化またリセットされません。%@を初期化またリセットするには、リセットボタンをLED点灯が消えるまで長押ししてください。";
-
 "co.candyhouse.sesame2.voiceShortcut" = "Siri音声コマンド";
 "co.candyhouse.sesame2.suggestedPhrase" = "オープン セサミ";
-
 "co.candyhouse.sesame2.chooseVoiceShortcut" = "Siri音声コマンド";
 "co.candyhouse.sesame2.toggle" = "セサミを施錠・解錠する";
 "co.candyhouse.sesame2.lock" = "セサミを施錠する";
 "co.candyhouse.sesame2.unlock" = "セサミを解錠する";
-
 "co.candyhouse.sesame2.connectWifiFailed" = "すみません🙏 \n
 WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近づけて、再度設定をお試し頂けますでしょうか？\n\n
 一度失敗した場合でも、通常数回お試し頂くと、接続に成功することがほとんどです。🙏";
-
 "co.candyhouse.sesame2.radiusMeter" = "radius of %d meters";
-
 "co.candyhouse.sesame2.gpsDescription" = "1 .赤い円を調整してください。スマホのGPS情報がこの赤い円から出て再度この円の中に入った時にのみスマホがBluetoothでセサミと繋がると手ぶら解錠が作動します。\n2 .GPS情報が不安定な場合、赤い円の範囲を広めに設定してください。画面をタップしてセサミ位置を設定できます。\n3 .手ぶら解錠をご使用の場合、バックグラウンドからセサミアプリを終了させないで下さいね。";
 "co.candyhouse.sesame2.on" = "オン";
 "co.candyhouse.sesame2.off" = "オフ";
-
 "co.candyhouse.sesame2.exitAutoUnlockRegion" = "行ってらっしゃい！手ぶら解錠が作動中なのでセサミアプリを終了させないでね。";
 "co.candyhouse.sesame2.enterAutoUnlockRegion" = "おかえりなさい！手ぶら解錠の準備ができています。";
-
 "co.candyhouse.sesame2.latest" = "(最新)";
-
 "co.candyhouse.sesame2.propertySelect" = "物件を選択する";
-"co.candyhouse.sesame2.installComplete" = "Install completed";
-"co.candyhouse.sesame2.pleaseEnableLocationAccess" = "Please enable 位置情報";
-"co.candyhouse.sesame2.retry" = "Please try again";
 "co.candyhouse.sesame2.move" = "Please move your phone";
-"co.candyhouse.sesame2.uploadUserKeysFail" = "ネットワーク接続の不安定によりデバイスのペアリングが失敗した場合、画面のリフレッシュもしくはアカウントのログアウト・再ログインをするとデバイスが消失するリスクがございます。";
-
-"co.candyhouse.sesame2.ResetSesameButton" = "Reset the Sesame Button and trash the key";
-"co.candyhouse.sesame2.TrashTheSesameButtonKey" = "Delete the Sesame Button";
-"co.candyhouse.sesame2.EditSesameButtonName" = "Edit Sesame Button Name";
-"co.candyhouse.sesame2.bindSesame2ToSesameButton" = "Add Sesame that is to be connected by this Sesame Button:";
-
 "co.candyhouse.sesame2.model" = "機種";
 "co.candyhouse.sesame2.battery" = "電池残量";
 "co.candyhouse.sesame2.fingerprint" = "指紋の管理";
@@ -250,14 +162,11 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.default_passcode_name" = "暗証番号🖋️";
 "co.candyhouse.sesame2.default_notify_passcode_name" = "暗証番号";
 "co.candyhouse.sesame2.TouchProPWDModify" = "暗証番号の名前変更🖋️";
-
 "co.candyhouse.sesame2.pleaseResetOpenSensor" = "設定ページから一度退出した場合、SesameOSを更新後に再起動した場合、またはスマートフォンとのBluetooth接続が切れた場合、%@は省エネモードに自動的に切り替わります。SesameOSをアップデートしたい、または新たにセサミを追加したい場合は、細い棒で%@のリセットボタンを約5秒間長押しし、LEDが消灯するまでリセットを行ってください。その後、再度⊕ボタンから登録を行ってください。";
 "remoteNanoTriggerSettingHint" = "誤作動防止の為の長押して作動させる時間";
-
 "candyhouse.no_data" = "";
 "candyhouse.pull_up_to_load" = "スクロールして更新";
 "candyhouse.util.loading" = "読み込み中...";
-
 "co.candyhouse.hub3.matterTip" = "%@にMatterネットワーク内の役割を割り当ててください";
 "co.candyhouse.hub3.matterAdd" = "Hub3に追加する";
 "co.candyhouse.hub3.matterLock" = "ドアロック";
@@ -268,7 +177,6 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.hub3.default_ir_title" = "任意学習🖋️";
 "co.candyhouse.hub3.ir_control_hint" = "ハブ 3に近づき⊕アイコンをタップして、リモコンをハブ 3に向け、リモコンのボタンを押して赤外線信号を送信します。";
 "candyhouse.release_to_refresh" = "リリースして更新";
-
 "co.candyhouse.hub3.bindIRDeviceHint" = "このHub3から5メートル以内に接続する赤外線デバイスを追加してください：";
 "co.candyhouse.hub3.bindIRDeviceTitle" = "赤外線データを追加...";
 "co.candyhouse.hub3.ssmDetail" = "詳細";
@@ -293,7 +201,6 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.hub3.ir_empty_learning" = "⊕アイコンをタップして学習モードに入り、リモコンをHub3に向けてボタンを押すと、新しいリモコンキーを追加できます";
 "co.candyhouse.hub3.ir_empty_controll" = "キーリストがありません。Hub3設定画面から入り、キーを追加してください";
 "co.candyhouse.hub3.ir_support_info" = "HXD";
-
 "co.candyhouse.airKey.on" = "オン";
 "co.candyhouse.airKey.off" = "オフ";
 "co.candyhouse.airKey.temperature" = "温度";
@@ -311,7 +218,6 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.airKey.windDir3" = "下向き風向";
 "co.candyhouse.airKey.windAutoDir1" = "スイング停止";
 "co.candyhouse.airKey.windAutoDir2" = "自動スイング";
-
 "co.candyhouse.tvremote.mute" = "ミュート";
 "co.candyhouse.tvremote.back" = "戻る";
 "co.candyhouse.tvremote.up" = "上";
@@ -326,7 +232,6 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.tvremote.home" = "ホーム";
 "co.candyhouse.tvremote.channelDown" = "チャンネル-";
 "co.candyhouse.remote.power" = "電源";
-
 "co.candyhouse.remote.mode" = "モード";
 "co.candyhouse.light.modeNormal" = "標準モード";
 "co.candyhouse.light.modeReading" = "読書モード";
@@ -336,13 +241,11 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.light.brightnessDown" = "明るさ-";
 "co.candyhouse.light.colorTempUp" = "色温度+";
 "co.candyhouse.light.colorTempDown" = "色温度-";
-
 "co.candyhouse.remote.shake_head" = "スイング";
 "co.candyhouse.remote.high" = "強";
 "co.candyhouse.remote.middle" = "中";
 "co.candyhouse.remote.low" = "弱";
 "co.candyhouse.remote.fan_speed" = "風量";
-
 "co.candyhouse.sesame2.ResetHub3Module" = "このHub3を初期化、そして鍵を捨てる";
 "co.candyhouse.sesame2.inputEMailWarn" = "正しいメールアドレスを入力してください";
 "co.candyhouse.sesame2.ir_ble_invalid" = "Hub3の詳細画面に戻り、Bluetooth自動接続を開始してください。";
@@ -352,7 +255,6 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.ir_search_remote_control_notice" = "リモコン機種を検索";
 "co.candyhouse.sesame2.ir_search_result" = "検索結果";
 "co.candyhouse.sesame2.nonetwork" = "インターネットとの接続が切断されたようです";
-
 "co.candyhouse.sesame2.SSMFacePro" = "セサミフェイス Pro";
 "co.candyhouse.sesame2.SSMFace" = "セサミフェイス";
 "co.candyhouse.sesame2.SSMFaceProAI" = "セサミフェイス Pro AI";
@@ -370,14 +272,11 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.faceProFaceDelete" = "顔の削除";
 "co.candyhouse.sesame2.faceProFaceHint" = "%@に近づきBluetooth接続し、⊕ をタップして顔を登録。登録後 X をタップ。取付けた状態で登録した方が認証率が遥かに高い。";
 "co.candyhouse.sesame2.delete_fail" = "削除に失敗しました。再試行してください";
-
 "co.candyhouse.sesame2.face.distance" = "距離";
 "co.candyhouse.sesame2.face.brightness" = "明るさ";
 "co.candyhouse.sesame2.face.radar" = "レーダーの\n探知距離";
 "co.candyhouse.sesame2.face.radar_distance_description" = "・レーダーがシステムを睡眠状態から起こす距離です。\n・人通りが一日10回を超える場合、節電のため、レーダーの探知距離を短めに設定して下さい！\n・人通りが一日10回以下の場合、最長距離に設定すると非常に快適にご利用頂けます。\n・最短距離に設定しても、施錠状態で「解錠ボタン/側面ボタン」を押すと、顔認証や手のひら静脈認証が即座に開始されるため、ある程度、極度な省電力と極上のユーザー体験の両立を実現できます。";
-
 "co.candyhouse.sesame2.search_devices" = "デバイス検索";
-
 "co.candyhouse.sesame2.ssm_name" = "名前";
 "co.candyhouse.sesame2.ssm_hint_enter_name" = "名前を入力してください";
 "co.candyhouse.sesame2.ssm_password" = "パスワード";
@@ -386,7 +285,6 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.ssm_batch_add" = "一括追加";
 "co.candyhouse.sesame2.ssm_cancel" = "キャンセル";
 "co.candyhouse.sesame2.ssm_confirm" = "確認";
-
 "co.candyhouse.sesame2.card_id" = "カードID";
 "co.candyhouse.sesame2.hint_enter_card_id_hex" = "カードIDを入力してください（0-9,A-F,a-f）";
 "co.candyhouse.sesame2.hint_enter_card_id" = "カードIDを入力してください";

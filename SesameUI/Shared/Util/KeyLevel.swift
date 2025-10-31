@@ -11,18 +11,4 @@ enum KeyLevel: Int {
     case manager = 1
     case guest = 2
     case error = -1
-
-    func description() -> String {
-        switch self {
-        case .owner:
-            return "co.candyhouse.sesame2.owner".localized
-        case .manager:
-            return "co.candyhouse.sesame2.manager".localized
-        case .guest:
-            return "co.candyhouse.sesame2.member".localized
-        case .error:
-            return "error"
-        }
-    }
-
 }

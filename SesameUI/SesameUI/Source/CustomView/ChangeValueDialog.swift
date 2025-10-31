@@ -34,7 +34,7 @@ public class ChangeValueDialog: UIViewController {
     @IBOutlet weak var okButton: UIButton!
     
     var titleLBText: String = "co.candyhouse.sesame2.EditName".localized
-    var valueDescription: String = "co.candyhouse.sesame2.GiveSesameAName".localized
+    var valueDescription: String = ""
     var valuePlaceHolder: String = ""
 
     deinit {
