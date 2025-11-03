@@ -110,6 +110,7 @@
 "co.candyhouse.sesame2.sesameBotModeLongPress" = "離して戻る";
 "co.candyhouse.sesame2.OpSensorOn" = "オープンセンサーで施錠";
 "co.candyhouse.sesame2.enableNotification" = "通知";
+"co.candyhouse.sesame2.shop" = "お店";
 "co.candyhouse.sesame2.NoBleDevices" = "Bluetooth信号が見つかりません";
 "co.candyhouse.sesame2.NoBleDevicesDetailDescription" = "1. iPhoneのBluetoothがオンになっていますか？\n2. 未登録のデバイスが近くにありますか？\n3. 登録済のデバイスをリセットするには、細い棒でリセットボタンをLED点灯が消えるまで長押ししてください。";
 "co.candyhouse.sesame2.selectSSID" = "ご使用のWiFi環境をお選びください";

@@ -129,6 +129,19 @@ class MeViewController: CHBaseViewController {
         notifyView.title = "co.candyhouse.sesame2.enableNotification".localized
         scrollContentStackView.addArrangedSubview(notifyView)
         
+        // 新增“小店铺”
+        let shopName = "co.candyhouse.sesame2.shop".localized
+        let shopView = CHUIViewGenerator.arrow { [weak self] _,_ in
+            let urlStr = "https://jp.candyhouse.co/collections/frontpage"
+            let webVC = CHWebViewController.instanceWithURL(urlStr)
+            DispatchQueue.main.async {
+                webVC.title = shopName
+            }
+            self?.navigationController?.pushViewController(webVC, animated: true)
+        }
+        shopView.title = shopName
+        scrollContentStackView.addArrangedSubview(shopView)
+        
         
         // MARK: - Padding
         let screenSize = UIScreen.main.bounds
