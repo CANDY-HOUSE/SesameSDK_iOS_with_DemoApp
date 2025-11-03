@@ -40,7 +40,8 @@ class CHWebView: UIView {
     typealias CHWebViewMessageHandler = (CHWebView, Any?) -> Void
     private var messageHandlers: [String: CHWebViewMessageHandler] = [:]
     private let messageHandlerName = "iOSHandler"
-    
+    private let debouncer = Debouncer(interval: 0.8)
+
     // MARK: - Properties
     private var configuration: Configuration!
     weak var webView: WKWebView!
@@ -125,7 +126,9 @@ class CHWebView: UIView {
     }
     
     func reload() {
-        webView?.reload()
+        debouncer.debounce { [weak self] in
+            self?.webView?.reload()
+        }
     }
     
     func goBack() {
