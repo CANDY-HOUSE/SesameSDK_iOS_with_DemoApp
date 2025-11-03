@@ -12,6 +12,7 @@ import Foundation
 enum WebViewMessageType: String {
     case requestDeviceList = "requestDeviceList"
     case requestRefresh = "requestRefresh"
+    case requestDeviceInfo = "requestDeviceInfo"
     case requestDeviceName = "requestDeviceName"
     case requestDeviceRename = "requestDeviceRename"
     case requestAutoLayoutHeight = "requestAutoLayoutHeight"
@@ -73,6 +74,24 @@ extension CHWebView {
                                 "success": true
                             ])
 
+                        }
+                    }
+                }
+            }
+        }
+        
+        registerMessageHandler(WebViewMessageType.requestDeviceInfo.rawValue) { webView, data in
+            if let requestData = data as? [String: Any],
+               let deviceUUID = requestData["deviceUUID"] as? String,
+               let callbackName = requestData["callbackName"] as? String {
+                CHDeviceManager.shared.getCHDevices { result in
+                    if case let .success(devices) = result {
+                        if let device = devices.data.first(where:  { $0.deviceId.uuidString == deviceUUID } ) {
+                            let deviceKey = device.getKey()
+                            let jsonData = try! JSONEncoder().encode(deviceKey)
+                            var jsonObj = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
+                            jsonObj["keyLevel"] = device.keyLevel
+                            webView.callH5(funcName: callbackName, data: jsonObj)
                         }
                     }
                 }

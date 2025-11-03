@@ -29,7 +29,6 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
     @IBOutlet weak var contentStackView: UIStackView!
     var uuidView: CHUIPlainSettingView!
     var versionView: CHUIPlainSettingView!
-    var changeNameView: CHUIPlainSettingView!
     var statusView: CHUIPlainSettingView!
     var versionTag = ""
     @IBOutlet var networkStatusView: UIView!
@@ -163,41 +162,6 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         modelView.title = "co.candyhouse.sesame2.model".localized
         modelView.value = wifiModule2.productModel.deviceModelName()
         contentStackView.addArrangedSubview(modelView)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-
-
-        // MARK: - ChangeName
-        changeNameView = CHUIViewGenerator.plain { [unowned self] _,_ in
-            let placeholder = wifiModule2.deviceName
-
-            ChangeValueDialog.show(placeholder, title: "co.candyhouse.sesame2.EditName".localized) { name in
-                if name == "" {
-                    self.view.makeToast("co.candyhouse.sesame2.EditName".localized)
-                    return
-                }
-                self.wifiModule2.setDeviceName(name)
-                
-                if AWSMobileClient.default().currentUserState == .signedIn {
-                    var userKey = CHUserKey.fromCHDevice(self.wifiModule2)
-                    CHUserAPIManager.shared.getSubId { subId in
-                        if let subId = subId {
-                            userKey.subUUID = subId
-                            CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
-                                
-                            }
-                        }
-                    }
-                }
-                self.refreshUI()
-                
-                if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                    listViewController.reloadTableView()
-                }
-            }
-        }
-        changeNameView.title = "co.candyhouse.sesame2.EditName".localized
-        changeNameView.value = wifiModule2.deviceName
-        contentStackView.addArrangedSubview(changeNameView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: WiFi SSID View
@@ -400,7 +364,6 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         }
         sesameExclamationContainerView.isHidden = wifiModuleDeviceModels.count > 0 || (wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == false
         addSesameButtonView.hidePlusLable(wifiModuleDeviceModels.count == 0 || (wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == false)
-        changeNameView.value = wifiModule2.deviceName
     }
     
     @IBAction func networkStatusDidTapped(_ sender: Any) {
@@ -567,19 +530,12 @@ extension WifiModule2SettingViewController: CHWifiModule2Delegate {
     }
     
     func onOTAProgress(device: CHWifiModule2, percent: UInt8) {
-        guard self.changeNameView != nil else {
-            return
-        }
-        
         executeOnMainThread {
             self.versionView.value = "\(percent) %"
         }
     }
     
     func onScanWifiSID(device: CHWifiModule2, ssid: CHSSID) {
-        guard self.changeNameView != nil else {
-            return
-        }
         executeOnMainThread {
             if self.ssidScanViewController!.ssids.contains(ssid) == false {
                 self.ssidScanViewController!.ssids.append(ssid)
