@@ -19,7 +19,7 @@ class PushNotificationManager {
     private let PREF_APP_VERSION = "last_subscription_app_version"
     private let SUBSCRIPTION_REFRESH_INTERVAL: TimeInterval = 30 * 24 * 60 * 60
     
-    var appDeviceId: String {
+    var appIdentifyId: String {
         return UIDevice.current.identifierForVendor?.uuidString ?? ""
     }
     
@@ -34,37 +34,46 @@ class PushNotificationManager {
     private var subscribingTokens = Set<String>()
     
     func checkAndSubscribeToTopics() {
-        L.d("sf", "appDeviceId=\(appDeviceId)")
+        L.d("sf", "appIdentifyId=\(appIdentifyId)")
+        
+        guard let token = UserDefaults.standard.string(forKey: "devicePushToken") else {
+            L.d("sf", "无token，需要注册推送...")
+            registerForPushNotifications()
+            return
+        }
         
         if shouldRefreshSubscriptions() {
             L.d("sf", "需要更新订阅...")
-            
-            // 如果已有 token，直接强制刷新
-            if let token = prefs.string(forKey: "apns_token") {
-                forceRefreshSubscriptions(token: token)
-            } else {
-                // 没有 token，需要重新注册
-                registerForPushNotifications()
-            }
+            forceRefreshSubscriptions(token: token)
         } else {
             L.d("sf", "检查现有订阅...")
-            if let token = prefs.string(forKey: "apns_token") {
-                subscribeToTopicsIfNeeded(token: token)
-            }
+            subscribeToTopicsIfNeeded(token: token)
         }
     }
     
     private func shouldRefreshSubscriptions() -> Bool {
-        let storedToken = prefs.string(forKey: "apns_token")
         let lastSubscriptionTime = prefs.double(forKey: "last_subscription_time")
         let lastAppVersion = prefs.string(forKey: PREF_APP_VERSION) ?? "0"
         let currentTime = Date().timeIntervalSince1970
         let currentAppVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
         L.d("sf", "currentAppVersion=\(currentAppVersion)")
         
-        return storedToken == nil ||
-        currentAppVersion != lastAppVersion ||
+        return currentAppVersion != lastAppVersion ||
         (currentTime - lastSubscriptionTime) > SUBSCRIPTION_REFRESH_INTERVAL
+    }
+    
+    private func forceRefreshSubscriptions(token: String) {
+        clearAllTokenSubscriptions()
+        subscribeToTopicsIfNeeded(token: token)
+    }
+    
+    private func clearAllTokenSubscriptions() {
+        prefs.dictionaryRepresentation()
+            .keys
+            .filter { $0.hasPrefix("topic_") }
+            .forEach { prefs.removeObject(forKey: $0) }
+        
+        L.d("sf", "已清除所有订阅记录，将强制重新订阅")
     }
     
     private func subscribeToTopicsIfNeeded(token: String) {
@@ -75,7 +84,6 @@ class PushNotificationManager {
         }
         
         subscribingTokens.insert(token)
-        prefs.set(token, forKey: "apns_token")
         
         topics.forEach { topic in
             if !isTopicSubscribed(topic: topic, token: token){
@@ -95,8 +103,8 @@ class PushNotificationManager {
     private func subscribeToTopic(topic: String, token: String) {
         CHAccountManager.shared.subscribeToSNSTopic(
             topicName: topic,
-            token: token,
-            deviceId: appDeviceId,
+            pushToken: token,
+            appIdentifyId: appIdentifyId,
             platform: platform
         ) { [weak self] success in
             guard let self = self else { return }
@@ -127,31 +135,18 @@ class PushNotificationManager {
         }
     }
     
-    func handleAPNsToken(_ deviceToken: Data) {
-        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        
+    func handleAPNsToken(_ token: String) {
         L.d("sf", "handleAPNsToken=\(token)")
         
-        if let oldToken = prefs.string(forKey: "apns_token"), oldToken != token {
-            L.d("sf", "只清除旧 token 的订阅记录")
-            let oldTokenSuffix = String(oldToken.suffix(10))
-            topics.forEach { topic in
-                let key = "topic_\(topic)_\(oldTokenSuffix)"
-                prefs.removeObject(forKey: key)
-            }
-        }
+        let oldToken = UserDefaults.standard.string(forKey: "devicePushToken")
         
-        subscribeToTopicsIfNeeded(token: token)
-    }
-    
-    private func forceRefreshSubscriptions(token: String) {
-        let tokenSuffix = String(token.suffix(10))
-        topics.forEach { topic in
-            let key = "topic_\(topic)_\(tokenSuffix)"
-            prefs.removeObject(forKey: key)
+        if oldToken != token {
+            L.d("sf", "Token已变更，强制刷新订阅")
+            UserDefaults.standard.setValue(token, forKey: "devicePushToken")
+            forceRefreshSubscriptions(token: token)
+        } else {
+            L.d("sf", "Token未变更，跳过处理")
         }
-        L.d("sf", "已清除token的订阅记录，将强制重新订阅")
-        subscribeToTopicsIfNeeded(token: token)
     }
     
     private func checkIfAllTopicsSubscribed(token: String) {

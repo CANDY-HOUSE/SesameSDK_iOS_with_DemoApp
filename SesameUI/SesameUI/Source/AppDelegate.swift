@@ -75,9 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        L.d("[noti][deviceToken:\(deviceToken.toHexString())]")
-        UserDefaults.standard.setValue(deviceToken.toHexString(), forKey: "devicePushToken")
-        PushNotificationManager.shared.handleAPNsToken(deviceToken)
+        PushNotificationManager.shared.handleAPNsToken(deviceToken.toHexString())
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

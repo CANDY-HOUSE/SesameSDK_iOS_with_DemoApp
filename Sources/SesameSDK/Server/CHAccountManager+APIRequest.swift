@@ -68,22 +68,22 @@ extension CHAccountManager {
     /// 订阅 SNS 主题
     /// - Parameters:
     ///   - topicName: 主题名称
-    ///   - token: APNs token (iOS) 或 FCM token (Android)
-    ///   - deviceId: 设备唯一标识
+    ///   - pushToken: APNs token (iOS) 或 FCM token (Android)
+    ///   - appIdentifyId: 设备唯一标识
     ///   - platform: 平台类型 (ios, ios_sandbox, android)
     ///   - completion: 完成回调
     public func subscribeToSNSTopic(
         topicName: String,
-        token: String,
-        deviceId: String,
+        pushToken: String,
+        appIdentifyId: String,
         platform: String,
         completion: @escaping (Bool) -> Void
     ) {
         let parameters: [String: Any] = [
             "action": "subscribeToTopic",
             "topicName": topicName,
-            "token": token,
-            "appDeviceId": deviceId,
+            "pushToken": pushToken,
+            "appIdentifyId": appIdentifyId,
             "platform": platform
         ]
         
