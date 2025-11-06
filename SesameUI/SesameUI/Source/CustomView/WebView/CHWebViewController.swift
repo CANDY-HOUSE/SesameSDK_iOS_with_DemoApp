@@ -58,11 +58,3 @@ extension CHWebViewController {
         return vc
     }
 }
-
-extension CHWebViewController {
-    func registerRefresh(handler: @escaping (CHWebView, Any?) -> Void) {
-        webView.registerMessageHandler(WebViewMessageType.requestRefresh.rawValue) { web, message in
-            handler(web, message)
-        }
-    }
-}

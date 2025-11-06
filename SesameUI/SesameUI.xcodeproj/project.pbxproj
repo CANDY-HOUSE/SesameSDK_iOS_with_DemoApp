@@ -102,7 +102,6 @@
 		645211F22B29B1820091DDE3 /* Bot2SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645211F12B29B1820091DDE3 /* Bot2SettingViewController.swift */; };
 		645211F42B2AF5C50091DDE3 /* PickerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645211F32B2AF5C50091DDE3 /* PickerProxy.swift */; };
 		645211F62B2BFA270091DDE3 /* Bot2ScriptActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645211F52B2BFA270091DDE3 /* Bot2ScriptActionVC.swift */; };
-		64547DCB2C086491001CEF88 /* learning.gif in Resources */ = {isa = PBXBuildFile; fileRef = 64547DCA2C086491001CEF88 /* learning.gif */; };
 		645B1B272BDB4C0100D5E491 /* FrameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B1B2BDB4C0100D5E491 /* FrameStore.swift */; };
 		645B1B282BDB4C0100D5E491 /* GIFAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B1C2BDB4C0100D5E491 /* GIFAnimatable.swift */; };
 		645B1B292BDB4C0100D5E491 /* AnimatedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B1D2BDB4C0100D5E491 /* AnimatedFrame.swift */; };
@@ -201,8 +200,6 @@
 		B09F5831250F36930034759A /* LockAngleSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F5830250F36930034759A /* LockAngleSettingViewController.swift */; };
 		B09F5835250F47FC0034759A /* LockAngleSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */; };
 		B09F5837250F5D3B0034759A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F5836250F5D3B0034759A /* MeViewController.swift */; };
-		B09F5839250F5DAC0034759A /* HistoryTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09F5838250F5DAC0034759A /* HistoryTagView.xib */; };
-		B09F583B250F6EB30034759A /* HistoryTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F583A250F6EB30034759A /* HistoryTagView.swift */; };
 		B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6138F247680FD00A797E5 /* VersionLabel.swift */; };
 		B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D669AC25394B8E002602F4 /* QRCodeViewController.swift */; };
 		B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D669AD25394B8E002602F4 /* QRCodeViewController.xib */; };
@@ -575,7 +572,6 @@
 		645211F12B29B1820091DDE3 /* Bot2SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bot2SettingViewController.swift; sourceTree = "<group>"; };
 		645211F32B2AF5C50091DDE3 /* PickerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerProxy.swift; sourceTree = "<group>"; };
 		645211F52B2BFA270091DDE3 /* Bot2ScriptActionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot2ScriptActionVC.swift; sourceTree = "<group>"; };
-		64547DCA2C086491001CEF88 /* learning.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = learning.gif; sourceTree = "<group>"; };
 		645B1B1B2BDB4C0100D5E491 /* FrameStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameStore.swift; sourceTree = "<group>"; };
 		645B1B1C2BDB4C0100D5E491 /* GIFAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFAnimatable.swift; sourceTree = "<group>"; };
 		645B1B1D2BDB4C0100D5E491 /* AnimatedFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedFrame.swift; sourceTree = "<group>"; };
@@ -686,8 +682,6 @@
 		B09F5830250F36930034759A /* LockAngleSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAngleSettingViewController.swift; sourceTree = "<group>"; };
 		B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockAngleSettingViewController.xib; sourceTree = "<group>"; };
 		B09F5836250F5D3B0034759A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
-		B09F5838250F5DAC0034759A /* HistoryTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTagView.xib; sourceTree = "<group>"; };
-		B09F583A250F6EB30034759A /* HistoryTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTagView.swift; sourceTree = "<group>"; };
 		B0A6138F247680FD00A797E5 /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
 		B0D669AC25394B8E002602F4 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		B0D669AD25394B8E002602F4 /* QRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
@@ -1183,8 +1177,6 @@
 			isa = PBXGroup;
 			children = (
 				B09F5836250F5D3B0034759A /* MeViewController.swift */,
-				B09F583A250F6EB30034759A /* HistoryTagView.swift */,
-				B09F5838250F5DAC0034759A /* HistoryTagView.xib */,
 				BE97F4052561215C00E9FDC4 /* SignUpViewController.swift */,
 				BE97F4062561215C00E9FDC4 /* SignUpViewController.xib */,
 				BE3A732C25CB9EAE002FF80E /* SignInViewController.swift */,
@@ -1288,7 +1280,6 @@
 			isa = PBXGroup;
 			children = (
 				646CE5652BDF3D9A00898ECA /* finger_print.gif */,
-				64547DCA2C086491001CEF88 /* learning.gif */,
 			);
 			path = gif;
 			sourceTree = "<group>";
@@ -2335,7 +2326,6 @@
 				89F5FC8C2EB0ABC600BF43E9 /* sesameface1pro_30_18_0ace8d.zip in Resources */,
 				89D8029C2EBB6936000CC88A /* opensensor2_30_24_08111f.zip in Resources */,
 				89F5FC8D2EB0ABC600BF43E9 /* sesameface1proai_30_22_0ace8d.zip in Resources */,
-				64547DCB2C086491001CEF88 /* learning.gif in Resources */,
 				B179691022F7CE9300E91996 /* Main.storyboard in Resources */,
 				B09F5835250F47FC0034759A /* LockAngleSettingViewController.xib in Resources */,
 				B179691222F7CE9400E91996 /* Assets.xcassets in Resources */,
@@ -2345,7 +2335,6 @@
 				D08C739D2E5F333B00DAFFE8 /* sesametouch1_30_10_4d0bf8.zip in Resources */,
 				D04A74F02E82F4FD0012596A /* sesame5pro_30_7_1e6f97.zip in Resources */,
 				645E2D2A2B5BC83300D39E66 /* MatterTypeViewCell.xib in Resources */,
-				B09F5839250F5DAC0034759A /* HistoryTagView.xib in Resources */,
 				B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */,
 				643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */,
 				890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */,
@@ -2617,7 +2606,6 @@
 				64EC06902E7C00EA0047ED13 /* RefreshFootView.swift in Sources */,
 				BEB58CBC256CA122001505E3 /* KeyLevel.swift in Sources */,
 				4137C8CC2350276300211F43 /* lockView.swift in Sources */,
-				B09F583B250F6EB30034759A /* HistoryTagView.swift in Sources */,
 				BEB7F49E24A4EBBF00D04651 /* SesameUI.xcdatamodeld in Sources */,
 				BE88594D26C3CCDE002D17E0 /* CHAPIManagerType.swift in Sources */,
 				645E2D2C2B5BC83300D39E66 /* MatterTypeViewCell.swift in Sources */,

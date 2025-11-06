@@ -16,6 +16,8 @@ enum WebViewMessageType: String {
     case requestDeviceName = "requestDeviceName"
     case requestDeviceRename = "requestDeviceRename"
     case requestAutoLayoutHeight = "requestAutoLayoutHeight"
+    case requestLogin = "requestLogin"
+    case requestPushToken = "requestPushToken"
 }
 
 enum WebViewSchemeType: String {

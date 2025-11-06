@@ -107,8 +107,6 @@
 "co.candyhouse.sesame2.sesameBotModeReversed" = "反向下壓後歸位";
 "co.candyhouse.sesame2.sesameBotModeCircle" = "繞一圈";
 "co.candyhouse.sesame2.sesameBotModeLongPress" = "放開後歸位";
-"co.candyhouse.sesame2.enableNotification" = "通知";
-"co.candyhouse.sesame2.shop" = "小店舖";
 "co.candyhouse.sesame2.OpSensorOn" = "用 開關傳感器 上鎖";
 "co.candyhouse.sesame2.NoBleDevices" = "未發現藍芽設備";
 "co.candyhouse.sesame2.NoBleDevicesDetailDescription" = "1. 您已經允許了iPhone的藍牙和位置權限嗎？ \n2. 附近是否有未註冊的設備？ \n3. 若要重置已註冊的設備，請用針戳長按重置按鈕直到LED燈熄滅。";

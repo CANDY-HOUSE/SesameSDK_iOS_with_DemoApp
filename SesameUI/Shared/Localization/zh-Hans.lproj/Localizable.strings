@@ -110,8 +110,6 @@
 "co.candyhouse.sesame2.sesameBotModeCircle" = "绕一圈";
 "co.candyhouse.sesame2.sesameBotModeLongPress" = "放开后归位";
 "co.candyhouse.sesame2.OpSensorOn" = "用 开关传感器 上锁";
-"co.candyhouse.sesame2.enableNotification" = "通知";
-"co.candyhouse.sesame2.shop" = "小店铺";
 "co.candyhouse.sesame2.NoBleDevices" = "未发现蓝牙设备";
 "co.candyhouse.sesame2.NoBleDevicesDetailDescription" = "1. 您的iPhone蓝牙开启了吗？\n2. 附近有未注册设备吗？\n3. 用针戳复位键直到LED灯熄灭以重置设备";
 "co.candyhouse.sesame2.selectSSID" = "选择您的 WiFi网络";

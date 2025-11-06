@@ -109,8 +109,6 @@
 "co.candyhouse.sesame2.sesameBotModeCircle" = "Make a circle";
 "co.candyhouse.sesame2.sesameBotModeLongPress" = "Release then return";
 "co.candyhouse.sesame2.OpSensorOn" = "Lock with Open Sensor";
-"co.candyhouse.sesame2.enableNotification" = "Notifications";
-"co.candyhouse.sesame2.shop" = "Shop";
 "co.candyhouse.sesame2.NoBleDevices" = "Bluetooth devices not found";
 "co.candyhouse.sesame2.NoBleDevicesDetailDescription" = "1. Is iPhone Bluetooth on？\n2. Is the unregistered device nearby？\n3. To reset the registered device, please press the reset button with a pin until the LED light turns off.";
 "co.candyhouse.sesame2.selectSSID" = "Select your WiFi network";
