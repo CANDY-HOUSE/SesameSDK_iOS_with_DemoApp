@@ -72,10 +72,6 @@ class MeViewController: CHBaseViewController {
         arrangeSubview()
         AWSMobileClient.default().addUserStateListener(self) { state, _ in
             executeOnMainThread { [self] in
-                if state == .signedIn && userState == .signedOut ||
-                   state == .signedOut && userState == .signedIn {
-                    webView?.refresh()
-                }
                 userState = state
                 userStateView.text = userState.rawValue
                 logOutView?.isHidden = userState != .signedIn
