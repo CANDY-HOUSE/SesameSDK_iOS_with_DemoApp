@@ -78,14 +78,6 @@ class SignUpViewController: CHBaseViewController, TouchViewDelegate {
         contentTextField.resignFirstResponder()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if isLoggedIn == false {
-            guard AWSMobileClient.default().currentUserState != .signedOut else { return }
-            AWSMobileClient.default().signOut()
-        }
-    }
-    
     func addKeyboardToolbar()  {
         let viewForDoneButtonOnKeyboard = UIToolbar()
         viewForDoneButtonOnKeyboard.sizeToFit()

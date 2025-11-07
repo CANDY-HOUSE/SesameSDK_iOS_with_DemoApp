@@ -62,14 +62,8 @@ class SignInViewController: CHBaseViewController, TouchViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        CHUserAPIManager.shared.signInWithEmail(emailAddress)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if signInState != .signedIn {
-            guard AWSMobileClient.default().currentUserState != .signedOut else { return }
-            AWSMobileClient.default().signOut()
+        CHUserAPIManager.shared.signOut { [self] in
+            CHUserAPIManager.shared.signInWithEmail(emailAddress)
         }
     }
 
