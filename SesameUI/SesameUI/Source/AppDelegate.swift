@@ -234,11 +234,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                     let topVC = self.iterateViewControllers()
                     
                     if let topVC = topVC {
-                        let webViewScreen = WebViewScreen(urlString: urlString, isModal: true)
-                        let hostingController = UIHostingController(rootView: webViewScreen)
+                        let webVC = CHWebViewController.instanceWithURL(urlString)
                         
-                        if topVC.presentedViewController == nil {
-                            topVC.present(hostingController, animated: true)
+                        if let navController = topVC.navigationController {
+                            navController.pushViewController(webVC, animated: true)
+                        } else {
+                            topVC.present(webVC, animated: true)
                         }
                     }
                 }
