@@ -8,6 +8,7 @@
 
 import SesameSDK
 import Foundation
+import UIKit
 
 enum WebViewMessageType: String {
     case requestDeviceList = "requestDeviceList"
@@ -18,6 +19,8 @@ enum WebViewMessageType: String {
     case requestAutoLayoutHeight = "requestAutoLayoutHeight"
     case requestLogin = "requestLogin"
     case requestPushToken = "requestPushToken"
+    case requestNotificationStatus = "requestNotificationStatus"
+    case requestNotificationSettings = "requestNotificationSettings"
 }
 
 enum WebViewSchemeType: String {
@@ -97,6 +100,12 @@ extension CHWebView {
                         }
                     }
                 }
+            }
+        }
+        
+        registerMessageHandler(WebViewMessageType.requestNotificationSettings.rawValue) { webView, data in
+            if let _ = data as? [String: Any] {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }
         }
     }

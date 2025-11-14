@@ -9,6 +9,7 @@
 import UIKit
 import SesameSDK
 import AWSMobileClientXCF
+import UserNotifications
 
 extension UIApplication {
     var statusBarHeight: CGFloat {
@@ -164,6 +165,17 @@ class MeViewController: CHBaseViewController {
                 webView.callH5(funcName: callbackName, data: [
                     "pushToken": token
                 ])
+            }
+        }
+        web.registerMessageHandler(WebViewMessageType.requestNotificationStatus.rawValue) { webView, data in
+            if let requestData = data as? [String: Any],
+               let callbackName = requestData["callbackName"] as? String {
+                UNUserNotificationCenter.current().getNotificationSettings { settings in
+                    let isEnabled = settings.authorizationStatus == .authorized
+                    webView.callH5(funcName: callbackName, data: [
+                        "enabled": isEnabled
+                    ])
+                }
             }
         }
         collectionViewContainer.addSubview(web)
