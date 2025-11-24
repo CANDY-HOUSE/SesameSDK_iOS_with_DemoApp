@@ -196,18 +196,6 @@ internal extension CHDevice {
             }
         }
     }
-
-    // 訂閱IoT主題前必需調用驗證
-    func iotCustomVerification(result: @escaping CHResult<CHEmpty>) {
-        CHAccountManager.shared.API(request: .init(.get, "/device/v1/iot/sesame2/\(deviceId.uuidString)", queryParameters: ["a": getTimeSignature()])) { verifyResult in
-            switch verifyResult {
-            case .success(_):
-                result(.success(.init(input: .init())))
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
     
     func postBatteryData(_ payload: String) {
         CHAccountManager.shared.API(request: .init(.post, "/device/v2/sesame5/\(deviceId.uuidString)/battery", ["payload": payload])) { res in

@@ -146,8 +146,6 @@ final class CHIoTManager {
     // MARK: - Subscribe wm2 shadow
     func subscribeWifiModule2Shadow(_ wifiModule2: CHWifiModule2,
                                     onResponse: @escaping (CHResult<WifiModuleShadow>)) {
-        //        wifiModule2.iotCustomVerification { verifyResult in
-        //            if case .success(_) = verifyResult {
         let shadowName = wifiModule2.deviceId.uuidString.split(separator: "-").last!
         self.awsIoTDataManager
             .subscribe(toTopic: "$aws/things/wm2/shadow/name/\(shadowName)/update/accepted",
