@@ -12,7 +12,7 @@ public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableH
     func passCodes(result: @escaping(CHResult<CHEmpty>))
     func passCodeDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))
     // 即将废弃
-    func passCodeChange(ID: String, name: String, result  : @escaping(CHResult<CHEmpty>))
+    func passCodeChange(ID: String, hexName: String, result  : @escaping(CHResult<CHEmpty>))
     func passCodeModeGet(result  : @escaping(CHResult<UInt8>))
     func passCodeModeSet(mode: UInt8, result  : @escaping(CHResult<CHEmpty>))
     func passCodeNameSet(passCodeNameRequest: CHKeyBoardPassCodeNameRequest, result: @escaping(CHResult<String>))
@@ -23,5 +23,5 @@ public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableH
     
     func passCodeBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>))
     
-    func passCodeAdd(id: Data, name: String, result: @escaping (CHResult<CHEmpty>))
+    func passCodeAdd(id: Data, hexName: String, result: @escaping (CHResult<CHEmpty>))
 }

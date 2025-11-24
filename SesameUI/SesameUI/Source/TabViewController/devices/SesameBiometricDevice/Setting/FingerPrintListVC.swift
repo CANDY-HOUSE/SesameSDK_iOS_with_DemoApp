@@ -188,7 +188,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
                        renameToServer(name, fingerprint.nameUUID)
                    } else {
                        let uuid = UUID().uuidString.lowercased()
-                       self.mDevice.fingerPrintsChange(ID: fingerprint.id, name: uuid.replacingOccurrences(of: "-", with: "")) { _ in
+                       self.mDevice.fingerPrintsChange(ID: fingerprint.id, hexName: uuid.replacingOccurrences(of: "-", with: "")) { _ in
                            self.fingerPrints.removeAll { value in
                                return value.id == fingerprint.id
                            }
@@ -220,12 +220,12 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
             self.refreshControl.programaticallyBeginRefreshing(in:self.tableView)
         }
     }
-    func onFingerPrintReceive(device: CHSesameConnector, id: String, name: String, type: UInt8) {
+    func onFingerPrintReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
-            if BiometricData.isUUIDv4(name: name) {
-                self.fingerPrints.insert(FingerPrint(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased()), at: 0)
+            if BiometricData.isUUIDv4(name: hexName) {
+                self.fingerPrints.insert(FingerPrint(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased()), at: 0)
             } else {
-                self.fingerPrints.insert(FingerPrint(id: id, name: name, nameUUID: name), at: 0)
+                self.fingerPrints.insert(FingerPrint(id: id, name: hexName, nameUUID: hexName), at: 0)
             }
             self.reloadTableView()
         }
@@ -253,11 +253,11 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
         }
     }
     
-    func onFingerPrintChanged(device: CHSesameConnector, id: String, name: String, type: UInt8) {
-        L.d("[FG][onFingerPrintChanged] \(id):\(name)")
-        var fingerprint = FingerPrint(id: id, name: name, nameUUID: name)
-        if BiometricData.isUUIDv4(name: name) {
-            fingerprint = FingerPrint(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased())
+    func onFingerPrintChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
+        L.d("[FG][onFingerPrintChanged] \(id):\(hexName)")
+        var fingerprint = FingerPrint(id: id, name: hexName, nameUUID: hexName)
+        if BiometricData.isUUIDv4(name: hexName) {
+            fingerprint = FingerPrint(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased())
         }
         self.fingerPrints.insert(fingerprint, at: 0)
         executeOnMainThread {

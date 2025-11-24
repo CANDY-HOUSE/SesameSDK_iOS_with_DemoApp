@@ -25,11 +25,11 @@ extension CHPassCodeCapable where Self: CHSesameBaseDevice {
         }
     }
 
-    func passCodeChange(ID: String, name: String, result: @escaping (CHResult<CHEmpty>)) {
+    func passCodeChange(ID: String, hexName: String, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
 
         let idData = ID.hexStringtoData()
-        let payload = Data([UInt8(idData.count)]) + idData + name.hexStringtoData()
+        let payload = Data([UInt8(idData.count)]) + idData + hexName.hexStringtoData()
         sendCommand(.init(.SSM_OS3_PASSCODE_CHANGE, payload)) { _ in
             result(.success(CHResultStateNetworks(input: CHEmpty())))
         }
@@ -76,10 +76,10 @@ extension CHPassCodeCapable where Self: CHSesameBaseDevice {
         unregisterProtocolDelegate(delegate, for: CHPassCodeDelegate.self)
     }
     
-    func passCodeAdd(id: Data, name: String, result: @escaping (CHResult<CHEmpty>)) {
+    func passCodeAdd(id: Data, hexName: String, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
         
-        let nameData = name.data(using: .utf8) ?? Data()
+        let nameData = hexName.data(using: .utf8) ?? Data()
         
         sendCommand(.init(.SSM_OS3_PASSCODE_ADD,
                           Data([0xF0, 0x00, UInt8(id.count)]) + id + Data(repeating: 0, count: max(0, 16-id.count)) +

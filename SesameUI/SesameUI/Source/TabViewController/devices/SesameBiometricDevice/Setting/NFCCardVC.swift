@@ -194,7 +194,7 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
             }
         }
         
-        mDevice.cardAdd(id: Data(tempIdValueList), name: name) { result in
+        mDevice.cardAdd(id: Data(tempIdValueList), hexName: name) { result in
             switch result {
             case .success:
                 L.d("CardId added successfully")
@@ -456,7 +456,7 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
                     renameToServer(name, card.nameUUID)
                 } else {
                     let uuid = UUID().uuidString.lowercased()
-                    self.mDevice.cardsChange(ID: card.id, name: uuid.replacingOccurrences(of: "-", with: "")){ _ in
+                    self.mDevice.cardsChange(ID: card.id, hexName: uuid.replacingOccurrences(of: "-", with: "")){ _ in
                         self.mCardList.removeAll { value in
                             return value.id == card.id
                         }
@@ -487,13 +487,13 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
             self.refreshControl.programaticallyBeginRefreshing(in:self.tableView)
         }
     }
-    func onCardReceive(device: CHSesameConnector, id: String, name: String, type: UInt8) {
+    func onCardReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
             //接收卡片时，列表显示默认名称，name转为 nameUUID，用于获取后台真实的name
-            if BiometricData.isUUIDv4(name: name) {
-                self.mCardList.insert(SuiCard(id: id, name: "",type:type,nameUUID: name.noDashtoUUID()!.uuidString.lowercased()), at: 0)
+            if BiometricData.isUUIDv4(name: hexName) {
+                self.mCardList.insert(SuiCard(id: id, name: "",type:type,nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased()), at: 0)
             } else {
-                self.mCardList.insert(SuiCard(id: id, name: name,type:type,nameUUID: name), at: 0)
+                self.mCardList.insert(SuiCard(id: id, name: hexName,type:type,nameUUID: hexName), at: 0)
             }
             self.reloadTableView()
         }
@@ -520,10 +520,10 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
         }
     }
 
-    func onCardChanged(device: CHSesameConnector, id: String, name: String, type: UInt8) {
-        var card = SuiCard(id: id, name: name, type: type, nameUUID: name)
-        if BiometricData.isUUIDv4(name: name) {
-            card = SuiCard(id: id, name: "", type: type, nameUUID: name.noDashtoUUID()!.uuidString.lowercased())
+    func onCardChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
+        var card = SuiCard(id: id, name: hexName, type: type, nameUUID: hexName)
+        if BiometricData.isUUIDv4(name: hexName) {
+            card = SuiCard(id: id, name: "", type: type, nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased())
         }
         self.mCardList.insert(card, at: 0)
         executeOnMainThread {

@@ -10,8 +10,8 @@
 public protocol CHPassCodeDelegate: AnyObject {
     func onPassCodeReceiveStart(device: CHSesameConnector)
     func onPassCodeReceiveEnd(device: CHSesameConnector)
-    func onPassCodeReceive(device: CHSesameConnector, id: String, name: String, type: UInt8)
-    func onPassCodeChanged(device: CHSesameConnector, id: String, name: String, type: UInt8)
+    func onPassCodeReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8)
+    func onPassCodeChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8)
     func onPassCodeModeChanged(mode: UInt8)
     func onPassCodeDelete(device: CHSesameConnector, id: String)
 }
@@ -20,8 +20,8 @@ public protocol CHPassCodeDelegate: AnyObject {
 public extension CHPassCodeDelegate {
     func onPassCodeReceiveStart(device: CHSesameConnector){}
     func onPassCodeReceiveEnd(device: CHSesameConnector){}
-    func onPassCodeReceive(device: CHSesameConnector, id: String, name: String, type: UInt8){}
-    func onPassCodeChanged(device: CHSesameConnector, id: String, name: String, type: UInt8){}
+    func onPassCodeReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8){}
+    func onPassCodeChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8){}
     func onPassCodeModeChanged(mode: UInt8){}
     func onPassCodeDelete(device: CHSesameConnector, passCodeId: String){}
 }

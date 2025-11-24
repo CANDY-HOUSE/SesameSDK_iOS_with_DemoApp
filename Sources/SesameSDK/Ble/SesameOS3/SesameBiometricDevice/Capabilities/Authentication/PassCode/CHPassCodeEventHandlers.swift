@@ -16,7 +16,7 @@ class CHPassCodeEventHandlers {
             guard let device = device else { return }
             let card = CHSesameTouchCard(data: data)
             device.notifyProtocolDelegates(CHPassCodeDelegate.self) { delegate in
-                delegate.onPassCodeChanged(device: device, id: card.cardID, name: card.cardName, type: card.cardType)
+                delegate.onPassCodeChanged(device: device, id: card.cardID, hexName: card.cardName, type: card.cardType)
             }
         }
         
@@ -83,7 +83,7 @@ class CHPassCodeEventHandlers {
     // 通知卡片接收
     private static func notifyCardReceived(device: CHSesameBaseDevice, card: CHSesameTouchCard) {
         device.notifyProtocolDelegates(CHPassCodeDelegate.self) { delegate in
-            delegate.onPassCodeReceive(device: device, id: card.cardID, name: card.cardName, type: card.cardType)
+            delegate.onPassCodeReceive(device: device, id: card.cardID, hexName: card.cardName, type: card.cardType)
         }
     }
 }

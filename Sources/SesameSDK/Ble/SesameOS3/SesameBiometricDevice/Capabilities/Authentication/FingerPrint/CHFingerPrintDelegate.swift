@@ -10,8 +10,8 @@ public protocol CHFingerPrintDelegate: AnyObject {
     
     func onFingerPrintReceiveStart(device: CHSesameConnector)
     func onFingerPrintReceiveEnd(device: CHSesameConnector)
-    func onFingerPrintReceive(device: CHSesameConnector, id: String, name: String, type: UInt8)
-    func onFingerPrintChanged(device: CHSesameConnector, id: String, name: String, type: UInt8)
+    func onFingerPrintReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8)
+    func onFingerPrintChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8)
     func onFingerModeChange(mode: UInt8)
     func onFingerPrintDelete(device: CHSesameConnector, id: String)
     
@@ -21,8 +21,8 @@ public protocol CHFingerPrintDelegate: AnyObject {
 public extension CHFingerPrintDelegate {
     func onFingerPrintReceiveStart(device: CHSesameConnector){}
     func onFingerPrintReceiveEnd(device: CHSesameConnector){}
-    func onFingerPrintReceive(device: CHSesameConnector, id: String, name: String, type: UInt8){}
-    func onFingerPrintChanged(device: CHSesameConnector, id: String, name: String, type: UInt8){}
+    func onFingerPrintReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8){}
+    func onFingerPrintChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8){}
     func onFingerModeChange(mode: UInt8){}
     func onFingerPrintDelete(device: CHSesameConnector, id: String){}
 }

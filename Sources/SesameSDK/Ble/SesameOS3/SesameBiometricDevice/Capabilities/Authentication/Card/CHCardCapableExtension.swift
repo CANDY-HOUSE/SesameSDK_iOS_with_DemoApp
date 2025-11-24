@@ -23,11 +23,11 @@ extension CHCardCapable where Self: CHSesameBaseDevice {
         }
     }
 
-    func cardsChange(ID: String, name: String, result: @escaping (CHResult<CHEmpty>)) {
+    func cardsChange(ID: String, hexName: String, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
 
         let idData = ID.hexStringtoData()
-        let payload = Data([UInt8(idData.count)]) + idData + name.hexStringtoData()
+        let payload = Data([UInt8(idData.count)]) + idData + hexName.hexStringtoData()
         L.d("TouchDevice",payload.toHexLog())
         sendCommand(.init(.SSM_OS3_CARD_CHANGE, payload)) { _ in
             L.d("[TouchDevice][fingerPrintsChange][ok]")
@@ -76,10 +76,10 @@ extension CHCardCapable where Self: CHSesameBaseDevice {
         unregisterProtocolDelegate(delegate, for: CHCardDelegate.self)
     }
     
-    func cardAdd(id: Data, name: String, result: @escaping (CHResult<CHEmpty>)) {
+    func cardAdd(id: Data, hexName: String, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
         
-        let nameData = name.data(using: .utf8) ?? Data()
+        let nameData = hexName.data(using: .utf8) ?? Data()
         
         sendCommand(.init(.SSM_OS3_CARD_ADD,
                           Data([0xF0, 0x00, UInt8(id.count)]) + id + Data(repeating: 0, count: max(0, 16-id.count)) +

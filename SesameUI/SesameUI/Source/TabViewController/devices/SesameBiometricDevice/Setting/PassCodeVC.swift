@@ -169,7 +169,7 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
             }
         }
         
-        mDevice.passCodeAdd(id: Data(tempPasscodeValueList), name: name) { result in
+        mDevice.passCodeAdd(id: Data(tempPasscodeValueList), hexName: name) { result in
             switch result {
             case .success:
                 L.d("Password added successfully")
@@ -395,7 +395,7 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
                   renameToServer(name, passCode.nameUUID)
                 } else {
                     let uuid = UUID().uuidString.lowercased()
-                    self.mDevice.passCodeChange(ID: passCode.id, name: uuid.replacingOccurrences(of: "-", with: "")){ _ in
+                    self.mDevice.passCodeChange(ID: passCode.id, hexName: uuid.replacingOccurrences(of: "-", with: "")){ _ in
                         self.mPassCodeList.removeAll { value in
                             return value.id == passCode.id
                         }
@@ -424,12 +424,12 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
             self.refreshControl.programaticallyBeginRefreshing(in:self.tableView)
         }
     }
-    func onPassCodeReceive(device: CHSesameConnector, id: String, name: String, type: UInt8) {
+    func onPassCodeReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
-            if BiometricData.isUUIDv4(name: name) {
-                self.mPassCodeList.insert(KeyboardPassCode(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased()), at: 0)
+            if BiometricData.isUUIDv4(name: hexName) {
+                self.mPassCodeList.insert(KeyboardPassCode(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased()), at: 0)
             } else {
-                self.mPassCodeList.insert(KeyboardPassCode(id: id, name: name, nameUUID: name), at: 0)
+                self.mPassCodeList.insert(KeyboardPassCode(id: id, name: hexName, nameUUID: hexName), at: 0)
             }
             self.reloadTableView()
         }
@@ -456,11 +456,11 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
         }
     }
 
-    func onPassCodeChanged(device: CHSesameConnector, id: String, name: String, type: UInt8) {
+    func onPassCodeChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
-            var keyboardPassCode = KeyboardPassCode(id: id, name: name, nameUUID: name)
-            if BiometricData.isUUIDv4(name: name) {
-                keyboardPassCode = KeyboardPassCode(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased())
+            var keyboardPassCode = KeyboardPassCode(id: id, name: hexName, nameUUID: hexName)
+            if BiometricData.isUUIDv4(name: hexName) {
+                keyboardPassCode = KeyboardPassCode(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased())
             }
             self.mPassCodeList.insert(keyboardPassCode, at: 0)
             self.reloadTableView()
