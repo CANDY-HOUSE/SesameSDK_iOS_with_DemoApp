@@ -112,21 +112,12 @@ class SesameDeviceListViewController: CHBaseViewController {
                     }
                     return false
                 }
-                if let device = device {
-                    let remotes = getCurrentHub3IRDeviceList((device as! CHHub3).deviceId.uuidString.uppercased())
-                    device.preference.updateSelectExpandIndex((remotes.firstIndex(where: { $0.uuid == remote.uuid }))!)
-                    let hub3DeviceId = (device as! CHHub3).deviceId.uuidString.uppercased()
-                    switch remote.type {
-                    case IRType.DEVICE_REMOTE_CUSTOM:
-                        self.present(UINavigationController(rootViewController: RemoteLearnVC.instance(hub3DeviceId: hub3DeviceId, remote: remote)), animated: true)
-                        break
-                    case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT, IRType.DEVICE_REMOTE_FANS:
-                        let vc = RemoteControlVC(irRemote: remote, hub3DeviceId: hub3DeviceId)
-                        self.present(UINavigationController(rootViewController: vc), animated: true)
-                        break
-                    default: break
-                    }
-                }
+                let remoteString = try! JSONEncoder().encode(remote)
+                let extInfo: [String: String] = [
+                    "irRemote": String(data: remoteString, encoding: .utf8) ?? "",
+                    "deviceUUID": (device as! CHHub3).deviceId.uuidString.uppercased()
+                ]
+                navigationController?.pushViewController(CHWebViewController.instanceWithScene("ir_remote",extInfo:extInfo), animated:true)
             }
         } ,emptyPlaceholder: "co.candyhouse.sesame2.NoDevices".localized)
         

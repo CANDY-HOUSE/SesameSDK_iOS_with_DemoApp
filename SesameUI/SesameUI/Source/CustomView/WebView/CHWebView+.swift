@@ -21,6 +21,7 @@ enum WebViewMessageType: String {
     case requestPushToken = "requestPushToken"
     case requestNotificationStatus = "requestNotificationStatus"
     case requestNotificationSettings = "requestNotificationSettings"
+    case freshRemote = "freshRemote"
 }
 
 enum WebViewSchemeType: String {
@@ -107,6 +108,27 @@ extension CHWebView {
             if let _ = data as? [String: Any] {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }
+        }
+        registerMessageHandler(WebViewMessageType.freshRemote.rawValue) { webView, data in
+            if let requestData = data as? [String:Any],
+               let hub3DeviceId = requestData["hub3DeviceId"] as? String,
+               let remoteId = requestData["remoteId"] as? String,
+               let alias = requestData["alias"] as? String {
+                self.freshRemote(hub3DeviceId,remoteId:remoteId, alias:alias)
+            }
+        }
+    }
+    
+    func freshRemote(_ hub3DeviceId:String, remoteId:String,alias:String) {
+        let list = IRRemoteRepository.shared.getRemotesByKey(hub3DeviceId)
+        for localRemote in list  {
+            if (localRemote.uuid == remoteId) {
+                localRemote.updateAlias(alias)
+            }
+        }
+        IRRemoteRepository.shared.setRemotes(key: hub3DeviceId, remotes: list)
+        if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+            listViewController.reloadTableView()
         }
     }
     
