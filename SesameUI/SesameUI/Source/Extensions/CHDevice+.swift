@@ -32,23 +32,6 @@ extension CHDevice {
     func deviceStatusDescription() -> String {
         return self.deviceStatus.description
     }
-    
-    /// 生成 qr-code 字串
-    func qrCodeWithKeyLevel(_ keyLevel: Int, _ result: @escaping (String?)->Void) {
-//        L.d("qrCodeWithKeyLevel")
-        if keyLevel == KeyLevel.guest.rawValue {
-            createGuestKey { getResult in
-                if case let .success(guestKey) = getResult {
-                    let qrCodeURL = URL.qrCodeURLFromDevice(self, deviceName: self.deviceName, keyLevel: keyLevel, guestKey: guestKey.data)
-                    result(qrCodeURL)
-                } else {
-                    result(nil)
-                }
-            }
-        } else {
-            result(URL.qrCodeURLFromDevice(self, deviceName: self.deviceName, keyLevel: keyLevel))
-        }
-    }
 }
 
 extension CHDevice {

@@ -65,7 +65,6 @@
 		3B8D5DEA2E2D176D00FE456E /* CHSesameTouchProMechStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D772E2D176D00FE456E /* CHSesameTouchProMechStatus.swift */; };
 		3B8D5DEB2E2D176D00FE456E /* CHSesameTouchDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D6E2E2D176D00FE456E /* CHSesameTouchDevice.swift */; };
 		3B8D5DEC2E2D176D00FE456E /* CHSesame5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D292E2D176D00FE456E /* CHSesame5.swift */; };
-		3B8D5DED2E2D176D00FE456E /* CHGuestKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D942E2D176D00FE456E /* CHGuestKey.swift */; };
 		3B8D5DEE2E2D176D00FE456E /* CHIoTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D9C2E2D176D00FE456E /* CHIoTManager.swift */; };
 		3B8D5DEF2E2D176D00FE456E /* CHPassCodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D482E2D176D00FE456E /* CHPassCodeDelegate.swift */; };
 		3B8D5DF02E2D176D00FE456E /* CHSesameTouchProDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D712E2D176D00FE456E /* CHSesameTouchProDevice.swift */; };
@@ -428,7 +427,6 @@
 		3B8D5D8F2E2D176D00FE456E /* CHDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceProtocol.swift; sourceTree = "<group>"; };
 		3B8D5D912E2D176D00FE456E /* AWSConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfigurable.swift; sourceTree = "<group>"; };
 		3B8D5D932E2D176D00FE456E /* CHDeviceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceKey.swift; sourceTree = "<group>"; };
-		3B8D5D942E2D176D00FE456E /* CHGuestKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHGuestKey.swift; sourceTree = "<group>"; };
 		3B8D5D982E2D176D00FE456E /* CHDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceCenter.swift; sourceTree = "<group>"; };
 		3B8D5D992E2D176D00FE456E /* CHDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceManager.swift; sourceTree = "<group>"; };
 		3B8D5D9C2E2D176D00FE456E /* CHIoTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIoTManager.swift; sourceTree = "<group>"; };
@@ -1062,7 +1060,6 @@
 			isa = PBXGroup;
 			children = (
 				3B8D5D932E2D176D00FE456E /* CHDeviceKey.swift */,
-				3B8D5D942E2D176D00FE456E /* CHGuestKey.swift */,
 			);
 			path = Keys;
 			sourceTree = "<group>";
@@ -1771,7 +1768,6 @@
 				3B8D5DEA2E2D176D00FE456E /* CHSesameTouchProMechStatus.swift in Sources */,
 				3B8D5DEB2E2D176D00FE456E /* CHSesameTouchDevice.swift in Sources */,
 				3B8D5DEC2E2D176D00FE456E /* CHSesame5.swift in Sources */,
-				3B8D5DED2E2D176D00FE456E /* CHGuestKey.swift in Sources */,
 				3B8D5DEE2E2D176D00FE456E /* CHIoTManager.swift in Sources */,
 				3B8D5DEF2E2D176D00FE456E /* CHPassCodeDelegate.swift in Sources */,
 				3B8D5DF02E2D176D00FE456E /* CHSesameTouchProDevice.swift in Sources */,

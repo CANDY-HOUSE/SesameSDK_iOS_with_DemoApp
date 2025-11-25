@@ -30,16 +30,6 @@ public protocol CHWifiModule2: CHDevice,CHSesameConnector {
     func setWifiPassword(_ password: String, result: @escaping (CHResult<CHEmpty>))
 }
 
-// Hub3 继承自 CHWifiModule2，这里扩展的默认实现覆盖基类 CHDevice，在hub3中要打开（wm2中不使用）
-//extension CHWifiModule2 {
-//    func createGuestKey(result: @escaping CHResult<String>) {}
-//    func sign(token: String, result: @escaping CHResult<String>) {}
-//    func getGuestKeys(result: @escaping CHResult<[CHGuestKey]>) {}
-//    func removeGuestKey(_ fakeKey: String, result: @escaping CHResult<CHEmpty>) {}
-//    func updateGuestKey(_ guestKeyId: String, name: String, result: @escaping CHResult<CHEmpty>) {}
-//}
-
-
 public class CHWifiModule2MechSettings {
     public internal(set) var wifiSSID: String?
     public internal(set) var wifiPassword: String?

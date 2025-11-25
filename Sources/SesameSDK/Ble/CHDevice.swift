@@ -39,7 +39,6 @@ public protocol CHDevice: AnyObject {
 //    #if os(iOS)
     func reset(result: @escaping CHResult<CHEmpty>)
     func register(result: @escaping CHResult<CHEmpty>)
-    func createGuestKey(result: @escaping CHResult<String>)
 //    #endif
 }
 
@@ -171,30 +170,6 @@ internal extension CHDevice {
 
     func getHistoryTag() -> Data? {
         return (self as? CHDeviceUtil)?.sesame2KeyData?.historyTag?.copyData
-    }
-
-    func createGuestKey(result: @escaping CHResult<String>) {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let deviceKey = getKey() //返回CHDeviceKey
-        let jsonData = try! encoder.encode(deviceKey)
-        var data = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd HH:mm"
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        data["keyName"] = dateFormatter.string(from: date)
-        CHAccountManager.shared.API(request: .init(.post, "/device/v1/sesame2/\(deviceId.uuidString)/guestkey", data)) { postResult in
-            switch postResult {
-            case .success(let data):
-//                L.d("test",data) //["test", Optional(34 bytes)] todo 金表示这里会crash!
-                let decoder = JSONDecoder()
-                let guestKey = try! decoder.decode(String.self, from: data!)
-                result(.success(.init(input: guestKey)))
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
     }
     
     func postBatteryData(_ payload: String) {
