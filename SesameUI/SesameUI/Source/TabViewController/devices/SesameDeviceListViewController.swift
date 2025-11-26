@@ -117,7 +117,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                     "irRemote": String(data: remoteString, encoding: .utf8) ?? "",
                     "deviceUUID": (device as! CHHub3).deviceId.uuidString.uppercased()
                 ]
-                navigationController?.pushViewController(CHWebViewController.instanceWithScene("ir_remote",extInfo:extInfo), animated:true)
+                navigationController?.pushViewController(CHWebViewController.instanceWithScene("ir-remote",extInfo:extInfo), animated:true)
             }
         } ,emptyPlaceholder: "co.candyhouse.sesame2.NoDevices".localized)
         
