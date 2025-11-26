@@ -21,7 +21,7 @@ enum WebViewMessageType: String {
     case requestPushToken = "requestPushToken"
     case requestNotificationStatus = "requestNotificationStatus"
     case requestNotificationSettings = "requestNotificationSettings"
-    case freshRemote = "freshRemote"
+    case updateRemote = "updateRemote"
 }
 
 enum WebViewSchemeType: String {
@@ -109,17 +109,17 @@ extension CHWebView {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }
         }
-        registerMessageHandler(WebViewMessageType.freshRemote.rawValue) { webView, data in
+        registerMessageHandler(WebViewMessageType.updateRemote.rawValue) { webView, data in
             if let requestData = data as? [String:Any],
                let hub3DeviceId = requestData["hub3DeviceId"] as? String,
                let remoteId = requestData["remoteId"] as? String,
                let alias = requestData["alias"] as? String {
-                self.freshRemote(hub3DeviceId,remoteId:remoteId, alias:alias)
+                self.updateRemote(hub3DeviceId,remoteId:remoteId, alias:alias)
             }
         }
     }
     
-    func freshRemote(_ hub3DeviceId:String, remoteId:String,alias:String) {
+    func updateRemote(_ hub3DeviceId:String, remoteId:String,alias:String) {
         let list = IRRemoteRepository.shared.getRemotesByKey(hub3DeviceId)
         for localRemote in list  {
             if (localRemote.uuid == remoteId) {
