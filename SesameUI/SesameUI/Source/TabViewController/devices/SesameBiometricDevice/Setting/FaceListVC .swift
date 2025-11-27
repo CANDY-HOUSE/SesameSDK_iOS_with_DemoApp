@@ -166,13 +166,13 @@ class FaceListVC: CHBaseTableVC ,CHFaceDelegate, CHDeviceStatusDelegate{
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
                 CHUserAPIManager.shared.getSubId { subId in
                     let subUUID = subId ?? ""
-                    let request = CHFaceNameRequest(type: 0,
+                    let request = CHAuthenticationNameRequest.face(type: 0,
                                                     faceNameUUID: uuid,
                                                     subUUID: subUUID,
                                                     stpDeviceUUID: self.mDevice.deviceId.uuidString.uppercased(),
                                                     name: name,
                                                     faceID: face.id)
-                    self.mDevice.faceNameSet(faceNameRequest: request) { result in
+                    self.mDevice.updateAuthenticationName(request) { result in
                         if case let .failure(error) = result {
                             executeOnMainThread {
                                 self.view.makeToast(error.errorDescription())

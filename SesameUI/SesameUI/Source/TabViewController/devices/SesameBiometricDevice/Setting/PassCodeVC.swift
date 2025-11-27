@@ -367,13 +367,13 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
                 CHUserAPIManager.shared.getSubId { subId in
                     let subUUID = subId ?? ""
-                    let request = CHKeyBoardPassCodeNameRequest(type: 0,
+                    let request = CHAuthenticationNameRequest.keyBoardPassCode(type: 0,
                                                                 keyBoardPassCodeNameUUID: uuid,
                                                                 subUUID: subUUID,
                                                                 stpDeviceUUID: self.mDevice.deviceId.uuidString.uppercased(),
                                                                 name: name,
                                                                 keyBoardPassCode: passCode.id)
-                    self.mDevice.passCodeNameSet(passCodeNameRequest: request){ result in
+                    self.mDevice.updateAuthenticationName(request) { result in
                         if case let .failure(error) = result {
                             executeOnMainThread {
                                 self.view.makeToast(error.errorDescription())

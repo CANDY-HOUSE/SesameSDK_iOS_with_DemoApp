@@ -168,13 +168,13 @@ class PalmListVC: CHBaseTableVC ,CHPalmDelegate, CHDeviceStatusDelegate{
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
                 CHUserAPIManager.shared.getSubId { subId in
                     let subUUID = subId ?? ""
-                    let request = CHPalmNameRequest(type: 0,
+                    let request = CHAuthenticationNameRequest.palm(type: 0,
                                                     palmNameUUID: uuid,
                                                     subUUID: subUUID,
                                                     stpDeviceUUID: self.mDevice.deviceId.uuidString.uppercased(),
                                                     name: name,
                                                     palmID: palm.id)
-                    self.mDevice.palmNameSet(palmNameRequest: request) { result in
+                    self.mDevice.updateAuthenticationName(request) { result in
                         if case let .failure(error) = result {
                             executeOnMainThread {
                                 self.view.makeToast(error.errorDescription())

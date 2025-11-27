@@ -107,6 +107,7 @@ public protocol CHServerCapableHandler {
     func postAuthenticationData(_ data: BiometricDataWrapper, result: @escaping(CHResult<[BiometricData]>))
     func putAuthenticationData(_ data: BiometricDataWrapper, result: @escaping(CHResult<CHEmpty>))
     func deleteAuthenticationData(_ data: BiometricDataWrapper, result: @escaping(CHResult<CHEmpty>))
+    func updateAuthenticationName(_ data: CHAuthenticationNameRequest, result: @escaping(CHResult<String>))
 }
 
 extension CHServerCapableHandler {
@@ -156,5 +157,35 @@ extension CHServerCapableHandler {
                 result(.failure(error))
             }
         }
+    }
+    
+    func updateAuthenticationName(_ data: CHAuthenticationNameRequest, result: @escaping(CHResult<String>)) {
+        var authData: Codable
+        switch data {
+        case .card(let cardReq):
+            authData = cardReq
+        case .face(let faceReq):
+            authData = faceReq
+        case .fingerPrint(let fpReq):
+            authData = fpReq
+        case .palm(let palmReq):
+            authData = palmReq
+        case .keyBoardPassCode(let kbReq):
+            authData = kbReq
+        }
+        let payload = try! JSONEncoder().encode(authData)
+        CHAccountManager.shared.API(request: .init(.post, "/device/v2/credential", payload)) { resposne in
+            switch resposne {
+            case .success(let data):
+                if let data = data, let responseString = String(data: data, encoding: .utf8) {
+                    result(.success(.init(input: responseString)))
+                } else {
+                    result(.success(.init(input: "")))
+                }
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+        
     }
 }

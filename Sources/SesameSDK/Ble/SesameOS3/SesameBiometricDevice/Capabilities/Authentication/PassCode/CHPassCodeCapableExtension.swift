@@ -51,22 +51,6 @@ extension CHPassCodeCapable where Self: CHSesameBaseDevice {
         }
     }
     
-    func passCodeNameSet(passCodeNameRequest: CHKeyBoardPassCodeNameRequest, result: @escaping(CHResult<String>)) {
-        let payload = try! JSONEncoder().encode(passCodeNameRequest)
-        CHAccountManager.shared.API(request: .init(.put, "/device/v2/passcode/name", payload)) { resposne in
-            switch resposne {
-            case .success(let data):
-                if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                    result(.success(.init(input: responseString)))
-                } else {
-                    result(.success(.init(input: "")))
-                }
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-    
     func registerEventDelegate(_ delegate: CHPassCodeDelegate) {
         CHPassCodeEventHandlers.registerHandlers(for: self)
         registerProtocolDelegate(delegate, for: CHPassCodeDelegate.self)

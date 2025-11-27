@@ -14,7 +14,6 @@ public protocol CHFingerPrintCapable: CHDevice ,CHSesameConnector, CHServerCapab
     func fingerPrintsChange(ID: String, hexName: String, result  : @escaping(CHResult<CHEmpty>))
     func fingerPrintModeGet(result  : @escaping(CHResult<UInt8>))
     func fingerPrintModeSet(mode: UInt8, result  : @escaping(CHResult<CHEmpty>))
-    func fingerPrintNameSet(fingerPrintNameRequest: CHFingerPrintNameRequest, result: @escaping(CHResult<String>))
     
     func registerEventDelegate(_ delegate: CHFingerPrintDelegate)
     func unregisterEventDelegate(_ delegate: CHFingerPrintDelegate)

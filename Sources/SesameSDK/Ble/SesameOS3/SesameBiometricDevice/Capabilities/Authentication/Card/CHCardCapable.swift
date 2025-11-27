@@ -16,8 +16,6 @@ public protocol CHCardCapable: CHDevice ,CHSesameConnector, CHServerCapableHandl
     func cardsChange(ID: String, hexName: String, result  : @escaping(CHResult<CHEmpty>))
     func cardsModeGet(result  : @escaping(CHResult<UInt8>))
     func cardsModeSet(mode: UInt8, result  : @escaping(CHResult<CHEmpty>))
-    func cardNameSet(cardNameRequest: CHCardNameRequest, result: @escaping(CHResult<String>))
-    
     func registerEventDelegate(_ delegate: CHCardDelegate)
     func unregisterEventDelegate(_ delegate: CHCardDelegate)
     

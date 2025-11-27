@@ -43,22 +43,6 @@ extension CHPalmCapable where Self: CHSesameBaseDevice{
         }
     }
     
-    func palmNameSet(palmNameRequest: CHPalmNameRequest, result: @escaping(CHResult<String>)) {
-        let payload = try! JSONEncoder().encode(palmNameRequest)
-        CHAccountManager.shared.API(request: .init(.put, "/device/v2/palm/name", payload)) { resposne in
-            switch resposne {
-            case .success(let data):
-                if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                    result(.success(.init(input: responseString)))
-                } else {
-                    result(.success(.init(input: "")))
-                }
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-    
     func registerEventDelegate(_ delegate: CHPalmDelegate) {
         CHPalmEventHandlers.registerHandlers(for: self)
         registerProtocolDelegate(delegate, for: CHPalmDelegate.self)

@@ -51,22 +51,6 @@ extension CHCardCapable where Self: CHSesameBaseDevice {
         }
     }
     
-    func cardNameSet(cardNameRequest: CHCardNameRequest, result: @escaping(CHResult<String>)) {
-        let payload = try! JSONEncoder().encode(cardNameRequest)
-        CHAccountManager.shared.API(request: .init(.put, "/device/v2/card/name", payload)) { resposne in
-            switch resposne {
-            case .success(let data):
-                if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                    result(.success(.init(input: responseString)))
-                } else {
-                    result(.success(.init(input: "")))
-                }
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-    
     func registerEventDelegate(_ delegate: CHCardDelegate) {
         CHCardEventHandlers.registerHandlers(for: self)
         registerProtocolDelegate(delegate, for: CHCardDelegate.self)

@@ -428,13 +428,13 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
                 CHUserAPIManager.shared.getSubId { subId in
                     let subUUID = subId ?? ""
-                    let request = CHCardNameRequest(cardType: card.type,
+                    let request = CHAuthenticationNameRequest.card(cardType: card.type,
                                                     cardNameUUID: uuid,
                                                     subUUID: subUUID,
                                                     stpDeviceUUID: self.mDevice.deviceId.uuidString.uppercased(),
                                                     name: name,
                                                     cardID: card.id)
-                    self.mDevice.cardNameSet(cardNameRequest: request){ result in
+                    self.mDevice.updateAuthenticationName(request) { result in
                         if case let .failure(error) = result {
                             executeOnMainThread {
                                 self.view.makeToast(error.errorDescription())

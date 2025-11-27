@@ -157,7 +157,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
                    CHUserAPIManager.shared.getSubId { subId in
                        let subUUID = subId ?? ""
-                       let request = CHFingerPrintNameRequest(
+                       let request = CHAuthenticationNameRequest.fingerPrint(
                            type: 0,
                            fingerPrintNameUUID: uuid,
                            subUUID: subUUID,
@@ -165,8 +165,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
                            name: name,
                            fingerPrintID: fingerprint.id
                        )
-                       
-                       self.mDevice.fingerPrintNameSet(fingerPrintNameRequest: request) { result in
+                       self.mDevice.updateAuthenticationName(request) { result in
                            if case let .failure(error) = result {
                                executeOnMainThread {
                                    self.view.makeToast(error.errorDescription())

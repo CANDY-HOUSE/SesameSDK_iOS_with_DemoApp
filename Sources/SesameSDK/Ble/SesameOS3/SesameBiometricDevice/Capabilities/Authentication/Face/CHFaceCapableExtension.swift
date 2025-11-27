@@ -41,22 +41,6 @@ extension CHFaceCapable where Self: CHSesameBaseDevice {
         }
     }
     
-    func faceNameSet(faceNameRequest: CHFaceNameRequest, result: @escaping(CHResult<String>)) {
-        let payload = try! JSONEncoder().encode(faceNameRequest)
-        CHAccountManager.shared.API(request: .init(.put, "/device/v2/face/name", payload)) { resposne in
-            switch resposne {
-            case .success(let data):
-                if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                    result(.success(.init(input: responseString)))
-                } else {
-                    result(.success(.init(input: "")))
-                }
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-    
     func registerEventDelegate(_ delegate: CHFaceDelegate) {
         CHFaceEventHandlers.registerHandlers(for: self)
         registerProtocolDelegate(delegate, for: CHFaceDelegate.self)

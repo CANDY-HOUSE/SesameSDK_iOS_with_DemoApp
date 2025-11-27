@@ -50,21 +50,6 @@ extension CHFingerPrintCapable where Self: CHSesameBaseDevice {
             result(.success(CHResultStateNetworks(input: CHEmpty())))
         }
     }
-    func fingerPrintNameSet(fingerPrintNameRequest: CHFingerPrintNameRequest,result: @escaping(CHResult<String>)) {
-        let payload = try! JSONEncoder().encode(fingerPrintNameRequest)
-        CHAccountManager.shared.API(request: .init(.put, "/device/v2/fingerprint/name", payload)) { resposne in
-            switch resposne {
-            case .success(let data):
-                if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                    result(.success(.init(input: responseString)))
-                } else {
-                    result(.success(.init(input: "")))
-                }
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
     
     func registerEventDelegate(_ delegate: CHFingerPrintDelegate) {
         CHFingerPrintEventHandlers.registerHandlers(for: self)

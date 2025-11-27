@@ -12,7 +12,6 @@ public protocol CHFaceCapable: CHDevice, CHServerCapableHandler {
     func faceDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))
     func faceModeGet(result  : @escaping(CHResult<UInt8>))
     func faceModeSet(mode: UInt8, result  : @escaping(CHResult<CHEmpty>))
-    func faceNameSet(faceNameRequest: CHFaceNameRequest, result: @escaping(CHResult<String>))
     
     func registerEventDelegate(_ delegate: CHFaceDelegate)
     func unregisterEventDelegate(_ delegate: CHFaceDelegate)

@@ -15,13 +15,10 @@ public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableH
     func passCodeChange(ID: String, hexName: String, result  : @escaping(CHResult<CHEmpty>))
     func passCodeModeGet(result  : @escaping(CHResult<UInt8>))
     func passCodeModeSet(mode: UInt8, result  : @escaping(CHResult<CHEmpty>))
-    func passCodeNameSet(passCodeNameRequest: CHKeyBoardPassCodeNameRequest, result: @escaping(CHResult<String>))
-       
+    func passCodeBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>))
+    func passCodeAdd(id: Data, hexName: String, result: @escaping (CHResult<CHEmpty>))
+
     func registerEventDelegate(_ delegate: CHPassCodeDelegate)
-    
     func unregisterEventDelegate(_ delegate: CHPassCodeDelegate)
     
-    func passCodeBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>))
-    
-    func passCodeAdd(id: Data, hexName: String, result: @escaping (CHResult<CHEmpty>))
 }
