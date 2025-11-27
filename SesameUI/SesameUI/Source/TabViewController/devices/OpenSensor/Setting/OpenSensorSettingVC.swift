@@ -195,19 +195,19 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
 
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
-        // MARK: Group
-        contentStackView.addArrangedSubview(deviceMemberWebView(device))
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
-        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
-        scrollView.refreshControl = refreshControl
-
         // MARK: top status
         statusView = CHUIViewGenerator.plain()
         statusView.backgroundColor = .lockRed
         statusView.title = ""
         statusView.setColor(.white)
         contentStackView.addArrangedSubview(statusView)
+        
+        // MARK: Group
+        contentStackView.addArrangedSubview(deviceMemberWebView(device))
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
+        refreshControl.addTarget(self, action: #selector(reloadFriends), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
         
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
