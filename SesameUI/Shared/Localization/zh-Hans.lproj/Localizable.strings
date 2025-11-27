@@ -15,6 +15,7 @@
 "co.candyhouse.sesame2.AddContacts" = "添加联系人";
 "co.candyhouse.sesame2.NewSesame" = "添加新设备";
 "co.candyhouse.sesame2.scanQRCode" = "扫描二维码";
+"co.candyhouse.sesame2.EditName" = "修改名称";
 "co.candyhouse.sesame2.AutoLock" = "倒数自动上锁";
 "co.candyhouse.sesame2.AutoUnlock" = "自动解锁";
 "co.candyhouse.sesame2.Contacts" = "联系人";

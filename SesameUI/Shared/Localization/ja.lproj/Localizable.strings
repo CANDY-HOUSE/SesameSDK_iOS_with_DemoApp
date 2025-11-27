@@ -15,6 +15,7 @@
 "co.candyhouse.sesame2.Contacts" = "連絡先";
 "co.candyhouse.sesame2.Me" = "自分";
 "co.candyhouse.sesame2.AddContacts" = "連絡先の追加";
+"co.candyhouse.sesame2.EditName" = "名前を変更";
 "co.candyhouse.sesame2.NewSesame" = "新規デバイス";
 "co.candyhouse.sesame2.scanQRCode" = "QRコードのスキャン";
 "co.candyhouse.sesame2.LogOut" = "ログアウト";

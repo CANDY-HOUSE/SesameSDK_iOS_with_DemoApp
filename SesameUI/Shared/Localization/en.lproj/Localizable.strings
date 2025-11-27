@@ -15,6 +15,7 @@
 "co.candyhouse.sesame2.AddContacts" = "Add Contacts";
 "co.candyhouse.sesame2.NewSesame" = "New Device";
 "co.candyhouse.sesame2.scanQRCode" = "Scan QR Code";
+"co.candyhouse.sesame2.EditName" = "Edit Name";
 "co.candyhouse.sesame2.AutoLock" = "Auto-lock timer";
 "co.candyhouse.sesame2.AutoUnlock" = "Auto Unlock";
 "co.candyhouse.sesame2.Contacts" = "Contacts";
