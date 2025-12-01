@@ -97,15 +97,6 @@ public protocol CHRouteCoordinator {
     /// - Parameter isFromRegister: 是否來來自註冊
     func navigateToHub3SettingViewController(_ hub3: CHHub3, isFromRegister: Bool)
     
-    /// 進入IR 設置
-    /// - Parameter device: device 對象
-//    func navigateToIRControlSettingVC(_ device: CHWifiModule2)
-
-    /// 進入 Matter 类型设置
-    /// - Parameter device: （ Hub3 對象，device 對象）
-    func navigateToMatterTypeSettingVC(_ tuple: (CHHub3, CHDevice))
-    
-//    func navigateToRemoteCtlController(_ tuple: (CHHub3, ETDevice), _ homePage: Bool)
 }
 
 public extension CHRouteCoordinator where Self: UIViewController {
@@ -237,13 +228,6 @@ public extension CHRouteCoordinator where Self: UIViewController {
         navigationController?.pushViewController(Hub3SettingViewController.instanceWithHub3(hub3, isFromRegister: isFromRegister) {},animated: true)
     }
     
-//    func navigateToIRControlSettingVC(_ device: CHWifiModule2) {
-//        navigationController?.pushViewController(Hub3IRCustomizeControlVC.instance(),animated: true)
-//    }
-    
-    func navigateToMatterTypeSettingVC(_ tuple: (CHHub3, CHDevice)) {
-        navigationController?.pushViewController(Hub3MatterTypeSelectVC.instance(tuple),animated: true)
-    }
     
     func navigateToCHSesameFaceProSettingVC(_ device: CHSesameFacePro, isFromRegister: Bool = false) {
         navigationController?.pushViewController(SesameBiometricDeviceSettingVC.instance(device) {},animated: true)

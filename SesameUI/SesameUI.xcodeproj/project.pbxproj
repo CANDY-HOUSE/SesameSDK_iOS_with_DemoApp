@@ -55,7 +55,6 @@
 		41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41ACFD0729B8B982001153DB /* Sesame5LockAngle.xib */; };
 		41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */; };
 		641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641326832B57A3F0008B1AC1 /* PickerController.swift */; };
-		64190A142C2D54DC00B89592 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64190A132C2D54DC00B89592 /* AirData.swift */; };
 		643A9C492B313970008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4B2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4C2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
@@ -87,21 +86,16 @@
 		645B1B302BDB4C0100D5E491 /* ImageSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B262BDB4C0100D5E491 /* ImageSourceHelpers.swift */; };
 		645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 645E2D212B5BC83300D39E66 /* Hub3IREmitCell.xib */; };
 		645E2D292B5BC83300D39E66 /* Hub3IREmitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645E2D232B5BC83300D39E66 /* Hub3IREmitCell.swift */; };
-		645E2D2A2B5BC83300D39E66 /* MatterTypeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 645E2D242B5BC83300D39E66 /* MatterTypeViewCell.xib */; };
-		645E2D2C2B5BC83300D39E66 /* MatterTypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645E2D262B5BC83300D39E66 /* MatterTypeViewCell.swift */; };
 		646B86DC2B443D520042589E /* PlayLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86DB2B443D520042589E /* PlayLoadingView.swift */; };
 		646B86DE2B4545B60042589E /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86DD2B4545B60042589E /* Debouncer.swift */; };
 		646B86E12B47995D0042589E /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86E02B47995D0042589E /* UIView+.swift */; };
-		646B86E32B47F3890042589E /* Hub3MatterTypeSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86E22B47F3890042589E /* Hub3MatterTypeSelectVC.swift */; };
 		646B86EC2B48EBDB0042589E /* Hub3KeysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */; };
 		646B86EE2B48F0EC0042589E /* Hub3SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */; };
 		646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */; };
 		646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */ = {isa = PBXBuildFile; fileRef = 646CE5652BDF3D9A00898ECA /* finger_print.gif */; };
 		647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */; };
-		6479BD912B62569D00DE5845 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD902B62569D00DE5845 /* XMLParser.swift */; };
 		647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */; };
 		647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */; };
-		6483C9252B68F98800D8B68D /* strings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9272B68F98800D8B68D /* strings.xml */; };
 		648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648461BB2BC7B6370000E9A7 /* UITableView+.swift */; };
 		649465CA2E84E7920072F7F4 /* CHWebview+RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */; };
 		649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */; };
@@ -115,8 +109,6 @@
 		64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
 		64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
-		64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */; };
-		64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */; };
 		64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */; };
 		64E854372E7A85A400399FED /* CHWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854362E7A85A300399FED /* CHWebView.swift */; };
 		64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854382E7A99B300399FED /* CHWebViewController.swift */; };
@@ -497,7 +489,6 @@
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
 		41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameHistoryViewController.swift; sourceTree = "<group>"; };
 		641326832B57A3F0008B1AC1 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
-		64190A132C2D54DC00B89592 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
 		643A9C482B313970008214BD /* CHProductModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHProductModel+.swift"; sourceTree = "<group>"; };
 		643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot1_21_2_369eb9.zip; sourceTree = "<group>"; };
 		643F06912BCD123F0045D789 /* sesame_421_4_50ce5b.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame_421_4_50ce5b.zip; sourceTree = "<group>"; };
@@ -525,25 +516,17 @@
 		645B1B262BDB4C0100D5E491 /* ImageSourceHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSourceHelpers.swift; sourceTree = "<group>"; };
 		645E2D212B5BC83300D39E66 /* Hub3IREmitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hub3IREmitCell.xib; sourceTree = "<group>"; };
 		645E2D232B5BC83300D39E66 /* Hub3IREmitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hub3IREmitCell.swift; sourceTree = "<group>"; };
-		645E2D242B5BC83300D39E66 /* MatterTypeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatterTypeViewCell.xib; sourceTree = "<group>"; };
-		645E2D262B5BC83300D39E66 /* MatterTypeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatterTypeViewCell.swift; sourceTree = "<group>"; };
 		646B86DB2B443D520042589E /* PlayLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLoadingView.swift; sourceTree = "<group>"; };
 		646B86DD2B4545B60042589E /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		646B86E02B47995D0042589E /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		646B86E22B47F3890042589E /* Hub3MatterTypeSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3MatterTypeSelectVC.swift; sourceTree = "<group>"; };
 		646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3KeysListViewController.swift; sourceTree = "<group>"; };
 		646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3SettingViewController.swift; sourceTree = "<group>"; };
 		646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hub3SettingViewController.xib; sourceTree = "<group>"; };
 		646CE5652BDF3D9A00898ECA /* finger_print.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = finger_print.gif; sourceTree = "<group>"; };
 		647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		6479BD902B62569D00DE5845 /* XMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 		647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot2ScriptActionCell.swift; sourceTree = "<group>"; };
 		647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bot2ScriptActionCell.xib; sourceTree = "<group>"; };
 		647DF0B42CB6664200A02F47 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
-		6483C9262B68F98800D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings.xml; sourceTree = "<group>"; };
-		6483C9282B68F99200D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings.xml"; sourceTree = "<group>"; };
-		6483C9292B68F99F00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings.xml"; sourceTree = "<group>"; };
-		6483C92A2B68F9A500D8B68D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ja; path = ja.lproj/strings.xml; sourceTree = "<group>"; };
 		648461BB2BC7B6370000E9A7 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+RefreshControl.swift"; sourceTree = "<group>"; };
 		649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIRControlDialog.swift; sourceTree = "<group>"; };
@@ -554,8 +537,6 @@
 		64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5ListCell.xib; sourceTree = "<group>"; };
 		64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameTouchPro+.swift"; sourceTree = "<group>"; };
 		64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTableViewProxy.swift; sourceTree = "<group>"; };
-		64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteControlCell.swift; sourceTree = "<group>"; };
-		64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IRRemoteControlCell.xib; sourceTree = "<group>"; };
 		64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SesameDeviceList+Control.swift"; sourceTree = "<group>"; };
 		64E854362E7A85A300399FED /* CHWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebView.swift; sourceTree = "<group>"; };
 		64E854382E7A99B300399FED /* CHWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebViewController.swift; sourceTree = "<group>"; };
@@ -1137,10 +1118,6 @@
 			children = (
 				645E2D232B5BC83300D39E66 /* Hub3IREmitCell.swift */,
 				645E2D212B5BC83300D39E66 /* Hub3IREmitCell.xib */,
-				645E2D262B5BC83300D39E66 /* MatterTypeViewCell.swift */,
-				645E2D242B5BC83300D39E66 /* MatterTypeViewCell.xib */,
-				64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */,
-				64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1159,7 +1136,6 @@
 		646F79682B3D76800055E0B2 /* Hub3 */ = {
 			isa = PBXGroup;
 			children = (
-				6479BD922B6350B700DE5845 /* Assets */,
 				645E2D202B5BC83300D39E66 /* Cell */,
 				646F79692B3D76980055E0B2 /* Setting */,
 			);
@@ -1170,7 +1146,6 @@
 			isa = PBXGroup;
 			children = (
 				2C15AD542E6FC63A00E37918 /* ir */,
-				646B86E22B47F3890042589E /* Hub3MatterTypeSelectVC.swift */,
 				646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */,
 				646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */,
 				6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */,
@@ -1178,24 +1153,6 @@
 				646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		64759B912C2AC4B300D5EFB8 /* cLib */ = {
-			isa = PBXGroup;
-			children = (
-				64190A132C2D54DC00B89592 /* AirData.swift */,
-			);
-			path = cLib;
-			sourceTree = "<group>";
-		};
-		6479BD922B6350B700DE5845 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				64759B912C2AC4B300D5EFB8 /* cLib */,
-				6483C9272B68F98800D8B68D /* strings.xml */,
-				6479BD902B62569D00DE5845 /* XMLParser.swift */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		647A276D2B2C41F50013308C /* Cell */ = {
@@ -2047,7 +2004,6 @@
 				E8819C0F2913630D00431939 /* Localizable.strings in Resources */,
 				643F069F2BCD12400045D789 /* sesame_421_4_50ce5b.zip in Resources */,
 				D00CD4A32E4A20B40037A56B /* remote_30_14_03d244.zip in Resources */,
-				64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */,
 				E8819C0C291360D800431939 /* Localizable.strings in Resources */,
 				89D802C22EBCA048000CC88A /* opensensor2_30_24_2f5b11.zip in Resources */,
 				E8819C0B29135D2E00431939 /* Localizable.strings in Resources */,
@@ -2072,7 +2028,6 @@
 				E8F2B7DA293708A700970E10 /* InfoPlist.strings in Resources */,
 				419F15582363E48400C09D62 /* bee.mp3 in Resources */,
 				D03BE3192E549498000E724C /* bleconnector_30_11_01be3d.zip in Resources */,
-				6483C9252B68F98800D8B68D /* strings.xml in Resources */,
 				BE85D3052580A8030091D3A6 /* WifiModule2SSIDScanCell.xib in Resources */,
 				BED189F725591C72006544A0 /* WifiModule2SesameCell.xib in Resources */,
 				D00CD4A52E4A20BA0037A56B /* remoten_30_15_03d244.zip in Resources */,
@@ -2090,7 +2045,6 @@
 				B179691222F7CE9400E91996 /* Assets.xcassets in Resources */,
 				645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */,
 				418FA1F9237C04EF00C7C408 /* InfoPlist.strings in Resources */,
-				645E2D2A2B5BC83300D39E66 /* MatterTypeViewCell.xib in Resources */,
 				B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */,
 				643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */,
 				890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */,
@@ -2297,7 +2251,6 @@
 				6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */,
 				645B1B2C2BDB4C0100D5E491 /* Array.swift in Sources */,
 				64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */,
-				64190A142C2D54DC00B89592 /* AirData.swift in Sources */,
 				645B1B2B2BDB4C0100D5E491 /* GIFImageView.swift in Sources */,
 				BE8F9214264A1364001DF645 /* UserLocationManager.swift in Sources */,
 				BE308145248E3C8C00152D66 /* DataShared+.swift in Sources */,
@@ -2335,7 +2288,6 @@
 				4137C8CC2350276300211F43 /* lockView.swift in Sources */,
 				BEB7F49E24A4EBBF00D04651 /* SesameUI.xcdatamodeld in Sources */,
 				BE88594D26C3CCDE002D17E0 /* CHAPIManagerType.swift in Sources */,
-				645E2D2C2B5BC83300D39E66 /* MatterTypeViewCell.swift in Sources */,
 				643A9C492B313970008214BD /* CHProductModel+.swift in Sources */,
 				BE9C6C9724B3378B00C7318B /* Sesame2Store.swift in Sources */,
 				64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */,
@@ -2381,12 +2333,10 @@
 				B01728D9250CA67D00F87ED6 /* RegisterSesameDeviceViewController.swift in Sources */,
 				B0534AE524FA360500219D08 /* QRCodeExtractor.swift in Sources */,
 				647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */,
-				6479BD912B62569D00DE5845 /* XMLParser.swift in Sources */,
 				649465CA2E84E7920072F7F4 /* CHWebview+RefreshControl.swift in Sources */,
 				BE8F9210264A0F82001DF645 /* CHDeviceInfo.swift in Sources */,
 				B087E57224E126830087D978 /* CHWifiModule2+.swift in Sources */,
 				BE6978ED2483E37D0089141E /* ViewHelper.swift in Sources */,
-				64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */,
 				641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */,
 				BE88591126C39F99002D17E0 /* CHSesameLock+.swift in Sources */,
 				E86587F62A2768150091D77F /* BikeLock2SettingViewController.swift in Sources */,
@@ -2427,7 +2377,6 @@
 				E8A6F1D42A60E56800AED9AD /* OpenSensorSettingVC.swift in Sources */,
 				B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */,
 				BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */,
-				646B86E32B47F3890042589E /* Hub3MatterTypeSelectVC.swift in Sources */,
 				41ACFD0429B86A07001153DB /* Sesame5SettingViewController.swift in Sources */,
 				BEFB1DE1256A6AEF00BF95CB /* CHDeviceManagerShared+.swift in Sources */,
 				BEB36C7D2589C04000EDB9FB /* UIViewController+.swift in Sources */,
@@ -2568,17 +2517,6 @@
 				41C9488A238B6D58009469B0 /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		6483C9272B68F98800D8B68D /* strings.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9262B68F98800D8B68D /* en */,
-				6483C9282B68F99200D8B68D /* zh-Hans */,
-				6483C9292B68F99F00D8B68D /* zh-Hant */,
-				6483C92A2B68F9A500D8B68D /* ja */,
-			);
-			name = strings.xml;
 			sourceTree = "<group>";
 		};
 		96B2197A29111F55006B68AB /* Localizable.strings */ = {

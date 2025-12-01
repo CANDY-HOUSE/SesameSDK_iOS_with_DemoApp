@@ -87,12 +87,6 @@ extension Hub3KeysListViewController: UITableViewDelegate, UITableViewDataSource
                 }
             }
         }
-        
-//        if willInsertDevice.productModel.defaultMatterRole != .none {
-//            navigateToMatterTypeSettingVC((device, willInsertDevice))
-//        } else {
-//    
-//        }
     }
 }
 

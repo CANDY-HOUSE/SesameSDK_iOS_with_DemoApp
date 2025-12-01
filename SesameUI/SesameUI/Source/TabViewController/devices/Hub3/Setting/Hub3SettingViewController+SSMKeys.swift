@@ -121,11 +121,6 @@ extension Hub3SettingViewController {
             }),
             AlertItem.cancelItem()
         ]
-//        if device.productModel.defaultMatterRole != .none {
-//            optItems.insert(AlertItem(title: "co.candyhouse.hub3.ssmDetail".localized, handler: { [unowned self] _ in
-//                self.navigateToMatterTypeSettingVC((self.wifiModule2, device))
-//            }), at: 0)
-//        }
         modalSheet(AlertModel(title: nil, message: localDevices.filter {
             $0.deviceId.uuidString == targetDeviceId
         }.first?.deviceName ?? targetDeviceId, sourceView: tableView.cellForRow(at: indexPath), items:optItems ))
