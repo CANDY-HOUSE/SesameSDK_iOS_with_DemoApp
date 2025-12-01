@@ -58,7 +58,10 @@ extension Hub3SettingViewController {
         // MARK: Add Sesame Buttom View
         addIRKeysButtonView = CHUIViewGenerator.plain { [unowned self] button,_ in
             if (self.wifiModule2.mechStatus as? CHWifiModule2NetworkStatus)?.isAPWork == true {
-                self.navigationController?.pushViewController(RemoteTypeListVC.instance((self.device as! CHHub3).deviceId.uuidString.uppercased()), animated: true)
+                let extInfo: [String: String] = [
+                    "deviceUUID": (device as! CHHub3).deviceId.uuidString.uppercased()
+                ]
+                self.navigationController?.pushViewController(CHWebViewController.instanceWithScene("ir-types",extInfo:extInfo), animated:true)
             }
         }
         addIRKeysButtonView.setColor(.darkText)
@@ -147,18 +150,12 @@ extension Hub3SettingViewController {
         optItems.insert(AlertItem(title: "co.candyhouse.hub3.ssmDetail".localized, handler: { [unowned self] _ in
             guard let hub3 = device as? CHHub3 else { return }
             guard let remote = getCurrentHub3IRDeviceList().first(where: { $0.uuid == irDeviceModel.uuid }) else { return }
-            let hub3DeviceId = hub3.deviceId.uuidString.uppercased()
-            hub3.preference.updateSelectExpandIndex(indexPath.row)
-            switch remote.type {
-            case IRType.DEVICE_REMOTE_CUSTOM:
-                navigationController?.pushViewController(RemoteLearnVC.instance(hub3DeviceId: hub3DeviceId, remote: remote), animated: true)
-                break
-            case IRType.DEVICE_REMOTE_AIR, IRType.DEVICE_REMOTE_TV, IRType.DEVICE_REMOTE_LIGHT, IRType.DEVICE_REMOTE_FANS:
-                let vc = RemoteControlVC(irRemote: remote,hub3DeviceId: hub3DeviceId)
-                self.navigationController?.pushViewController(vc, animated: true)
-                break
-            default: break
-            }
+            let remoteString = try! JSONEncoder().encode(remote)
+            let extInfo: [String: String] = [
+                "irRemote": String(data: remoteString, encoding: .utf8) ?? "",
+                "deviceUUID": hub3.deviceId.uuidString.uppercased()
+            ]
+            navigationController?.pushViewController(CHWebViewController.instanceWithScene("ir-remote",extInfo:extInfo), animated:true)
         }), at: 0)
         modalSheet(AlertModel(title: nil, message: irDeviceModel.alias, sourceView: tableView.cellForRow(at: indexPath), items:optItems ))
     }

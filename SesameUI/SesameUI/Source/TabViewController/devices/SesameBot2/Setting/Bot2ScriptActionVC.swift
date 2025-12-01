@@ -64,6 +64,28 @@ extension CHSesamebot2Event {
     }
 }
 
+extension CHSesamebot2Event: CellSubItemDiscriptor {
+    
+    var title: String {
+        return "\("co.candyhouse.sesame2.Scripts".localized) \(self.displayName)"
+    }
+    
+    func iconWithDevice(_ device: CHDevice) -> String? {
+        return device.currentStatusImage() + "-noBorder"
+    }
+    
+    func convertToCellDescriptorModel(device: CHDevice, cellCls: AnyClass, click: (() -> Void)?) -> CHCellDescriptor {
+        return CHCellDescriptor(cellCls: cellCls, rawValue: self) { cell in
+            guard let emitCell = cell as? Hub3IREmitCell else {
+                return
+            }
+            emitCell.clickHandler = click
+            emitCell.device = device
+            emitCell.configure(item: self)
+        }
+    }
+}
+
 private let MAX_ACTION = 20
 let MAX_ACTION_TIME = 255
 

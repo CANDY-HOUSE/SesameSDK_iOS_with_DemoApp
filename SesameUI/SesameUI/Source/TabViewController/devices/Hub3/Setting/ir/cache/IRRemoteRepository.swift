@@ -36,25 +36,9 @@ class IRRemoteRepository {
     
     // MARK: - Public Methods
     
-    func addRemote(key: String, remote: IRRemote) {
-        var currentMap = currentState.remoteMap
-        var list = currentMap[key] ?? []
-        list.append(remote)
-        currentMap[key] = list
-        updateState(remoteMap: currentMap)
-    }
-    
     func setRemotes(key: String, remotes: [IRRemote]) {
         var currentMap = currentState.remoteMap
         currentMap[key] = remotes
-        updateState(remoteMap: currentMap)
-    }
-    
-    func addRemotes(key: String, remotes: [IRRemote]) {
-        var currentMap = currentState.remoteMap
-        var existingList = currentMap[key] ?? []
-        existingList.append(contentsOf: remotes)
-        currentMap[key] = existingList
         updateState(remoteMap: currentMap)
     }
     
@@ -71,24 +55,8 @@ class IRRemoteRepository {
         }
     }
     
-    func updateRemote(key: String, index: Int, remote: IRRemote) {
-        var currentMap = currentState.remoteMap
-        if var list = currentMap[key], index < list.count {
-            list[index] = remote
-            currentMap[key] = list
-            updateState(remoteMap: currentMap)
-        }
-    }
-    
     func getRemotesByKey(_ key: String) -> [IRRemote] {
         return currentState.remoteMap[key] ?? []
-    }
-    
-    func getRemoteByIndex(key: String, index: Int) -> IRRemote? {
-        guard let list = currentState.remoteMap[key], index < list.count else {
-            return nil
-        }
-        return list[index]
     }
     
     func containsRemote(key: String, remote: IRRemote) -> Bool {
@@ -103,10 +71,6 @@ class IRRemoteRepository {
         var currentMap = currentState.remoteMap
         currentMap.removeValue(forKey: key)
         updateState(remoteMap: currentMap)
-    }
-    
-    func clearAll() {
-        updateState(remoteMap: [:])
     }
     
     // MARK: - Private Methods

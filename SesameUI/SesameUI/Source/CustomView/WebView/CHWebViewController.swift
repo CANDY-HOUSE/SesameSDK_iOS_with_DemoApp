@@ -6,8 +6,9 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 import Foundation
+import UIKit
 
-class CHWebViewController: CHBaseViewController {
+class CHWebViewController: CHBaseViewController,UIGestureRecognizerDelegate {
     private var urlStr: String!
     private var sceneInfo: (scene: String, extInfo: [String: String]?)!
     private weak var webView: CHWebView!
@@ -22,6 +23,29 @@ class CHWebViewController: CHBaseViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupWebView()
+        setupBackButton()
+    }
+    
+    private func setupBackButton() {
+        navigationItem.hidesBackButton = true
+        
+        let backButton = UIBarButtonItem(
+            image: UIImage(systemName: "chevron.left"),
+            style: .plain,
+            target: self,
+            action: #selector(handleBackAction)
+        )
+        navigationItem.leftBarButtonItem = backButton
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    @objc private func handleBackAction() {
+        if webView?.webView?.canGoBack == true {
+            webView?.goBack()
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     private func setupWebView() {
@@ -40,6 +64,16 @@ class CHWebViewController: CHBaseViewController {
         webView.autoPinEdgesToSuperview()
         webView.registerSchemeHandlers()
         webView.registerMessageHandlers()
+    }
+}
+
+extension CHWebViewController: UINavigationBarDelegate {
+    func navigationBar(_ navigationBar: UINavigationBar, shouldPop item: UINavigationItem) -> Bool {
+        if webView?.webView?.canGoBack == true {
+            webView?.goBack()
+            return false
+        }
+        return true
     }
 }
 

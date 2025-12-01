@@ -22,6 +22,7 @@ enum WebViewMessageType: String {
     case requestNotificationStatus = "requestNotificationStatus"
     case requestNotificationSettings = "requestNotificationSettings"
     case updateRemote = "updateRemote"
+    case addRemote = "addRemote"
 }
 
 enum WebViewSchemeType: String {
@@ -117,6 +118,19 @@ extension CHWebView {
                 self.updateRemote(hub3DeviceId,remoteId:remoteId, alias:alias)
             }
         }
+        registerMessageHandler(WebViewMessageType.addRemote.rawValue) { webView, data in
+            if let requestData = data as? [String:Any],
+               let hub3DeviceId = requestData["hub3DeviceId"] as? String,
+               let remoteString = requestData["remote"] as? String {
+                guard let jsonData = remoteString.data(using: .utf8) else { return }
+                do {
+                    let remote = try JSONDecoder().decode(IRRemote.self, from: jsonData)
+                    self.addRemote(hub3DeviceId, remote: remote)
+                } catch {
+                    L.d("CHWebView","parse H5 addRemote Fail!")
+                }
+            }
+        }
     }
     
     func updateRemote(_ hub3DeviceId:String, remoteId:String,alias:String) {
@@ -126,6 +140,16 @@ extension CHWebView {
                 localRemote.updateAlias(alias)
             }
         }
+        IRRemoteRepository.shared.setRemotes(key: hub3DeviceId, remotes: list)
+        if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+            listViewController.reloadTableView()
+        }
+    }
+    
+    
+    func addRemote(_ hub3DeviceId:String, remote:IRRemote) {
+        var list = IRRemoteRepository.shared.getRemotesByKey(hub3DeviceId)
+        list.insert(remote, at: 0)
         IRRemoteRepository.shared.setRemotes(key: hub3DeviceId, remotes: list)
         if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
             listViewController.reloadTableView()
