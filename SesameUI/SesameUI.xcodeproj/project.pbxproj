@@ -9,34 +9,9 @@
 /* Begin PBXBuildFile section */
 		0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
 		0A0B3FEE278D4D8F00BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
-		2C15AD552E6FC63A00E37918 /* RemoteControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4A2E6FC63A00E37918 /* RemoteControlViewModel.swift */; };
-		2C15AD562E6FC63A00E37918 /* RemoteHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2C2E6FC63A00E37918 /* RemoteHandlerAdapter.swift */; };
-		2C15AD572E6FC63A00E37918 /* HXDParametersSwapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD322E6FC63A00E37918 /* HXDParametersSwapper.swift */; };
-		2C15AD582E6FC63A00E37918 /* IRType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD342E6FC63A00E37918 /* IRType+.swift */; };
-		2C15AD592E6FC63A00E37918 /* IRType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD332E6FC63A00E37918 /* IRType.swift */; };
-		2C15AD5A2E6FC63A00E37918 /* HXDCommandProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD312E6FC63A00E37918 /* HXDCommandProcessor.swift */; };
-		2C15AD5B2E6FC63A00E37918 /* RemoteLearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD222E6FC63A00E37918 /* RemoteLearnVC.swift */; };
-		2C15AD5D2E6FC63A00E37918 /* RemoteLearnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD232E6FC63A00E37918 /* RemoteLearnViewModel.swift */; };
-		2C15AD5E2E6FC63A00E37918 /* RemoteAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD362E6FC63A00E37918 /* RemoteAdapterFactory.swift */; };
-		2C15AD5F2E6FC63A00E37918 /* RemoteTypeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD202E6FC63A00E37918 /* RemoteTypeListVC.swift */; };
-		2C15AD602E6FC63A00E37918 /* RemoteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD502E6FC63A00E37918 /* RemoteListVC.swift */; };
-		2C15AD612E6FC63A00E37918 /* AirHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD252E6FC63A00E37918 /* AirHandlerAdapter.swift */; };
-		2C15AD622E6FC63A00E37918 /* RemoteControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD492E6FC63A00E37918 /* RemoteControlVC.swift */; };
-		2C15AD632E6FC63A00E37918 /* LoadRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD352E6FC63A00E37918 /* LoadRemoteConfig.swift */; };
-		2C15AD642E6FC63A00E37918 /* HandlerCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2B2E6FC63A00E37918 /* HandlerCallback.swift */; };
-		2C15AD652E6FC63A00E37918 /* RemoteListCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4F2E6FC63A00E37918 /* RemoteListCacheManager.swift */; };
 		2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD1E2E6FC63A00E37918 /* RemoteBean.swift */; };
-		2C15AD682E6FC63A00E37918 /* ConfigUpdateCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2E2E6FC63A00E37918 /* ConfigUpdateCallback.swift */; };
-		2C15AD6A2E6FC63A00E37918 /* RemoteMatchControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4C2E6FC63A00E37918 /* RemoteMatchControlVC.swift */; };
-		2C15AD6C2E6FC63A00E37918 /* RemoteMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD4D2E6FC63A00E37918 /* RemoteMatchViewModel.swift */; };
 		2C15AD6D2E6FC63A00E37918 /* CHIRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD522E6FC63A00E37918 /* CHIRManager.swift */; };
-		2C15AD6E2E6FC63A00E37918 /* RemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD462E6FC63A00E37918 /* RemoteRepository.swift */; };
-		2C15AD702E6FC63A00E37918 /* RemoteUIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD2F2E6FC63A00E37918 /* RemoteUIAdapter.swift */; };
-		2C15AD712E6FC63A00E37918 /* AirAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD292E6FC63A00E37918 /* AirAdapterFactory.swift */; };
-		2C15AD732E6FC63A00E37918 /* AirUIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD272E6FC63A00E37918 /* AirUIAdapter.swift */; };
-		2C15AD742E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD452E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift */; };
 		2C15ADC22E705E2C00E37918 /* IRRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15ADC12E705E2A00E37918 /* IRRemoteRepository.swift */; };
-		2CFFBE372D93A5C9005FE14B /* IrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFBE362D93A5C4005FE14B /* IrController.swift */; };
 		3B1D80402E2A2DA900C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80442E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80452E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -80,7 +55,6 @@
 		41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41ACFD0729B8B982001153DB /* Sesame5LockAngle.xib */; };
 		41FFFE1129E129AD004BB381 /* SesameHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */; };
 		641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641326832B57A3F0008B1AC1 /* PickerController.swift */; };
-		64190A142C2D54DC00B89592 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64190A132C2D54DC00B89592 /* AirData.swift */; };
 		643A9C492B313970008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4B2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
 		643A9C4C2B313FD1008214BD /* CHProductModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A9C482B313970008214BD /* CHProductModel+.swift */; };
@@ -112,21 +86,16 @@
 		645B1B302BDB4C0100D5E491 /* ImageSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B1B262BDB4C0100D5E491 /* ImageSourceHelpers.swift */; };
 		645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 645E2D212B5BC83300D39E66 /* Hub3IREmitCell.xib */; };
 		645E2D292B5BC83300D39E66 /* Hub3IREmitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645E2D232B5BC83300D39E66 /* Hub3IREmitCell.swift */; };
-		645E2D2A2B5BC83300D39E66 /* MatterTypeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 645E2D242B5BC83300D39E66 /* MatterTypeViewCell.xib */; };
-		645E2D2C2B5BC83300D39E66 /* MatterTypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645E2D262B5BC83300D39E66 /* MatterTypeViewCell.swift */; };
 		646B86DC2B443D520042589E /* PlayLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86DB2B443D520042589E /* PlayLoadingView.swift */; };
 		646B86DE2B4545B60042589E /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86DD2B4545B60042589E /* Debouncer.swift */; };
 		646B86E12B47995D0042589E /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86E02B47995D0042589E /* UIView+.swift */; };
-		646B86E32B47F3890042589E /* Hub3MatterTypeSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86E22B47F3890042589E /* Hub3MatterTypeSelectVC.swift */; };
 		646B86EC2B48EBDB0042589E /* Hub3KeysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */; };
 		646B86EE2B48F0EC0042589E /* Hub3SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */; };
 		646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */; };
 		646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */ = {isa = PBXBuildFile; fileRef = 646CE5652BDF3D9A00898ECA /* finger_print.gif */; };
 		647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */; };
-		6479BD912B62569D00DE5845 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479BD902B62569D00DE5845 /* XMLParser.swift */; };
 		647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */; };
 		647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */; };
-		6483C9252B68F98800D8B68D /* strings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6483C9272B68F98800D8B68D /* strings.xml */; };
 		648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648461BB2BC7B6370000E9A7 /* UITableView+.swift */; };
 		649465CA2E84E7920072F7F4 /* CHWebview+RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */; };
 		649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */; };
@@ -140,9 +109,6 @@
 		64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
 		64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
-		64DE0CD92B64D53400EB7C85 /* IRRemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */; };
-		64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */; };
-		64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */; };
 		64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */; };
 		64E854372E7A85A400399FED /* CHWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854362E7A85A300399FED /* CHWebView.swift */; };
 		64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854382E7A99B300399FED /* CHWebViewController.swift */; };
@@ -163,10 +129,6 @@
 		890D330B2DA0E7FF0031F0AF /* PassCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D33002DA0E7FF0031F0AF /* PassCodeVC.swift */; };
 		890D330E2DA0E85A0031F0AF /* PalmListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D330D2DA0E85A0031F0AF /* PalmListVC.swift */; };
 		890D330F2DA0E85A0031F0AF /* FaceListVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D330C2DA0E85A0031F0AF /* FaceListVC .swift */; };
-		898EB2A02E76E4AB00FB632D /* RemoteUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898EB29F2E76E4A800FB632D /* RemoteUIType.swift */; };
-		898EB2A32E76E55400FB632D /* NonAirAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898EB2A22E76E55200FB632D /* NonAirAdapterFactory.swift */; };
-		898EB2A72E76E59500FB632D /* NonAirUIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898EB2A62E76E59100FB632D /* NonAirUIAdapter.swift */; };
-		898EB2A92E76FD8600FB632D /* NonAirHandlerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898EB2A82E76FD8600FB632D /* NonAirHandlerAdapter.swift */; };
 		89D802C22EBCA048000CC88A /* opensensor2_30_24_2f5b11.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89D802C12EBCA048000CC88A /* opensensor2_30_24_2f5b11.zip */; };
 		89D802E82EC1DB47000CC88A /* sesame5_30_5_848a2d.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89D802E72EC1DB47000CC88A /* sesame5_30_5_848a2d.zip */; };
 		89D802EA2EC1DB64000CC88A /* sesame5pro_30_7_848a2d.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89D802E92EC1DB64000CC88A /* sesame5pro_30_7_848a2d.zip */; };
@@ -175,7 +137,6 @@
 		89D803582ED5BC95000CC88A /* sesametouch1pro_30_9_5aac19.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89D803572ED5BC95000CC88A /* sesametouch1pro_30_9_5aac19.zip */; };
 		89D8035A2ED5BCB4000CC88A /* sesametouch1_30_10_5aac19.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89D803592ED5BCB4000CC88A /* sesametouch1_30_10_5aac19.zip */; };
 		89D803742ED7F52C000CC88A /* sesame6pro_30_21_90dd88.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89D803732ED7F52C000CC88A /* sesame6pro_30_21_90dd88.zip */; };
-		89D8038E2EDDB714000CC88A /* remote_30_14_625867.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89D8038D2EDDB714000CC88A /* remote_30_14_625867.zip */; };
 		89F5FC8A2EB0ABC600BF43E9 /* sesameface1_30_19_0ace8d.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89F5FC862EB0ABC600BF43E9 /* sesameface1_30_19_0ace8d.zip */; };
 		89F5FC8B2EB0ABC600BF43E9 /* sesameface1ai_30_23_0ace8d.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89F5FC872EB0ABC600BF43E9 /* sesameface1ai_30_23_0ace8d.zip */; };
 		89F5FC8C2EB0ABC600BF43E9 /* sesameface1pro_30_18_0ace8d.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89F5FC882EB0ABC600BF43E9 /* sesameface1pro_30_18_0ace8d.zip */; };
@@ -328,6 +289,7 @@
 		BEF00CBD2565483100E5DECD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF00CBC2565483100E5DECD /* Request.swift */; };
 		BEFB1DE1256A6AEF00BF95CB /* CHDeviceManagerShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */; };
 		BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */; };
+		D00CD4A32E4A20B40037A56B /* remote_30_14_03d244.zip in Resources */ = {isa = PBXBuildFile; fileRef = D00CD4A22E4A20B40037A56B /* remote_30_14_03d244.zip */; };
 		D00CD4A52E4A20BA0037A56B /* remoten_30_15_03d244.zip in Resources */ = {isa = PBXBuildFile; fileRef = D00CD4A42E4A20BA0037A56B /* remoten_30_15_03d244.zip */; };
 		D03BE3192E549498000E724C /* bleconnector_30_11_01be3d.zip in Resources */ = {isa = PBXBuildFile; fileRef = D03BE3182E549498000E724C /* bleconnector_30_11_01be3d.zip */; };
 		D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
@@ -473,33 +435,8 @@
 /* Begin PBXFileReference section */
 		0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleHelper.swift; sourceTree = "<group>"; };
 		2C15AD1E2E6FC63A00E37918 /* RemoteBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBean.swift; sourceTree = "<group>"; };
-		2C15AD202E6FC63A00E37918 /* RemoteTypeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTypeListVC.swift; sourceTree = "<group>"; };
-		2C15AD222E6FC63A00E37918 /* RemoteLearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLearnVC.swift; sourceTree = "<group>"; };
-		2C15AD232E6FC63A00E37918 /* RemoteLearnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLearnViewModel.swift; sourceTree = "<group>"; };
-		2C15AD252E6FC63A00E37918 /* AirHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirHandlerAdapter.swift; sourceTree = "<group>"; };
-		2C15AD272E6FC63A00E37918 /* AirUIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirUIAdapter.swift; sourceTree = "<group>"; };
-		2C15AD292E6FC63A00E37918 /* AirAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirAdapterFactory.swift; sourceTree = "<group>"; };
-		2C15AD2B2E6FC63A00E37918 /* HandlerCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerCallback.swift; sourceTree = "<group>"; };
-		2C15AD2C2E6FC63A00E37918 /* RemoteHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHandlerAdapter.swift; sourceTree = "<group>"; };
-		2C15AD2E2E6FC63A00E37918 /* ConfigUpdateCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigUpdateCallback.swift; sourceTree = "<group>"; };
-		2C15AD2F2E6FC63A00E37918 /* RemoteUIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteUIAdapter.swift; sourceTree = "<group>"; };
-		2C15AD312E6FC63A00E37918 /* HXDCommandProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXDCommandProcessor.swift; sourceTree = "<group>"; };
-		2C15AD322E6FC63A00E37918 /* HXDParametersSwapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXDParametersSwapper.swift; sourceTree = "<group>"; };
-		2C15AD332E6FC63A00E37918 /* IRType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRType.swift; sourceTree = "<group>"; };
-		2C15AD342E6FC63A00E37918 /* IRType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IRType+.swift"; sourceTree = "<group>"; };
-		2C15AD352E6FC63A00E37918 /* LoadRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRemoteConfig.swift; sourceTree = "<group>"; };
-		2C15AD362E6FC63A00E37918 /* RemoteAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAdapterFactory.swift; sourceTree = "<group>"; };
-		2C15AD452E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAdapterFactoryManager.swift; sourceTree = "<group>"; };
-		2C15AD462E6FC63A00E37918 /* RemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRepository.swift; sourceTree = "<group>"; };
-		2C15AD492E6FC63A00E37918 /* RemoteControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlVC.swift; sourceTree = "<group>"; };
-		2C15AD4A2E6FC63A00E37918 /* RemoteControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlViewModel.swift; sourceTree = "<group>"; };
-		2C15AD4C2E6FC63A00E37918 /* RemoteMatchControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMatchControlVC.swift; sourceTree = "<group>"; };
-		2C15AD4D2E6FC63A00E37918 /* RemoteMatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMatchViewModel.swift; sourceTree = "<group>"; };
-		2C15AD4F2E6FC63A00E37918 /* RemoteListCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListCacheManager.swift; sourceTree = "<group>"; };
-		2C15AD502E6FC63A00E37918 /* RemoteListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteListVC.swift; sourceTree = "<group>"; };
 		2C15AD522E6FC63A00E37918 /* CHIRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIRManager.swift; sourceTree = "<group>"; };
 		2C15ADC12E705E2A00E37918 /* IRRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteRepository.swift; sourceTree = "<group>"; };
-		2CFFBE362D93A5C4005FE14B /* IrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrController.swift; sourceTree = "<group>"; };
 		3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -552,7 +489,6 @@
 		41E6851C23559C0C0042B159 /* SesameUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SesameUI.entitlements; sourceTree = "<group>"; };
 		41FFFE1029E129AD004BB381 /* SesameHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameHistoryViewController.swift; sourceTree = "<group>"; };
 		641326832B57A3F0008B1AC1 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
-		64190A132C2D54DC00B89592 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
 		643A9C482B313970008214BD /* CHProductModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHProductModel+.swift"; sourceTree = "<group>"; };
 		643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot1_21_2_369eb9.zip; sourceTree = "<group>"; };
 		643F06912BCD123F0045D789 /* sesame_421_4_50ce5b.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame_421_4_50ce5b.zip; sourceTree = "<group>"; };
@@ -580,25 +516,17 @@
 		645B1B262BDB4C0100D5E491 /* ImageSourceHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSourceHelpers.swift; sourceTree = "<group>"; };
 		645E2D212B5BC83300D39E66 /* Hub3IREmitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hub3IREmitCell.xib; sourceTree = "<group>"; };
 		645E2D232B5BC83300D39E66 /* Hub3IREmitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hub3IREmitCell.swift; sourceTree = "<group>"; };
-		645E2D242B5BC83300D39E66 /* MatterTypeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatterTypeViewCell.xib; sourceTree = "<group>"; };
-		645E2D262B5BC83300D39E66 /* MatterTypeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatterTypeViewCell.swift; sourceTree = "<group>"; };
 		646B86DB2B443D520042589E /* PlayLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLoadingView.swift; sourceTree = "<group>"; };
 		646B86DD2B4545B60042589E /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		646B86E02B47995D0042589E /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		646B86E22B47F3890042589E /* Hub3MatterTypeSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3MatterTypeSelectVC.swift; sourceTree = "<group>"; };
 		646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3KeysListViewController.swift; sourceTree = "<group>"; };
 		646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3SettingViewController.swift; sourceTree = "<group>"; };
 		646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hub3SettingViewController.xib; sourceTree = "<group>"; };
 		646CE5652BDF3D9A00898ECA /* finger_print.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = finger_print.gif; sourceTree = "<group>"; };
 		647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		6479BD902B62569D00DE5845 /* XMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 		647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot2ScriptActionCell.swift; sourceTree = "<group>"; };
 		647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bot2ScriptActionCell.xib; sourceTree = "<group>"; };
 		647DF0B42CB6664200A02F47 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
-		6483C9262B68F98800D8B68D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/strings.xml; sourceTree = "<group>"; };
-		6483C9282B68F99200D8B68D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hans"; path = "zh-Hans.lproj/strings.xml"; sourceTree = "<group>"; };
-		6483C9292B68F99F00D8B68D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "zh-Hant"; path = "zh-Hant.lproj/strings.xml"; sourceTree = "<group>"; };
-		6483C92A2B68F9A500D8B68D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ja; path = ja.lproj/strings.xml; sourceTree = "<group>"; };
 		648461BB2BC7B6370000E9A7 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+RefreshControl.swift"; sourceTree = "<group>"; };
 		649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIRControlDialog.swift; sourceTree = "<group>"; };
@@ -609,9 +537,6 @@
 		64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5ListCell.xib; sourceTree = "<group>"; };
 		64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameTouchPro+.swift"; sourceTree = "<group>"; };
 		64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTableViewProxy.swift; sourceTree = "<group>"; };
-		64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteControl.swift; sourceTree = "<group>"; };
-		64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteControlCell.swift; sourceTree = "<group>"; };
-		64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IRRemoteControlCell.xib; sourceTree = "<group>"; };
 		64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SesameDeviceList+Control.swift"; sourceTree = "<group>"; };
 		64E854362E7A85A300399FED /* CHWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebView.swift; sourceTree = "<group>"; };
 		64E854382E7A99B300399FED /* CHWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebViewController.swift; sourceTree = "<group>"; };
@@ -632,10 +557,6 @@
 		890D33032DA0E7FF0031F0AF /* FingerPrintCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FingerPrintCell.xib; sourceTree = "<group>"; };
 		890D330C2DA0E85A0031F0AF /* FaceListVC .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FaceListVC .swift"; sourceTree = "<group>"; };
 		890D330D2DA0E85A0031F0AF /* PalmListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmListVC.swift; sourceTree = "<group>"; };
-		898EB29F2E76E4A800FB632D /* RemoteUIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteUIType.swift; sourceTree = "<group>"; };
-		898EB2A22E76E55200FB632D /* NonAirAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAirAdapterFactory.swift; sourceTree = "<group>"; };
-		898EB2A62E76E59100FB632D /* NonAirUIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAirUIAdapter.swift; sourceTree = "<group>"; };
-		898EB2A82E76FD8600FB632D /* NonAirHandlerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAirHandlerAdapter.swift; sourceTree = "<group>"; };
 		89D802C12EBCA048000CC88A /* opensensor2_30_24_2f5b11.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor2_30_24_2f5b11.zip; sourceTree = "<group>"; };
 		89D802E72EC1DB47000CC88A /* sesame5_30_5_848a2d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame5_30_5_848a2d.zip; sourceTree = "<group>"; };
 		89D802E92EC1DB64000CC88A /* sesame5pro_30_7_848a2d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame5pro_30_7_848a2d.zip; sourceTree = "<group>"; };
@@ -644,7 +565,6 @@
 		89D803572ED5BC95000CC88A /* sesametouch1pro_30_9_5aac19.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesametouch1pro_30_9_5aac19.zip; sourceTree = "<group>"; };
 		89D803592ED5BCB4000CC88A /* sesametouch1_30_10_5aac19.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesametouch1_30_10_5aac19.zip; sourceTree = "<group>"; };
 		89D803732ED7F52C000CC88A /* sesame6pro_30_21_90dd88.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_90dd88.zip; sourceTree = "<group>"; };
-		89D8038D2EDDB714000CC88A /* remote_30_14_625867.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remote_30_14_625867.zip; sourceTree = "<group>"; };
 		89F5FC862EB0ABC600BF43E9 /* sesameface1_30_19_0ace8d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1_30_19_0ace8d.zip; sourceTree = "<group>"; };
 		89F5FC872EB0ABC600BF43E9 /* sesameface1ai_30_23_0ace8d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1ai_30_23_0ace8d.zip; sourceTree = "<group>"; };
 		89F5FC882EB0ABC600BF43E9 /* sesameface1pro_30_18_0ace8d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1pro_30_18_0ace8d.zip; sourceTree = "<group>"; };
@@ -781,6 +701,7 @@
 		BEF00CBC2565483100E5DECD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceManagerShared+.swift"; sourceTree = "<group>"; };
 		BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
+		D00CD4A22E4A20B40037A56B /* remote_30_14_03d244.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remote_30_14_03d244.zip; sourceTree = "<group>"; };
 		D00CD4A42E4A20BA0037A56B /* remoten_30_15_03d244.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remoten_30_15_03d244.zip; sourceTree = "<group>"; };
 		D03BE3182E549498000E724C /* bleconnector_30_11_01be3d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_01be3d.zip; sourceTree = "<group>"; };
 		D04958492E5DCEB700E3290B /* sesamebike2_30_6_990e7f.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_990e7f.zip; sourceTree = "<group>"; };
@@ -808,7 +729,6 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2CA5DEBA2D801226006E99BE /* config */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = config; sourceTree = "<group>"; };
 		3B8B7C422E2FBB0200F5A2F7 /* NotificationService */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (3B8B7C492E2FBB0200F5A2F7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NotificationService; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -879,139 +799,6 @@
 			path = bean;
 			sourceTree = "<group>";
 		};
-		2C15AD212E6FC63A00E37918 /* DeviceTypes */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD202E6FC63A00E37918 /* RemoteTypeListVC.swift */,
-			);
-			path = DeviceTypes;
-			sourceTree = "<group>";
-		};
-		2C15AD242E6FC63A00E37918 /* Learn */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD222E6FC63A00E37918 /* RemoteLearnVC.swift */,
-				2C15AD232E6FC63A00E37918 /* RemoteLearnViewModel.swift */,
-			);
-			path = Learn;
-			sourceTree = "<group>";
-		};
-		2C15AD262E6FC63A00E37918 /* Handler */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD252E6FC63A00E37918 /* AirHandlerAdapter.swift */,
-			);
-			path = Handler;
-			sourceTree = "<group>";
-		};
-		2C15AD282E6FC63A00E37918 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD272E6FC63A00E37918 /* AirUIAdapter.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		2C15AD2A2E6FC63A00E37918 /* Air */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD262E6FC63A00E37918 /* Handler */,
-				2C15AD282E6FC63A00E37918 /* UI */,
-				2C15AD292E6FC63A00E37918 /* AirAdapterFactory.swift */,
-			);
-			path = Air;
-			sourceTree = "<group>";
-		};
-		2C15AD2D2E6FC63A00E37918 /* HandleBase */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD2B2E6FC63A00E37918 /* HandlerCallback.swift */,
-				2C15AD2C2E6FC63A00E37918 /* RemoteHandlerAdapter.swift */,
-			);
-			path = HandleBase;
-			sourceTree = "<group>";
-		};
-		2C15AD302E6FC63A00E37918 /* UIBase */ = {
-			isa = PBXGroup;
-			children = (
-				898EB29F2E76E4A800FB632D /* RemoteUIType.swift */,
-				2C15AD2E2E6FC63A00E37918 /* ConfigUpdateCallback.swift */,
-				2C15AD2F2E6FC63A00E37918 /* RemoteUIAdapter.swift */,
-			);
-			path = UIBase;
-			sourceTree = "<group>";
-		};
-		2C15AD372E6FC63A00E37918 /* BizBase */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD2D2E6FC63A00E37918 /* HandleBase */,
-				2C15AD302E6FC63A00E37918 /* UIBase */,
-				2C15AD312E6FC63A00E37918 /* HXDCommandProcessor.swift */,
-				2C15AD322E6FC63A00E37918 /* HXDParametersSwapper.swift */,
-				2C15AD332E6FC63A00E37918 /* IRType.swift */,
-				2C15AD342E6FC63A00E37918 /* IRType+.swift */,
-				2C15AD352E6FC63A00E37918 /* LoadRemoteConfig.swift */,
-				2C15AD362E6FC63A00E37918 /* RemoteAdapterFactory.swift */,
-			);
-			path = BizBase;
-			sourceTree = "<group>";
-		};
-		2C15AD442E6FC63A00E37918 /* BizAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD2A2E6FC63A00E37918 /* Air */,
-				898EB2A12E76E50C00FB632D /* NonAir */,
-				2C15AD372E6FC63A00E37918 /* BizBase */,
-			);
-			path = BizAdapter;
-			sourceTree = "<group>";
-		};
-		2C15AD472E6FC63A00E37918 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD452E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift */,
-				2C15AD462E6FC63A00E37918 /* RemoteRepository.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		2C15AD482E6FC63A00E37918 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD442E6FC63A00E37918 /* BizAdapter */,
-				2C15AD472E6FC63A00E37918 /* Repository */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		2C15AD4B2E6FC63A00E37918 /* RemoteControl */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD482E6FC63A00E37918 /* Domain */,
-				2C15AD492E6FC63A00E37918 /* RemoteControlVC.swift */,
-				2C15AD4A2E6FC63A00E37918 /* RemoteControlViewModel.swift */,
-			);
-			path = RemoteControl;
-			sourceTree = "<group>";
-		};
-		2C15AD4E2E6FC63A00E37918 /* RemoteMatch */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD4C2E6FC63A00E37918 /* RemoteMatchControlVC.swift */,
-				2C15AD4D2E6FC63A00E37918 /* RemoteMatchViewModel.swift */,
-			);
-			path = RemoteMatch;
-			sourceTree = "<group>";
-		};
-		2C15AD512E6FC63A00E37918 /* Remotes */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD4F2E6FC63A00E37918 /* RemoteListCacheManager.swift */,
-				2C15AD502E6FC63A00E37918 /* RemoteListVC.swift */,
-			);
-			path = Remotes;
-			sourceTree = "<group>";
-		};
 		2C15AD532E6FC63A00E37918 /* RemoteServer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1025,11 +812,6 @@
 			children = (
 				2C15AD1F2E6FC63A00E37918 /* bean */,
 				2C15ADC02E705A0200E37918 /* cache */,
-				2C15AD212E6FC63A00E37918 /* DeviceTypes */,
-				2C15AD242E6FC63A00E37918 /* Learn */,
-				2C15AD4B2E6FC63A00E37918 /* RemoteControl */,
-				2C15AD4E2E6FC63A00E37918 /* RemoteMatch */,
-				2C15AD512E6FC63A00E37918 /* Remotes */,
 				2C15AD532E6FC63A00E37918 /* RemoteServer */,
 			);
 			path = ir;
@@ -1263,15 +1045,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		64187F6E2B3E9B7200086321 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2CFFBE362D93A5C4005FE14B /* IrController.swift */,
-				64DE0CD82B64D53400EB7C85 /* IRRemoteControl.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		64498EA62BD790A900806D0F /* gif */ = {
 			isa = PBXGroup;
 			children = (
@@ -1345,10 +1118,6 @@
 			children = (
 				645E2D232B5BC83300D39E66 /* Hub3IREmitCell.swift */,
 				645E2D212B5BC83300D39E66 /* Hub3IREmitCell.xib */,
-				645E2D262B5BC83300D39E66 /* MatterTypeViewCell.swift */,
-				645E2D242B5BC83300D39E66 /* MatterTypeViewCell.xib */,
-				64DE0CDA2B64F3F300EB7C85 /* IRRemoteControlCell.swift */,
-				64DE0CDB2B64F3F300EB7C85 /* IRRemoteControlCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1367,8 +1136,6 @@
 		646F79682B3D76800055E0B2 /* Hub3 */ = {
 			isa = PBXGroup;
 			children = (
-				6479BD922B6350B700DE5845 /* Assets */,
-				64187F6E2B3E9B7200086321 /* Model */,
 				645E2D202B5BC83300D39E66 /* Cell */,
 				646F79692B3D76980055E0B2 /* Setting */,
 			);
@@ -1379,7 +1146,6 @@
 			isa = PBXGroup;
 			children = (
 				2C15AD542E6FC63A00E37918 /* ir */,
-				646B86E22B47F3890042589E /* Hub3MatterTypeSelectVC.swift */,
 				646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */,
 				646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */,
 				6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */,
@@ -1387,24 +1153,6 @@
 				646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		64759B912C2AC4B300D5EFB8 /* cLib */ = {
-			isa = PBXGroup;
-			children = (
-				64190A132C2D54DC00B89592 /* AirData.swift */,
-			);
-			path = cLib;
-			sourceTree = "<group>";
-		};
-		6479BD922B6350B700DE5845 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				64759B912C2AC4B300D5EFB8 /* cLib */,
-				6483C9272B68F98800D8B68D /* strings.xml */,
-				6479BD902B62569D00DE5845 /* XMLParser.swift */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		647A276D2B2C41F50013308C /* Cell */ = {
@@ -1480,32 +1228,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		898EB2A12E76E50C00FB632D /* NonAir */ = {
-			isa = PBXGroup;
-			children = (
-				898EB2A52E76E56600FB632D /* Handler */,
-				898EB2A42E76E55D00FB632D /* UI */,
-				898EB2A22E76E55200FB632D /* NonAirAdapterFactory.swift */,
-			);
-			path = NonAir;
-			sourceTree = "<group>";
-		};
-		898EB2A42E76E55D00FB632D /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				898EB2A62E76E59100FB632D /* NonAirUIAdapter.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		898EB2A52E76E56600FB632D /* Handler */ = {
-			isa = PBXGroup;
-			children = (
-				898EB2A82E76FD8600FB632D /* NonAirHandlerAdapter.swift */,
-			);
-			path = Handler;
-			sourceTree = "<group>";
-		};
 		96B2196529111EE6006B68AB /* zh-Hant.Iproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -1538,7 +1260,7 @@
 				D03BE3182E549498000E724C /* bleconnector_30_11_01be3d.zip */,
 				89D803052EC31B9F000CC88A /* opensensor1_30_8_baf005.zip */,
 				89D802C12EBCA048000CC88A /* opensensor2_30_24_2f5b11.zip */,
-				89D8038D2EDDB714000CC88A /* remote_30_14_625867.zip */,
+				D00CD4A22E4A20B40037A56B /* remote_30_14_03d244.zip */,
 				D00CD4A42E4A20BA0037A56B /* remoten_30_15_03d244.zip */,
 				643F06932BCD12400045D789 /* sesame_221_0_8c080c.zip */,
 				643F06912BCD123F0045D789 /* sesame_421_4_50ce5b.zip */,
@@ -1734,7 +1456,6 @@
 		B1D4726B2327AAF3005454C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2CA5DEBA2D801226006E99BE /* config */,
 				B04D1D1824EA37BB0021ACA2 /* firmware */,
 				B179691122F7CE9400E91996 /* Assets.xcassets */,
 				419FE7852446BADF000D31CD /* awsconfiguration.json */,
@@ -2115,9 +1836,6 @@
 				B027BB902508DE4500391DC0 /* PBXTargetDependency */,
 				3B8B7C472E2FBB0200F5A2F7 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				2CA5DEBA2D801226006E99BE /* config */,
-			);
 			name = SesameUI;
 			packageProductDependencies = (
 				416837322A42CF39000FB434 /* NordicDFU */,
@@ -2285,7 +2003,7 @@
 				E8819C102913633800431939 /* InfoPlist.strings in Resources */,
 				E8819C0F2913630D00431939 /* Localizable.strings in Resources */,
 				643F069F2BCD12400045D789 /* sesame_421_4_50ce5b.zip in Resources */,
-				64DE0CDD2B64F3F300EB7C85 /* IRRemoteControlCell.xib in Resources */,
+				D00CD4A32E4A20B40037A56B /* remote_30_14_03d244.zip in Resources */,
 				E8819C0C291360D800431939 /* Localizable.strings in Resources */,
 				89D802C22EBCA048000CC88A /* opensensor2_30_24_2f5b11.zip in Resources */,
 				E8819C0B29135D2E00431939 /* Localizable.strings in Resources */,
@@ -2309,9 +2027,7 @@
 				E811CD0A2910FF8600E46793 /* InfoPlist.strings in Resources */,
 				E8F2B7DA293708A700970E10 /* InfoPlist.strings in Resources */,
 				419F15582363E48400C09D62 /* bee.mp3 in Resources */,
-				89D8038E2EDDB714000CC88A /* remote_30_14_625867.zip in Resources */,
 				D03BE3192E549498000E724C /* bleconnector_30_11_01be3d.zip in Resources */,
-				6483C9252B68F98800D8B68D /* strings.xml in Resources */,
 				BE85D3052580A8030091D3A6 /* WifiModule2SSIDScanCell.xib in Resources */,
 				BED189F725591C72006544A0 /* WifiModule2SesameCell.xib in Resources */,
 				D00CD4A52E4A20BA0037A56B /* remoten_30_15_03d244.zip in Resources */,
@@ -2329,7 +2045,6 @@
 				B179691222F7CE9400E91996 /* Assets.xcassets in Resources */,
 				645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */,
 				418FA1F9237C04EF00C7C408 /* InfoPlist.strings in Resources */,
-				645E2D2A2B5BC83300D39E66 /* MatterTypeViewCell.xib in Resources */,
 				B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */,
 				643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */,
 				890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */,
@@ -2522,46 +2237,20 @@
 				BE97F4072561215C00E9FDC4 /* SignUpViewController.swift in Sources */,
 				BE8D0B5F2494A44C00B99987 /* Functions.swift in Sources */,
 				645B1B282BDB4C0100D5E491 /* GIFAnimatable.swift in Sources */,
-				898EB2A02E76E4AB00FB632D /* RemoteUIType.swift in Sources */,
 				B08C5347245EC30000252F00 /* NSErrorShared+.swift in Sources */,
 				B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */,
 				649CEA592EB2218F00BF9A5D /* CHWebView+.swift in Sources */,
 				645B1B2E2BDB4C0100D5E491 /* UIImage.swift in Sources */,
 				645211F62B2BFA270091DDE3 /* Bot2ScriptActionVC.swift in Sources */,
-				2C15AD552E6FC63A00E37918 /* RemoteControlViewModel.swift in Sources */,
-				2C15AD562E6FC63A00E37918 /* RemoteHandlerAdapter.swift in Sources */,
-				2C15AD572E6FC63A00E37918 /* HXDParametersSwapper.swift in Sources */,
-				2C15AD582E6FC63A00E37918 /* IRType+.swift in Sources */,
-				2C15AD592E6FC63A00E37918 /* IRType.swift in Sources */,
-				2C15AD5A2E6FC63A00E37918 /* HXDCommandProcessor.swift in Sources */,
-				2C15AD5B2E6FC63A00E37918 /* RemoteLearnVC.swift in Sources */,
-				2C15AD5D2E6FC63A00E37918 /* RemoteLearnViewModel.swift in Sources */,
-				2C15AD5E2E6FC63A00E37918 /* RemoteAdapterFactory.swift in Sources */,
 				3B32750A2E7957340076DCBC /* CHDeviceWrapperManager.swift in Sources */,
-				2C15AD5F2E6FC63A00E37918 /* RemoteTypeListVC.swift in Sources */,
-				2C15AD602E6FC63A00E37918 /* RemoteListVC.swift in Sources */,
-				2C15AD612E6FC63A00E37918 /* AirHandlerAdapter.swift in Sources */,
 				2C15ADC22E705E2C00E37918 /* IRRemoteRepository.swift in Sources */,
-				2C15AD622E6FC63A00E37918 /* RemoteControlVC.swift in Sources */,
-				2C15AD632E6FC63A00E37918 /* LoadRemoteConfig.swift in Sources */,
-				2C15AD642E6FC63A00E37918 /* HandlerCallback.swift in Sources */,
-				2C15AD652E6FC63A00E37918 /* RemoteListCacheManager.swift in Sources */,
 				64E8543B2E7B972100399FED /* CHBaseViewController+biz.swift in Sources */,
 				64E854372E7A85A400399FED /* CHWebView.swift in Sources */,
 				2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */,
-				2C15AD682E6FC63A00E37918 /* ConfigUpdateCallback.swift in Sources */,
-				2C15AD6A2E6FC63A00E37918 /* RemoteMatchControlVC.swift in Sources */,
-				2C15AD6C2E6FC63A00E37918 /* RemoteMatchViewModel.swift in Sources */,
 				2C15AD6D2E6FC63A00E37918 /* CHIRManager.swift in Sources */,
-				2C15AD6E2E6FC63A00E37918 /* RemoteRepository.swift in Sources */,
-				2C15AD702E6FC63A00E37918 /* RemoteUIAdapter.swift in Sources */,
-				2C15AD712E6FC63A00E37918 /* AirAdapterFactory.swift in Sources */,
-				2C15AD732E6FC63A00E37918 /* AirUIAdapter.swift in Sources */,
-				2C15AD742E6FC63A00E37918 /* RemoteAdapterFactoryManager.swift in Sources */,
 				6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */,
 				645B1B2C2BDB4C0100D5E491 /* Array.swift in Sources */,
 				64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */,
-				64190A142C2D54DC00B89592 /* AirData.swift in Sources */,
 				645B1B2B2BDB4C0100D5E491 /* GIFImageView.swift in Sources */,
 				BE8F9214264A1364001DF645 /* UserLocationManager.swift in Sources */,
 				BE308145248E3C8C00152D66 /* DataShared+.swift in Sources */,
@@ -2576,7 +2265,6 @@
 				BE308149248E3CA800152D66 /* ArrayShared+.swift in Sources */,
 				B179690B22F7CE9300E91996 /* AppDelegate.swift in Sources */,
 				BED189F625591C72006544A0 /* WifiModule2SesameCell.swift in Sources */,
-				64DE0CD92B64D53400EB7C85 /* IRRemoteControl.swift in Sources */,
 				648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */,
 				BEC0908624A9F281006E188E /* QRCodeURLType.swift in Sources */,
 				BE99CAAD257F65990098F3A1 /* WifiModule2SSIDScanViewController.swift in Sources */,
@@ -2587,7 +2275,6 @@
 				890D330F2DA0E85A0031F0AF /* FaceListVC .swift in Sources */,
 				BE33ED1825823F0A00A73D6A /* WatchKitFile.swift in Sources */,
 				3B41364D2E45D5710044E33F /* CustomInputDialog.swift in Sources */,
-				2CFFBE372D93A5C9005FE14B /* IrController.swift in Sources */,
 				646B86EC2B48EBDB0042589E /* Hub3KeysListViewController.swift in Sources */,
 				B08CBE7E2509F06C00050E7B /* CHUIView.swift in Sources */,
 				64EC068A2E7C00EA0047ED13 /* RefreshHeaderView.swift in Sources */,
@@ -2601,11 +2288,9 @@
 				4137C8CC2350276300211F43 /* lockView.swift in Sources */,
 				BEB7F49E24A4EBBF00D04651 /* SesameUI.xcdatamodeld in Sources */,
 				BE88594D26C3CCDE002D17E0 /* CHAPIManagerType.swift in Sources */,
-				645E2D2C2B5BC83300D39E66 /* MatterTypeViewCell.swift in Sources */,
 				643A9C492B313970008214BD /* CHProductModel+.swift in Sources */,
 				BE9C6C9724B3378B00C7318B /* Sesame2Store.swift in Sources */,
 				64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */,
-				898EB2A32E76E55400FB632D /* NonAirAdapterFactory.swift in Sources */,
 				64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */,
 				BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */,
 				4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */,
@@ -2614,7 +2299,6 @@
 				418FA1E8237BD2C100C7C408 /* Sesame2Circle.swift in Sources */,
 				BE562E2E2563AD63004617DE /* CHUser.swift in Sources */,
 				64ADDE3C2DD33B9A001BF9D3 /* CHDataToHistoryTag+.swift in Sources */,
-				898EB2A72E76E59500FB632D /* NonAirUIAdapter.swift in Sources */,
 				414C3CFA2A1EF6DC00AB59CF /* CHBaseTableVC.swift in Sources */,
 				645211E72B282A440091DDE3 /* ShareAlertConfigurator.swift in Sources */,
 				645B1B272BDB4C0100D5E491 /* FrameStore.swift in Sources */,
@@ -2649,13 +2333,10 @@
 				B01728D9250CA67D00F87ED6 /* RegisterSesameDeviceViewController.swift in Sources */,
 				B0534AE524FA360500219D08 /* QRCodeExtractor.swift in Sources */,
 				647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */,
-				6479BD912B62569D00DE5845 /* XMLParser.swift in Sources */,
 				649465CA2E84E7920072F7F4 /* CHWebview+RefreshControl.swift in Sources */,
 				BE8F9210264A0F82001DF645 /* CHDeviceInfo.swift in Sources */,
 				B087E57224E126830087D978 /* CHWifiModule2+.swift in Sources */,
-				898EB2A92E76FD8600FB632D /* NonAirHandlerAdapter.swift in Sources */,
 				BE6978ED2483E37D0089141E /* ViewHelper.swift in Sources */,
-				64DE0CDC2B64F3F300EB7C85 /* IRRemoteControlCell.swift in Sources */,
 				641326842B57A3F0008B1AC1 /* PickerController.swift in Sources */,
 				BE88591126C39F99002D17E0 /* CHSesameLock+.swift in Sources */,
 				E86587F62A2768150091D77F /* BikeLock2SettingViewController.swift in Sources */,
@@ -2696,7 +2377,6 @@
 				E8A6F1D42A60E56800AED9AD /* OpenSensorSettingVC.swift in Sources */,
 				B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */,
 				BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */,
-				646B86E32B47F3890042589E /* Hub3MatterTypeSelectVC.swift in Sources */,
 				41ACFD0429B86A07001153DB /* Sesame5SettingViewController.swift in Sources */,
 				BEFB1DE1256A6AEF00BF95CB /* CHDeviceManagerShared+.swift in Sources */,
 				BEB36C7D2589C04000EDB9FB /* UIViewController+.swift in Sources */,
@@ -2839,17 +2519,6 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		6483C9272B68F98800D8B68D /* strings.xml */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6483C9262B68F98800D8B68D /* en */,
-				6483C9282B68F99200D8B68D /* zh-Hans */,
-				6483C9292B68F99F00D8B68D /* zh-Hant */,
-				6483C92A2B68F9A500D8B68D /* ja */,
-			);
-			name = strings.xml;
-			sourceTree = "<group>";
-		};
 		96B2197A29111F55006B68AB /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2948,7 +2617,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2982,7 +2651,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -3009,7 +2678,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3035,7 +2704,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3189,7 +2858,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
 				PRODUCT_NAME = Sesame;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3218,7 +2887,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
 				PRODUCT_NAME = Sesame;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3248,7 +2917,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension.SesameIntentsWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -3280,7 +2949,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension.SesameIntentsWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -3309,7 +2978,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3339,7 +3008,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3370,7 +3039,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3400,7 +3069,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.119;
+				MARKETING_VERSION = 3.0.120;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
