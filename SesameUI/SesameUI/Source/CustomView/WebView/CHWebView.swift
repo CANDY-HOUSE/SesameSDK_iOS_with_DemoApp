@@ -237,12 +237,14 @@ extension CHWebView: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         hideLoading()
+        guard (error as NSError).code != NSURLErrorCancelled else { return }
         loadError?(error)
         makeToast(error.localizedDescription)
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         hideLoading()
+        guard (error as NSError).code != NSURLErrorCancelled else { return }
         loadError?(error)
         makeToast(error.localizedDescription)
     }
