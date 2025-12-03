@@ -49,7 +49,13 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
             guard let self = self else { return }
             mySesames = mDevice.sesame2Keys.keys.compactMap { $0 }
             self.showStatusViewIfNeeded()
-            self.updateAddSesameButtonState()
+            if self.mySesames.count <  3 {
+                self.addSesameButtonView.setColor(.darkText)
+            } else {
+                self.addSesameButtonView.setColor(.sesame2Gray)
+            }
+            self.addSesameButtonView.exclamation.isHidden = (self.mySesames.count != 0)
+            self.addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
         }
     }
 
@@ -68,7 +74,13 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         }
         executeOnMainThread {
             self.showStatusViewIfNeeded()
-            self.updateAddSesameButtonState()
+            if self.mySesames.count <  3 {
+                self.addSesameButtonView.setColor(.darkText)
+            } else {
+                self.addSesameButtonView.setColor(.sesame2Gray)
+            }
+            self.addSesameButtonView.exclamation.isHidden = (self.mySesames.count != 0)
+            self.addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
         }
     }
     @discardableResult
@@ -283,7 +295,14 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
             self.navigationController?.pushViewController(touchProKeysListVC, animated:true)
         }
         
-        updateAddSesameButtonState()
+        if self.mySesames.count <  3 {
+            addSesameButtonView.setColor(.darkText)
+        } else {
+            addSesameButtonView.setColor(.sesame2Gray)
+        }
+        
+        addSesameButtonView.exclamation.isHidden = self.mySesames.count > 0
+        addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
         addSesameButtonView.title = "co.candyhouse.sesame2.addSesameToWM2".localized
         contentStackView.addArrangedSubview(addSesameButtonView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
@@ -420,28 +439,6 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         alertController.addAction(close)
         alertController.popoverPresentationController?.sourceView = sender
         present(alertController, animated: true, completion: nil)
-    }
-    
-    private func updateAddSesameButtonState() {
-        let maxSize = 2 //remoteNano、openSensor
-        let currentCount = self.mySesames.count
-        let isOverLimit = currentCount >= maxSize
-        
-        if isOverLimit {
-            addSesameButtonView.setColor(.sesame2Gray)
-            addSesameButtonView.setPlusLabelColor(.sesame2Gray)
-            addSesameButtonView.isUserInteractionEnabled = false
-        } else {
-            addSesameButtonView.setColor(.darkText)
-            addSesameButtonView.setPlusLabelColor(.darkText)
-            addSesameButtonView.isUserInteractionEnabled = true
-        }
-        
-        // 有设备时隐藏感叹号
-        addSesameButtonView.exclamation.isHidden = currentCount > 0
-        
-        // 没有设备时隐藏加号标签
-        addSesameButtonView.hidePlusLable(currentCount == 0)
     }
 }
 

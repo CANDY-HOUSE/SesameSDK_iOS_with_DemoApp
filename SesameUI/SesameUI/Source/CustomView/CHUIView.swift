@@ -200,10 +200,6 @@ final class CHUIPlainSettingView: UIView, CHUIView {
     func hidePlusLable(_ hide: Bool) {
         plusLabel.isHidden = hide
     }
-    
-    func setPlusLabelColor(_ color: UIColor) {
-        plusLabel.textColor = color
-    }
 }
 
 // MARK: - Sesame2ExpandableSettingView (Concrete)
