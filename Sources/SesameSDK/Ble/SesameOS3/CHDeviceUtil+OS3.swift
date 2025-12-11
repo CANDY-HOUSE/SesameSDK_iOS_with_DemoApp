@@ -170,6 +170,15 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
                 let versionTag = String(data: response.data, encoding: .utf8) ?? ""
                 L.d("[bot2][getVersionTag =>]",versionTag)
                 result(.success(CHResultStateNetworks(input: versionTag)))
+                CHAccountManager
+                    .shared
+                    .API(request: .init(.post,  "/device/v2/sesame5/\(self.deviceId.uuidString)/fwVer", [
+                        "versionTag": versionTag
+                    ])) { response in
+                        if case .failure(let err) = response  {
+                            L.d("fwVer post err", err)
+                        }
+                    }
             } else {
                 result(.failure(self.errorFromResultCode(response.cmdResultCode)))
             }

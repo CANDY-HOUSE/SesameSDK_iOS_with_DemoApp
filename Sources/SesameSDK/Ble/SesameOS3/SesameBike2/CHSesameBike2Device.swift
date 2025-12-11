@@ -74,19 +74,6 @@ extension CHSesameBike2Device {
         result(.success(CHResultStateBLE(input: self.peripheral)))
     }
 
-    public func getVersionTag(result: @escaping (CHResult<String>))  {
-        if(!isBleAvailable(result)){return}
-        sendCommand(.init(.versionTag)) { (response) in
-            if response.cmdResultCode == .success {
-                let versionTag = String(data: response.data, encoding: .utf8) ?? ""
-                L.d("[bk2][getVersionTag =>]",versionTag)
-                result(.success(CHResultStateNetworks(input: versionTag)))
-            } else {
-                result(.failure(self.errorFromResultCode(response.cmdResultCode)))
-            }
-        }
-    }
-
     func reset(result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
         sendCommand(.init(.reset)) { (responsePayload) in
