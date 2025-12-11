@@ -71,11 +71,11 @@ final class CHIoTManager {
 //        L.d("[iot]CHIoTManager,init =>")
         let mqttConfig = AWSIoTMQTTConfiguration(keepAliveTimeInterval: 60.0,
                                                  baseReconnectTimeInterval: 1.0,
-                                                 minimumConnectionTimeInterval: 1.0,
-                                                 maximumReconnectTimeInterval: 1.0,
+                                                 minimumConnectionTimeInterval: 20.0,
+                                                 maximumReconnectTimeInterval: 128.0,
                                                  runLoop: RunLoop.current,
                                                  runLoopMode: RunLoop.Mode.default.rawValue,
-                                                 autoResubscribe: false,
+                                                 autoResubscribe: true,
                                                  lastWillAndTestament: AWSIoTMQTTLastWillAndTestament())
         AWSIoTDataManager.register(with: AWSServiceConfiguration.chIoTConfiguration,
                                    with: mqttConfig,
@@ -181,7 +181,7 @@ final class CHIoTManager {
         func subscirbe() {
             L.d("[iot]subscirbeCHDeviceShadow =>",device.deviceId.uuidString)
             self.awsIoTDataManager
-                .subscribe(toTopic: "$aws/things/sesame2/shadow/name/\(device.deviceId.uuidString)/update/accepted",
+                .subscribe(toTopic: "$aws/things/sesame2/shadow/name/\(device.deviceId.uuidString)/update/documents",
                            qoS: .messageDeliveryAttemptedAtMostOnce) { data in
 //                    L.d("[iot]subscirbe data =>", data.toHexLog())
                     let shadow = CHDeviceShadow.fromData(data)
@@ -214,7 +214,7 @@ final class CHIoTManager {
             return
         }
         awsIoTDataManager
-            .unsubscribeTopic("$aws/things/sesame2/shadow/name/\(uuid)/update/accepted")
+            .unsubscribeTopic("$aws/things/sesame2/shadow/name/\(uuid)/update/documents")
     }
 }///end
 

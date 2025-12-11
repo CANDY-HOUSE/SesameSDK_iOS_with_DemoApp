@@ -17,7 +17,8 @@ struct CHDeviceShadow {
 
         let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
 //        L.d("iot json",json!)
-        let state = json?["state"] as? [String: Any]
+        let current = json?["current"] as? [String: Any]
+        let state = (current?["state"] as? [String: Any]) ?? (json?["state"] as? [String: Any])
         let reported = state?["reported"] as? [String: Any]
         if let deviceShadowWifiModule2s = (reported?["wm2s"] as? [String:String])?.compactMap({ wm2Dic -> CHDeviceShadowWifiModule2 in
             let wm2Connection = wm2Dic.value == "00" ? false : true
