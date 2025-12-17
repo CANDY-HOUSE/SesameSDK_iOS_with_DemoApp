@@ -212,3 +212,4 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.card_id" = "カードID";
 "co.candyhouse.sesame2.hint_enter_card_id_hex" = "カードIDを入力してください（0-9,A-F,a-f）";
 "co.candyhouse.sesame2.hint_enter_card_id" = "カードIDを入力してください";
+"co.candyhouse.sesame2.SlotFull" = "デバイス満杯";

@@ -48,6 +48,11 @@ extension CHSesameBaseDevice {
             }
             self.sesame2Keys = sesame2Keys
             L.d("sesame2Keys",sesame2Keys)
+            // 如果设备已满，通知delegate
+            let hasEmptySlot = dividedData.contains(where: { $0.allSatisfy({ $0 == 0x00 }) })
+            if !hasEmptySlot {
+                (self.delegate as? CHSesameConnectorDelegate)?.onSlotFull(device: self)
+            }
             
         case .REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME:
             handle = true

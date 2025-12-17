@@ -89,13 +89,14 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             guard let self = self else { return }
             mySesames = mDevice.sesame2Keys.keys.compactMap { $0 }
             self.showStatusViewIfNeeded()
-            if self.mySesames.count <  3 {
-                self.addSesameButtonView.setColor(.darkText)
-            } else {
-                self.addSesameButtonView.setColor(.sesame2Gray)
-            }
-            self.addSesameButtonView.exclamation.isHidden = (self.mySesames.count != 0)
-            self.addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
+            self.updateAddSesameButtonState()
+        }
+    }
+    
+    func onSlotFull(device: SesameSDK.CHSesameConnector) {
+        executeOnMainThread { [weak self] in
+            guard let self = self else { return }
+            self.view.makeToast("co.candyhouse.sesame2.SlotFull".localized)
         }
     }
     
@@ -115,13 +116,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         }
         executeOnMainThread {
             self.showStatusViewIfNeeded()
-            if self.mySesames.count <  3 {
-                self.addSesameButtonView.setColor(.darkText)
-            } else {
-                self.addSesameButtonView.setColor(.sesame2Gray)
-            }
-            self.addSesameButtonView.exclamation.isHidden = (self.mySesames.count != 0)
-            self.addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
+            self.updateAddSesameButtonState()
         }
     }
     @discardableResult
@@ -387,14 +382,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             self.navigationController?.pushViewController(proKeysListVC, animated:true)
         }
         
-        if self.mySesames.count <  3 {
-            addSesameButtonView.setColor(.darkText)
-        } else {
-            addSesameButtonView.setColor(.sesame2Gray)
-        }
-        
-        addSesameButtonView.exclamation.isHidden = self.mySesames.count > 0
-        addSesameButtonView.hidePlusLable(self.mySesames.count == 0)
+        updateAddSesameButtonState()
         addSesameButtonView.title = "co.candyhouse.sesame2.addSesameToWM2".localized
         contentStackView.addArrangedSubview(addSesameButtonView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
@@ -594,6 +582,18 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
                 L.d("radar","雷达灵敏度设置失败: \(error)")
             }
         }
+    }
+    
+    private func updateAddSesameButtonState() {
+        let currentCount = self.mySesames.count
+        
+        addSesameButtonView.setColor(.darkText)
+        
+        // 有设备时隐藏感叹号
+        addSesameButtonView.exclamation.isHidden = currentCount > 0
+        
+        // 没有设备时隐藏加号标签
+        addSesameButtonView.hidePlusLable(currentCount == 0)
     }
 }
 

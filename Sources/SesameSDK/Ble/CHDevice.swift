@@ -307,8 +307,10 @@ extension CHSesameConnector {
 public protocol  CHSesameConnectorDelegate : AnyObject{
     func onSesame2KeysChanged(device: CHSesameConnector, sesame2keys: [String: String])
     func onRadarReceive(device: CHSesameConnector, payload: Data)
+    func onSlotFull(device: CHSesameConnector)
 }
 public extension CHSesameConnectorDelegate {
     func onSesame2KeysChanged(device: CHSesameConnector, sesame2keys: [String: String]){}
     func onRadarReceive(device: CHSesameConnector, payload: Data){}
+    func onSlotFull(device: CHSesameConnector){}
 }
