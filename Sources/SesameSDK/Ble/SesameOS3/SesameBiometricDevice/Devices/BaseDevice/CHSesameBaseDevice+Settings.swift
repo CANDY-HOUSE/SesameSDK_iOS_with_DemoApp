@@ -48,8 +48,13 @@ extension CHSesameBaseDevice {
             }
             self.sesame2Keys = sesame2Keys
             L.d("sesame2Keys",sesame2Keys)
-            // 如果设备已满，通知delegate
-            let hasEmptySlot = dividedData.contains(where: { $0.allSatisfy({ $0 == 0x00 }) })
+            // 针对特殊机型，保留一个槽位给hub3，所以需要超过1个空槽位才算有空余
+            let hasEmptySlot: Bool
+            if productModel == .openSensor || productModel == .openSensor2 {
+                hasEmptySlot = dividedData.filter({ $0.allSatisfy({ $0 == 0x00 }) }).count > 1
+            } else {
+                hasEmptySlot = dividedData.contains(where: { $0.allSatisfy({ $0 == 0x00 }) })
+            }
             if !hasEmptySlot {
                 (self.delegate as? CHSesameConnectorDelegate)?.onSlotFull(device: self)
             }
