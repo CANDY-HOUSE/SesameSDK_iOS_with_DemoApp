@@ -25,7 +25,7 @@ let awsApiGatewayBaseUrl = "https://jhcr1i3ecb.execute-api.ap-northeast-1.amazon
 
 public class CHAccountManager {
     public static let shared: CHAccountManager! = CHAccountManager()
-    let apiGatewayClient: AWSAPIGatewayClient = AWSAPIGatewayClient()
+    public let apiGatewayClient: AWSAPIGatewayClient = AWSAPIGatewayClient()
     
     init() {
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: CHConfiguration.shared.region(),

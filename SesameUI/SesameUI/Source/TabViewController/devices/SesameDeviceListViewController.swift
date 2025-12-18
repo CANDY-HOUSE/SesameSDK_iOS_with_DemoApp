@@ -12,6 +12,8 @@ class SesameDeviceListViewController: CHBaseViewController {
     var devices: [CHDevice] = []
     var reorderTableView: LongPressReorderTableView!
     var tableViewProxy: CHTableViewProxy!
+    private var lastUserState = UserState.unknown
+
     var isDraggingCell = false
     let debouncer = Debouncer(interval: 0.5)
     // 搜索框相关属性
@@ -67,7 +69,7 @@ class SesameDeviceListViewController: CHBaseViewController {
     }
     
     func monitorAWSMobileClientUserState() {
-        let statusChangeHandler: (_ state: AWSMobileClientXCF.UserState) -> Void = { state in
+        let statusChangeHandler: (_ state: AWSMobileClientXCF.UserState) -> Void = { [self] state in
             if (state == .signedIn) {
                 CHUserAPIManager.shared.getSubId { subId in
                     guard let subId = subId else { return }
@@ -85,6 +87,7 @@ class SesameDeviceListViewController: CHBaseViewController {
             }
             else if (state == .signedOut) {
                 L.d("[mUserState] => signedOut")
+                guard lastUserState == .signedIn else { return }
                 executeOnMainThread {
                     CHDeviceManager.shared.dropAllLocalKeys() {
                         Sesame2Store.shared.setHistoryTag("\("co.candyhouse.sesame2.unknownUser".localized)") // 偏好設定檔的historyTag
@@ -97,7 +100,9 @@ class SesameDeviceListViewController: CHBaseViewController {
         AWSMobileClient.default().addUserStateListener(self) { state, dic in
             L.d("[mUserState][listener]",state)
             statusChangeHandler(state)
+            self.lastUserState = state
         }
+        self.lastUserState = AWSMobileClient.default().currentUserState
     }
     
     func configureTable() {
@@ -279,9 +284,8 @@ class SesameDeviceListViewController: CHBaseViewController {
     }
     
     @objc func getKeysFromServer() {
-        if AWSMobileClient.default().currentUserState == .signedIn {
-            CHUserAPIManager.shared.getCHUserKeys { result in
-                L.d("[DeviceList][登入][登出]getKeysFromServer")
+        let queryDevicesHandler: () -> Void = {
+            CHUserAPIManager.shared.getCHUserKeys() { result in
                 if case let .failure(error) = result {
                     executeOnMainThread {
                         self.tableViewProxy.handleFailedDataSource(error)
@@ -307,14 +311,39 @@ class SesameDeviceListViewController: CHBaseViewController {
                     self.getKeysFromCache()
                 }
             }
+        }
+        if AWSMobileClient.default().currentUserState == .signedIn {
+            queryDevicesHandler()
+            return
+        }
+        let keychain = (ins: AWSUICKeyChainStore.instance(), key: "guestUploadDevice")
+        if !keychain.ins.boolValue(forKey: keychain.key) {
+            getKeysFromCache { devices in
+                if devices.count < 1 {
+                    keychain.ins.setBool(true, forKey: keychain.key)
+                    return
+                }
+                CHUserAPIManager.shared.postCHUserKeys(devices.map { CHUserKey.fromCHDevice($0) }) { result in
+                    if case .success(_) = result {
+                        keychain.ins.setBool(true, forKey: keychain.key)
+                    }
+                }
+            }
         } else {
-            CHDeviceWrapperManager.shared.clear()
-            WatchKitFileTransfer.shared.transferKeysToWatch()
-            self.getKeysFromCache()
+            if NetworkReachabilityHelper.shared.isReachable {
+                queryDevicesHandler()
+            } else {
+                NetworkReachabilityHelper.shared.addListener(self) { state in
+                    if case .reachable(_) = state {
+                        queryDevicesHandler()
+                        NetworkReachabilityHelper.shared.removeListener(self)
+                    }
+                }
+            }
         }
     }
     
-    func getKeysFromCache() {
+    func getKeysFromCache(completion: (([CHDevice]) -> Void)? = nil) {
         CHDeviceManager.shared.getCHDevices { [unowned self] getResult in
             L.d("[DeviceList][登入][登出]getKeysFromCache")
             switch getResult {
@@ -323,7 +352,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                 self.allDevices = devices.data.sorted { left, right -> Bool in
                     left.compare(right)
                 }
-                
+                completion?(self.allDevices)
                 // 如果有搜索词，重新过滤
                 if !self.lastSearchQuery.isEmpty {
                     self.performSearch(query: self.lastSearchQuery)

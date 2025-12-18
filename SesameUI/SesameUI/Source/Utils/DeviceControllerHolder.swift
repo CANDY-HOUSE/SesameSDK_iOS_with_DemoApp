@@ -70,32 +70,16 @@ extension DeviceControllerHolder where Self: CHBaseViewController {
             }
         }
         ViewHelper.showLoadingInView(view: self.view)
-        if AWSMobileClient.default().currentUserState == .signedIn {
-            CHUserAPIManager.shared.getSubId { subId in
-                guard let subId = subId else {
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                    }
-                    return
+        CHUserAPIManager.shared.deleteCHUserKey(CHUserKey.fromCHDevice(device)) { deleteResult in
+            if case .failure(let err) = deleteResult {
+                executeOnMainThread {
+                    ViewHelper.hideLoadingView(view: self.view)
+                    self.view.makeToast(err.errorDescription())
                 }
-                var userKey = CHUserKey.fromCHDevice(device)
-                userKey.subUUID = subId
-                CHUserAPIManager.shared.deleteCHUserKey(userKey) { deleteResult in
-                    if case .failure(_) = deleteResult {
-                        executeOnMainThread {
-                            ViewHelper.hideLoadingView(view: self.view)
-                            completion()
-                        }
-                    } else {
-                        executeOnMainThread {
-                            resetHandler()
-                        }
-                    }
+            } else {
+                executeOnMainThread {
+                    resetHandler()
                 }
-            }
-        } else {
-            executeOnMainThread {
-                resetHandler()
             }
         }
     }
@@ -114,32 +98,16 @@ extension DeviceControllerHolder where Self: CHBaseViewController {
             }
         }
         ViewHelper.showLoadingInView(view: self.view)
-        if AWSMobileClient.default().currentUserState == .signedIn {
-            CHUserAPIManager.shared.getSubId { subId in
-                guard let subId = subId else {
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                    }
-                    return
+        CHUserAPIManager.shared.deleteCHUserKey(CHUserKey.fromCHDevice(device)) { deleteResult in
+            if case let .failure(err) = deleteResult {
+                executeOnMainThread {
+                    ViewHelper.hideLoadingView(view: self.view)
+                    self.view.makeToast(err.errorDescription())
                 }
-                var userKey = CHUserKey.fromCHDevice(device)
-                userKey.subUUID = subId
-                CHUserAPIManager.shared.deleteCHUserKey(userKey) { deleteResult in
-                    if case let .failure(err) = deleteResult {
-                        executeOnMainThread {
-                            ViewHelper.hideLoadingView(view: self.view)
-                            self.view.makeToast(err.errorDescription())
-                        }
-                    } else {
-                        executeOnMainThread {
-                            resetHandler()
-                        }
-                    }
+            } else {
+                executeOnMainThread {
+                    resetHandler()
                 }
-            }
-        } else {
-            executeOnMainThread {
-                resetHandler()
             }
         }
     }

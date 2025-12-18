@@ -70,14 +70,7 @@ class RegisterSesameDeviceViewController: CHBaseViewController { //[joi todo]改
             (device as? CHSesame2)?.configureLockPosition(lockTarget: 0, unlockTarget: 256) { _ in }
             device.setKeyLevel(KeyLevel.owner.rawValue)
             device.setDeviceName(device.deviceName)
-
-            CHUserAPIManager.shared.getSubId { subId in
-                L.d("[註冊]API1")
-                guard let subId = subId else {return}
-                var userKey = CHUserKey.fromCHDevice(device)
-                userKey.subUUID = subId
-                CHUserAPIManager.shared.putCHUserKey(userKey) { _ in }
-            }
+            CHUserAPIManager.shared.putCHUserKey(CHUserKey.fromCHDevice(device)) { _ in }
             executeOnMainThread {
                 L.d("[註冊]2")
                 ViewHelper.hideLoadingView(view: self.view)

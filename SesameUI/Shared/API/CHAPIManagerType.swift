@@ -21,6 +21,21 @@ protocol CHAPIManagerType {
     func setCredentialsProvider(_ credentialsProvider :AWSCredentialsProvider)
 }
 
+class CustomHeaderInterceptor: NSObject, AWSNetworkingRequestInterceptorProtocol {
+    func interceptRequest(_ request: NSMutableURLRequest!) -> AWSTask<AnyObject>! {
+        guard let credentialsProvider = CHAccountManager.shared.apiGatewayClient.configuration.credentialsProvider
+                as? AWSCognitoCredentialsProvider else {
+            return AWSTask(result: request)
+        }
+        return credentialsProvider.getIdentityId().continueWith { task -> AnyObject in
+            if let identifyId = task.result as? String {
+                request.setValue(identifyId, forHTTPHeaderField: "AppIdentifyID")
+            }
+            return request
+        }
+    }
+}
+
 /// API 設定 credential(如何從 AWS 獲取用戶憑證) 及 api 調用實作
 extension CHAPIManagerType {
     func setCredentialsProvider(_ credentialsProvider :AWSCredentialsProvider) {
@@ -41,7 +56,7 @@ extension CHAPIManagerType {
     func configureAPIClient(_ apiClient: AWSAPIGatewayClient, signer: AWSSignatureV4Signer, serviceConfiguration: AWSServiceConfiguration) {
         
         apiClient.configuration = serviceConfiguration
-        apiClient.configuration.requestInterceptors = [AWSNetworkingRequestInterceptor(), signer] as? [AWSNetworkingRequestInterceptorProtocol]
+        apiClient.configuration.requestInterceptors = [CustomHeaderInterceptor(), AWSNetworkingRequestInterceptor(), signer] as? [AWSNetworkingRequestInterceptorProtocol]
         apiClient.configuration.baseURL = URL(string: apiURL)
     }
     

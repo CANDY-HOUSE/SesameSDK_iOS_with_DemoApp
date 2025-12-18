@@ -97,6 +97,7 @@
 		647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */; };
 		647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */; };
 		648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648461BB2BC7B6370000E9A7 /* UITableView+.swift */; };
+		649315312EF24557002D0EC0 /* AWSUICKeyChainStore+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649315302EF2454C002D0EC0 /* AWSUICKeyChainStore+.swift */; };
 		649465CA2E84E7920072F7F4 /* CHWebview+RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */; };
 		649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */; };
 		649CEA592EB2218F00BF9A5D /* CHWebView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649CEA582EB2218F00BF9A5D /* CHWebView+.swift */; };
@@ -528,6 +529,7 @@
 		647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bot2ScriptActionCell.xib; sourceTree = "<group>"; };
 		647DF0B42CB6664200A02F47 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		648461BB2BC7B6370000E9A7 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		649315302EF2454C002D0EC0 /* AWSUICKeyChainStore+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AWSUICKeyChainStore+.swift"; sourceTree = "<group>"; };
 		649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+RefreshControl.swift"; sourceTree = "<group>"; };
 		649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIRControlDialog.swift; sourceTree = "<group>"; };
 		649CEA582EB2218F00BF9A5D /* CHWebView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebView+.swift"; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 		4120B5D62363140700828A4D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				649315302EF2454C002D0EC0 /* AWSUICKeyChainStore+.swift */,
 				3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */,
 				BE6978E62483E37D0089141E /* ViewHelper.swift */,
 				B035418424D8152100C44C1D /* WatchKitFileTransfer.swift */,
@@ -2292,6 +2295,7 @@
 				BE9C6C9724B3378B00C7318B /* Sesame2Store.swift in Sources */,
 				64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */,
 				64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */,
+				649315312EF24557002D0EC0 /* AWSUICKeyChainStore+.swift in Sources */,
 				BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */,
 				4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */,
 				E8A6F1D62A61361800AED9AD /* OpenSensorResetHintVC.swift in Sources */,

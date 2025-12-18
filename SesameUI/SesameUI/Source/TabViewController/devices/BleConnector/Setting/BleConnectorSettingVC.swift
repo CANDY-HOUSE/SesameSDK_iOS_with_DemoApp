@@ -307,72 +307,6 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         dropHintView.text = String(format: "co.candyhouse.sesame2.dropKeyDesc".localized, arguments: [deviceModelName, deviceModelName, deviceModelName])
         contentStackView.addArrangedSubview(dropHintContiaoner)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
-
-#if DEBUG
-        // MARK: Reset Sesame
-        let resetKeyView = CHUICallToActionView(textColor: .lockRed) { [unowned self] sender,_ in
-            self.confirmReset(sender as! UIButton)
-        }
-        resetKeyView.title = "co.candyhouse.sesame2.ResetSesame".localized
-        contentStackView.addArrangedSubview(resetKeyView)
-#endif
-    }
-    
-    func confirmReset(_ sender: UIButton) {
-        let unregister = UIAlertAction(title: "co.candyhouse.sesame2.ResetSesame".localized,
-                                       style: .destructive) { _ in
-            self.resetSesame5()
-        }
-        let close = UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized,
-                                  style: .cancel) { (action) in }
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(unregister)
-        alertController.addAction(close)
-        alertController.popoverPresentationController?.sourceView = sender
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func resetSesame5() {
-        ViewHelper.showLoadingInView(view: view)
-        if AWSMobileClient.default().currentUserState == .signedIn {
-            CHUserAPIManager.shared.getSubId { subId in
-                guard let subId = subId else {
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                    }
-                    return
-                }
-                var userKey = CHUserKey.fromCHDevice(self.mDevice)
-                userKey.subUUID = subId
-                CHUserAPIManager.shared.deleteCHUserKey(userKey) { deleteResult in
-                    if case .failure(_) = deleteResult {
-                        executeOnMainThread {
-                            ViewHelper.hideLoadingView(view: self.view)
-                        }
-                    } else {
-                        Sesame2Store.shared.deletePropertyFor(self.mDevice)
-                        self.mDevice.unregisterNotification()
-                        self.mDevice.reset { resetResult in
-                            executeOnMainThread {
-                                ViewHelper.hideLoadingView(view: self.view)
-//                                self.isReset = true
-                                self.navigationController?.popToRootViewController(animated: false)
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            Sesame2Store.shared.deletePropertyFor(self.mDevice)
-            self.mDevice.unregisterNotification()
-            self.mDevice.reset { resetResult in
-                executeOnMainThread {
-                    //self.isReset = true
-                    ViewHelper.hideLoadingView(view: self.view)
-                    self.navigationController?.popToRootViewController(animated: false)
-                }
-            }
-        }
     }
     
     // MARK: Trash Key
@@ -388,42 +322,21 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         
         let trashKey = UIAlertAction(title: title,style: .destructive) { (action) in
             ViewHelper.showLoadingInView(view: self.view)
-            if AWSMobileClient.default().currentUserState == .signedIn {
-                CHUserAPIManager.shared.getSubId { subId in
-                    guard let subId = subId else {
+            CHUserAPIManager.shared.deleteCHUserKey(CHUserKey.fromCHDevice(self.mDevice)) { deleteResult in
+                if case .failure(let err) = deleteResult {
+                    executeOnMainThread {
+                        self.view.makeToast(err.errorDescription())
+                        ViewHelper.hideLoadingView(view: self.view)
+                    }
+                } else {
+                    Sesame2Store.shared.deletePropertyFor(self.mDevice)
+                    self.mDevice.unregisterNotification()
+                    self.mDevice.dropKey() { _ in
                         executeOnMainThread {
                             ViewHelper.hideLoadingView(view: self.view)
-                        }
-                        return
-                    }
-                    var userKey = CHUserKey.fromCHDevice(self.mDevice)
-                    userKey.subUUID = subId
-                    CHUserAPIManager.shared.deleteCHUserKey(userKey) { deleteResult in
-                        if case .failure(_) = deleteResult {
-                            executeOnMainThread {
-                                ViewHelper.hideLoadingView(view: self.view)
-                            }
-                        } else {
-                            Sesame2Store.shared.deletePropertyFor(self.mDevice)
-                            self.mDevice.unregisterNotification()
-                            self.mDevice.dropKey() { _ in
-                                executeOnMainThread {
-                                    ViewHelper.hideLoadingView(view: self.view)
 //                                    self.isReset = true
-                                    self.navigationController?.popToRootViewController(animated: false)
-                                }
-                            }
+                            self.navigationController?.popToRootViewController(animated: false)
                         }
-                    }
-                }
-            } else {
-                Sesame2Store.shared.deletePropertyFor(self.mDevice)
-                self.mDevice.unregisterNotification()
-                self.mDevice.dropKey() { _ in
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-//                        self.isReset = true
-                        self.navigationController?.popToRootViewController(animated: false)
                     }
                 }
             }

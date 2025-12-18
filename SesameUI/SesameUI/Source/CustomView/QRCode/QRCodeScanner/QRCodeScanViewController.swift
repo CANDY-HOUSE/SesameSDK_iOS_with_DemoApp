@@ -290,27 +290,8 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
                 }
                 // Set History Tag
                 CHDeviceManager.shared.setHistoryTag()
-                if AWSMobileClient.default().currentUserState == .signedIn {
-                    var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel)
-                    // Upload Key
-                    CHUserAPIManager.shared.getSubId { subId in
-                        guard let subId = subId else {
-                            executeOnMainThread {
-                                ViewHelper.hideLoadingView(view: self.view)
-                                self.view.makeToast(NSError.noSubId.errorDescription())
-                            }
-                            return
-                        }
-                        userKey.subUUID = subId
-                        CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
-                            executeOnMainThread {
-                                ViewHelper.hideLoadingView(view: self.view)
-                                self.qrCodeType = .sesameKey
-                                self.dismissSelf()
-                            }
-                        }
-                    }
-                } else {
+                var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel)
+                CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
                     executeOnMainThread {
                         ViewHelper.hideLoadingView(view: self.view)
                         self.qrCodeType = .sesameKey
@@ -354,21 +335,8 @@ extension QRCodeScanViewController {
                     device.setDeviceName(deviceName)
                     // Set History Tag
                     CHDeviceManager.shared.setHistoryTag()
-
-                    if AWSMobileClient.default().currentUserState == .signedIn {
-                        var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel.rawValue)
-                        // Upload Key
-                        CHUserAPIManager.shared.getSubId { subId in
-                            guard let subId = subId else {
-                                handler(.failure(NSError.noSubId))
-                                return
-                            }
-                            userKey.subUUID = subId
-                            CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
-                                handler(.success(.sesameKey))
-                            }
-                        }
-                    } else {
+                    var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel.rawValue)
+                    CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
                         handler(.success(.sesameKey))
                     }
                 case .failure(_):
