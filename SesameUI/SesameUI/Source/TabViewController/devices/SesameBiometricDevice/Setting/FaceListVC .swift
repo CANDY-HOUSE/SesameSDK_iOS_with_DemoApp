@@ -106,6 +106,8 @@ class FaceListVC: CHBaseTableVC ,CHFaceDelegate, CHDeviceStatusDelegate{
         switch self.mDevice.productModel {
         case .sesameFace:
             imageName = "face_tips"
+        case .sesameFace2:
+            imageName = "face_tips"
         default:
             imageName = "facepro_tips"
         }

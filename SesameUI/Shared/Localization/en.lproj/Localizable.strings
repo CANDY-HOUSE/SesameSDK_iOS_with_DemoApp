@@ -150,7 +150,9 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.TouchProFingerModify" = "Edit fingerptint name🖋️";
 "co.candyhouse.sesame2.TouchProFingerDelete" = "Delete fingerprint";
 "co.candyhouse.sesame2.SSMTouchPro" = "Sesame Touch Pro";
+"co.candyhouse.sesame2.SSMTouchPro2" = "Sesame Touch 2 Pro";
 "co.candyhouse.sesame2.SSMTouch" = "Sesame Touch";
+"co.candyhouse.sesame2.SSMTouch2" = "Sesame Touch 2";
 "co.candyhouse.sesame2.nfcCard" = "Manage NFC cards";
 "co.candyhouse.sesame2.passcodes" = "Manage passcodes";
 "co.candyhouse.sesame2.TouchEmptyFingerHint" = "Connect %@ with Bluetooth, tap ⊕, and place your finger on %@ to add a fingerprint, tap X when finished.\n\nAlso, by registering the same finger at different angles, the recognition rate can greatly improve👍";
@@ -180,7 +182,9 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.inputEMailWarn" = "Please enter a valid email address";
 "co.candyhouse.sesame2.nonetwork" = "No internet connection";
 "co.candyhouse.sesame2.SSMFacePro" = "Sesame Face Pro";
+"co.candyhouse.sesame2.SSMFacePro2" = "Sesame Face 2 Pro";
 "co.candyhouse.sesame2.SSMFace" = "Sesame Face";
+"co.candyhouse.sesame2.SSMFace2" = "Sesame Face 2";
 "co.candyhouse.sesame2.SSMFaceProAI" = "Sesame Face Pro AI";
 "co.candyhouse.sesame2.SSMFaceAI" = "Sesame Face AI";
 "co.candyhouse.sesame2.faceView" = "Manage face";

@@ -149,7 +149,9 @@
 "co.candyhouse.sesame2.TouchProFingerModify" = "修改指紋名稱🖋️";
 "co.candyhouse.sesame2.TouchProFingerDelete" = "刪除指紋";
 "co.candyhouse.sesame2.SSMTouchPro" = "Sesame Touch Pro";
+"co.candyhouse.sesame2.SSMTouchPro2" = "Sesame Touch 2 Pro";
 "co.candyhouse.sesame2.SSMTouch" = "Sesame Touch";
+"co.candyhouse.sesame2.SSMTouch2" = "Sesame Touch 2";
 "co.candyhouse.sesame2.nfcCard" = "管理NFC卡";
 "co.candyhouse.sesame2.passcodes" = "管理數字密碼";
 "co.candyhouse.sesame2.TouchEmptyFingerHint" = "靠近%@連藍牙，點擊⊕，將手指放在%@上以添加指紋。添加後點擊 X。\n\n另外，多次改變手指角度 輸入同一手指，可以大幅提高識別率👍";
@@ -178,7 +180,9 @@
 "co.candyhouse.sesame2.inputEMailWarn" = "請輸入正確的電子郵件";
 "co.candyhouse.sesame2.nonetwork" = "似乎已斷開與互聯網的連接。";
 "co.candyhouse.sesame2.SSMFacePro" = "Sesame Face Pro";
+"co.candyhouse.sesame2.SSMFacePro2" = "Sesame Face 2 Pro";
 "co.candyhouse.sesame2.SSMFace" = "Sesame Face";
+"co.candyhouse.sesame2.SSMFace2" = "Sesame Face 2";
 "co.candyhouse.sesame2.SSMFaceProAI" = "Sesame Face Pro AI";
 "co.candyhouse.sesame2.SSMFaceAI" = "Sesame Face AI";
 "co.candyhouse.sesame2.faceView" = "管理人臉";

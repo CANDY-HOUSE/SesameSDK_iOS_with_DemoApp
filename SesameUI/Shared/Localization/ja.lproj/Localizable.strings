@@ -150,7 +150,9 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.TouchProFingerModify" = "指紋の名前変更🖋️";
 "co.candyhouse.sesame2.TouchProFingerDelete" = "指紋の削除";
 "co.candyhouse.sesame2.SSMTouchPro" = "セサミタッチ Pro";
+"co.candyhouse.sesame2.SSMTouchPro2" = "セサミタッチ 2 Pro";
 "co.candyhouse.sesame2.SSMTouch" = "セサミタッチ";
+"co.candyhouse.sesame2.SSMTouch2" = "セサミタッチ 2";
 "co.candyhouse.sesame2.nfcCard" = "ICカードの管理";
 "co.candyhouse.sesame2.passcodes" = "暗証番号の管理";
 "co.candyhouse.sesame2.TouchEmptyFingerHint" = "%@に近づきBluetooth接続し、⊕ をタップし、%@に指をかざして指紋を登録。登録後 X をタップ。\n\nまた、指の角度を変えて何度も同一の指を登録すると、さらに認識率は大幅向上👍";
@@ -180,7 +182,9 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.inputEMailWarn" = "正しいメールアドレスを入力してください";
 "co.candyhouse.sesame2.nonetwork" = "インターネットとの接続が切断されたようです";
 "co.candyhouse.sesame2.SSMFacePro" = "セサミフェイス Pro";
+"co.candyhouse.sesame2.SSMFacePro2" = "セサミフェイス 2 Pro";
 "co.candyhouse.sesame2.SSMFace" = "セサミフェイス";
+"co.candyhouse.sesame2.SSMFace2" = "セサミフェイス 2";
 "co.candyhouse.sesame2.SSMFaceProAI" = "セサミフェイス Pro AI";
 "co.candyhouse.sesame2.SSMFaceAI" = "セサミフェイス AI";
 "co.candyhouse.sesame2.faceView" = "顔認識の管理";

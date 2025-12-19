@@ -314,6 +314,8 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         var title: String
         if (mDevice.productModel == .sesameTouch) {
             title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: ["co.candyhouse.sesame2.SSMTouch".localized])
+        } else if (mDevice.productModel == .sesameTouch2) {
+            title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: ["co.candyhouse.sesame2.SSMTouch2".localized])
         } else if (mDevice.productModel == .remote) {
             title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [mDevice.deviceName])
         } else {

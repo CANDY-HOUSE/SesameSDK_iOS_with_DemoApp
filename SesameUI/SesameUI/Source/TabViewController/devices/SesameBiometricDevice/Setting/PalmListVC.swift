@@ -107,6 +107,8 @@ class PalmListVC: CHBaseTableVC ,CHPalmDelegate, CHDeviceStatusDelegate{
         switch self.mDevice.productModel {
         case .sesameFace:
             imageName = "palm_tips"
+        case .sesameFace2:
+            imageName = "palm_tips"
         default:
             imageName = "palmpro_tips"
         }

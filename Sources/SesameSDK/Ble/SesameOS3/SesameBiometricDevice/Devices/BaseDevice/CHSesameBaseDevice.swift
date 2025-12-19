@@ -37,10 +37,14 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
 
     private let iotDeviceModels: Set<CHProductModel> = [
         .sesameTouch,
+        .sesameTouch2,
         .sesameTouchPro,
+        .sesameTouchPro2,
         .sesameFace,
+        .sesameFace2,
         .sesameFaceAI,
         .sesameFacePro,
+        .sesameFacePro2,
         .sesameFaceProAI
     ]
     

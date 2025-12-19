@@ -38,8 +38,12 @@ extension CHDevice {
             return device?.name ?? "co.candyhouse.sesame2.BikeLock2".localized
         case .sesameTouchPro:
             return device?.name ?? "co.candyhouse.sesame2.SSMTouchPro".localized
+        case .sesameTouchPro2:
+            return device?.name ?? "co.candyhouse.sesame2.SSMTouchPro2".localized
         case .sesameTouch:
             return device?.name ?? "co.candyhouse.sesame2.SSMTouch".localized
+        case .sesameTouch2:
+            return device?.name ?? "co.candyhouse.sesame2.SSMTouch2".localized
         case .openSensor:
             return device?.name ?? "co.candyhouse.sesame2.OpenSensor".localized
         case .openSensor2:
@@ -58,8 +62,12 @@ extension CHDevice {
             return device?.name ?? "co.candyhouse.sesame2.Hub3".localized
         case .sesameFacePro:
             return device?.name ?? "co.candyhouse.sesame2.SSMFacePro".localized
+        case .sesameFacePro2:
+            return device?.name ?? "co.candyhouse.sesame2.SSMFacePro2".localized
         case .sesameFace:
             return device?.name ?? "co.candyhouse.sesame2.SSMFace".localized
+        case .sesameFace2:
+            return device?.name ?? "co.candyhouse.sesame2.SSMFace2".localized
         case .sesame6Pro:
             return device?.name ?? "\("co.candyhouse.sesame2.Sesame".localized)6 Pro"
         case .sesameFaceAI:

@@ -448,13 +448,25 @@ class SesameDeviceListViewController: CHBaseViewController {
         case .sesameTouchPro:
             guard let device = device as? CHSesameTouchPro else { return }
             navigateToCHSesameBiometricSettingVC(device)
+        case .sesameTouchPro2:
+            guard let device = device as? CHSesameTouchPro else { return }
+            navigateToCHSesameBiometricSettingVC(device)
         case .sesameTouch:
+            guard let device = device as? CHSesameTouch else { return }
+            navigateToCHSesameBiometricSettingVC(device)
+        case .sesameTouch2:
             guard let device = device as? CHSesameTouch else { return }
             navigateToCHSesameBiometricSettingVC(device)
         case .sesameFacePro:
             guard let device = device as? CHSesameFacePro else { return }
             navigateToCHSesameBiometricSettingVC(device)
+        case .sesameFacePro2:
+            guard let device = device as? CHSesameFacePro else { return }
+            navigateToCHSesameBiometricSettingVC(device)
         case .sesameFace:
+            guard let device = device as? CHSesameFace else { return }
+            navigateToCHSesameBiometricSettingVC(device)
+        case .sesameFace2:
             guard let device = device as? CHSesameFace else { return }
             navigateToCHSesameBiometricSettingVC(device)
         case .sesameFaceAI:
