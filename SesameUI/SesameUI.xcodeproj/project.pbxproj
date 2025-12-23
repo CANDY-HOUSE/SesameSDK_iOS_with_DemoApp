@@ -2637,7 +2637,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2671,7 +2671,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2698,7 +2698,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2724,7 +2724,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.SesameIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2878,7 +2878,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
 				PRODUCT_NAME = Sesame;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2907,7 +2907,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
 				PRODUCT_NAME = Sesame;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2937,7 +2937,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension.SesameIntentsWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2969,7 +2969,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension.SesameIntentsWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2998,7 +2998,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3028,7 +3028,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3059,7 +3059,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3089,7 +3089,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.122;
+				MARKETING_VERSION = 3.0.123;
 				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
