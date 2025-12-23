@@ -39,12 +39,12 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
         .sesameTouch,
         .sesameTouch2,
         .sesameTouchPro,
-        .sesameTouchPro2,
+        .sesameTouch2Pro,
         .sesameFace,
         .sesameFace2,
         .sesameFaceAI,
         .sesameFacePro,
-        .sesameFacePro2,
+        .sesameFace2Pro,
         .sesameFaceProAI
     ]
     

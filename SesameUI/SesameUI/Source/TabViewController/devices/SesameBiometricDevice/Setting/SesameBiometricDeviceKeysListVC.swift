@@ -31,7 +31,7 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
             .sesameTouch:       [.sesame2, .sesame4, .bikeLock] + os3Lockers,
             .sesameTouch2:      [.sesame2, .sesame4, .bikeLock] + os3Lockers,
             .sesameTouchPro:    [.sesame2, .sesame4, .bikeLock] + os3Lockers,
-            .sesameTouchPro2:   [.sesame2, .sesame4, .bikeLock] + os3Lockers,
+            .sesameTouch2Pro:   [.sesame2, .sesame4, .bikeLock] + os3Lockers,
             .remote:            os3Lockers,
             .remoteNano:        os3Lockers,
             .openSensor2:       [.hub3] + os3Lockers,

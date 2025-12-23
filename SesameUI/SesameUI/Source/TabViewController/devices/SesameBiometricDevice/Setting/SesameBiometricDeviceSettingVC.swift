@@ -305,7 +305,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         
         // MARK: Radar View
         if self.mDevice.productModel == .sesameFace || self.mDevice.productModel == .sesameFace2 || self.mDevice.productModel == .sesameFacePro
-            || self.mDevice.productModel == .sesameFacePro2 || self.mDevice.productModel == .sesameFaceAI || self.mDevice.productModel == .sesameFaceProAI {
+            || self.mDevice.productModel == .sesameFace2Pro || self.mDevice.productModel == .sesameFaceAI || self.mDevice.productModel == .sesameFaceProAI {
             sliderView = CHUIViewGenerator.slider(
                 defaultValue: 270,
                 maximumValue: 270,

@@ -69,7 +69,7 @@ public extension CHDevice {
             filePrefix = "opensensor1"
         case .sesameTouchPro:
             filePrefix = "sesametouch1pro"
-        case .sesameTouchPro2:
+        case .sesameTouch2Pro:
             filePrefix = "sesametouch2pro"
         case .sesameTouch:
             filePrefix = "sesametouch1_"
@@ -91,7 +91,7 @@ public extension CHDevice {
             filePrefix = "sesameFace2_"
         case .sesameFacePro:
             filePrefix = "sesameFace1Pro_"
-        case .sesameFacePro2:
+        case .sesameFace2Pro:
             filePrefix = "sesameFace2Pro_"
         case .sesame6Pro:
             filePrefix = "sesame6pro_"
