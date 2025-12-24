@@ -168,7 +168,6 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
         sendCommand(.init(.versionTag)) { (response) in
             if response.cmdResultCode == .success {
                 let versionTag = String(data: response.data, encoding: .utf8) ?? ""
-                L.d("[bot2][getVersionTag =>]",versionTag)
                 result(.success(CHResultStateNetworks(input: versionTag)))
                 CHAccountManager
                     .shared

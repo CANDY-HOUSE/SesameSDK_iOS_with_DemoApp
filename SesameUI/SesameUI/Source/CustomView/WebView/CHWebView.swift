@@ -217,7 +217,12 @@ extension CHWebView {
                 jsonString = String(data: jsonData, encoding: .utf8) ?? "null"
             }
             let script = "if (window.\(funcName)) { window.\(funcName)(\(jsonString)); }"
-            webView?.evaluateJavaScript(script, completionHandler: nil)
+#if DEBUG
+            print("Call H5", script)
+#endif
+            executeOnMainThread { [weak self] in
+                self?.webView?.evaluateJavaScript(script, completionHandler: nil)
+            }
         } catch {
             print("回调数据序列化失败: \(error)")
         }

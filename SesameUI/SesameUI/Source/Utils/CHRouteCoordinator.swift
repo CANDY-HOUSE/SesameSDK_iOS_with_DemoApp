@@ -225,7 +225,10 @@ public extension CHRouteCoordinator where Self: UIViewController {
     }
     
     func navigateToHub3SettingViewController(_ hub3: CHHub3, isFromRegister: Bool = false) {
-        navigationController?.pushViewController(Hub3SettingViewController.instanceWithHub3(hub3, isFromRegister: isFromRegister) {},animated: true)
+        navigationController?.pushViewController(CHWebViewController.instanceWithScene("wifi-module", extInfo: [
+            "deviceUUID": hub3.deviceId.uuidString,
+            "keyLevel": "\(hub3.keyLevel)"
+        ]), animated: true)
     }
     
     

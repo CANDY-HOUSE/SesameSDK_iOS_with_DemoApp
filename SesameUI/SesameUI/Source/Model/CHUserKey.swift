@@ -105,4 +105,5 @@ struct StateInfo: Codable {
     var CHSesame2Status: String?
     var timestamp: Int64?
     var wm2State: Bool?
+    let remoteList: [IRRemote]?
 }

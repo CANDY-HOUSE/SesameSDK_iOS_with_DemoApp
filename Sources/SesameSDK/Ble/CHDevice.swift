@@ -310,6 +310,8 @@ public protocol CHSesameConnector {
 
 extension CHSesameConnector {
     func setRadarSensitivity(payload: Data, result: @escaping CHResult<CHEmpty>) {}
+    func insertSesame(_ device: CHDevice, result: @escaping CHResult<CHEmpty>){}
+    func removeSesame(tag: String, result: @escaping CHResult<CHEmpty>){}
 }
 
 public protocol  CHSesameConnectorDelegate : AnyObject{

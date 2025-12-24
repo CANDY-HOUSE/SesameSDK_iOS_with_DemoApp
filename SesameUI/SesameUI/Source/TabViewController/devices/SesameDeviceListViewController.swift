@@ -113,7 +113,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                 guard let remote = it.rawValue as? IRRemote else { return }
                 let device = devices.first { device in
                     if let hub3Device = device as? CHHub3 {
-                        return getCurrentHub3IRDeviceList(hub3Device.deviceId.uuidString.uppercased()).contains { $0.uuid == remote.uuid }
+                        return ((hub3Device.stateInfo?.remoteList?.first(where: { $0.uuid == remote.uuid })) != nil)
                     }
                     return false
                 }
@@ -201,7 +201,6 @@ class SesameDeviceListViewController: CHBaseViewController {
         
         // KVO监听tableView的滚动
         tableViewProxy.tableView.addObserver(self, forKeyPath: "contentOffset", options: [.new, .old], context: nil)
-        setupIRDeviceObserver()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -365,7 +364,6 @@ class SesameDeviceListViewController: CHBaseViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.isInitialLoading = false
                 }
-                fetchIRDevices()
             case .failure(let error):
                 executeOnMainThread {
                     self.view.makeToast(error.errorDescription())
@@ -513,35 +511,5 @@ extension SesameDeviceListViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         lastSearchQuery = ""
         performSearch(query: "")
-    }
-    
-    func getCurrentHub3IRDeviceList(_ hub3DeviceId: String) -> [IRRemote] {
-       return IRRemoteRepository.shared.getRemotesByKey(hub3DeviceId)
-    }
-    
-    func fetchIRDevices() {
-        var hub3DeviceIdList = [String]()
-        devices.forEach { chDevice in
-            if chDevice is CHHub3 {
-                let hub3DeviceId = chDevice.deviceId.uuidString.uppercased()
-                hub3DeviceIdList.append(hub3DeviceId)
-                CHIRManager.shared.fetchIRDevices(hub3DeviceId) { _ in}
-            }
-        }
-        var cacheHub3DeviceIdList = IRRemoteRepository.shared.getAllKeys()
-        cacheHub3DeviceIdList.forEach { cacheId in
-            if !hub3DeviceIdList.contains(cacheId) {
-                IRRemoteRepository.shared.clearRemotes(key: cacheId)
-            }
-        }
-    }
-    
-    private func setupIRDeviceObserver() {
-        var cancellables = Set<AnyCancellable>()
-        IRRemoteRepository.shared.statePublisher
-            .sink { [weak self] newState in
-                self?.rebuildData()
-            }
-            .store(in: &cancellables)
     }
 }

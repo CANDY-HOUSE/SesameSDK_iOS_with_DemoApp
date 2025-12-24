@@ -17,6 +17,7 @@ class CHWebViewController: CHBaseViewController,UIGestureRecognizerDelegate {
     deinit {
         NotificationCenter.default.removeObserver(self)
         webView?.cleanup()
+        webView?.destroyBLEConnets()
     }
     
     override func viewDidLoad() {
@@ -64,6 +65,7 @@ class CHWebViewController: CHBaseViewController,UIGestureRecognizerDelegate {
         webView.autoPinEdgesToSuperview()
         webView.registerSchemeHandlers()
         webView.registerMessageHandlers()
+        webView.registerBLEMessageHandlers()
     }
 }
 

@@ -31,27 +31,6 @@ extension CHHub3Device {
             let isNETConnecting: Bool = (content[0...0].toInt8() & 64) > 0
             let isIOTConnecting: Bool = content[0...0].toInt8() < 0
             mechStatus = CHWifiModule2NetworkStatus(isAPWork: isAp, isNetwork: isNet, isIoTWork: isIoT, isBindingAPWork: isAPConnecting, isConnectingNetwork: isNETConnecting, isConnectingIoT: isIOTConnecting)
-
-        case .pubKeySesame:
-            var sesame2Keys = [String: String]()
-            let dividedData = data.divideArray(chunkSize: 23)
-            for (index, keyData) in dividedData.enumerated() {
-                let lockStatus = keyData[22]
-                // L.d("lockStatus!!!",lockStatus)
-                if lockStatus != 0 {
-                    let deviceIDData = keyData[0...15]
-                    if let sesame2DeviceId = deviceIDData.toHexString().noDashtoUUID() {
-                        sesame2Keys[sesame2DeviceId.uuidString] = "\(index)"///hub3 不兼容老设备，这里不消费锁状态，value 用来排序
-                    }
-                }
-            }
-            self.sesame2Keys = sesame2Keys
-            L.d("sesame2Keys",sesame2Keys)
-        case .moveTo:
-            if var percentage = data[safeBound: 0...0]?.copyData {
-                L.d("[hub3 ] ota ",percentage)
-                (delegate as? CHWifiModule2Delegate)?.onOTAProgress(device: self, percent: percentage.toUInt8())
-            }
         case .HUB3_ITEM_CODE_SSID_FIRST:break
         case .HUB3_ITEM_CODE_SSID_LAST: break
         case .HUB3_ITEM_CODE_SSID_NOTIFY:
@@ -62,60 +41,8 @@ extension CHHub3Device {
             if let ssid = String(data: ssidData.copyData, encoding: .utf8) {
                 (delegate as? CHWifiModule2Delegate)?.onScanWifiSID(device: self, ssid: CHSSID(name: ssid, rssi: rssi))
             }
-        // 模式匹配语法，判断是否属于Hub3ItemCode.HUB3_ITEM_CODE_LED_DUTY
-        case _ where itemCode.rawValue == Hub3ItemCode.HUB3_ITEM_CODE_LED_DUTY.rawValue:
-            self.hub3Brightness = data.uint8
-            (delegate as? CHHub3Delegate)?.onHub3BrightnessReceive(device: self, brightness: data.uint8)
         default:
             L.d("!![hub3][pub][\(itemCode.rawValue)]")
-        }
-    }
-    
-    private func incrementProgress(newPosition: UInt8, updateHandler: @escaping (UInt8) -> Void) {
-        guard progress.target > progress.current else {
-            L.d("Target must be greater than start")
-            return
-        }
-        var currentProgress = progress.current
-        if progressTimer != nil {
-            progressTimer?.invalidate()
-            progressTimer = nil
-        }
-        progressTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
-            guard let self = self else {
-                timer.invalidate()
-                return
-            }
-            currentProgress += 1
-            if currentProgress >= self.progress.target {
-                timer.invalidate()
-            }
-            updateHandler(currentProgress)
-        }
-    }
-    
-    func updateFirmwareProgress(_ data: Data) {
-        guard var percentage = data[safeBound: 0...0]?.copyData else {
-            return
-        }
-        let recvProgress = percentage.toUInt8()
-        progress.target = recvProgress
-        incrementProgress(newPosition: recvProgress) { [self] val in
-            progress.current = val
-            (delegate as? CHWifiModule2Delegate)?.onOTAProgress(device: self, percent: val)
-        }
-    }
-    
-    func updateComplete(newVer: String) {
-        if newVer != status.v {        
-            status.hub3LastFirmwareVer = newVer
-            status.v = status.hub3LastFirmwareVer
-        }
-        if progressTimer != nil {
-            progressTimer?.invalidate()
-            progressTimer = nil
-            progress = (current: 0, target: 0)
-            (delegate as? CHWifiModule2Delegate)?.onOTAProgress(device: self, percent: 100)
         }
     }
     

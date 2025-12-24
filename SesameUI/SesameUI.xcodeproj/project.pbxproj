@@ -10,8 +10,6 @@
 		0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
 		0A0B3FEE278D4D8F00BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
 		2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD1E2E6FC63A00E37918 /* RemoteBean.swift */; };
-		2C15AD6D2E6FC63A00E37918 /* CHIRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15AD522E6FC63A00E37918 /* CHIRManager.swift */; };
-		2C15ADC22E705E2C00E37918 /* IRRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15ADC12E705E2A00E37918 /* IRRemoteRepository.swift */; };
 		3B1D80402E2A2DA900C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80442E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80452E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,8 +67,6 @@
 		643F06A02BCD12400045D789 /* sesamebike1_21_3_d7162a.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */; };
 		643F06A12BCD12400045D789 /* sesame_221_0_8c080c.zip in Resources */ = {isa = PBXBuildFile; fileRef = 643F06932BCD12400045D789 /* sesame_221_0_8c080c.zip */; };
 		643F06AC2BD2065E0045D789 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F06AB2BD2065E0045D789 /* NSObject+.swift */; };
-		6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */; };
-		6440C3B32B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B22B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift */; };
 		6440C3B52B61F87000F74E52 /* DeviceControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440C3B42B61F87000F74E52 /* DeviceControllerHolder.swift */; };
 		64498EA22BD65EFB00806D0F /* FloatingTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64498EA12BD65EFB00806D0F /* FloatingTipView.swift */; };
 		645211E52B27F2F00091DDE3 /* CHRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645211E42B27F2F00091DDE3 /* CHRouteCoordinator.swift */; };
@@ -93,9 +89,6 @@
 		646B86DC2B443D520042589E /* PlayLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86DB2B443D520042589E /* PlayLoadingView.swift */; };
 		646B86DE2B4545B60042589E /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86DD2B4545B60042589E /* Debouncer.swift */; };
 		646B86E12B47995D0042589E /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86E02B47995D0042589E /* UIView+.swift */; };
-		646B86EC2B48EBDB0042589E /* Hub3KeysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */; };
-		646B86EE2B48F0EC0042589E /* Hub3SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */; };
-		646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */; };
 		646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */ = {isa = PBXBuildFile; fileRef = 646CE5652BDF3D9A00898ECA /* finger_print.gif */; };
 		647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */; };
 		647A27702B2C42220013308C /* Bot2ScriptActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */; };
@@ -112,6 +105,7 @@
 		64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */; };
 		64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */; };
 		64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
+		64D18DE52EEAC12D00C70B98 /* CHWebview+BLEConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */; };
 		64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
 		64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */; };
@@ -174,8 +168,6 @@
 		B09F5835250F47FC0034759A /* LockAngleSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */; };
 		B09F5837250F5D3B0034759A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F5836250F5D3B0034759A /* MeViewController.swift */; };
 		B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6138F247680FD00A797E5 /* VersionLabel.swift */; };
-		B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D669AC25394B8E002602F4 /* QRCodeViewController.swift */; };
-		B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D669AD25394B8E002602F4 /* QRCodeViewController.xib */; };
 		B0DF09252522F878005E17BD /* ToggleSesameIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF09242522F878005E17BD /* ToggleSesameIntentHandler.swift */; };
 		B0FB248924D81BA7006F47C2 /* WatchKitFileTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB248824D81BA6006F47C2 /* WatchKitFileTransfer.swift */; };
 		B179690B22F7CE9300E91996 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B179690A22F7CE9300E91996 /* AppDelegate.swift */; };
@@ -440,8 +432,6 @@
 /* Begin PBXFileReference section */
 		0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleHelper.swift; sourceTree = "<group>"; };
 		2C15AD1E2E6FC63A00E37918 /* RemoteBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBean.swift; sourceTree = "<group>"; };
-		2C15AD522E6FC63A00E37918 /* CHIRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIRManager.swift; sourceTree = "<group>"; };
-		2C15ADC12E705E2A00E37918 /* IRRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRRemoteRepository.swift; sourceTree = "<group>"; };
 		3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,8 +494,6 @@
 		643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike1_21_3_d7162a.zip; sourceTree = "<group>"; };
 		643F06932BCD12400045D789 /* sesame_221_0_8c080c.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame_221_0_8c080c.zip; sourceTree = "<group>"; };
 		643F06AB2BD2065E0045D789 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
-		6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hub3SettingViewController+SSMKeys.swift"; sourceTree = "<group>"; };
-		6440C3B22B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hub3SettingViewController+IRKeys.swift"; sourceTree = "<group>"; };
 		6440C3B42B61F87000F74E52 /* DeviceControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControllerHolder.swift; sourceTree = "<group>"; };
 		64498EA12BD65EFB00806D0F /* FloatingTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTipView.swift; sourceTree = "<group>"; };
 		645211E42B27F2F00091DDE3 /* CHRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRouteCoordinator.swift; sourceTree = "<group>"; };
@@ -528,9 +516,6 @@
 		646B86DB2B443D520042589E /* PlayLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLoadingView.swift; sourceTree = "<group>"; };
 		646B86DD2B4545B60042589E /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		646B86E02B47995D0042589E /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3KeysListViewController.swift; sourceTree = "<group>"; };
-		646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub3SettingViewController.swift; sourceTree = "<group>"; };
-		646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Hub3SettingViewController.xib; sourceTree = "<group>"; };
 		646CE5652BDF3D9A00898ECA /* finger_print.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = finger_print.gif; sourceTree = "<group>"; };
 		647719242BAADF72003D0405 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		647A276E2B2C42220013308C /* Bot2ScriptActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot2ScriptActionCell.swift; sourceTree = "<group>"; };
@@ -545,6 +530,7 @@
 		64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCellDisplayProtocol.swift; sourceTree = "<group>"; };
 		64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5ListCell.swift; sourceTree = "<group>"; };
 		64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5ListCell.xib; sourceTree = "<group>"; };
+		64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+BLEConnect.swift"; sourceTree = "<group>"; };
 		64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameTouchPro+.swift"; sourceTree = "<group>"; };
 		64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTableViewProxy.swift; sourceTree = "<group>"; };
 		64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SesameDeviceList+Control.swift"; sourceTree = "<group>"; };
@@ -618,8 +604,6 @@
 		B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockAngleSettingViewController.xib; sourceTree = "<group>"; };
 		B09F5836250F5D3B0034759A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		B0A6138F247680FD00A797E5 /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
-		B0D669AC25394B8E002602F4 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
-		B0D669AD25394B8E002602F4 /* QRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
 		B0D669BF253951BD002602F4 /* BikeLockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeLockSettingViewController.swift; sourceTree = "<group>"; };
 		B0DF091C2522F82C005E17BD /* UnlockSesameIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockSesameIntentHandler.swift; sourceTree = "<group>"; };
 		B0DF09242522F878005E17BD /* ToggleSesameIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSesameIntentHandler.swift; sourceTree = "<group>"; };
@@ -809,30 +793,12 @@
 			path = bean;
 			sourceTree = "<group>";
 		};
-		2C15AD532E6FC63A00E37918 /* RemoteServer */ = {
-			isa = PBXGroup;
-			children = (
-				2C15AD522E6FC63A00E37918 /* CHIRManager.swift */,
-			);
-			path = RemoteServer;
-			sourceTree = "<group>";
-		};
 		2C15AD542E6FC63A00E37918 /* ir */ = {
 			isa = PBXGroup;
 			children = (
 				2C15AD1F2E6FC63A00E37918 /* bean */,
-				2C15ADC02E705A0200E37918 /* cache */,
-				2C15AD532E6FC63A00E37918 /* RemoteServer */,
 			);
 			path = ir;
-			sourceTree = "<group>";
-		};
-		2C15ADC02E705A0200E37918 /* cache */ = {
-			isa = PBXGroup;
-			children = (
-				2C15ADC12E705E2A00E37918 /* IRRemoteRepository.swift */,
-			);
-			path = cache;
 			sourceTree = "<group>";
 		};
 		3BC91CA62E2A8EFA00468AAC /* Configuration */ = {
@@ -1157,11 +1123,6 @@
 			isa = PBXGroup;
 			children = (
 				2C15AD542E6FC63A00E37918 /* ir */,
-				646B86EB2B48EBDB0042589E /* Hub3KeysListViewController.swift */,
-				646B86ED2B48F0EC0042589E /* Hub3SettingViewController.swift */,
-				6440C3B02B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift */,
-				6440C3B22B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift */,
-				646B86EF2B48F33B0042589E /* Hub3SettingViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1180,6 +1141,7 @@
 			children = (
 				64E854362E7A85A300399FED /* CHWebView.swift */,
 				649CEA582EB2218F00BF9A5D /* CHWebView+.swift */,
+				64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */,
 				64E854382E7A99B300399FED /* CHWebViewController.swift */,
 			);
 			path = WebView;
@@ -1359,8 +1321,6 @@
 		B0F6CC9B25105BFD00028219 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
-				B0D669AC25394B8E002602F4 /* QRCodeViewController.swift */,
-				B0D669AD25394B8E002602F4 /* QRCodeViewController.xib */,
 				B0E391B92521AF4D00A321F8 /* QRCodeScanner */,
 				B0E391BA2521AF5A00A321F8 /* QRCodeExtractor */,
 			);
@@ -2033,7 +1993,6 @@
 				89F3C0BB2EF2967B00080CFA /* opensensor2_30_24_b634a9.zip in Resources */,
 				D09C4B732E5C4C810031F6A2 /* sesamebot2_30_17_990e7f.zip in Resources */,
 				BE97F4082561215C00E9FDC4 /* SignUpViewController.xib in Resources */,
-				646B86F02B48F33B0042589E /* Hub3SettingViewController.xib in Resources */,
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
 				41ACFD0829B8B982001153DB /* Sesame5LockAngle.xib in Resources */,
 				B179691522F7CE9400E91996 /* LaunchScreen.storyboard in Resources */,
@@ -2063,7 +2022,6 @@
 				645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */,
 				89F2E50A2EDE9C9300655507 /* remote_30_14_625867.zip in Resources */,
 				418FA1F9237C04EF00C7C408 /* InfoPlist.strings in Resources */,
-				B0D669AF25394B8E002602F4 /* QRCodeViewController.xib in Resources */,
 				643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */,
 				89F2E5442EEBE2FE00655507 /* sesame6pro_30_21_07ca91.zip in Resources */,
 				890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */,
@@ -2257,17 +2215,13 @@
 				BE8D0B5F2494A44C00B99987 /* Functions.swift in Sources */,
 				645B1B282BDB4C0100D5E491 /* GIFAnimatable.swift in Sources */,
 				B08C5347245EC30000252F00 /* NSErrorShared+.swift in Sources */,
-				B0D669AE25394B8E002602F4 /* QRCodeViewController.swift in Sources */,
 				649CEA592EB2218F00BF9A5D /* CHWebView+.swift in Sources */,
 				645B1B2E2BDB4C0100D5E491 /* UIImage.swift in Sources */,
 				645211F62B2BFA270091DDE3 /* Bot2ScriptActionVC.swift in Sources */,
 				3B32750A2E7957340076DCBC /* CHDeviceWrapperManager.swift in Sources */,
-				2C15ADC22E705E2C00E37918 /* IRRemoteRepository.swift in Sources */,
 				64E8543B2E7B972100399FED /* CHBaseViewController+biz.swift in Sources */,
 				64E854372E7A85A400399FED /* CHWebView.swift in Sources */,
 				2C15AD662E6FC63A00E37918 /* RemoteBean.swift in Sources */,
-				2C15AD6D2E6FC63A00E37918 /* CHIRManager.swift in Sources */,
-				6440C3B12B60FE9300F74E52 /* Hub3SettingViewController+SSMKeys.swift in Sources */,
 				645B1B2C2BDB4C0100D5E491 /* Array.swift in Sources */,
 				64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */,
 				645B1B2B2BDB4C0100D5E491 /* GIFImageView.swift in Sources */,
@@ -2294,7 +2248,6 @@
 				890D330F2DA0E85A0031F0AF /* FaceListVC .swift in Sources */,
 				BE33ED1825823F0A00A73D6A /* WatchKitFile.swift in Sources */,
 				3B41364D2E45D5710044E33F /* CustomInputDialog.swift in Sources */,
-				646B86EC2B48EBDB0042589E /* Hub3KeysListViewController.swift in Sources */,
 				B08CBE7E2509F06C00050E7B /* CHUIView.swift in Sources */,
 				64EC068A2E7C00EA0047ED13 /* RefreshHeaderView.swift in Sources */,
 				64EC068B2E7C00EA0047ED13 /* IndicatorGenerator.swift in Sources */,
@@ -2346,7 +2299,6 @@
 				890D33092DA0E7FF0031F0AF /* NFCCardVC.swift in Sources */,
 				890D330A2DA0E7FF0031F0AF /* SesameBiometricDeviceKeysListVC.swift in Sources */,
 				890D330B2DA0E7FF0031F0AF /* PassCodeVC.swift in Sources */,
-				6440C3B32B610F2C00F74E52 /* Hub3SettingViewController+IRKeys.swift in Sources */,
 				646B86DE2B4545B60042589E /* Debouncer.swift in Sources */,
 				BE88595026C3CF46002D17E0 /* CHUserAPIManager.swift in Sources */,
 				645B1B302BDB4C0100D5E491 /* ImageSourceHelpers.swift in Sources */,
@@ -2373,7 +2325,6 @@
 				41030330237902D400785311 /* UIColorShared+.swift in Sources */,
 				BEFDB215250D0F7400739B11 /* QRCodeScanViewController.swift in Sources */,
 				E8A6F1DC2A6E55E100AED9AD /* BleConnectorSettingVC.swift in Sources */,
-				646B86EE2B48F0EC0042589E /* Hub3SettingViewController.swift in Sources */,
 				645211E52B27F2F00091DDE3 /* CHRouteCoordinator.swift in Sources */,
 				BE9127EB25B7D863004D4488 /* BikeLockSettingViewController.swift in Sources */,
 				B01728D3250C78D200F87ED6 /* CHBaseTableViewController.swift in Sources */,
@@ -2396,6 +2347,7 @@
 				BE6EE4CA259990F000C77E99 /* SesameBotMode.swift in Sources */,
 				E8A6F1D42A60E56800AED9AD /* OpenSensorSettingVC.swift in Sources */,
 				B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */,
+				64D18DE52EEAC12D00C70B98 /* CHWebview+BLEConnect.swift in Sources */,
 				BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */,
 				41ACFD0429B86A07001153DB /* Sesame5SettingViewController.swift in Sources */,
 				BEFB1DE1256A6AEF00BF95CB /* CHDeviceManagerShared+.swift in Sources */,
