@@ -69,13 +69,11 @@ extension CHAccountManager {
     /// - Parameters:
     ///   - topicName: 主题名称
     ///   - pushToken: APNs token (iOS) 或 FCM token (Android)
-    ///   - appIdentifyId: 设备唯一标识
     ///   - platform: 平台类型 (ios, ios_sandbox, android)
     ///   - completion: 完成回调
     public func subscribeToSNSTopic(
         topicName: String,
         pushToken: String,
-        appIdentifyId: String,
         platform: String,
         completion: @escaping (Bool) -> Void
     ) {
@@ -83,7 +81,6 @@ extension CHAccountManager {
             "action": "subscribeToTopic",
             "topicName": topicName,
             "pushToken": pushToken,
-            "appIdentifyId": appIdentifyId,
             "platform": platform
         ]
         

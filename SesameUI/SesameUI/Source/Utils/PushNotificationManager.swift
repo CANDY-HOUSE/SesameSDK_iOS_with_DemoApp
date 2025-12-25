@@ -19,10 +19,6 @@ class PushNotificationManager {
     private let PREF_APP_VERSION = "last_subscription_app_version"
     private let SUBSCRIPTION_REFRESH_INTERVAL: TimeInterval = 30 * 24 * 60 * 60
     
-    var appIdentifyId: String {
-        return UIDevice.current.identifierForVendor?.uuidString ?? ""
-    }
-    
     var platform: String {
 #if DEBUG
         return "ios_sandbox"
@@ -34,8 +30,6 @@ class PushNotificationManager {
     private var subscribingTokens = Set<String>()
     
     func checkAndSubscribeToTopics() {
-        L.d("sf", "appIdentifyId=\(appIdentifyId)")
-        
         guard let token = UserDefaults.standard.string(forKey: "devicePushToken") else {
             L.d("sf", "无token，需要注册推送...")
             registerForPushNotifications()
@@ -104,7 +98,6 @@ class PushNotificationManager {
         CHAccountManager.shared.subscribeToSNSTopic(
             topicName: topic,
             pushToken: token,
-            appIdentifyId: appIdentifyId,
             platform: platform
         ) { [weak self] success in
             guard let self = self else { return }
