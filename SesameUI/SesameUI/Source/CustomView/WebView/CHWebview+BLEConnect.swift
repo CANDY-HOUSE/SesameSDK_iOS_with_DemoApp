@@ -102,6 +102,14 @@ extension CHWebView {
             }
         }
         
+        registerMessageHandler(WebViewMessageType.requestDeviceFWUpgrade.rawValue) { [self] webView, data in
+            if let requestData = data as? [String: Any],
+               let callbackName = requestData["callbackName"] as? String {
+                self.statuCallback![WebViewMessageType.requestDeviceFWUpgrade.rawValue] = callbackName
+                guard let device = currentDevice else { return }
+                device.updateFirmware { _ in }
+            }
+        }
     }
     
     func destroyBLEConnets() {
@@ -179,7 +187,7 @@ extension CHWebView: WifiModule2SSIDScanViewControllerDelegate {
     }
 }
 
-extension CHWebView: CHDeviceStatusAndKeysDelegate {
+extension CHWebView: CHDeviceStatusAndKeysDelegate, CHWifiModule2Delegate {
     
     // MARK: CHDeviceStatusDelegate
     func onMechStatus(device: CHDevice) {
@@ -214,6 +222,14 @@ extension CHWebView: CHDeviceStatusAndKeysDelegate {
     // MARK: CHWifiModule2Delegate
     func onSesame2KeysChanged(device: any SesameSDK.CHWifiModule2, sesame2keys: [String : String]) {
         L.d("onSesame2KeysChanged", sesame2keys);
+    }
+    
+    func onOTAProgress(device: CHWifiModule2, percent: UInt8) {
+        guard let statuCb = self.statuCallback, let cbName = statuCb[WebViewMessageType.requestDeviceFWUpgrade.rawValue] else { return }
+        L.d("onOTAProgress", percent)
+        if percent % 10 == 0 {
+            callH5(funcName: cbName, data: ["deviceUUID": device.deviceId.uuidString, "percent": "\(percent)"])
+        }
     }
     
     func onScanWifiSID(device: any CHWifiModule2, ssid: CHSSID) {

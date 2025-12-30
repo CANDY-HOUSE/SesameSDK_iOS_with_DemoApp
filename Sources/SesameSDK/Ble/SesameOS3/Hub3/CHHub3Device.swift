@@ -146,6 +146,12 @@ extension CHHub3Device {
 
 extension CHHub3Device {
     
+    func updateFirmware(result: @escaping CHResult<CBPeripheral?>) {
+        sendCommand(.init(SesameItemCode.moveTo)) { response in
+            result(.success(.init(input: nil)))
+        }
+    }
+    
     func scanWifiSSID(result: @escaping CHResult<CHEmpty>) {
         if (!self.isBleAvailable(result)) { return }
         L.d("[hub3][scanWifiSSID]")

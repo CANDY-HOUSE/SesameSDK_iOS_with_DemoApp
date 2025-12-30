@@ -41,6 +41,11 @@ extension CHHub3Device {
             if let ssid = String(data: ssidData.copyData, encoding: .utf8) {
                 (delegate as? CHWifiModule2Delegate)?.onScanWifiSID(device: self, ssid: CHSSID(name: ssid, rssi: rssi))
             }
+        case .moveTo:
+            if var percentage = data[safeBound: 0...0]?.copyData {
+                L.d("[hub3 ] ota ",percentage)
+                (delegate as? CHWifiModule2Delegate)?.onOTAProgress(device: self, percent: percentage.toUInt8())
+            }
         default:
             L.d("!![hub3][pub][\(itemCode.rawValue)]")
         }

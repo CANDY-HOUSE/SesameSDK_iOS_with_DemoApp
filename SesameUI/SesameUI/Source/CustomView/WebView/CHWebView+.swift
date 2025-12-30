@@ -22,6 +22,7 @@ enum WebViewMessageType: String {
     case requestBLEConnect = "requestBLEConnect"
     case requestConfigureInternet = "requestConfigureInternet"
     case requestMonitorInternet = "requestMonitorInternet"
+    case requestDeviceFWUpgrade = "requestDeviceFWUpgrade"
 }
 
 enum WebViewSchemeType: String {
