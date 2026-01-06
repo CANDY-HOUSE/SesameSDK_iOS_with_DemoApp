@@ -189,14 +189,14 @@ class MeViewController: CHBaseViewController {
     func performLogin() {
         let loginViewController = SignUpViewController.instance { isLoggedIn in
             if isLoggedIn {
-                CHUserAPIManager.shared.getNickname { result in
+                CHAWSMobileClient.shared.getNickname { result in
                     // Set History tag
                     if case let .success(nickname) = result {
                         if nickname == nil {
-                            CHUserAPIManager.shared.getEmail { getEmailResult in
+                            CHAWSMobileClient.shared.getEmail { getEmailResult in
                                 if case let .success(email) = getEmailResult {
                                     let emailId = String(email!.split(separator: "@").first!)
-                                    CHUserAPIManager.shared.updateNickname(emailId) { updateResult in
+                                    CHAWSMobileClient.shared.updateNickname(emailId) { updateResult in
                                         executeOnMainThread {
                                             self.webView?.refresh()
                                         }
@@ -208,9 +208,9 @@ class MeViewController: CHBaseViewController {
                                 self.webView?.refresh()
                             }
                         }
-                        CHUserAPIManager.shared.getSubId { subId in
+                        CHAWSMobileClient.shared.getSubId { subId in
                             if let subId = subId, !subId.isEmpty {
-                                let ss5history = CHUserAPIManager.shared.formatSubuuid(subId)
+                                let ss5history = CHAWSMobileClient.shared.formatSubuuid(subId)
                                 Sesame2Store.shared.setSubUuid(ss5history)
                             }
                         }
@@ -230,7 +230,7 @@ class MeViewController: CHBaseViewController {
         let alertController = UIAlertController(title: logOutTitle, message: nil, preferredStyle: preferredStyle)
         let signOut = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized, style: .destructive) { _ in
             // MARK: - Log out
-            CHUserAPIManager.shared.signOut {
+            CHAWSMobileClient.shared.signOut {
                 CHDeviceManager.shared.setHistoryTag()
                 Sesame2Store.shared.setSubUuid(Data())
                 CHDeviceWrapperManager.shared.clear()

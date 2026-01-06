@@ -155,7 +155,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
         alertController.addAction(UIAlertAction(title: "co.candyhouse.sesame2.TouchProFingerModify".localized, style: .default) { _ in
             
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
-                   CHUserAPIManager.shared.getSubId { subId in
+                   CHAWSMobileClient.shared.getSubId { subId in
                        let subUUID = subId ?? ""
                        let request = CHAuthenticationNameRequest.fingerPrint(
                            type: 0,

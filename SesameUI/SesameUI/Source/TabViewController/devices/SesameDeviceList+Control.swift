@@ -143,12 +143,8 @@ extension SesameDeviceListViewController {
         for (index, device) in devices.enumerated() {
             device.setRank(level: -index)
         }
-        let newKeys = CHUserAPIManager.shared.getLocalUserKeys().map { (userKey: CHUserKey) -> CHUserKey in
-            var userKey = userKey
-            userKey.subUUID = CHUserAPIManager.shared.subId
-            return userKey
-        }
-        CHUserAPIManager.shared.postCHUserKeys(newKeys) { [weak self] result in
+        let newKeys = CHAWSMobileClient.shared.getLocalUserKeys()
+        CHAPIClient.shared.postCHUserKeys(newKeys.toData()) { [weak self] result in
             guard let self = self else { return }
             self.isDraggingCell = false
             switch result {

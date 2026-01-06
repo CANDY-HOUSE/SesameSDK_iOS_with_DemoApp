@@ -166,7 +166,7 @@ class FaceListVC: CHBaseTableVC ,CHFaceDelegate, CHDeviceStatusDelegate{
         let alertController = UIAlertController(title: "", message: titleText, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "co.candyhouse.sesame2.faceProFaceModify".localized, style: .default) { _ in
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
-                CHUserAPIManager.shared.getSubId { subId in
+                CHAWSMobileClient.shared.getSubId { subId in
                     let subUUID = subId ?? ""
                     let request = CHAuthenticationNameRequest.face(type: 0,
                                                     faceNameUUID: uuid,

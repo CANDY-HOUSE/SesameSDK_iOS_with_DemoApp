@@ -86,7 +86,7 @@ extension CHSesame2Device {
                 "st": sessionToken.base64EncodedString()
             ]
             
-            CHAccountManager
+            CHAPIClient
                 .shared
                 .API(request: .init(.post, "/device/v1/sesame2/\(deviceId.uuidString)/time", reqBody)) { response in
                     switch response {

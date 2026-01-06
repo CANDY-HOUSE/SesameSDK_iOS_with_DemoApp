@@ -47,7 +47,7 @@ extension CHSesameBotDevice {
             "v": historyData.toHexString()
         ])
         
-        CHAccountManager
+        CHAPIClient
             .shared
             .API(request: request) { result in
                 switch result {

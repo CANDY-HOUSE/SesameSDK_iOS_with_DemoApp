@@ -100,47 +100,41 @@ extension CHHub3Device {
         let payload = Data(appKeyPair.publicKey)+timestampData
         self.commandQueue = DispatchQueue(label:deviceId.uuidString, qos: .userInitiated)
 
-        let request = CHAPICallObject(.post, "/device/v1/sesame5/\(self.deviceId.uuidString)", [
-            "t":advertisement!.productType!.rawValue,
-            "pk":self.mSesameToken!.toHexString()
-        ] as [String : Any])
-//        L.d("[ss5][register] ==>")
-        CHAccountManager
-            .shared
-            .API(request: request) { response in
-                switch response {
-                case .success(_):
-//                    L.d("[ss5][register][ok <==]")
-//                    L.d("[ss5][register][ble] ==>]")
-                    self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
-//                        L.d("[ss5][register][ble] <==]")
-                        let ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[0...63].bytes))[0...15]
-                        let sessionAuth = CC.CMAC.AESCMAC(self.mSesameToken!, key: ecdhSecretPre16)
+        CHAPIClient.shared.registerDevice(
+            deviceId: self.deviceId.uuidString,
+            productType: Int(advertisement!.productType!.rawValue),
+            publicKey: self.mSesameToken!.toHexString()
+        ) { response in
+            switch response {
+            case .success(_):
+                self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
+                    let ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[0...63].bytes))[0...15]
+                    let sessionAuth = CC.CMAC.AESCMAC(self.mSesameToken!, key: ecdhSecretPre16)
 
-                        self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString,
-                                             sessionKey: sessionAuth,
-                                                           sessionToken: ("00\(self.mSesameToken!.toHexString())").hexStringtoData())
+                    self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString,
+                                         sessionKey: sessionAuth,
+                                                       sessionToken: ("00\(self.mSesameToken!.toHexString())").hexStringtoData())
 
-                        self.sesame2KeyData = CHDeviceKey(// 建立設備
-                            deviceUUID: self.deviceId,
-                            deviceModel: self.productModel.deviceModel(),
-                            historyTag: nil,
-                            keyIndex: "0000",
-                            secretKey: ecdhSecretPre16.toHexString(),
-                            sesame2PublicKey: self.mSesameToken!.toHexString()
-                        )
-                        self.isRegistered = true // 設定為已註冊
-                        self.goIOT()
-                        CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!) // 存到SDK層的DB中
-                        self.deviceStatus = .unlocked()
-                        result(.success(CHResultStateNetworks(input: CHEmpty())))
-                    }
-                case .failure(let error):
-                    L.d("[ss5]register error",error)
-                    result(.failure(error))
-                    self.disconnect(){_ in}
+                    self.sesame2KeyData = CHDeviceKey(// 建立設備
+                        deviceUUID: self.deviceId,
+                        deviceModel: self.productModel.deviceModel(),
+                        historyTag: nil,
+                        keyIndex: "0000",
+                        secretKey: ecdhSecretPre16.toHexString(),
+                        sesame2PublicKey: self.mSesameToken!.toHexString()
+                    )
+                    self.isRegistered = true // 設定為已註冊
+                    self.goIOT()
+                    CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!) // 存到SDK層的DB中
+                    self.deviceStatus = .unlocked()
+                    result(.success(CHResultStateNetworks(input: CHEmpty())))
                 }
+            case .failure(let error):
+                L.d("[ss5]register error", error)
+                result(.failure(error))
+                self.disconnect(){_ in}
             }
+        }
     }
 }
 
@@ -193,13 +187,10 @@ extension CHHub3Device {
     }
     
     private func getHub3StatusFromIot() {
-        CHAccountManager.shared.API(request: .init(.get, "/device/v2/hub3/\(deviceId.uuidString)/status")) { [self] response in
+        CHAPIClient.shared.getHub3Status(deviceId: deviceId.uuidString) { [self] response in
             switch response {
-            case .success(let resultData):
-                guard let data = resultData else {
-                    return
-                }
-                let hub3Status = try! JSONDecoder().decode(Hub3Status.self, from: data)
+            case .success(let data):
+                let hub3Status = try! JSONDecoder().decode(Hub3Status.self, from: data.data)
                 updateMechSettingStatusAndKeys(hub3Status)
                 L.d("response string", hub3Status)
             case .failure(let error):

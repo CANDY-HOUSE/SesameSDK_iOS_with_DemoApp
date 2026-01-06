@@ -43,7 +43,7 @@ extension CHSesame5Device {
             "t":"5",
         ])
 
-        CHAccountManager
+        CHAPIClient
             .shared
             .API(request: request) { result in
                 switch result {

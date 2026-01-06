@@ -97,7 +97,7 @@ class LockAngleSettingViewController: CHBaseViewController {
         lockView.refreshUI()
         
         // 打開 comment 開啟不動產功能
-//        CHUserAPIManager.shared.fundonsanEmploy { result in
+//        CHMobileClient.shared.fundonsanEmploy { result in
 //            if case let .success(levels) = result {
 //                executeOnMainThread {
 //                    // level > 0 顯示 否則隱藏

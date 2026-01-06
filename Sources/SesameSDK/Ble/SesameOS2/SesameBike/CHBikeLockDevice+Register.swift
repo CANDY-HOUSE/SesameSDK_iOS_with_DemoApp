@@ -41,7 +41,7 @@ extension CHSesameBikeDevice {
             ]
         )
         
-        CHAccountManager
+        CHAPIClient
             .shared
             .API(request: request) { response in
                 switch response {

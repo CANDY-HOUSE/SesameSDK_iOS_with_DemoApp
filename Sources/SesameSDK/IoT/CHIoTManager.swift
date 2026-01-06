@@ -227,16 +227,15 @@ final class CHIoTManager {
     static let shared = CHIoTManager()
     func getCHDeviceShadow(_ sesameLock: CHSesameLock, onResponse: (CHResult<CHDeviceShadow>)? = nil) {
         func getShadow() {
-            CHAccountManager.shared.API(request: .init(.get, "/device/v1/sesame2/\(sesameLock.deviceId.uuidString)")) { apiResult in
+            CHAPIClient.shared.getCHDeviceShadow(deviceId: sesameLock.deviceId.uuidString) { apiResult in
                 switch apiResult {
                 case .success(let data):
-                    L.d("⌚️ API getShadow ok",data)
-
-                    if let shadow = CHDeviceShadow.fromRESTFulData(data!) {
+                    L.d("⌚️ API getShadow ok", data)
+                    if let shadow = CHDeviceShadow.fromRESTFulData(data.data) {
                         onResponse?(.success(.init(input: shadow)))
                     }
                 case .failure(let error):
-                    L.d("⌚️ API error",error )
+                    L.d("⌚️ API error", error)
                     onResponse?(.failure(error))
                 }
             }
@@ -274,19 +273,14 @@ extension CHIoTManager { // [joi todo] 注意historyTag的設置機制，需優�
         let keyCheck = CC.CMAC.AESCMAC(randomTag,
                                        key: keyData.secretKey.hexStringtoData())
         let hisTag: String = historytag.base64EncodedString()
-        let parameter = [
-            "cmd": command,
-            "history": hisTag,
-            "sign": keyCheck[0...3].toHexString()
-        ] as [String : Any]
         
-        CHAccountManager.shared.API(request: .init(.post, "/device/v1/iot/sesame2/\(device.deviceId.uuidString)",
-                                                   parameter)) { apiResult in
-            if case let .failure(error) = apiResult {
-                onResponse(.failure(error))
-            } else {
-                onResponse(.success(.init(input: .init())))
-            }
+        CHAPIClient.shared.sendIoTCommand(
+            deviceId: device.deviceId.uuidString,
+            command: command,
+            history: hisTag,
+            sign: keyCheck[0...3].toHexString()
+        ) { apiResult in
+            onResponse(apiResult)
         }
     }
 }

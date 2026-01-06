@@ -426,7 +426,7 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
         let alertController = UIAlertController(title: "", message: titleText, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "co.candyhouse.sesame2.TouchProCardModify".localized, style: .default) { _ in
             let renameToServer: (_ name: String, _ nameUUID: String) -> Void = { name, uuid in
-                CHUserAPIManager.shared.getSubId { subId in
+                CHAWSMobileClient.shared.getSubId { subId in
                     let subUUID = subId ?? ""
                     let request = CHAuthenticationNameRequest.card(cardType: card.type,
                                                     cardNameUUID: uuid,

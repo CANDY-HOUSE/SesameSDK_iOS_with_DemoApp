@@ -95,7 +95,7 @@ class PushNotificationManager {
     }
     
     private func subscribeToTopic(topic: String, token: String) {
-        CHAccountManager.shared.subscribeToSNSTopic(
+        CHAPIClient.shared.subscribeToSNSTopic(
             topicName: topic,
             pushToken: token,
             platform: platform

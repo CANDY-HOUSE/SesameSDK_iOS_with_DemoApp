@@ -7,6 +7,8 @@
 //
 import UIKit
 import WebKit
+import AWSMobileClientXCF
+import SesameSDK
 
 typealias CHWebViewSchemeHandler = (CHWebView, URL, [String: String]) -> Void
 
@@ -145,17 +147,32 @@ class CHWebView: UIView {
         if let directURL = configuration.directURL {
             loadURLRequest(urlString: directURL)
         } else if let scene = configuration.scene {
-            CHUserAPIManager.shared.getWebUrlByScene(scene: scene, extInfo: configuration.extInfo ?? [:]) { [weak self] result in
-                executeOnMainThread {
-                    guard let self = self else { return }
-                    self.hideLoading()
-                    switch result {
-                    case .success(let response):
-                        self.loadURLRequest(urlString: response.data)
-                    case .failure(let error):
-                        self.makeToast(error.errorDescription())
+            let sendRequest: (String?) -> Void = {[self] token in
+                CHAPIClient.shared.getWebUrlByScene(scene: scene, extInfo: configuration.extInfo ?? [:], jwtToken: token) { [weak self] result in
+                    executeOnMainThread {
+                        guard let self = self else { return }
+                        self.hideLoading()
+                        switch result {
+                        case .success(let response):
+                            self.loadURLRequest(urlString: response.data)
+                        case .failure(let error):
+                            self.makeToast(error.errorDescription())
+                        }
                     }
                 }
+            }
+            if AWSMobileClient.default().isSignedIn {
+                AWSMobileClient.default().getTokens { (tokens, error) in
+                    if let error = error {
+                        self.makeToast(error.localizedDescription)
+                        return
+                    }
+                    
+                    let jwtToken = tokens?.idToken?.tokenString
+                    sendRequest(jwtToken)
+                }
+            } else {
+                sendRequest(nil)
             }
         }
     }

@@ -41,7 +41,7 @@ class UserLocationManager: NSObject, CLLocationManagerDelegate {
                                       longitude: String(locations.last!.coordinate.longitude),
                                       latitude: String(locations.last!.coordinate.latitude))
         locationManagers.removeValue(forKey: device.deviceId.uuidString)
-        CHUserAPIManager.shared.postCHDeviceIno(deviceInfo) { _ in
+        CHAPIClient.shared.postCHDeviceIno(deviceInfo.toData()) { _ in
             
         }
     }

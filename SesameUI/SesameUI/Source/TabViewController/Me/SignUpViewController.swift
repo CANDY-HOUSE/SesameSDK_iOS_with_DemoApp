@@ -113,7 +113,7 @@ class SignUpViewController: CHBaseViewController, TouchViewDelegate {
         contentTextField.resignFirstResponder()
         ViewHelper.showLoadingInView(view: view)
         let email = contentTextField.text!
-        CHUserAPIManager.shared.signUpWithEmail(email) { (signUpResult, signUpError) in
+        CHAWSMobileClient.shared.signUpWithEmail(email) { (signUpResult, signUpError) in
             //            L.d("[註冊登入]signUpResult", signUpResult)
             // ex:SignUpResult(codeDeliveryDetails: nil, signUpConfirmationState: AWSMobileClientXCF.SignUpConfirmationState.confirmed)
             if signUpError == nil {

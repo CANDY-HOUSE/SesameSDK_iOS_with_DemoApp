@@ -96,15 +96,3 @@ public class CHDeviceManager: NSObject {
     }
 }
 
-extension CHDeviceManager {
-    public func disableNotification(deviceId: String, token: String, name: String, result: @escaping CHResult<CHEmpty>) {
-        CHAccountManager.shared.API(request: .init(.delete, "/device/v1/token", ["token": token, "deviceId": deviceId, "name": name])) { deleteResult in
-            switch deleteResult {
-            case .success(_):
-                result(.success(.init(input: .init())))
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-}

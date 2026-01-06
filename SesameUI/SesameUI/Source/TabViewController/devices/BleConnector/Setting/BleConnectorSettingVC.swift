@@ -324,7 +324,7 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         
         let trashKey = UIAlertAction(title: title,style: .destructive) { (action) in
             ViewHelper.showLoadingInView(view: self.view)
-            CHUserAPIManager.shared.deleteCHUserKey(CHUserKey.fromCHDevice(self.mDevice)) { deleteResult in
+            CHAPIClient.shared.deleteCHUserKey(CHUserKey.fromCHDevice(self.mDevice).deviceUUIDData()) { deleteResult in
                 if case .failure(let err) = deleteResult {
                     executeOnMainThread {
                         self.view.makeToast(err.errorDescription())

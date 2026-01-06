@@ -114,10 +114,10 @@ extension CHServerCapableHandler {
     func postAuthenticationData(_ data: BiometricDataWrapper, result: @escaping(CHResult<[BiometricData]>)) {
         let tempData = BiometricDataWrapper(op: data.op + "_post", deviceID: data.deviceID, items: data.items)
         let payload = try! JSONEncoder().encode(tempData)
-        CHAccountManager.shared.API(request: .init(.post, "/device/v2/credential", payload)) { resposne in
-            switch resposne {
+        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+            switch response {
             case .success(let data):
-                if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any],
+                if let jsonObj = try? JSONSerialization.jsonObject(with: data.data, options: []) as? [String: Any],
                    let itemsDict = jsonObj["data"] as? [String: Any],
                     let itemArys = itemsDict["items"] as? [[String: Any]] {
                     let items = BiometricData.toBiometricDatas(itemArys)
@@ -134,11 +134,10 @@ extension CHServerCapableHandler {
     func putAuthenticationData(_ data: BiometricDataWrapper, result  : @escaping(CHResult<CHEmpty>)) {
         let tempData = BiometricDataWrapper(op: data.op + "_put", deviceID: data.deviceID, items: data.items)
         let payload = try! JSONEncoder().encode(tempData)
-        CHAccountManager.shared.API(request: .init(.post, "/device/v2/credential", payload)) { resposne in
-            switch resposne {
+        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+            switch response {
             case .success(let data):
-                L.d("get success data: \(String(data: data!, encoding: .utf8) ?? "No data")")
-//                let codes = try! JSONDecoder().decode([BiometricData].self, from: data!)
+                L.d("get success data: \(String(data: data.data, encoding: .utf8) ?? "No data")")
                 result(.success(.init(input: CHEmpty())))
             case .failure(let error):
                 result(.failure(error))
@@ -149,8 +148,8 @@ extension CHServerCapableHandler {
     func deleteAuthenticationData(_ data: BiometricDataWrapper, result  : @escaping(CHResult<CHEmpty>)) {
         let tempData = BiometricDataWrapper(op: data.op + "_delete", deviceID: data.deviceID, items: data.items)
         let payload = try! JSONEncoder().encode(tempData)
-        CHAccountManager.shared.API(request: .init(.post, "/device/v2/credential", payload)) { resposne in
-            switch resposne {
+        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+            switch response {
             case .success(_):
                 result(.success(.init(input: CHEmpty())))
             case .failure(let error):
@@ -174,10 +173,10 @@ extension CHServerCapableHandler {
             authData = kbReq
         }
         let payload = try! JSONEncoder().encode(authData)
-        CHAccountManager.shared.API(request: .init(.post, "/device/v2/credential", payload)) { resposne in
-            switch resposne {
+        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+            switch response {
             case .success(let data):
-                if let data = data, let responseString = String(data: data, encoding: .utf8) {
+                if let responseString = String(data: data.data, encoding: .utf8) {
                     result(.success(.init(input: responseString)))
                 } else {
                     result(.success(.init(input: "")))
@@ -186,6 +185,5 @@ extension CHServerCapableHandler {
                 result(.failure(error))
             }
         }
-        
     }
 }

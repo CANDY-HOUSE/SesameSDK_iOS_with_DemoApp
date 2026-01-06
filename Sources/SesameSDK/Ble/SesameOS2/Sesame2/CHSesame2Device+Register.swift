@@ -36,7 +36,7 @@ extension CHSesame2Device {
         ]
         )
         
-        CHAccountManager
+        CHAPIClient
             .shared
             .API(request: request) { response in
                 L.d("[s2註冊][CHAccountManager]API")

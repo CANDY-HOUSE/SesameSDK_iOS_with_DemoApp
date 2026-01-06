@@ -14,4 +14,8 @@ struct CHDeviceInfo: Codable {
     let deviceModel: String
     let longitude: String
     let latitude: String
+    
+    func toData() -> Data {
+        return try! JSONEncoder().encode(self)
+    }
 }

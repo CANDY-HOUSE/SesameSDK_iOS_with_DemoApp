@@ -36,7 +36,7 @@ extension CHSesameBotDevice {
         ]
         )
         
-        CHAccountManager
+        CHAPIClient
             .shared
             .API(request: request) { response in
                 switch response {

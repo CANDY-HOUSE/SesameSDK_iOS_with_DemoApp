@@ -260,7 +260,7 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
                 let deviceName = scanSchema.getQuery(name: "n")
                 self.saveKeysAndUpload(scanSchema, keyLevel: keyLevelValue, deviceName: deviceName)
             } else if let friend = scanSchema.schemaFriendValue() {
-                CHUserAPIManager.shared.postFriend(friend) { result in
+                CHAPIClient.shared.postFriend(friend) { result in
                     executeOnMainThread {
                         self.qrCodeType = .friend
                         self.dismissSelf()
@@ -291,7 +291,7 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
                 // Set History Tag
                 CHDeviceManager.shared.setHistoryTag()
                 var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel)
-                CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
+                CHAPIClient.shared.putCHUserKey(userKey.toData()) { _ in
                     executeOnMainThread {
                         ViewHelper.hideLoadingView(view: self.view)
                         self.qrCodeType = .sesameKey
@@ -336,7 +336,7 @@ extension QRCodeScanViewController {
                     // Set History Tag
                     CHDeviceManager.shared.setHistoryTag()
                     var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel.rawValue)
-                    CHUserAPIManager.shared.putCHUserKey(userKey) { _ in
+                    CHAPIClient.shared.putCHUserKey(userKey.toData()) { _ in
                         handler(.success(.sesameKey))
                     }
                 case .failure(_):
@@ -344,7 +344,7 @@ extension QRCodeScanViewController {
                 }
             }
         } else if let friend = scanSchema.schemaFriendValue() {
-            CHUserAPIManager.shared.postFriend(friend) { postResult in
+            CHAPIClient.shared.postFriend(friend) { postResult in
                 switch postResult {
                 case .success(_):
                     handler(.success(.friend))

@@ -57,13 +57,13 @@ class SignInViewController: CHBaseViewController, TouchViewDelegate {
         contentTextField.font = font
         contentTextField.attributedPlaceholder = NSAttributedString(string: "1234", attributes:[NSAttributedString.Key.font : font])
         verifySMSButton.isHidden = true
-        CHUserAPIManager.shared.delegate = self
+        CHAWSMobileClient.shared.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        CHUserAPIManager.shared.signOut { [self] in
-            CHUserAPIManager.shared.signInWithEmail(emailAddress)
+        CHAWSMobileClient.shared.signOut { [self] in
+            CHAWSMobileClient.shared.signInWithEmail(emailAddress)
         }
     }
 
@@ -108,7 +108,7 @@ extension SignInViewController: UITextFieldDelegate { // [joi todo]UI寫法應�
     
     @objc func verifySMS() {
         view.hideAllToasts()
-        CHUserAPIManager.shared.verifySMS(self.contentTextField.text!, ofEmail: emailAddress)
+        CHAWSMobileClient.shared.verifySMS(self.contentTextField.text!, ofEmail: emailAddress)
     }
 }
 
@@ -140,13 +140,13 @@ extension SignInViewController: CHUserManagerSignInDelegate {
     }
     
     func getNickname(_ result: @escaping (Result<NSNull, Error>) -> Void) {
-        CHUserAPIManager.shared.getNickname { getResult in
+        CHAWSMobileClient.shared.getNickname { getResult in
             if case let .success(nickname) = getResult {
                 if let nickname = nickname {
                     Sesame2Store.shared.setHistoryTag(nickname)
                     result(.success(NSNull()))
                 } else {
-                    CHUserAPIManager.shared.updateNickname("User") { _ in
+                    CHAWSMobileClient.shared.updateNickname("User") { _ in
                         Sesame2Store.shared.setHistoryTag("User")
                         result(.success(NSNull()))
                     }

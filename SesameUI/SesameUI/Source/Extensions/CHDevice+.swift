@@ -15,7 +15,7 @@ extension CHDevice {
     /// 取消通知
     func unregisterNotification() {
         let token = UserDefaults.standard.string(forKey: "devicePushToken")!
-        CHDeviceManager.shared.disableNotification(deviceId: deviceId.uuidString, token: token, name: "Sesame2") { _ in }
+        CHAPIClient.shared.disableNotification(deviceId: deviceId.uuidString, token: token, name: "Sesame2") { _ in }
     }
     
     /// 設備距離 cm

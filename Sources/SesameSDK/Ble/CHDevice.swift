@@ -181,9 +181,31 @@ internal extension CHDevice {
     }
     
     func postBatteryData(_ payload: String) {
-        CHAccountManager.shared.API(request: .init(.post, "/device/v2/sesame5/\(deviceId.uuidString)/battery", ["payload": payload])) { res in
+        CHAPIClient.shared.postBatteryData(deviceId: deviceId.uuidString, payload: payload) { res in
             if case .failure(let error) = res {
                 L.d("postBattery error", error)
+            }
+        }
+    }
+    
+    // 訪客鑰匙調用, 取session token並上傳server以secretKey簽章後得到login token
+    func sign(token: String, result: @escaping CHResult<String>) {
+        guard let keyData = getKey() else {
+            return
+        }
+        L.d("API:/device/v1/sesame2/sign", token, deviceId.uuidString, keyData.secretKey)
+        
+        CHAPIClient.shared.signDeviceToken(
+            deviceId: deviceId.uuidString,
+            token: token,
+            secretKey: keyData.secretKey
+        ) { serverResult in
+            switch serverResult {
+            case .success(let signedToken):
+                result(.success(.init(input: signedToken.data)))
+            case .failure(let error):
+                L.d("sign error!")
+                result(.failure(error))
             }
         }
     }
@@ -258,48 +280,6 @@ public extension CHSesameLock {
         }
 #endif 
     }
-
-internal extension CHDevice {
-    // 訪客鑰匙調用, 取session token並上傳server以secretKey簽章後得到login token
-    func sign(token: String, result: @escaping CHResult<String>) {
-        guard let keyData = getKey() else {
-            return
-        }
-        L.d("API:/device/v1/sesame2/sign",token, deviceId.uuidString,keyData.secretKey)
-        
-        CHAccountManager.shared.API(request: .init(.post, "/device/v1/sesame2/sign", ["deviceId": deviceId.uuidString, "token": token, "secretKey": keyData.secretKey])) { serverResult in
-            switch serverResult {
-            case .success(let data):
-                let signedToken = String(data: data!, encoding: .utf8)!
-                //                L.d("sign ok:",signedToken)
-                result(.success(.init(input: signedToken)))
-            case .failure(let error):
-                L.d("sign error!")
-                
-                result(.failure((error)))
-            }
-        }
-    }
-    
-    // IoT只驗證一次
-    func isServerAuthed() -> Bool {
-        let authKey = "iot\(self.getKey()!.secretKey.substring(to: 8))"
-        let deviceCache = UserDefaults.standard.dictionary(forKey: self.deviceId.uuidString) ?? [:]
-        let authedKeys = deviceCache["authedKeys"] as? [String] ?? []
-        return authedKeys.contains(authKey)
-    }
-    
-    func setServerAuthed() {
-        let authKey = "iot\(self.getKey()!.secretKey.substring(to: 8))"
-        var deviceCache = UserDefaults.standard.dictionary(forKey: self.deviceId.uuidString) ?? [:]
-        var authedKeys = deviceCache["authedKeys"] as? [String] ?? []
-        if !authedKeys.contains(authKey) {
-            authedKeys.append(authKey)
-            deviceCache["authedKeys"] = authedKeys
-            UserDefaults.standard.setValue(deviceCache, forKey: self.deviceId.uuidString)
-        }
-    }
-}
 
 public protocol CHSesameConnector {
     var sesame2Keys: [String: String] { get }

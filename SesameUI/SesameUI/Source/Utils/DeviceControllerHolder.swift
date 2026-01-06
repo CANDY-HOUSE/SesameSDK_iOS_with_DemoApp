@@ -70,7 +70,7 @@ extension DeviceControllerHolder where Self: CHBaseViewController {
             }
         }
         ViewHelper.showLoadingInView(view: self.view)
-        CHUserAPIManager.shared.deleteCHUserKey(CHUserKey.fromCHDevice(device)) { deleteResult in
+        CHAPIClient.shared.deleteCHUserKey(CHUserKey.fromCHDevice(device).deviceUUIDData()) { deleteResult in
             if case .failure(let err) = deleteResult {
                 executeOnMainThread {
                     ViewHelper.hideLoadingView(view: self.view)
@@ -98,7 +98,7 @@ extension DeviceControllerHolder where Self: CHBaseViewController {
             }
         }
         ViewHelper.showLoadingInView(view: self.view)
-        CHUserAPIManager.shared.deleteCHUserKey(CHUserKey.fromCHDevice(device)) { deleteResult in
+        CHAPIClient.shared.deleteCHUserKey(CHUserKey.fromCHDevice(device).deviceUUIDData()) { deleteResult in
             if case let .failure(err) = deleteResult {
                 executeOnMainThread {
                     ViewHelper.hideLoadingView(view: self.view)

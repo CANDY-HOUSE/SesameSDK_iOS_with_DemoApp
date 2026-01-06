@@ -1,4 +1,3 @@
-
 // SesameDeviceListViewController.swift
 
 import UIKit
@@ -71,14 +70,10 @@ class SesameDeviceListViewController: CHBaseViewController {
     func monitorAWSMobileClientUserState() {
         let statusChangeHandler: (_ state: AWSMobileClientXCF.UserState) -> Void = { [self] state in
             if (state == .signedIn) {
-                CHUserAPIManager.shared.getSubId { subId in
-                    guard let subId = subId else { return }
-                    let newKeys = CHUserAPIManager.shared.getLocalUserKeys().map { (userKey: CHUserKey) -> CHUserKey in
-                        var userKey = userKey
-                        userKey.subUUID = subId
-                        return userKey
-                    }
-                    CHUserAPIManager.shared.postCHUserKeys(newKeys) { result in
+                CHAWSMobileClient.shared.getSubId { subId in
+                    guard let _ = subId else { return }
+                    let newKeys = CHAWSMobileClient.shared.getLocalUserKeys()
+                    CHAPIClient.shared.postCHUserKeys(newKeys.toData()) { result in
                         // 如果上傳UserKeys失敗時跳出提示訊息
                         CHDeviceManager.shared.setHistoryTag()
                         self.getKeysFromServer()
@@ -284,17 +279,24 @@ class SesameDeviceListViewController: CHBaseViewController {
     
     @objc func getKeysFromServer() {
         let queryDevicesHandler: () -> Void = {
-            CHUserAPIManager.shared.getCHUserKeys() { result in
+            CHAPIClient.shared.getCHUserKeys { result in
                 if case let .failure(error) = result {
                     executeOnMainThread {
                         self.tableViewProxy.handleFailedDataSource(error)
                     }
-                } else if case let .success(userKeys) = result  {
-                    let nickname = CHUserAPIManager.shared.getNickname { _ in }
+                } else if case let .success(userKeysDict) = result  {
+                    let userKeys = userKeysDict.data.compactMap { dict -> CHUserKey? in
+                        guard let jsonData = try? JSONSerialization.data(withJSONObject: dict),
+                              let userKey = try? JSONDecoder().decode(CHUserKey.self, from: jsonData) else {
+                            return nil
+                        }
+                        return userKey
+                    }
+                    let nickname = CHAWSMobileClient.shared.getNickname { _ in }
                     Sesame2Store.shared.setHistoryTag(nickname)
                     CHDeviceManager.shared.setHistoryTag()
-                    CHDeviceWrapperManager.shared.updateUserKeys(userKeys.data)
-                    for userKey in userKeys.data {
+                    CHDeviceWrapperManager.shared.updateUserKeys(userKeys)
+                    for userKey in userKeys {
                         let device = userKey.toCHDevice()
                         if let keyLevel = userKey.keyLevel {
                             device?.setKeyLevel(keyLevel)
@@ -322,7 +324,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                     keychain.ins.setBool(true, forKey: keychain.key)
                     return
                 }
-                CHUserAPIManager.shared.postCHUserKeys(devices.map { CHUserKey.fromCHDevice($0) }) { result in
+                CHAPIClient.shared.postCHUserKeys(devices.map { CHUserKey.fromCHDevice($0) }.toData()) { result in
                     if case .success(_) = result {
                         keychain.ins.setBool(true, forKey: keychain.key)
                     }

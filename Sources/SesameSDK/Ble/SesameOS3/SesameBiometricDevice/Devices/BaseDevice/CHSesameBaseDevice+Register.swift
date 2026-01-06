@@ -25,7 +25,7 @@ extension CHSesameBaseDevice {
             "pk":self.mSesameToken!.toHexString()
         ] as [String : Any])
 //        L.d("[ss5][register] ==>")
-        CHAccountManager
+        CHAPIClient
             .shared
             .API(request: request) { response in
                 switch response {

@@ -52,16 +52,7 @@ struct CHUserKey: Codable {
     }
     
     static func fromCHDevice(_ device: CHDevice) -> CHUserKey {
-//        device.keyLevel
         return userKeyFromCHDevice(device, keyLevel: device.keyLevel,rank: device.getRank())
-
-//        let keyLevelRaw = Int(Sesame2Store.shared.propertyFor(device)!.keyLevel)
-//        if let keyLevel = KeyLevel(rawValue: keyLevelRaw) {
-//            return userKeyFromCHDevice(device, keyLevel: keyLevel)
-//        } else {
-//            return userKeyFromCHDevice(device, keyLevel: .guest)
-//        }
-
     }
     
     static func userKeyFromCHDevice(_ device: CHDevice, keyLevel: Int,rank:Int? = nil) -> CHUserKey {
@@ -91,7 +82,7 @@ struct CHUserKey: Codable {
         if let device = userKey.toCHDevice(), let deviceName = Sesame2Store.shared.propertyFor(device)?.name {
             userKey.deviceName = deviceName
         }
-        CHUserAPIManager.shared.getSubId { subId in
+        CHAWSMobileClient.shared.getSubId { subId in
             if let subId = subId {
                 userKey.subUUID = subId
             }
@@ -106,4 +97,22 @@ struct StateInfo: Codable {
     var timestamp: Int64?
     var wm2State: Bool?
     let remoteList: [IRRemote]?
+}
+
+
+extension CHUserKey {
+    func toData() -> Data {
+        return try! JSONEncoder().encode(self)
+    }
+    
+    func deviceUUIDData() -> Data {
+        let jsonText = "\"" + deviceUUID + "\""
+        return jsonText.data(using: .utf8)!
+    }
+}
+
+extension Array where Element == CHUserKey {
+    func toData() -> Data {
+        try! JSONEncoder().encode(self)
+    }
 }

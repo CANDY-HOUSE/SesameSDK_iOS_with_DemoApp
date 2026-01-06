@@ -27,25 +27,24 @@ public class GeneralTabViewController: UITabBarController {
         // 當 AWS Mobile 啟動時 執行以下服務
         AWSMobileClient.default().initialize { (userState, error) in
             // 1. 設定並啟動 API manager
-//            CHFudonsanAPIManager.shared.setCredentialsProvider(AWSMobileClient.default())
-            CHUserAPIManager.shared.setCredentialsProvider(AWSMobileClient.default())
+            CHAPIClient.initialize(credentialsProvider: AWSMobileClient.default())
             
             // 2. 判斷是否第一次安裝
             if UserDefaults.standard.bool(forKey: "HasInstalled") == false {
                 UserDefaults.standard.set(true, forKey: "HasInstalled")
-                CHUserAPIManager.shared.signOut()
+                CHAWSMobileClient.shared.signOut()
             }
             if userState == .signedIn {
                 // 3. 設定 history tag
-                CHUserAPIManager.shared.getNickname { result in
+                CHAWSMobileClient.shared.getNickname { result in
                     if case let .success(nickname) = result {
                         Sesame2Store.shared.setHistoryTag(nickname)
                     }
                 }
-                CHUserAPIManager.shared.uploadUserDeviceToken() { result in}
-                CHUserAPIManager.shared.getSubId { subId in
+                CHAPIClient.shared.uploadUserDeviceToken() { result in}
+                CHAWSMobileClient.shared.getSubId { subId in
                     if let subId = subId, !subId.isEmpty {
-                        let ss5history = CHUserAPIManager.shared.formatSubuuid(subId)
+                        let ss5history = CHAWSMobileClient.shared.formatSubuuid(subId)
                         Sesame2Store.shared.setSubUuid(ss5history)
                     }
                 }
@@ -55,15 +54,15 @@ public class GeneralTabViewController: UITabBarController {
         // 當用戶登出登入時，執行以下服務
         AWSMobileClient.default().addUserStateListener(self) { state, dic in
             if state == .signedIn {
-                CHUserAPIManager.shared.uploadUserDeviceToken() { _ in }
-                CHUserAPIManager.shared.getNickname { result in
+                CHAPIClient.shared.uploadUserDeviceToken() { _ in }
+                CHAWSMobileClient.shared.getNickname { result in
                     if case let .success(nickname) = result {
                         Sesame2Store.shared.setHistoryTag(nickname)
                     }
                 }
-                CHUserAPIManager.shared.getSubId { subId in
+                CHAWSMobileClient.shared.getSubId { subId in
                     if let subId = subId, !subId.isEmpty {
-                        let ss5history = CHUserAPIManager.shared.formatSubuuid(subId)
+                        let ss5history = CHAWSMobileClient.shared.formatSubuuid(subId)
                         Sesame2Store.shared.setSubUuid(ss5history)
                     }
                 }
