@@ -21,8 +21,7 @@ let awsApiGatewayBaseUrl = "https://app.candyhouse.co/prod"
 
 class CustomHeaderInterceptor: NSObject, AWSNetworkingRequestInterceptorProtocol {
     func interceptRequest(_ request: NSMutableURLRequest!) -> AWSTask<AnyObject>! {
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: CHConfiguration.shared.region(),
-                                                                identityPoolId: CHConfiguration.shared.clientId)
+        let credentialsProvider = CHAPIClient.defaultCredentialsProvider
         return credentialsProvider.getIdentityId().continueWith { task -> AnyObject in
             if let identifyId = task.result as? String {
                 request.setValue(identifyId, forHTTPHeaderField: "AppIdentifyID")
@@ -35,41 +34,35 @@ class CustomHeaderInterceptor: NSObject, AWSNetworkingRequestInterceptorProtocol
 public class CHAPIClient {
     private static var _shared: CHAPIClient?
     public let apiGatewayClient: AWSAPIGatewayClient = AWSAPIGatewayClient()
+    static let defaultCredentialsProvider = AWSCognitoCredentialsProvider(
+        regionType: CHConfiguration.shared.region(),
+        identityPoolId: CHConfiguration.shared.clientId
+    )
 
     public static var shared: CHAPIClient {
-        guard let instance = _shared else {
-            fatalError("CHAccountManager.shared 尚未初始化。请先调用 CHAccountManager.initialize(credentialsProvider:) 进行初始化")
+        if _shared == nil {
+            _shared = CHAPIClient(credentialsProvider: defaultCredentialsProvider)
         }
-        return instance
+        return _shared!
     }
     
-    /// - Parameters:
-    ///   - credentialsProvider: AWS 凭证提供者（必须）
-    ///   - region: AWS 区域（默认 APNortheast1）
-    ///   - apiKey: API Gateway API Key（可选，默认使用 CHConfiguration）
-    ///   - baseUrl: API Gateway 基础 URL（可选，默认使用环境配置）
-    public static func initialize(credentialsProvider: AWSCredentialsProvider,
+    @discardableResult
+    public static func initialize(credentialsProvider: AWSCredentialsProvider? = nil,
                                   region: AWSRegionType = .APNortheast1,
                                   apiKey: String? = nil,
-                                  baseUrl: String? = nil) {
+                                  baseUrl: String? = nil) -> CHAPIClient {
         guard _shared == nil else {
-            print("⚠️ CHAccountManager 已经初始化，忽略重复初始化")
-            return
+            return _shared!
         }
         _shared = CHAPIClient(
-            credentialsProvider: credentialsProvider,
+            credentialsProvider: credentialsProvider ?? defaultCredentialsProvider,
             region: region,
             apiKey: apiKey,
             baseUrl: baseUrl
         )
+        return _shared!
     }
     
-    /// 使用自定义凭证提供商初始化
-    /// - Parameters:
-    ///   - credentialsProvider: AWS 凭证提供者（必须）
-    ///   - region: AWS 区域（默认 APNortheast1）
-    ///   - apiKey: API Gateway API Key（可选，默认使用 CHConfiguration）
-    ///   - baseUrl: API Gateway 基础 URL（可选，默认使用环境配置）
     public init(credentialsProvider: AWSCredentialsProvider,
                 region: AWSRegionType = .APNortheast1,
                 apiKey: String? = nil,
