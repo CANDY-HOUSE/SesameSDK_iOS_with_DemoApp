@@ -144,6 +144,21 @@ public extension CHDevice {
         }
         return isOK
     }
+    
+    func isBleAvailable(withHint: Void = ()) -> (available: Bool, hintKey: String?) {
+        switch CHBluetoothCenter.shared.centralManager.state {
+        case .unauthorized, .poweredOff:
+            return (false, "co.candyhouse.sesame2.bluetoothPoweredOff")
+        default:
+            break
+        }
+        
+        if deviceStatus.loginStatus == .unlogined {
+            return (false, "co.candyhouse.sesame2.noBleSignal")
+        }
+        
+        return (true, nil)
+    }
 }
 
 internal extension CHDevice {

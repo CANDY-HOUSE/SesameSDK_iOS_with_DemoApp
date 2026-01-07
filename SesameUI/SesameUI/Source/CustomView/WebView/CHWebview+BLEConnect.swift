@@ -77,8 +77,9 @@ extension CHWebView {
                     callH5(funcName: callbackName, data: ["bleStatus": device.deviceStatus.loginStatus.rawValue])
                     return
                 }
-                if !device.isBleAvailable() {
-                    callH5(funcName: callbackName, data: ["bleStatus": "co.candyhouse.sesame2.bluetoothPoweredOff".localized])
+                let r = device.isBleAvailable(withHint: ())
+                if let key = r.hintKey {
+                    callH5(funcName: callbackName, data: ["bleStatus": key.localized])
                 }
                 L.d("Hub3 device id", device.deviceId.uuidString)
                 device.connect { _ in }

@@ -306,7 +306,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesameTouch2Pro: return "Sesame Touch 2 Pro"
         case .sesameTouch: return "Sesame Touch 1"
         case .sesameTouch2: return "Sesame Touch 2"
-        case .bleConnector: return "BLE Connector"
+        case .bleConnector: return "BLE Connector 1"
         case .hub3: return "Hub 3"
         case .remote: return "Remote"
         case .remoteNano: return "Remote Nano"
