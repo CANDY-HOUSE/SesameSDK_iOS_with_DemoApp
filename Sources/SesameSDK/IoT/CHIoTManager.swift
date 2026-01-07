@@ -40,7 +40,7 @@ extension AWSServiceConfiguration {
         let cognitoCredentialsProvider = AWSCognitoCredentialsProvider(regionType: CHConfiguration.shared.region(),
                                                                        identityPoolId: CHConfiguration.shared.clientId)
         let anonymous = AWSAnonymousCredentialsProvider()
-        let endpoint = AWSEndpoint(urlString: AWSConfigManager.config.iotEndpoint)
+        let endpoint = AWSEndpoint(urlString: AWSConfig.iotEndpoint)
         let serviceConfiguration = AWSServiceConfiguration(region: .APNortheast1,
                                                            endpoint: endpoint,
                                                            credentialsProvider: cognitoCredentialsProvider)!

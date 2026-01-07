@@ -16,12 +16,6 @@ import SesameWatchKitSDK
 
 class ToggleSesameIntentHandler: NSObject, ToggleSesameIntentHandling {
     
-    override init() {
-        super.init()
-        // 配置 AWS
-        AWSConfigManager.configure(with: AWSSharedConfig())
-    }
-    
     func resolveName(for intent: ToggleSesameIntent, with completion: @escaping (INStringResolutionResult) -> Void) {
 //        L.d("[cut] resolveName")
         CHDeviceManager.shared.getCHDevices { getResult in

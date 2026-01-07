@@ -15,8 +15,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     override init() {
         L.d("⌚️", "init test3")
-        // 配置 AWS
-        AWSConfigManager.configure(with: AWSSharedConfig())
         // 啟動接收手機傳來的訊息
         WatchKitFileTransfer.shared.activate()
         

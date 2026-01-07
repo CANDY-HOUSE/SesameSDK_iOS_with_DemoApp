@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B74ACBE2F0E63B100EDAF1B /* AWSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74ACBD2F0E63B100EDAF1B /* AWSConfig.swift */; };
 		3B8D5CFC2E2D174200FE456E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D5CFA2E2D174200FE456E /* .gitkeep */; };
 		3B8D5DB32E2D176D00FE456E /* CHHub3Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */; };
 		3B8D5DB42E2D176D00FE456E /* CHDeviceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D932E2D176D00FE456E /* CHDeviceKey.swift */; };
@@ -107,7 +108,6 @@
 		3B8D5E192E2D176D00FE456E /* WifiModule2Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D842E2D176D00FE456E /* WifiModule2Payload.swift */; };
 		3B8D5E1A2E2D176D00FE456E /* CHSesameBotDevice+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D1B2E2D176D00FE456E /* CHSesameBotDevice+Login.swift */; };
 		3B8D5E1B2E2D176D00FE456E /* CHCardCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D322E2D176D00FE456E /* CHCardCapable.swift */; };
-		3B8D5E1C2E2D176D00FE456E /* AWSConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D912E2D176D00FE456E /* AWSConfigurable.swift */; };
 		3B8D5E1D2E2D176D00FE456E /* CHBikeLockDevice+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D122E2D176D00FE456E /* CHBikeLockDevice+Register.swift */; };
 		3B8D5E1E2E2D176D00FE456E /* CHBikeLockDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D0C2E2D176D00FE456E /* CHBikeLockDevice.swift */; };
 		3B8D5E1F2E2D176D00FE456E /* CHSesameTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D6D2E2D176D00FE456E /* CHSesameTouch.swift */; };
@@ -312,6 +312,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B74ACBD2F0E63B100EDAF1B /* AWSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfig.swift; sourceTree = "<group>"; };
 		3B8D5CFA2E2D174200FE456E /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		3B8D5CFD2E2D176D00FE456E /* CHSesame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2.swift; sourceTree = "<group>"; };
 		3B8D5CFE2E2D176D00FE456E /* CHSesame2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2Device.swift; sourceTree = "<group>"; };
@@ -422,7 +423,6 @@
 		3B8D5D8D2E2D176D00FE456E /* CHBluetoothCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBluetoothCenter.swift; sourceTree = "<group>"; };
 		3B8D5D8E2E2D176D00FE456E /* CHDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDevice.swift; sourceTree = "<group>"; };
 		3B8D5D8F2E2D176D00FE456E /* CHDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceProtocol.swift; sourceTree = "<group>"; };
-		3B8D5D912E2D176D00FE456E /* AWSConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfigurable.swift; sourceTree = "<group>"; };
 		3B8D5D932E2D176D00FE456E /* CHDeviceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceKey.swift; sourceTree = "<group>"; };
 		3B8D5D982E2D176D00FE456E /* CHDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceCenter.swift; sourceTree = "<group>"; };
 		3B8D5D992E2D176D00FE456E /* CHDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceManager.swift; sourceTree = "<group>"; };
@@ -1038,7 +1038,7 @@
 		3B8D5D922E2D176D00FE456E /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				3B8D5D912E2D176D00FE456E /* AWSConfigurable.swift */,
+				3B74ACBD2F0E63B100EDAF1B /* AWSConfig.swift */,
 			);
 			name = Configuration;
 			path = ../Sources/SesameSDK/Configuration;
@@ -1801,7 +1801,6 @@
 				3B8D5E192E2D176D00FE456E /* WifiModule2Payload.swift in Sources */,
 				3B8D5E1A2E2D176D00FE456E /* CHSesameBotDevice+Login.swift in Sources */,
 				3B8D5E1B2E2D176D00FE456E /* CHCardCapable.swift in Sources */,
-				3B8D5E1C2E2D176D00FE456E /* AWSConfigurable.swift in Sources */,
 				3B8D5E1D2E2D176D00FE456E /* CHBikeLockDevice+Register.swift in Sources */,
 				3B8D5E1E2E2D176D00FE456E /* CHBikeLockDevice.swift in Sources */,
 				3B8D5E1F2E2D176D00FE456E /* CHSesameTouch.swift in Sources */,
@@ -1888,6 +1887,7 @@
 				BEF8F7BB24C69E6800650CAD /* AWSDDFileLogger.m in Sources */,
 				BEF8F73D24C69E6800650CAD /* AWSMTLManagedObjectAdapter.m in Sources */,
 				BEF8F79A24C69E6800650CAD /* AWSFMDatabaseAdditions.m in Sources */,
+				3B74ACBE2F0E63B100EDAF1B /* AWSConfig.swift in Sources */,
 				BEF8F7C624C69E6800650CAD /* AWSDDTTYLogger.m in Sources */,
 				BEF8F75324C69E6800650CAD /* NSValueTransformer+AWSMTLInversionAdditions.m in Sources */,
 				BEF8F75F24C69E6800650CAD /* AWSURLSessionManager.m in Sources */,
