@@ -56,29 +56,16 @@ dependencies: [
 ```
 
 ### 2. Initialization
-SesameSDK requires AWS services. Please configure initialization parameters before use.Free quota parameters are provided here.<br>
-Swift Example
+SesameSDK requires AWS services. We provide free configuration parameters. <br>
+[AWSConfig.swift](https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/blob/master/Sources/SesameSDK/Configuration/AWSConfig.swift)
 ```swift
-// SimpleSesameDemo.swift
-import UIKit
-import SesameSDK
-
-// step 1
-struct AWSConfig: AWSConfigurable {
-    let apiKey = "iGgXj9GorS4PeH90mAysg1l7kdvoIPxM25mPFl3k"
-    let clientId = "ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae"
-    let iotEndpoint = "https://d06107753ay3c67v7y9pa-ats.iot.ap-northeast-1.amazonaws.com"
-}
-
-// step 2
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public struct AWSConfig {
+    // AWS API
+    public static let apiKey = "iGgXj9GorS4PeH90mAysg1l7kdvoIPxM25mPFl3k"
+    public static let clientId = "ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae"
     
-    func application(_ application: UIApplication, 
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        AWSConfigManager.configure(with: AWSConfig())
-
-        return true
-    }
+    // AWS IoT
+    public static let iotEndpoint = "https://d06107753ay3c67v7y9pa-ats.iot.ap-northeast-1.amazonaws.com"
 }
 ```
 Please start the Bluetooth scan at the appropriate time
