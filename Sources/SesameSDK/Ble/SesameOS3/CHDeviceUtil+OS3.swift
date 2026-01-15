@@ -120,18 +120,18 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
             case .success(let content):
                 var isConnectedByWM2 = false
                 if let wm2s = content.data.wifiModule2s {
-                    isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
+                    isConnectedByWM2 = wm2s.contains(where: { $0.isConnected })
                 }
                 
                 if isConnectedByWM2,
                    let mechStatusData = content.data.mechStatus?.hexStringtoData() {
                     if mechStatusData.count >= 7 { // 新固件蓝牙上报长度为7，iot下发的长度为8
                         if let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
-                            self.mechStatus = mechStatus
+                            self.applyIotMechStatusIfNeeded(mechStatus)
                         }
                     } else {
                         if let mechStatus = CHSesameBike2MechStatus.fromData(mechStatusData) {
-                            self.mechStatus = mechStatus
+                            self.applyIotMechStatusIfNeeded(mechStatus)
                         }
                     }
                 }

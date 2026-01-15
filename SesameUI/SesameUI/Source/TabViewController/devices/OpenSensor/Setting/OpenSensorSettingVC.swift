@@ -190,6 +190,8 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
 
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
+        let deviceName = mDevice.deviceName
+        
         // MARK: top status
         statusView = CHUIViewGenerator.plain()
         statusView.backgroundColor = .lockRed
@@ -261,7 +263,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         let titleLabelContainer = UIView(frame: .zero)
         let titleLabel = UILabel(frame: .zero)
        
-        titleLabel.text = String(format: "co.candyhouse.sesame2.bindSesame2ToSensor".localized, arguments: [modelView.value])
+        titleLabel.text = String(format: "co.candyhouse.sesame2.bindSesame2ToSensor".localized, arguments: [deviceName])
         titleLabel.textColor = UIColor.placeHolderColor
         titleLabel.numberOfLines = 0 // 設置為0時，允許無限換行
         titleLabel.lineBreakMode = .byWordWrapping // 按單詞換行
@@ -301,7 +303,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
                 self.navigationController?.popToRootViewController(animated: false)
             }
         }
-        dropKeyView.title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [modelView.value])
+        dropKeyView.title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [deviceName])
         contentStackView.addArrangedSubview(dropKeyView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
     }

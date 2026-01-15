@@ -26,7 +26,7 @@ extension DeviceControllerHolder where Self: CHBaseViewController {
     
     func prepareConfirmDropKey(_ sender: UIView, completion: @escaping () -> Void) {
         modalSheet(AlertModel(title: nil, message: nil, sourceView: sender, items: [
-            AlertItem(title: String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [self.device.productModel.deviceModelName()]), style: .destructive, handler: { [unowned self] _ in
+            AlertItem(title: String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [self.device.deviceName]), style: .destructive, handler: { [unowned self] _ in
                 dropKey { [weak self] in
                     guard let self = self else { return }
                     self.refreshDeviceFromCache()

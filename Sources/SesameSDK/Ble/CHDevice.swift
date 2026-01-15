@@ -112,6 +112,19 @@ public extension CHDevice {
         }
         return file
     }
+    
+    /// 规则：
+    /// - 仅 CHSesame5：BLE 不可用才允许用 IoT mechStatus 覆盖
+    /// - 其他设备：直接用 IoT mechStatus 覆盖
+    func applyIotMechStatusIfNeeded(_ mechStatus: CHSesameProtocolMechStatus) {
+        if self is CHSesame5 {
+            if self.isBleAvailable() == false {
+                self.mechStatus = mechStatus
+            }
+        } else {
+            self.mechStatus = mechStatus
+        }
+    }
 }
 
 public extension CHDevice {

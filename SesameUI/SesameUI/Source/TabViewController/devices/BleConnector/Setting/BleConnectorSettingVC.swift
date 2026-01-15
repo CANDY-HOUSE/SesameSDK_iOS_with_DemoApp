@@ -246,11 +246,11 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
 
         // MARK: Add Sesame Hint
-        let deviceModelName = mDevice.productModel.deviceModelName()
+        let deviceName = mDevice.deviceName
         let titleLabelContainer = UIView(frame: .zero)
         let titleLabel = UILabel(frame: .zero)
         titleLabel.text = String(format: "co.candyhouse.sesame2.bindSesameToBleConnector".localized, arguments: [
-            deviceModelName
+            deviceName
         ])
         titleLabel.textColor = UIColor.placeHolderColor
         titleLabel.numberOfLines = 0 // 設置為0時，允許無限換行
@@ -302,24 +302,15 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         dropHintView.autoPinTrailing(constant: -10)
         dropHintView.autoPinTop()
         dropHintView.autoPinBottom()
-        dropKeyView.title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [deviceModelName])
-        dropHintView.text = String(format: "co.candyhouse.sesame2.dropKeyDesc".localized, arguments: [deviceModelName, deviceModelName, deviceModelName])
+        dropKeyView.title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [deviceName])
+        dropHintView.text = String(format: "co.candyhouse.sesame2.dropKeyDesc".localized, arguments: [deviceName, deviceName, deviceName])
         contentStackView.addArrangedSubview(dropHintContiaoner)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
     }
     
     // MARK: Trash Key
     func dropKey(sender: UIButton) {
-        var title: String
-        if (mDevice.productModel == .sesameTouch) {
-            title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: ["co.candyhouse.sesame2.SSMTouch".localized])
-        } else if (mDevice.productModel == .sesameTouch2) {
-            title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: ["co.candyhouse.sesame2.SSMTouch2".localized])
-        } else if (mDevice.productModel == .remote) {
-            title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [mDevice.deviceName])
-        } else {
-            title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: ["co.candyhouse.sesame2.SSMTouchPro".localized])
-        }
+        let title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [mDevice.deviceName])
         
         let trashKey = UIAlertAction(title: title,style: .destructive) { (action) in
             ViewHelper.showLoadingInView(view: self.view)

@@ -72,6 +72,8 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
+        let deviceName = mDevice.deviceName
+        
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
@@ -101,7 +103,7 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         // MARK: Open Sensor reset hint
         let hintLabelContainer = UIView(frame: .zero)
         let hintLabel = UILabel(frame: .zero)
-        hintLabel.text =  String(format: "co.candyhouse.sesame2.pleaseResetOpenSensor".localized, arguments: [modelView.value, modelView.value])
+        hintLabel.text =  String(format: "co.candyhouse.sesame2.pleaseResetOpenSensor".localized, arguments: [deviceName, deviceName])
         hintLabel.textColor = UIColor.darkText
         hintLabel.numberOfLines = 0 // 設置為0時，允許無限換行
         hintLabel.lineBreakMode = .byWordWrapping // 按單詞換行
@@ -119,14 +121,14 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
                 self.navigationController?.popToRootViewController(animated: false)
             }
         }
-        dropKeyView.title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [modelView.value])
+        dropKeyView.title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [deviceName])
         contentStackView.addArrangedSubview(dropKeyView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         
         // MARK: Drop key hint
         let titleLabelContainer = UIView(frame: .zero)
         let titleLabel = UILabel(frame: .zero)
-        titleLabel.text = String(format: "co.candyhouse.sesame2.dropKeyDesc".localized, arguments: [modelView.value, modelView.value, modelView.value])
+        titleLabel.text = String(format: "co.candyhouse.sesame2.dropKeyDesc".localized, arguments: [deviceName, deviceName, deviceName])
         titleLabel.textColor = UIColor.placeHolderColor
         titleLabel.numberOfLines = 0 // 設置為0時，允許無限換行
         titleLabel.lineBreakMode = .byWordWrapping // 按單詞換行
