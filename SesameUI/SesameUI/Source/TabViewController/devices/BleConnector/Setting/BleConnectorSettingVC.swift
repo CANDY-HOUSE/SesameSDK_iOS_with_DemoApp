@@ -143,7 +143,7 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     var statusView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var addSesameButtonView: CHUIPlainSettingView!
-    var batteryView: CHUIPlainSettingView!
+    var batteryView: CHUIArrowSettingView!
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var sesame2ListView = UITableView(frame: .zero)
@@ -234,8 +234,7 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Battery View
-        batteryView = CHUIViewGenerator.plain()
-        batteryView.title = "co.candyhouse.sesame2.battery".localized
+        batteryView = deviceBatteryView(mDevice)
         contentStackView.addArrangedSubview(batteryView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         

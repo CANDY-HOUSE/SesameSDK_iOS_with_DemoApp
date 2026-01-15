@@ -166,7 +166,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     var statusView: CHUIPlainSettingView!
     var dfuView: CHUIPlainSettingView!
     var addSesameButtonView: CHUIPlainSettingView!
-    let batteryView = CHUIViewGenerator.plain ()
+    var batteryView: CHUIArrowSettingView!
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var sesame2ListView = UITableView(frame: .zero)
@@ -290,11 +290,9 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Battery View
-        if(mDevice.productModel != .openSensor || mDevice.productModel != .openSensor2) {
-            batteryView.title = "co.candyhouse.sesame2.battery".localized
-            contentStackView.addArrangedSubview(batteryView)
-            contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
-        }
+        batteryView = deviceBatteryView(device)
+        contentStackView.addArrangedSubview(batteryView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: UUID
         let uuidView = CHUIViewGenerator.plain ()

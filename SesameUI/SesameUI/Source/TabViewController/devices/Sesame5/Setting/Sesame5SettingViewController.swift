@@ -25,6 +25,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     var autoLockView: CHUITogglePickerSettingView!
     var opsLockView: CHUIExpandableSettingView!
     var autoUnLockView: CHUIArrowSettingView!
+    var batteryView: CHUIArrowSettingView!
     var voiceShortcutButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var isReset: Bool = false
@@ -319,6 +320,10 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         contentStackView.addArrangedSubview(dfuView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
+        // MARK: Battery View
+        batteryView = deviceBatteryView(device)
+        contentStackView.addArrangedSubview(batteryView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: UUID
         let uuidView = CHUIViewGenerator.plain ()

@@ -154,7 +154,7 @@ class Sesame5ListCell: UITableViewCell {
     }
     
     private func configureBatteryDisplay(_ device: CHDevice) {
-        guard let batteryLevel = getBatteryLevel(device) else {
+        guard let batteryLevel = device.batteryPercentage() else {
             batteryContainer.isHidden = true
             batteryPercentLab.isHidden = true
             batteryPercentLab.text = ""
@@ -167,16 +167,6 @@ class Sesame5ListCell: UITableViewCell {
         batteryPercentLab.text = "\(batteryLevel)%"
         batteryIndicator.backgroundColor = batteryLevel >= 15 ? UIColor.sesame2Green : UIColor.lockRed
         batteryIndicatorWidth.constant = calculateBatteryWidth(level: batteryLevel)
-    }
-    
-    private func getBatteryLevel(_ device: CHDevice) -> Int? {
-        if device is CHWifiModule2 {
-            return device.stateInfo?.batteryPercentage
-        }
-        if let mechStatus = device.mechStatus {
-            return mechStatus.getBatteryPrecentage()
-        }
-        return device.stateInfo?.batteryPercentage
     }
     
     private func calculateBatteryWidth(level: Int) -> CGFloat {

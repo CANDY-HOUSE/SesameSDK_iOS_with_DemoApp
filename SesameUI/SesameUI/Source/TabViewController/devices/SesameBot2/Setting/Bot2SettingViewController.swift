@@ -34,6 +34,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var statusView: CHUIPlainSettingView!
+    var batteryView: CHUIArrowSettingView!
     var dfuView: CHUIPlainSettingView!
     var siriButton: CHUISettingButtonView?
     var scriptView: CHUIExpandableArrowSettingView!
@@ -190,6 +191,11 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         contentStackView.addArrangedSubview(dfuView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
+        // MARK: Battery View
+        batteryView = deviceBatteryView(device)
+        contentStackView.addArrangedSubview(batteryView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
+
         // MARK: UUID
         let uuidView = CHUIViewGenerator.plain ()
         uuidView.title = "UUID".localized

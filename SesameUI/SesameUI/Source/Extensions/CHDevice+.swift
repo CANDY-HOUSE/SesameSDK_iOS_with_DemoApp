@@ -32,6 +32,16 @@ extension CHDevice {
     func deviceStatusDescription() -> String {
         return self.deviceStatus.description
     }
+    
+    func batteryPercentage() -> Int? {
+        if self is CHWifiModule2 {
+            return stateInfo?.batteryPercentage
+        }
+        if let mechStatus = mechStatus {
+            return mechStatus.getBatteryPrecentage()
+        }
+        return stateInfo?.batteryPercentage
+    }
 }
 
 extension CHDevice {

@@ -29,6 +29,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var statusView: CHUIPlainSettingView!
+    var batteryView: CHUIArrowSettingView!
     var dfuView: CHUIPlainSettingView!
     var siriButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
@@ -180,6 +181,11 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         contentStackView.addArrangedSubview(dfuView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
+        // MARK: Battery View
+        batteryView = deviceBatteryView(device)
+        contentStackView.addArrangedSubview(batteryView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
+
         // MARK: UUID
         let uuidView = CHUIViewGenerator.plain ()
         uuidView.title = "UUID".localized

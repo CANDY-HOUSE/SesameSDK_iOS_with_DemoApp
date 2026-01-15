@@ -87,6 +87,10 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         contentStackView.addArrangedSubview(modelView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
+        // MARK: Battery View
+        contentStackView.addArrangedSubview(deviceBatteryView(device))
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
+
         // MARK: UUID
         let uuidView = CHUIViewGenerator.plain ()
         uuidView.title = "UUID".localized

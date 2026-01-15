@@ -68,6 +68,18 @@ extension CHBaseViewController {
     func reloadMembers() {
         deviceMemberWebView?.reload()
     }
+    
+    func deviceBatteryView(_ device: CHDevice) -> CHUIArrowSettingView {
+        let batteryView = CHUIViewGenerator.arrow() { [unowned self] sender,event in
+            navigationController?.pushViewController(CHWebViewController.instanceWithScene("battery-trend", extInfo: [
+                "deviceUUID": device.deviceId.uuidString,
+                "deviceName": "\(device.deviceName)"
+            ]), animated: true)
+        }
+        batteryView.title = "co.candyhouse.sesame2.battery".localized
+        batteryView.value = device.batteryPercentage().map { "\($0)%" } ?? ""
+        return batteryView
+    }
 }
 
 // HomePage Popup
