@@ -56,6 +56,10 @@ public extension CHDevice {
             filePrefix = "sesame5_"
         case .sesame5Pro:
             filePrefix = "sesame5pro_"
+        case .sesame5US:
+            filePrefix = "sesame5us_"
+        case .sesame6Pro:
+            filePrefix = "sesame6pro_"
         case .wifiModule2: break
         case .sesameBot:
             filePrefix = "sesamebot1"
@@ -67,40 +71,36 @@ public extension CHDevice {
             filePrefix = "sesamebike2"
         case .openSensor:
             filePrefix = "opensensor1"
-        case .sesameTouchPro:
-            filePrefix = "sesametouch1pro"
-        case .sesameTouch2Pro:
-            filePrefix = "sesametouch2pro"
-        case .sesameTouch:
-            filePrefix = "sesametouch1_"
-        case .sesameTouch2:
-            filePrefix = "sesametouch2_"
+        case .openSensor2:
+            filePrefix = "opensensor2"
         case .bleConnector:
             filePrefix = "bleconnector_"
         case .remote:
             filePrefix = "remote_"
         case .remoteNano:
             filePrefix = "remoten_"
-        case .sesame5US:
-            filePrefix = "sesame5us_"
         case .hub3:
             filePrefix = "hub3_"
+        case .sesameTouch:
+            filePrefix = "sesametouch1_"
+        case .sesameTouch2:
+            filePrefix = "sesametouch1_"
+        case .sesameTouchPro:
+            filePrefix = "sesametouch1pro"
+        case .sesameTouch2Pro:
+            filePrefix = "sesametouch1pro"
         case .sesameFace:
             filePrefix = "sesameFace1_"
         case .sesameFace2:
-            filePrefix = "sesameFace2_"
+            filePrefix = "sesameFace1_"
         case .sesameFacePro:
             filePrefix = "sesameFace1Pro_"
         case .sesameFace2Pro:
-            filePrefix = "sesameFace2Pro_"
-        case .sesame6Pro:
-            filePrefix = "sesame6pro_"
+            filePrefix = "sesameFace1Pro_"
         case .sesameFaceAI:
             filePrefix = "sesameface1ai_"
         case .sesameFaceProAI:
             filePrefix = "sesameface1proai_"
-        case .openSensor2:
-            filePrefix = "opensensor2"
         }
         var zips: [URL] = []
         if  let fileURLs = Bundle.main.urls(forResourcesWithExtension: "zip", subdirectory: nil) {
