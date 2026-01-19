@@ -19,15 +19,11 @@ extension CHSesameBaseDevice {
         let timestampData = Data(bytes: &timestamp,count: MemoryLayout.size(ofValue: timestamp))
         let payload = Data(appKeyPair.publicKey)+timestampData
         self.commandQueue = DispatchQueue(label:deviceId.uuidString, qos: .userInitiated)
-
-        let request = CHAPICallObject(.post, "/device/v1/sesame5/\(self.deviceId.uuidString)", [
-            "t": (advertisement?.productType?.rawValue) ?? productModel.rawValue,
-            "pk":self.mSesameToken!.toHexString()
-        ] as [String : Any])
-//        L.d("[ss5][register] ==>")
-        CHAPIClient
-            .shared
-            .API(request: request) { response in
+        CHAPIClient.shared.registerDevice(
+            deviceId: self.deviceId.uuidString,
+            productType: Int((advertisement?.productType?.rawValue) ?? productModel.rawValue),
+            publicKey: self.mSesameToken!.toHexString()
+        ) { response in
                 switch response {
                 case .success(_):
 //                    L.d("[ss5][register][ok <==]")

@@ -37,15 +37,7 @@ extension CHSesame5Device {
 extension CHSesame5Device {
     func postProcessHistory(_ historyData: Data, _ callback: @escaping CHResult<CHEmpty>) {
 //        L.d("[ss5][history]post")
-        let request: CHAPICallObject = .init(.post, "/device/v1/sesame2/historys", [
-            "s": self.deviceId.uuidString,
-            "v": historyData.toHexString(),
-            "t":"5",
-        ])
-
-        CHAPIClient
-            .shared
-            .API(request: request) { result in
+        CHAPIClient.shared.postHistory(deviceId: self.deviceId.uuidString, payload: historyData.toHexString(), t: "5") { result in
                 switch result {
                 case .success(_):
                     L.d("[ss5][history]藍芽", "上傳歷史成功")

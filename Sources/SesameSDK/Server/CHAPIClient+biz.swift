@@ -278,8 +278,21 @@ public extension CHAPIClient {
     // MARK: - Battery
     /// 上传电池数据
     func postBatteryData(deviceId: String, payload: String, result: @escaping CHResult<CHEmpty>) {
-        API(request: .init(.post, "/device/v2/sesame5/\(deviceId)/battery", ["payload": payload])) { res in
+        API(request: .init(.post, "/device/v1/sesame5/\(deviceId)/battery", ["payload": payload])) { res in
             switch res {
+            case .success(_):
+                result(.success(.init(input: .init())))
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+    
+    // MARK: - History
+    /// 上传历史记录
+    func postHistory(deviceId: String, payload: String, t: String, result: @escaping CHResult<CHEmpty>) {
+        API(request: .init(.post, "/device/v1/sesame2/historys", ["s":deviceId, "v": payload, "t": t] as [String : Any])) { response in
+            switch response {
             case .success(_):
                 result(.success(.init(input: .init())))
             case .failure(let error):
@@ -308,7 +321,7 @@ public extension CHAPIClient {
     // MARK: - Hub3
     /// 获取Hub3状态
     func getHub3Status(deviceId: String, result: @escaping CHResult<Data>) {
-        API(request: .init(.get, "/device/v2/hub3/\(deviceId)/status")) { response in
+        API(request: .init(.get, "/device/v1/wifi_module/\(deviceId)/status")) { response in
             switch response {
             case .success(let data):
                 if let data = data {
@@ -324,8 +337,8 @@ public extension CHAPIClient {
     
     // MARK: - Biometric/Credential
     /// 生物识别数据操作 (通用)
-    func credentialOperation(payload: Data, result: @escaping CHResult<Data>) {
-        API(request: .init(.post, "/device/v2/credential", payload)) { response in
+    func biometricsOperation(payload: Data, result: @escaping CHResult<Data>) {
+        API(request: .init(.post, "/device/v1/biometrics", payload)) { response in
             switch response {
             case .success(let data):
                 if let data = data {
@@ -353,7 +366,7 @@ public extension CHAPIClient {
     
     /// 上传固件版本号
     func postFirmwareVersion(deviceId: String, versionTag: String, result: @escaping CHResult<CHEmpty>) {
-        API(request: .init(.post, "/device/v2/sesame5/\(deviceId)/fwVer", ["versionTag": versionTag])) { response in
+        API(request: .init(.post, "/device/v1/sesame5/\(deviceId)/fwVer", ["versionTag": versionTag])) { response in
             switch response {
             case .success(_):
                 result(.success(.init(input: .init())))

@@ -114,7 +114,7 @@ extension CHServerCapableHandler {
     func postAuthenticationData(_ data: BiometricDataWrapper, result: @escaping(CHResult<[BiometricData]>)) {
         let tempData = BiometricDataWrapper(op: data.op + "_post", deviceID: data.deviceID, items: data.items)
         let payload = try! JSONEncoder().encode(tempData)
-        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+        CHAPIClient.shared.biometricsOperation(payload: payload) { response in
             switch response {
             case .success(let data):
                 if let jsonObj = try? JSONSerialization.jsonObject(with: data.data, options: []) as? [String: Any],
@@ -134,7 +134,7 @@ extension CHServerCapableHandler {
     func putAuthenticationData(_ data: BiometricDataWrapper, result  : @escaping(CHResult<CHEmpty>)) {
         let tempData = BiometricDataWrapper(op: data.op + "_put", deviceID: data.deviceID, items: data.items)
         let payload = try! JSONEncoder().encode(tempData)
-        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+        CHAPIClient.shared.biometricsOperation(payload: payload) { response in
             switch response {
             case .success(let data):
                 L.d("get success data: \(String(data: data.data, encoding: .utf8) ?? "No data")")
@@ -148,7 +148,7 @@ extension CHServerCapableHandler {
     func deleteAuthenticationData(_ data: BiometricDataWrapper, result  : @escaping(CHResult<CHEmpty>)) {
         let tempData = BiometricDataWrapper(op: data.op + "_delete", deviceID: data.deviceID, items: data.items)
         let payload = try! JSONEncoder().encode(tempData)
-        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+        CHAPIClient.shared.biometricsOperation(payload: payload) { response in
             switch response {
             case .success(_):
                 result(.success(.init(input: CHEmpty())))
@@ -173,7 +173,7 @@ extension CHServerCapableHandler {
             authData = kbReq
         }
         let payload = try! JSONEncoder().encode(authData)
-        CHAPIClient.shared.credentialOperation(payload: payload) { response in
+        CHAPIClient.shared.biometricsOperation(payload: payload) { response in
             switch response {
             case .success(let data):
                 if let responseString = String(data: data.data, encoding: .utf8) {
