@@ -99,7 +99,11 @@ public extension CHDevice {
             filePrefix = "sesameFace1Pro_"
         case .sesameFaceAI:
             filePrefix = "sesameface1ai_"
+        case .sesameFace2AI:
+            filePrefix = "sesameface1ai_"
         case .sesameFaceProAI:
+            filePrefix = "sesameface1proai_"
+        case .sesameFace2ProAI:
             filePrefix = "sesameface1proai_"
         }
         var zips: [URL] = []

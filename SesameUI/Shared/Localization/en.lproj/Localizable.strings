@@ -186,7 +186,9 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.SSMFace" = "Sesame Face";
 "co.candyhouse.sesame2.SSMFace2" = "Sesame Face 2";
 "co.candyhouse.sesame2.SSMFaceProAI" = "Sesame Face Pro AI";
+"co.candyhouse.sesame2.SSMFace2ProAI" = "Sesame Face 2 Pro AI";
 "co.candyhouse.sesame2.SSMFaceAI" = "Sesame Face AI";
+"co.candyhouse.sesame2.SSMFace2AI" = "Sesame Face 2 AI";
 "co.candyhouse.sesame2.faceView" = "Manage face";
 "co.candyhouse.sesame2.palmView" = "Manage Palm Veins";
 "co.candyhouse.sesame2.default_palm_name" = "Palm Veins🖋️";

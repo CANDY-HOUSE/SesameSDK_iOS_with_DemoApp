@@ -303,7 +303,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         
         // MARK: Radar View
         if self.mDevice.productModel == .sesameFace || self.mDevice.productModel == .sesameFace2 || self.mDevice.productModel == .sesameFacePro
-            || self.mDevice.productModel == .sesameFace2Pro || self.mDevice.productModel == .sesameFaceAI || self.mDevice.productModel == .sesameFaceProAI {
+            || self.mDevice.productModel == .sesameFace2Pro || self.mDevice.productModel == .sesameFaceAI || self.mDevice.productModel == .sesameFace2AI || self.mDevice.productModel == .sesameFaceProAI || self.mDevice.productModel == .sesameFace2ProAI {
             sliderView = CHUIViewGenerator.slider(
                 defaultValue: 270,
                 maximumValue: 270,
@@ -434,7 +434,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         guard let capable = mDevice as? CHCardCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .openSensor2 else {
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFace2AI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .sesameFace2ProAI && mDevice.productModel != .openSensor2 else {
             return
         }
         let nfcCardView = CHUIViewGenerator.arrow { [unowned self] _,_ in
@@ -449,7 +449,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         guard let capable = mDevice as? CHFingerPrintCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .openSensor2 else {
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFace2AI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .sesameFace2ProAI && mDevice.productModel != .openSensor2 else {
             return
         }
         let fingerView = CHUIViewGenerator.arrow { [unowned self] _,_ in
@@ -464,7 +464,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         guard let capable = mDevice as? CHPassCodeCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .openSensor2 else {
+        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFace2AI && mDevice.productModel != .openSensor2 else {
             return
         }
         let passcodeView = CHUIViewGenerator.arrow { [weak self] _, _ in

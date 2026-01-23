@@ -43,9 +43,11 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
         .sesameFace,
         .sesameFace2,
         .sesameFaceAI,
+        .sesameFace2AI,
         .sesameFacePro,
         .sesameFace2Pro,
-        .sesameFaceProAI
+        .sesameFaceProAI,
+        .sesameFace2ProAI
     ]
     
     // 初始化方法

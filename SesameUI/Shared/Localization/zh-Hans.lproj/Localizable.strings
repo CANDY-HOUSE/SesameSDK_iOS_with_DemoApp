@@ -186,7 +186,9 @@
 "co.candyhouse.sesame2.SSMFace" = "Sesame Face";
 "co.candyhouse.sesame2.SSMFace2" = "Sesame Face 2";
 "co.candyhouse.sesame2.SSMFaceProAI" = "Sesame Face Pro AI";
+"co.candyhouse.sesame2.SSMFace2ProAI" = "Sesame Face 2 Pro AI";
 "co.candyhouse.sesame2.SSMFaceAI" = "Sesame Face AI";
+"co.candyhouse.sesame2.SSMFace2AI" = "Sesame Face 2 AI";
 "co.candyhouse.sesame2.faceView" = "管理人脸";
 "co.candyhouse.sesame2.palmView" = "管理掌静脉";
 "co.candyhouse.sesame2.default_palm_name" = "掌静脉🖋️";

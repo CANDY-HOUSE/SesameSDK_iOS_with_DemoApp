@@ -186,7 +186,9 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.SSMFace" = "セサミフェイス";
 "co.candyhouse.sesame2.SSMFace2" = "セサミフェイス 2";
 "co.candyhouse.sesame2.SSMFaceProAI" = "セサミフェイス Pro AI";
+"co.candyhouse.sesame2.SSMFace2ProAI" = "セサミフェイス 2 Pro AI";
 "co.candyhouse.sesame2.SSMFaceAI" = "セサミフェイス AI";
+"co.candyhouse.sesame2.SSMFace2AI" = "セサミフェイス 2 AI";
 "co.candyhouse.sesame2.faceView" = "顔認識の管理";
 "co.candyhouse.sesame2.palmView" = "手のひら静脈の管理";
 "co.candyhouse.sesame2.default_palm_name" = "手のひら静脈🖋️";
