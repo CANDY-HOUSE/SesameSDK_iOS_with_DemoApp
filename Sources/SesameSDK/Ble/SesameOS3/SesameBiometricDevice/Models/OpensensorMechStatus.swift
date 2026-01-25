@@ -25,7 +25,7 @@ struct OpensensorMechStatus: CHSesameProtocolMechStatus {
     
     func getBatteryPrecentage() -> Int { // [CHDeviceProtocol]共用電量計算曲線
         let voltage = getBatteryVoltage()
-        let blocks: [Float] = [5.820, 5.810, 5.755, 5.735, 5.665, 5.620, 5.585, 5.556, 5.550, 5.50, 5.40, 5.20, 5.10, 5.0, 4.8, 4.6]
+        let blocks: [Float] = [5.820, 5.810, 5.755, 5.735, 5.665, 5.620, 5.585, 5.556, 5.550,  5.50,  5.40,  5.20,  5.10,   5.0,   4.8,   4.6]
         let mapping: [Float] = [100.0, 95.0, 90.0, 85.0, 80.0, 70.0, 60.0, 50.0, 40.0, 32.0, 21.0, 13.0, 10.0, 7.0, 3.0, 0.0]
         if voltage >= blocks[0] {
             return Int(mapping[0])
