@@ -219,3 +219,4 @@
 "co.candyhouse.sesame2.hint_enter_card_id_hex" = "输入卡ID（0-9,A-F,a-f）";
 "co.candyhouse.sesame2.hint_enter_card_id" = "请输入卡ID";
 "co.candyhouse.sesame2.SlotFull" = "设备已满";
+"co.candyhouse.sesame2.SSMMiwa" = "Sesame miwa";

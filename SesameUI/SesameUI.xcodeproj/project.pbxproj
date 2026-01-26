@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
 		0A0B3FEE278D4D8F00BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
+		2C8236292F273A8900F57F2C /* sesammiwa_10_29_85ca810.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2C8236282F273A8900F57F2C /* sesammiwa_10_29_85ca810.zip */; };
 		3B1D80402E2A2DA900C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80442E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; };
 		3B1D80452E2A2DB000C90D01 /* SesameWatchKitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -419,6 +420,7 @@
 
 /* Begin PBXFileReference section */
 		0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleHelper.swift; sourceTree = "<group>"; };
+		2C8236282F273A8900F57F2C /* sesammiwa_10_29_85ca810.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesammiwa_10_29_85ca810.zip; sourceTree = "<group>"; };
 		3B1D803F2E2A2DA900C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80432E2A2DB000C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1D80492E2A2DBC00C90D01 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1184,6 +1186,7 @@
 		B04D1D1824EA37BB0021ACA2 /* firmware */ = {
 			isa = PBXGroup;
 			children = (
+				2C8236282F273A8900F57F2C /* sesammiwa_10_29_85ca810.zip */,
 				643F06932BCD12400045D789 /* sesame_221_0_8c080c.zip */,
 				643F06912BCD123F0045D789 /* sesame_421_4_50ce5b.zip */,
 				89EC94B32F150AA10056818E /* sesame5_30_5_3fdd17.zip */,
@@ -1946,6 +1949,7 @@
 				8940A2892F053BBB00C37EDE /* opensensor2_30_24_32cc44.zip in Resources */,
 				418FA1F9237C04EF00C7C408 /* InfoPlist.strings in Resources */,
 				643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */,
+				2C8236292F273A8900F57F2C /* sesammiwa_10_29_85ca810.zip in Resources */,
 				89EC94CA2F1A595A0056818E /* sesameface1pro_30_18_cd4bcc.zip in Resources */,
 				89EC94CC2F1A596E0056818E /* sesameface1_30_19_cd4bcc.zip in Resources */,
 				89EC94A62F0E3AC80056818E /* bleconnector_30_11_b5940a.zip in Resources */,

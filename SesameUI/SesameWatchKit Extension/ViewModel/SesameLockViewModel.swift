@@ -34,7 +34,8 @@ class SesameLockViewModel: ObservableObject {
             CHProductModel.sesame5,
             CHProductModel.sesame5Pro,
             CHProductModel.sesame5US,
-            CHProductModel.sesame6Pro
+            CHProductModel.sesame6Pro,
+            CHProductModel.sesameMiwa
         ].contains(device.productModel)
     }()
 
@@ -89,7 +90,7 @@ class SesameLockViewModel: ObservableObject {
         batteryIndicatorColor =  mechStatus.getBatteryPrecentage() < 15 ?  Color(UIColor.lockRed):  Color(UIColor.sesame2Green)
         batteryPercentage = "\(mechStatus.getBatteryPrecentage())%"
 
-        if (sesame5.productModel == .sesame5 || sesame5.productModel == .sesame5Pro || sesame5.productModel == .sesame5US || sesame5.productModel == .sesame6Pro){
+        if (sesame5.productModel == .sesame5 || sesame5.productModel == .sesame5Pro || sesame5.productModel == .sesame5US || sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesameMiwa){
             let toRadians = reverseDegree(angle: Int16(mechStatus.position))
             radians = CGFloat(toRadians)
         }else{

@@ -78,6 +78,8 @@ extension CHDevice {
             return device?.name ?? "co.candyhouse.sesame2.SSMFaceProAI".localized
         case .sesameFace2ProAI:
             return device?.name ?? "co.candyhouse.sesame2.SSMFace2ProAI".localized
+        case .sesameMiwa:
+            return device?.name ?? "co.candyhouse.sesame2.SSMMiwa".localized
         case .none:
             return "develope-device"
         @unknown default:

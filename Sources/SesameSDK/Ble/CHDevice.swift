@@ -105,6 +105,8 @@ public extension CHDevice {
             filePrefix = "sesameface1proai_"
         case .sesameFace2ProAI:
             filePrefix = "sesameface1proai_"
+	case .sesameMiwa:
+            filePrefix = "sesammiwa_"
         }
         var zips: [URL] = []
         if  let fileURLs = Bundle.main.urls(forResourcesWithExtension: "zip", subdirectory: nil) {
@@ -262,7 +264,7 @@ public extension CHSesameLock {
                     isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
                 }
                 
-                if (self.productModel == .sesame5 || self.productModel == .sesame5Pro || self.productModel == .sesame5US){
+                if (self.productModel == .sesame5 || self.productModel == .sesame5Pro || self.productModel == .sesame5US || self.productModel == .sesameMiwa){
                     if let mechStatusData = shadow.data.mechStatus?.hexStringtoData(),
                        let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
                         //                    L.d("[ss5][iot] isInLockRange",mechStatus.isInLockRange,mechStatus.position)

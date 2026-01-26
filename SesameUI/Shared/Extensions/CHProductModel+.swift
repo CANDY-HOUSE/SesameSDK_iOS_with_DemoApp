@@ -18,15 +18,4 @@ extension CHProductModel {
     var is4ByetsPubkeyProductModel: Bool {
         return Int(self.rawValue) - Int(CHProductModel.sesame5.rawValue) >= 0
     }
-    
-    var defaultMatterRole: MatterProductModel {
-        switch self {
-        case .sesame5, .sesame5Pro, .sesame5US, .bikeLock2:
-            return .doorLock
-        case .sesameBot2:
-            return .onOffSwitch
-        default:
-            return .none
-        }
-    }
 }
