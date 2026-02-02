@@ -59,6 +59,15 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
             self.view.makeToast("co.candyhouse.sesame2.SlotFull".localized)
         }
     }
+    
+    func onSSMSupport(device: SesameSDK.CHSesameConnector, isSupport: Bool) {
+        if !isSupport {
+            executeOnMainThread { [weak self] in
+                guard let self = self else { return }
+                self.view.makeToast("co.candyhouse.sesame2.Unsupport".localized)
+            }
+        }
+    }
 
     func onTriggerDelaySecondReceived(device: CHSesameConnector, setting: CHRemoteBaseTriggerSettings) {
         self.opsUInt = setting.triggerDelaySecond

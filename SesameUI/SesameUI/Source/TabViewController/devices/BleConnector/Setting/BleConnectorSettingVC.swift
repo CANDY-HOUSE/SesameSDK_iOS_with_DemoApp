@@ -83,6 +83,15 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         }
     }
     
+    func onSSMSupport(device: SesameSDK.CHSesameConnector, isSupport: Bool) {
+        if !isSupport {
+            executeOnMainThread { [weak self] in
+                guard let self = self else { return }
+                self.view.makeToast("co.candyhouse.sesame2.Unsupport".localized)
+            }
+        }
+    }
+    
     func onBleDeviceStatusChanged(device: SesameSDK.CHDevice, status: SesameSDK.CHDeviceStatus, shadowStatus: SesameSDK.CHDeviceStatus?) {
         if status == .receivedBle() {
             device.connect() { _ in }

@@ -25,36 +25,45 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
     
     lazy var keys: [CHDevice] = {
         var chDevices = [CHDevice]()
-        let os3Lockers: [CHProductModel] = [.bikeLock2, .sesame5, .sesame5Pro, .sesame5US, .sesameBot2, .bleConnector, .sesame6Pro, .sesameMiwa]
-        var productMappingKeys: [CHProductModel: [CHProductModel]] = [
-            .openSensor:        [.hub3] + os3Lockers,
-            .sesameTouch:       [.sesame2, .sesame4, .bikeLock] + os3Lockers,
-            .sesameTouch2:      [.sesame2, .sesame4, .bikeLock] + os3Lockers,
-            .sesameTouchPro:    [.sesame2, .sesame4, .bikeLock] + os3Lockers,
-            .sesameTouch2Pro:   [.sesame2, .sesame4, .bikeLock] + os3Lockers,
-            .remote:            os3Lockers,
-            .remoteNano:        os3Lockers,
-            .openSensor2:       [.hub3] + os3Lockers,
+        let allLocks: [CHProductModel] = [
+            .sesame2,
+            .sesame4,
+            .bikeLock,
+            .bikeLock2,
+            .sesame5,
+            .sesame5Pro,
+            .sesame5US,
+            .sesameBot,
+            .sesameBot2,
+            .bleConnector,
+            .sesame6Pro,
+            .sesameMiwa
         ]
+        
         CHDeviceManager.shared.getCHDevices { [self] result in
             if case let .success(devices) = result {
-                if mDevice.productModel == .openSensor ||  mDevice.productModel == .openSensor2 {
+                var allowedProducts: [CHProductModel]
+                
+                if mDevice.productModel == .openSensor || mDevice.productModel == .openSensor2 {
                     let sesame2KeyDevices = devices.data.filter { device in
                         mDevice.sesame2Keys.keys.contains(device.deviceId.uuidString)
                     }
-                    let hasLockInSesame2Keys = sesame2KeyDevices.contains { device in
-                        os3Lockers.contains(device.productModel)
-                    }
-                    let hasHub3InSesame2Keys = sesame2KeyDevices.contains { device in
-                        [.hub3].contains(device.productModel)
-                    }
+                    
+                    let hasLockInSesame2Keys = sesame2KeyDevices.contains { allLocks.contains($0.productModel) }
+                    let hasHub3InSesame2Keys = sesame2KeyDevices.contains { $0.productModel == .hub3 }
+                    
                     if hasLockInSesame2Keys {
-                        productMappingKeys[mDevice.productModel] = os3Lockers
+                        allowedProducts = allLocks
                     } else if hasHub3InSesame2Keys {
-                        productMappingKeys[mDevice.productModel] = [.hub3]
+                        allowedProducts = [.hub3]
+                    } else {
+                        allowedProducts = [.hub3] + allLocks
                     }
+                } else {
+                    allowedProducts = allLocks
                 }
-                chDevices = devices.data.filter({ (productMappingKeys[self.mDevice.productModel] ?? os3Lockers).contains($0.productModel)})
+                
+                chDevices = devices.data.filter { allowedProducts.contains($0.productModel) }
             }
         }
         return chDevices

@@ -220,3 +220,4 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.hint_enter_card_id" = "カードIDを入力してください";
 "co.candyhouse.sesame2.SlotFull" = "デバイス満杯";
 "co.candyhouse.sesame2.SSMMiwa" = "Sesame miwa";
+"co.candyhouse.sesame2.Unsupport" = "このデバイスは対応していません";

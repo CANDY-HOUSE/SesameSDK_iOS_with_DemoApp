@@ -100,6 +100,15 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         }
     }
     
+    func onSSMSupport(device: SesameSDK.CHSesameConnector, isSupport: Bool) {
+        if !isSupport {
+            executeOnMainThread { [weak self] in
+                guard let self = self else { return }
+                self.view.makeToast("co.candyhouse.sesame2.Unsupport".localized)
+            }
+        }
+    }
+    
     func onMechStatus(device: CHDevice) {
         executeOnMainThread { [self] in
             batteryView.value = "\(mDevice.mechStatus?.getBatteryPrecentage() ?? 0) %"

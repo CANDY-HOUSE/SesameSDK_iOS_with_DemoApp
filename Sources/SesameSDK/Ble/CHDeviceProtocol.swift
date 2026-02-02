@@ -159,6 +159,9 @@ enum SesameItemCode: UInt8 {
     
     // 重载/轻载 电压值mv
     case SSM3_ITEM_CODE_BATTERY_VOLTAGE = 202
+    
+    // 不支持该设备
+    case SSM3_ITEM_CODE_SESAME_UNSUPPORT = 204
 }
 
 extension SesameItemCode {

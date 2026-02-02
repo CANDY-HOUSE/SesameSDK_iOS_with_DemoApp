@@ -70,6 +70,10 @@ extension CHSesameBaseDevice {
             radarPayload = Data(payload.bytes)
             L.d("SSM_OS3_RADAR_PARAM_PUBLISH", payload.bytes)
             
+        case .SSM3_ITEM_CODE_SESAME_UNSUPPORT:
+            handle = true
+            (self.delegate as? CHSesameConnectorDelegate)?.onSSMSupport(device: self, isSupport: false)
+            
         default:
             handle = false
         }

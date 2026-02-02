@@ -220,3 +220,4 @@
 "co.candyhouse.sesame2.hint_enter_card_id" = "请输入卡ID";
 "co.candyhouse.sesame2.SlotFull" = "设备已满";
 "co.candyhouse.sesame2.SSMMiwa" = "Sesame miwa";
+"co.candyhouse.sesame2.Unsupport" = "不支持该设备";
