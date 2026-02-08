@@ -20,9 +20,9 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     // MARK: DeviceControllerHolder impl
     var device: SesameSDK.CHDevice!
     
-    var bikeLock2: CHSesameBike2! {
+    var mBikeLock2: CHSesameBike2! {
         didSet {
-            device = bikeLock2
+            device = mBikeLock2
         }
     }
     // MARK: - UI Componets
@@ -67,14 +67,13 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
         
         arrangeSubviews()
-//                DFUCenter.shared.confirmDFUDeletegate(self, forDevice: bikeLock2)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // L.d("[UI][bk2][viewWillAppear]")
-        bikeLock2.delegate = self
-        if bikeLock2.deviceStatus == .receivedBle() {
-            bikeLock2.connect() { _ in }
+        mBikeLock2.delegate = self
+        if mBikeLock2.deviceStatus == .receivedBle() {
+            mBikeLock2.connect() { _ in }
         }
         getVersionTag()
         showStatusViewIfNeeded()
@@ -83,7 +82,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isMovingFromParent {
-            DFUCenter.shared.removeDFUDelegateForDevice(bikeLock2)
+            DFUCenter.shared.removeDFUDelegateForDevice(mBikeLock2)
             dismissHandler?(isReset)
         }
     }
@@ -112,9 +111,12 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized
-        modelView.value = bikeLock2.productModel.deviceModelName()
+        modelView.value = mBikeLock2.productModel.deviceModelName()
         contentStackView.addArrangedSubview(modelView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
+        
+        // MARK: 管理指纹
+        setupFingerView()
         
         // MARK: SiriButton (Bikes只顯示unlock)
         if #available(iOS 12.0, *) {
@@ -124,13 +126,13 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
             let unlockShortcut = UIAlertAction(title: "co.candyhouse.sesame2.unlock".localized, style: .default) { _ in
                 let intent = UnlockSesameIntent()
                 intent.suggestedInvocationPhrase = "co.candyhouse.sesame2.suggestedPhrase".localized //建議的Siri指令default
-                intent.name = self.bikeLock2.deviceName
+                intent.name = self.mBikeLock2.deviceName
 
             //決定要編輯一個已經存在的siri捷徑，還是添加一個新的siri捷徑
             if let shortcutForSiri = INShortcut(intent: intent) {
                 INVoiceShortcutCenter.shared.getAllVoiceShortcuts { shortcuts, error in
                     executeOnMainThread {
-                        let siriID = self.bikeLock2.getVoiceUnlockId()
+                        let siriID = self.mBikeLock2.getVoiceUnlockId()
                         let existingShortcuts = shortcuts?.first(where: { $0.identifier == siriID })
 
                         if let existingShortcuts = existingShortcuts {
@@ -165,7 +167,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
                                                                  preferredStyle: .actionSheet)
             let confirmAction = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized,
                                               style: .default) { _ in
-                self.dfuSesame(self.bikeLock2)
+                self.dfuSesame(self.mBikeLock2)
             }
             chooseDFUModeAlertController.addAction(confirmAction)
             chooseDFUModeAlertController.addAction(UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized,
@@ -189,7 +191,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         // MARK: UUID
         let uuidView = CHUIViewGenerator.plain ()
         uuidView.title = "UUID".localized
-        uuidView.value = bikeLock2.deviceId.uuidString
+        uuidView.value = mBikeLock2.deviceId.uuidString
         contentStackView.addArrangedSubview(uuidView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         
@@ -235,11 +237,11 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     // ---↓Functions↓---
     // MARK: getVersionTag (ssmOS version UI)
     private func getVersionTag() {
-        bikeLock2.getVersionTag { result in
+        mBikeLock2.getVersionTag { result in
             switch result {
             case .success(let status):
 //                L.d("[bk2][getVersionTag][.success] =>",status)
-                let fileName = DFUHelper.getDfuFileName(self.bikeLock2!).split(separator: "_")
+                let fileName = DFUHelper.getDfuFileName(self.mBikeLock2!).split(separator: "_")
                 let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
                 let isnewest = status.data.contains(latestVersion!)
 //                L.d("[bk2]getVersionTag",status.data,latestVersion,isnewest)
@@ -258,8 +260,8 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         if CHBluetoothCenter.shared.scanning == .bleClose() {
             statusView.title = "co.candyhouse.sesame2.bluetoothPoweredOff".localized
             statusView.isHidden = false
-        } else if bikeLock2.deviceStatus.loginStatus == .unlogined {
-            statusView.title = bikeLock2.localizedDescription()
+        } else if mBikeLock2.deviceStatus.loginStatus == .unlogined {
+            statusView.title = mBikeLock2.localizedDescription()
             statusView.isHidden = false
         } else {
             statusView.isHidden = true
@@ -272,12 +274,26 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         DFUCenter.shared.dfuDevice(sesame, delegate: self)
         self.versionStr = nil
     }
+    
+    private func setupFingerView() {
+        guard let capable = mBikeLock2 as? CHFingerPrintCapable else { return }
+        
+        let fingerView = CHUIViewGenerator.arrow { [unowned self] _,_ in
+            self.navigationController?.pushViewController(
+                FingerPrintListVC.instance(capable),
+                animated: true
+            )
+        }
+        fingerView.title = "co.candyhouse.sesame2.fingerprint".localized
+        contentStackView.addArrangedSubview(fingerView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
+    }
 }
 
 extension BikeLock2SettingViewController {
     static func instanceWithBikeLock2(_ bikeLock2: CHSesameBike2, dismissHandler: ((Bool)->Void)? = nil) -> BikeLock2SettingViewController {
         let sesame5SettingViewController = BikeLock2SettingViewController(nibName: nil, bundle: nil)
-        sesame5SettingViewController.bikeLock2 = bikeLock2
+        sesame5SettingViewController.mBikeLock2 = bikeLock2
         sesame5SettingViewController.dismissHandler = dismissHandler
         sesame5SettingViewController.hidesBottomBarWhenPushed = true
         return sesame5SettingViewController
@@ -288,7 +304,7 @@ extension BikeLock2SettingViewController: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHDevice,
                                          status: CHDeviceStatus,
                                          shadowStatus: CHDeviceStatus?) {
-        if device.deviceId == bikeLock2.deviceId,
+        if device.deviceId == mBikeLock2.deviceId,
            status == .receivedBle() {
             device.connect() { _ in }
         } else if status.loginStatus == .logined {
@@ -336,7 +352,7 @@ extension BikeLock2SettingViewController: INUIAddVoiceShortcutViewControllerDele
     func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
         if voiceShortcut?.shortcut.intent is UnlockSesameIntent {
             L.d("[bk2][siri]這個有用到add setVoiceUnlock")
-            bikeLock2.setVoiceUnlock(voiceShortcut!.identifier)
+            mBikeLock2.setVoiceUnlock(voiceShortcut!.identifier)
         }
         controller.dismiss(animated: true, completion: nil)
     }
@@ -360,7 +376,7 @@ extension BikeLock2SettingViewController: INUIEditVoiceShortcutViewControllerDel
         INVoiceShortcutCenter.shared.getAllVoiceShortcuts { shortcuts, error in
             if let _ = shortcuts?.filter({ $0.identifier == deletedVoiceShortcutIdentifier && $0.shortcut.intent is ToggleSesameIntent }).first {
                 L.d("[bk2][siri]add editVoiceUnlock!!!")
-                self.bikeLock2.removeVoiceUnlock()
+                self.mBikeLock2.removeVoiceUnlock()
             }
         }
         controller.dismiss(animated: true, completion: nil)

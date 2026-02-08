@@ -10,7 +10,7 @@
 import Foundation
 
 class CHFingerPrintEventHandlers {
-    public  static func registerHandlers(for device: CHSesameBaseDevice) {
+    public  static func registerHandlers(for device: CHFingerPrintHost) {
         // 指纹更改事件
         device.registerEventHandler(for: .SSM_OS3_FINGERPRINT_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
@@ -61,7 +61,7 @@ class CHFingerPrintEventHandlers {
     }
     
     // 处理卡片通知数据
-    private static func processCardNotifyData(device: CHSesameBaseDevice, data: Data) {
+    private static func processCardNotifyData(device: CHFingerPrintHost, data: Data) {
         var cardDataSize = 0
         var cards = data.bytes
         
@@ -78,7 +78,7 @@ class CHFingerPrintEventHandlers {
     }
     
     // 通知卡片接收
-    private static func notifyCardReceived(device: CHSesameBaseDevice, card: CHSesameTouchCard) {
+    private static func notifyCardReceived(device: CHFingerPrintHost, card: CHSesameTouchCard) {
         device.notifyProtocolDelegates(CHFingerPrintDelegate.self) { delegate in
             delegate.onFingerPrintReceive(device: device, id: card.cardID, hexName: card.cardName, type: card.cardType)
         }

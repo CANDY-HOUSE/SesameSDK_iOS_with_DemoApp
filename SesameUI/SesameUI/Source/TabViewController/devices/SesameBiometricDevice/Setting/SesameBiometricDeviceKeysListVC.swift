@@ -30,6 +30,7 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
             .sesame4,
             .bikeLock,
             .bikeLock2,
+            .bikeLock3,
             .sesame5,
             .sesame5Pro,
             .sesame5US,

@@ -36,6 +36,8 @@ extension CHDevice {
             return device?.name ?? "co.candyhouse.sesame2.BikeLock".localized
         case .bikeLock2:
             return device?.name ?? "co.candyhouse.sesame2.BikeLock2".localized
+        case .bikeLock3:
+            return device?.name ?? "co.candyhouse.sesame2.BikeLock3".localized
         case .sesameTouchPro:
             return device?.name ?? "co.candyhouse.sesame2.SSMTouchPro".localized
         case .sesameTouch2Pro:

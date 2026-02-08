@@ -6,17 +6,17 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 import Foundation
-extension CHFingerPrintCapable where Self: CHSesameBaseDevice {
+extension CHFingerPrintCapable where Self: CHFingerPrintHost {
     func fingerPrints( result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
-        sendCommand(.init(.SSM_OS3_FINGERPRINT_GET)) { _ in
+        sendCommand(.init(.SSM_OS3_FINGERPRINT_GET), isCipher: .ciphertext) { _ in
             result(.success(CHResultStateNetworks(input: CHEmpty())))
         }
     }
     
     func fingerPrintDelete(ID: String, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
-        sendCommand(.init(.SSM_OS3_FINGERPRINT_DELETE,ID.hexStringtoData())) { _ in
+        sendCommand(.init(.SSM_OS3_FINGERPRINT_DELETE,ID.hexStringtoData()), isCipher: .ciphertext) { _ in
             result(.success(CHResultStateNetworks(input: CHEmpty())))
         }
     }
@@ -28,7 +28,7 @@ extension CHFingerPrintCapable where Self: CHSesameBaseDevice {
         L.d("idData???=>", idData)
         let payload = Data([UInt8(idData.count)]) + idData + hexName.hexStringtoData()
         L.d("TouchDevice payload =>",payload.toHexLog())
-        sendCommand(.init(.SSM_OS3_FINGERPRINT_CHANGE, payload)) { _ in
+        sendCommand(.init(.SSM_OS3_FINGERPRINT_CHANGE, payload), isCipher: .ciphertext) { _ in
             L.d("[TouchDevice][fingerPrintsChange][ok]")
             result(.success(CHResultStateNetworks(input: CHEmpty())))
         }
@@ -37,7 +37,7 @@ extension CHFingerPrintCapable where Self: CHSesameBaseDevice {
     func fingerPrintModeGet(result: @escaping (CHResult<UInt8>)) {
         if (!self.isBleAvailable(result)) { return }
         
-        sendCommand(.init(.SSM_OS3_FINGERPRINT_MODE_GET)) { response in
+        sendCommand(.init(.SSM_OS3_FINGERPRINT_MODE_GET), isCipher: .ciphertext) { response in
             L.d("[TouchDevice][fingerPrintModeGet]",response.data[0])
             result(.success(CHResultStateNetworks(input: response.data[0])))
         }
@@ -46,7 +46,7 @@ extension CHFingerPrintCapable where Self: CHSesameBaseDevice {
     func fingerPrintModeSet(mode: UInt8, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
         
-        sendCommand(.init(.SSM_OS3_FINGERPRINT_MODE_SET,Data([mode]))) { _ in
+        sendCommand(.init(.SSM_OS3_FINGERPRINT_MODE_SET,Data([mode])), isCipher: .ciphertext) { _ in
             result(.success(CHResultStateNetworks(input: CHEmpty())))
         }
     }

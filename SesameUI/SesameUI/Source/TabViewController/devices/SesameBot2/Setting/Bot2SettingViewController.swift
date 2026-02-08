@@ -25,9 +25,9 @@ struct Bot2Event: PickerItemDiscriptor {
 
 class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, DeviceControllerHolder{
     var device: SesameSDK.CHDevice!
-    var bikeLock2: CHSesameBot2! {
+    var bot2: CHSesameBot2! {
         didSet {
-            self.device = bikeLock2
+            self.device = bot2
         }
     }
     // MARK: - UI Componets
@@ -75,14 +75,13 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
         
         arrangeSubviews()
-//                DFUCenter.shared.confirmDFUDeletegate(self, forDevice: bikeLock2)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // L.d("[UI][bk2][viewWillAppear]")
-        bikeLock2.delegate = self
-        if bikeLock2.deviceStatus == .receivedBle() {
-            bikeLock2.connect() { _ in }
+        bot2.delegate = self
+        if bot2.deviceStatus == .receivedBle() {
+            bot2.connect() { _ in }
         }
         getVersionTag()
         fetchActionModes()
@@ -92,7 +91,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isMovingFromParent {
-            DFUCenter.shared.removeDFUDelegateForDevice(bikeLock2)
+            DFUCenter.shared.removeDFUDelegateForDevice(bot2)
             dismissHandler?(isReset)
         }
     }
@@ -121,14 +120,14 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         // MARK: 機種
         let modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized
-        modelView.value = bikeLock2.productModel.deviceModelName()
+        modelView.value = bot2.productModel.deviceModelName()
         contentStackView.addArrangedSubview(modelView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: 动作脚本
         scriptView = CHUIViewGenerator.arrowExpandable(){ [unowned self] sender,_ in
             guard ((sender as? UITapGestureRecognizer) != nil) else { return }
-            self.navigateToSesameBot2VC(self.bikeLock2)
+            self.navigateToSesameBot2VC(self.bot2)
         }
         scriptView.title = "co.candyhouse.sesame2.Scripts".localized
         scriptView.fold()
@@ -141,12 +140,12 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
                 guard let self = self else { return }
                 let intent = ToggleSesameIntent()
                 intent.suggestedInvocationPhrase = "co.candyhouse.sesame2.suggestedPhrase".localized
-                intent.name = self.bikeLock2.deviceName
+                intent.name = self.bot2.deviceName
                 if let shortcut = INShortcut(intent: intent) {
                     INVoiceShortcutCenter.shared.getAllVoiceShortcuts { shortcuts, error in
                         executeOnMainThread {
                             if let voiceShortcutIds = shortcuts?.map({ $0.identifier }),
-                               let voiceShortcutId = self.bikeLock2.getVoiceToggleId(),
+                               let voiceShortcutId = self.bot2.getVoiceToggleId(),
                                voiceShortcutIds.contains(voiceShortcutId) {
                                 let voiceShortcut = shortcuts!.filter({ $0.identifier == voiceShortcutId }).first!
                                 let viewController = INUIEditVoiceShortcutViewController(voiceShortcut: voiceShortcut)
@@ -175,7 +174,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
                                                                  preferredStyle: .actionSheet)
             let confirmAction = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized,
                                               style: .default) { _ in
-                self.dfuSesame(self.bikeLock2)
+                self.dfuSesame(self.bot2)
             }
             chooseDFUModeAlertController.addAction(confirmAction)
             chooseDFUModeAlertController.addAction(UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized,
@@ -199,7 +198,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         // MARK: UUID
         let uuidView = CHUIViewGenerator.plain ()
         uuidView.title = "UUID".localized
-        uuidView.value = bikeLock2.deviceId.uuidString
+        uuidView.value = bot2.deviceId.uuidString
         contentStackView.addArrangedSubview(uuidView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         
@@ -246,11 +245,11 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     // ---↓Functions↓---
     // MARK: getVersionTag (ssmOS version UI)
     private func getVersionTag() {
-        bikeLock2.getVersionTag { result in
+        bot2.getVersionTag { result in
             switch result {
             case .success(let status):
 //                L.d("[bk2][getVersionTag][.success] =>",status)
-                let fileName = DFUHelper.getDfuFileName(self.bikeLock2!).split(separator: "_")
+                let fileName = DFUHelper.getDfuFileName(self.bot2!).split(separator: "_")
                 let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
                 let isnewest = status.data.contains(latestVersion!)
 //                L.d("[bk2]getVersionTag",status.data,latestVersion,isnewest)
@@ -282,7 +281,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     }
     
     func fetchActionModes() {
-        bikeLock2.getScriptNameList { [weak self] getResult in
+        bot2.getScriptNameList { [weak self] getResult in
             guard let self = self else { return }
             executeOnMainThread { [self] in
                 if case let .success(bot2Status) = getResult {
@@ -291,7 +290,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
                     // 设置value
                     let events = bot2Status.data.events.enumerated().map { index, event -> Bot2Event in
                         return Bot2Event(name: event.name) { [weak self] e in
-                            self?.bikeLock2.selectScript(index: UInt8(index)) { [weak self] res in
+                            self?.bot2.selectScript(index: UInt8(index)) { [weak self] res in
                                 guard let self = self else { return }
                                 executeOnMainThread {
                                     if case .success(_) = res {
@@ -314,8 +313,8 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         if CHBluetoothCenter.shared.scanning == .bleClose() {
             statusView.title = "co.candyhouse.sesame2.bluetoothPoweredOff".localized
             statusView.isHidden = false
-        } else if bikeLock2.deviceStatus.loginStatus == .unlogined {
-            statusView.title = bikeLock2.localizedDescription()
+        } else if bot2.deviceStatus.loginStatus == .unlogined {
+            statusView.title = bot2.localizedDescription()
             statusView.isHidden = false
         } else {
             statusView.isHidden = true
@@ -333,7 +332,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
 extension Bot2SettingViewController {
     static func instanceWithBikeBot2(_ bot2: CHSesameBot2, dismissHandler: ((Bool)->Void)? = nil) -> Bot2SettingViewController {
         let sesame5SettingViewController = Bot2SettingViewController(nibName: nil, bundle: nil)
-        sesame5SettingViewController.bikeLock2 = bot2
+        sesame5SettingViewController.bot2 = bot2
         sesame5SettingViewController.dismissHandler = dismissHandler
         sesame5SettingViewController.hidesBottomBarWhenPushed = true
         return sesame5SettingViewController
@@ -344,7 +343,7 @@ extension Bot2SettingViewController: CHSesame2Delegate {
     public func onBleDeviceStatusChanged(device: CHDevice,
                                          status: CHDeviceStatus,
                                          shadowStatus: CHDeviceStatus?) {
-        if device.deviceId == bikeLock2.deviceId,
+        if device.deviceId == bot2.deviceId,
            status == .receivedBle() {
             device.connect() { _ in }
         } else if status.loginStatus == .logined {
@@ -391,7 +390,7 @@ extension Bot2SettingViewController: DFUHelperDelegate {
 extension Bot2SettingViewController: INUIAddVoiceShortcutViewControllerDelegate {
     func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
         if voiceShortcut?.shortcut.intent is ToggleSesameIntent {
-            bikeLock2.setVoiceToggle(voiceShortcut!.identifier)
+            bot2.setVoiceToggle(voiceShortcut!.identifier)
         }
         controller.dismiss(animated: true, completion: nil)
     }
@@ -410,7 +409,7 @@ extension Bot2SettingViewController: INUIEditVoiceShortcutViewControllerDelegate
     func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
         INVoiceShortcutCenter.shared.getAllVoiceShortcuts { shortcuts, error in
             if let _ = shortcuts?.filter({ $0.identifier == deletedVoiceShortcutIdentifier && $0.shortcut.intent is ToggleSesameIntent }).first {
-                self.bikeLock2.removeVoiceToggle()
+                self.bot2.removeVoiceToggle()
             }
         }
         controller.dismiss(animated: true, completion: nil)

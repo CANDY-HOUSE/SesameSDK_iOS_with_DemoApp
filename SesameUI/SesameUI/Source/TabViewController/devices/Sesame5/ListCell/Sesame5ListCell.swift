@@ -59,7 +59,7 @@ class Sesame5ListCell: UITableViewCell {
         didSet {
             device.multicastDelegate.addDelegate(self)
             configureSesame2Cell()
-            if !(device is CHSesameConnector) {//不是連接器不用
+            if device.isLockDevice{
                 device.connect() { _ in }
             }
         }
@@ -119,7 +119,8 @@ class Sesame5ListCell: UITableViewCell {
     
     func configureSesameLockDevice(_ device: CHDevice) {
         UIView.restoreHide(views: sesameUses)
-        sesame2Circle.isHidden = (device is CHSesameConnector && (device.productModel != .openSensor && device.productModel != .openSensor2))//代連裝置右方不用顯示圖標
+        sesame2Circle.isHidden = ((device is CHSesameConnector) && !device.isLockDevice &&
+                                  (device.productModel != .openSensor && device.productModel != .openSensor2))
         deviceNameMagrinRight.priority = sesame2Circle.isHidden ? .defaultLow : .required
         deviceNameLab.text = device.deviceName //名稱
         deviceBleStatusLab.text = device.bluetoothStatusStr()//藍芽狀態文字
@@ -187,7 +188,7 @@ extension Sesame5ListCell: CHDeviceStatusAndKeysDelegate {
     
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?) {
         if status == .receivedBle() {
-            if !(device is CHSesameConnector) {
+            if device.isLockDevice {
                 device.connect() { _ in }
             }
         }

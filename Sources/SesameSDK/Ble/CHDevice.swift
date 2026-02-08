@@ -69,6 +69,8 @@ public extension CHDevice {
             filePrefix = "sesamebike1"
         case .bikeLock2:
             filePrefix = "sesamebike2"
+        case .bikeLock3:
+            filePrefix = "sesamebike3"
         case .openSensor:
             filePrefix = "opensensor1"
         case .openSensor2:
@@ -130,6 +132,10 @@ public extension CHDevice {
         } else {
             self.mechStatus = mechStatus
         }
+    }
+    
+    var isLockDevice: Bool {
+        self is CHSesameLock
     }
 }
 
@@ -274,7 +280,7 @@ public extension CHSesameLock {
                             }
                         }
                     }
-                }else if self.productModel == .bikeLock2{
+                }else if (self.productModel == .bikeLock2 || self.productModel == .bikeLock3){
                     if let mechStatusData = shadow.data.mechStatus?.hexStringtoData(),
                        let mechStatus = CHSesameBike2MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()){
                         if(isConnectedByWM2){

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B74ACBE2F0E63B100EDAF1B /* AWSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74ACBD2F0E63B100EDAF1B /* AWSConfig.swift */; };
+		3B7D7E652F35EE2700F3D79B /* CHSesameBike3Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D7E642F35EE2500F3D79B /* CHSesameBike3Device.swift */; };
+		3B7D7E672F35F35200F3D79B /* CHFingerPrintHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D7E662F35F34F00F3D79B /* CHFingerPrintHost.swift */; };
 		3B8D5CFC2E2D174200FE456E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3B8D5CFA2E2D174200FE456E /* .gitkeep */; };
 		3B8D5DB32E2D176D00FE456E /* CHHub3Device+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D252E2D176D00FE456E /* CHHub3Device+Gatt.swift */; };
 		3B8D5DB42E2D176D00FE456E /* CHDeviceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D932E2D176D00FE456E /* CHDeviceKey.swift */; };
@@ -313,6 +315,8 @@
 
 /* Begin PBXFileReference section */
 		3B74ACBD2F0E63B100EDAF1B /* AWSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfig.swift; sourceTree = "<group>"; };
+		3B7D7E642F35EE2500F3D79B /* CHSesameBike3Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike3Device.swift; sourceTree = "<group>"; };
+		3B7D7E662F35F34F00F3D79B /* CHFingerPrintHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintHost.swift; sourceTree = "<group>"; };
 		3B8D5CFA2E2D174200FE456E /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		3B8D5CFD2E2D176D00FE456E /* CHSesame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2.swift; sourceTree = "<group>"; };
 		3B8D5CFE2E2D176D00FE456E /* CHSesame2Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesame2Device.swift; sourceTree = "<group>"; };
@@ -753,6 +757,7 @@
 			children = (
 				3B8D5D2F2E2D176D00FE456E /* CHSesameBike2.swift */,
 				3B8D5D302E2D176D00FE456E /* CHSesameBike2Device.swift */,
+				3B7D7E642F35EE2500F3D79B /* CHSesameBike3Device.swift */,
 			);
 			path = SesameBike2;
 			sourceTree = "<group>";
@@ -786,6 +791,7 @@
 				3B8D5D3D2E2D176D00FE456E /* CHFingerPrintCapableExtension.swift */,
 				3B8D5D3E2E2D176D00FE456E /* CHFingerPrintDelegate.swift */,
 				3B8D5D3F2E2D176D00FE456E /* CHFingerPrintEventHandlers.swift */,
+				3B7D7E662F35F34F00F3D79B /* CHFingerPrintHost.swift */,
 			);
 			path = FingerPrint;
 			sourceTree = "<group>";
@@ -1729,6 +1735,7 @@
 				3B8D5DCD2E2D176D00FE456E /* WifiModule2Protocols.swift in Sources */,
 				3B8D5DCE2E2D176D00FE456E /* CHDeviceUtil+OS3.swift in Sources */,
 				3B8D5DCF2E2D176D00FE456E /* CHBikeLockDevice+Setting.swift in Sources */,
+				3B7D7E672F35F35200F3D79B /* CHFingerPrintHost.swift in Sources */,
 				3B8D5DD02E2D176D00FE456E /* CHExtensionListener.swift in Sources */,
 				3B8D5DD12E2D176D00FE456E /* CHSesameBaseDevice+Settings.swift in Sources */,
 				3B8D5DD22E2D176D00FE456E /* CHSesame2Device+DFU.swift in Sources */,
@@ -1826,6 +1833,7 @@
 				3B8D5E352E2D176D00FE456E /* ShadowModel.swift in Sources */,
 				3B8D5E362E2D176D00FE456E /* CHConfiguration.swift in Sources */,
 				3B8D5E372E2D176D00FE456E /* CHHub3Device.swift in Sources */,
+				3B7D7E652F35EE2700F3D79B /* CHSesameBike3Device.swift in Sources */,
 				3B8D5E382E2D176D00FE456E /* CHFingerPrintCapable.swift in Sources */,
 				3B8D5E392E2D176D00FE456E /* CHDevice.swift in Sources */,
 				3B8D5E3A2E2D176D00FE456E /* CHSesameBike2Device.swift in Sources */,
