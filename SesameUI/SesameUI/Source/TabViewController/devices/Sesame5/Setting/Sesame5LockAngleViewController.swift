@@ -9,7 +9,6 @@
 import UIKit
 import SesameSDK
 
-// todo 校正磁铁
 class Sesame5LockAngleViewController: CHBaseViewController {
 
     var sesame5: CHSesame5!
@@ -17,6 +16,17 @@ class Sesame5LockAngleViewController: CHBaseViewController {
     private var lockDegree: Int16 = 0
     private var unlockDegree: Int16 = 0
     private var currentDegree: Int16 = 0
+    
+    private var useSlidingDoorUI: Bool = false
+    private var didTrigger5s: Bool = false
+
+    private lazy var slidingDoorView: SlidingDoorAngleView = {
+        let v = SlidingDoorAngleView(frame: .zero)
+        v.isHidden = true
+        v.isUserInteractionEnabled = true
+        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(lockViewTapped)))
+        return v
+    }()
 
     @IBOutlet weak var setUnlockImageView: UIImageView!{
         didSet {
@@ -48,6 +58,17 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(lockViewTapped))
             lockView.addGestureRecognizer(tapGesture)
             lockView.sesame5 = sesame5
+            
+            if slidingDoorView.superview == nil, let parent = lockView.superview {
+                parent.addSubview(slidingDoorView)
+                slidingDoorView.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    slidingDoorView.centerXAnchor.constraint(equalTo: lockView.centerXAnchor),
+                    slidingDoorView.centerYAnchor.constraint(equalTo: lockView.centerYAnchor),
+                    slidingDoorView.widthAnchor.constraint(equalTo: lockView.widthAnchor, constant: 70),
+                    slidingDoorView.heightAnchor.constraint(equalTo: lockView.heightAnchor, constant: 80)
+                ])
+            }
         }
     }
     @IBOutlet weak var setLockedButton: UIButton! {
@@ -69,6 +90,9 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             setMagnetButton.addTarget(self, action: #selector(setMAgnetPositionTapped), for: .touchUpInside)
             setMagnetButton.setTitle("co.candyhouse.sesame2.SetMagnetPosition".localized,
                                        for: .normal)
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(magnetLongPressed(_:)))
+            longPress.minimumPressDuration = 5.0
+            setMagnetButton.addGestureRecognizer(longPress)
         }
     }
     
@@ -86,8 +110,8 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             return
         }
         currentDegree = status.position
+        useSlidingDoorUI = (sesame5.productModel == .sesame6ProSLiDingDoor)
         self.refreshUIView()
-//        L.d("[UI][ss5][refreshUI]",sesame5.mechStatus?.position)
     }
 
     @objc func lockViewTapped() {
@@ -116,7 +140,44 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             }
         }
     }
+    @objc private func magnetLongPressed(_ g: UILongPressGestureRecognizer) {
+        guard g.state == .began else { return }
+        didTrigger5s = true
+        
+        guard sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSLiDingDoor else {
+            return
+        }
+        
+        let gen = UINotificationFeedbackGenerator()
+        gen.notificationOccurred(.success)
+        
+        let advType: UInt8
+        let targetUseSliding: Bool
+        if sesame5.productModel == .sesame6ProSLiDingDoor {
+            advType = 21
+            targetUseSliding = false
+        } else {
+            advType = 32
+            targetUseSliding = true
+        }
+        
+        sesame5.sendAdvProductTypeCommand(data: Data([advType])) { res in
+            executeOnMainThread {
+                switch res {
+                case .success:
+                    self.useSlidingDoorUI = targetUseSliding
+                    self.refreshUIView()
+                case .failure(let err):
+                    L.d("Sesame5LockAngle", "sendAdvProductTypeCommand fail: \(err)")
+                }
+            }
+        }
+    }
     @objc func setMAgnetPositionTapped() {
+        if didTrigger5s {
+            didTrigger5s = false
+            return
+        }
         ViewHelper.showLoadingInView(view: self.view)
         self.sesame5?.magnet { _ in
             executeOnMainThread {
@@ -127,9 +188,22 @@ class Sesame5LockAngleViewController: CHBaseViewController {
     }
     
     func refreshUIView() {
-        self.lockView.refreshUI()        
+        if useSlidingDoorUI {
+            lockView.isHidden = true
+            slidingDoorView.isHidden = false
+            slidingDoorView.update(
+                pos: sesame5.mechStatus?.position ?? 0,
+                lock: sesame5.mechSetting?.lockPosition ?? 0,
+                unlock: sesame5.mechSetting?.unlockPosition ?? 0
+            )
+        } else {
+            slidingDoorView.isHidden = true
+            lockView.isHidden = false
+            lockView.refreshUI()
+        }
+        
         if let mechStatus = sesame5.mechStatus {
-            self.topAngleLabel.text =  String(format: "%d°", mechStatus.position)
+            topAngleLabel.text = String(format: "%d°", mechStatus.position)
         }
     }
 

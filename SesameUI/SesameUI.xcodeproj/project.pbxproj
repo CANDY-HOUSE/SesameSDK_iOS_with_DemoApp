@@ -18,6 +18,7 @@
 		3B203FDE2E3CF307004E2606 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */; };
 		3B32750A2E7957340076DCBC /* CHDeviceWrapperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3275092E7957320076DCBC /* CHDeviceWrapperManager.swift */; };
 		3B41364D2E45D5710044E33F /* CustomInputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B41364C2E45D56E0044E33F /* CustomInputDialog.swift */; };
+		3B8671B82F3CCDC50075598B /* SlidingDoorAngleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8671B72F3CCDC20075598B /* SlidingDoorAngleView.swift */; };
 		3B8B7C242E2E47DD00F5A2F7 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */; };
 		3B8B7C482E2FBB0200F5A2F7 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5952E2DE4F8008EBF76 /* SesameSDK */; };
@@ -428,6 +429,7 @@
 		3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3B3275092E7957320076DCBC /* CHDeviceWrapperManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceWrapperManager.swift; sourceTree = "<group>"; };
 		3B41364C2E45D56E0044E33F /* CustomInputDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputDialog.swift; sourceTree = "<group>"; };
+		3B8671B72F3CCDC20075598B /* SlidingDoorAngleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingDoorAngleView.swift; sourceTree = "<group>"; };
 		3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC329382E28A9D600786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -874,6 +876,7 @@
 				414C3CFF2A1FBC0800AB59CF /* LongPressReorder.swift */,
 				646B86DB2B443D520042589E /* PlayLoadingView.swift */,
 				64498EA12BD65EFB00806D0F /* FloatingTipView.swift */,
+				3B8671B72F3CCDC20075598B /* SlidingDoorAngleView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -2170,6 +2173,7 @@
 				B179690B22F7CE9300E91996 /* AppDelegate.swift in Sources */,
 				BED189F625591C72006544A0 /* WifiModule2SesameCell.swift in Sources */,
 				648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */,
+				3B8671B82F3CCDC50075598B /* SlidingDoorAngleView.swift in Sources */,
 				BEC0908624A9F281006E188E /* QRCodeURLType.swift in Sources */,
 				649315F42EFBEB9D002D0EC0 /* RemoteBean.swift in Sources */,
 				BE99CAAD257F65990098F3A1 /* WifiModule2SSIDScanViewController.swift in Sources */,

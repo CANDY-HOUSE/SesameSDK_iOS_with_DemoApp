@@ -26,6 +26,7 @@ public protocol CHSesame5: CHSesameLock {
     func configureLockPosition(lockTarget: Int16, unlockTarget: Int16,result: @escaping (CHResult<CHEmpty>))
     func magnet(result: @escaping (CHResult<CHEmpty>))
     func opSensorControl(delay: Int, result: @escaping (CHResult<Int>))
+    func sendAdvProductTypeCommand(data: Data,result: @escaping (CHResult<CHEmpty>))
 }
 
 extension CHSesame5 {

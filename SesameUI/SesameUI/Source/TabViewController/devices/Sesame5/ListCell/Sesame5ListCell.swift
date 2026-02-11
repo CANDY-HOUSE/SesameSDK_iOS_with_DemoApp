@@ -131,7 +131,7 @@ class Sesame5ListCell: UITableViewCell {
         wifiStatusImg.image = UIImage(named: device.wifiImageStr())//wifi小標圖片
         configureBatteryDisplay(device)//电量处理
         if let mechStatus = device.mechStatus {
-            if device.productModel == .sesame5 || device.productModel == .sesame5Pro || device.productModel == .sesame5US || device.productModel == .sesame6Pro || device.productModel == .sesameMiwa {
+            if device.productModel == .sesame5 || device.productModel == .sesame5Pro || device.productModel == .sesame5US || device.productModel == .sesame6Pro || device.productModel == .sesame6ProSLiDingDoor || device.productModel == .sesameMiwa {
                 self.sesame2Circle.refreshUI(newPointerAngle: CGFloat(reverseDegree(angle: mechStatus.position)),lockColor: device.lockColor())
             } else if device.productModel == .sesame2 || device.productModel == .sesame4 {
                 self.sesame2Circle.refreshUI(newPointerAngle: CGFloat(angle2degree(angle: mechStatus.position)),lockColor: device.lockColor())

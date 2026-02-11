@@ -72,6 +72,8 @@ extension CHDevice {
             return device?.name ?? "co.candyhouse.sesame2.SSMFace2".localized
         case .sesame6Pro:
             return device?.name ?? "\("co.candyhouse.sesame2.Sesame".localized)6 Pro"
+        case .sesame6ProSLiDingDoor:
+            return device?.name ?? "\("co.candyhouse.sesame2.Sesame".localized)6 Pro SLiDingDoor"
         case .sesameFaceAI:
             return device?.name ?? "co.candyhouse.sesame2.SSMFaceAI".localized
         case .sesameFace2AI:

@@ -110,6 +110,18 @@ extension CHSesame5Device {
         }
     }
     
+    public func sendAdvProductTypeCommand(data: Data, result: @escaping (CHResult<CHEmpty>)) {
+        if (!isBleAvailable(result)) { return }
+        
+        sendCommand(.init(.SS3_ITEM_CODE_SET_ADV_PRODUCT_TYPE, data)) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+    
     func magnet(result: @escaping (CHResult<CHEmpty>)) {
         if(!isBleAvailable(result)){return}
         
