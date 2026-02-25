@@ -60,6 +60,8 @@ extension CHDevice {
             return device?.name ?? "co.candyhouse.sesame2.Sesame5US".localized
         case .sesameBot2:
             return device?.name ?? "co.candyhouse.sesame2.SesameBot2".localized
+        case .sesameBot3:
+            return device?.name ?? "co.candyhouse.sesame2.SesameBot3".localized
         case .hub3:
             return device?.name ?? "co.candyhouse.sesame2.Hub3".localized
         case .sesameFacePro:

@@ -422,6 +422,14 @@ class SesameDeviceListViewController: CHBaseViewController {
                     self?.toggleIndexPathForHub3(device, true)
                 }
             }
+        case .sesameBot3:
+            guard let bot3Device = device as? CHSesameBot2 else { return }
+            navigateToBot2SettingViewController(bot3Device)
+            DispatchQueue.main.async { [weak self] in
+                if device.preference.expanded {
+                    self?.toggleIndexPathForHub3(device, true)
+                }
+            }
         case .bikeLock:
             guard let bikeLock = device as? CHSesameBike else { return }
             navigateToBikeLockSettingViewController(bikeLock)

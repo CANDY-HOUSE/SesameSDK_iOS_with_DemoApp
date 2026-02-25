@@ -67,6 +67,8 @@ public extension CHDevice {
             filePrefix = "sesamebot1"
         case .sesameBot2:
             filePrefix = "sesamebot2"
+        case .sesameBot3:
+            filePrefix = "sesamebot2"
         case .bikeLock:
             filePrefix = "sesamebike1"
         case .bikeLock2:
