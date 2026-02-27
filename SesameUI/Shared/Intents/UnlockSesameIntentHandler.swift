@@ -88,7 +88,7 @@ class UnlockSesameIntentHandler: NSObject, UnlockSesameIntentHandling {
             }
             return
         } else if let sesameLock = device as? CHSesameBike2 {
-            sesameLock.unlock { _ in
+            sesameLock.unlock(historytag: device.hisTag) { _ in
                 complete()
             }
             return

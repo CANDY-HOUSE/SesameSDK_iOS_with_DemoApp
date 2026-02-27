@@ -22,7 +22,7 @@ extension CHDeviceManager {
             if case let .success(chDevices) = getResult {
                 for sesameLock in chDevices.data.compactMap({ $0 as? CHSesameLock }) {
                     L.d("標籤,CHDeviceManager =>", historyTag)
-                    if sesameLock is CHSesame5 {
+                    if sesameLock is CHSesame5 || sesameLock is CHSesameBike2 {
                         sesameLock.setHistoryTag(userSubTag, result: {_ in})
                     } else {
                         sesameLock.setHistoryTag(historyTag, result: {_ in})

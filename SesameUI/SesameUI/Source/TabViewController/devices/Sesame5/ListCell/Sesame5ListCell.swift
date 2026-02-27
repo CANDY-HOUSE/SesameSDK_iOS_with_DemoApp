@@ -90,7 +90,7 @@ class Sesame5ListCell: UITableViewCell {
         (device as? CHSesame2)?.toggle { _ in }
         (device as? CHSesameBot)?.click { _ in }
         (device as? CHSesameBike)?.unlock { _ in }
-        (device as? CHSesameBike2)?.unlock { _ in }
+        (device as? CHSesameBike2)?.unlock(historytag: device.hisTag) { _ in }
         if let bot2 = device as? CHSesameBot2 {
             let intValue: Int = UserDefaults.standard.integer(forKey:device.deviceId.uuidString)
             bot2.click(index: UInt8(intValue), result: { _ in })

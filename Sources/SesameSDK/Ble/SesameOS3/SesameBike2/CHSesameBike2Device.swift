@@ -11,6 +11,7 @@ import CoreBluetooth
 
 class CHSesameBike2Device: CHSesameOS3 ,CHSesameBike2, CHDeviceUtil {
 
+    var isConnectedByWM2 = false
     var advertisement: BleAdv? {
         didSet{
             guard let advertisement = advertisement else {
@@ -18,6 +19,17 @@ class CHSesameBike2Device: CHSesameOS3 ,CHSesameBike2, CHDeviceUtil {
                 return
             }
             setAdv(advertisement)
+            if (self.deviceStatus.loginStatus == .logined ) {
+                isHistory = advertisement.adv_tag_b1
+            }
+        }
+    }
+    
+    public var isHistory: Bool = false {
+        didSet {
+            if isHistory {
+                self.readHistoryCommand(){_ in}
+            }
         }
     }
     
@@ -48,19 +60,18 @@ extension CHSesameBike2Device {
     public func unlock(historytag: Data?, result: @escaping (CHResult<CHEmpty>))  {
         if deviceShadowStatus != nil,
            deviceStatus.loginStatus == .unlogined {
-            CHIoTManager.shared.sendCommandToWM2(SesameItemCode.unlock, Data(), self) { _ in
+            CHIoTManager.shared.sendCommandToWM2(SesameItemCode.unlock, historytag ?? Data(), self) { _ in
                 result(.success(CHResultStateNetworks(input: CHEmpty())))
             }
             return
         }
         if (!self.isBleAvailable(result)) {
-            CHIoTManager.shared.sendCommandToWM2(SesameItemCode.unlock, Data(), self) { _ in
+            CHIoTManager.shared.sendCommandToWM2(SesameItemCode.unlock, historytag ?? Data(), self) { _ in
                 result(.success(CHResultStateNetworks(input: CHEmpty())))
             }
             return
         }
-        let hisTag = Data.createOS2Histag(historytag ?? self.sesame2KeyData?.historyTag)
-        sendCommand(.init(.unlock,hisTag)) { responsePayload in
+        sendCommand(.init(.unlock,historytag)) { responsePayload in
 //            L.d("[bk2][unlock][sendCommand] res =>",responsePayload.cmdResultCode)
             if responsePayload.cmdResultCode == .success {
                 result(.success(CHResultStateBLE(input: CHEmpty())))
@@ -116,5 +127,40 @@ extension CHSesameBike2Device {
         }
     }
 
+    func readHistoryCommand(_ result: @escaping (CHResult<CHEmpty>))  {
+        URLSession.isInternetReachable { isInternetReachable in
+            self.sendCommand(.init( .history, "01".hexStringtoData())) { (result) in // 01: 从设备读取最旧的历史记录
+                if result.cmdResultCode == .success {
+                    let histItem = result.data.copyData
+                    (self.delegate as? CHSesameBike2Delegate)?.onHistoryReceived(device: self, result: .success(CHResultStateBLE(input: histItem)))
+                    guard isInternetReachable && !self.isConnectedByWM2 else { return }
+                    self.postProcessHistory(result.data.copyData) { res in
+                        if case .success(_) = res  {
+                            let recordId = result.data.copyData[0...3].copyData
+                            self.sendCommand(.init(SesameItemCode.historyDelete, recordId)) { response in
+                                if response.cmdResultCode == .success  { L.d("[bike2][history]歷史删除成功") }
+                            }
+                        }
+                    }
+                } else {
+                    (self.delegate as? CHSesameBike2Delegate)?.onHistoryReceived(device: self, result: .failure(self.errorFromResultCode(result.cmdResultCode)))
+                    self.isHistory = false
+                }
+            }
+        }
+    }
+    
+    func postProcessHistory(_ historyData: Data, _ callback: @escaping CHResult<CHEmpty>) {
+        CHAPIClient.shared.postHistory(deviceId: self.deviceId.uuidString, payload: historyData.toHexString(), t: "5") { result in
+            switch result {
+            case .success(_):
+                callback(.success(CHResultStateNetworks(input:CHEmpty())))
+                break
+            case .failure(let error):
+                callback(.failure(error))
+                break
+            }
+        }
+    }
 
 }

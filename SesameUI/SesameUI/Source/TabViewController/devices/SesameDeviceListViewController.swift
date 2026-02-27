@@ -435,7 +435,11 @@ class SesameDeviceListViewController: CHBaseViewController {
             navigateToBikeLockSettingViewController(bikeLock)
         case .bikeLock2:
             guard let bikeLock2 = device as? CHSesameBike2 else { return }
-            navigateToBike2SettingViewController(bikeLock2)
+            if bikeLock2.keyLevel == KeyLevel.guest.rawValue {
+                navigateToBike2SettingViewController(bikeLock2)
+            } else {
+                navigateToBike2HistoryViewController(bikeLock2)
+            }
         case .bikeLock3:
             guard let bikeLock3 = device as? CHSesameBike2 else { return }
             navigateToBike2SettingViewController(bikeLock3)

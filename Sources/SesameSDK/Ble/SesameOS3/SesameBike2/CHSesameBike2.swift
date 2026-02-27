@@ -13,9 +13,16 @@ public protocol CHSesameBike2: CHSesameLock {
 }
 
 extension CHSesameBike2 {
-    public func unlock(result: @escaping (CHResult<CHEmpty>)) {
-        unlock(historytag: nil, result: result)
+    public func unlock(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
+        unlock(historytag:historytag, result: result)
     }
+}
+
+public protocol CHSesameBike2Delegate: CHDeviceStatusDelegate {
+    func onHistoryReceived(device: CHSesameBike2, result: Result<CHResultState<Data>, Error>)
+}
+public extension CHSesameBike2Delegate {
+    func onHistoryReceived(device: CHSesameBike2, result: Result<CHResultState<Data>, Error>) {}
 }
 
 /*

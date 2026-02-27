@@ -192,6 +192,12 @@ public extension CHRouteCoordinator where Self: UIViewController {
         navigationController?.pushViewController(BikeLockSettingViewController.instanceWithBikeLock(bikeLock) {},animated: true)
     }
     
+    func navigateToBike2HistoryViewController(_ bikeLock2: CHSesameBike2) {
+        navigationController?.pushViewController(SesameHistoryViewController.instance(bikeLock2, dismissHandler: nil, settingClickHandler: { [weak self] in
+            self?.navigationController?.pushViewController(BikeLock2SettingViewController.instanceWithBikeLock2(bikeLock2) { _ in }, animated: true)
+        }), animated: true)
+    }
+    
     func navigateToBike2SettingViewController(_ bikeLock2: CHSesameBike2) {
         navigationController?.pushViewController(BikeLock2SettingViewController.instanceWithBikeLock2(bikeLock2) {_ in },animated: true)
     }

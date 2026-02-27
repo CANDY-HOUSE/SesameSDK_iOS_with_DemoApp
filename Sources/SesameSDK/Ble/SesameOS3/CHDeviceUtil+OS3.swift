@@ -145,6 +145,9 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
                 if let sesame5Device = self as? CHSesame5Device {
                     sesame5Device.isConnectedByWM2 = isConnectedByWM2
                 }
+                if let sesameBike2Device = self as? CHSesameBike2Device {
+                    sesameBike2Device.isConnectedByWM2 = isConnectedByWM2
+                }
             case .failure( _): break
             }
         }
