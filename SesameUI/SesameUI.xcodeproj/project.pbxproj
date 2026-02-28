@@ -115,6 +115,7 @@
 		64EC068F2E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06822E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift */; };
 		64EC06902E7C00EA0047ED13 /* RefreshFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06862E7C00EA0047ED13 /* RefreshFootView.swift */; };
 		89078B492F519ECB0067B6C3 /* sesamebike3_30_33_f33842.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B482F519ECB0067B6C3 /* sesamebike3_30_33_f33842.zip */; };
+		89078B532F52F06C0067B6C3 /* sesamebike2_30_6_ec3c5c.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B522F52F06C0067B6C3 /* sesamebike2_30_6_ec3c5c.zip */; };
 		890D33052DA0E7FF0031F0AF /* FingerPrintCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890D33032DA0E7FF0031F0AF /* FingerPrintCell.xib */; };
 		890D33062DA0E7FF0031F0AF /* FingerPrintListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D32FE2DA0E7FF0031F0AF /* FingerPrintListVC.swift */; };
 		890D33072DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D32FC2DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift */; };
@@ -283,7 +284,6 @@
 		D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
 		D0424E33295A908300C3FB9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 418FA1F2237C04EF00C7C408 /* InfoPlist.strings */; };
-		D049584A2E5DCEB700E3290B /* sesamebike2_30_6_990e7f.zip in Resources */ = {isa = PBXBuildFile; fileRef = D04958492E5DCEB700E3290B /* sesamebike2_30_6_990e7f.zip */; };
 		D09C4B732E5C4C810031F6A2 /* sesamebot2_30_17_990e7f.zip in Resources */ = {isa = PBXBuildFile; fileRef = D09C4B722E5C4C810031F6A2 /* sesamebot2_30_17_990e7f.zip */; };
 		E811CD0A2910FF8600E46793 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
 		E84262D22913736A0064163D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED74C4F24AC760E0052F04D /* Assets.xcassets */; };
@@ -534,6 +534,7 @@
 		64EC06872E7C00EA0047ED13 /* RefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshHeaderView.swift; sourceTree = "<group>"; };
 		64EC06882E7C00EA0047ED13 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		89078B482F519ECB0067B6C3 /* sesamebike3_30_33_f33842.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike3_30_33_f33842.zip; sourceTree = "<group>"; };
+		89078B522F52F06C0067B6C3 /* sesamebike2_30_6_ec3c5c.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_ec3c5c.zip; sourceTree = "<group>"; };
 		890D32FC2DA0E7FF0031F0AF /* SesameBiometricDeviceSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBiometricDeviceSettingVC.swift; sourceTree = "<group>"; };
 		890D32FD2DA0E7FF0031F0AF /* SesameBiometricDeviceKeysListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBiometricDeviceKeysListVC.swift; sourceTree = "<group>"; };
 		890D32FE2DA0E7FF0031F0AF /* FingerPrintListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerPrintListVC.swift; sourceTree = "<group>"; };
@@ -683,7 +684,6 @@
 		BED74C5624AC760E0052F04D /* SesameWatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SesameWatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFB1DE0256A6AEF00BF95CB /* CHDeviceManagerShared+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHDeviceManagerShared+.swift"; sourceTree = "<group>"; };
 		BEFDB214250D0F7400739B11 /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
-		D04958492E5DCEB700E3290B /* sesamebike2_30_6_990e7f.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike2_30_6_990e7f.zip; sourceTree = "<group>"; };
 		D09C4B722E5C4C810031F6A2 /* sesamebot2_30_17_990e7f.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebot2_30_17_990e7f.zip; sourceTree = "<group>"; };
 		E80E88922910D1D3006D1618 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Sesame2Intents.strings"; sourceTree = "<group>"; };
 		E80E88972910D1D3006D1618 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Interface.strings"; sourceTree = "<group>"; };
@@ -1201,7 +1201,7 @@
 				643F068E2BCD123F0045D789 /* sesamebot1_21_2_369eb9.zip */,
 				D09C4B722E5C4C810031F6A2 /* sesamebot2_30_17_990e7f.zip */,
 				643F06922BCD123F0045D789 /* sesamebike1_21_3_d7162a.zip */,
-				D04958492E5DCEB700E3290B /* sesamebike2_30_6_990e7f.zip */,
+				89078B522F52F06C0067B6C3 /* sesamebike2_30_6_ec3c5c.zip */,
 				89078B482F519ECB0067B6C3 /* sesamebike3_30_33_f33842.zip */,
 				89EC94A52F0E3AC80056818E /* bleconnector_30_11_b5940a.zip */,
 				89C28A0A2F335003001890E7 /* opensensor1_30_8_4a5b8d.zip */,
@@ -1929,7 +1929,6 @@
 				643F06A12BCD12400045D789 /* sesame_221_0_8c080c.zip in Resources */,
 				BE70FBEF2558D4B000B38D54 /* WifiModule2SettingViewController.xib in Resources */,
 				647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */,
-				D049584A2E5DCEB700E3290B /* sesamebike2_30_6_990e7f.zip in Resources */,
 				D09C4B732E5C4C810031F6A2 /* sesamebot2_30_17_990e7f.zip in Resources */,
 				BE97F4082561215C00E9FDC4 /* SignUpViewController.xib in Resources */,
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
@@ -1966,6 +1965,7 @@
 				89078B492F519ECB0067B6C3 /* sesamebike3_30_33_f33842.zip in Resources */,
 				646CE5662BDF3D9A00898ECA /* finger_print.gif in Resources */,
 				B07FAF96251B54F400FB5821 /* Media.xcassets in Resources */,
+				89078B532F52F06C0067B6C3 /* sesamebike2_30_6_ec3c5c.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
