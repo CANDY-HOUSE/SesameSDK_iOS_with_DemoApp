@@ -25,6 +25,22 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         }
     }
     
+    private func setVersion() {
+        let fileName = DFUHelper.getDfuFileName(self.mDevice!).split(separator: "_")
+        let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
+        let currentFwVer = device.stateInfo?.currentFwVer
+        let isnewest: Bool
+        if let currentFwVer, let latestVersion {
+            isnewest = currentFwVer.contains(latestVersion)
+        } else {
+            isnewest = false
+        }
+        self.versionStr = "\(currentFwVer ?? "")\(isnewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
+        executeOnMainThread {
+            self.dfuView.exclamation.isHidden = isnewest
+        }
+    }
+    
     // MARK: - Data model
     lazy var localDevices: [CHDevice] = {
         var chDevices = [CHDevice]()
@@ -35,11 +51,21 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         }
         return chDevices
     }()
+    
+    // MARK: - Values for UI
+    var versionStr: String? {
+        didSet {
+            executeOnMainThread {
+                self.dfuView.value = self.versionStr ?? ""
+            }
+        }
+    }
 
     // MARK: - UI Componets
     let scrollView = UIScrollView(frame: .zero)
     let contentStackView = UIStackView(frame: .zero)
     var refreshControl: UIRefreshControl = UIRefreshControl()
+    var dfuView: CHUIPlainSettingView!
     var dismissHandler: (()->Void)?
 
     deinit {
@@ -63,6 +89,7 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setVersion()
     }
     
     @objc func reloadFriends() {
@@ -87,6 +114,12 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         modelView.value = mDevice.productModel.deviceModelName()
         modelView.tag = kTagModelView
         contentStackView.addArrangedSubview(modelView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
+        
+        // MARK: OTA - DFU View
+        dfuView = CHUIViewGenerator.plain()
+        dfuView.title = "co.candyhouse.sesame2.SesameOSUpdate".localized
+        contentStackView.addArrangedSubview(dfuView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: Battery View

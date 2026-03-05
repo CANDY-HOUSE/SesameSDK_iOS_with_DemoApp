@@ -94,6 +94,8 @@ struct CHUserKey: Codable {
 struct StateInfo: Codable {
     var batteryPercentage: Int?
     var CHSesame2Status: String?
+    var currentFwVer: String?
+    var latestFwVer: String?
     var timestamp: Int64?
     var wm2State: Bool?
     let remoteList: [IRRemote]?
