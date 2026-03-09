@@ -37,7 +37,6 @@ public struct CHSesameBikeMechSettings {
 }
 
 struct BikeLockMechStatus: CHSesameProtocolMechStatus {
-
     let battery: UInt16
     let target: Int16    // Padding, no usage
     let padding2: Int16
@@ -54,12 +53,6 @@ struct BikeLockMechStatus: CHSesameProtocolMechStatus {
     }                   // Padding, no usage
     var data: Data {
         battery.data + target.data + padding2.data + retCode.data + flags.data
-    }
-    
-   
-
-    public func getBatteryVoltage() -> Float {
-        return Float(battery) * 7.2 / 1023
     }
     
     var isClutchFailed: Bool {

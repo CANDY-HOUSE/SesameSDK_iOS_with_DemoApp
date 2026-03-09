@@ -31,7 +31,6 @@ public struct CHSesameBotMechSettings {
 }
 
 struct SesameBotMechStatus: CHSesameProtocolMechStatus {
-    
     let battery: UInt16
     let position: Int16    // Padding, no usage
     let motorStatus: UInt8 // noPower: 0, forward: 1, hold:2, backward: 3
@@ -50,13 +49,6 @@ struct SesameBotMechStatus: CHSesameProtocolMechStatus {
     var isStop: Bool?{motorStatus == 0}
     var isMoving: Bool { motorStatus != 0 }
     var isBatteryCritical: Bool { return false }
-    
- 
-
-//    
-    func getBatteryVoltage() -> Float {
-        return Float(battery) * 7.2 / 1023
-    }
 
     static func fromData(_ buf: Data) -> SesameBotMechStatus? {
         return to(buf)

@@ -26,6 +26,13 @@ class CHDeviceWrapperManager {
         }
     }
     
+    // 更新单个 UserKey
+    func updateUserKey(_ userKey: CHUserKey, for deviceId: String) {
+        queue.async(flags: .barrier) {
+            self.userKeyMap[deviceId.uppercased()] = userKey
+        }
+    }
+    
     // 获取 UserKey
     func getUserKey(for deviceId: String) -> CHUserKey? {
         queue.sync {

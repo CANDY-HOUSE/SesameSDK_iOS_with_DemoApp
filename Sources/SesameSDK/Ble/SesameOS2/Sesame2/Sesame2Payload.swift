@@ -192,10 +192,6 @@ struct Sesame2MechStatus: CHSesameProtocolMechStatus {
     var isInUnlockRange: Bool { return flags & 4 > 0 }
     var isStop: Bool?{return nil}
     var isBatteryCritical: Bool { return flags & 32 > 0 }
-    
-    public func getBatteryVoltage() -> Float {
-        return Float(battery) * 7.2 / 1023
-    }
 
     static func fromData(_ buf: Data) -> Sesame2MechStatus? {
         return to(buf)

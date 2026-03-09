@@ -44,13 +44,17 @@ class CHSesame5Device: CHSesameOS3, CHDeviceUtil ,CHSesame5 {
                 mechStatus = Sesame5MechStatus.fromData(data)!
                 self.readHistoryCommand(){_ in}
                 self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
-                postBatteryData(data[0..<2].toHexString())
+                postBatteryData(data[0..<2].toHexString()) { res in
+                    if case .success(let resp) = res {
+                        self.notifyBatteryPercentageChanged(percentage: resp.data)
+                    }
+                }
             case .mechSetting:
                 mechSetting = CHSesame5MechSettings.fromData(data)!
             case .OPS_CONTROL:
                 opsSetting = CHSesame5OpsSettings.fromData(data)!
             case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
-                postBatteryData(data.toHexString())
+            postBatteryData(data.toHexString()) { _ in }
             L.d("[ops]收到上鎖秒數UInt16",opsSetting!.opsLockSecond)
         default:
             L.d("!![ss5][pub][\(itemCode.rawValue)]")
@@ -70,15 +74,7 @@ struct Sesame5MechStatus: CHSesameProtocolMechStatus {
     var isStop: Bool? { return flags & 16 > 0 }
     var isBatteryCritical: Bool { return flags & 32 > 0 }
     var isCritical: Bool? { return flags & 8 > 0 }
-
-//    public func getBatteryPrecentage() -> Int { 有必要可以自己複寫電量。這裡是範例
-//        return 0
-//    }
-
-    public func getBatteryVoltage() -> Float {
-        return Float(battery) * 2 / 1000
-    }
-
+    
     static func fromData(_ buf: Data) -> Sesame5MechStatus? {
         return  buf.withUnsafeBytes({ $0.load(as: self) })
     }

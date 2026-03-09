@@ -97,15 +97,12 @@ extension CHDevice {
         Sesame2Store.shared.saveAttributes(["name": deviceName], for: self)
     }
 
-    func batteryIndicatorWidth() -> CGFloat { /// 設備 電池電量長度
+    func batteryIndicatorWidth(percentage: Int?) -> CGFloat { /// 設備 電池電量長度
         var fullBattery = CGFloat(10.2)
 #if os(watchOS)
         fullBattery = CGFloat(12)
 #endif
-        var batteryPercentage: Int?
-
-        batteryPercentage = self.mechStatus?.getBatteryPrecentage() ?? 0
-        //        L.d("batteryPercentage",batteryPercentage)
+        let batteryPercentage: Int? = percentage ?? 0
         let value = 0 + (CGFloat(fullBattery) * CGFloat(batteryPercentage!) / 100)
         return value
     }

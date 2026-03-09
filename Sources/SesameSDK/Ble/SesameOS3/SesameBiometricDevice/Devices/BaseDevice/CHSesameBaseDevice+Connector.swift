@@ -64,7 +64,6 @@ extension CHSesameBaseDevice {
                 let state = try JSONDecoder().decode(OpenSensorData.self, from: data)
                 let mechState = OpensensorMechStatus.fromData(state)
                 self.mechStatus = mechState
-                L.d("CHSesameBaseDevice", "goIoTWithOpenSensor \(self.mechStatus?.getBatteryPrecentage() ?? 0)%")
             } catch {
                 L.d("CHSesameBaseDevice", "Failed to decode: \(error)")
             }

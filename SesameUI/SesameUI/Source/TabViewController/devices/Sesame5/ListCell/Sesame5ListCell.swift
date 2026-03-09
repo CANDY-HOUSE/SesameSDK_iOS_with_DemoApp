@@ -184,7 +184,7 @@ class Sesame5ListCell: UITableViewCell {
 
 extension Sesame5ListCell: CHDeviceStatusAndKeysDelegate {
     
-    func onSesame2KeysChanged(device: CHWifiModule2, sesame2keys: [String : String]) { }
+    func onSesame2KeysChanged(device: CHSesameConnector, sesame2keys: [String : String]) { }
     
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?) {
         if status == .receivedBle() {
@@ -199,6 +199,13 @@ extension Sesame5ListCell: CHDeviceStatusAndKeysDelegate {
 
     func onMechStatus(device: CHDevice) {
         executeOnMainThread {
+            self.configureSesame2Cell()
+        }
+    }
+    
+    func onBatteryPercentageChanged(device: any CHDevice, percentage: Int) {
+        executeOnMainThread {
+            device.setBatteryPercentage(percentage)
             self.configureSesame2Cell()
         }
     }

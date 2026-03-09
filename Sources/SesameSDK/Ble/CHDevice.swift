@@ -10,10 +10,12 @@ import CoreBluetooth
 public protocol CHDeviceStatusDelegate: AnyObject {
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?)
     func onMechStatus(device: CHDevice)
+    func onBatteryPercentageChanged(device: CHDevice, percentage: Int)
 }
 public extension CHDeviceStatusDelegate {
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?) {}
     func onMechStatus(device: CHDevice) {}
+    func onBatteryPercentageChanged(device: CHDevice, percentage: Int) {}
 }
 
 // MARK: - CHDevice
@@ -224,12 +226,8 @@ internal extension CHDevice {
         return (self as? CHDeviceUtil)?.sesame2KeyData?.historyTag?.copyData
     }
     
-    func postBatteryData(_ payload: String) {
-        CHAPIClient.shared.postBatteryData(deviceId: deviceId.uuidString, payload: payload) { res in
-            if case .failure(let error) = res {
-                L.d("postBattery error", error)
-            }
-        }
+    func postBatteryData(_ payload: String, result: @escaping CHResult<Int>) {
+        CHAPIClient.shared.postBatteryData(deviceId: deviceId.uuidString, payload: payload, result: result)
     }
     
     // 訪客鑰匙調用, 取session token並上傳server以secretKey簽章後得到login token

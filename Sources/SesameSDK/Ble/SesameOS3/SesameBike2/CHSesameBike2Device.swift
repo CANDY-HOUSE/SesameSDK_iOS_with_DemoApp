@@ -45,9 +45,13 @@ class CHSesameBike2Device: CHSesameOS3 ,CHSesameBike2, CHDeviceUtil {
                 mechStatus = CHSesameBike2MechStatus.fromData(data)!
             }
             self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
-            postBatteryData(data[0..<2].toHexString())
+            postBatteryData(data[0..<2].toHexString()) { res in
+                if case .success(let resp) = res {
+                    self.notifyBatteryPercentageChanged(percentage: resp.data)
+                }
+            }
         case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
-            postBatteryData(data.toHexString())
+            postBatteryData(data.toHexString()) { _ in }
         default:
             L.d("[bk2][publish]!![\(itemCode.rawValue)]")
         }

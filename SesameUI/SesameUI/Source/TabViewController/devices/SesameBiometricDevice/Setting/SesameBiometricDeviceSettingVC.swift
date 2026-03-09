@@ -50,7 +50,9 @@ extension SesameBiometricDeviceSettingVC {
     }
 }
 
-class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesameConnectorDelegate, DeviceControllerHolder {
+class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesameConnectorDelegate, DeviceControllerHolder, CHDeviceStatusAndKeysDelegate {
+    func onSesame2KeysChanged(device: any SesameSDK.CHWifiModule2, sesame2keys: [String : String]) {}
+    
     // MARK: DeviceControllerHolder impl
     let tag: String = "SesameBiometricDeviceSettingVC"
     var device: SesameSDK.CHDevice!
@@ -109,9 +111,9 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         }
     }
     
-    func onMechStatus(device: CHDevice) {
+    func onBatteryPercentageChanged(device: any CHDevice, percentage: Int) {
         executeOnMainThread { [self] in
-            batteryView.value = "\(mDevice.mechStatus?.getBatteryPrecentage() ?? 0) %"
+            batteryView.value = "\(percentage)%"
         }
     }
     
@@ -225,8 +227,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let mDevice = mDevice else {print("mDevice is nil");return}
-        
-        mDevice.delegate = self
+        mDevice.multicastDelegate.addDelegate(self)
         mySesames = mDevice.sesame2Keys.keys.compactMap { $0 }
         showStatusViewIfNeeded()
         

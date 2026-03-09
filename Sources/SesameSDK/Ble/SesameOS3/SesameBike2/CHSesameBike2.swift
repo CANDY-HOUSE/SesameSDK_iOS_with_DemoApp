@@ -35,11 +35,6 @@ struct CHSesameBike2MechStatus: CHSesameProtocolMechStatus {
     var isInLockRange: Bool { return flags & 2 > 0 }
     var isStop: Bool? { return flags & 4 > 0 }
 
-
-    func getBatteryVoltage() -> Float {
-        return Float(battery) * 2.0 / 1000.0
-    }
-
     static func fromData(_ buf: Data) -> CHSesameBike2MechStatus? {
         return  buf.withUnsafeBytes({ $0.load(as: self) })
     }

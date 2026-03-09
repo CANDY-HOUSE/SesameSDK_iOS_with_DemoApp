@@ -180,7 +180,31 @@ extension CHBaseDevice {
     
     func notifySesameKeysChanged() {
         multicastDelegate.invokeDelegates { invokation in
-            invokation.onSesame2KeysChanged(device: self as! CHWifiModule2, sesame2keys: [:])
+            invokation.onSesame2KeysChanged(device: self as! CHSesameConnector, sesame2keys: [:])
+        }
+    }
+    
+    func notifyBatteryPercentageChanged(percentage: Int) {
+        multicastDelegate.invokeDelegates { invokation in
+            invokation.onBatteryPercentageChanged(device: self as! CHDevice, percentage: percentage)
+        }
+    }
+
+    func notifyRadarReceive(payload: Data) {
+        multicastDelegate.invokeDelegates { invokation in
+            invokation.onRadarReceive(device: self as! CHSesameConnector, payload: payload)
+        }
+    }
+    
+    func notifySlotFull() {
+        multicastDelegate.invokeDelegates { invokation in
+            invokation.onSlotFull(device: self as! CHSesameConnector)
+        }
+    }
+    
+    func notifySSMSupport(isSupport: Bool) {
+        multicastDelegate.invokeDelegates { invokation in
+            invokation.onSSMSupport(device: self as! CHSesameConnector, isSupport: isSupport)
         }
     }
 }

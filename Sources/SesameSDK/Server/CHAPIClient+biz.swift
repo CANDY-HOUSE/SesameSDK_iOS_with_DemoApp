@@ -277,11 +277,16 @@ public extension CHAPIClient {
     
     // MARK: - Battery
     /// 上传电池数据
-    func postBatteryData(deviceId: String, payload: String, result: @escaping CHResult<CHEmpty>) {
+    func postBatteryData(deviceId: String, payload: String, result: @escaping CHResult<Int>) {
         API(request: .init(.post, "/device/v1/sesame5/\(deviceId)/battery", ["payload": payload])) { res in
             switch res {
-            case .success(_):
-                result(.success(.init(input: .init())))
+            case .success(let data):
+                guard let data = data,
+                      let jsonDict = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                      let batteryPercentage = jsonDict["batteryPercentage"] as? Int else {
+                    return
+                }
+                result(.success(.init(input: batteryPercentage)))
             case .failure(let error):
                 result(.failure(error))
             }

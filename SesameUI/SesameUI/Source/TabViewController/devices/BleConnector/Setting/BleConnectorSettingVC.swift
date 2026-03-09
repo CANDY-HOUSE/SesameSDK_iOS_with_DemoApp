@@ -61,9 +61,9 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         }
     }
     
-    func onMechStatus(device: CHDevice) {
+    func onBatteryPercentageChanged(device: any CHDevice, percentage: Int) {
         executeOnMainThread { [self] in
-            batteryView.value = "\(mDevice.mechStatus?.getBatteryPrecentage() ?? 0) %"
+            batteryView.value = "\(percentage)%"
         }
     }
     

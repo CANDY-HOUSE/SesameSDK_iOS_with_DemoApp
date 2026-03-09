@@ -34,12 +34,6 @@ extension CHDevice {
     }
     
     func batteryPercentage() -> Int? {
-        if self is CHWifiModule2 {
-            return stateInfo?.batteryPercentage
-        }
-        if let mechStatus = mechStatus {
-            return mechStatus.getBatteryPrecentage()
-        }
         return stateInfo?.batteryPercentage
     }
 }
@@ -62,5 +56,12 @@ extension CHDevice {
     
     var stateInfo: StateInfo? {
         return userKey?.stateInfo
+    }
+    
+    func setBatteryPercentage(_ percentage: Int) {
+        if var getUserKey = userKey {
+            getUserKey.stateInfo?.batteryPercentage = percentage
+            CHDeviceWrapperManager.shared.updateUserKey(getUserKey, for: getUserKey.deviceUUID)
+        }
     }
 }

@@ -11,7 +11,6 @@ import CoreBluetooth
 
 public protocol CHWifiModule2Delegate: CHDeviceStatusDelegate,CHSesameConnectorDelegate {
     func onAPSettingChanged(device: CHWifiModule2, settings: CHWifiModule2MechSettings)
-    func onSesame2KeysChanged(device: CHWifiModule2, sesame2keys: [String: String])
     func onOTAProgress(device: CHWifiModule2, percent: UInt8)
     func onScanWifiSID(device: CHWifiModule2, ssid: CHSSID)
 }
@@ -36,11 +35,6 @@ public class CHWifiModule2MechSettings {
 }
 
 public struct CHWifiModule2NetworkStatus:CHSesameProtocolMechStatus {
-
-    public func getBatteryVoltage() -> Float {
-        return 0
-    }
-
     public var isAPWork: Bool?
     public var isNetwork: Bool?
     public var isIoTWork: Bool?

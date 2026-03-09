@@ -81,16 +81,11 @@ class SesameLockViewModel: ObservableObject {
         imageName = sesame5.currentStatusImage()
         lockColor = sesame5.lockColor()
         batteryImage = "icn-battery"
-        batteryIndicatorWidth = sesame5.batteryIndicatorWidth()
         wifiStatusImage = device.wifiImageStr()
         bluetoothImage = device.bluetoothImageStr()
-
         guard let mechStatus = sesame5.mechStatus else {
             return
         }
-        batteryIndicatorColor =  mechStatus.getBatteryPrecentage() < 15 ?  Color(UIColor.lockRed):  Color(UIColor.sesame2Green)
-        batteryPercentage = "\(mechStatus.getBatteryPrecentage())%"
-
         if (sesame5.productModel == .sesame5 || sesame5.productModel == .sesame5Pro || sesame5.productModel == .sesame5US || sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSLiDingDoor || sesame5.productModel == .sesameMiwa){
             let toRadians = reverseDegree(angle: Int16(mechStatus.position))
             radians = CGFloat(toRadians)
@@ -119,6 +114,14 @@ extension SesameLockViewModel: CHDeviceStatusDelegate {
         L.d("⌚️ CHSesame5 onMechStatus")
         executeOnMainThread {
             self.configure(sesame5: device)
+        }
+    }
+    
+    func onBatteryPercentageChanged(device: any CHDevice, percentage: Int) {
+        executeOnMainThread { [self] in
+            batteryIndicatorWidth = device.batteryIndicatorWidth(percentage: percentage)
+            batteryIndicatorColor =  percentage < 15 ?  Color(UIColor.lockRed):  Color(UIColor.sesame2Green)
+            batteryPercentage = "\(percentage)%"
         }
     }
 }

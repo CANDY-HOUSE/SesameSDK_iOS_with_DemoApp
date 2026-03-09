@@ -31,7 +31,7 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
         get { return _radarPayload }
         set {
             _radarPayload = newValue
-            (self.delegate as? CHSesameConnectorDelegate)?.onRadarReceive(device: self, payload: _radarPayload)
+            notifyRadarReceive(payload: _radarPayload)
         }
     }
 
@@ -72,6 +72,7 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
         set {
             _sesame2Keys = newValue
             (self.delegate as? CHSesameConnectorDelegate)?.onSesame2KeysChanged(device: self, sesame2keys: _sesame2Keys)
+            notifySesameKeysChanged()
         }
     }
     

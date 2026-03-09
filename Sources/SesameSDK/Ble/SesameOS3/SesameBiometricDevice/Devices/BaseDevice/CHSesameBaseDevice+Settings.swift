@@ -17,12 +17,13 @@ extension CHSesameBaseDevice {
             handle = true
             L.d("[TPO][mechStatus]",payload.toHexLog())
             mechStatus = CHSesameTouchProMechStatus.fromData(payload)!
-            //            L.d("[TPO][電壓]",mechStatus?.getBatteryVoltage())
-            L.d("[TPO][電量]",mechStatus?.getBatteryPrecentage())
-            postBatteryData(payload[0..<2].toHexString())
-
+            postBatteryData(payload[0..<2].toHexString()) { res in
+                if case .success(let resp) = res {
+                    self.notifyBatteryPercentageChanged(percentage: resp.data)
+                }
+            }
         case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
-            postBatteryData(payload.toHexString())
+            postBatteryData(payload.toHexString()) { _ in }
         case .pubKeySesame:
             handle = true
             var sesame2Keys = [String: String]()
@@ -57,6 +58,7 @@ extension CHSesameBaseDevice {
             }
             if !hasEmptySlot {
                 (self.delegate as? CHSesameConnectorDelegate)?.onSlotFull(device: self)
+                notifySlotFull()
             }
             
         case .REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME:
@@ -73,7 +75,7 @@ extension CHSesameBaseDevice {
         case .SSM3_ITEM_CODE_SESAME_UNSUPPORT:
             handle = true
             (self.delegate as? CHSesameConnectorDelegate)?.onSSMSupport(device: self, isSupport: false)
-            
+            notifySSMSupport(isSupport: false)
         default:
             handle = false
         }

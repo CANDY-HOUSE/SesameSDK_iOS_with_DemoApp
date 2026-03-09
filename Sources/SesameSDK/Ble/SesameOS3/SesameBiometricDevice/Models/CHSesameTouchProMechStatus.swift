@@ -18,10 +18,6 @@ struct CHSesameTouchProMechStatus: CHSesameProtocolMechStatus {
     var isStop: Bool? { return false }
     var isBatteryCritical: Bool { return false}
 
-    public func getBatteryVoltage() -> Float {
-        return Float(battery) * 2 / 1000
-    }
-
     static func fromData(_ buf: Data) -> CHSesameTouchProMechStatus? {
         return  buf.withUnsafeBytes({ $0.load(as: self) })
     }
