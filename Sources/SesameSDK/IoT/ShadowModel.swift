@@ -11,6 +11,7 @@ import Foundation
 struct CHDeviceShadow {
     var mechStatus: String?
     var wifiModule2s: [CHDeviceShadowWifiModule2]?
+    var batteryPercentage: Int? // for watch
     
     static func fromData(_ data: Data) -> CHDeviceShadow {
         L.d("iotjs",String(data: data, encoding: .utf8))
@@ -44,8 +45,9 @@ struct CHDeviceShadow {
             let wm2Id = wm2Dic.key
             return CHDeviceShadowWifiModule2(isConnected: wm2Connection, wifiModule2Id: wm2Id)
         })
-        let shadow = CHDeviceShadow(mechStatus: json["mechst"] as? String,
+        var shadow = CHDeviceShadow(mechStatus: json["mechst"] as? String,
                                     wifiModule2s: deviceShadowWifiModule2s)
+        shadow.batteryPercentage = json["batteryPercentage"] as? Int
         return shadow
     }
 }

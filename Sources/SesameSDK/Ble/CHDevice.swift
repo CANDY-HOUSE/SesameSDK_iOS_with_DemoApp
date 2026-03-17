@@ -279,6 +279,7 @@ public extension CHSesameLock {
                         if(isConnectedByWM2){
                             if( self.deviceStatus.loginStatus == .unlogined){
                                 self.mechStatus = mechStatus
+                                (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
                             }
                         }
                     }
@@ -288,6 +289,7 @@ public extension CHSesameLock {
                         if(isConnectedByWM2){
                             if( self.deviceStatus.loginStatus == .unlogined){
                                 self.mechStatus = mechStatus
+                                (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
                             }
                         }
                     }
@@ -297,6 +299,7 @@ public extension CHSesameLock {
                             if (isConnectedByWM2) {
                                 if( self.deviceStatus.loginStatus == .unlogined){
                                     self.mechStatus = mechStatus
+                                    (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
                                 }
                             }
                         }

@@ -44,7 +44,7 @@ class SesameLockViewModel: ObservableObject {
         guard let device = device else { return } /// 防止 nil时 崩溃
         self.display = device.deviceName
         self.device = device
-        self.device.delegate = self
+        self.device.multicastDelegate.addDelegate(self)
         if self.device.deviceId == device.deviceId, device.deviceStatus == .receivedBle() {
             device.connect() {_ in}
         }
@@ -63,7 +63,7 @@ class SesameLockViewModel: ObservableObject {
     }
     
     func startTimer(_ device: CHDevice) {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { _ in
             L.d("getSesameLockStatus")
             (device as? CHSesameLock)?.getSesameLockStatus { _ in }
         })
@@ -72,7 +72,7 @@ class SesameLockViewModel: ObservableObject {
     func prepareDestory() {
         self.timer?.invalidate()
         self.timer = nil
-        self.device?.delegate = nil
+        self.device?.multicastDelegate.removeDelegate(self)
         self.device?.disconnect(result: { _ in })
     }
     
@@ -102,7 +102,7 @@ class SesameLockViewModel: ObservableObject {
     }
 }
 
-extension SesameLockViewModel: CHDeviceStatusDelegate {
+extension SesameLockViewModel: CHDeviceStatusAndKeysDelegate {
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?) {
         L.d("⌚️ onBleDeviceStatusChanged",device.productModel.deviceModel(),device.deviceStatus.description)
         if self.device.deviceId == device.deviceId, status == .receivedBle() {device.connect() {_ in}}
