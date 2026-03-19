@@ -26,6 +26,10 @@ class SesameDeviceListViewController: CHBaseViewController {
     private var allDevices: [CHDevice] = []
     private var lastSearchQuery = ""
     
+    var expandedBotDeviceId: String?
+    var expandedBotItems: [BotScriptItem] = []
+    var expandedBotIndexPaths: [IndexPath] = []
+    
     func reloadTableView() {
         tableViewProxy.reload()
     }

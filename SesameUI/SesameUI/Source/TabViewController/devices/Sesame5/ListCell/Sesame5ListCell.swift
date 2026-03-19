@@ -65,6 +65,11 @@ class Sesame5ListCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        expandableImg.transform = .identity
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -227,5 +232,13 @@ extension Sesame5ListCell: CHDeviceStatusAndKeysDelegate {
 extension Sesame5ListCell: CellConfiguration {
     func configure<T>(item: T) {
         self.device = (item as? CHDevice)
+        if let device = self.device {
+            handleExpandIcon(device)
+            if device.preference.expanded {
+                expandableImg.transform = CGAffineTransformMakeRotation(.pi * 0.5)
+            } else {
+                expandableImg.transform = .identity
+            }
+        }
     }
 }

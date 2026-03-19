@@ -78,6 +78,15 @@ extension SesameDeviceListViewController {
             return false
         }
         let (irItems, indexPaths) = handleSubItems(indexPath.row, device)
+        if let bot2 = device as? CHSesameBot2 {
+            expandedBotDeviceId = bot2.deviceId.uuidString
+            expandedBotItems = getBot2ScriptItems(bot2)
+            expandedBotIndexPaths = indexPaths
+        } else {
+            expandedBotDeviceId = nil
+            expandedBotItems = []
+            expandedBotIndexPaths = []
+        }
         guard irItems.first != nil else {
             return true
         }
@@ -89,6 +98,11 @@ extension SesameDeviceListViewController {
             } else {
                 tableViewProxy.dataSource.removeSubrange(indexPath.row + 1...indexPaths.last!.row)
                 tableViewProxy.tableView.deleteRows(at: indexPaths, with: .automatic)
+                if device is CHSesameBot2 {
+                    expandedBotDeviceId = nil
+                    expandedBotItems = []
+                    expandedBotIndexPaths = []
+                }
             }
         }
         return true
@@ -174,18 +188,37 @@ extension SesameDeviceListViewController: CHDeviceStatusAndKeysDelegate {
 extension SesameDeviceListViewController {
     
     override func allowChangingRow(atIndex indexPath: IndexPath) -> Bool {
-        if(isDraggingCell) {
-            return false
+        if isDraggingCell { return false }
+
+        // 如果当前展开的是 bot 子列表，只允许拖动 bot 子项范围
+        if let _ = expandedBotDeviceId {
+            return expandedBotIndexPaths.contains(indexPath)
         }
+
         let existExpanded = devices.first(where: { $0.preference.expanded == true })
-        if (existExpanded == nil) {
+        if existExpanded == nil {
             return super.allowChangingRow(atIndex: indexPath)
         }
+
         return false
     }
     
     override func positionChanged(currentIndex: IndexPath, newIndex: IndexPath) {
         guard newIndex != currentIndex else { return }
+
+        if expandedBotIndexPaths.contains(currentIndex),
+           expandedBotIndexPaths.contains(newIndex) {
+            let from = currentIndex.row - expandedBotIndexPaths.first!.row
+            let to = newIndex.row - expandedBotIndexPaths.first!.row
+            guard from >= 0, from < expandedBotItems.count,
+                  to >= 0, to < expandedBotItems.count else { return }
+
+            let movedObject = expandedBotItems[from]
+            expandedBotItems.remove(at: from)
+            expandedBotItems.insert(movedObject, at: to)
+            return
+        }
+
         let movedObject = devices[currentIndex.row]
         devices.remove(at: currentIndex.row)
         devices.insert(movedObject, at: newIndex.row)
@@ -193,26 +226,98 @@ extension SesameDeviceListViewController {
     
     override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
         guard finalIndex != initialIndex else { return }
+        
+        // bot 子列表排序完成
+        if expandedBotIndexPaths.contains(initialIndex),
+           expandedBotIndexPaths.contains(finalIndex),
+           let deviceId = expandedBotDeviceId,
+           let bot2 = devices.first(where: { $0.deviceId.uuidString == deviceId }) as? CHSesameBot2 {
+            let targetDeviceId = deviceId
+            
+            // 1. 更新本地缓存
+            let metaMap = Dictionary(uniqueKeysWithValues:
+                                        expandedBotItems.enumerated().compactMap { order, item -> (Int, BotScriptStore.ScriptMeta)? in
+                guard let idx = Int(item.actionIndex) else { return nil }
+                return (
+                    idx,
+                    BotScriptStore.ScriptMeta(
+                        alias: BotScriptStore.shared.getAlias(deviceUUID: deviceId, actionIndex: idx),
+                        displayOrder: order
+                    )
+                )
+            }
+            )
+            BotScriptStore.shared.merge(deviceUUID: deviceId, data: metaMap)
+            
+            // 2. 批量上传 displayOrder
+            let batchOrders = expandedBotItems.enumerated().compactMap { order, item -> BotScriptItem? in
+                guard Int(item.actionIndex) != nil else { return nil }
+                return BotScriptItem(
+                    actionIndex: item.actionIndex,
+                    alias: nil,
+                    displayOrder: order,
+                    isDefault: nil
+                )
+            }
+            
+            let req = BotScriptRequest(
+                deviceUUID: deviceId.uppercased(),
+                actionIndex: nil,
+                alias: nil,
+                isDefault: nil,
+                actionData: nil,
+                displayOrder: nil,
+                deleteAll: nil,
+                batchDisplayOrders: batchOrders
+            )
+            
+            CHAPIClient.shared.updateBotScript(req) { [weak self] result in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    guard let self = self else { return }
+                    
+                    self.rebuildData()
+                    
+                    guard let row = self.devices.firstIndex(where: { $0.deviceId.uuidString == targetDeviceId }),
+                          let targetBot = self.devices[row] as? CHSesameBot2 else {
+                        return
+                    }
+                    targetBot.preference.expanded = false
+                    
+                    if self.handleHub3Expandable(IndexPath(row: row, section: 0)) {
+                        targetBot.preference.expanded = true
+                        
+                        if let cell = self.tableViewProxy.tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? Sesame5ListCell {
+                            cell.triggerExpand(true)
+                        }
+                    }
+                }
+            }
+            
+            return
+        }
+        
+        // 原有设备排序逻辑
         isDraggingCell = true
         for (index, device) in devices.enumerated() {
             device.setRank(level: -index)
         }
+        
         let newKeys = CHAWSMobileClient.shared.getLocalUserKeys()
         CHAPIClient.shared.postCHUserKeys(newKeys.toData()) { [weak self] result in
             guard let self = self else { return }
             self.isDraggingCell = false
             switch result {
-                case .success(_):
+            case .success(_):
+                self.rebuildData()
+            case .failure(_):
+                DispatchQueue.main.async {
+                    let movedObject = self.devices[finalIndex.row]
+                    self.devices.remove(at: finalIndex.row)
+                    self.devices.insert(movedObject, at: initialIndex.row)
                     self.rebuildData()
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        let movedObject = self.devices[finalIndex.row]
-                        self.devices.remove(at: finalIndex.row)
-                        self.devices.insert(movedObject, at: initialIndex.row)
-                        self.rebuildData()
-                    }
-                    
+                }
             }
         }
     }
+
 }
