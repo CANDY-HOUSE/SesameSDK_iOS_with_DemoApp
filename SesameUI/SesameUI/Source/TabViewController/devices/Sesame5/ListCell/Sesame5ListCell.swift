@@ -1,5 +1,5 @@
 //
-//  Sesame5ListCell2.swift
+//  Sesame5ListCell.swift
 //  SesameUI
 //
 //  Created by eddy on 2023/12/6.
@@ -93,7 +93,7 @@ class Sesame5ListCell: UITableViewCell {
         (device as? CHSesameBike2)?.unlock(historytag: device.hisTag) { _ in }
         if let bot2 = device as? CHSesameBot2 {
             let intValue: Int = UserDefaults.standard.integer(forKey:device.deviceId.uuidString)
-            bot2.click(index: UInt8(intValue), result: { _ in })
+            bot2.click(index: UInt8(intValue), historytag: device.hisTag, result: { _ in })
         }
         (self.device as? CHSesame5)?.setAutoUnlockFlag(false)
         (self.device as? CHSesame2)?.setAutoUnlockFlag(false)
@@ -191,7 +191,20 @@ extension Sesame5ListCell: CHDeviceStatusAndKeysDelegate {
             if device.isLockDevice {
                 device.connect() { _ in }
             }
+        } else if status.loginStatus == .logined {
+            if let bot2 = device as? CHSesameBot2 {
+                bot2.getScriptNameList { _ in
+                    Bot2InitHelper.initDefaultsIfNeeded(device: bot2)
+                    executeOnMainThread {
+                        NotificationCenter.default.post(
+                            name: NSNotification.Name("Bot2ScriptListUpdated"),
+                            object: device.deviceId.uuidString
+                        )
+                    }
+                }
+            }
         }
+        
         executeOnMainThread {
             self.configureSesame2Cell()
         }

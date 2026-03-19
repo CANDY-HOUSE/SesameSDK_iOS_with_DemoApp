@@ -57,7 +57,7 @@ class SesameLockViewModel: ObservableObject {
             (self.device as? CHSesameBot)?.click { _ in }
             (self.device as? CHSesameBike)?.unlock { _ in }
             (self.device as? CHSesameBike2)?.unlock(historytag: self.device.hisTag) { _ in }
-            (self.device as? CHSesameBot2)?.click(index: nil, result: { _ in })
+            (self.device as? CHSesameBot2)?.click(index: nil, historytag: device.hisTag, result: { _ in })
         }
         executeOnMainThread {   self.startTimer(device) }
     }

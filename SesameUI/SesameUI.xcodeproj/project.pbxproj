@@ -22,6 +22,8 @@
 		3B8B7C242E2E47DD00F5A2F7 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */; };
 		3B8B7C482E2FBB0200F5A2F7 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B9DC5962E2DE4F8008EBF76 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5952E2DE4F8008EBF76 /* SesameSDK */; };
+		3BA495512F6AB2B2002C3C3A /* BotScriptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA495502F6AB2AE002C3C3A /* BotScriptStore.swift */; };
+		3BA495532F6ACE17002C3C3A /* SesameBot2InitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA495522F6ACE14002C3C3A /* SesameBot2InitHelper.swift */; };
 		4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4102FAF223C2E17A00ECA735 /* ScanAnimationView.swift */; };
 		41030330237902D400785311 /* UIColorShared+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103032F237902D400785311 /* UIColorShared+.swift */; };
 		4103034D2379108D00785311 /* UIImage+SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103034C2379108D00785311 /* UIImage+SVG.swift */; };
@@ -432,6 +434,8 @@
 		3B8671B72F3CCDC20075598B /* SlidingDoorAngleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingDoorAngleView.swift; sourceTree = "<group>"; };
 		3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		3B8B7C412E2FBB0200F5A2F7 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BA495502F6AB2AE002C3C3A /* BotScriptStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotScriptStore.swift; sourceTree = "<group>"; };
+		3BA495522F6ACE14002C3C3A /* SesameBot2InitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameBot2InitHelper.swift; sourceTree = "<group>"; };
 		3BC329382E28A9D600786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC3293C2E28A9DE00786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC329422E28A9EC00786ED7 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -822,6 +826,7 @@
 			isa = PBXGroup;
 			children = (
 				649315302EF2454C002D0EC0 /* AWSUICKeyChainStore+.swift */,
+				3BA495502F6AB2AE002C3C3A /* BotScriptStore.swift */,
 				647C9F472F0C8FED00F9283C /* CHAWSMobileClient.swift */,
 				645211E42B27F2F00091DDE3 /* CHRouteCoordinator.swift */,
 				64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */,
@@ -830,6 +835,7 @@
 				BE037A90246981DB00ED2611 /* DFUHelper.swift */,
 				645211F32B2AF5C50091DDE3 /* PickerProxy.swift */,
 				3B8B7C232E2E47D700F5A2F7 /* PushNotificationManager.swift */,
+				3BA495522F6ACE14002C3C3A /* SesameBot2InitHelper.swift */,
 				645211E62B282A440091DDE3 /* ShareAlertConfigurator.swift */,
 				BE6978E62483E37D0089141E /* ViewHelper.swift */,
 				B035418424D8152100C44C1D /* WatchKitFileTransfer.swift */,
@@ -2194,6 +2200,7 @@
 				64EC06902E7C00EA0047ED13 /* RefreshFootView.swift in Sources */,
 				BEB58CBC256CA122001505E3 /* KeyLevel.swift in Sources */,
 				4137C8CC2350276300211F43 /* lockView.swift in Sources */,
+				3BA495532F6ACE17002C3C3A /* SesameBot2InitHelper.swift in Sources */,
 				BEB7F49E24A4EBBF00D04651 /* SesameUI.xcdatamodeld in Sources */,
 				643A9C492B313970008214BD /* CHProductModel+.swift in Sources */,
 				BE9C6C9724B3378B00C7318B /* Sesame2Store.swift in Sources */,
@@ -2233,6 +2240,7 @@
 				890D33082DA0E7FF0031F0AF /* FingerPrintCell.swift in Sources */,
 				890D33092DA0E7FF0031F0AF /* NFCCardVC.swift in Sources */,
 				890D330A2DA0E7FF0031F0AF /* SesameBiometricDeviceKeysListVC.swift in Sources */,
+				3BA495512F6AB2B2002C3C3A /* BotScriptStore.swift in Sources */,
 				890D330B2DA0E7FF0031F0AF /* PassCodeVC.swift in Sources */,
 				646B86DE2B4545B60042589E /* Debouncer.swift in Sources */,
 				645B1B302BDB4C0100D5E491 /* ImageSourceHelpers.swift in Sources */,

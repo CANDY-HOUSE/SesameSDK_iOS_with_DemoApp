@@ -119,7 +119,7 @@ public protocol CHSesameBot2: CHSesameLock {
     /// - Parameters:
     ///   - index: 當前腳本下標，不傳默認執行當前設置的下標
     ///   - result: 結果狀態
-    func click(index: UInt8?, result: @escaping (CHResult<CHEmpty>))
+    func click(index: UInt8?, historytag: Data?, result: @escaping (CHResult<CHEmpty>))
 
     /// 發送腳本數據
     /// - Parameters:
@@ -142,3 +142,9 @@ public protocol CHSesameBot2: CHSesameLock {
     func getScriptNameList(result: @escaping (CHResult<CHSesamebot2Status>))
 }
 
+public protocol CHSesameBot2Delegate: CHDeviceStatusDelegate {
+    func onHistoryReceived(device: CHSesameBot2, result: Result<CHResultState<Data>, Error>)
+}
+public extension CHSesameBot2Delegate {
+    func onHistoryReceived(device: CHSesameBot2, result: Result<CHResultState<Data>, Error>) {}
+}

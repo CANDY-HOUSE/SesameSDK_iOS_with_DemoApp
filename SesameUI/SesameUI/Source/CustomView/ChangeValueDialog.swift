@@ -182,6 +182,49 @@ public class ChangeValueDialog: UIViewController {
     }
 }
 
+private extension ChangeValueDialog {
+    static func topViewController(_ root: UIViewController?) -> UIViewController? {
+        if let nav = root as? UINavigationController {
+            return topViewController(nav.visibleViewController)
+        }
+        if let tab = root as? UITabBarController {
+            return topViewController(tab.selectedViewController)
+        }
+        if let presented = root?.presentedViewController {
+            return topViewController(presented)
+        }
+        return root
+    }
+}
+
+public extension ChangeValueDialog {
+    @discardableResult
+    static func showOnTop(_ oldValue: String,
+                          title: String = "",
+                          placeHolder: String = "",
+                          hint: String = "",
+                          callBack: @escaping (_ newValue: String) -> Void) -> ChangeValueDialog {
+        let setValueDialog = UIStoryboard.viewControllers.changeValueDialog!
+        setValueDialog.titleLBText = title
+        setValueDialog.valueDescription = hint
+        setValueDialog.callback = callBack
+        setValueDialog.value = oldValue
+        setValueDialog.valuePlaceHolder = placeHolder
+        setValueDialog.modalPresentationStyle = .overCurrentContext
+        setValueDialog.modalTransitionStyle = .crossDissolve
+        
+        if let rootViewController = UIApplication.shared.windows.first?.rootViewController,
+           let topVC = topViewController(rootViewController) {
+            topVC.present(setValueDialog, animated: true, completion: nil)
+        } else if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController,
+                  let topVC = topViewController(rootViewController) {
+            topVC.present(setValueDialog, animated: true, completion: nil)
+        }
+        
+        return setValueDialog
+    }
+}
+
 extension ChangeValueDialog: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

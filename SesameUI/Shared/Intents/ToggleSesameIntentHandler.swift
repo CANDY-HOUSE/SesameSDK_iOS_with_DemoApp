@@ -94,7 +94,7 @@ class ToggleSesameIntentHandler: NSObject, ToggleSesameIntentHandling {
             }
             return
         } else if let sesameLock = device as? CHSesameBot2 {
-            sesameLock.click(index: nil) { _ in
+            sesameLock.click(index: nil,historytag: device.hisTag) { _ in
                 complete()
             }
             return

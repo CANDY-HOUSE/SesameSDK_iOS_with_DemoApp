@@ -1,5 +1,5 @@
 //
-//  SesameDeviceList+Expand.swift
+//  SesameDeviceList+Control.swift
 //  SesameUI
 //
 //  Created by eddy on 2024/10/8.
@@ -13,6 +13,25 @@ protocol CellSubItemDiscriptor {
     var title: String { get }
     func iconWithDevice(_ device: CHDevice) -> String?
 }
+
+private struct Bot2ScriptDisplayItem: CellSubItemDiscriptor {
+    let title: String
+    let icon: String?
+
+    func iconWithDevice(_ device: CHDevice) -> String? {
+        return icon
+    }
+
+    func convertToCellDescriptorModel(device: CHDevice, cellCls: AnyClass, click: (() -> Void)?) -> CHCellDescriptor {
+        return CHCellDescriptor(cellCls: cellCls, rawValue: self) { cell in
+            guard let emitCell = cell as? Hub3IREmitCell else { return }
+            emitCell.clickHandler = click
+            emitCell.device = device
+            emitCell.configure(item: self)
+        }
+    }
+}
+
 
 extension SesameDeviceListViewController {
     
@@ -31,12 +50,22 @@ extension SesameDeviceListViewController {
             }
             return (irItems, indexPaths)
         } else if let bot2 = device as? CHSesameBot2 {
+            let items = getBot2ScriptItems(bot2)
+            guard items.isEmpty == false else { return ([], []) }
+
             var indexPaths = [IndexPath]()
-            let irItems = bot2.scripts.events.enumerated().map{(index, val) -> CHCellDescriptor in
+            let irItems = items.compactMap { item -> CHCellDescriptor? in
+                guard let index = UInt8(item.actionIndex) else { return nil }
                 rowIndex += 1
                 indexPaths.append(IndexPath(row: rowIndex, section: 0))
-                return val.convertToCellDescriptorModel(device: device, cellCls: Hub3IREmitCell.self) {
-                    (device as? CHSesameBot2)?.click(index: UInt8(index), result: { _ in })
+
+                let titleItem = Bot2ScriptDisplayItem(
+                    title: item.alias ?? "🎬 \(index)",
+                    icon: device.currentStatusImage() + "-noBorder"
+                )
+
+                return titleItem.convertToCellDescriptorModel(device: device, cellCls: Hub3IREmitCell.self) {
+                    (device as? CHSesameBot2)?.click(index: index, historytag: device.hisTag, result: { _ in })
                 }
             }
             return (irItems, indexPaths)
@@ -81,8 +110,9 @@ extension SesameDeviceListViewController {
         if let hub3 = device as? CHHub3 {
             return true
         }
-        if let bot2 = device as? CHSesameBot2, bot2.scripts.eventLength > 0 {
-            return true
+        if let bot2 = device as? CHSesameBot2 {
+            if bot2.scripts.eventLength > 0 { return true }
+            if let remote = bot2.stateInfo?.scriptList, remote.isEmpty == false { return true }
         }
         return false
     }
@@ -101,6 +131,30 @@ extension SesameDeviceListViewController {
         executeOnMainThread {
             self.tableViewProxy.handleSuccessfulDataSource(nil, customDiscriptors)
         }
+    }
+    
+    private func getBot2ScriptItems(_ bot2: CHSesameBot2) -> [BotScriptItem] {
+        let deviceUUID = bot2.deviceId.uuidString
+
+        if bot2.scripts.events.isEmpty == false {
+            return bot2.scripts.events.enumerated().map { index, event in
+                let fallback = String(data: Data(event.name), encoding: .utf8) ?? "\(index)"
+                let alias = BotScriptStore.shared.getAlias(deviceUUID: deviceUUID, actionIndex: index) ?? fallback
+                let order = BotScriptStore.shared.getDisplayOrder(deviceUUID: deviceUUID, actionIndex: index) ?? index
+                return BotScriptItem(
+                    actionIndex: "\(index)",
+                    alias: alias,
+                    displayOrder: order,
+                    isDefault: nil
+                )
+            }.sorted { ($0.displayOrder ?? 999) < ($1.displayOrder ?? 999) }
+        }
+
+        if let remote = bot2.stateInfo?.scriptList, remote.isEmpty == false {
+            return remote.sorted { ($0.displayOrder ?? 999) < ($1.displayOrder ?? 999) }
+        }
+
+        return []
     }
 }
 

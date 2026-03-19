@@ -79,6 +79,15 @@ class RegisterSesameDeviceViewController: CHBaseViewController { //[joi todo]改
                     self.view.makeToast(error.errorDescription())
                 } else {
                     L.d("[註冊]4")
+                    if let bot2 = device as? CHSesameBot2 {
+                        Bot2InitHelper.clearBotScript(device: bot2) { _ in
+                            bot2.getScriptNameList { result in
+                                if case .success(_) = result {
+                                    Bot2InitHelper.forceInitDefaults(device: bot2) { _ in }
+                                }
+                            }
+                        }
+                    }
                     self.dismissSelf()
                     self.dismissHandler?(self.registeredDevice)
                 }

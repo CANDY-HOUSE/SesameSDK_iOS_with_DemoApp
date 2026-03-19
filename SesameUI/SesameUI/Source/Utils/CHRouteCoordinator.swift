@@ -202,6 +202,12 @@ public extension CHRouteCoordinator where Self: UIViewController {
         navigationController?.pushViewController(BikeLock2SettingViewController.instanceWithBikeLock2(bikeLock2) {_ in },animated: true)
     }
     
+    func navigateToBot2HistoryViewController(_ bot2: CHSesameBot2) {
+        navigationController?.pushViewController(SesameHistoryViewController.instance(bot2, dismissHandler: nil, settingClickHandler: { [weak self] in
+            self?.navigationController?.pushViewController(Bot2SettingViewController.instanceWithBikeBot2(bot2), animated: true)
+        }), animated: true)
+    }
+    
     func navigateToBot2SettingViewController(_ bot2: CHSesameBot2) {
         navigationController?.pushViewController(Bot2SettingViewController.instanceWithBikeBot2(bot2), animated: true)
     }

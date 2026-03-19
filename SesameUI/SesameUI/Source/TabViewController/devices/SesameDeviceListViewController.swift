@@ -51,11 +51,24 @@ class SesameDeviceListViewController: CHBaseViewController {
         monitorAWSMobileClientUserState()
         configureTable()
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleBot2ScriptListUpdated(_:)),
+            name: NSNotification.Name("Bot2ScriptListUpdated"),
+            object: nil
+        )
+        
         // 确保搜索框初始隐藏
         view.layoutIfNeeded()
         searchBarTopConstraint.constant = -searchBarHeight
         
         checkIfNeedsRefresh()
+    }
+    
+    @objc private func handleBot2ScriptListUpdated(_ notification: Notification) {
+        executeOnMainThread {
+            self.rebuildData()
+        }
     }
     
     func checkIfNeedsRefresh() {
@@ -275,6 +288,7 @@ class SesameDeviceListViewController: CHBaseViewController {
     
     deinit {
         tableViewProxy?.tableView.removeObserver(self, forKeyPath: "contentOffset")
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("Bot2ScriptListUpdated"), object: nil)
     }
     
     @objc func getKeysFromServer() {
@@ -297,6 +311,24 @@ class SesameDeviceListViewController: CHBaseViewController {
                     CHDeviceManager.shared.setHistoryTag()
                     CHDeviceWrapperManager.shared.updateUserKeys(userKeys)
                     for userKey in userKeys {
+                        let scriptMetaMap: [Int: BotScriptStore.ScriptMeta] = Dictionary(
+                            uniqueKeysWithValues:
+                                (userKey.stateInfo?.scriptList ?? []).compactMap { item -> (Int, BotScriptStore.ScriptMeta)? in
+                                    guard let idx = Int(item.actionIndex) else { return nil }
+                                    return (
+                                        idx,
+                                        BotScriptStore.ScriptMeta(
+                                            alias: item.alias,
+                                            displayOrder: item.displayOrder
+                                        )
+                                    )
+                                }
+                        )
+                        
+                        if scriptMetaMap.isEmpty == false {
+                            BotScriptStore.shared.merge(deviceUUID: userKey.deviceUUID, data: scriptMetaMap)
+                        }
+                        
                         let device = userKey.toCHDevice()
                         if let keyLevel = userKey.keyLevel {
                             device?.setKeyLevel(keyLevel)
@@ -414,17 +446,13 @@ class SesameDeviceListViewController: CHBaseViewController {
         case .sesameBot:
             guard let sesameBot = device as? CHSesameBot else { return }
             navigateToSesameBotSettingViewController(sesameBot)
-        case .sesameBot2:
-            guard let bot2Device = device as? CHSesameBot2 else { return }
-            navigateToBot2SettingViewController(bot2Device)
-            DispatchQueue.main.async { [weak self] in
-                if device.preference.expanded {
-                    self?.toggleIndexPathForHub3(device, true)
-                }
+        case .sesameBot2, .sesameBot3:
+            guard let botPlus = device as? CHSesameBot2 else { return }
+            if botPlus.keyLevel == KeyLevel.guest.rawValue {
+                navigateToBot2SettingViewController(botPlus)
+            } else {
+                navigateToBot2HistoryViewController(botPlus)
             }
-        case .sesameBot3:
-            guard let bot3Device = device as? CHSesameBot2 else { return }
-            navigateToBot2SettingViewController(bot3Device)
             DispatchQueue.main.async { [weak self] in
                 if device.preference.expanded {
                     self?.toggleIndexPathForHub3(device, true)

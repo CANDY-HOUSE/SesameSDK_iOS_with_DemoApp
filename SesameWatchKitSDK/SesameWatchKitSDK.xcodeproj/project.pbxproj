@@ -143,6 +143,7 @@
 		3B8D5E3D2E2D176D00FE456E /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DAC2E2D176D00FE456E /* NSError+.swift */; };
 		3B8D5E3E2E2D176D00FE456E /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DA92E2D176D00FE456E /* Data+.swift */; };
 		3B9DC5992E2DE51E008EBF76 /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5982E2DE51E008EBF76 /* AESc */; };
+		3BA495552F6ADD21002C3C3A /* CHBotScriptModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA495542F6ADD1C002C3C3A /* CHBotScriptModels.swift */; };
 		64140F472F0A46F100549C14 /* CHAPIClient+biz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64140F462F0A46EF00549C14 /* CHAPIClient+biz.swift */; };
 		64140F492F0B507700549C14 /* CHAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64140F482F0B507700549C14 /* CHAPIClient.swift */; };
 		BEE459C7248500D600A886D5 /* SesameWatchKitSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -449,6 +450,7 @@
 		3B8D5DAF2E2D176D00FE456E /* SwCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
 		3B8D5DB02E2D176D00FE456E /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
 		3B8D5DB22E2D176D00FE456E /* CHDeviceModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CHDeviceModel.xcdatamodel; sourceTree = "<group>"; };
+		3BA495542F6ADD1C002C3C3A /* CHBotScriptModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBotScriptModels.swift; sourceTree = "<group>"; };
 		64140F462F0A46EF00549C14 /* CHAPIClient+biz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHAPIClient+biz.swift"; sourceTree = "<group>"; };
 		64140F482F0B507700549C14 /* CHAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAPIClient.swift; sourceTree = "<group>"; };
 		644E3DC52BC2A4D200385BE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1061,6 +1063,7 @@
 		3B8D5D972E2D176D00FE456E /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				3BA495542F6ADD1C002C3C3A /* CHBotScriptModels.swift */,
 				3B8D5D962E2D176D00FE456E /* Keys */,
 			);
 			name = DataModel;
@@ -1889,6 +1892,7 @@
 				BEF8F74F24C69E6800650CAD /* AWSMTLModel+NSCoding.m in Sources */,
 				BEF8F7D924C69E6800650CAD /* AWSLogging.m in Sources */,
 				BEF8F78624C69E6800650CAD /* AWSTMDiskCache.m in Sources */,
+				3BA495552F6ADD21002C3C3A /* CHBotScriptModels.swift in Sources */,
 				BEF8F7B524C69E6800650CAD /* AWSDDAbstractDatabaseLogger.m in Sources */,
 				BEF8F7D424C69E6800650CAD /* AWSSTSService.m in Sources */,
 				BEF8F73624C69E6800650CAD /* AWSCognitoIdentityModel.m in Sources */,

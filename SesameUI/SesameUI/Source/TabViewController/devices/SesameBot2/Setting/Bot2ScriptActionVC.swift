@@ -96,21 +96,28 @@ class Bot2ScriptActionVC: CHBaseViewController, ShareAlertConfigurator {
     var tableViewProxy: CHTableViewProxy!
     var isEventsChanged = false
     var eventData: CHSesamebot2Event? {
-        willSet {
-            isEventsChanged = eventData != nil
-        }
         didSet {
-            if let nameStr = eventData?.displayName {
-                self.title = "\(nameStr)(\(eventData?.actions?.count ?? 0)/\(MAX_ACTION))"
-            }
+            updateTitle()
         }
     }
+    var editedAlias: String?
+    var aliasDirty = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationLeftTitleItem("co.candyhouse.sesame2.SaveScript".localized, #selector(onDoneButtonTapped))
         setNavigationRightItem("icons_outlined_addoutline", #selector(onNewButtonTapped))
+        setupTitleTapView()
         configureTable()
+    }
+    
+    private func setupTitleTapView() {
+        let titleButton = UIButton(type: .system)
+        titleButton.setTitleColor(.label, for: .normal)
+        titleButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        titleButton.addTarget(self, action: #selector(onEditAliasTapped), for: .touchUpInside)
+        navigationItem.titleView = titleButton
+        updateTitle()
     }
     
     func configureTable() {
@@ -126,7 +133,56 @@ class Bot2ScriptActionVC: CHBaseViewController, ShareAlertConfigurator {
         reorderTableView.enableLongPressReorder()
     }
     
+    private func normalizeBotAlias(_ input: String) -> String {
+        let trimmed = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        let pure = trimmed.hasPrefix("🎬")
+            ? trimmed.replacingOccurrences(of: "🎬", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+            : trimmed
+        return "🎬 \(pure)"
+    }
+
+    private func stripBotAliasPrefix(_ input: String) -> String {
+        return input.replacingOccurrences(of: "🎬", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    private func updateTitle() {
+        let index = Int(getIndex())
+        let fallback = eventData?.displayName ?? "\(index)"
+        let titleName = editedAlias
+            ?? BotScriptStore.shared.getAlias(deviceUUID: bot2Device.deviceId.uuidString, actionIndex: index)
+            ?? fallback
+
+        let text = "\(titleName)🖊️(\(eventData?.actions?.count ?? 0)/\(MAX_ACTION))"
+
+        if let button = navigationItem.titleView as? UIButton {
+            button.setTitle(text, for: .normal)
+            button.sizeToFit()
+        } else {
+            self.title = text
+        }
+    }
+    
+    @objc private func onEditAliasTapped() {
+        let index = Int(getIndex())
+        let currentAlias = editedAlias
+            ?? BotScriptStore.shared.getAlias(deviceUUID: bot2Device.deviceId.uuidString, actionIndex: index)
+            ?? eventData?.displayName
+            ?? "\(index)"
+
+        let editableText = stripBotAliasPrefix(currentAlias)
+
+        ChangeValueDialog.showOnTop(
+            editableText,
+            title: currentAlias
+        ) { name in
+            self.editedAlias = self.normalizeBotAlias(name)
+            self.aliasDirty = true
+            self.updateTitle()
+        }
+    }
+    
     func handleAction(_ target: Bot2Action, _ isDelete: Bool, _ path: IndexPath) {
+        isEventsChanged = true
         if isDelete {
             self.eventData?.actions!.remove(at: path.row)
         } else {
@@ -170,6 +226,11 @@ class Bot2ScriptActionVC: CHBaseViewController, ShareAlertConfigurator {
                     self.tableViewProxy.handleFailedDataSource(error)
                 } else if case let .success(event) = getResult {
                     self.eventData = event.data
+                    let index = Int(self.getIndex())
+                    if let alias = BotScriptStore.shared.getAlias(deviceUUID: self.bot2Device.deviceId.uuidString, actionIndex: index) {
+                        self.editedAlias = alias
+                        self.aliasDirty = false
+                    }
                     if self.eventData?.actionLength ?? 0 < 1 {
                         self.eventData?.actions = [Bot2Action]()
                     }
@@ -190,6 +251,7 @@ class Bot2ScriptActionVC: CHBaseViewController, ShareAlertConfigurator {
             }
         }
         self.tableViewProxy.handleSuccessfulDataSource(nil, discriptors)
+        self.updateTitle()
     }
     
     private func getIndex() -> UInt8 {
@@ -199,13 +261,14 @@ class Bot2ScriptActionVC: CHBaseViewController, ShareAlertConfigurator {
     @objc func onNewButtonTapped() {
         guard let _ = self.eventData else { return }
         guard (self.eventData?.actions!.count)! < MAX_ACTION else { return }
+        isEventsChanged = true
         self.eventData?.actions?.append(Bot2Action(action: .forward, time: 0))
         self.handleData()
     }
     
     @objc func onDoneButtonTapped() {
         guard let _ = self.eventData else { return }
-        guard isEventsChanged == true else {
+        guard isEventsChanged || aliasDirty else {
             dismiss(animated: true, completion: { })
             return
         }
@@ -224,6 +287,31 @@ class Bot2ScriptActionVC: CHBaseViewController, ShareAlertConfigurator {
                 if case let .failure(error) = getResult {
                     self.view.makeToast(error.errorDescription())
                 } else if case .success(_) = getResult {
+                    let idx = Int(self.getIndex())
+                    if self.aliasDirty, let alias = self.editedAlias {
+                        BotScriptStore.shared.putAlias(deviceUUID: self.bot2Device.deviceId.uuidString, actionIndex: idx, alias: alias)
+                    }
+                    
+                    NotificationCenter.default.post(
+                        name: NSNotification.Name("Bot2AliasUpdated"),
+                        object: self.bot2Device.deviceId.uuidString
+                    )
+
+                    let req = BotScriptRequest(
+                        deviceUUID: self.bot2Device.deviceId.uuidString.uppercased(),
+                        actionIndex: "\(idx)",
+                        alias: self.aliasDirty ? self.editedAlias : nil,
+                        isDefault: 1,
+                        actionData: self.eventData?.toData().toHexString(),
+                        displayOrder: BotScriptStore.shared.getDisplayOrder(deviceUUID: self.bot2Device.deviceId.uuidString, actionIndex: idx) ?? idx,
+                        deleteAll: nil,
+                        batchDisplayOrders: nil
+                    )
+
+                    CHAPIClient.shared.updateBotScript(req) { _ in }
+
+                    self.isEventsChanged = false
+                    self.aliasDirty = false
                     self.dismiss(animated: true, completion: { })
                 }
             }
@@ -234,6 +322,7 @@ class Bot2ScriptActionVC: CHBaseViewController, ShareAlertConfigurator {
 extension Bot2ScriptActionVC { // 設備列表排序
     override func positionChanged(currentIndex: IndexPath, newIndex: IndexPath) {
         guard newIndex != currentIndex else { return }
+        isEventsChanged = true
         let movedObject = eventData?.actions![currentIndex.row]
         eventData?.actions!.remove(at: currentIndex.row)
         eventData?.actions!.insert(movedObject!, at: newIndex.row)

@@ -99,8 +99,8 @@ struct StateInfo: Codable {
     var timestamp: Int64?
     var wm2State: Bool?
     let remoteList: [IRRemote]?
+    let scriptList: [BotScriptItem]?
 }
-
 
 extension CHUserKey {
     func toData() -> Data {

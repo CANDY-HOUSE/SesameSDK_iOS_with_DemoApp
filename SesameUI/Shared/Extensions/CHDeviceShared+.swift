@@ -412,7 +412,7 @@ extension CHDevice {
         if let lock = self as? CHSesameLock {
             var tag = lock.getHistoryTag() ?? Data()
             var historyTag = Data()
-            if self is CHSesame5 || self is CHSesameBike2 {
+            if self is CHSesame5 || self is CHSesameBike2 || self is CHSesameBot2 {
                 if (deviceShadowStatus != nil && deviceStatus.loginStatus == .unlogined) || !self.isBleAvailable() {
                     historyTag.append(UUID4HistoryTagType.nameUuidTypeIosUserWifiUuid.data)
                     historyTag.append(tag)

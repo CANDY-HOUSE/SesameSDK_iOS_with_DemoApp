@@ -16,10 +16,9 @@ import CoreBluetooth
 import IntentsUI
 
 struct Bot2Event: PickerItemDiscriptor {
-    var name: [UInt8]
-    var displayName: String {
-        return String(data: Data(name), encoding: .utf8)!
-    }
+    let actionIndex: Int
+    let displayText: String
+    var displayName: String { displayText }
     var selectHandler: ((PickerItemDiscriptor) -> Void)?
 }
 
@@ -56,6 +55,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     
     // MARK: - Life cycle
     deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("Bot2AliasUpdated"), object: nil)
         self.deviceMemberWebView?.cleanup()
     }
     
@@ -75,6 +75,13 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
         
         arrangeSubviews()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleBot2AliasUpdated(_:)),
+            name: NSNotification.Name("Bot2AliasUpdated"),
+            object: nil
+        )
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -86,6 +93,15 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         getVersionTag()
         fetchActionModes()
         showStatusViewIfNeeded()
+    }
+    
+    @objc private func handleBot2AliasUpdated(_ notification: Notification) {
+        guard let deviceId = notification.object as? String,
+              deviceId == bot2.deviceId.uuidString else { return }
+
+        executeOnMainThread {
+            self.fetchActionModes()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -262,14 +278,6 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
             }
         }
     }
-    // MARK: Handle Scripts
-    private func updateScriptView(index: Int, event: PickerItemDiscriptor) {
-        // UI 硬编码，未来作同步？
-        UserDefaults.standard.setValue(index, forKey: device.deviceId.uuidString)
-        self.scriptView.pickerView.selectRow(index, inComponent: 0, animated: false)
-        self.scriptView.value = event.displayName
-        self.scriptView.fold()
-    }
 
     private func setupPickerWithEvents(_ events: [Bot2Event], currentIndex: Int) {
         self.pickerProxy = PickerProxy(items: events)
@@ -283,27 +291,42 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     func fetchActionModes() {
         bot2.getScriptNameList { [weak self] getResult in
             guard let self = self else { return }
-            executeOnMainThread { [self] in
-                if case let .success(bot2Status) = getResult {
-                    let intValue: Int = UserDefaults.standard.integer(forKey: self.device.deviceId.uuidString)
-                    bot2Status.data.curIdx = UInt8(intValue)
-                    // 设置value
-                    let events = bot2Status.data.events.enumerated().map { index, event -> Bot2Event in
-                        return Bot2Event(name: event.name) { [weak self] e in
-                            self?.bot2.selectScript(index: UInt8(index)) { [weak self] res in
-                                guard let self = self else { return }
-                                executeOnMainThread {
-                                    if case .success(_) = res {
-                                        self.updateScriptView(index: index, event: e)
-                                    } else if case let .failure(err) = res {
-                                        self.view.makeToast(err.errorDescription())
-                                    }
-                                }
-                            }
-                        }
+            
+            executeOnMainThread {
+                let currentActionIndex = UserDefaults.standard.integer(forKey: self.device.deviceId.uuidString)
+                let sortedItems = self.getSortedScriptItems()
+                
+                guard sortedItems.isEmpty == false else { return }
+                
+                let events = sortedItems.compactMap { item -> Bot2Event? in
+                    guard let actionIndex = Int(item.actionIndex) else { return nil }
+                    let displayName = item.alias ?? "🎬 \(actionIndex)"
+                    return Bot2Event(actionIndex: actionIndex, displayText: displayName) { [weak self] e in
+                        guard let self = self,
+                              let selected = e as? Bot2Event else { return }
+                        
+                        UserDefaults.standard.setValue(selected.actionIndex, forKey: self.device.deviceId.uuidString)
+                        self.scriptView.value = selected.displayName
+                        self.scriptView.fold()
+                        
+                        self.bot2.selectScript(index: UInt8(selected.actionIndex)) { _ in }
+                        
+                        let req = BotScriptRequest(
+                            deviceUUID: self.bot2.deviceId.uuidString.uppercased(),
+                            actionIndex: "\(selected.actionIndex)",
+                            alias: BotScriptStore.shared.getAlias(deviceUUID: self.bot2.deviceId.uuidString, actionIndex: selected.actionIndex),
+                            isDefault: 1,
+                            actionData: nil,
+                            displayOrder: BotScriptStore.shared.getDisplayOrder(deviceUUID: self.bot2.deviceId.uuidString, actionIndex: selected.actionIndex) ?? selected.actionIndex,
+                            deleteAll: nil,
+                            batchDisplayOrders: nil
+                        )
+                        CHAPIClient.shared.updateBotScript(req) { _ in }
                     }
-                    self.setupPickerWithEvents(events, currentIndex: Int(bot2Status.data.curIdx))
                 }
+                
+                let currentPickerIndex = events.firstIndex(where: { $0.actionIndex == currentActionIndex }) ?? 0
+                self.setupPickerWithEvents(events, currentIndex: currentPickerIndex)
             }
         }
     }
@@ -327,6 +350,22 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         DFUCenter.shared.dfuDevice(sesame, delegate: self)
         self.versionStr = nil
     }
+    
+    private func getSortedScriptItems() -> [BotScriptItem] {
+        let deviceUUID = bot2.deviceId.uuidString
+
+        if bot2.scripts.events.isEmpty == false {
+            return bot2.scripts.events.enumerated().map { index, event in
+                let fallback = String(data: Data(event.name), encoding: .utf8) ?? "\(index)"
+                let alias = BotScriptStore.shared.getAlias(deviceUUID: deviceUUID, actionIndex: index) ?? "🎬 \(fallback)"
+                let order = BotScriptStore.shared.getDisplayOrder(deviceUUID: deviceUUID, actionIndex: index) ?? index
+                return BotScriptItem(actionIndex: "\(index)", alias: alias, displayOrder: order, isDefault: nil)
+            }.sorted { ($0.displayOrder ?? 999) < ($1.displayOrder ?? 999) }
+        }
+
+        return (bot2.stateInfo?.scriptList ?? []).sorted { ($0.displayOrder ?? 999) < ($1.displayOrder ?? 999) }
+    }
+
 }
 
 extension Bot2SettingViewController {

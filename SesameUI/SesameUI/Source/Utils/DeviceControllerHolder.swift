@@ -62,6 +62,9 @@ extension DeviceControllerHolder where Self: CHBaseViewController {
             ViewHelper.hideLoadingView(view: self.view)
             Sesame2Store.shared.deletePropertyFor(device)
             self.device.unregisterNotification()
+            if let bot2 = device as? CHSesameBot2 {
+                Bot2InitHelper.clearBotScript(device: bot2) { _ in}
+            }
             device.dropKey() { resetResult in
                 executeOnMainThread {
                     ViewHelper.hideLoadingView(view: self.view)
@@ -90,6 +93,9 @@ extension DeviceControllerHolder where Self: CHBaseViewController {
             ViewHelper.hideLoadingView(view: self.view)
             Sesame2Store.shared.deletePropertyFor(device)
             self.device.unregisterNotification()
+            if let bot2 = device as? CHSesameBot2 {
+                Bot2InitHelper.clearBotScript(device: bot2) { _ in}
+            }
             device.reset { resetResult in
                 executeOnMainThread {
                     ViewHelper.hideLoadingView(view: self.view)

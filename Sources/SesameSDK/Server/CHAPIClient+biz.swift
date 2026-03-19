@@ -380,4 +380,41 @@ public extension CHAPIClient {
             }
         }
     }
+    
+    // MARK: - Bot Script
+    func updateBotScript(_ request: BotScriptRequest, result: @escaping CHResult<Any>) {
+        let jsonData = try! JSONEncoder().encode(request)
+        API(request: .init(.post, "/device/v1/bot/script", jsonData)) { response in
+            switch response {
+            case .success(let data):
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        result(.success(.init(input: json)))
+                    } catch {
+                        result(.success(.init(input: NSNull())))
+                    }
+                } else {
+                    result(.success(.init(input: NSNull())))
+                }
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+    
+    func clearBotScript(deviceUUID: String, result: @escaping CHResult<Any>) {
+        let request = BotScriptRequest(
+            deviceUUID: deviceUUID.uppercased(),
+            actionIndex: nil,
+            alias: nil,
+            isDefault: nil,
+            actionData: nil,
+            displayOrder: nil,
+            deleteAll: true,
+            batchDisplayOrders: nil
+        )
+        updateBotScript(request, result: result)
+    }
+
 }
