@@ -46,7 +46,7 @@ public protocol CHDevice: AnyObject {
 
 public extension CHDevice {
     func getKey() -> CHDeviceKey? { return ( self as? CHDeviceUtil)?.sesame2KeyData?.copy()  as? CHDeviceKey }
-
+    
     func getFirZip() -> URL {
         var filePrefix = ""
         switch productModel! {
@@ -60,16 +60,13 @@ public extension CHDevice {
             filePrefix = "sesame5pro_"
         case .sesame5US:
             filePrefix = "sesame5us_"
-        case .sesame6Pro:
+        case .sesame6Pro,.sesame6ProSLiDingDoor:
             filePrefix = "sesame6pro_"
-        case .sesame6ProSLiDingDoor:
-            filePrefix = "sesame6pro_"
-        case .wifiModule2: break
+        case .sesameMiwa:
+            filePrefix = "sesammiwa_"
         case .sesameBot:
             filePrefix = "sesamebot1"
-        case .sesameBot2:
-            filePrefix = "sesamebot2"
-        case .sesameBot3:
+        case .sesameBot2,.sesameBot3:
             filePrefix = "sesamebot2"
         case .bikeLock:
             filePrefix = "sesamebike1"
@@ -87,34 +84,21 @@ public extension CHDevice {
             filePrefix = "remote_"
         case .remoteNano:
             filePrefix = "remoten_"
+        case .sesameTouch,.sesameTouch2:
+            filePrefix = "sesametouch1_"
+        case .sesameTouchPro,.sesameTouch2Pro:
+            filePrefix = "sesametouch1pro"
+        case .sesameFace,.sesameFace2:
+            filePrefix = "sesameFace1_"
+        case .sesameFacePro,.sesameFace2Pro:
+            filePrefix = "sesameFace1Pro_"
+        case .sesameFaceAI,.sesameFace2AI:
+            filePrefix = "sesameface1ai_"
+        case .sesameFaceProAI,.sesameFace2ProAI:
+            filePrefix = "sesameface1proai_"
         case .hub3:
             filePrefix = "hub3_"
-        case .sesameTouch:
-            filePrefix = "sesametouch1_"
-        case .sesameTouch2:
-            filePrefix = "sesametouch1_"
-        case .sesameTouchPro:
-            filePrefix = "sesametouch1pro"
-        case .sesameTouch2Pro:
-            filePrefix = "sesametouch1pro"
-        case .sesameFace:
-            filePrefix = "sesameFace1_"
-        case .sesameFace2:
-            filePrefix = "sesameFace1_"
-        case .sesameFacePro:
-            filePrefix = "sesameFace1Pro_"
-        case .sesameFace2Pro:
-            filePrefix = "sesameFace1Pro_"
-        case .sesameFaceAI:
-            filePrefix = "sesameface1ai_"
-        case .sesameFace2AI:
-            filePrefix = "sesameface1ai_"
-        case .sesameFaceProAI:
-            filePrefix = "sesameface1proai_"
-        case .sesameFace2ProAI:
-            filePrefix = "sesameface1proai_"
-	case .sesameMiwa:
-            filePrefix = "sesammiwa_"
+        case .wifiModule2: break
         }
         var zips: [URL] = []
         if  let fileURLs = Bundle.main.urls(forResourcesWithExtension: "zip", subdirectory: nil) {
