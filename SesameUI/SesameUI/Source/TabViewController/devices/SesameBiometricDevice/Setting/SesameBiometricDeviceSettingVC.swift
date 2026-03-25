@@ -62,6 +62,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             device = mDevice
         }
     }
+    override var bleTxPowerMinValue: Float { 0 }
     // MARK: getVersionTag
     private func getVersionTag() {
         mDevice.getVersionTag { result in
@@ -130,6 +131,13 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             self.updateAddSesameButtonState()
         }
     }
+    
+    public func onBleTxPowerReceive(device: CHDevice, txPower: UInt8) {
+        guard device.deviceId == mDevice.deviceId else { return }
+        L.d("BLE tx power", "onBleTxPowerReceive: \(txPower)")
+        showBleTxPowerUI(device: device, txPower: txPower)
+    }
+    
     @discardableResult
     func showStatusViewIfNeeded() -> Bool {
         if CHBluetoothCenter.shared.scanning == .bleClose() {
@@ -234,6 +242,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         if mDevice.deviceStatus == .receivedBle() {
             mDevice.connect() { _ in }
         }
+        showBleTxPowerUI(device: mDevice, txPower: mDevice.bleTxPower)
         getVersionTag()
     }
     
@@ -438,6 +447,9 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         NSLayoutConstraint.activate([
             spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
+        
+        // MARK: BleTxPower
+        setupBleTxPowerUIIfNeeded(in: contentStackView, device: mDevice)
     }
     
     func setupNFCCardView() {

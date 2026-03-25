@@ -76,6 +76,10 @@ extension CHSesameBaseDevice {
             handle = true
             (self.delegate as? CHSesameConnectorDelegate)?.onSSMSupport(device: self, isSupport: false)
             notifySSMSupport(isSupport: false)
+        case .SSM3_ITEM_CODE_BLE_TX_POWER_SETTING:
+            handle = true
+            guard let value = payload.first else { return handle }
+            bleTxPower = value
         default:
             handle = false
         }

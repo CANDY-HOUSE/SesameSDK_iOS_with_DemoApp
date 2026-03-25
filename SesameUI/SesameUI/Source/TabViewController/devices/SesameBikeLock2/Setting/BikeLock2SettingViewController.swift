@@ -75,6 +75,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         if mBikeLock2.deviceStatus == .receivedBle() {
             mBikeLock2.connect() { _ in }
         }
+        showBleTxPowerUI(device: mBikeLock2, txPower: mBikeLock2.bleTxPower)
         getVersionTag()
         showStatusViewIfNeeded()
     }
@@ -232,6 +233,15 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         resetKeyView.title = "co.candyhouse.sesame2.ResetSesame".localized
         contentStackView.addArrangedSubview(resetKeyView)
 #endif
+        
+        let spacerView = UIView()
+        contentStackView.addArrangedSubview(spacerView)
+        NSLayoutConstraint.activate([
+            spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        
+        // MARK: BleTxPower
+        setupBleTxPowerUIIfNeeded(in: contentStackView, device: mBikeLock2)
     }
 
     // ---↓Functions↓---
@@ -315,6 +325,12 @@ extension BikeLock2SettingViewController: CHSesame2Delegate {
         executeOnMainThread {
             self.showStatusViewIfNeeded()
         }
+    }
+    
+    public func onBleTxPowerReceive(device: CHDevice, txPower: UInt8) {
+        guard device.deviceId == mBikeLock2.deviceId else { return }
+        L.d("BLE tx power", "onBleTxPowerReceive: \(txPower)")
+        showBleTxPowerUI(device: device, txPower: txPower)
     }
 }
 

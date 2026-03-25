@@ -52,6 +52,14 @@ class CHBaseDevice: NSObject, CBPeripheralDelegate {
             }
         }
     }
+    var bleTxPower: UInt8 = CHDeviceUnsetBleTxPowerValue {
+        didSet {
+            guard oldValue != bleTxPower else { return }
+            guard let device = self as? CHDevice else { return }
+            delegate?.onBleTxPowerReceive(device: device, txPower: bleTxPower)
+            notifyBleTxPowerReceive(txPower: bleTxPower)
+        }
+    }
     let appKeyPair = ECC.generate()
     public var rssi: NSNumber?
     public var txPowerLevel:Int?
@@ -205,6 +213,12 @@ extension CHBaseDevice {
     func notifySSMSupport(isSupport: Bool) {
         multicastDelegate.invokeDelegates { invokation in
             invokation.onSSMSupport(device: self as! CHSesameConnector, isSupport: isSupport)
+        }
+    }
+    
+    func notifyBleTxPowerReceive(txPower: UInt8) {
+        multicastDelegate.invokeDelegates { invocation in
+            invocation.onBleTxPowerReceive(device: self as! CHDevice, txPower: txPower)
         }
     }
 }

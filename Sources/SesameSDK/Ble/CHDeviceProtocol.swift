@@ -165,6 +165,9 @@ enum SesameItemCode: UInt8 {
     
     // sesame6ProSLiDingDoor切换UI
     case SS3_ITEM_CODE_SET_ADV_PRODUCT_TYPE = 205
+    
+    // 蓝牙发射功率
+    case SSM3_ITEM_CODE_BLE_TX_POWER_SETTING = 206
 }
 
 extension SesameItemCode {

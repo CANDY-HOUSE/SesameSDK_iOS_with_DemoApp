@@ -134,6 +134,18 @@ extension CHSesame5Device {
         }
     }
     
+    func setBleTxPower(txPower: UInt8, result: @escaping (CHResult<CHEmpty>)) {
+        if !isBleAvailable(result) { return }
+
+        sendCommand(.init(.SSM3_ITEM_CODE_BLE_TX_POWER_SETTING, Data([txPower]))) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+    
     public func updateFirmware(result: @escaping CHResult<CBPeripheral?>) {
         result(.success(CHResultStateBLE(input: self.peripheral)))
     }

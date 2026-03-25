@@ -52,6 +52,9 @@ class CHSesameBike2Device: CHSesameOS3 ,CHSesameBike2, CHDeviceUtil {
             }
         case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
             postBatteryData(data.toHexString()) { _ in }
+        case .SSM3_ITEM_CODE_BLE_TX_POWER_SETTING:
+            guard let value = data.first else { return }
+            bleTxPower = value
         default:
             L.d("[bk2][publish]!![\(itemCode.rawValue)]")
         }
@@ -167,4 +170,15 @@ extension CHSesameBike2Device {
         }
     }
 
+    func setBleTxPower(txPower: UInt8, result: @escaping (CHResult<CHEmpty>)) {
+        if !isBleAvailable(result) { return }
+
+        sendCommand(.init(.SSM3_ITEM_CODE_BLE_TX_POWER_SETTING, Data([txPower]))) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
 }

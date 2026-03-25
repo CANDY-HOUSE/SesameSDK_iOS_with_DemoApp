@@ -108,6 +108,8 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
 
         autoLockInt = sesame5.mechSetting?.autoLockSecond
         opsLockUInt = sesame5.opsSetting?.opsLockSecond
+        
+        showBleTxPowerUI(device: sesame5, txPower: sesame5.bleTxPower)
 
         if sesame5.deviceStatus == .receivedBle() {
             sesame5.connect() { _ in }
@@ -372,11 +374,20 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         resetKeyView.title = "co.candyhouse.sesame2.ResetSesame".localized
         contentStackView.addArrangedSubview(resetKeyView)
 #endif
-
+        
         let spacerView = UIView()
         contentStackView.addArrangedSubview(spacerView)
         NSLayoutConstraint.activate([
             spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        
+        // MARK: BleTxPower
+        setupBleTxPowerUIIfNeeded(in: contentStackView, device: sesame5)
+
+        let spacerView2 = UIView()
+        contentStackView.addArrangedSubview(spacerView2)
+        NSLayoutConstraint.activate([
+            spacerView2.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
 
         // start MARK: AutoUnlock
@@ -388,7 +399,6 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         contentStackView.addArrangedSubview(autoUnLockView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         //end  MARK: AutoUnlock
-
     }
 
     // MARK: OTA
@@ -448,6 +458,12 @@ extension Sesame5SettingViewController: CHSesame2Delegate {
         executeOnMainThread {
             self.showStatusViewIfNeeded()
         }
+    }
+    
+    public func onBleTxPowerReceive(device: CHDevice, txPower: UInt8) {
+        guard device.deviceId == sesame5.deviceId else { return }
+        L.d("BLE tx power", "onBleTxPowerReceive: \(txPower)")
+        showBleTxPowerUI(device: device, txPower: txPower)
     }
 }
 

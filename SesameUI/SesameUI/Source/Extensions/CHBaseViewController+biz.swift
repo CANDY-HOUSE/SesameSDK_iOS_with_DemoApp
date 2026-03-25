@@ -131,3 +131,73 @@ extension CHBaseViewController {
         }
     }
 }
+
+extension CHBaseViewController {
+    func setupBleTxPowerUIIfNeeded(in contentStackView: UIStackView, device: CHDevice) {
+        guard bleTxPowerSliderView == nil else { return }
+        
+        var sliderView: CHUISliderSettingView!
+        
+        sliderView = CHUIViewGenerator.slider(
+            defaultValue: bleTxPowerMinValue,
+            maximumValue: bleTxPowerMaxValue,
+            minimumValue: bleTxPowerMinValue,
+            contentWidth: 240,
+            { slider, event in
+                guard let slider = slider as? UISlider else { return }
+                let value = Int(round(slider.value))
+                slider.value = Float(value)
+                sliderView.updateBubble(withValue: "\(value) dBm")
+            },
+            { [weak self] slider, event in
+                guard let self = self, let slider = slider as? UISlider else { return }
+                let value = Int(round(slider.value))
+                slider.value = Float(value)
+                self.setBleTxPower(device: device, txPower: value)
+            }
+        )
+        
+        sliderView.title = "co.candyhouse.sesame2.BleTxPower".localized
+        sliderView.slider.tintColor = .systemTeal
+        sliderView.slider.thumbTintColor = .systemTeal
+        sliderView.isSliderHidden = true
+        sliderView.isHidden = true
+        
+        contentStackView.addArrangedSubview(sliderView)
+        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
+        
+        bleTxPowerSliderView = sliderView
+    }
+    
+    func showBleTxPowerUI(device: CHDevice, txPower: UInt8) {
+        executeOnMainThread {
+            guard let sliderView = self.bleTxPowerSliderView else { return }
+            
+            if txPower == self.bleTxPowerUnsetValue {
+                sliderView.isHidden = true
+                return
+            }
+            
+            sliderView.isHidden = false
+            sliderView.isSliderHidden = false
+            
+            let signedValue = Int(Int8(bitPattern: txPower))
+            let clampedValue = min(max(signedValue, Int(self.bleTxPowerMinValue)), Int(self.bleTxPowerMaxValue))
+            
+            sliderView.slider.value = Float(clampedValue)
+            sliderView.updateBubble(withValue: "\(clampedValue) dBm")
+        }
+    }
+    
+    func setBleTxPower(device: CHDevice, txPower: Int) {
+        let raw = UInt8(bitPattern: Int8(txPower))
+        device.setBleTxPower(txPower: raw) { result in
+            switch result {
+            case .success:
+                L.d("BLE tx power", "set success: \(txPower) dBm")
+            case .failure(let error):
+                L.d("BLE tx power", "set failed: \(error.localizedDescription)")
+            }
+        }
+    }
+}

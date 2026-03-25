@@ -223,3 +223,4 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.SlotFull" = "Device Full";
 "co.candyhouse.sesame2.SSMMiwa" = "Sesame miwa";
 "co.candyhouse.sesame2.Unsupport" = "Device not supported";
+"co.candyhouse.sesame2.BleTxPower" = "BLE TX power";

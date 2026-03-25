@@ -23,6 +23,11 @@ public class CHBaseViewController: UIViewController, CHRouteCoordinator {
     var soundPlayer: AVAudioPlayer?
     var navigationBarBackgroundColor: UIColor = .white
     
+    var bleTxPowerSliderView: CHUISliderSettingView?
+    var bleTxPowerMinValue: Float { -4 }
+    var bleTxPowerMaxValue: Float { 20 }
+    var bleTxPowerUnsetValue: UInt8 { CHDeviceUnsetBleTxPowerValue }
+    
     // MARK: - UI Components
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel(frame: .zero)

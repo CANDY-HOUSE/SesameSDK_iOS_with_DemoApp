@@ -90,6 +90,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         if bot2.deviceStatus == .receivedBle() {
             bot2.connect() { _ in }
         }
+        showBleTxPowerUI(device: bot2, txPower: bot2.bleTxPower)
         getVersionTag()
         fetchActionModes()
         showStatusViewIfNeeded()
@@ -256,6 +257,15 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         resetKeyView.title = "co.candyhouse.sesame2.ResetSesame".localized
         contentStackView.addArrangedSubview(resetKeyView)
 #endif
+        
+        let spacerView = UIView()
+        contentStackView.addArrangedSubview(spacerView)
+        NSLayoutConstraint.activate([
+            spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        
+        // MARK: BleTxPower
+        setupBleTxPowerUIIfNeeded(in: contentStackView, device: bot2)
     }
 
     // ---↓Functions↓---
@@ -394,6 +404,12 @@ extension Bot2SettingViewController: CHSesame2Delegate {
         executeOnMainThread {
             self.showStatusViewIfNeeded()
         }
+    }
+    
+    public func onBleTxPowerReceive(device: CHDevice, txPower: UInt8) {
+        guard device.deviceId == bot2.deviceId else { return }
+        L.d("BLE tx power", "onBleTxPowerReceive: \(txPower)")
+        showBleTxPowerUI(device: device, txPower: txPower)
     }
 }
 

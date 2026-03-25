@@ -36,6 +36,7 @@ public extension NSError {
     static let noSecretKeyError = NSError(domain: "com.sesame.sdk", code: 0, userInfo: ["message": "no secret key"])
     static let iotVerifyError = NSError(domain: "sesameSDK", code: 0, userInfo: ["message": "IoT vefify failed"])
     static let noDataError = NSError(domain: "sesame2", code: 0, userInfo: ["message": "no data"])
+    static let notSupported = NSError(domain: "Sesame2SDK", code: 0, userInfo: ["message": "Not Supported"])
 }
 
 

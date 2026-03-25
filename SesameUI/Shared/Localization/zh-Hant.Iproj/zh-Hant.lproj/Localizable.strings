@@ -221,3 +221,4 @@
 "co.candyhouse.sesame2.SlotFull" = "設備已滿";
 "co.candyhouse.sesame2.SSMMiwa" = "Sesame miwa";
 "co.candyhouse.sesame2.Unsupport" = "不支援此裝置";
+"co.candyhouse.sesame2.BleTxPower" = "BLE 發射功率";

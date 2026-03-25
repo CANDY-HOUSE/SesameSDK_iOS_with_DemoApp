@@ -11,15 +11,18 @@ public protocol CHDeviceStatusDelegate: AnyObject {
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?)
     func onMechStatus(device: CHDevice)
     func onBatteryPercentageChanged(device: CHDevice, percentage: Int)
+    func onBleTxPowerReceive(device: CHDevice, txPower: UInt8)
 }
 public extension CHDeviceStatusDelegate {
     func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?) {}
     func onMechStatus(device: CHDevice) {}
     func onBatteryPercentageChanged(device: CHDevice, percentage: Int) {}
+    func onBleTxPowerReceive(device: CHDevice, txPower: UInt8) {}
 }
 
 // MARK: - CHDevice
 public protocol CHDeviceStatusAndKeysDelegate: CHDeviceStatusDelegate, CHWifiModule2Delegate {}
+public let CHDeviceUnsetBleTxPowerValue: UInt8 = 21
 public protocol CHDevice: AnyObject {
     var delegate: CHDeviceStatusDelegate? { get set }
     var multicastDelegate: CHMulticastDelegate<CHDeviceStatusAndKeysDelegate> { get set }
@@ -42,6 +45,8 @@ public protocol CHDevice: AnyObject {
     func reset(result: @escaping CHResult<CHEmpty>)
     func register(result: @escaping CHResult<CHEmpty>)
 //    #endif
+    var bleTxPower: UInt8 { get set }
+    func setBleTxPower(txPower: UInt8, result: @escaping (CHResult<CHEmpty>))
 }
 
 public extension CHDevice {
@@ -177,6 +182,10 @@ public extension CHDevice {
 }
 
 internal extension CHDevice {
+    func setBleTxPower(txPower: UInt8, result: @escaping (CHResult<CHEmpty>)) {
+        result(.failure(NSError.notSupported))
+    }
+    
     func errorFromResultCode(_ resultCode: SesameResultCode) -> Error {
         if let error = SesameResultCode(rawValue: resultCode.rawValue) {
             return error
