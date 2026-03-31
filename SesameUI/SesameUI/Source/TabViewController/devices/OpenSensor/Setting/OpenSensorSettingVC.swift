@@ -73,6 +73,11 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         self.opsUInt = setting.triggerDelaySecond
     }
     
+    public func onBleTxPowerReceive(device: CHDevice, txPower: UInt8) {
+        guard device.deviceId == mDevice.deviceId else { return }
+        L.d("BLE tx power", "onBleTxPowerReceive: \(txPower)")
+        showBleTxPowerUI(device: device, txPower: txPower)
+    }
     
     func onBleDeviceStatusChanged(device: SesameSDK.CHDevice, status: SesameSDK.CHDeviceStatus, shadowStatus: SesameSDK.CHDeviceStatus?) {
         if status == .receivedBle() {
@@ -193,6 +198,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         if mDevice.deviceStatus == .receivedBle() {
             mDevice.connect() { _ in }
         }
+        showBleTxPowerUI(device: mDevice, txPower: mDevice.bleTxPower)
         getVersionTag()
         self.opsUInt = mDevice.triggerDelaySetting?.triggerDelaySecond ?? 0
     }
@@ -315,6 +321,15 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         dropKeyView.title = String(format: "co.candyhouse.sesame2.TrashTouch".localized, arguments: [deviceName])
         contentStackView.addArrangedSubview(dropKeyView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        
+        let spacerView = UIView()
+        contentStackView.addArrangedSubview(spacerView)
+        NSLayoutConstraint.activate([
+            spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        
+        // MARK: BleTxPower
+        setupBleTxPowerUIIfNeeded(in: contentStackView, device: mDevice)
     }
     
     private func updateAddSesameButtonState() {

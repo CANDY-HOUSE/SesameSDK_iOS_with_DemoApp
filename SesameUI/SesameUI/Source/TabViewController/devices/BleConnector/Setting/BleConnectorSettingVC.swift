@@ -92,6 +92,12 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         }
     }
     
+    public func onBleTxPowerReceive(device: CHDevice, txPower: UInt8) {
+        guard device.deviceId == mDevice.deviceId else { return }
+        L.d("BLE tx power", "onBleTxPowerReceive: \(txPower)")
+        showBleTxPowerUI(device: device, txPower: txPower)
+    }
+    
     func onBleDeviceStatusChanged(device: SesameSDK.CHDevice, status: SesameSDK.CHDeviceStatus, shadowStatus: SesameSDK.CHDeviceStatus?) {
         if status == .receivedBle() {
             device.connect() { _ in }
@@ -190,6 +196,7 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         if mDevice.deviceStatus == .receivedBle() {
             mDevice.connect() { _ in }
         }
+        showBleTxPowerUI(device: mDevice, txPower: mDevice.bleTxPower)
         getVersionTag()
     }
 
@@ -315,6 +322,15 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         dropHintView.text = String(format: "co.candyhouse.sesame2.dropKeyDesc".localized, arguments: [deviceName, deviceName, deviceName])
         contentStackView.addArrangedSubview(dropHintContiaoner)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
+        
+        let spacerView = UIView()
+        contentStackView.addArrangedSubview(spacerView)
+        NSLayoutConstraint.activate([
+            spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        
+        // MARK: BleTxPower
+        setupBleTxPowerUIIfNeeded(in: contentStackView, device: mDevice)
     }
     
     // MARK: Trash Key
