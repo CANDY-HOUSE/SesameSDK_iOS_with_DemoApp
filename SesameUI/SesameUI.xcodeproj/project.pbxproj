@@ -119,7 +119,6 @@
 		89078B632F63E7AC0067B6C3 /* sesamebike3_30_33_d1648e.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B622F63E7AC0067B6C3 /* sesamebike3_30_33_d1648e.zip */; };
 		89078B692F67F3C10067B6C3 /* sesameface1proai_30_22_f5b193.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B682F67F3C10067B6C3 /* sesameface1proai_30_22_f5b193.zip */; };
 		89078B732F68FC750067B6C3 /* sesameface1ai_30_23_f5b193.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B722F68FC750067B6C3 /* sesameface1ai_30_23_f5b193.zip */; };
-		89078B7F2F6AA5940067B6C3 /* sesameface1_30_19_f5b193.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B7E2F6AA5940067B6C3 /* sesameface1_30_19_f5b193.zip */; };
 		89078B8F2F7135030067B6C3 /* opensensor1_30_8_763d18.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B8E2F7135030067B6C3 /* opensensor1_30_8_763d18.zip */; };
 		89078B912F71351D0067B6C3 /* opensensor2_30_24_763d18.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078B902F71351D0067B6C3 /* opensensor2_30_24_763d18.zip */; };
 		89078BB32F73F61F0067B6C3 /* sesametouch1pro_30_9_323190.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89078BB22F73F61F0067B6C3 /* sesametouch1pro_30_9_323190.zip */; };
@@ -142,6 +141,7 @@
 		89C289F92F30B277001890E7 /* remoten_30_15_4a5b8d.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89C289F82F30B277001890E7 /* remoten_30_15_4a5b8d.zip */; };
 		89CFEB352F3B282F00B5B302 /* sesame6pro_30_21_66dee7.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89CFEB342F3B282F00B5B302 /* sesame6pro_30_21_66dee7.zip */; };
 		89E464232F7BD987005460F4 /* sesameface1pro_30_18_323190.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89E464222F7BD987005460F4 /* sesameface1pro_30_18_323190.zip */; };
+		89E4642D2F7BEDBD005460F4 /* sesameface1_30_19_323190.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89E4642C2F7BEDBD005460F4 /* sesameface1_30_19_323190.zip */; };
 		89EC94A62F0E3AC80056818E /* bleconnector_30_11_b5940a.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89EC94A52F0E3AC80056818E /* bleconnector_30_11_b5940a.zip */; };
 		B01728D1250C700500F87ED6 /* SesameDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D0250C700500F87ED6 /* SesameDeviceListViewController.swift */; };
 		B01728D3250C78D200F87ED6 /* CHBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D2250C78D200F87ED6 /* CHBaseTableViewController.swift */; };
@@ -540,7 +540,6 @@
 		89078B622F63E7AC0067B6C3 /* sesamebike3_30_33_d1648e.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesamebike3_30_33_d1648e.zip; sourceTree = "<group>"; };
 		89078B682F67F3C10067B6C3 /* sesameface1proai_30_22_f5b193.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1proai_30_22_f5b193.zip; sourceTree = "<group>"; };
 		89078B722F68FC750067B6C3 /* sesameface1ai_30_23_f5b193.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1ai_30_23_f5b193.zip; sourceTree = "<group>"; };
-		89078B7E2F6AA5940067B6C3 /* sesameface1_30_19_f5b193.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1_30_19_f5b193.zip; sourceTree = "<group>"; };
 		89078B8E2F7135030067B6C3 /* opensensor1_30_8_763d18.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor1_30_8_763d18.zip; sourceTree = "<group>"; };
 		89078B902F71351D0067B6C3 /* opensensor2_30_24_763d18.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = opensensor2_30_24_763d18.zip; sourceTree = "<group>"; };
 		89078BB22F73F61F0067B6C3 /* sesametouch1pro_30_9_323190.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesametouch1pro_30_9_323190.zip; sourceTree = "<group>"; };
@@ -563,6 +562,7 @@
 		89C289F82F30B277001890E7 /* remoten_30_15_4a5b8d.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = remoten_30_15_4a5b8d.zip; sourceTree = "<group>"; };
 		89CFEB342F3B282F00B5B302 /* sesame6pro_30_21_66dee7.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesame6pro_30_21_66dee7.zip; sourceTree = "<group>"; };
 		89E464222F7BD987005460F4 /* sesameface1pro_30_18_323190.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1pro_30_18_323190.zip; sourceTree = "<group>"; };
+		89E4642C2F7BEDBD005460F4 /* sesameface1_30_19_323190.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sesameface1_30_19_323190.zip; sourceTree = "<group>"; };
 		89EC94A52F0E3AC80056818E /* bleconnector_30_11_b5940a.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bleconnector_30_11_b5940a.zip; sourceTree = "<group>"; };
 		96B2196629111F26006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Sesame2Intents.strings"; sourceTree = "<group>"; };
 		96B2197929111F55006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1217,7 +1217,7 @@
 				89078BB22F73F61F0067B6C3 /* sesametouch1pro_30_9_323190.zip */,
 				89078BCA2F76224D0067B6C3 /* sesametouch1_30_10_323190.zip */,
 				89E464222F7BD987005460F4 /* sesameface1pro_30_18_323190.zip */,
-				89078B7E2F6AA5940067B6C3 /* sesameface1_30_19_f5b193.zip */,
+				89E4642C2F7BEDBD005460F4 /* sesameface1_30_19_323190.zip */,
 				89078B682F67F3C10067B6C3 /* sesameface1proai_30_22_f5b193.zip */,
 				89078B722F68FC750067B6C3 /* sesameface1ai_30_23_f5b193.zip */,
 			);
@@ -1927,6 +1927,7 @@
 				E8819C0C291360D800431939 /* Localizable.strings in Resources */,
 				E8819C0B29135D2E00431939 /* Localizable.strings in Resources */,
 				89CFEB352F3B282F00B5B302 /* sesame6pro_30_21_66dee7.zip in Resources */,
+				89E4642D2F7BEDBD005460F4 /* sesameface1_30_19_323190.zip in Resources */,
 				E84262D32913736F0064163D /* Assets.xcassets in Resources */,
 				E8819C0A291357F200431939 /* Localizable.strings in Resources */,
 				89078BCF2F7633AA0067B6C3 /* sesamebike2_30_6_ad26ee.zip in Resources */,
@@ -1962,7 +1963,6 @@
 				645E2D272B5BC83300D39E66 /* Hub3IREmitCell.xib in Resources */,
 				418FA1F9237C04EF00C7C408 /* InfoPlist.strings in Resources */,
 				89078B8F2F7135030067B6C3 /* opensensor1_30_8_763d18.zip in Resources */,
-				89078B7F2F6AA5940067B6C3 /* sesameface1_30_19_f5b193.zip in Resources */,
 				643F069C2BCD12400045D789 /* sesamebot1_21_2_369eb9.zip in Resources */,
 				89078BCD2F7633900067B6C3 /* sesamebot2_30_17_ad26ee.zip in Resources */,
 				89078BBF2F752CC00067B6C3 /* sesame5pro_30_7_ad26ee.zip in Resources */,
