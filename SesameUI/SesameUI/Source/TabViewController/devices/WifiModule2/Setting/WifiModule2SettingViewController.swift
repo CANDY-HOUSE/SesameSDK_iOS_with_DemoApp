@@ -518,7 +518,7 @@ extension WifiModule2SettingViewController: CHWifiModule2Delegate {
         }
     }
 
-    func onSesame2KeysChanged(device: CHWifiModule2, sesame2keys: [String: String]) {
+    func onSesame2KeysChanged(device: any CHSesameConnector, sesame2keys: [String : String]) {
         wifiModuleDeviceModels = sesame2keys.keys.compactMap { key -> String? in
             return key
         }
