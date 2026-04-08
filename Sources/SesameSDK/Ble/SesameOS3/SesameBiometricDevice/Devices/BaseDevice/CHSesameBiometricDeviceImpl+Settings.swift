@@ -1,36 +1,38 @@
 //
-//  CHSesameBaseDevice+Settings.swift
+//  CHSesameBiometricDeviceImpl+Settings.swift
 //  SesameSDK
 //
-//  Created by wuying on 2025/4/3.
-//  Copyright © 2025 CandyHouse. All rights reserved.
+//  Created by frey Mac on 2026/4/3.
+//  Copyright © 2026 CandyHouse. All rights reserved.
 //
 
 import Foundation
-extension CHSesameBaseDevice {
-    
-    func registerHandlers(itemCode: SesameItemCode,payload: Data) -> Bool {
+
+extension CHSesameBiometricDeviceImpl {
+
+    func registerHandlers(itemCode: SesameItemCode, payload: Data) -> Bool {
         var handle = false
-        
+
         switch itemCode {
         case .mechStatus:
             handle = true
-            L.d("[TPO][mechStatus]",payload.toHexLog())
             mechStatus = CHSesameTouchProMechStatus.fromData(payload)!
             postBatteryData(payload[0..<2].toHexString()) { res in
                 if case .success(let resp) = res {
                     self.notifyBatteryPercentageChanged(percentage: resp.data)
                 }
             }
+
         case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
             postBatteryData(payload.toHexString()) { _ in }
+
         case .pubKeySesame:
             handle = true
             var sesame2Keys = [String: String]()
             let dividedData = payload.divideArray(chunkSize: 23)
+
             for keyData in dividedData {
                 let lockStatus = keyData[22]
-                //               L.d("lockStatus!!!",lockStatus)
                 if lockStatus != 0 {
                     if keyData[21] == 0x00 {
                         let deviceIDData = keyData[0...15]
@@ -47,44 +49,44 @@ extension CHSesameBaseDevice {
                     }
                 }
             }
+
             self.sesame2Keys = sesame2Keys
-            L.d("sesame2Keys",sesame2Keys)
-            // 针对特殊机型，保留一个槽位给hub3，所以需要超过1个空槽位才算有空余
+
             let hasEmptySlot: Bool
             if productModel == .openSensor || productModel == .openSensor2 {
                 hasEmptySlot = dividedData.filter({ $0.allSatisfy({ $0 == 0x00 }) }).count > 1
             } else {
                 hasEmptySlot = dividedData.contains(where: { $0.allSatisfy({ $0 == 0x00 }) })
             }
+
             if !hasEmptySlot {
                 (self.delegate as? CHSesameConnectorDelegate)?.onSlotFull(device: self)
                 notifySlotFull()
             }
-            
+
         case .REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME:
             handle = true
             triggerDelaySetting = CHRemoteBaseTriggerSettings.fromData(payload)!
-            L.d("REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME", payload.bytes)
             (self.delegate as? CHRemoteNanoDelegate)?.onTriggerDelaySecondReceived(device: self, setting: triggerDelaySetting!)
-            
+
         case .SSM_OS3_RADAR_PARAM_PUBLISH:
             handle = true
             radarPayload = Data(payload.bytes)
-            L.d("SSM_OS3_RADAR_PARAM_PUBLISH", payload.bytes)
-            
+
         case .SSM3_ITEM_CODE_SESAME_UNSUPPORT:
             handle = true
             (self.delegate as? CHSesameConnectorDelegate)?.onSSMSupport(device: self, isSupport: false)
             notifySSMSupport(isSupport: false)
+
         case .SSM3_ITEM_CODE_BLE_TX_POWER_SETTING:
             handle = true
             guard let value = payload.first else { return handle }
             bleTxPower = value
+
         default:
             handle = false
         }
-        
+
         return handle
     }
-    
 }

@@ -293,16 +293,7 @@ extension CHDevice {
         if let locker = self as? CHSesameLock {
             return (locker.deviceShadowStatus  != nil) ? .sesame2Green : .lockGray
         }
-        if let connector = self as? CHSesameTouchPro {
-            return (connector.deviceShadowStatus  != nil) ? .sesame2Green : .lockGray
-        }
-        if let connector = self as? CHSesameTouch {
-            return (connector.deviceShadowStatus  != nil) ? .sesame2Green : .lockGray
-        }
-        if let connector = self as? CHSesameFace {
-            return (connector.deviceShadowStatus  != nil) ? .sesame2Green : .lockGray
-        }
-        if let connector = self as? CHSesameFacePro {
+        if let connector = self as? CHSesameBiometricDevice {
             return (connector.deviceShadowStatus  != nil) ? .sesame2Green : .lockGray
         }
         return  .lockGray
@@ -424,5 +415,12 @@ extension CHDevice {
             return historyTag
         }
         return Data()
+    }
+}
+
+extension CHDevice {
+    func hasBiometricCapability(_ capability: BiometricCapability) -> Bool {
+        guard let device = self as? CHSesameBiometricDevice else { return false }
+        return device.supportedCapabilities.contains(capability)
     }
 }

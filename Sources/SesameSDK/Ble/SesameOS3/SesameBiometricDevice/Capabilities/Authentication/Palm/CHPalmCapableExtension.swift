@@ -6,7 +6,7 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 import Foundation
-extension CHPalmCapable where Self: CHSesameBaseDevice{
+extension CHPalmCapable where Self: CHSesameBiometricDeviceImpl{
     
     func palms(result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }

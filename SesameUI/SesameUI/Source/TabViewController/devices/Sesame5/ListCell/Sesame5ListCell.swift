@@ -130,7 +130,7 @@ class Sesame5ListCell: UITableViewCell {
         deviceNameLab.text = device.deviceName //名稱
         deviceBleStatusLab.text = device.bluetoothStatusStr()//藍芽狀態文字
         sesame2CircleBtn.setBackgroundImage(UIImage(named: device.currentStatusImage()), for: .normal)//設備撞圖片
-        let opensensorState = (device as? CHSesameTouchPro)?.displayedState
+        let opensensorState = (device as? CHSesameBiometricDevice)?.displayedState
         sesame2CircleBtn.setAttributedTitle(opensensorState, for: .normal)
         bleImg.image = UIImage(named: device.bluetoothImageStr())//藍芽小標圖片
         wifiStatusImg.image = UIImage(named: device.wifiImageStr())//wifi小標圖片
@@ -148,7 +148,7 @@ class Sesame5ListCell: UITableViewCell {
             self.sesame2Circle.stopShake()
             self.sesame2Circle.removeDot()
         }
-        bleImg.isHidden = (device is CHSesameTouchPro) || (device is CHSesameTouch) || (device is CHSesameFace) || (device is CHSesameFacePro)
+        bleImg.isHidden = device is CHSesameBiometricDevice
     }
     
     func configureWifiModuleDevice(_ device: CHWifiModule2) {

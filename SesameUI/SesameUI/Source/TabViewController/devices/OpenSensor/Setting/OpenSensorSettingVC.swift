@@ -19,7 +19,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
     // MARK: DeviceControllerHolder impl
     var device: SesameSDK.CHDevice!
     
-    var mDevice: CHSesameTouchPro! {
+    var mDevice: CHSesameBiometricDevice! {
         didSet {
             device = mDevice
         }
@@ -371,7 +371,7 @@ extension OpenSensorSettingVC: DFUHelperDelegate {
 }
 
 extension OpenSensorSettingVC {
-    static func instance(_ device: CHSesameTouchPro, dismissHandler: (()->Void)? = nil) -> OpenSensorSettingVC {
+    static func instance(_ device: CHSesameBiometricDevice, dismissHandler: (()->Void)? = nil) -> OpenSensorSettingVC {
         let vc = OpenSensorSettingVC(nibName: nil, bundle: nil)
         vc.hidesBottomBarWhenPushed = true
         vc.mDevice = device

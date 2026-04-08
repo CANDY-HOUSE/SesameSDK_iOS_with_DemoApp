@@ -19,7 +19,7 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     // MARK: DeviceControllerHolder impl
     var device: SesameSDK.CHDevice!
     
-    var mDevice: CHSesameTouchPro! {
+    var mDevice: CHSesameBiometricDevice! {
         didSet {
             device = mDevice
         }
@@ -190,7 +190,7 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
 }
 
 extension OpenSensorResetHintVC{
-    static func instance(_ device: CHSesameTouchPro, dismissHandler: (()->Void)? = nil) -> OpenSensorResetHintVC {
+    static func instance(_ device: CHSesameBiometricDevice, dismissHandler: (()->Void)? = nil) -> OpenSensorResetHintVC {
         let vc = OpenSensorResetHintVC(nibName: nil, bundle: nil)
         vc.hidesBottomBarWhenPushed = true
         vc.mDevice = device

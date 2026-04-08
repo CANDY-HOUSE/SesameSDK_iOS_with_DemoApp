@@ -32,16 +32,12 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
         guard let _ = self as? CHSesame5 else { return }
         let  time = Sesame5Time.fromData(res.data).time
         let sesameTime = Date(timeIntervalSince1970: TimeInterval(time))
-        //            L.d("[bk2][time]", sesameTime.description(with: .current))
-        //            L.d("[bk2][phonetime]", Date().description(with: .current))
         let timeErrorInterval = sesameTime.timeIntervalSince1970 - Date().timeIntervalSince1970
-        //            L.d("[ss5][timeErrorInterval]", timeErrorInterval)
         if abs(timeErrorInterval) > 3 {
-            //                L.d("[bk2][timeErrorInterval>3]", timeErrorInterval)
             var timestamp: UInt32 = UInt32(Date().timeIntervalSince1970)
             let timestampData = Data(bytes: &timestamp,count: MemoryLayout.size(ofValue: timestamp))
             self.sendCommand(.init(.time,timestampData)) { res in
-                //                    L.d("[bk2][cmd]", timeErrorInterval,res.cmdResultCode.plainName)
+                L.d("[os3][cmd]", timeErrorInterval,res.cmdResultCode.plainName)
             }
         }
     }
@@ -111,7 +107,6 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
     }
     
     func goIOT() {
-//        L.d("[bk2][iot]=>[goIOT]")
         if( self.isGuestKey){ return }
         
 #if os(iOS)
@@ -147,6 +142,9 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
                 }
                 if let sesameBike2Device = self as? CHSesameBike2Device {
                     sesameBike2Device.isConnectedByWM2 = isConnectedByWM2
+                }
+                if let sesameBot2Device = self as? CHSesameBot2Device {
+                    sesameBot2Device.isConnectedByWM2 = isConnectedByWM2
                 }
             case .failure( _): break
             }

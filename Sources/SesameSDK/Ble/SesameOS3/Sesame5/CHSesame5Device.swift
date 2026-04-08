@@ -6,63 +6,171 @@
 //  Copyright © 2023 CandyHouse. All rights reserved.
 //
 import Foundation
-class CHSesame5Device: CHSesameOS3, CHDeviceUtil ,CHSesame5 {
+import CoreBluetooth
+
+class CHSesame5Device: CHSesameOS3LockBase, CHSesame5 {
     
     var mechSetting: CHSesame5MechSettings?
     var opsSetting: CHSesame5OpsSettings?
-    var isConnectedByWM2 = false
-
-    public var isHistory: Bool = false { // isHistory:現在還有沒有歷史要讀的flag
-        didSet {
-            if isHistory {
-//                L.d("[ss5][history] isHistory", oldValue,"->",isHistory)
-                self.readHistoryCommand(){_ in}
-            }
-        }
-    }
-
-    var advertisement: BleAdv? {
-        didSet{
-            guard let advertisement = advertisement  else {
-                deviceStatus = .noBleSignal()
-                return
-            }
-            setAdv(advertisement)
-            if (self.deviceStatus.loginStatus == .logined ) {
-                isHistory = advertisement.adv_tag_b1
-//                L.d("[ss5][history]廣播內容", advertisement.adv_tag_b1)
-            }
-        }
-    }
-
-    override func onGattSesamePublish(_ payload: SesameOS3PublishPayload) {
-        super.onGattSesamePublish(payload)
+    
+    override func handleLockDevicePublish(_ payload: SesameOS3PublishPayload) {
         let itemCode = payload.itemCode
         let data = payload.payload
+        
         switch itemCode {
         case .mechStatus:
             mechStatus = Sesame5MechStatus.fromData(data)!
-            self.readHistoryCommand(){_ in}
-            self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
+            self.readHistoryCommand { _ in }
+            self.deviceStatus = mechStatus!.isInLockRange ? .locked() : .unlocked()
             postBatteryData(data[0..<2].toHexString()) { res in
                 if case .success(let resp) = res {
                     self.notifyBatteryPercentageChanged(percentage: resp.data)
                 }
             }
+            
         case .mechSetting:
             mechSetting = CHSesame5MechSettings.fromData(data)!
+            
         case .OPS_CONTROL:
             opsSetting = CHSesame5OpsSettings.fromData(data)!
-        case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
-            postBatteryData(data.toHexString()) { _ in }
-            L.d("[ops]收到上鎖秒數UInt16",opsSetting!.opsLockSecond)
-        case .SSM3_ITEM_CODE_BLE_TX_POWER_SETTING:
-            guard let value = data.first else { return }
-            bleTxPower = value
+            
         default:
             L.d("!![ss5][pub][\(itemCode.rawValue)]")
         }
     }
+    
+    override func notifyHistoryReceived(_ result: Result<CHResultState<Data>, Error>) {
+        (self.delegate as? CHSesame5Delegate)?.onHistoryReceived(device: self, result: result)
+    }
+}
+
+extension CHSesame5Device {
+    
+    // MARK: toggle 开切换
+    /// - Parameters:
+    ///   - historytag: 历史标签
+    ///   - result: 完成回調
+    ///   - 1. 设备有影子、未登录，IoT开关锁toggle  2. 如果是在上锁的范围，则开锁   否则，关锁
+    ///
+    public func toggle(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
+        if deviceShadowStatus != nil,
+           deviceStatus.loginStatus == .unlogined {
+            CHIoTManager.shared.sendCommandToWM2(.toggle, historytag ?? Data(), self) { _ in
+                result(.success(CHResultStateNetworks(input: CHEmpty())))
+            }
+            return
+        }
+        (mechStatus?.isInLockRange == true) ? unlock(historytag:historytag,result: result) : lock(historytag:historytag,result: result)
+    }
+    
+    // MARK: unlock 开锁
+    /// - Parameters:
+    ///   - historytag: 历史标签
+    ///   - result: 完成回調
+    ///   - 1. 设备有影子、未登录，IoT开锁  2. 蓝牙未启用，未登录，IoT开锁  3.  蓝牙启用，直接开关锁
+    ///
+    public func unlock(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
+        if ((deviceShadowStatus != nil && deviceStatus.loginStatus == .unlogined) || !self.isBleAvailable()) {
+            CHIoTManager.shared.sendCommandToWM2(.unlock, historytag ?? Data(), self) { _ in
+                result(.success(CHResultStateNetworks(input: CHEmpty())))
+            }
+            return
+        }
+        sendCommand(.init(.unlock,historytag)) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+    
+    // MARK: lock 关锁
+    /// - Parameters:
+    ///   - historytag: 历史标签
+    ///   - result: 完成回調
+    ///   - 逻辑同上 unlock
+    ///
+    public func lock(historytag: Data? = Data(), result: @escaping (CHResult<CHEmpty>)) {
+        if ((deviceShadowStatus != nil && deviceStatus.loginStatus == .unlogined) || !self.isBleAvailable()) {
+            CHIoTManager.shared.sendCommandToWM2(.lock, historytag ?? Data(), self) { _ in
+                result(.success(CHResultStateNetworks(input: CHEmpty())))
+            }
+            return
+        }
+        sendCommand(.init(.lock,historytag ?? Data())) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+    
+    public func autolock(historytag: Data?, delay: Int, result: @escaping (CHResult<Int>)) {
+        if(!isBleAvailable(result)){return}
+        
+        var autolockSet = Sesame2Autolock(Int16(delay))
+        let payload = autolockSet.toData()
+        
+        return sendCommand(.init( .autolock, payload)) { (payload) in
+            if payload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: delay)))
+            }
+        }
+    }
+    
+    public func opSensorControl(delay: Int, result: @escaping (CHResult<Int>)) {
+        if(!isBleAvailable(result)){ return }
+        
+        let payload = Data(withUnsafeBytes(of: UInt16(delay)) { Data($0) })// 限制內容不超過兩個byte
+        sendCommand(.init(.OPS_CONTROL, payload)) { (payload) in
+            if payload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: delay)))
+            }
+        }
+    }
+    
+    public func configureLockPosition(lockTarget: Int16, unlockTarget: Int16,result: @escaping (CHResult<CHEmpty>)) {
+        if(!isBleAvailable(result)){return}
+        
+        var configure = CHSesame5LockPositionConfiguration(lockTarget: lockTarget, unlockTarget: unlockTarget)
+        let payload = configure.toData()
+        
+        sendCommand(.init(.mechSetting, payload)) { (responsePayload) in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+            
+        }
+    }
+    
+    public func sendAdvProductTypeCommand(data: Data, result: @escaping (CHResult<CHEmpty>)) {
+        if (!isBleAvailable(result)) { return }
+        
+        sendCommand(.init(.SS3_ITEM_CODE_SET_ADV_PRODUCT_TYPE, data)) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+    
+    func magnet(result: @escaping (CHResult<CHEmpty>)) {
+        if(!isBleAvailable(result)){return}
+        
+        sendCommand(.init(.magnet)) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+    
 }
 
 struct Sesame5MechStatus: CHSesameProtocolMechStatus {

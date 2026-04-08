@@ -1,31 +1,38 @@
 //
-//  CHSesameBaseDevice.swift
+//  CHSesameBiometricDeviceImpl.swift
 //  SesameSDK
 //
-//  Created by wuying on 2025/4/1.
-//  Copyright © 2025 CandyHouse. All rights reserved.
+//  Created by frey Mac on 2026/4/3.
+//  Copyright © 2026 CandyHouse. All rights reserved.
 //
 
 import Foundation
 import CoreBluetooth
 
-class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHSesameConnector,CHMechanicalSettingsCapable{
-    
-    // 存储属性
+class CHSesameBiometricDeviceImpl: CHSesameOS3,
+                                   CHSesameBiometricDevice,
+                                   CHSesameBiometricEventHost,
+                                   CHDeviceUtil,
+                                   CHDevice,
+                                   CHMechanicalSettingsCapable,
+                                   CHCardCapable,
+                                   CHFingerPrintCapable,
+                                   CHPassCodeCapable,
+                                   CHPalmCapable,
+                                   CHFaceCapable{
+
+    let deviceType: BiometricDeviceType
+    let supportedCapabilities: Set<BiometricCapability>
+
     private var _advertisement: BleAdv?
     private var _sesame2Keys = [String: String]()
-    
-    // 事件处理器
     private var eventHandlers: [SesameItemCode: (SesameItemCode, Data) -> Void] = [:]
-    
-    // 委托管理器
+
     let delegateManager = CHDelegateManager()
-    
-    // 公共属性
+
     public var mechSetting: CHSesameBaseMechSettings?
     public var triggerDelaySetting: CHRemoteBaseTriggerSettings?
-    
-    // 雷达灵敏度
+
     private var _radarPayload: Data = Data([0x33, 0x10, 0x00, 0x00, 0x00])
     public var radarPayload: Data {
         get { return _radarPayload }
@@ -49,24 +56,23 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
         .sesameFaceProAI,
         .sesameFace2ProAI
     ]
-    
-    // 初始化方法
-    public override init() {
+
+    init(deviceType: BiometricDeviceType, supportedCapabilities: Set<BiometricCapability>) {
+        self.deviceType = deviceType
+        self.supportedCapabilities = supportedCapabilities
         super.init()
     }
-    
-    // 实现 CHDeviceManagementCapable 要求
-    public func getProductType() -> CHProductModel? {
-        return advertisement?.productType
+
+    required override init() {
+        self.deviceType = .sesameTouch
+        self.supportedCapabilities = []
+        super.init()
     }
-    
-    public func setAdvertisement(_ advertisement: Any?) {
-        if let adv = advertisement as? BleAdv {
-            self.advertisement = adv
-        }
+
+    deinit {
+        clearEventHandlers()
     }
-    
-    // 为了兼容现有代码，保留这些属性
+
     public var sesame2Keys: [String: String] {
         get { return _sesame2Keys }
         set {
@@ -75,12 +81,12 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
             notifySesameKeysChanged()
         }
     }
-    
+
     public var advertisement: BleAdv? {
         get { return _advertisement }
         set {
             _advertisement = newValue
-            
+
             guard let advertisement = _advertisement else {
                 deviceStatus = .noBleSignal()
                 return
@@ -88,100 +94,70 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
             setAdv(advertisement)
         }
     }
-    
-    
-    // 注册事件处理器
-    public func registerEventHandler(for itemCode: SesameItemCode, handler: @escaping (SesameItemCode, Data) -> Void) {
+
+    public func getProductType() -> CHProductModel? {
+        return advertisement?.productType
+    }
+
+    public func setAdvertisement(_ advertisement: Any?) {
+        if let adv = advertisement as? BleAdv {
+            self.advertisement = adv
+        }
+    }
+
+    public func registerEventHandler(for itemCode: SesameItemCode,
+                                     handler: @escaping (SesameItemCode, Data) -> Void) {
         eventHandlers[itemCode] = handler
     }
-    
-    
-    // 处理蓝牙事件
+
+    private func clearEventHandlers() {
+        eventHandlers.removeAll()
+    }
+
     override func onGattSesamePublish(_ payload: SesameOS3PublishPayload) {
         super.onGattSesamePublish(payload)
-        
+
         let itemCode = payload.itemCode
         let data = payload.payload
+
         if registerHandlers(itemCode: itemCode, payload: data) {
             return
         }
+
         if let handler = eventHandlers[itemCode] {
             handler(itemCode, data)
             return
         }
-        
-        L.d("!![BaseDevice][Unhandled pub][\(itemCode.rawValue)]")
+
+        L.d("!![BiometricDevice][Unhandled pub][\(itemCode.rawValue)]")
     }
-    
-    // 处理公钥
-    private func handlePubKeySesame(data: Data) {
-        var sesame2Keys = [String: String]()
-        let dividedData = data.divideArray(chunkSize: 23)
-        
-        for keyData in dividedData {
-            let lockStatus = keyData[22]
-            
-            if lockStatus != 0 {
-                if keyData[21] == 0x00 {
-                    let deviceIDData = keyData[0...15]
-                    if let sesame2DeviceId = deviceIDData.toHexString().noDashtoUUID() {
-                        sesame2Keys[sesame2DeviceId.uuidString] = "05"
-                    }
-                } else {
-                    let ss2Ir22 = keyData[0...21]
-                    if let decodedData = Data(base64Encoded: (String(data: ss2Ir22, encoding: .utf8)! + "==")) {
-                        if let sesame2DeviceId = decodedData.toHexString().noDashtoUUID() {
-                            sesame2Keys[sesame2DeviceId.uuidString] = "04"
-                        }
-                    }
-                }
-            }
-        }
-        
-        self.sesame2Keys = sesame2Keys
-        L.d("sesame2Keys", sesame2Keys)
+
+    public func registerProtocolDelegate(_ delegate: AnyObject, for type: Any.Type) {
+        delegateManager.register(delegate, for: type)
     }
-    
-    deinit {
-        clearEventHandlers()
+
+    public func unregisterProtocolDelegate(_ delegate: AnyObject, for type: Any.Type) {
+        delegateManager.unregister(delegate, for: type)
     }
-    
-    private func clearEventHandlers() {
-        
-        eventHandlers.removeAll()
+
+    public func notifyProtocolDelegates<T>(_ type: T.Type, handler: (T) -> Void) {
+        delegateManager.notify(type, handler: handler)
     }
-    
-    
-    func registerFingerPrintDelegate() {
-        CHFingerPrintEventHandlers.registerHandlers(for: self)
-    }
-    
-    func registerPassCodeDelegate() {
-        CHPassCodeEventHandlers.registerHandlers(for: self)
-    }
-    
-    func registerPalmDelegate() {
-        CHPalmEventHandlers.registerHandlers(for: self)
-    }
-    
-    func registerFaceDelegate() {
-        CHFaceEventHandlers.registerHandlers(for: self)
-    }
-    
-    // 实现 goIOT 方法
+
     public func goIOT() {
-        if( self.isGuestKey){ return }
-        
+        if self.isGuestKey { return }
+
         guard self.productModel != nil else {
             L.d("[goIOT] productModel is nil, skipping IoT setup")
             return
         }
-        
-#if os(iOS)
+
+        #if os(iOS)
         if productModel == .openSensor || productModel == .openSensor2 {
             goIoTWithOpenSensor()
             return
         }
+
         if iotDeviceModels.contains(productModel) {
             CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
                 switch result {
@@ -190,21 +166,18 @@ class CHSesameBaseDevice: CHSesameOS3, CHSesameBasePro,CHDeviceUtil,CHDevice,CHS
                     if let wm2s = content.data.wifiModule2s {
                         isConnectedByWM2 = wm2s.contains { $0.isConnected == true }
                     }
-                    
+
                     if isConnectedByWM2 {
                         self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
                     } else {
                         self.deviceShadowStatus = nil
                     }
+
                 case .failure(_):
                     break
                 }
             }
         }
-#endif
+        #endif
     }
-    
-    
-
-    
 }

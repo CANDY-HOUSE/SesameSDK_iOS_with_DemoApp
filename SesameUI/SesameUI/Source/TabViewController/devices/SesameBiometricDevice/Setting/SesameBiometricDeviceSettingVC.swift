@@ -41,7 +41,7 @@ extension SesameBiometricDeviceSettingVC: DFUHelperDelegate {
 }
 
 extension SesameBiometricDeviceSettingVC {
-    static func instance(_ device: CHSesameBasePro, dismissHandler: (()->Void)? = nil) -> SesameBiometricDeviceSettingVC {
+    static func instance(_ device: CHSesameBiometricDevice, dismissHandler: (()->Void)? = nil) -> SesameBiometricDeviceSettingVC {
         let vc = SesameBiometricDeviceSettingVC(nibName: nil, bundle: nil)
         vc.hidesBottomBarWhenPushed = true
         vc.mDevice = device
@@ -57,7 +57,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     let tag: String = "SesameBiometricDeviceSettingVC"
     var device: SesameSDK.CHDevice!
     
-    var mDevice: CHSesameBasePro! {
+    var mDevice: CHSesameBiometricDevice! {
         didSet {
             device = mDevice
         }
@@ -453,14 +453,15 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     func setupNFCCardView() {
+        guard mDevice.hasBiometricCapability(.card) else {
+            return
+        }
         guard let capable = mDevice as? CHCardCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFace2AI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .sesameFace2ProAI && mDevice.productModel != .openSensor2 else {
-            return
-        }
-        let nfcCardView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-            navigationController?.pushViewController(NFCCardVC.instance(capable),animated: true)
+        
+        let nfcCardView = CHUIViewGenerator.arrow { [unowned self] _, _ in
+            navigationController?.pushViewController(NFCCardVC.instance(capable), animated: true)
         }
         nfcCardView.title = "co.candyhouse.sesame2.nfcCard".localized
         contentStackView.addArrangedSubview(nfcCardView)
@@ -468,14 +469,15 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     func setupFingerView() {
+        guard mDevice.hasBiometricCapability(.fingerPrint) else {
+            return
+        }
         guard let capable = mDevice as? CHFingerPrintCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFace2AI && mDevice.productModel != .sesameFaceProAI && mDevice.productModel != .sesameFace2ProAI && mDevice.productModel != .openSensor2 else {
-            return
-        }
-        let fingerView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-            navigationController?.pushViewController(FingerPrintListVC.instance(capable),animated: true)
+
+        let fingerView = CHUIViewGenerator.arrow { [unowned self] _, _ in
+            navigationController?.pushViewController(FingerPrintListVC.instance(capable), animated: true)
         }
         fingerView.title = "co.candyhouse.sesame2.fingerprint".localized
         contentStackView.addArrangedSubview(fingerView)
@@ -483,12 +485,13 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     func setupPassCodeView() {
+        guard mDevice.hasBiometricCapability(.passCode) else {
+            return
+        }
         guard let capable = mDevice as? CHPassCodeCapable else {
             return
         }
-        guard mDevice.productModel != .sesameFaceAI && mDevice.productModel != .sesameFace2AI && mDevice.productModel != .openSensor2 else {
-            return
-        }
+
         let passcodeView = CHUIViewGenerator.arrow { [weak self] _, _ in
             self?.navigationController?.pushViewController(PassCodeVC.instance(capable), animated: true)
         }
@@ -498,11 +501,15 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     func setupFaceView() {
+        guard mDevice.hasBiometricCapability(.face) else {
+            return
+        }
         guard let capable = mDevice as? CHFaceCapable else {
             return
         }
-        let faceView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-            navigationController?.pushViewController(FaceListVC.instance(capable),animated: true)
+
+        let faceView = CHUIViewGenerator.arrow { [unowned self] _, _ in
+            navigationController?.pushViewController(FaceListVC.instance(capable), animated: true)
         }
         faceView.title = "co.candyhouse.sesame2.faceView".localized
         contentStackView.addArrangedSubview(faceView)
@@ -510,11 +517,15 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     func setupPamView() {
+        guard mDevice.hasBiometricCapability(.palm) else {
+            return
+        }
         guard let capable = mDevice as? CHPalmCapable else {
             return
         }
-        let palmView = CHUIViewGenerator.arrow { [unowned self] _,_ in
-            navigationController?.pushViewController(PalmListVC.instance(capable),animated: true)
+
+        let palmView = CHUIViewGenerator.arrow { [unowned self] _, _ in
+            navigationController?.pushViewController(PalmListVC.instance(capable), animated: true)
         }
         palmView.title = "co.candyhouse.sesame2.palmView".localized
         contentStackView.addArrangedSubview(palmView)

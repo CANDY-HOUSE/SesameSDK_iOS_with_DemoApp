@@ -12,13 +12,12 @@ public protocol CHCardCapable: CHDevice ,CHSesameConnector, CHServerCapableHandl
     
     func cards(result: @escaping(CHResult<CHEmpty>))
     func cardDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))
-    // 即将废弃
     func cardsChange(ID: String, hexName: String, result  : @escaping(CHResult<CHEmpty>))
     func cardsModeGet(result  : @escaping(CHResult<UInt8>))
     func cardsModeSet(mode: UInt8, result  : @escaping(CHResult<CHEmpty>))
-    func registerEventDelegate(_ delegate: CHCardDelegate)
-    func unregisterEventDelegate(_ delegate: CHCardDelegate)
-    
     func cardAdd(id: Data, hexName: String, result: @escaping (CHResult<CHEmpty>))
     func cardBatchAdd(data: Data, progressCallback: ((Int, Int) -> Void)?, result: @escaping (CHResult<CHEmpty>))
+    
+    func registerEventDelegate(_ delegate: CHCardDelegate)
+    func unregisterEventDelegate(_ delegate: CHCardDelegate)
 }

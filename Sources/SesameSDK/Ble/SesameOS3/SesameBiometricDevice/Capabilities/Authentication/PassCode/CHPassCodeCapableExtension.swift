@@ -6,7 +6,7 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 import Foundation
-extension CHPassCodeCapable where Self: CHSesameBaseDevice {
+extension CHPassCodeCapable where Self: CHSesameBiometricDeviceImpl {
     
     func passCodes(result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }

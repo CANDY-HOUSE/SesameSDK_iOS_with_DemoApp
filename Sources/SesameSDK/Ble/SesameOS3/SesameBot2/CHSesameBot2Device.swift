@@ -9,38 +9,16 @@
 import Foundation
 import CoreBluetooth
 
-class CHSesameBot2Device: CHSesameOS3, CHSesameBot2, CHDeviceUtil {
+class CHSesameBot2Device: CHSesameOS3LockBase, CHSesameBot2 {
     
     var scripts: CHSesamebot2Status = {
         CHSesamebot2Status(curIdx: 0, eventLength: 0, events: [])
     }()
     
-    var isConnectedByWM2 = false
-    var advertisement: BleAdv? {
-        didSet{
-            guard let advertisement = advertisement else {
-                deviceStatus = .noBleSignal()
-                return
-            }
-            setAdv(advertisement)
-            if (self.deviceStatus.loginStatus == .logined ) {
-                isHistory = advertisement.adv_tag_b1
-            }
-        }
-    }
-    
-    public var isHistory: Bool = false {
-        didSet {
-            if isHistory {
-                self.readHistoryCommand(){_ in}
-            }
-        }
-    }
-    
-    override func onGattSesamePublish(_ payload: SesameOS3PublishPayload) {
-        super.onGattSesamePublish(payload)
+    override func handleLockDevicePublish(_ payload: SesameOS3PublishPayload) {
         let itemCode = payload.itemCode
         let data = payload.payload
+        
         switch itemCode {
         case .mechStatus:
             if data.count == 7 {
@@ -48,23 +26,21 @@ class CHSesameBot2Device: CHSesameOS3, CHSesameBot2, CHDeviceUtil {
             } else {
                 mechStatus = CHSesameBike2MechStatus.fromData(data)!
             }
-            self.deviceStatus = mechStatus!.isInLockRange  ? .locked() :.unlocked()
+            self.deviceStatus = mechStatus!.isInLockRange ? .locked() : .unlocked()
             postBatteryData(data[0..<2].toHexString()) { res in
                 if case .success(let resp) = res {
                     self.notifyBatteryPercentageChanged(percentage: resp.data)
                 }
             }
-
-        case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
-            postBatteryData(data.toHexString()) { _ in }
-        case .SSM3_ITEM_CODE_BLE_TX_POWER_SETTING:
-            guard let value = data.first else { return }
-            bleTxPower = value
+            
         default:
             L.d("[bot2][publish]!![\(data.bytes)]")
         }
     }
     
+    override func notifyHistoryReceived(_ result: Result<CHResultState<Data>, Error>) {
+        (self.delegate as? CHSesameBot2Delegate)?.onHistoryReceived(device: self, result: result)
+    }
 }
 
 extension CHSesameBot2Device {
@@ -150,51 +126,4 @@ extension CHSesameBot2Device {
         }
     }
     
-    func readHistoryCommand(_ result: @escaping (CHResult<CHEmpty>))  {
-        URLSession.isInternetReachable { isInternetReachable in
-            self.sendCommand(.init( .history, "01".hexStringtoData())) { (result) in // 01: 从设备读取最旧的历史记录
-                if result.cmdResultCode == .success {
-                    let histItem = result.data.copyData
-                    (self.delegate as? CHSesameBot2Delegate)?.onHistoryReceived(device: self, result: .success(CHResultStateBLE(input: histItem)))
-                    guard isInternetReachable && !self.isConnectedByWM2 else { return }
-                    self.postProcessHistory(result.data.copyData) { res in
-                        if case .success(_) = res  {
-                            let recordId = result.data.copyData[0...3].copyData
-                            self.sendCommand(.init(SesameItemCode.historyDelete, recordId)) { response in
-                                if response.cmdResultCode == .success  { L.d("[bike2][history]歷史删除成功") }
-                            }
-                        }
-                    }
-                } else {
-                    (self.delegate as? CHSesameBot2Delegate)?.onHistoryReceived(device: self, result: .failure(self.errorFromResultCode(result.cmdResultCode)))
-                    self.isHistory = false
-                }
-            }
-        }
-    }
-    
-    func postProcessHistory(_ historyData: Data, _ callback: @escaping CHResult<CHEmpty>) {
-        CHAPIClient.shared.postHistory(deviceId: self.deviceId.uuidString, payload: historyData.toHexString(), t: "5") { result in
-            switch result {
-            case .success(_):
-                callback(.success(CHResultStateNetworks(input:CHEmpty())))
-                break
-            case .failure(let error):
-                callback(.failure(error))
-                break
-            }
-        }
-    }
-    
-    func setBleTxPower(txPower: UInt8, result: @escaping (CHResult<CHEmpty>)) {
-        if !isBleAvailable(result) { return }
-
-        sendCommand(.init(.SSM3_ITEM_CODE_BLE_TX_POWER_SETTING, Data([txPower]))) { responsePayload in
-            if responsePayload.cmdResultCode == .success {
-                result(.success(CHResultStateBLE(input: CHEmpty())))
-            } else {
-                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
-            }
-        }
-    }
 }

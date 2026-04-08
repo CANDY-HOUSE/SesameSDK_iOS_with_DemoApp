@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SesameSDK
 
-extension CHSesameTouchPro {
+extension CHSesameBiometricDevice {
     
     var displayedState: NSAttributedString? {
         get {

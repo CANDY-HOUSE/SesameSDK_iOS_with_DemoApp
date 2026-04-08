@@ -213,13 +213,13 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
         100
     }
 
-    func onFingerPrintReceiveStart(device: CHSesameConnector) {
+    func onFingerPrintReceiveStart(device: CHDevice) {
         executeOnMainThread {
             self.fingerPrints.removeAll()
             self.refreshControl.programaticallyBeginRefreshing(in:self.tableView)
         }
     }
-    func onFingerPrintReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
+    func onFingerPrintReceive(device: CHDevice, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
             if BiometricData.isUUIDv4(name: hexName) {
                 self.fingerPrints.insert(FingerPrint(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased()), at: 0)
@@ -230,7 +230,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
         }
 
     }
-    func onFingerPrintReceiveEnd(device: CHSesameConnector) {
+    func onFingerPrintReceiveEnd(device: CHDevice) {
         executeOnMainThread {
             self.refreshControl.programaticallyEndRefreshing(in:self.tableView)
             self.reloadTableView()
@@ -252,7 +252,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
         }
     }
     
-    func onFingerPrintChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
+    func onFingerPrintChanged(device: CHDevice, id: String, hexName: String, type: UInt8) {
         L.d("[FG][onFingerPrintChanged] \(id):\(hexName)")
         var fingerprint = FingerPrint(id: id, name: hexName, nameUUID: hexName)
         if BiometricData.isUUIDv4(name: hexName) {
@@ -280,7 +280,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
         }
     }
     
-    func onFingerPrintDelete(device: CHSesameConnector, id: String){
+    func onFingerPrintDelete(device: CHDevice, id: String){
         executeOnMainThread {
             if let index = self.fingerPrints.firstIndex(where: { $0.id.lowercased() == id.lowercased() }) {
                 let removedFingerprint = self.fingerPrints.remove(at: index)

@@ -103,7 +103,7 @@
 		64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */; };
 		64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
 		64D18DE52EEAC12D00C70B98 /* CHWebview+BLEConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */; };
-		64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */; };
+		64D5B3A72CBA78A100C7AF5A /* CHSesameOpensenor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameOpensenor+.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
 		64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */; };
 		64E854372E7A85A400399FED /* CHWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854362E7A85A300399FED /* CHWebView.swift */; };
@@ -524,7 +524,7 @@
 		64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5ListCell.swift; sourceTree = "<group>"; };
 		64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5ListCell.xib; sourceTree = "<group>"; };
 		64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+BLEConnect.swift"; sourceTree = "<group>"; };
-		64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameTouchPro+.swift"; sourceTree = "<group>"; };
+		64D5B3A62CBA78A100C7AF5A /* CHSesameOpensenor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameOpensenor+.swift"; sourceTree = "<group>"; };
 		64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTableViewProxy.swift; sourceTree = "<group>"; };
 		64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SesameDeviceList+Control.swift"; sourceTree = "<group>"; };
 		64E854362E7A85A300399FED /* CHWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebView.swift; sourceTree = "<group>"; };
@@ -781,7 +781,7 @@
 				BE0636882567A0AB00135D25 /* CHDevice+.swift */,
 				BE88593B26C3ACA1002D17E0 /* CHSesame2+AutoUnlock.swift */,
 				BE88591026C39F99002D17E0 /* CHSesameLock+.swift */,
-				64D5B3A62CBA78A100C7AF5A /* CHSesameTouchPro+.swift */,
+				64D5B3A62CBA78A100C7AF5A /* CHSesameOpensenor+.swift */,
 				B087E57124E126830087D978 /* CHWifiModule2+.swift */,
 				BE9C6CA424B3394000C7318B /* Date+.swift */,
 				643F06AB2BD2065E0045D789 /* NSObject+.swift */,
@@ -2277,7 +2277,7 @@
 				B01728DC250CA8D300F87ED6 /* RegisterSesameDeviceCell.swift in Sources */,
 				41ACFD0629B8B962001153DB /* Sesame5LockAngleViewController.swift in Sources */,
 				BE3A732E25CB9EAE002FF80E /* SignInViewController.swift in Sources */,
-				64D5B3A72CBA78A100C7AF5A /* CHSesameTouchPro+.swift in Sources */,
+				64D5B3A72CBA78A100C7AF5A /* CHSesameOpensenor+.swift in Sources */,
 				4155E80A23CC473F00CA093E /* ChangeValueDialog.swift in Sources */,
 				BE7E5A9F2583686F00280893 /* WifiModule2KeysListViewController.swift in Sources */,
 				645E2D292B5BC83300D39E66 /* Hub3IREmitCell.swift in Sources */,

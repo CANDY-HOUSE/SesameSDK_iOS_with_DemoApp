@@ -9,7 +9,7 @@
 import Foundation
 
 class CHFaceEventHandlers {
-    public  static func registerHandlers(for device: CHSesameBaseDevice) {
+    public  static func registerHandlers(for device: CHSesameBiometricDeviceImpl) {
         // Face更改事件
         device.registerEventHandler(for: .SSM_OS3_FACE_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
@@ -62,7 +62,7 @@ class CHFaceEventHandlers {
     }
     
     // 处理Face通知数据
-    private static func processCardNotifyData(device: CHSesameBaseDevice, data: Data) {
+    private static func processCardNotifyData(device: CHSesameBiometricDeviceImpl, data: Data) {
         var cardDataSize = 0
         var cards = data.bytes
         repeat {
@@ -76,7 +76,7 @@ class CHFaceEventHandlers {
     }
     
     // 通知卡片接收
-    private static func notifyCardReceived(device: CHSesameBaseDevice, card: CHSesameTouchCard) {
+    private static func notifyCardReceived(device: CHSesameBiometricDeviceImpl, card: CHSesameTouchCard) {
         device.notifyProtocolDelegates(CHFaceDelegate.self) { delegate in
             delegate.onFaceReceive(device: device, id: card.cardID, name: card.cardName, type: card.cardType)
         }

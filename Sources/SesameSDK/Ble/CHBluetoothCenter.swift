@@ -343,40 +343,70 @@ public enum CHProductModel: UInt16 ,CaseIterable{
 
     func chDeviceFactory() -> CHDevice {
         switch self {
-        case .sesame2: return CHSesame2Device()
-        case .sesame4: return CHSesame2Device()
+        case .sesame2,.sesame4: return CHSesame2Device()
         case .wifiModule2: return CHWifiModule2Device()
+        case .hub3: return CHHub3Device()
         case .sesameBot: return CHSesameBotDevice()
         case .bikeLock: return CHSesameBikeDevice()
         case .bikeLock2: return CHSesameBike2Device()
         case .bikeLock3: return CHSesameBike3Device()
-        case .sesame5, .sesame5US: return CHSesame5Device()
-        case .sesame5Pro: return CHSesame5Device()
-        case .openSensor: return CHSesameTouchProDevice()
-        case .sesameTouchPro: return CHSesameTouchProDevice()
-        case .sesameTouch2Pro: return CHSesameTouchProDevice()
-        case .sesameTouch: return CHSesameTouchDevice()
-        case .sesameTouch2: return CHSesameTouchDevice()
-        case .remote, .remoteNano: return CHSesameTouchProDevice()
-        case .hub3: return CHHub3Device()
-        case .sesameBot2: return CHSesameBot2Device()
-        case .sesameBot3: return CHSesameBot2Device()
-        case .sesameFace:return CHSesameFaceDevice()
-        case .sesameFace2:return CHSesameFaceDevice()
-        case .sesameFacePro:  return CHSesameFaceProDevice()
-        case .sesameFace2Pro:  return CHSesameFaceProDevice()
-        case .sesame6Pro:  return CHSesame5Device()
-        case .sesame6ProSLiDingDoor:  return CHSesame5Device()
-        case .sesameFaceProAI:  return CHSesameFaceProDevice()
-        case .sesameFace2ProAI:  return CHSesameFaceProDevice()
-        case .sesameFaceAI:  return CHSesameFaceProDevice()
-        case .sesameFace2AI:  return CHSesameFaceProDevice()
-        case .bleConnector: return CHSesame5Device()
-        case .openSensor2: return CHSesameTouchProDevice()
-        case .sesameMiwa: return CHSesame5Device()
+        case .sesameMiwa,.bleConnector,.sesame5,
+                .sesame5US,.sesame5Pro,.sesame6Pro,
+                .sesame6ProSLiDingDoor: return CHSesame5Device()
+        case .sesameBot2,.sesameBot3: return CHSesameBot2Device()
+        case .openSensor:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .openSensor,
+                supportedCapabilities: []
+            )
+        case .openSensor2:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .openSensor2,
+                supportedCapabilities: []
+            )
+        case .remote:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .remote,
+                supportedCapabilities: []
+            )
+        case .remoteNano:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .remoteNano,
+                supportedCapabilities: []
+            )
+        case .sesameTouch,.sesameTouch2:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .sesameTouch,
+                supportedCapabilities: [.fingerPrint, .card]
+            )
+        case .sesameTouchPro,.sesameTouch2Pro:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .sesameTouchPro,
+                supportedCapabilities: [.fingerPrint, .card, .passCode]
+            )
+        case .sesameFace,.sesameFace2:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .sesameFace,
+                supportedCapabilities: [.fingerPrint, .card, .palm, .face]
+            )
+        case .sesameFacePro,.sesameFace2Pro:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .sesameFacePro,
+                supportedCapabilities: [.fingerPrint, .card, .passCode, .palm, .face]
+            )
+        case .sesameFaceProAI,.sesameFace2ProAI:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .sesameFaceProAI,
+                supportedCapabilities: [.passCode, .palm, .face]
+            )
+        case .sesameFaceAI,.sesameFace2AI:
+            return CHSesameBiometricDeviceImpl(
+                deviceType: .sesameFaceAI,
+                supportedCapabilities: [.palm, .face]
+            )
         }
-     
     }
+    
     static func deviceModeulFromString(_ type: String) -> CHProductModel? {
         for model in CHProductModel.allCases {
             if(type == model.deviceModel()){

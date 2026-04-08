@@ -10,7 +10,7 @@
 import Foundation
 
 class CHPassCodeEventHandlers {
-    public  static func registerHandlers(for device: CHSesameBaseDevice) {
+    public  static func registerHandlers(for device: CHSesameBiometricDeviceImpl) {
         // 密码更改事件
         device.registerEventHandler(for: .SSM_OS3_PASSCODE_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
@@ -64,7 +64,7 @@ class CHPassCodeEventHandlers {
     }
     
     // 处理卡片通知数据
-    private static func processCardNotifyData(device: CHSesameBaseDevice, data: Data) {
+    private static func processCardNotifyData(device: CHSesameBiometricDeviceImpl, data: Data) {
         var cardDataSize = 0
         var cards = data.bytes
         
@@ -81,7 +81,7 @@ class CHPassCodeEventHandlers {
     }
     
     // 通知卡片接收
-    private static func notifyCardReceived(device: CHSesameBaseDevice, card: CHSesameTouchCard) {
+    private static func notifyCardReceived(device: CHSesameBiometricDeviceImpl, card: CHSesameTouchCard) {
         device.notifyProtocolDelegates(CHPassCodeDelegate.self) { delegate in
             delegate.onPassCodeReceive(device: device, id: card.cardID, hexName: card.cardName, type: card.cardType)
         }

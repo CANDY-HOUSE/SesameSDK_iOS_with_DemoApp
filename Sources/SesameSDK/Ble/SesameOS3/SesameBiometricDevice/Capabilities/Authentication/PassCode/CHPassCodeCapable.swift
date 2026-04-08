@@ -11,7 +11,6 @@ public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableH
     
     func passCodes(result: @escaping(CHResult<CHEmpty>))
     func passCodeDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))
-    // 即将废弃
     func passCodeChange(ID: String, hexName: String, result  : @escaping(CHResult<CHEmpty>))
     func passCodeModeGet(result  : @escaping(CHResult<UInt8>))
     func passCodeModeSet(mode: UInt8, result  : @escaping(CHResult<CHEmpty>))

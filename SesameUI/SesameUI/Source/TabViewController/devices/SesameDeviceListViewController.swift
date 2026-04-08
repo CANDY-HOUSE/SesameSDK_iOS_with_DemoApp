@@ -433,6 +433,7 @@ class SesameDeviceListViewController: CHBaseViewController {
     
     func handleSelectDeviceItem(_ device: CHDevice, _ indexPath: IndexPath) {
         switch device.productModel! {
+
         case .sesame2, .sesame4:
             guard let sesame2 = device as? CHSesame2 else { return }
             if sesame2.keyLevel == KeyLevel.guest.rawValue {
@@ -440,6 +441,7 @@ class SesameDeviceListViewController: CHBaseViewController {
             } else {
                 navigateToSesame2History(sesame2)
             }
+
         case .sesame5, .sesame5Pro, .sesame5US, .sesame6Pro, .sesame6ProSLiDingDoor, .bleConnector, .sesameMiwa:
             guard let sesame5 = device as? CHSesame5 else { return }
             if sesame5.keyLevel == KeyLevel.guest.rawValue {
@@ -447,9 +449,11 @@ class SesameDeviceListViewController: CHBaseViewController {
             } else {
                 navigateToSesame5History(sesame5)
             }
+
         case .sesameBot:
             guard let sesameBot = device as? CHSesameBot else { return }
             navigateToSesameBotSettingViewController(sesameBot)
+
         case .sesameBot2, .sesameBot3:
             guard let botPlus = device as? CHSesameBot2 else { return }
             if botPlus.keyLevel == KeyLevel.guest.rawValue {
@@ -462,9 +466,11 @@ class SesameDeviceListViewController: CHBaseViewController {
                     self?.toggleIndexPathForHub3(device, true)
                 }
             }
+
         case .bikeLock:
             guard let bikeLock = device as? CHSesameBike else { return }
             navigateToBikeLockSettingViewController(bikeLock)
+
         case .bikeLock2, .bikeLock3:
             guard let bikeLockPlus = device as? CHSesameBike2 else { return }
             if bikeLockPlus.keyLevel == KeyLevel.guest.rawValue {
@@ -472,6 +478,7 @@ class SesameDeviceListViewController: CHBaseViewController {
             } else {
                 navigateToBike2HistoryViewController(bikeLockPlus)
             }
+
         case .hub3:
             guard let hub3 = device as? CHHub3 else { return }
             navigateToHub3SettingViewController(hub3)
@@ -480,54 +487,34 @@ class SesameDeviceListViewController: CHBaseViewController {
                     self?.toggleIndexPathForHub3(hub3, true)
                 }
             }
+
         case .wifiModule2:
             guard let wifiModule2 = device as? CHWifiModule2 else { return }
             navigateToWifiModule2SettingViewController(wifiModule2)
+
         case .openSensor, .remoteNano:
-            guard let device = device as? CHSesameTouchPro else { return }
-            navigateToOpenSensorResetVC(device)
+            guard let biometricDevice = device as? CHSesameBiometricDevice else { return }
+            navigateToOpenSensorResetVC(biometricDevice)
+
         case .remote:
-            guard let device = device as? CHSesameTouchPro else { return }
-            navigateToBleConnectorVC(device)
-        case .sesameTouchPro:
-            guard let device = device as? CHSesameTouchPro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameTouch2Pro:
-            guard let device = device as? CHSesameTouchPro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameTouch:
-            guard let device = device as? CHSesameTouch else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameTouch2:
-            guard let device = device as? CHSesameTouch else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFacePro:
-            guard let device = device as? CHSesameFacePro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFace2Pro:
-            guard let device = device as? CHSesameFacePro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFace:
-            guard let device = device as? CHSesameFace else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFace2:
-            guard let device = device as? CHSesameFace else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFaceAI:
-            guard let device = device as? CHSesameFacePro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFace2AI:
-            guard let device = device as? CHSesameFacePro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFaceProAI:
-            guard let device = device as? CHSesameFacePro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .sesameFace2ProAI:
-            guard let device = device as? CHSesameFacePro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
-        case .openSensor2:
-            guard let device = device as? CHSesameTouchPro else { return }
-            navigateToCHSesameBiometricSettingVC(device)
+            guard let biometricDevice = device as? CHSesameBiometricDevice else { return }
+            navigateToBleConnectorVC(biometricDevice)
+
+        case .sesameTouchPro,
+             .sesameTouch2Pro,
+             .sesameTouch,
+             .sesameTouch2,
+             .sesameFacePro,
+             .sesameFace2Pro,
+             .sesameFace,
+             .sesameFace2,
+             .sesameFaceAI,
+             .sesameFace2AI,
+             .sesameFaceProAI,
+             .sesameFace2ProAI,
+             .openSensor2:
+            guard let biometricDevice = device as? CHSesameBiometricDevice else { return }
+            navigateToCHSesameBiometricSettingVC(biometricDevice)
         }
     }
 }

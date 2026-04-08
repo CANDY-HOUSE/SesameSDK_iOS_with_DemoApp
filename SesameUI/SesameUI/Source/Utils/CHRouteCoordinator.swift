@@ -64,25 +64,25 @@ public protocol CHRouteCoordinator {
     /// - Parameters:
     ///   - device: device對象
     ///   - isFromRegister: 是否來自註冊
-    func navigateToCHSesameTouchProSettingVC(_ device: CHSesameTouchPro, isFromRegister: Bool)
+    func navigateToCHSesameTouchProSettingVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool)
     
     /// 進入 openSensor 設置
     /// - Parameters:
     ///   - device: device對象
     ///   - isFromRegister: 是否來自註冊
-    func navigateToOpenSensorSettingVC(_ device: CHSesameTouchPro, isFromRegister: Bool)
+    func navigateToOpenSensorSettingVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool)
     
     /// 進入 OpenSensor 重置頁
     /// - Parameters:
     ///   - device: device對象
     ///   - isFromRegister: 是否來自註冊
-    func navigateToOpenSensorResetVC(_ device: CHSesameTouchPro, isFromRegister: Bool)
+    func navigateToOpenSensorResetVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool)
     
     /// 進入 BLE connector 設置
     /// - Parameters:
     ///   - device: device對象
     ///   - isFromRegister: 是否來來自註冊
-    func navigateToBleConnectorVC(_ device: CHSesameTouchPro, isFromRegister: Bool)
+    func navigateToBleConnectorVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool)
     
     /// 進入 Bot2 設置
     /// - Parameter bot2: bot2對象
@@ -121,34 +121,34 @@ public extension CHRouteCoordinator where Self: UIViewController {
     func presentRegisterSesame2ViewController() {
         let registerSesame2ViewController = RegisterSesameDeviceViewController.instance { registeredDevice in
             executeOnMainThread {
-                if let navController = GeneralTabViewController.switchTabByIndex(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+                if let navController = GeneralTabViewController.switchTabByIndex(0) as? UINavigationController,
+                   let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+
                     if let device = registeredDevice as? CHSesame2 {
                         listViewController.navigateToSesame2LockAngleSetting(device)
-                    }
-                    if let device = registeredDevice as? CHSesame5 {
+
+                    } else if let device = registeredDevice as? CHSesame5 {
                         listViewController.navigateToSesame5LockAngleSetting(device)
-                    }
-                    if let device = registeredDevice as? CHHub3 {
+
+                    } else if let device = registeredDevice as? CHHub3 {
                         listViewController.navigateToHub3SettingViewController(device, isFromRegister: true)
-                    }
-                    else if let device = registeredDevice as? CHWifiModule2 {
+
+                    } else if let device = registeredDevice as? CHWifiModule2 {
                         listViewController.navigateToWifiModule2SettingViewController(device, isFromRegister: true)
-                    }
-                    if let device = registeredDevice as? CHSesameTouchPro {
-                        if(device.productModel == .openSensor || device.productModel == .remoteNano){
+
+                    } else if let device = registeredDevice as? CHSesameBiometricDevice {
+                        switch device.productModel {
+                        case .openSensor, .remoteNano:
                             listViewController.navigateToOpenSensorSettingVC(device, isFromRegister: true)
-                        }else if(device.productModel == .bleConnector || device.productModel == .remote){
+
+                        case .remote:
                             listViewController.navigateToBleConnectorVC(device, isFromRegister: true)
-                        }else{
-                            listViewController.navigateToCHSesameTouchProSettingVC(device, isFromRegister: true)
+
+                        default:
+                            listViewController.navigateToCHSesameBiometricSettingVC(device, isFromRegister: true)
                         }
-                    } else if let device = registeredDevice as? CHSesameTouch {
-                        listViewController.navigateToCHSesameBiometricSettingVC(device, isFromRegister: true)
-                    } else if let device = registeredDevice as? CHSesameFace {
-                        listViewController.navigateToCHSesameBiometricSettingVC(device, isFromRegister: true)
-                    } else if let device = registeredDevice as? CHSesameFacePro {
-                        listViewController.navigateToCHSesameBiometricSettingVC(device, isFromRegister: true)
                     }
+
                     listViewController.getKeysFromCache()
                 }
             }
@@ -216,19 +216,19 @@ public extension CHRouteCoordinator where Self: UIViewController {
         navigationController?.pushViewController(WifiModule2SettingViewController.instanceWithWifiModule2(wifiModule2, isFromRegister: isFromRegister) {/** self.getKeysFromCache()*/  },animated: true)
     }
 
-    func navigateToCHSesameTouchProSettingVC(_ device: CHSesameTouchPro, isFromRegister: Bool = false) {
+    func navigateToCHSesameTouchProSettingVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool = false) {
         navigationController?.pushViewController(SesameBiometricDeviceSettingVC.instance(device) {},animated: true)
     }
     
-    func navigateToOpenSensorSettingVC(_ device: CHSesameTouchPro, isFromRegister: Bool = false) {
+    func navigateToOpenSensorSettingVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool = false) {
         navigationController?.pushViewController(OpenSensorSettingVC.instance(device) {},animated: true)
     }
     
-    func navigateToOpenSensorResetVC(_ device: CHSesameTouchPro, isFromRegister: Bool = false) {
+    func navigateToOpenSensorResetVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool = false) {
         navigationController?.pushViewController(OpenSensorResetHintVC.instance(device) {},animated: true)
     }
     
-    func navigateToBleConnectorVC(_ device: CHSesameTouchPro, isFromRegister: Bool = false) {
+    func navigateToBleConnectorVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool = false) {
         navigationController?.pushViewController(BleConnectorSettingVC.instance(device) {},animated: true)
     }
     
@@ -244,11 +244,11 @@ public extension CHRouteCoordinator where Self: UIViewController {
     }
     
     
-    func navigateToCHSesameFaceProSettingVC(_ device: CHSesameFacePro, isFromRegister: Bool = false) {
+    func navigateToCHSesameFaceProSettingVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool = false) {
         navigationController?.pushViewController(SesameBiometricDeviceSettingVC.instance(device) {},animated: true)
     }
     
-    func navigateToCHSesameBiometricSettingVC(_ device: CHSesameBasePro, isFromRegister: Bool = false) {
+    func navigateToCHSesameBiometricSettingVC(_ device: CHSesameBiometricDevice, isFromRegister: Bool = false) {
         navigationController?.pushViewController(SesameBiometricDeviceSettingVC.instance(device) {},animated: true)
     }
 }

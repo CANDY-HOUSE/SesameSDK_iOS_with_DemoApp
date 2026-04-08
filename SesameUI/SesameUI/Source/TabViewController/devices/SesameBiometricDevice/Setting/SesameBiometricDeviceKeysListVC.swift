@@ -10,10 +10,10 @@ import SesameSDK
 import UIKit
 
 class SesameBiometricDeviceKeysListVC: UITableViewController {
-    var mDevice: CHSesameBasePro
+    var mDevice: CHSesameBiometricDevice
     var selectionHandler: ((CHDevice)->Void)?
     
-    init(device: CHSesameBasePro, selectionHandler: @escaping (CHDevice)->Void) {
+    init(device: CHSesameBiometricDevice, selectionHandler: @escaping (CHDevice)->Void) {
         self.mDevice = device
         self.selectionHandler = selectionHandler
         super.init(nibName: nil, bundle: nil)
@@ -99,7 +99,7 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
         selectionHandler?(keys[indexPath.row])
     }
     
-    static func instance(device: CHSesameBasePro, selectionHandler: @escaping (CHDevice)->Void) -> SesameBiometricDeviceKeysListVC {
+    static func instance(device: CHSesameBiometricDevice, selectionHandler: @escaping (CHDevice)->Void) -> SesameBiometricDeviceKeysListVC {
         let vc = SesameBiometricDeviceKeysListVC(device: device, selectionHandler: selectionHandler)
         return vc
     }

@@ -6,7 +6,7 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 import Foundation
-extension CHCardCapable where Self: CHSesameBaseDevice {
+extension CHCardCapable where Self: CHSesameBiometricDeviceImpl {
     func cards(result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
 

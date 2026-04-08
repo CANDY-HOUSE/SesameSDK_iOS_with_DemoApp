@@ -6,7 +6,7 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 import Foundation
-extension CHFaceCapable where Self: CHSesameBaseDevice {
+extension CHFaceCapable where Self: CHSesameBiometricDeviceImpl {
     
     func faces(result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }

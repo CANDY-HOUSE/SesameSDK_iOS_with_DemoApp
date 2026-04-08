@@ -10,7 +10,7 @@
 import Foundation
 
 class CHPalmEventHandlers {
-    public  static func registerHandlers(for device: CHSesameBaseDevice) {
+    public  static func registerHandlers(for device: CHSesameBiometricDeviceImpl) {
         device.registerEventHandler(for: .SSM_OS3_PALM_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
             let card = CHSesameTouchCard(data: data)
@@ -58,7 +58,7 @@ class CHPalmEventHandlers {
         }
     }
 
-    private static func processCardNotifyData(device: CHSesameBaseDevice, data: Data) {
+    private static func processCardNotifyData(device: CHSesameBiometricDeviceImpl, data: Data) {
         var cardDataSize = 0
         var cards = data.bytes
         
@@ -74,7 +74,7 @@ class CHPalmEventHandlers {
         } while (!cards.isEmpty)
     }
     
-    private static func notifyCardReceived(device: CHSesameBaseDevice, card: CHSesameTouchCard) {
+    private static func notifyCardReceived(device: CHSesameBiometricDeviceImpl, card: CHSesameTouchCard) {
         device.notifyProtocolDelegates(CHPalmDelegate.self) { delegate in
             delegate.onPalmReceive(device: device, id: card.cardID, name: card.cardName, type: card.cardType)
         }

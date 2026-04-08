@@ -41,7 +41,7 @@ extension BleConnectorSettingVC: DFUHelperDelegate {
 }
 
 class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesameConnectorDelegate {
-    var mDevice: CHSesameTouchPro!
+    var mDevice: CHSesameBiometricDevice!
     
     // MARK: getVersionTag
     private func getVersionTag() {
@@ -380,7 +380,7 @@ class BleConnectorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
 }
 
 extension BleConnectorSettingVC {
-    static func instance(_ device: CHSesameTouchPro, dismissHandler: (()->Void)? = nil) -> BleConnectorSettingVC {
+    static func instance(_ device: CHSesameBiometricDevice, dismissHandler: (()->Void)? = nil) -> BleConnectorSettingVC {
         let vc = BleConnectorSettingVC (nibName: nil, bundle: nil)
         vc.hidesBottomBarWhenPushed = true
         vc.mDevice = device
