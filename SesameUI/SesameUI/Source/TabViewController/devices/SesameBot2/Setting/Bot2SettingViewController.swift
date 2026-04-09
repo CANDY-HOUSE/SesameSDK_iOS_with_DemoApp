@@ -40,6 +40,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var isReset: Bool = false
     var pickerProxy: PickerProxy<Bot2Event>!
+    var scriptHintArrow: UIImageView!
     
     // MARK: - Values for UI
     var versionStr: String? { //設備本身的韌體版號
@@ -148,6 +149,26 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         }
         scriptView.title = "co.candyhouse.sesame2.Scripts".localized
         scriptView.fold()
+        
+        scriptHintArrow = UIImageView(image: UIImage.SVGImage(named: "expandable"))
+        scriptHintArrow.translatesAutoresizingMaskIntoConstraints = false
+        scriptHintArrow.contentMode = .scaleAspectFit
+        scriptView.addSubview(scriptHintArrow)
+        
+        NSLayoutConstraint.activate([
+            scriptHintArrow.centerYAnchor.constraint(equalTo: scriptView.valueDisplayLabel.centerYAnchor),
+            scriptHintArrow.trailingAnchor.constraint(equalTo: scriptView.valueDisplayLabel.leadingAnchor, constant: -2),
+            scriptHintArrow.widthAnchor.constraint(equalToConstant: 18),
+            scriptHintArrow.heightAnchor.constraint(equalToConstant: 18)
+        ])
+        
+        let scriptTap = UITapGestureRecognizer(target: self, action: #selector(onScriptViewTapped))
+        scriptTap.cancelsTouchesInView = false
+        scriptView.addGestureRecognizer(scriptTap)
+        
+        updateScriptHintArrow(false)
+        scriptHintArrow.isHidden = true
+        
         contentStackView.addArrangedSubview(scriptView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
@@ -288,6 +309,20 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
             }
         }
     }
+    
+    private func updateScriptHintArrow(_ expanded: Bool) {
+        UIView.animate(withDuration: 0.2) {
+            self.scriptHintArrow?.transform = expanded
+            ? CGAffineTransform(rotationAngle: .pi * 0.5)
+            : .identity
+        }
+    }
+    
+    @objc private func onScriptViewTapped() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.updateScriptHintArrow(!self.scriptView.pickerView.isHidden)
+        }
+    }
 
     private func setupPickerWithEvents(_ events: [Bot2Event], currentIndex: Int) {
         self.pickerProxy = PickerProxy(items: events)
@@ -296,6 +331,8 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         self.scriptView.pickerView.reloadAllComponents()
         self.scriptView.pickerView.selectRow(currentIndex, inComponent: 0, animated: false)
         self.scriptView.value = events[currentIndex].displayName
+        updateScriptHintArrow(false)
+        self.scriptHintArrow.isHidden = false
     }
     
     func fetchActionModes() {
@@ -305,7 +342,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
             executeOnMainThread {
                 let currentActionIndex = UserDefaults.standard.integer(forKey: self.device.deviceId.uuidString)
                 let sortedItems = self.getSortedScriptItems()
-                
+                self.scriptHintArrow?.isHidden = true
                 guard sortedItems.isEmpty == false else { return }
                 
                 let events = sortedItems.compactMap { item -> Bot2Event? in
@@ -318,6 +355,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
                         UserDefaults.standard.setValue(selected.actionIndex, forKey: self.device.deviceId.uuidString)
                         self.scriptView.value = selected.displayName
                         self.scriptView.fold()
+                        self.updateScriptHintArrow(false)
                         
                         self.bot2.selectScript(index: UInt8(selected.actionIndex)) { _ in }
                         

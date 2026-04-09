@@ -1224,6 +1224,10 @@ final class CHUIExpandableArrowSettingView: UIView, CHUIView {
         }
     }
     
+    var valueDisplayLabel: UILabel {
+        return valueLabel
+    }
+    
     private var action: Action?
     
     init(_ action: Action? = nil) {
