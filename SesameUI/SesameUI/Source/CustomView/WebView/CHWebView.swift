@@ -203,6 +203,7 @@ class CHWebView: UIView {
 // MARK: - WebView Setup
 extension CHWebView {
     private func loadURLRequest(urlString: String) {
+        guard let webView = webView else { return }
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)

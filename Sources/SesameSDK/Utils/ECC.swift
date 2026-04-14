@@ -9,21 +9,18 @@
 import Foundation
 class ECC {
     static func generate() -> ECC {
-
-        var publicKeySec, privateKeySec: SecKey?
-        let keyattribute = [
-            kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
-            kSecAttrKeySizeInBits as String : 256
-        ] as [String : Any] as CFDictionary
-        SecKeyGeneratePair(keyattribute, &publicKeySec, &privateKeySec)
-
-
-        var error: Unmanaged<CFError>?
-        let keyData = SecKeyCopyExternalRepresentation(privateKeySec!, &error)
-        let data = keyData! as Data
-        
-
-        return ECC(ecckeydata: data)
+        autoreleasepool {
+            var publicKeySec, privateKeySec: SecKey?
+            let keyattribute = [
+                kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
+                kSecAttrKeySizeInBits as String : 256
+            ] as [String : Any] as CFDictionary
+            SecKeyGeneratePair(keyattribute, &publicKeySec, &privateKeySec)
+            var error: Unmanaged<CFError>?
+            let keyData = SecKeyCopyExternalRepresentation(privateKeySec!, &error)
+            let data = keyData! as Data
+            return ECC(ecckeydata: data)
+        }
     }
 
     internal var privateKey: [UInt8]

@@ -60,7 +60,7 @@ class CHBaseDevice: NSObject, CBPeripheralDelegate {
             notifyBleTxPowerReceive(txPower: bleTxPower)
         }
     }
-    let appKeyPair = ECC.generate()
+    lazy var appKeyPair = ECC.generate()
     public var rssi: NSNumber?
     public var txPowerLevel:Int?
     public var isRegistered: Bool = true
