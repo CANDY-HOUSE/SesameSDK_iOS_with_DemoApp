@@ -232,7 +232,20 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                     let topVC = self.iterateViewControllers()
                     
                     if let topVC = topVC {
-                        let webVC = CHWebViewController.instanceWithURL(urlString)
+                        let webVC: UIViewController
+                        
+                        if urlString.contains("device-setting/battery-trend"),
+                           let components = URLComponents(string: urlString) {
+                            let deviceUUID = components.queryItems?.first(where: { $0.name == "deviceUUID" })?.value ?? ""
+                            let deviceName = components.queryItems?.first(where: { $0.name == "deviceName" })?.value ?? ""
+                            
+                            webVC = CHWebViewController.instanceWithScene("battery-trend", extInfo: [
+                                "deviceUUID": deviceUUID,
+                                "deviceName": deviceName
+                            ])
+                        } else {
+                            webVC = CHWebViewController.instanceWithURL(urlString)
+                        }
                         
                         if let navController = topVC.navigationController {
                             navController.pushViewController(webVC, animated: true)
