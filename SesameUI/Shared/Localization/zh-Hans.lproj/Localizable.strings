@@ -207,7 +207,7 @@
 "co.candyhouse.sesame2.face.distance" = "距离";
 "co.candyhouse.sesame2.face.brightness" = "亮度";
 "co.candyhouse.sesame2.face.radar" = "雷达侦查距离";
-"co.candyhouse.sesame2.face.radar_distance_description" = "・这是雷达唤醒系统的侦测距离。\n・每日人流量超过10次, 则设置短距以省电！\n・每日人流量10次以下, 则设置最长距离以获得最爽体验。\n・即使为最短距离，按下「开锁按钮/侧面按钮」将立即启动人脸或掌静脉识别，兼顾极度省电与最爽体验。\n・请勿混用不同品牌、新旧不同或型号不同的电池。\n・建议不要只装2节，装满所有电池。电池越多，负载越分散，电压越稳定，电池寿命越长。";
+"co.candyhouse.sesame2.face.radar_distance_description" = "・这是雷达唤醒系统的侦测距离。\n・每日人流量超过10次, 则设置短距以省电！(甚至是最短0cm)\n・每日人流量10次以下, 则设置最长距离以获得最爽体验。\n・即使为最短距离，按下「开锁按钮/侧面按钮」将立即启动人脸或掌静脉识别，兼顾极度省电与最爽体验。\n・请勿混用不同品牌、新旧不同或型号不同的电池。\n・建议不要只装2节，装满所有电池。电池越多，负载越分散，电压越稳定，电池寿命越长。";
 "co.candyhouse.sesame2.search_devices" = "搜索设备";
 "co.candyhouse.sesame2.ssm_name" = "名称";
 "co.candyhouse.sesame2.ssm_hint_enter_name" = "请输入名称";
