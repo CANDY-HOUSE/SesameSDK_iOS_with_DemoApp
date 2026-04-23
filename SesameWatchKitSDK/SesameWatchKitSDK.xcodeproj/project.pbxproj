@@ -1606,7 +1606,7 @@
 			);
 			mainGroup = B142938E231F8D29006AA64C;
 			packageReferences = (
-				3B9DC5972E2DE51E008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */,
+				3B9DC5972E2DE51E008EBF76 /* XCLocalSwiftPackageReference ".." */,
 			);
 			productRefGroup = B1429399231F8D29006AA64C /* Products */;
 			projectDirPath = "";
@@ -2052,9 +2052,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		3B9DC5972E2DE51E008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */ = {
+		3B9DC5972E2DE51E008EBF76 /* XCLocalSwiftPackageReference ".." */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../SesameOS3_iOS;
+			relativePath = ..;
 		};
 /* End XCLocalSwiftPackageReference section */
 

@@ -1877,7 +1877,7 @@
 			packageReferences = (
 				416837312A42CF39000FB434 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */,
 				416837342A42D9C2000FB434 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */,
-				3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */,
+				3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference ".." */,
 			);
 			productRefGroup = B179690822F7CE9300E91996 /* Products */;
 			projectDirPath = "";
@@ -3065,9 +3065,9 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../SesameSDK;
 		};
-		3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference "../../SesameOS3_iOS" */ = {
+		3B9DC5942E2DE4F8008EBF76 /* XCLocalSwiftPackageReference ".." */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../SesameOS3_iOS;
+			relativePath = ..;
 		};
 /* End XCLocalSwiftPackageReference section */
 
