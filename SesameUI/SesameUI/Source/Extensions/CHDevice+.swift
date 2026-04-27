@@ -65,3 +65,11 @@ extension CHDevice {
         }
     }
 }
+
+extension CHDevice {
+    var hasFirmwareUpdate: Bool {
+        let current = self.stateInfo?.currentFwVer
+        let latest = self.stateInfo?.latestFwVer
+        return current != nil && latest != nil && current != latest
+    }
+}

@@ -15,6 +15,7 @@ class Sesame5ListCell: UITableViewCell {
     @IBOutlet weak var expandableImg: UIImageView!
     @IBOutlet weak var batteryContainer: UIStackView!
     @IBOutlet weak var batteryPercentLab: UILabel!
+    @IBOutlet weak var upgradeAvailableImg: UIImageView!
     
     @IBOutlet weak var batteryTrack: UIImageView!
     @IBOutlet weak var batteryIndicator: UIView!
@@ -75,6 +76,9 @@ class Sesame5ListCell: UITableViewCell {
         // Initialization code
         sesame2CircleBtn.titleLabel?.numberOfLines = 3
         prepareHapticFeedback()
+        
+        upgradeAvailableImg.image = UIImage.SVGImage(named: "exclamation", fillColor: .lockRed)
+        upgradeAvailableImg.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -111,6 +115,7 @@ class Sesame5ListCell: UITableViewCell {
         } else {
             configureSesameLockDevice(device!)
         }
+        configureFirmwareUpdateIndicator(device!)
         handleExpandIcon(device as CHDevice)
     }
     
@@ -185,6 +190,21 @@ class Sesame5ListCell: UITableViewCell {
             self?.expandableImg.transform = yesOrNo ? CGAffineTransformMakeRotation(.pi * 0.5) : CGAffineTransformIdentity
         }
     }
+    
+    private func configureFirmwareUpdateIndicator(_ device: CHDevice) {
+        if device is CHSesame2 {
+            upgradeAvailableImg.isHidden = true
+            return
+        }
+        
+        if device is CHWifiModule2 && !(device is CHHub3) {
+            upgradeAvailableImg.isHidden = true
+            return
+        }
+        
+        upgradeAvailableImg.isHidden = !device.hasFirmwareUpdate
+    }
+
 }
 
 extension Sesame5ListCell: CHDeviceStatusAndKeysDelegate {

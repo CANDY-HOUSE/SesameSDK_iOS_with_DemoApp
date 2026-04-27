@@ -76,15 +76,19 @@
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBy-MX-fEt">
                                         <rect key="frame" x="25" y="0.0" width="29" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="29" id="HCn-bw-bI4"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <color key="textColor" systemColor="placeholderTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FwU-pd-upg" userLabel="Upgrade Available Img">
+                                <rect key="frame" x="104" y="9.3333333333333339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="upg-width-14"/>
+                                    <constraint firstAttribute="height" constant="14" id="upg-height-14"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xHa-Qb-e9W" firstAttribute="leading" secondItem="Yxz-vW-qc5" secondAttribute="trailing" constant="5" id="NoF-aW-AKS"/>
@@ -171,6 +175,7 @@
                 <outlet property="expandableImg" destination="sHE-54-WEo" id="s1V-5o-C6v"/>
                 <outlet property="sesame2Circle" destination="u1v-7S-lNS" id="POt-FC-gUM"/>
                 <outlet property="sesame2CircleBtn" destination="SUW-gG-S0U" id="8dc-37-eJy"/>
+                <outlet property="upgradeAvailableImg" destination="FwU-pd-upg" id="upg-outlet-001"/>
                 <outlet property="wifiStatusImg" destination="xHa-Qb-e9W" id="MhU-Nu-ipC"/>
             </connections>
             <point key="canvasLocation" x="-150.38167938931298" y="3.5211267605633805"/>
