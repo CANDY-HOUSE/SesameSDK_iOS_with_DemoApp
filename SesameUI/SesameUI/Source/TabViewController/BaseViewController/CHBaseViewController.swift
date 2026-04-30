@@ -115,4 +115,50 @@ public class CHBaseViewController: UIViewController, CHRouteCoordinator {
             return "co.candyhouse.sesame2.off".localized
         }
     }
+    
+    func refreshVersionTag(
+        device: CHDevice,
+        setVersionStr: @escaping (String) -> Void,
+        setExclamationHidden: @escaping (Bool) -> Void
+    ) {
+        device.getVersionTag { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let status):
+                let fileName = DFUHelper.getDfuFileName(device).split(separator: "_")
+                let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
+                
+                let isNewest = status.data.contains(latestVersion!)
+                
+                let versionText = "\(status.data)\(isNewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
+                
+                executeOnMainThread {
+                    setVersionStr(versionText)
+                    setExclamationHidden(isNewest)
+                }
+                
+                if isNewest {
+                    let fwVerForList = status.data
+                    
+                    CHDeviceWrapperManager.shared.updateCurrentFwVer(
+                        for: device.deviceId.uuidString,
+                        currentFwVer: fwVerForList
+                    ) {
+                        NotificationCenter.default.post(
+                            name: .firmwareVersionUpdated,
+                            object: nil,
+                            userInfo: [
+                                "deviceId": device.deviceId.uuidString
+                            ]
+                        )
+                    }
+                }
+                
+            case .failure(let error):
+                L.d("[refreshVersionTag]", error.errorDescription())
+            }
+        }
+    }
+
 }

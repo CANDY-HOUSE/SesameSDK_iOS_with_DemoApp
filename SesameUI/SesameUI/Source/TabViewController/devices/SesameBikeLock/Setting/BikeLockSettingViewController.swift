@@ -238,20 +238,15 @@ class BikeLockSettingViewController: CHBaseViewController, DeviceControllerHolde
 
     // MARK: getVersionTag
     private func getVersionTag() {
-        bikeLock.getVersionTag { result in
-            switch result {
-            case .success(let status):
-                let fileName = DFUHelper.getDfuFileName(self.bikeLock!).split(separator: "_")
-                let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
-                let isnewest = status.data.contains(latestVersion!)
-                self.versionStr = "\(status.data)\(isnewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
-                executeOnMainThread {
-                    self.dfuView.exclamation.isHidden = isnewest
-                }
-            case .failure(let error):
-                L.d("[bk2][getVersionTag]",error.errorDescription())
+        refreshVersionTag(
+            device: bikeLock,
+            setVersionStr: { [weak self] text in
+                self?.versionStr = text
+            },
+            setExclamationHidden: { [weak self] isHidden in
+                self?.dfuView.exclamation.isHidden = isHidden
             }
-        }
+        )
     }
     
     // MARK: OTA

@@ -40,6 +40,36 @@ class CHDeviceWrapperManager {
         }
     }
     
+    func updateCurrentFwVer(
+        for deviceId: String,
+        currentFwVer: String,
+        completion: (() -> Void)? = nil
+    ) {
+        queue.async(flags: .barrier) {
+            defer {
+                if let completion = completion {
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+            }
+            
+            let key = deviceId.uppercased()
+            
+            guard var userKey = self.userKeyMap[key] else {
+                return
+            }
+            
+            guard var stateInfo = userKey.stateInfo else {
+                return
+            }
+            
+            stateInfo.currentFwVer = currentFwVer
+            userKey.stateInfo = stateInfo
+            self.userKeyMap[key] = userKey
+        }
+    }
+    
     // 清理
     func clear() {
         queue.async(flags: .barrier) {

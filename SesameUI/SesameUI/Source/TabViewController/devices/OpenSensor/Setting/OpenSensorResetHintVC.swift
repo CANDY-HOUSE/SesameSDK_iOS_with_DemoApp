@@ -29,15 +29,30 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
         let fileName = DFUHelper.getDfuFileName(self.mDevice!).split(separator: "_")
         let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
         let currentFwVer = device.stateInfo?.currentFwVer
-        let isnewest: Bool
+        let isNewest: Bool
         if let currentFwVer, let latestVersion {
-            isnewest = currentFwVer.contains(latestVersion)
+            isNewest = currentFwVer.contains(latestVersion)
         } else {
-            isnewest = false
+            isNewest = false
         }
-        self.versionStr = "\(currentFwVer ?? "")\(isnewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
+        self.versionStr = "\(currentFwVer ?? "")\(isNewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
         executeOnMainThread {
-            self.dfuView.exclamation.isHidden = isnewest
+            self.dfuView.exclamation.isHidden = isNewest
+        }
+        
+        if isNewest, let fwVerForList = currentFwVer {
+            CHDeviceWrapperManager.shared.updateCurrentFwVer(
+                for: device.deviceId.uuidString,
+                currentFwVer: fwVerForList
+            ) {
+                NotificationCenter.default.post(
+                    name: .firmwareVersionUpdated,
+                    object: nil,
+                    userInfo: [
+                        "deviceId": self.device.deviceId.uuidString
+                    ]
+                )
+            }
         }
     }
     

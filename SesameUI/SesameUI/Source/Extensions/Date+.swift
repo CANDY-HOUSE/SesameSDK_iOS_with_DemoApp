@@ -18,3 +18,7 @@ extension Date {
         return strDate
     }
 }
+
+extension Notification.Name {
+    static let firmwareVersionUpdated = Notification.Name("FirmwareVersionUpdated")
+}

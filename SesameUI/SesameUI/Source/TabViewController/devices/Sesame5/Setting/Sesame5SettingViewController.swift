@@ -409,21 +409,15 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     
     // MARK: getVersionTag
     private func getVersionTag() {
-        sesame5.getVersionTag { result in
-            switch result {
-            case .success(let status):
-                let fileName = DFUHelper.getDfuFileName(self.sesame5!).split(separator: "_")
-                let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
-                let isnewest = status.data.contains(latestVersion!)
-//                L.d("getVersionTag",status.data,latestVersion,isnewest)
-                self.versionStr = "\(status.data)\(isnewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
-                executeOnMainThread {
-                    self.dfuView.exclamation.isHidden = isnewest
-                }
-            case .failure(let error):
-                L.d(error.errorDescription())
+        refreshVersionTag(
+            device: sesame5,
+            setVersionStr: { [weak self] text in
+                self?.versionStr = text
+            },
+            setExclamationHidden: { [weak self] isHidden in
+                self?.dfuView.exclamation.isHidden = isHidden
             }
-        }
+        )
     }
     
     @discardableResult

@@ -27,20 +27,15 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
     
     // MARK: getVersionTag
     private func getVersionTag() {
-        mDevice.getVersionTag { result in
-            switch result {
-            case .success(let status):
-                let fileName = DFUHelper.getDfuFileName(self.mDevice!).split(separator: "_")
-                let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
-                let isnewest = status.data.contains(latestVersion!)
-                self.versionStr = "\(status.data)\(isnewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
-                executeOnMainThread {
-                    self.dfuView.exclamation.isHidden = isnewest
-                }
-            case .failure(_): break
-//                L.d(error.errorDescription())
+        refreshVersionTag(
+            device: mDevice,
+            setVersionStr: { [weak self] text in
+                self?.versionStr = text
+            },
+            setExclamationHidden: { [weak self] isHidden in
+                self?.dfuView.exclamation.isHidden = isHidden
             }
-        }
+        )
     }
     
     func onSesame2KeysChanged(device: SesameSDK.CHSesameConnector, sesame2keys: [String : String]) {

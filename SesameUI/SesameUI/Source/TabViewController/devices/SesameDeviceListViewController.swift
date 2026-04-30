@@ -61,6 +61,12 @@ class SesameDeviceListViewController: CHBaseViewController {
             name: NSNotification.Name("Bot2ScriptListUpdated"),
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleFirmwareVersionUpdated(_:)),
+            name: .firmwareVersionUpdated,
+            object: nil
+        )
         
         // 确保搜索框初始隐藏
         view.layoutIfNeeded()
@@ -72,6 +78,39 @@ class SesameDeviceListViewController: CHBaseViewController {
     @objc private func handleBot2ScriptListUpdated(_ notification: Notification) {
         executeOnMainThread {
             self.rebuildData()
+        }
+    }
+    
+    @objc private func handleFirmwareVersionUpdated(_ notification: Notification) {
+        guard let deviceId = notification.userInfo?["deviceId"] as? String else {
+            return
+        }
+        
+        executeOnMainThread { [weak self] in
+            self?.reloadDeviceItem(deviceId: deviceId)
+        }
+    }
+    
+    private func reloadDeviceItem(deviceId: String) {
+        let targetId = deviceId.uppercased()
+        
+        guard let row = tableViewProxy.dataSource.firstIndex(where: { descriptor in
+            guard let device = descriptor.rawValue as? CHDevice else {
+                return false
+            }
+            return device.deviceId.uuidString.uppercased() == targetId
+        }) else {
+            return
+        }
+        
+        let indexPath = IndexPath(row: row, section: 0)
+        
+        guard row < tableViewProxy.tableView.numberOfRows(inSection: 0) else {
+            return
+        }
+        
+        UIView.performWithoutAnimation {
+            tableViewProxy.tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
     
@@ -293,6 +332,7 @@ class SesameDeviceListViewController: CHBaseViewController {
     deinit {
         tableViewProxy?.tableView.removeObserver(self, forKeyPath: "contentOffset")
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("Bot2ScriptListUpdated"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: .firmwareVersionUpdated, object: nil)
     }
     
     @objc func getKeysFromServer() {

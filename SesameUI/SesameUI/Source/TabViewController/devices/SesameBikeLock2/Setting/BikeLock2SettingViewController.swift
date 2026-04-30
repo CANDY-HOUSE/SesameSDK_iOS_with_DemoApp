@@ -247,22 +247,15 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     // ---↓Functions↓---
     // MARK: getVersionTag (ssmOS version UI)
     private func getVersionTag() {
-        mBikeLock2.getVersionTag { result in
-            switch result {
-            case .success(let status):
-//                L.d("[bk2][getVersionTag][.success] =>",status)
-                let fileName = DFUHelper.getDfuFileName(self.mBikeLock2!).split(separator: "_")
-                let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
-                let isnewest = status.data.contains(latestVersion!)
-//                L.d("[bk2]getVersionTag",status.data,latestVersion,isnewest)
-                self.versionStr = "\(status.data)\(isnewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
-                executeOnMainThread {
-                    self.dfuView.exclamation.isHidden = isnewest
-                }
-            case .failure(let error):
-                L.d("[bk2][getVersionTag]",error.errorDescription())
+        refreshVersionTag(
+            device: mBikeLock2,
+            setVersionStr: { [weak self] text in
+                self?.versionStr = text
+            },
+            setExclamationHidden: { [weak self] isHidden in
+                self?.dfuView.exclamation.isHidden = isHidden
             }
-        }
+        )
     }
     
     @discardableResult

@@ -65,21 +65,15 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     override var bleTxPowerMinValue: Float { 0 }
     // MARK: getVersionTag
     private func getVersionTag() {
-        mDevice.getVersionTag { result in
-            switch result {
-            case .success(let status):
-                let fileName = DFUHelper.getDfuFileName(self.mDevice!).split(separator: "_")
-                let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
-                let isnewest = status.data.contains(latestVersion!)
-                //                L.d("getVersionTag",status.data,latestVersion,isnewest)
-                self.versionStr = "\(status.data)\(isnewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
-                executeOnMainThread {
-                    self.dfuView.exclamation.isHidden = isnewest
-                }
-            case .failure(_): break
-                //                L.d(error.errorDescription())
+        refreshVersionTag(
+            device: mDevice,
+            setVersionStr: { [weak self] text in
+                self?.versionStr = text
+            },
+            setExclamationHidden: { [weak self] isHidden in
+                self?.dfuView.exclamation.isHidden = isHidden
             }
-        }
+        )
     }
     
     func onRadarReceive(device: CHSesameConnector, payload: Data){
