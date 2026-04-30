@@ -49,11 +49,10 @@ extension CHSesameBikeDevice {
                 if payload.cmdResultCode == .success {
                     result(.success(CHResultStateNetworks(input: tag.gitRevision)))
                     #if os(iOS)
-//                    if self.gitVersionCache() != tag.gitRevision {
-//                        CHIoTManager.shared.updateCHDeviceShadow(self, withParameters: ["v": tag.gitRevision])
-//                        self.setGitVersionCache(tag.gitRevision)
-//                    }
-//                    self.putSesameFW(tag.gitRevision) { _ in }
+                    CHAPIClient.shared.postFirmwareVersion(
+                        deviceId: self.deviceId.uuidString,
+                        versionTag: tag.gitRevision
+                    ) {response in}
                     #endif
                 } else {
                     result(.failure(self.errorFromResultCode(payload.cmdResultCode)))

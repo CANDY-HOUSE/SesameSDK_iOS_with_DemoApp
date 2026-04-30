@@ -71,10 +71,10 @@ final class CHWifiModule2Device: CHBaseDevice, CHWifiModule2, CHDeviceUtil {
                 let versionTag = String(data: response.data, encoding: .utf8) ?? ""
                 result(.success(.init(input: versionTag)))
 #if os(iOS)
-                //                if self.gitVersionCache() != versionTag {
-                //                    CHIoTManager.shared.updateWifiModule2Shadow(self, withParameters: ["v": versionTag])
-                //                    self.setGitVersionCache(versionTag)
-                //                }
+                CHAPIClient.shared.postFirmwareVersion(
+                    deviceId: self.deviceId.uuidString,
+                    versionTag: versionTag
+                ) {response in}
 #endif
             } else {
                 result(.failure(NSError.getVersionTagFailed))

@@ -192,16 +192,6 @@ class Sesame5ListCell: UITableViewCell {
     }
     
     private func configureFirmwareUpdateIndicator(_ device: CHDevice) {
-        if device is CHSesame2 {
-            upgradeAvailableImg.isHidden = true
-            return
-        }
-        
-        if device is CHWifiModule2 && !(device is CHHub3) {
-            upgradeAvailableImg.isHidden = true
-            return
-        }
-        
         upgradeAvailableImg.isHidden = !device.hasFirmwareUpdate
     }
 
