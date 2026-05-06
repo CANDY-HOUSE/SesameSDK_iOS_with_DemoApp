@@ -65,6 +65,8 @@ public extension CHDevice {
             filePrefix = "sesame5pro_"
         case .sesame5US:
             filePrefix = "sesame5us_"
+        case .sesame6:
+            filePrefix = "sesame6_"
         case .sesame6Pro,.sesame6ProSLiDingDoor:
             filePrefix = "sesame6pro_"
         case .sesameMiwa:
