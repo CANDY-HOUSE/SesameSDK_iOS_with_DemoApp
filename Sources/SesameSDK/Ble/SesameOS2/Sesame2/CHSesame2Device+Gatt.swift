@@ -50,6 +50,11 @@ extension CHSesame2Device {
 //                L.d("sesame2Status.isInLockRange", sesame2Status.isInLockRange, "sesame2Status.isInUnlockRange", sesame2Status.isInUnlockRange)
                 mechStatus = sesame2Status
                 self.deviceStatus = mechStatus!.isInLockRange  ? .locked() : mechStatus!.isInUnlockRange ? .unlocked() : .moved()
+                postBatteryData(data[0..<2].toHexString()) { res in
+                    if case .success(let resp) = res {
+                        self.notifyBatteryPercentageChanged(percentage: resp.data)
+                    }
+                }
             }
 
         case .login:

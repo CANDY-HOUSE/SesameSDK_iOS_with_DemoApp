@@ -47,6 +47,11 @@ extension CHSesameBotDevice {
                 }
                 mechStatus = switchStatus
                 self.deviceStatus = mechStatus!.isInLockRange ? .locked() : mechStatus!.isInUnlockRange ? .unlocked() : .moved()
+                postBatteryData(data[0..<2].toHexString()) { res in
+                    if case .success(let resp) = res {
+                        self.notifyBatteryPercentageChanged(percentage: resp.data)
+                    }
+                }
             }
         case .login:
             if let payload = SesameBotLoginResponsePayload.fromData(data) {
