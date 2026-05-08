@@ -53,10 +53,6 @@ extension CHHub3Device {
     
     func updateMechSettingStatusAndKeys(_ status: Hub3Status) {
         self.status = status
-        mechSetting?.wifiSSID = status.wifi_ssid
-        mechSetting?.wifiPassword = status.wifi_password
-        (delegate as? CHWifiModule2Delegate)?.onAPSettingChanged(device: self, settings: mechSetting!)
-        
         let isConnectIOT = status.eventType == "connected" // 判断是否连接到IOT
         mechStatus = CHWifiModule2NetworkStatus(
             isAPWork: isConnectIOT,
@@ -66,21 +62,5 @@ extension CHHub3Device {
             isConnectingNetwork: false,
             isConnectingIoT: false
         )
-        
-        guard let ssks = status.ssks else {
-            return
-        }
-        var result: [String: String] = [:]
-        let chunkSize = 38
-        let valueSize = 36
-        for (index, chunk) in stride(from: 0, to: ssks.count, by: chunkSize).enumerated() {
-            let startIndex = ssks.index(ssks.startIndex, offsetBy: chunk)
-            let endIndex = ssks.index(startIndex, offsetBy: min(valueSize, ssks.count - chunk))
-            let substring = String(ssks[startIndex..<endIndex])
-            if substring.count == valueSize {
-                result[substring] = "\(index)"
-            }
-        }
-        self.sesame2Keys = result
     }
 }

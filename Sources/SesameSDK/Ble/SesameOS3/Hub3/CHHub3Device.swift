@@ -13,13 +13,6 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     var sesame2Keys: [String : String] = [:]
     var status: Hub3Status = Hub3Status(
         eventType: "disconnected",
-        ssks: "",
-        v: "",
-        hub3LastFirmwareVer: "",
-        timestamp: 0,
-        ts: 0,
-        wifi_ssid: "",
-        wifi_password: ""
     )
     
     var mechSetting: CHWifiModule2MechSettings? = CHWifiModule2MechSettings()
