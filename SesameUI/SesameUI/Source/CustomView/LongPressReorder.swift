@@ -56,6 +56,9 @@ public enum ScrollBehaviour: Int {
      - Returns: True to allow selected row to be reordered, false if row should not be moved
      */
     func startReorderingRow(atIndex indexPath: IndexPath) -> Bool
+    
+    func willBeginReordering(at indexPath: IndexPath) -> IndexPath?
+
     /**
      Specify if the targeted row can change its position.
 
@@ -145,11 +148,13 @@ open class LongPressReorderTableView {
                 if !(delegate?.startReorderingRow(atIndex: indexPath) ?? true) {
                     break
                 }
+                guard let cell = tableView.cellForRow(at: indexPath) else {
+                    break
+                }
+                let updatedIndexPath = delegate?.willBeginReordering(at: indexPath) ?? indexPath
                 DragInfo.began = true
-                DragInfo.initialIndexPath = indexPath
-                DragInfo.currentIndexPath = indexPath
-
-                let cell = tableView.cellForRow(at: indexPath)!
+                DragInfo.initialIndexPath = updatedIndexPath
+                DragInfo.currentIndexPath = updatedIndexPath
 
                 var center = cell.center
                 DragInfo.cellSnapshot = snapshotFromView(cell)
@@ -322,5 +327,9 @@ extension UIViewController: LongPressReorder {
      */
     open func allowChangingRow(atIndex indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    open func willBeginReordering(at indexPath: IndexPath) -> IndexPath? {
+        return indexPath
     }
 }
