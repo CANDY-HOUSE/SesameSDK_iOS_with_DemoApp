@@ -350,7 +350,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                         }
                         return userKey
                     }
-                    let nickname = CHAWSMobileClient.shared.getNickname { _ in }
+                    let nickname = CHAWSMobileClient.shared.getName { _ in }
                     Sesame2Store.shared.setHistoryTag(nickname)
                     CHDeviceManager.shared.setHistoryTag()
                     CHDeviceWrapperManager.shared.updateUserKeys(userKeys)

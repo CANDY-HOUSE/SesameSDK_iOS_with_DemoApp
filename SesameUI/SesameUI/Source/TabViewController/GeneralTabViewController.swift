@@ -36,7 +36,7 @@ public class GeneralTabViewController: UITabBarController {
             }
             if userState == .signedIn {
                 // 3. 設定 history tag
-                CHAWSMobileClient.shared.getNickname { result in
+                CHAWSMobileClient.shared.getName { result in
                     if case let .success(nickname) = result {
                         Sesame2Store.shared.setHistoryTag(nickname)
                     }
@@ -55,7 +55,7 @@ public class GeneralTabViewController: UITabBarController {
         AWSMobileClient.default().addUserStateListener(self) { state, dic in
             if state == .signedIn {
                 CHAPIClient.shared.uploadUserDeviceToken() { _ in }
-                CHAWSMobileClient.shared.getNickname { result in
+                CHAWSMobileClient.shared.getName { result in
                     if case let .success(nickname) = result {
                         Sesame2Store.shared.setHistoryTag(nickname)
                     }

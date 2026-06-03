@@ -137,25 +137,7 @@ extension SignInViewController: CHUserManagerSignInDelegate {
             }
             ViewHelper.hideLoadingView(view: self.view)
         }
-    }
-    
-    func getNickname(_ result: @escaping (Result<NSNull, Error>) -> Void) {
-        CHAWSMobileClient.shared.getNickname { getResult in
-            if case let .success(nickname) = getResult {
-                if let nickname = nickname {
-                    Sesame2Store.shared.setHistoryTag(nickname)
-                    result(.success(NSNull()))
-                } else {
-                    CHAWSMobileClient.shared.updateNickname("User") { _ in
-                        Sesame2Store.shared.setHistoryTag("User")
-                        result(.success(NSNull()))
-                    }
-                }
-            } else if case let .failure(error) = getResult {
-                result(.failure(error))
-            }
-        }
-    }
+    }    
 }
 
 extension SignInViewController {

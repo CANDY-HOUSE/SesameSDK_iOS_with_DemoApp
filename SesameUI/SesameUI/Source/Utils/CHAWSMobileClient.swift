@@ -20,14 +20,14 @@ class CHAWSMobileClient {
     static let shared = CHAWSMobileClient()
     weak var delegate: CHUserManagerSignInDelegate?
     var subId: String?
-    var nickName: String?
+    var name: String?
     var email: String?
 }
 
 extension CHAWSMobileClient {
     private enum Constant {
         static let email = "email"
-        static let nickname = "nickname"
+        static let name = "name"
         static let sub = "sub"
     }
     
@@ -80,7 +80,7 @@ extension CHAWSMobileClient {
     func signOut(_ completeHandler: (()->Void)? = nil) {
         AWSMobileClient.default().signOut()
         subId = nil
-        nickName = nil
+        name = nil
         email = nil
         completeHandler?()
     }
@@ -109,13 +109,13 @@ extension CHAWSMobileClient {
         return Data(bytes)
     }
 
-    public func updateNickname(_ nickname: String, _ result: @escaping (Result<String, Error>) -> Void) {
-        AWSMobileClient.default().updateUserAttributes(attributeMap: [Constant.nickname: nickname]) { deliverDetails, error in
+    public func updateName(_ nickname: String, _ result: @escaping (Result<String, Error>) -> Void) {
+        AWSMobileClient.default().updateUserAttributes(attributeMap: [Constant.name: nickname]) { deliverDetails, error in
             if let error = error {
                 result(.failure(error))
             } else {
-                self.nickName = nickname
-                UserDefaults.standard.setValue(nickname, forKey: Constant.nickname)
+                self.name = nickname
+                UserDefaults.standard.setValue(nickname, forKey: Constant.name)
                 result(.success(nickname))
             }
         }
@@ -123,8 +123,8 @@ extension CHAWSMobileClient {
     // todo [cognitol] 這裡這樣調用會浪費大量 cognito 傳輸
     
     @discardableResult
-    public func getNickname(_ result: @escaping (Result<String?, Error>) -> Void, isCachingEnabled: Bool = true) -> String {
-        if isCachingEnabled,let nickName = nickName {
+    public func getName(_ result: @escaping (Result<String?, Error>) -> Void, isCachingEnabled: Bool = true) -> String {
+        if isCachingEnabled,let nickName = name {
             result(.success(nickName))
             return nickName
         }
@@ -133,14 +133,14 @@ extension CHAWSMobileClient {
                 result(.failure(error))
             } else {
                 // MARK: 更新缓存的昵称
-                self.nickName = attributes?[Constant.nickname]
+                self.name = attributes?[Constant.name]
                 
-                UserDefaults.standard.setValue(attributes?[Constant.nickname], forKey: Constant.nickname)
+                UserDefaults.standard.setValue(attributes?[Constant.name], forKey: Constant.name)
                 UserDefaults.standard.setValue(attributes?[Constant.email], forKey: Constant.email)
-                result(.success(attributes?[Constant.nickname]))
+                result(.success(attributes?[Constant.name]))
             }
         }
-        return UserDefaults.standard.string(forKey: Constant.nickname) ?? "User"
+        return UserDefaults.standard.string(forKey: Constant.name) ?? "User"
     }
 
     @discardableResult
@@ -154,7 +154,7 @@ extension CHAWSMobileClient {
                 result(.failure(error))
             } else {
                 let emailFromAtt = attributes?[Constant.email]
-                UserDefaults.standard.setValue(attributes?[Constant.nickname], forKey: Constant.nickname)
+                UserDefaults.standard.setValue(attributes?[Constant.name], forKey: Constant.name)
                 UserDefaults.standard.setValue(emailFromAtt, forKey: Constant.email)
                 self.email = emailFromAtt
                 result(.success(attributes?[Constant.email]))

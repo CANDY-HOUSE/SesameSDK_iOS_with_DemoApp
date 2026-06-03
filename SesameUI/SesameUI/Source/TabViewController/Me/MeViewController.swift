@@ -189,14 +189,14 @@ class MeViewController: CHBaseViewController {
     func performLogin() {
         let loginViewController = SignUpViewController.instance { isLoggedIn in
             if isLoggedIn {
-                CHAWSMobileClient.shared.getNickname { result in
+                CHAWSMobileClient.shared.getName { result in
                     // Set History tag
                     if case let .success(nickname) = result {
                         if nickname == nil {
                             CHAWSMobileClient.shared.getEmail { getEmailResult in
                                 if case let .success(email) = getEmailResult {
                                     let emailId = String(email!.split(separator: "@").first!)
-                                    CHAWSMobileClient.shared.updateNickname(emailId) { updateResult in
+                                    CHAWSMobileClient.shared.updateName(emailId) { updateResult in
                                         executeOnMainThread {
                                             self.webView?.refresh()
                                         }
