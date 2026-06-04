@@ -23,6 +23,7 @@ enum WebViewMessageType: String {
     case requestConfigureInternet = "requestConfigureInternet"
     case requestMonitorInternet = "requestMonitorInternet"
     case requestDeviceFWUpgrade = "requestDeviceFWUpgrade"
+    case requestUpdateDeviceFWVersion = "requestUpdateDeviceFWVersion"
 }
 
 enum WebViewSchemeType: String {
@@ -56,6 +57,32 @@ extension CHWebView {
         registerMessageHandler(WebViewMessageType.requestNotificationSettings.rawValue) { webView, data in
             if let _ = data as? [String: Any] {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }
+        }
+        
+        registerMessageHandler(WebViewMessageType.requestUpdateDeviceFWVersion.rawValue) { webView, data in
+            guard let params = data as? [String: Any] else {
+                return
+            }
+            
+            guard let deviceId = params["deviceUUID"] as? String,
+                  let currentFwVer = params["currentFwVer"] as? String else {
+                return
+            }
+            
+            L.d("[requestUpdateDeviceFWVersion]", deviceId, currentFwVer)
+            
+            CHDeviceWrapperManager.shared.updateCurrentFwVer(
+                for: deviceId,
+                currentFwVer: currentFwVer
+            ) {
+                NotificationCenter.default.post(
+                    name: .firmwareVersionUpdated,
+                    object: nil,
+                    userInfo: [
+                        "deviceId": deviceId
+                    ]
+                )
             }
         }
     }
