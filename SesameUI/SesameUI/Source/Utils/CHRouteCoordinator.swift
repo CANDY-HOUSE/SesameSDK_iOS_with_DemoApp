@@ -208,6 +208,17 @@ public extension CHRouteCoordinator where Self: UIViewController {
         }), animated: true)
     }
     
+    func navigateToOpenSensorHistoryViewController(_ device: CHDevice) {
+        navigationController?.pushViewController(SesameHistoryViewController.instance(device, dismissHandler: nil, settingClickHandler: { [weak self] in
+            guard let biometricDevice = device as? CHSesameBiometricDevice else { return }
+            if device.productModel == .openSensor {
+                self?.navigateToOpenSensorResetVC(biometricDevice)
+            } else if device.productModel == .openSensor2 {
+                self?.navigateToCHSesameBiometricSettingVC(biometricDevice)
+            }
+        }), animated: true)
+    }
+    
     func navigateToBot2SettingViewController(_ bot2: CHSesameBot2) {
         navigationController?.pushViewController(Bot2SettingViewController.instanceWithBikeBot2(bot2), animated: true)
     }

@@ -532,9 +532,13 @@ class SesameDeviceListViewController: CHBaseViewController {
             guard let wifiModule2 = device as? CHWifiModule2 else { return }
             navigateToWifiModule2SettingViewController(wifiModule2)
 
-        case .openSensor, .remoteNano:
+        case .remoteNano:
             guard let biometricDevice = device as? CHSesameBiometricDevice else { return }
             navigateToOpenSensorResetVC(biometricDevice)
+            
+        case .openSensor,
+             .openSensor2:
+            navigateToOpenSensorHistoryViewController(device)
 
         case .remote:
             guard let biometricDevice = device as? CHSesameBiometricDevice else { return }
@@ -551,8 +555,7 @@ class SesameDeviceListViewController: CHBaseViewController {
              .sesameFaceAI,
              .sesameFace2AI,
              .sesameFaceProAI,
-             .sesameFace2ProAI,
-             .openSensor2:
+             .sesameFace2ProAI:
             guard let biometricDevice = device as? CHSesameBiometricDevice else { return }
             navigateToCHSesameBiometricSettingVC(biometricDevice)
         }
