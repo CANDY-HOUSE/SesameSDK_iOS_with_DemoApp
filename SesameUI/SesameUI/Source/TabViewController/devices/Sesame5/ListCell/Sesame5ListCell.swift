@@ -100,6 +100,7 @@ class Sesame5ListCell: UITableViewCell {
         (device as? CHSesameBot)?.click { _ in }
         (device as? CHSesameBike)?.unlock { _ in }
         (device as? CHSesameBike2)?.unlock(historytag: device.hisTag) { _ in }
+        (device as? CHHub3)?.toggle(historytag: device.hisTag) { _ in }
         if let bot2 = device as? CHSesameBot2 {
             let intValue: Int = UserDefaults.standard.integer(forKey:device.deviceId.uuidString)
             bot2.click(index: UInt8(intValue), historytag: device.hisTag, result: { _ in })
@@ -110,13 +111,27 @@ class Sesame5ListCell: UITableViewCell {
     }
     
     func configureSesame2Cell() { // setupSSMCell!!
-        if let device = self.device as? CHWifiModule2 {
-            configureWifiModuleDevice(device)
+        // Hub3 LTE 需顯示操作圓圈，故走 lock 風格佈局；其餘 Wi-Fi 模組仍走精簡佈局
+        if let wifiModule = self.device as? CHWifiModule2, device.productModel != .hub3LTE {
+            configureWifiModuleDevice(wifiModule)
         } else {
             configureSesameLockDevice(device!)
         }
         configureFirmwareUpdateIndicator(device!)
         handleExpandIcon(device as CHDevice)
+    }
+
+    /// 是否在列表右側顯示操作圓圈（Sesame2Circle）
+    private func shouldHideSesame2Circle(_ device: CHDevice) -> Bool {
+        if device.productModel == .hub3LTE { return false } // Hub3 LTE 顯示
+        return (device is CHSesameConnector) && !device.isLockDevice && (device.productModel != .openSensor && device.productModel != .openSensor2)
+    }
+
+    /// Hub3 繼電器圓圈圖示：未連網顯示 disable，已連網依繼電器開關顯示 unlocked / locked
+    private func hub3LTERelayIcon(_ hub3LTE: CHHub3) -> String {
+        let isNetworkConnected = (hub3LTE.mechStatus as? CHWifiModule2NetworkStatus)?.isIoTWork == true
+        guard isNetworkConnected else { return "noBleSignal" }
+        return hub3LTE.isRelayOn ? "unlocked" : "locked"
     }
     
     private func handleExpandIcon(_ deviced: CHDevice) {
@@ -129,12 +144,12 @@ class Sesame5ListCell: UITableViewCell {
     
     func configureSesameLockDevice(_ device: CHDevice) {
         UIView.restoreHide(views: sesameUses)
-        sesame2Circle.isHidden = ((device is CHSesameConnector) && !device.isLockDevice &&
-                                  (device.productModel != .openSensor && device.productModel != .openSensor2))
+        sesame2Circle.isHidden = shouldHideSesame2Circle(device)
         deviceNameMagrinRight.priority = sesame2Circle.isHidden ? .defaultLow : .required
         deviceNameLab.text = device.deviceName //名稱
         deviceBleStatusLab.text = device.bluetoothStatusStr()//藍芽狀態文字
-        sesame2CircleBtn.setBackgroundImage(UIImage(named: device.currentStatusImage()), for: .normal)//設備撞圖片
+        let circleIcon = (device as? CHHub3).map(hub3LTERelayIcon) ?? device.currentStatusImage()
+        sesame2CircleBtn.setBackgroundImage(UIImage(named: circleIcon), for: .normal)//設備撞圖片
         let opensensorState = (device as? CHSesameBiometricDevice)?.displayedState
         sesame2CircleBtn.setAttributedTitle(opensensorState, for: .normal)
         bleImg.image = UIImage(named: device.bluetoothImageStr())//藍芽小標圖片

@@ -340,6 +340,55 @@ public extension CHAPIClient {
         }
     }
     
+    /// 觸發 Hub3 LTE 繼電器開關（IoT 透傳指令）
+    /// 對應 server: POST /device/v1/wifi_module/{device_id}/switch
+    func updateHub3LTERelay(_ hub3LTE: CHHub3, result: @escaping CHResult<CHEmpty>) {
+        guard let secretKey = (hub3LTE as? CHDeviceUtil)?.sesame2KeyData?.secretKey.hexStringtoData() else {
+            result(.failure(NSError.noDataError))
+            return
+        }
+
+        // timestamp 小端 4 bytes，取第 1...3 字節（與 Android 一致）
+        let timestamp = UInt32(Date().timeIntervalSince1970)
+        var littleEndianTimestamp = timestamp.littleEndian
+        let timestampData = withUnsafeBytes(of: &littleEndianTimestamp) { Data($0) }
+        let msg = timestampData.subdata(in: 1..<4)
+
+        // AES-CMAC 取前 4 字節作為簽章
+        let sign = CC.CMAC.AESCMAC(msg, key: secretKey).prefix(4)
+
+        let cmd = SesameItemCode.HUB3_ITEM_CODE_RELAY_SWITCH.rawValue
+        let hub3DeviceId = hub3LTE.deviceId.uuidString.uppercased()
+        let deviceIdBytes = Data(hub3DeviceId.utf8)
+        let op: UInt8 = 0x01 // 保留字節，目前固定為 0x01，代表開關操作
+
+        // payload = sign(4) + cmd(1) + deviceIdBytes + op(1)
+        var payloadBytes = Data()
+        payloadBytes.append(contentsOf: sign)
+        payloadBytes.append(cmd)
+        payloadBytes.append(deviceIdBytes)
+        payloadBytes.append(op)
+
+        let payload = payloadBytes.base64EncodedString()
+        let lastSegment = (hub3DeviceId.components(separatedBy: "-").last ?? "").uppercased()
+
+        let sendMap: [String: Any] = [
+            "action": "biz3OperateIoT",
+            "op": "cmd",
+            "payload": payload,
+            "topic": "wm2\(lastSegment)cmd"
+        ]
+
+        API(request: .init(.post, "/device/v1/wifi_module/\(hub3DeviceId)/switch", sendMap)) { response in
+            switch response {
+            case .success(_):
+                result(.success(.init(input: .init())))
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+    
     // MARK: - Biometric/Credential
     /// 生物识别数据操作 (通用)
     func biometricsOperation(payload: Data, result: @escaping CHResult<Data>) {

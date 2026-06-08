@@ -10,6 +10,10 @@ import Foundation
 
 public protocol CHHub3: CHWifiModule2 {
     var status: Hub3Status { get }
+    /// 繼電器是否開啟（true=打開，false=關閉）
+    var isRelayOn: Bool { get }
+    /// 觸發繼電器開關（Hub3 LTE，透過 IoT 透傳指令）
+    func toggle(historytag: Data?, result: @escaping CHResult<CHEmpty>)
 }
 
 /// 从 AWS 数据库获取的 Hub3 状态

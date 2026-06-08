@@ -266,6 +266,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
     case sesame6ProSLiDingDoor = 32
     case bikeLock3 = 33
     case sesameBot3 = 35
+    case hub3LTE = 36
 
     public func deviceModel() -> String {///絕對不要動。ios/server/android必須一致
         switch self {
@@ -303,6 +304,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesameFace2AI: return "sesame_face_2_ai"
         case .openSensor2: return "open_sensor_2"
         case .sesameMiwa: return "sesame_miwa"
+        case .hub3LTE: return "hub_3_lte"
         }
     }
     public func deviceModelName() -> String {//android必須一致
@@ -341,6 +343,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesameFace2AI: return "Sesame Face 2 AI"
         case .openSensor2: return "Open Sensor 2"
         case .sesameMiwa: return "Sesame miwa"
+        case .hub3LTE: return "Hub 3 LTE"
         }
     }
 
@@ -348,7 +351,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         switch self {
         case .sesame2,.sesame4: return CHSesame2Device()
         case .wifiModule2: return CHWifiModule2Device()
-        case .hub3: return CHHub3Device()
+        case .hub3,.hub3LTE: return CHHub3Device()
         case .sesameBot: return CHSesameBotDevice()
         case .bikeLock: return CHSesameBikeDevice()
         case .bikeLock2: return CHSesameBike2Device()
@@ -471,7 +474,7 @@ internal class BleAdv {
                     } else {
                         deviceID = "00000000055afd810001000000000000".noDashtoUUID()
                     }
-                case .hub3:
+                case .hub3, .hub3LTE:
                     isRegistered = manufacturerData[3] & 1 > 0
                     let macAddress = manufacturerData.copyData[4...9].toHexString()
                     deviceID = ("00000000055afd810d00" + macAddress).noDashtoUUID()

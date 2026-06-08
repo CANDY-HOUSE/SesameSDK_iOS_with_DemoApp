@@ -105,6 +105,8 @@ public extension CHDevice {
             filePrefix = "sesameface1proai_"
         case .hub3:
             filePrefix = "hub3_"
+        case .hub3LTE:
+            filePrefix = "hub3lte_"
         case .wifiModule2: break
         }
         var zips: [URL] = []

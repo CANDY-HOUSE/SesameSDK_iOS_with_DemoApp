@@ -519,7 +519,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                 navigateToBike2HistoryViewController(bikeLockPlus)
             }
 
-        case .hub3:
+        case .hub3, .hub3LTE:
             guard let hub3 = device as? CHHub3 else { return }
             navigateToHub3SettingViewController(hub3)
             DispatchQueue.main.async { [weak self] in

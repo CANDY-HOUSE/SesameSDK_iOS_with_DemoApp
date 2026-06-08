@@ -14,6 +14,8 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     var status: Hub3Status = Hub3Status(
         eventType: "disconnected",
     )
+    /// 繼電器是否開啟（true=打開，false=關閉）
+    var isRelayOn: Bool = false
     
     var mechSetting: CHWifiModule2MechSettings? = CHWifiModule2MechSettings()
     
@@ -35,12 +37,38 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     func goIOT() {
 #if os(iOS)
         getHub3StatusFromIot()
+        subscribeRelayStatus()
         CHIoTManager.shared.subscribeWifiModule2Shadow(self) { result in
             switch result {
             case .success(let result):
                 self.wifiModule2ShadowCompleteHandler(result: result.data)
             case .failure(let error):
                 L.d(error)
+            }
+        }
+#endif
+    }
+
+    /// 侦听繼電器（relay）開關狀態變化
+    private func subscribeRelayStatus() {
+#if os(iOS)
+        guard productModel == .hub3LTE else { return }
+        guard let deviceId = deviceId else { return }
+        let topic = "up/iot/device/\(deviceId.uuidString.uppercased())/cmd"
+        CHIoTManager.shared.subscribeTopic(topic) { [weak self] data in
+            guard let self = self else { return }
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                      let op = json["op"] as? Int,
+                      op == Int(SesameItemCode.HUB3_ITEM_CODE_RELAY_SWITCH.rawValue),
+                      let payload = json["payload"] as? [String: Any],
+                      let status = payload["status"] as? Int, status != -1 else {
+                    return
+                }
+                self.isRelayOn = (status == 1)
+                self.notifyMechStatusChanged()
+            } catch {
+                L.d("[hub3][subscribeRelayStatus] parse error", error)
             }
         }
 #endif
@@ -59,6 +87,9 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     deinit {
 #if os(iOS)
         CHIoTManager.shared.unsubscribeWifiModule2Shadow(self)
+        if productModel == .hub3LTE, let deviceId = deviceId {
+            CHIoTManager.shared.unsubscribeTopic("up/iot/device/\(deviceId.uuidString.uppercased())/cmd")
+        }
 #endif
     }
 }
@@ -190,5 +221,10 @@ extension CHHub3Device {
                 L.d("getHub3StatusFromIot error", error)
             }
         }
+    }
+
+    /// 觸發繼電器開關（Hub3 LTE）
+    func toggle(historytag: Data?, result: @escaping CHResult<CHEmpty>) {
+        CHAPIClient.shared.updateHub3LTERelay(self, result: result)
     }
 }

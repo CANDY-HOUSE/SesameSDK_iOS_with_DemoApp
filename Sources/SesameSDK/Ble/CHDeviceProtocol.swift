@@ -106,6 +106,7 @@ enum SesameItemCode: UInt8 {
     case HUB3_ITEM_CODE_WIFI_PASSWORD = 135
     case HUB3_UPDATE_WIFI_SSID = 136
     case HUB3_MATTER_PAIRING_CODE = 137
+    case HUB3_ITEM_CODE_RELAY_SWITCH = 208
     
     // 添加密码
     case SSM_OS3_PASSCODE_ADD = 138
