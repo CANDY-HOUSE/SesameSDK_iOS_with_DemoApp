@@ -391,7 +391,7 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
                 }
             }
             ChangeValueDialog.show(nameText, title: "co.candyhouse.sesame2.EditName".localized) { name in
-                if BiometricData.isUUIDv4(name: passCode.nameUUID) {
+                if BiometricData.isServerSyncedName(passCode.nameUUID) {
                   renameToServer(name, passCode.nameUUID)
                 } else {
                     let uuid = UUID().uuidString.lowercased()
@@ -426,11 +426,8 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
     }
     func onPassCodeReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
-            if BiometricData.isUUIDv4(name: hexName) {
-                self.mPassCodeList.insert(KeyboardPassCode(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased()), at: 0)
-            } else {
-                self.mPassCodeList.insert(KeyboardPassCode(id: id, name: hexName, nameUUID: hexName), at: 0)
-            }
+            let parsed = BiometricData.parseDeviceCredentialName(hexName: hexName)
+            self.mPassCodeList.insert(KeyboardPassCode(id: id, name: parsed.name, nameUUID: parsed.nameUUID), at: 0)
             self.reloadTableView()
         }
     }
@@ -458,10 +455,8 @@ class PassCodeVC: CHBaseTableVC ,CHPassCodeDelegate, CHDeviceStatusDelegate{
 
     func onPassCodeChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
-            var keyboardPassCode = KeyboardPassCode(id: id, name: hexName, nameUUID: hexName)
-            if BiometricData.isUUIDv4(name: hexName) {
-                keyboardPassCode = KeyboardPassCode(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased())
-            }
+            let parsed = BiometricData.parseDeviceCredentialName(hexName: hexName)
+            let keyboardPassCode = KeyboardPassCode(id: id, name: parsed.name, nameUUID: parsed.nameUUID)
             self.mPassCodeList.insert(keyboardPassCode, at: 0)
             self.reloadTableView()
             guard let capable = device as? CHPassCodeCapable else {

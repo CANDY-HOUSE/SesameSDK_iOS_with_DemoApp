@@ -183,7 +183,7 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
                    }
                }
                ChangeValueDialog.show(nameText, title: "co.candyhouse.sesame2.EditName".localized) { name in
-                   if BiometricData.isUUIDv4(name: fingerprint.nameUUID) {
+                   if BiometricData.isServerSyncedName(fingerprint.nameUUID) {
                        renameToServer(name, fingerprint.nameUUID)
                    } else {
                        let uuid = UUID().uuidString.lowercased()
@@ -221,11 +221,8 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
     }
     func onFingerPrintReceive(device: CHDevice, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
-            if BiometricData.isUUIDv4(name: hexName) {
-                self.fingerPrints.insert(FingerPrint(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased()), at: 0)
-            } else {
-                self.fingerPrints.insert(FingerPrint(id: id, name: hexName, nameUUID: hexName), at: 0)
-            }
+            let parsed = BiometricData.parseDeviceCredentialName(hexName: hexName)
+            self.fingerPrints.insert(FingerPrint(id: id, name: parsed.name, nameUUID: parsed.nameUUID), at: 0)
             self.reloadTableView()
         }
 
@@ -254,10 +251,8 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
     
     func onFingerPrintChanged(device: CHDevice, id: String, hexName: String, type: UInt8) {
         L.d("[FG][onFingerPrintChanged] \(id):\(hexName)")
-        var fingerprint = FingerPrint(id: id, name: hexName, nameUUID: hexName)
-        if BiometricData.isUUIDv4(name: hexName) {
-            fingerprint = FingerPrint(id: id, name: "", nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased())
-        }
+        let parsed = BiometricData.parseDeviceCredentialName(hexName: hexName)
+        let fingerprint = FingerPrint(id: id, name: parsed.name, nameUUID: parsed.nameUUID)
         self.fingerPrints.insert(fingerprint, at: 0)
         executeOnMainThread {
             self.reloadTableView()
