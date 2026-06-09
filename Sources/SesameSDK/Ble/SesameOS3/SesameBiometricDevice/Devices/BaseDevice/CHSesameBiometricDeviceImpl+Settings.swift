@@ -24,7 +24,11 @@ extension CHSesameBiometricDeviceImpl {
             }
 
         case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
-            postBatteryData(payload.toHexString()) { _ in }
+            postBatteryData(payload.toHexString()) { res in
+                if case .success(let resp) = res {
+                    self.notifyBatteryPercentageChanged(percentage: resp.data)
+                }
+            }
 
         case .pubKeySesame:
             handle = true
