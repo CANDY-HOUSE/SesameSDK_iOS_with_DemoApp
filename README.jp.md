@@ -22,6 +22,8 @@
 
 ### 1. プロジェクトの依存関係
 
+- 公開 Web API（`X-API-KEY`）で 500 エラーが出る場合 → [public-web-api-troubleshooting.ja.md](./doc/public-web-api-troubleshooting.ja.md)（Issue #35 関連）
+
 - [Sesame 5] :このオブジェクトの例は、Sesame5およびSesame5 Pro製品に適用されます
 - [Sesame Bike 2] :このオブジェクトの例は、Sesame Bike 2製品に適用されます
 - [Sesame WiFi Module 2]:このオブジェクトの例は、Sesame WiFi Module 2 製品に適用されます
