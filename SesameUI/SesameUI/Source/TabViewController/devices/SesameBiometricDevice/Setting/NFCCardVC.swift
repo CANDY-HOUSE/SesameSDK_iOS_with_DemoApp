@@ -452,7 +452,7 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
                 }
             }
             ChangeValueDialog.show(nameText, title: "co.candyhouse.sesame2.EditName".localized) { name in
-                if BiometricData.isUUIDv4(name: card.nameUUID) {
+                if BiometricData.isServerSyncedName(card.nameUUID) {
                     renameToServer(name, card.nameUUID)
                 } else {
                     let uuid = UUID().uuidString.lowercased()
@@ -490,11 +490,8 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
     func onCardReceive(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
         executeOnMainThread {
             //接收卡片时，列表显示默认名称，name转为 nameUUID，用于获取后台真实的name
-            if BiometricData.isUUIDv4(name: hexName) {
-                self.mCardList.insert(SuiCard(id: id, name: "",type:type,nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased()), at: 0)
-            } else {
-                self.mCardList.insert(SuiCard(id: id, name: hexName,type:type,nameUUID: hexName), at: 0)
-            }
+            let parsed = BiometricData.parseDeviceCredentialName(hexName: hexName)
+            self.mCardList.insert(SuiCard(id: id, name: parsed.name, type: type, nameUUID: parsed.nameUUID), at: 0)
             self.reloadTableView()
         }
     }
@@ -521,10 +518,8 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
     }
 
     func onCardChanged(device: CHSesameConnector, id: String, hexName: String, type: UInt8) {
-        var card = SuiCard(id: id, name: hexName, type: type, nameUUID: hexName)
-        if BiometricData.isUUIDv4(name: hexName) {
-            card = SuiCard(id: id, name: "", type: type, nameUUID: hexName.noDashtoUUID()!.uuidString.lowercased())
-        }
+        let parsed = BiometricData.parseDeviceCredentialName(hexName: hexName)
+        var card = SuiCard(id: id, name: parsed.name, type: type, nameUUID: parsed.nameUUID)
         self.mCardList.insert(card, at: 0)
         executeOnMainThread {
             self.reloadTableView()

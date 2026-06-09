@@ -218,7 +218,8 @@ class FaceListVC: CHBaseTableVC ,CHFaceDelegate, CHDeviceStatusDelegate{
     }
     func onFaceReceive(device: CHSesameConnector, id: String, name: String, type: UInt8) {
         executeOnMainThread {
-            self.faceList.insert(Face(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased()), at: 0)
+            let parsed = BiometricData.parseDeviceCredentialName(hexName: name)
+            self.faceList.insert(Face(id: id, name: parsed.name, nameUUID: parsed.nameUUID), at: 0)
             self.reloadTableView()
         }
 
@@ -247,7 +248,8 @@ class FaceListVC: CHBaseTableVC ,CHFaceDelegate, CHDeviceStatusDelegate{
     
     func onFaceChanged(device: CHSesameConnector, id: String, name: String, type: UInt8) {
         L.d("[FG][onFaceChanged] \(id):\(name)")
-        let face = Face(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased())
+        let parsed = BiometricData.parseDeviceCredentialName(hexName: name)
+        let face = Face(id: id, name: parsed.name, nameUUID: parsed.nameUUID)
         self.faceList.insert(face, at: 0)
         self.reloadTableView()
         guard let capable = device as? CHFaceCapable else {

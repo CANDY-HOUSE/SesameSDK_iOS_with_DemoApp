@@ -74,7 +74,91 @@ public struct BiometricData: Codable {
             guard let name = dict["name"] as? String else {
                 return BiometricData(credentialId: "", nameUUID: "", type: "", name: "")
             }
-            return BiometricData(credentialId: credentialId, nameUUID: nameUUID, type: type, name: name)
+            let normalizedNameUUID = normalizedNameUUID(from: nameUUID) ?? nameUUID.lowercased()
+            return BiometricData(credentialId: credentialId, nameUUID: normalizedNameUUID, type: type, name: name)
+        }
+    }
+
+    /// Parsed name fields from a credential stored on the device.
+    public struct DeviceCredentialName {
+        public let name: String
+        public let nameUUID: String
+    }
+
+    /// True when the device stores a UUID reference instead of an inline UTF-8 name.
+    public static func isServerSyncedName(_ hexName: String?) -> Bool {
+        guard let hexName = hexName, !hexName.isEmpty else { return false }
+        if UUID(uuidString: hexName) != nil { return true }
+        return isUUIDv4(name: hexName)
+    }
+
+    /// Normalize UUID strings from device / server / Android SDK into lowercase dashed form.
+    public static func normalizedNameUUID(from hexName: String) -> String? {
+        let trimmed = hexName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        if let uuid = UUID(uuidString: trimmed) {
+            return uuid.uuidString.lowercased()
+        }
+        let hexOnly = trimmed.replacingOccurrences(of: "-", with: "")
+        guard hexOnly.count == 32, isUUIDv4(name: hexOnly) else { return nil }
+        return hexOnly.noDashtoUUID()?.uuidString.lowercased()
+    }
+
+    public static func parseDeviceCredentialName(hexName: String) -> DeviceCredentialName {
+        if isServerSyncedName(hexName), let nameUUID = normalizedNameUUID(from: hexName) {
+            return DeviceCredentialName(name: "", nameUUID: nameUUID)
+        }
+        return DeviceCredentialName(name: hexName, nameUUID: hexName)
+    }
+
+    public func resolvedName(fallback: String) -> String {
+        name.isEmpty ? fallback : name
+    }
+
+    static func mergeServerResolvedNames(local: [BiometricData], server: [BiometricData]) -> [BiometricData] {
+        server.map { serverItem in
+            let normalizedServerUUID = normalizedNameUUID(from: serverItem.nameUUID) ?? serverItem.nameUUID.lowercased()
+            if !serverItem.name.isEmpty {
+                return BiometricData(
+                    credentialId: serverItem.credentialId,
+                    nameUUID: normalizedServerUUID,
+                    type: serverItem.type,
+                    name: serverItem.name
+                )
+            }
+
+            let localMatch = local.first {
+                $0.credentialId.caseInsensitiveCompare(serverItem.credentialId) == .orderedSame
+            }
+            if let localName = localMatch?.name, !localName.isEmpty {
+                return BiometricData(
+                    credentialId: serverItem.credentialId,
+                    nameUUID: normalizedServerUUID,
+                    type: serverItem.type,
+                    name: localName
+                )
+            }
+
+            let localUUIDMatch = local.first { item in
+                guard !item.name.isEmpty,
+                      let localUUID = normalizedNameUUID(from: item.nameUUID) else { return false }
+                return localUUID == normalizedServerUUID
+            }
+            if let localName = localUUIDMatch?.name {
+                return BiometricData(
+                    credentialId: serverItem.credentialId,
+                    nameUUID: normalizedServerUUID,
+                    type: serverItem.type,
+                    name: localName
+                )
+            }
+
+            return BiometricData(
+                credentialId: serverItem.credentialId,
+                nameUUID: normalizedServerUUID,
+                type: serverItem.type,
+                name: serverItem.name
+            )
         }
     }
     
@@ -121,7 +205,8 @@ extension CHServerCapableHandler {
                    let itemsDict = jsonObj["data"] as? [String: Any],
                     let itemArys = itemsDict["items"] as? [[String: Any]] {
                     let items = BiometricData.toBiometricDatas(itemArys)
-                    result(.success(.init(input: items)))
+                    let merged = BiometricData.mergeServerResolvedNames(local: data.items, server: items)
+                    result(.success(.init(input: merged)))
                 } else {
                     result(.failure(NSError.parseError))
                 }

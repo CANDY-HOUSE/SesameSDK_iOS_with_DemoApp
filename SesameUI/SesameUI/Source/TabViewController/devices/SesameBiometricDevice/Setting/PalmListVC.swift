@@ -221,7 +221,8 @@ class PalmListVC: CHBaseTableVC ,CHPalmDelegate, CHDeviceStatusDelegate{
     }
     func onPalmReceive(device: CHSesameConnector, id: String, name: String, type: UInt8) {
         executeOnMainThread {
-            self.palmList.insert(Palm(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased()), at: 0)
+            let parsed = BiometricData.parseDeviceCredentialName(hexName: name)
+            self.palmList.insert(Palm(id: id, name: parsed.name, nameUUID: parsed.nameUUID), at: 0)
             self.reloadTableView()
         }
 
@@ -251,7 +252,8 @@ class PalmListVC: CHBaseTableVC ,CHPalmDelegate, CHDeviceStatusDelegate{
     func onPalmChanged(device: CHSesameConnector, id: String, name: String, type: UInt8) {
         L.d("[FG][onPalmChanged] \(id):\(name)")
         executeOnMainThread {
-            let palm = Palm(id: id, name: "", nameUUID: name.noDashtoUUID()!.uuidString.lowercased())
+            let parsed = BiometricData.parseDeviceCredentialName(hexName: name)
+            let palm = Palm(id: id, name: parsed.name, nameUUID: parsed.nameUUID)
             self.palmList.insert(palm, at: 0)
             self.reloadTableView()
             guard let capable = device as? CHPalmCapable else {
