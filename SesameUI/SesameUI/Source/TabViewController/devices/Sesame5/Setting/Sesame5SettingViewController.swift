@@ -18,9 +18,16 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
             device = sesame5
         }
     }
-    let scrollView = UIScrollView(frame: .zero)
-    var statusView: CHUIPlainSettingView!
-    let contentStackView = UIStackView(frame: .zero)
+    let fixedStatusScrollView = FixedStatusScrollContainerView()
+    var scrollView: UIScrollView {
+        fixedStatusScrollView.scrollView
+    }
+    var contentStackView: UIStackView {
+        fixedStatusScrollView.contentStackView
+    }
+    var statusView: CHUIPlainSettingView {
+        fixedStatusScrollView.statusView
+    }
     var dfuView: CHUIPlainSettingView!
     var autoLockView: CHUITogglePickerSettingView!
     var opsLockView: CHUIExpandableSettingView!
@@ -86,18 +93,13 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        L.d("[UI][ss5][viewDidLoad]")
+
         view.backgroundColor = .sesame2Gray
-        scrollView.addSubview(contentStackView)
-        view.addSubview(scrollView)
 
-        contentStackView.axis = .vertical
-        contentStackView.alignment = .fill
-        contentStackView.spacing = 0
-        contentStackView.distribution = .fill
+        fixedStatusScrollView.attach(to: view)
 
-        UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
         arrangeSubviews()
+
         DFUCenter.shared.confirmDFUDeletegate(self, forDevice: sesame5)
     }
     
@@ -131,14 +133,9 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         reloadMembers()
         refreshControl.endRefreshing()
     }
+    
     func arrangeSubviews() {
         let isGuest = sesame5.keyLevel == KeyLevel.guest.rawValue
-        // MARK: top status
-        statusView = CHUIViewGenerator.plain()
-        statusView.backgroundColor = .lockRed
-        statusView.title = ""
-        statusView.setColor(.white)
-        contentStackView.addArrangedSubview(statusView)
         
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))

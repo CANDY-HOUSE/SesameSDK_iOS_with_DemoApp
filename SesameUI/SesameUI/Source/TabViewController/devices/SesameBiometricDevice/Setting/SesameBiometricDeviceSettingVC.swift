@@ -176,12 +176,19 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     var sesame2ListViewHeight: NSLayoutConstraint!
     
     // MARK: - UI Componets
-    var statusView: CHUIPlainSettingView!
+    let fixedStatusScrollView = FixedStatusScrollContainerView()
+    var statusView: CHUIPlainSettingView {
+        fixedStatusScrollView.statusView
+    }
+    var scrollView: UIScrollView {
+        fixedStatusScrollView.scrollView
+    }
+    var contentStackView: UIStackView {
+        fixedStatusScrollView.contentStackView
+    }
     var dfuView: CHUIPlainSettingView!
     var addSesameButtonView: CHUIPlainSettingView!
     var batteryView: CHUIArrowSettingView!
-    let scrollView = UIScrollView(frame: .zero)
-    let contentStackView = UIStackView(frame: .zero)
     var sesame2ListView = UITableView(frame: .zero)
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var dismissHandler: (()->Void)?
@@ -215,18 +222,16 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .sesame2Gray
-        scrollView.addSubview(contentStackView)
-        view.addSubview(scrollView)
-        contentStackView.axis = .vertical
-        contentStackView.alignment = .fill
-        contentStackView.spacing = 0
-        contentStackView.distribution = .fill
-        UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
+
+        fixedStatusScrollView.attach(to: view)
+
         sesame2ListView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         sesame2ListView.delegate = self
         sesame2ListView.dataSource = self
         sesame2ListView.isScrollEnabled = false
+
         self.arrangeSubviews()
     }
     
@@ -252,13 +257,6 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
         let deviceModelName = mDevice.deviceName
-        
-        // MARK: top status
-        statusView = CHUIViewGenerator.plain()
-        statusView.backgroundColor = .lockRed
-        statusView.title = ""
-        statusView.setColor(.white)
-        contentStackView.addArrangedSubview(statusView)
         
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))

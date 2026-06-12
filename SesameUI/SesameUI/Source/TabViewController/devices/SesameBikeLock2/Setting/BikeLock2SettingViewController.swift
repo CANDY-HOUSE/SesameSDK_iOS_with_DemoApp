@@ -26,9 +26,16 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         }
     }
     // MARK: - UI Componets
-    let scrollView = UIScrollView(frame: .zero)
-    let contentStackView = UIStackView(frame: .zero)
-    var statusView: CHUIPlainSettingView!
+    let fixedStatusScrollView = FixedStatusScrollContainerView()
+    var scrollView: UIScrollView {
+        fixedStatusScrollView.scrollView
+    }
+    var contentStackView: UIStackView {
+        fixedStatusScrollView.contentStackView
+    }
+    var statusView: CHUIPlainSettingView {
+        fixedStatusScrollView.statusView
+    }
     var batteryView: CHUIArrowSettingView!
     var dfuView: CHUIPlainSettingView!
     var siriButton: CHUISettingButtonView?
@@ -54,20 +61,14 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        L.d("[bk2][settin VC] viewDidLoad <=")
+
         view.backgroundColor = .sesame2Gray
-        scrollView.addSubview(contentStackView)
-        view.addSubview(scrollView)
-        
-        contentStackView.axis = .vertical
-        contentStackView.alignment = .fill
-        contentStackView.spacing = 0
-        contentStackView.distribution = .fill
-        
-        UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
-        
+
+        fixedStatusScrollView.attach(to: view)
+
         arrangeSubviews()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // L.d("[UI][bk2][viewWillAppear]")
@@ -95,13 +96,6 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
     
     // MARK: Main UI
     func arrangeSubviews(){
-        // MARK: top status(最上方狀態列)
-        statusView = CHUIViewGenerator.plain()
-        statusView.backgroundColor = .lockRed
-        statusView.title = ""
-        statusView.setColor(.white)
-        contentStackView.addArrangedSubview(statusView)
-        
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))

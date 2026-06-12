@@ -101,6 +101,8 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
         tableView.register(UINib(nibName: "FingerPrintCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.refreshControl = refreshControl
         tableView.bounces = false
+        
+        setupFixedTableStatusView()
 
         let dismissButtonItem = UIBarButtonItem(customView: dismissButton)
         dismissButtonItem.customView?.translatesAutoresizingMaskIntoConstraints = false
@@ -126,9 +128,9 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
                                  arguments:[deviceName,deviceName])
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
         dismissButton.addGestureRecognizer(longPressGesture)
-        let floatView = FloatingTipView.showIn(superView: view, style:  .textOnly(text:emptyNFCHit))
+        let floatView = FloatingTipView.showIn(superView: view, style: .textOnly(text: emptyNFCHit))
         executeOnMainThread { [weak self] in
-            self?.tableView.contentInset = .init(top: floatView.FloatingHeight, left: 0, bottom: 0, right: 0)
+            self?.setFloatingTipView(floatView, height: floatView.FloatingHeight)
         }
     }
 
@@ -344,6 +346,28 @@ class NFCCardVC: CHBaseTableVC ,CHCardDelegate, CHDeviceStatusDelegate{
         }
         if let capable = mDevice as? CHCardCapable {
             capable.unregisterEventDelegate(self)
+        }
+    }
+    
+    override func refreshFixedTableStatusViewIfNeeded() {
+        showStatusViewIfNeeded()
+    }
+
+    @discardableResult
+    func showStatusViewIfNeeded() -> Bool {
+        return showFixedTableStatusViewIfNeeded(
+            isUnlogined: mDevice.deviceStatus.loginStatus == .unlogined,
+            statusTitle: mDevice.localizedDescription()
+        )
+    }
+    
+    func onBleDeviceStatusChanged(
+        device: CHDevice,
+        status: CHDeviceStatus,
+        shadowStatus: CHDeviceStatus?
+    ) {
+        executeOnMainThread {
+            self.showStatusViewIfNeeded()
         }
     }
 

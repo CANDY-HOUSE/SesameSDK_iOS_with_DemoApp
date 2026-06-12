@@ -83,6 +83,8 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
         tableView.refreshControl = refreshControl
         tableView.bounces = false
         
+        setupFixedTableStatusView()
+        
         let dismissButtonItem = UIBarButtonItem(customView: dismissButton)
         dismissButtonItem.customView?.translatesAutoresizingMaskIntoConstraints = false
         dismissButtonItem.customView?.heightAnchor.constraint(equalToConstant: 32).isActive = true
@@ -107,7 +109,29 @@ class FingerPrintListVC: CHBaseTableVC ,CHFingerPrintDelegate, CHDeviceStatusDel
                               arguments:[deviceName,deviceName])
         let floatView = FloatingTipView.showIn(superView: view, style: .imageText(gifImagePathName: "finger_print", text: emptyHit))
         executeOnMainThread { [weak self] in
-            self?.tableView.contentInset = .init(top: floatView.FloatingHeight, left: 0, bottom: 0, right: 0)
+            self?.setFloatingTipView(floatView, height: floatView.FloatingHeight)
+        }
+    }
+    
+    override func refreshFixedTableStatusViewIfNeeded() {
+        showStatusViewIfNeeded()
+    }
+
+    @discardableResult
+    func showStatusViewIfNeeded() -> Bool {
+        return showFixedTableStatusViewIfNeeded(
+            isUnlogined: mDevice.deviceStatus.loginStatus == .unlogined,
+            statusTitle: mDevice.localizedDescription()
+        )
+    }
+    
+    func onBleDeviceStatusChanged(
+        device: CHDevice,
+        status: CHDeviceStatus,
+        shadowStatus: CHDeviceStatus?
+    ) {
+        executeOnMainThread {
+            self.showStatusViewIfNeeded()
         }
     }
 

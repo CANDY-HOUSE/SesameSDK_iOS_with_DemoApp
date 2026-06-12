@@ -23,9 +23,16 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
             device = sesame2
         }
     }
-    let scrollView = UIScrollView(frame: .zero)
-    var statusView: CHUIPlainSettingView!
-    let contentStackView = UIStackView(frame: .zero)
+    let fixedStatusScrollView = FixedStatusScrollContainerView()
+    var scrollView: UIScrollView {
+        fixedStatusScrollView.scrollView
+    }
+    var contentStackView: UIStackView {
+        fixedStatusScrollView.contentStackView
+    }
+    var statusView: CHUIPlainSettingView {
+        fixedStatusScrollView.statusView
+    }
     var uuidView: CHUIPlainSettingView!
     var angleSettingView: CHUIArrowSettingView!
     var dfuView: CHUIPlainSettingView!
@@ -77,16 +84,11 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
         super.viewDidLoad()
         
         view.backgroundColor = .sesame2Gray
-        scrollView.addSubview(contentStackView)
-        view.addSubview(scrollView)
         
-        contentStackView.axis = .vertical
-        contentStackView.alignment = .fill
-        contentStackView.spacing = 0
-        contentStackView.distribution = .fill
-
-        UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
+        fixedStatusScrollView.attach(to: view)
+        
         arrangeSubviews()
+        
         DFUCenter.shared.confirmDFUDeletegate(self, forDevice: sesame2)
     }
     
@@ -97,12 +99,6 @@ class Sesame2SettingViewController: CHBaseViewController, DeviceControllerHolder
     
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
-        // MARK: top status
-        statusView = CHUIViewGenerator.plain()
-        statusView.backgroundColor = .lockRed
-        statusView.title = ""
-        statusView.setColor(.white)
-        contentStackView.addArrangedSubview(statusView)
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))

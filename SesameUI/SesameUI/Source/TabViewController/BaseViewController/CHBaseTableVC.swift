@@ -8,10 +8,26 @@
 
 import Foundation
 import UIKit
+import SesameSDK
 
 class CHBaseTableVC: CHBaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     var tableView = UITableView(frame: .zero, style: .plain)
+    private let fixedStatusViewHeight: CGFloat = 64
+    private var fixedStatusTopInset: CGFloat = 0
+    private var floatingTipTopInset: CGFloat = 0
+    private weak var managedFloatingTipView: UIView?
+
+    private lazy var fixedStatusView: CHUIPlainSettingView = {
+        let view = CHUIViewGenerator.plain()
+        view.backgroundColor = .lockRed
+        view.title = ""
+        view.setColor(.white)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     func reloadTableView() {
         executeOnMainThread{ [self] in
             tableView.reloadData()
@@ -28,6 +44,94 @@ class CHBaseTableVC: CHBaseViewController, UITableViewDataSource, UITableViewDel
         tableView.autoPinTrailing()
         tableView.autoPinTopToSafeArea()
         tableView.autoPinBottom()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        refreshFixedTableStatusViewIfNeeded()
+    }
+    
+    override func didBecomeActive() {
+        super.didBecomeActive()
+
+        refreshFixedTableStatusViewIfNeeded()
+    }
+    
+    func setupFixedTableStatusView() {
+        guard fixedStatusView.superview == nil else {
+            return
+        }
+
+        view.addSubview(fixedStatusView)
+
+        let heightConstraint = fixedStatusView.heightAnchor.constraint(equalToConstant: fixedStatusViewHeight)
+        heightConstraint.priority = .defaultHigh
+        heightConstraint.isActive = true
+
+        NSLayoutConstraint.activate([
+            fixedStatusView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            fixedStatusView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            fixedStatusView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+
+        view.bringSubviewToFront(fixedStatusView)
+    }
+    
+    func setFloatingTipView(_ floatingTipView: UIView, height: CGFloat) {
+        managedFloatingTipView = floatingTipView
+        floatingTipTopInset = height
+        updateTableViewInsets()
+    }
+    
+    private func updateTableViewInsets() {
+        let topInset = fixedStatusTopInset + floatingTipTopInset
+
+        tableView.contentInset = UIEdgeInsets(
+            top: topInset,
+            left: 0,
+            bottom: 0,
+            right: 0
+        )
+
+        tableView.scrollIndicatorInsets = tableView.contentInset
+
+        managedFloatingTipView?.transform = CGAffineTransform(
+            translationX: 0,
+            y: fixedStatusTopInset
+        )
+    }
+    
+    @discardableResult
+    func showFixedTableStatusViewIfNeeded(
+        isUnlogined: Bool,
+        statusTitle: String
+    ) -> Bool {
+        let shouldShow: Bool
+
+        if CHBluetoothCenter.shared.scanning.bleStatus == .closed {
+            fixedStatusView.title = "co.candyhouse.sesame2.bluetoothPoweredOff".localized
+            shouldShow = true
+        } else if isUnlogined {
+            fixedStatusView.title = statusTitle
+            shouldShow = true
+        } else {
+            shouldShow = false
+        }
+
+        fixedStatusView.isHidden = !shouldShow
+        fixedStatusTopInset = shouldShow ? fixedStatusViewHeight : 0
+
+        updateTableViewInsets()
+
+        view.bringSubviewToFront(fixedStatusView)
+        view.layoutIfNeeded()
+
+        return shouldShow
+    }
+    
+    func refreshFixedTableStatusViewIfNeeded() {
+        // subclass override if needed
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {  return 1 }

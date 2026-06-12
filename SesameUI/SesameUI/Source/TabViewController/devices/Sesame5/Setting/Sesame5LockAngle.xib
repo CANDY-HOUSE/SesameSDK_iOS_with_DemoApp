@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="bottomHintLabel" destination="IkE-rI-8hp" id="0uD-nS-2jG"/>
                 <outlet property="lockView" destination="Our-AJ-v5B" id="YK5-r3-dDJ"/>
+                <outlet property="scrollViewTopConstraint" destination="v85-I0-JzW" id="svT-op-Cst"/>
                 <outlet property="setLockedButton" destination="WbU-p9-gRO" id="HUg-YC-GtN"/>
                 <outlet property="setLockedImageview" destination="lrh-ub-Fd8" id="BMn-1G-MES"/>
                 <outlet property="setMagnetButton" destination="Mdf-0k-KUA" id="n7g-OH-5nv"/>

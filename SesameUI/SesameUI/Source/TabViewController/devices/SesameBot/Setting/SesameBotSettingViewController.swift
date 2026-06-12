@@ -26,10 +26,17 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     }
     
     // MARK: - UI Componets
-    let scrollView = UIScrollView(frame: .zero)
-    let contentStackView = UIStackView(frame: .zero)
+    let fixedStatusScrollView = FixedStatusScrollContainerView()
     var uuidView: CHUIPlainSettingView!
-    var statusView: CHUIPlainSettingView!
+    var scrollView: UIScrollView {
+        fixedStatusScrollView.scrollView
+    }
+    var contentStackView: UIStackView {
+        fixedStatusScrollView.contentStackView
+    }
+    var statusView: CHUIPlainSettingView {
+        fixedStatusScrollView.statusView
+    }
     var sesameBotModeView: CHUISettingButtonView!
     var voiceShortcutButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
@@ -64,16 +71,15 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .sesame2Gray
-        scrollView.addSubview(contentStackView)
-        view.addSubview(scrollView)
-        contentStackView.axis = .vertical
-        contentStackView.alignment = .fill
-        contentStackView.spacing = 0
-        contentStackView.distribution = .fill
-        UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
+
+        fixedStatusScrollView.attach(to: view)
+
         arrangeSubviews()
+
         DFUCenter.shared.confirmDFUDeletegate(self, forDevice: sesameBot)
+
         showStatusViewIfNeeded()
     }
     
@@ -84,12 +90,6 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     
     // MARK: ArrangeSubviews
     func arrangeSubviews() {
-        statusView = CHUIViewGenerator.plain()
-        statusView.backgroundColor = .lockRed
-        statusView.title = ""
-        statusView.setColor(.white)
-        contentStackView.addArrangedSubview(statusView)
-        
         // MARK: Group
         contentStackView.addArrangedSubview(deviceMemberWebView(device))
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))

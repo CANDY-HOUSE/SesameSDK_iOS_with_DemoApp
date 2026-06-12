@@ -11,6 +11,21 @@ import SesameSDK
 
 class Sesame5LockAngleViewController: CHBaseViewController {
 
+    private let statusViewHeight: CGFloat = 64
+    private var baseScrollViewTopConstant: CGFloat = 0
+
+    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
+
+    private lazy var statusView: CHUIPlainSettingView = {
+        let view = CHUIViewGenerator.plain()
+        view.backgroundColor = .lockRed
+        view.title = ""
+        view.setColor(.white)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var sesame5: CHSesame5!
     var dismissHandler: (()->Void)?
     private var lockDegree: Int16 = 0
@@ -18,7 +33,7 @@ class Sesame5LockAngleViewController: CHBaseViewController {
     private var currentDegree: Int16 = 0
     
     private var useSlidingDoorUI: Bool = false
-    private var didTrigger5s: Bool = false
+    private var didTrigger2s: Bool = false
 
     private lazy var slidingDoorView: SlidingDoorAngleView = {
         let v = SlidingDoorAngleView(frame: .zero)
@@ -91,16 +106,43 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             setMagnetButton.setTitle("co.candyhouse.sesame2.SetMagnetPosition".localized,
                                        for: .normal)
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(magnetLongPressed(_:)))
-            longPress.minimumPressDuration = 5.0
+            longPress.minimumPressDuration = 2.0
             setMagnetButton.addGestureRecognizer(longPress)
         }
     }
     
     // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupFixedStatusView()
+    }
+    
+    private func setupFixedStatusView() {
+        baseScrollViewTopConstant = scrollViewTopConstraint.constant
+
+        view.addSubview(statusView)
+
+        let heightConstraint = statusView.heightAnchor.constraint(equalToConstant: statusViewHeight)
+        heightConstraint.priority = .defaultHigh
+        heightConstraint.isActive = true
+
+        NSLayoutConstraint.activate([
+            statusView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            statusView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            statusView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+
+        view.bringSubviewToFront(statusView)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "co.candyhouse.sesame2.ConfigureAngles".localized
         sesame5.delegate = self
+        
+        showStatusViewIfNeeded()
+        
         if let setting = sesame5.mechSetting {
             lockDegree = setting.lockPosition
             unlockDegree = setting.unlockPosition
@@ -142,7 +184,7 @@ class Sesame5LockAngleViewController: CHBaseViewController {
     }
     @objc private func magnetLongPressed(_ g: UILongPressGestureRecognizer) {
         guard g.state == .began else { return }
-        didTrigger5s = true
+        didTrigger2s = true
         
         guard sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSLiDingDoor else {
             return
@@ -174,8 +216,8 @@ class Sesame5LockAngleViewController: CHBaseViewController {
         }
     }
     @objc func setMAgnetPositionTapped() {
-        if didTrigger5s {
-            didTrigger5s = false
+        if didTrigger2s {
+            didTrigger2s = false
             return
         }
         ViewHelper.showLoadingInView(view: self.view)
@@ -206,6 +248,29 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             topAngleLabel.text = String(format: "%d°", mechStatus.position)
         }
     }
+    
+    @discardableResult
+    func showStatusViewIfNeeded() -> Bool {
+        let shouldShow: Bool
+
+        if CHBluetoothCenter.shared.scanning.bleStatus == .closed {
+            statusView.title = "co.candyhouse.sesame2.bluetoothPoweredOff".localized
+            shouldShow = true
+        } else if sesame5.deviceStatus.loginStatus == .unlogined {
+            statusView.title = sesame5.localizedDescription()
+            shouldShow = true
+        } else {
+            shouldShow = false
+        }
+
+        statusView.isHidden = !shouldShow
+        scrollViewTopConstraint.constant = baseScrollViewTopConstant + (shouldShow ? statusViewHeight : 0)
+
+        view.bringSubviewToFront(statusView)
+        view.layoutIfNeeded()
+
+        return shouldShow
+    }
 
 }
 
@@ -232,6 +297,7 @@ extension Sesame5LockAngleViewController: CHSesame5Delegate {
             sesame5.connect() {_ in}
         }
         executeOnMainThread {
+            self.showStatusViewIfNeeded()
             self.refreshUIView()
         }
     }

@@ -7,6 +7,21 @@ class RegisterSesameDeviceViewController: CHBaseViewController { //[joi todo]改
     var registeredDevice: CHDevice?
     var dismissHandler: ((CHDevice?)->Void)?
     var tableViewProxy: CHTableViewProxy!
+    private let statusViewHeight: CGFloat = 64
+    private var statusViewTopInset: CGFloat = 0
+    private var isBluetoothPoweredOff: Bool {
+        CHBluetoothCenter.shared.scanning.bleStatus == .closed
+    }
+    
+    private lazy var statusView: CHUIPlainSettingView = {
+        let view = CHUIViewGenerator.plain()
+        view.backgroundColor = .lockRed
+        view.title = ""
+        view.setColor(.white)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     lazy var emptyPlaceholderStr: NSAttributedString = {
         let fullAttributedString = NSMutableAttributedString(string: "")
@@ -29,11 +44,38 @@ class RegisterSesameDeviceViewController: CHBaseViewController { //[joi todo]改
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        L.d("[register]viewDidLoad =>",devices.count)
+        
         navigationBarBackgroundColor = .white
         CHBluetoothCenter.shared.delegate = self
+        CHBluetoothCenter.shared.statusDelegate = self
+        
         setClosableNavigationRightItem(#selector(dismissSelf))
+        
         configureTable()
+        
+        setupRegisterStatusView()
+        showRegisterBleStatusIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        CHBluetoothCenter.shared.statusDelegate = self
+        showRegisterBleStatusIfNeeded()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if CHBluetoothCenter.shared.statusDelegate === self {
+            CHBluetoothCenter.shared.statusDelegate = nil
+        }
+    }
+    
+    override func didBecomeActive() {
+        super.didBecomeActive()
+        
+        showRegisterBleStatusIfNeeded()
     }
     
     func configureTable() {
@@ -45,10 +87,60 @@ class RegisterSesameDeviceViewController: CHBaseViewController { //[joi todo]改
         tableViewProxy.tableView.rowHeight = 120
     }
     
+    private func setupRegisterStatusView() {
+        view.addSubview(statusView)
+        
+        let heightConstraint = statusView.heightAnchor.constraint(equalToConstant: statusViewHeight)
+        heightConstraint.priority = .defaultHigh
+        heightConstraint.isActive = true
+        
+        NSLayoutConstraint.activate([
+            statusView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            statusView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            statusView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
+        view.bringSubviewToFront(statusView)
+    }
+    
+    private func updateRegisterTableInsets() {
+        guard let tableView = tableViewProxy?.tableView else {
+            return
+        }
+        
+        tableView.contentInset = UIEdgeInsets(
+            top: statusViewTopInset,
+            left: 0,
+            bottom: 0,
+            right: 0
+        )
+        
+        tableView.scrollIndicatorInsets = tableView.contentInset
+    }
+    
+    @discardableResult
+    private func showRegisterBleStatusIfNeeded() -> Bool {
+        let shouldShow = isBluetoothPoweredOff
+        
+        if shouldShow {
+            statusView.title = "co.candyhouse.sesame2.bluetoothPoweredOff".localized
+        }
+        
+        statusView.isHidden = !shouldShow
+        statusViewTopInset = shouldShow ? statusViewHeight : 0
+        
+        updateRegisterTableInsets()
+        
+        view.bringSubviewToFront(statusView)
+        view.layoutIfNeeded()
+        
+        return shouldShow
+    }
+    
     @objc func dismissSelf() {
         dismiss(animated: true, completion: nil)
     }
-
+    
     func onCellItemPressed(_ device: CHDevice) {
         ViewHelper.showLoadingInView(view: self.view)
         self.registeredDevice = device
@@ -99,14 +191,15 @@ class RegisterSesameDeviceViewController: CHBaseViewController { //[joi todo]改
 extension RegisterSesameDeviceViewController: CHBleManagerDelegate {
     func didDiscoverUnRegisteredCHDevices(_ devices: [CHDevice]) {
         executeOnMainThread {
+            self.showRegisterBleStatusIfNeeded()
             let customDiscriptors = devices.reduce(into: [String: CHDevice]()) { (result, device) in
                 result[device.deviceId.uuidString] = result[device.deviceId.uuidString] ?? device
             }.map { $0.value }
-            .sorted { $0.currentDistanceInCentimeter() < $1.currentDistanceInCentimeter() }
-            .map { $0.convertToCellDescriptorModel(cellCls: RegisterSesameDeviceCell.self) }
+                .sorted { $0.currentDistanceInCentimeter() < $1.currentDistanceInCentimeter() }
+                .map { $0.convertToCellDescriptorModel(cellCls: RegisterSesameDeviceCell.self) }
             self.tableViewProxy.handleSuccessfulDataSource(nil, customDiscriptors)
             if let target = customDiscriptors.first?.rawValue as? CHDevice,
-                case .receivedBle = target.deviceStatus {
+               case .receivedBle = target.deviceStatus {
                 target.connect(result: {_ in })
             }
         }
@@ -128,5 +221,13 @@ extension RegisterSesameDeviceViewController {
         registerSesame2ViewController.dismissHandler = dismissHandler
         UINavigationController().pushViewController(registerSesame2ViewController, animated: false)
         return registerSesame2ViewController
+    }
+}
+
+extension RegisterSesameDeviceViewController: CHBleStatusDelegate {
+    func didScanChange(status: CHScanStatus) {
+        executeOnMainThread {
+            self.showRegisterBleStatusIfNeeded()
+        }
     }
 }
