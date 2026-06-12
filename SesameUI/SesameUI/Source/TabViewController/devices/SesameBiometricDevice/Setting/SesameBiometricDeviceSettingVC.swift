@@ -77,7 +77,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     func onRadarReceive(device: CHSesameConnector, payload: Data){
-        self.setRadarUI(tag: "蓝牙回调", payload: payload)
+        self.setRadarUI(tag: "蓝牙回调", device: self.mDevice, payload: payload)
     }
     
     func onSesame2KeysChanged(device: SesameSDK.CHSesameConnector, sesame2keys: [String : String]) {
@@ -187,20 +187,24 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     var dismissHandler: (()->Void)?
     var sliderView: CHUISliderSettingView!
     
-    // 定义雷达灵敏度距离和固件值的查找表
-    private let DISTANCE_TO_FIRMWARE_TABLE: [(distance: Int, firmware: Int)] = [
+    // 旧雷达灵敏度距离和固件值的查找表 适用机型：SSMFace、SSMFacePro、SSMFaceAI、SSMFaceProAI
+    private let OLD_RADAR_DISTANCE_TO_FIRMWARE_TABLE: [(distance: Int, firmware: Int)] = [
         (30, 116),
         (60, 44),
         (80, 31),
-        (100, 23),
-        (120, 21),
-        (150, 20),
-        (200, 17),
-        (270, 16)
+        (100, 23)
+    ]
+    
+    // 新雷达灵敏度距离和固件值的查找表 适用机型：SSMFace2、SSMFace2Pro、SSMFace2AI、SSMFace2ProAI
+    private let NEW_RADAR_DISTANCE_TO_FIRMWARE_TABLE: [(distance: Int, firmware: Int)] = [
+        (30, 116),
+        (60, 80),
+        (80, 44),
+        (100, 36)
     ]
     
     private let RADAR_MIN_DISTANCE = 0
-    private let RADAR_MAX_DISTANCE = 270
+    private let RADAR_MAX_DISTANCE = 100
     private let RADAR_FIRMWARE_OFF = 512
     private let RADAR_FIRMWARE_AT_30CM = 116
     
@@ -322,9 +326,9 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         // MARK: Radar View
         if self.mDevice.hasBiometricCapability(.face) {
             sliderView = CHUIViewGenerator.slider(
-                defaultValue: 270,
-                maximumValue: 270,
-                minimumValue: 0.0,
+                defaultValue: Float(RADAR_MAX_DISTANCE),
+                maximumValue: Float(RADAR_MAX_DISTANCE),
+                minimumValue: Float(RADAR_MIN_DISTANCE),
                 contentWidth: 200,
                 { [weak self] slider, event in
                     guard let self = self, let slider = slider as? UISlider else { return }
@@ -343,7 +347,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             contentStackView.addArrangedSubview(sliderView)
             contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
             if self.mDevice.deviceStatus.loginStatus == .logined{
-                setRadarUI(tag: "UI初始化", payload: self.mDevice.radarPayload)
+                setRadarUI(tag: "UI初始化", device: self.mDevice, payload: self.mDevice.radarPayload)
             }
             
             // MARK: Add Radar Hint
@@ -530,7 +534,35 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
     }
     
-    func setRadarUI(tag: String, payload: Data){
+    private func getRadarFirmwareTable(device: CHSesameBiometricDevice) -> [(distance: Int, firmware: Int)] {
+        switch device.productModel {
+        case .sesameFace,
+             .sesameFacePro,
+             .sesameFaceAI,
+             .sesameFaceProAI:
+            return OLD_RADAR_DISTANCE_TO_FIRMWARE_TABLE
+
+        case .sesameFace2,
+             .sesameFace2Pro,
+             .sesameFace2AI,
+             .sesameFace2ProAI:
+            return NEW_RADAR_DISTANCE_TO_FIRMWARE_TABLE
+
+        default:
+            return NEW_RADAR_DISTANCE_TO_FIRMWARE_TABLE
+        }
+    }
+
+    private func getRadarFirmwareAtMaxDistance(device: CHSesameBiometricDevice) -> Int {
+        return getRadarFirmwareTable(device: device).last?.firmware ?? RADAR_FIRMWARE_AT_30CM
+    }
+
+    private func shouldFixLegacyRadarValue(device: CHSesameBiometricDevice, sensitivityValue: Int) -> Bool {
+        let firmwareValueAtMaxDistance = getRadarFirmwareAtMaxDistance(device: device)
+        return sensitivityValue < firmwareValueAtMaxDistance
+    }
+    
+    func setRadarUI(tag: String, device: CHSesameBiometricDevice, payload: Data){
         L.d("radar", payload.bytes)
         guard payload.count >= 5 else {
             L.d("radar", "payload 长度不足: \(payload.count)")
@@ -543,7 +575,16 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
                 (Int(payload[3]) << 16) |
                 (Int(payload[4]) << 24)
         
-        let distance = calculateDistanceFromFirmwareValue(firmwareValue: sensitivityValue)
+        if shouldFixLegacyRadarValue(device: device, sensitivityValue: sensitivityValue) {
+            let firmwareValueAtMaxDistance = getRadarFirmwareAtMaxDistance(device: device)
+            
+            L.d("radar", "来自\(tag)检测到历史版本雷达固件值：\(sensitivityValue)，自动修正为当前机型100cm固件值：\(firmwareValueAtMaxDistance)")
+            
+            setRadarSensitivity(device: device, sensitivityValue: firmwareValueAtMaxDistance)
+            return
+        }
+        
+        let distance = calculateDistanceFromFirmwareValue(device: device, firmwareValue: sensitivityValue)
         
         L.d("radar","来自\(tag)的雷达灵敏度值：\(sensitivityValue), 距离：\(distance)cm")
         
@@ -556,7 +597,7 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     
     private func handleRadarSliderChange(slider: UISlider) {
         let distance = Int(slider.value.rounded())
-        let sensitivityValue = calculateFirmwareValueFromDistance(distance: distance)
+        let sensitivityValue = calculateFirmwareValueFromDistance(device: self.mDevice, distance: distance)
         
         self.sliderView.updateBubble(withValue: self.formatDistanceText(distance))
         
@@ -566,10 +607,12 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
     }
     
     // 根据固件值计算距离（使用线性插值）
-    private func calculateDistanceFromFirmwareValue(firmwareValue: Int) -> Int {
+    private func calculateDistanceFromFirmwareValue(device: CHSesameBiometricDevice, firmwareValue: Int) -> Int {
         if firmwareValue >= RADAR_FIRMWARE_OFF { return 0 }
         
-        let clampedFirmwareValue = max(16, min(firmwareValue, RADAR_FIRMWARE_OFF))
+        let firmwareTable = getRadarFirmwareTable(device: device)
+        let firmwareValueAtMaxDistance = getRadarFirmwareAtMaxDistance(device: device)
+        let clampedFirmwareValue = max(firmwareValueAtMaxDistance, min(firmwareValue, RADAR_FIRMWARE_OFF))
         
         // 处理 0~30cm 区间：0cm -> 512, 30cm -> 116
         if clampedFirmwareValue >= RADAR_FIRMWARE_AT_30CM {
@@ -578,23 +621,23 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             return max(0, min(Int((ratio * 30.0).rounded()), 30))
         }
         
-        // 处理 30~270cm 区间：按查找表分段线性插值
-        for i in 0..<(DISTANCE_TO_FIRMWARE_TABLE.count - 1) {
-            let point1 = DISTANCE_TO_FIRMWARE_TABLE[i]
-            let point2 = DISTANCE_TO_FIRMWARE_TABLE[i + 1]
+        // 处理 30~100cm 区间：根据当前机型对应查找表分段线性插值
+        for i in 0..<(firmwareTable.count - 1) {
+            let point1 = firmwareTable[i]
+            let point2 = firmwareTable[i + 1]
             
             if clampedFirmwareValue <= point1.firmware && clampedFirmwareValue >= point2.firmware {
                 let ratio = Float(clampedFirmwareValue - point2.firmware) / Float(point1.firmware - point2.firmware)
                 let distance = Float(point2.distance) + ratio * Float(point1.distance - point2.distance)
-                return Int(distance.rounded())
+                return Int(distance)
             }
         }
         
-        return 30
+        return RADAR_MAX_DISTANCE
     }
 
     // 根据距离计算固件值（使用线性插值）
-    private func calculateFirmwareValueFromDistance(distance: Int) -> Int {
+    private func calculateFirmwareValueFromDistance(device: CHSesameBiometricDevice, distance: Int) -> Int {
         let clampedDistance = max(RADAR_MIN_DISTANCE, min(distance, RADAR_MAX_DISTANCE))
         
         // 处理 0~30cm 区间：0cm -> 512, 30cm -> 116
@@ -605,17 +648,19 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
             return Int(firmwareValue.rounded())
         }
         
-        if clampedDistance >= 270 { return 16 }
+        let firmwareTable = getRadarFirmwareTable(device: device)
+        let firmwareValueAtMaxDistance = getRadarFirmwareAtMaxDistance(device: device)
+        if clampedDistance >= RADAR_MAX_DISTANCE { return firmwareValueAtMaxDistance }
         
-        // 处理 30~270cm 区间：按查找表分段线性插值
-        for i in 0..<(DISTANCE_TO_FIRMWARE_TABLE.count - 1) {
-            let point1 = DISTANCE_TO_FIRMWARE_TABLE[i]
-            let point2 = DISTANCE_TO_FIRMWARE_TABLE[i + 1]
+        // 处理 30~100cm 区间：按查找表分段线性插值
+        for i in 0..<(firmwareTable.count - 1) {
+            let point1 = firmwareTable[i]
+            let point2 = firmwareTable[i + 1]
             
             if clampedDistance >= point1.distance && clampedDistance <= point2.distance {
                 let ratio = Float(clampedDistance - point1.distance) / Float(point2.distance - point1.distance)
                 let firmwareValue = Float(point1.firmware) + ratio * Float(point2.firmware - point1.firmware)
-                return Int(firmwareValue.rounded())
+                return Int(firmwareValue)
             }
         }
         
