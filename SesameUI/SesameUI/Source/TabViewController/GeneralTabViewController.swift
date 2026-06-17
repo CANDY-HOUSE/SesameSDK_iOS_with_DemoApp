@@ -86,10 +86,15 @@ extension GeneralTabViewController {
         let meViewController = MeViewController.instance()
         let friendListViewController = FriendViewController.instance()
         let sesame2ListViewController = SesameDeviceListViewController.instance()
+        let visionViewController = VisionViewController.instance()
         
         let deviceListItem = UITabBarItem(title: "co.candyhouse.sesame2.Sesame".localized,
                                           image: UIImage.SVGImage(named:"keychain_original"),
                                           selectedImage: UIImage.SVGImage(named:"keychain_tint"))
+        
+        let visionItem = UITabBarItem(title: "co.candyhouse.sesame2.Vision".localized,
+                                      image: UIImage.SVGImage(named:"vision"),
+                                      selectedImage: UIImage.SVGImage(named:"vision",fillColor: .sesame2Green))
         
         let friendListItem = UITabBarItem(title: "co.candyhouse.sesame2.Contacts".localized,
                                           image: UIImage.SVGImage(named:"friends"),
@@ -100,12 +105,14 @@ extension GeneralTabViewController {
                                   selectedImage: UIImage.SVGImage(named:"icons_filled_official-accounts",fillColor: .sesame2Green))
 
         sesame2ListViewController.tabBarItem = deviceListItem
+        visionViewController.tabBarItem = visionItem
         friendListViewController.tabBarItem = friendListItem
         meViewController.tabBarItem = meItem
 
         let entryViewController = GeneralTabViewController(nibName: nil, bundle: nil)
         entryViewController.setViewControllers([
             sesame2ListViewController.navigationController!,
+            visionViewController.navigationController!,
             friendListViewController.navigationController!,
             meViewController.navigationController!
         ], animated: false)

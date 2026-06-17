@@ -179,7 +179,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         if let event = userInfo["event"] as? String {
 //            L.d("[noti][willPresent] event:",event)
             if (event == "friend"){
-                if let navController = GeneralTabViewController.switchTabByIndex(1) as? UINavigationController, let listViewController = navController.viewControllers.first as? FriendViewController {
+                if let navController = GeneralTabViewController.switchTabByIndex(2) as? UINavigationController, let listViewController = navController.viewControllers.first as? FriendViewController {
                     listViewController.reloadFriends()
                 }
                 completionHandler([])
@@ -365,7 +365,7 @@ extension AppDelegate {
                             listViewController.getKeysFromCache()
                         }
                     case .friend:
-                        if let nav = GeneralTabViewController.switchTabByIndex(1) as? UINavigationController,
+                        if let nav = GeneralTabViewController.switchTabByIndex(2) as? UINavigationController,
                            let friendViewController = nav.viewControllers.first as? FriendViewController {
                             friendViewController.reloadFriends()
                         }
