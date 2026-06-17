@@ -713,6 +713,11 @@ final class CHUISliderSettingView: UIView, CHUIView {
     }
     
     @objc func sliderTouchBegan(_ sender: UISlider) {
+        layoutIfNeeded()
+        sliderContainerView.layoutIfNeeded()
+        sender.layoutIfNeeded()
+        
+        updateBubblePosition(slider: sender)
         bubbleView.isHidden = false
     }
     

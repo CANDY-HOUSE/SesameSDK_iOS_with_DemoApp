@@ -588,8 +588,10 @@ class SesameBiometricDeviceSettingVC: CHBaseViewController, CHDeviceStatusDelega
         
         executeOnMainThread {
             self.sliderView.slider.value = Float(distance)
-            self.sliderView.updateBubble(withValue: self.formatDistanceText(distance))
             self.sliderView.isSliderHidden = false
+            
+            self.view.layoutIfNeeded()
+            self.sliderView.updateBubble(withValue: self.formatDistanceText(distance))
         }
     }
     
