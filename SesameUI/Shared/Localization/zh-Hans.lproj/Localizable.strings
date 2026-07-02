@@ -226,3 +226,5 @@
 "co.candyhouse.sesame2.Unsupport" = "不支持该设备";
 "co.candyhouse.sesame2.BleTxPower" = "BLE 发射功率";
 "co.candyhouse.sesame2.Hub3LTE" = "智联中心3 LTE";
+"co.candyhouse.sesame2.Downloading" = "下载中…";
+"co.candyhouse.sesame2.dfu_busy" = "其他CANDY HOUSE产品正在进行升级, 请稍候。";

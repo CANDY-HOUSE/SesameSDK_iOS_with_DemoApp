@@ -52,72 +52,62 @@ public protocol CHDevice: AnyObject {
 public extension CHDevice {
     func getKey() -> CHDeviceKey? { return ( self as? CHDeviceUtil)?.sesame2KeyData?.copy()  as? CHDeviceKey }
     
-    func getFirZip() -> URL {
-        var filePrefix = ""
-        switch productModel! {
-        case .sesame2:
-            filePrefix = "sesame_2"
-        case .sesame4:
-            filePrefix = "sesame_4"
-        case .sesame5:
-            filePrefix = "sesame5_"
-        case .sesame5Pro:
-            filePrefix = "sesame5pro_"
-        case .sesame5US:
-            filePrefix = "sesame5us_"
-        case .sesame6:
-            filePrefix = "sesame6_"
-        case .sesame6Pro,.sesame6ProSLiDingDoor:
-            filePrefix = "sesame6pro_"
-        case .sesameMiwa:
-            filePrefix = "sesammiwa_"
-        case .sesameBot:
-            filePrefix = "sesamebot1"
-        case .sesameBot2,.sesameBot3:
-            filePrefix = "sesamebot2"
-        case .bikeLock:
-            filePrefix = "sesamebike1"
-        case .bikeLock2:
-            filePrefix = "sesamebike2"
-        case .bikeLock3:
-            filePrefix = "sesamebike3"
-        case .openSensor:
-            filePrefix = "opensensor1"
-        case .openSensor2:
-            filePrefix = "opensensor2"
-        case .bleConnector:
-            filePrefix = "bleconnector_"
-        case .remote:
-            filePrefix = "remote_"
-        case .remoteNano:
-            filePrefix = "remoten_"
-        case .sesameTouch,.sesameTouch2:
-            filePrefix = "sesametouch1_"
-        case .sesameTouchPro,.sesameTouch2Pro:
-            filePrefix = "sesametouch1pro"
-        case .sesameFace,.sesameFace2:
-            filePrefix = "sesameFace1_"
-        case .sesameFacePro,.sesameFace2Pro:
-            filePrefix = "sesameFace1Pro_"
-        case .sesameFaceAI,.sesameFace2AI:
-            filePrefix = "sesameface1ai_"
-        case .sesameFaceProAI,.sesameFace2ProAI:
-            filePrefix = "sesameface1proai_"
-        case .hub3:
-            filePrefix = "hub3_"
-        case .hub3LTE:
-            filePrefix = "hub3lte_"
-        case .wifiModule2: break
+    func getCloudFirmwareZipInfo(
+        _ result: @escaping CHResult<FirmwareZipUrlResponse>
+    ) {
+        guard let productModel = productModel else {
+            result(.failure(NSError(
+                domain: "Firmware",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "Missing product model"]
+            )))
+            return
         }
-        var zips: [URL] = []
-        if  let fileURLs = Bundle.main.urls(forResourcesWithExtension: "zip", subdirectory: nil) {
-            zips = fileURLs.filter{ $0.lastPathComponent.range(of: "^\(filePrefix)", options: [.regularExpression, .caseInsensitive, .diacriticInsensitive]) != nil }
+
+        CHAPIClient.shared.getFirmwareZipUrl(
+            productType: Int(productModel.rawValue),
+            deviceId: deviceId.uuidString,
+            result: result
+        )
+    }
+    
+    func getCloudFirmwareZip(
+        _ result: @escaping CHResult<URL>
+    ) {
+        getCloudFirmwareZipInfo { infoResult in
+            switch infoResult {
+            case .success(let info):
+                let response = info.data
+                
+                guard let zipUrl = response.zipUrl,
+                      !zipUrl.isEmpty,
+                      let fileName = response.fileName,
+                      !fileName.isEmpty else {
+                    result(.failure(NSError(
+                        domain: "Firmware",
+                        code: -2,
+                        userInfo: [NSLocalizedDescriptionKey: "Firmware zip url is empty"]
+                    )))
+                    return
+                }
+                
+                FirmwareZipRuntimeCache.shared.getFirmwarePath(
+                    zipUrl: zipUrl,
+                    fileName: fileName
+                ) { downloadResult in
+                    switch downloadResult {
+                    case .success(let localURL):
+                        result(.success(.init(input: localURL)))
+                        
+                    case .failure(let error):
+                        result(.failure(error))
+                    }
+                }
+                
+            case .failure(let error):
+                result(.failure(error))
+            }
         }
-        guard let file = zips.first else {
-            L.d("Missing Firmware files. Must be added to the project and included in Copy Bundle Resources")
-            return URL(fileURLWithPath: "")
-        }
-        return file
     }
     
     /// 规则：

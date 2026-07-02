@@ -226,3 +226,5 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.Unsupport" = "このデバイスは対応していません";
 "co.candyhouse.sesame2.BleTxPower" = "BLE送信出力";
 "co.candyhouse.sesame2.Hub3LTE" = "ハブ3 LTE";
+"co.candyhouse.sesame2.Downloading" = "ダウンロード中…";
+"co.candyhouse.sesame2.dfu_busy" = "他のCANDY HOUSE製品を更新中、お待ち下さいませ。";

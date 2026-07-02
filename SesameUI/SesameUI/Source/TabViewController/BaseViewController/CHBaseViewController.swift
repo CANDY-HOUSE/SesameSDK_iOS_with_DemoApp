@@ -10,6 +10,7 @@ import AVFoundation
 import SesameSDK
 import CoreBluetooth
 import Foundation
+import NordicDFU
 
 public class CHBaseViewController: UIViewController, CHRouteCoordinator {
     // MARK: - Properties
@@ -22,6 +23,8 @@ public class CHBaseViewController: UIViewController, CHRouteCoordinator {
     }
     var soundPlayer: AVAudioPlayer?
     var navigationBarBackgroundColor: UIColor = .white
+    private var isDfuActionLocked = false
+    private var shouldRefreshVersionAfterDfu = false
     
     var bleTxPowerSliderView: CHUISliderSettingView?
     var bleTxPowerMinValue: Float { -4 }
@@ -116,34 +119,44 @@ public class CHBaseViewController: UIViewController, CHRouteCoordinator {
         }
     }
     
-    func refreshVersionTag(
+    func refreshCloudVersionTag(
         device: CHDevice,
         setVersionStr: @escaping (String) -> Void,
         setExclamationHidden: @escaping (Bool) -> Void
     ) {
         device.getVersionTag { [weak self] result in
-            guard let self = self else { return }
+            guard self != nil else { return }
             
             switch result {
             case .success(let status):
-                let fileName = DFUHelper.getDfuFileName(device).split(separator: "_")
-                let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
+                let bleVersion = status.data
+                let latestFwVer = device.stateInfo?.latestFwVer
                 
-                let isNewest = status.data.contains(latestVersion!)
+                let isNewest: Bool = {
+                    guard let latestFwVer = latestFwVer,
+                          !latestFwVer.isEmpty else {
+                        return false
+                    }
+                    
+                    let tailTag = bleVersion
+                        .split(separator: "-")
+                        .last
+                        .map(String.init) ?? ""
+                    
+                    return !tailTag.isEmpty && latestFwVer.contains(tailTag)
+                }()
                 
-                let versionText = "\(status.data)\(isNewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
+                let versionText = "\(bleVersion)\(isNewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
                 
                 executeOnMainThread {
                     setVersionStr(versionText)
-                    setExclamationHidden(isNewest)
+                    setExclamationHidden(latestFwVer == nil || isNewest)
                 }
                 
                 if isNewest {
-                    let fwVerForList = status.data
-                    
                     CHDeviceWrapperManager.shared.updateCurrentFwVer(
                         for: device.deviceId.uuidString,
-                        currentFwVer: fwVerForList
+                        currentFwVer: bleVersion
                     ) {
                         NotificationCenter.default.post(
                             name: .firmwareVersionUpdated,
@@ -156,9 +169,124 @@ public class CHBaseViewController: UIViewController, CHRouteCoordinator {
                 }
                 
             case .failure(let error):
-                L.d("[refreshVersionTag]", error.errorDescription())
+                L.d("[refreshCloudVersionTag]", error.errorDescription())
             }
         }
+    }
+    
+    func presentCloudDfuConfirm(
+        device: CHDevice,
+        dfuView: CHUIPlainSettingView,
+        delegate: DFUHelperDelegate
+    ) {
+        if isDfuActionLocked {
+            view.makeToast("co.candyhouse.sesame2.dfu_busy".localized)
+            return
+        }
+        
+        let alert = UIAlertController(
+            title: "",
+            message: "co.candyhouse.sesame2.SesameOSUpdate".localized,
+            preferredStyle: .actionSheet
+        )
+        
+        let confirmAction = UIAlertAction(
+            title: "co.candyhouse.sesame2.OK".localized,
+            style: .default
+        ) { [weak self] _ in
+            self?.startCloudDfu(
+                device: device,
+                dfuView: dfuView,
+                delegate: delegate
+            )
+        }
+        
+        alert.addAction(confirmAction)
+        
+        alert.addAction(UIAlertAction(
+            title: "co.candyhouse.sesame2.Cancel".localized,
+            style: .cancel,
+            handler: nil
+        ))
+        
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = dfuView
+            popover.sourceRect = dfuView.bounds
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func startCloudDfu(
+        device: CHDevice,
+        dfuView: CHUIPlainSettingView,
+        delegate: DFUHelperDelegate
+    ) {
+        guard !isDfuActionLocked else {
+            view.makeToast("co.candyhouse.sesame2.dfu_busy".localized)
+            return
+        }
+        
+        isDfuActionLocked = true
+        shouldRefreshVersionAfterDfu = false
+        
+        dfuView.value = "co.candyhouse.sesame2.Downloading".localized
+        
+        DFUCenter.shared.dfuDevice(device, delegate: delegate)
+    }
+    
+    func handleCloudDfuState(
+        _ state: DFUState,
+        dfuView: CHUIPlainSettingView
+    ) {
+        executeOnMainThread { [weak self] in
+            guard let self = self else { return }
+            
+            switch state {
+            case .starting:
+                dfuView.value = "co.candyhouse.sesame2.StartingSoon".localized
+                
+            case .completed:
+                self.isDfuActionLocked = false
+                self.shouldRefreshVersionAfterDfu = true
+                dfuView.value = "co.candyhouse.sesame2.Succeeded".localized
+                
+            case .aborted:
+                self.isDfuActionLocked = false
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    func handleCloudDfuError(
+        message: String
+    ) {
+        executeOnMainThread { [weak self] in
+            guard let self = self else { return }
+
+            self.isDfuActionLocked = false
+            self.view.makeToast(message)
+        }
+    }
+    
+    func handleCloudDfuProgress(
+        dfuView: CHUIPlainSettingView,
+        progress: Int
+    ) {
+        executeOnMainThread {
+            dfuView.value = "\(progress)%"
+        }
+    }
+    
+    func consumeShouldRefreshVersionAfterDfu() -> Bool {
+        if shouldRefreshVersionAfterDfu {
+            shouldRefreshVersionAfterDfu = false
+            return true
+        }
+        
+        return false
     }
 
 }

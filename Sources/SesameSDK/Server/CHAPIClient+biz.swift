@@ -465,5 +465,61 @@ public extension CHAPIClient {
         )
         updateBotScript(request, result: result)
     }
+    
+    // MARK: - Firmware
+    func getFirmwareZipUrl(
+        productType: Int,
+        deviceId: String,
+        result: @escaping CHResult<FirmwareZipUrlResponse>
+    ) {
+        let upperDeviceId = deviceId.uppercased()
+        
+        let query: [AnyHashable: Any] = [
+            "productType": "\(productType)",
+            "deviceId": upperDeviceId
+        ]
+        
+        API(
+            request: .init(
+                .get,
+                "/device/v1/firmwareZipUrl",
+                queryParameters: query
+            )
+        ) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data else {
+                    result(.failure(NSError.noDataError))
+                    return
+                }
+                
+                do {
+                    let decoded = try JSONDecoder().decode(
+                        FirmwareZipUrlResponse.self,
+                        from: data
+                    )
+                    
+                    if decoded.ok {
+                        result(.success(.init(input: decoded)))
+                    } else {
+                        let message = decoded.message ?? "Get firmware zip url failed"
+                        
+                        result(.failure(NSError(
+                            domain: "FirmwareZipUrl",
+                            code: -1,
+                            userInfo: [
+                                NSLocalizedDescriptionKey: message
+                            ]
+                        )))
+                    }
+                } catch {
+                    result(.failure(error))
+                }
+                
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
 
 }

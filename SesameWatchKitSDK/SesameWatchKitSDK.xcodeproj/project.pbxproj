@@ -124,6 +124,8 @@
 		3B8D5E3C2E2D176D00FE456E /* CHSesameBotDevice+Gatt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5D182E2D176D00FE456E /* CHSesameBotDevice+Gatt.swift */; };
 		3B8D5E3D2E2D176D00FE456E /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DAC2E2D176D00FE456E /* NSError+.swift */; };
 		3B8D5E3E2E2D176D00FE456E /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D5DA92E2D176D00FE456E /* Data+.swift */; };
+		3B9977A72FF4FFD800451FEE /* FirmwareZipUrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9977A62FF4FFD600451FEE /* FirmwareZipUrlResponse.swift */; };
+		3B9977A92FF500FF00451FEE /* FirmwareZipRuntimeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9977A82FF500FE00451FEE /* FirmwareZipRuntimeCache.swift */; };
 		3B9DC5992E2DE51E008EBF76 /* AESc in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5982E2DE51E008EBF76 /* AESc */; };
 		3BA495552F6ADD21002C3C3A /* CHBotScriptModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA495542F6ADD1C002C3C3A /* CHBotScriptModels.swift */; };
 		3BA7D8BE2F7F5E3A00024C2F /* CHSesameOS3LockBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7D8BD2F7F5E3700024C2F /* CHSesameOS3LockBase.swift */; };
@@ -422,6 +424,8 @@
 		3B8D5DAF2E2D176D00FE456E /* SwCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
 		3B8D5DB02E2D176D00FE456E /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
 		3B8D5DB22E2D176D00FE456E /* CHDeviceModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CHDeviceModel.xcdatamodel; sourceTree = "<group>"; };
+		3B9977A62FF4FFD600451FEE /* FirmwareZipUrlResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareZipUrlResponse.swift; sourceTree = "<group>"; };
+		3B9977A82FF500FE00451FEE /* FirmwareZipRuntimeCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareZipRuntimeCache.swift; sourceTree = "<group>"; };
 		3BA495542F6ADD1C002C3C3A /* CHBotScriptModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBotScriptModels.swift; sourceTree = "<group>"; };
 		3BA7D8BD2F7F5E3700024C2F /* CHSesameOS3LockBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameOS3LockBase.swift; sourceTree = "<group>"; };
 		3BA7D8C32F7FAD7B00024C2F /* CHSesameBiometricDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBiometricDevice.swift; sourceTree = "<group>"; };
@@ -994,6 +998,7 @@
 			isa = PBXGroup;
 			children = (
 				3BA495542F6ADD1C002C3C3A /* CHBotScriptModels.swift */,
+				3B9977A62FF4FFD600451FEE /* FirmwareZipUrlResponse.swift */,
 				3B8D5D962E2D176D00FE456E /* Keys */,
 			);
 			name = DataModel;
@@ -1044,6 +1049,7 @@
 				3B8D5DA82E2D176D00FE456E /* CHMulticastDelegate.swift */,
 				3B8D5DA92E2D176D00FE456E /* Data+.swift */,
 				3B8D5DAA2E2D176D00FE456E /* ECC.swift */,
+				3B9977A82FF500FE00451FEE /* FirmwareZipRuntimeCache.swift */,
 				3B8D5DAB2E2D176D00FE456E /* Logging.swift */,
 				3B8D5DAC2E2D176D00FE456E /* NSError+.swift */,
 				3B8D5DAD2E2D176D00FE456E /* SafeDictionary.swift */,
@@ -1722,6 +1728,7 @@
 				3B8D5E0F2E2D176D00FE456E /* ServerBaseType.swift in Sources */,
 				3B8D5E102E2D176D00FE456E /* CHFingerPrintEventHandlers.swift in Sources */,
 				3B8D5E122E2D176D00FE456E /* Sesame2BleDevice+Peripheral.swift in Sources */,
+				3B9977A72FF4FFD800451FEE /* FirmwareZipUrlResponse.swift in Sources */,
 				3B8D5E132E2D176D00FE456E /* Logging.swift in Sources */,
 				3B8D5E142E2D176D00FE456E /* CHSesameBotDevice+Lock.swift in Sources */,
 				3B8D5E152E2D176D00FE456E /* CHDeviceProtocol.swift in Sources */,
@@ -1737,6 +1744,7 @@
 				3B8D5E212E2D176D00FE456E /* CHBikeLockDevice+Login.swift in Sources */,
 				3BA7D8CE2F7FD55B00024C2F /* CHSesameBiometricDeviceImpl+Settings.swift in Sources */,
 				3B8D5E222E2D176D00FE456E /* CHAPICallObject.swift in Sources */,
+				3B9977A92FF500FF00451FEE /* FirmwareZipRuntimeCache.swift in Sources */,
 				3BA7D8BE2F7F5E3A00024C2F /* CHSesameOS3LockBase.swift in Sources */,
 				3B8D5E252E2D176D00FE456E /* SesameOS3SegmentType.swift in Sources */,
 				3B8D5E262E2D176D00FE456E /* SafeDictionary.swift in Sources */,

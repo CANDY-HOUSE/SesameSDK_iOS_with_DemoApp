@@ -27,7 +27,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
     
     // MARK: getVersionTag
     private func getVersionTag() {
-        refreshVersionTag(
+        refreshCloudVersionTag(
             device: mDevice,
             setVersionStr: { [weak self] text in
                 self?.versionStr = text
@@ -78,7 +78,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         if status == .receivedBle() {
             device.connect() { _ in }
         }else if status.loginStatus == .logined {
-            if versionStr == nil {
+            if versionStr == nil || consumeShouldRefreshVersionAfterDfu() {
                 getVersionTag()
             }
         }
@@ -237,25 +237,12 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         }
         
         // MARK: OTA - DFU View
-        dfuView = CHUIViewGenerator.plain { [unowned self] sender,_ in
-            let chooseDFUModeAlertController = UIAlertController(title: "",
-                                                                 message: "co.candyhouse.sesame2.SesameOSUpdate".localized,
-                                                                 preferredStyle: .actionSheet)
-            let confirmAction = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized,
-                                              style: .default) { _ in
-
-                DFUCenter.shared.dfuDevice(self.mDevice, delegate: self)
-                self.versionStr = nil
-            }
-            chooseDFUModeAlertController.addAction(confirmAction)
-            chooseDFUModeAlertController.addAction(UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized,
-                                                                 style: .cancel,
-                                                                 handler: nil))
-            if let popover = chooseDFUModeAlertController.popoverPresentationController {
-                popover.sourceView = self.dfuView
-                popover.sourceRect = self.dfuView.bounds
-            }
-            self.present(chooseDFUModeAlertController, animated: true, completion: nil)
+        dfuView = CHUIViewGenerator.plain { [unowned self] _, _ in
+            self.presentCloudDfuConfirm(
+                device: self.mDevice,
+                dfuView: self.dfuView,
+                delegate: self
+            )
         }
         dfuView.title = "co.candyhouse.sesame2.SesameOSUpdate".localized
         contentStackView.addArrangedSubview(dfuView)
@@ -342,26 +329,26 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
 
 extension OpenSensorSettingVC: DFUHelperDelegate {
     func dfuStateDidChange(to state: DFUState) {
-        switch state {
-        case .starting:
-            self.dfuView.value = "co.candyhouse.sesame2.StartingSoon".localized
-        case .completed:
-            self.dfuView.value = "co.candyhouse.sesame2.Succeeded".localized
-        case .aborted:
-            break
-        default:
-            break
-        }
+        handleCloudDfuState(
+            state,
+            dfuView: dfuView
+        )
     }
+
     func dfuError(_ error: DFUError,
                   didOccurWithMessage message: String) {
-        view.makeToast(message)
+        handleCloudDfuError(message: message)
     }
+
     func dfuProgressDidChange(for part: Int,
                               outOf totalParts: Int,
                               to progress: Int,
-                              currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
-        dfuView.value = "\(progress)%"
+                              currentSpeedBytesPerSecond: Double,
+                              avgSpeedBytesPerSecond: Double) {
+        handleCloudDfuProgress(
+            dfuView: dfuView,
+            progress: progress
+        )
     }
 }
 

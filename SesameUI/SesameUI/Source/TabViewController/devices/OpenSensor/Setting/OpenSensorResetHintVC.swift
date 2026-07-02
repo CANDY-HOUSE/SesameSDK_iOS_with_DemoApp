@@ -26,18 +26,23 @@ class OpenSensorResetHintVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesa
     }
     
     private func setVersion() {
-        let fileName = DFUHelper.getDfuFileName(self.mDevice!).split(separator: "_")
-        let latestVersion = String(fileName.last!).components(separatedBy: ".zip").first
+        let latestVersion = device.stateInfo?.latestFwVer
         let currentFwVer = device.stateInfo?.currentFwVer
         let isNewest: Bool
+        let shouldShowExclamation: Bool
+        
         if let currentFwVer, let latestVersion {
             isNewest = currentFwVer.contains(latestVersion)
+            shouldShowExclamation = !isNewest
         } else {
             isNewest = false
+            shouldShowExclamation = false
         }
+        
         self.versionStr = "\(currentFwVer ?? "")\(isNewest ? "\("co.candyhouse.sesame2.latest".localized)" : "")"
+        
         executeOnMainThread {
-            self.dfuView.exclamation.isHidden = isNewest
+            self.dfuView.exclamation.isHidden = !shouldShowExclamation
         }
         
         if isNewest, let fwVerForList = currentFwVer {

@@ -146,24 +146,12 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
         }
         
         // MARK: OTA
-        dfuView = CHUIViewGenerator.plain { [unowned self] sender,_ in
-            let chooseDFUModeAlertController = UIAlertController(title: "",
-                                                                 message: "co.candyhouse.sesame2.SesameOSUpdate".localized,
-                                                                 preferredStyle: .actionSheet)
-
-            let confirmAction = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized,
-                                              style: .default) { _ in
-                self.dfuSesame2(self.sesameBot)
-            }
-            chooseDFUModeAlertController.addAction(confirmAction)
-            chooseDFUModeAlertController.addAction(UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized,
-                                                                 style: .cancel,
-                                                                 handler: nil))
-            if let popover = chooseDFUModeAlertController.popoverPresentationController {
-                popover.sourceView = self.dfuView
-                popover.sourceRect = self.dfuView.bounds
-            }
-            self.present(chooseDFUModeAlertController, animated: true, completion: nil)
+        dfuView = CHUIViewGenerator.plain { [unowned self] _, _ in
+            self.presentCloudDfuConfirm(
+                device: self.sesameBot,
+                dfuView: self.dfuView,
+                delegate: self
+            )
         }
         dfuView.title = "co.candyhouse.sesame2.SesameOSUpdate".localized
         dfuView.value = versionStr ?? ""
@@ -298,7 +286,7 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
     
     // MARK: getVersionTag
     private func getVersionTag() {
-        refreshVersionTag(
+        refreshCloudVersionTag(
             device: sesameBot,
             setVersionStr: { [weak self] text in
                 self?.versionStr = text
@@ -307,12 +295,6 @@ class SesameBotSettingViewController: CHBaseViewController, DeviceControllerHold
                 self?.dfuView.exclamation.isHidden = isHidden
             }
         )
-    }
-    
-    // MARK: OTA
-    func dfuSesame2(_ sesameBot: CHSesameBot) {
-        DFUCenter.shared.dfuDevice(sesameBot, delegate: self)
-        self.versionStr = nil
     }
     
     @discardableResult
@@ -340,7 +322,7 @@ extension SesameBotSettingViewController: CHSesameBotDelegate {
             status == .receivedBle() {
             device.connect() { _ in }
         } else if status.loginStatus == .logined {
-            if versionStr == nil {
+            if versionStr == nil || consumeShouldRefreshVersionAfterDfu() {
                 getVersionTag()
             }
         }
@@ -359,28 +341,26 @@ extension SesameBotSettingViewController: CHSesameBotDelegate {
 // MARK: - DFUHelperDelegate
 extension SesameBotSettingViewController: DFUHelperDelegate {
     func dfuStateDidChange(to state: DFUState) {
-        switch state {
-        case .starting:
-            self.dfuView.value = "co.candyhouse.sesame2.StartingSoon".localized
-        case .completed:
-            self.dfuView.value = "co.candyhouse.sesame2.Succeeded".localized
-        case .aborted:
-            break
-        default:
-            break
-        }
+        handleCloudDfuState(
+            state,
+            dfuView: dfuView
+        )
     }
-    
+
     func dfuError(_ error: DFUError,
                   didOccurWithMessage message: String) {
-        view.makeToast(message)
+        handleCloudDfuError(message: message)
     }
-    
+
     func dfuProgressDidChange(for part: Int,
                               outOf totalParts: Int,
                               to progress: Int,
-                              currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
-        dfuView.value = "\(progress)%"
+                              currentSpeedBytesPerSecond: Double,
+                              avgSpeedBytesPerSecond: Double) {
+        handleCloudDfuProgress(
+            dfuView: dfuView,
+            progress: progress
+        )
     }
 }
 

@@ -30,17 +30,66 @@ final class DFUCenter {
     var dfuHelpers = [String: DFUHelper]()
     
     func dfuDevice(_ device: CHDevice, delegate: DFUHelperDelegate) {
-        device.updateFirmware { result in
-            switch result {
-            case .success(let peripheral):
-                guard let peripheral = peripheral.data else { return }
-                let dfuData = try! Data(contentsOf: DFUHelper.getDfuFilePath(device))
-                let dfuHelper = DFUHelper(peripheral: peripheral, zipData: dfuData)!
-                self.dfuHelpers[device.deviceId.uuidString] = dfuHelper
-                dfuHelper.delegate = delegate
-                dfuHelper.start(.application)
-            case .failure(_):
-                delegate.dfuError(.unsupportedResponse, didOccurWithMessage: "")
+        device.getCloudFirmwareZip { zipResult in
+            switch zipResult {
+            case .success(let localZip):
+                let zipURL = localZip.data
+                
+                device.updateFirmware { result in
+                    switch result {
+                    case .success(let peripheral):
+                        guard let peripheral = peripheral.data else {
+                            self.notifyDfuError(
+                                delegate,
+                                error: .unsupportedResponse,
+                                message: ""
+                            )
+                            return
+                        }
+                        
+                        do {
+                            let dfuData = try Data(contentsOf: zipURL)
+                            
+                            guard let dfuHelper = DFUHelper(
+                                peripheral: peripheral,
+                                zipData: dfuData
+                            ) else {
+                                self.notifyDfuError(
+                                    delegate,
+                                    error: .fileInvalid,
+                                    message: "Dfu error"
+                                )
+                                return
+                            }
+                            
+                            DispatchQueue.main.async {
+                                self.dfuHelpers[device.deviceId.uuidString] = dfuHelper
+                                dfuHelper.delegate = delegate
+                                dfuHelper.start(.application)
+                            }
+                        } catch {
+                            self.notifyDfuError(
+                                delegate,
+                                error: .fileInvalid,
+                                message: error.localizedDescription
+                            )
+                        }
+                        
+                    case .failure(let error):
+                        self.notifyDfuError(
+                            delegate,
+                            error: .unsupportedResponse,
+                            message: error.errorDescription()
+                        )
+                    }
+                }
+                
+            case .failure(let error):
+                self.notifyDfuError(
+                    delegate,
+                    error: .fileInvalid,
+                    message: error.localizedDescription
+                )
             }
         }
     }
@@ -56,6 +105,17 @@ final class DFUCenter {
             dfuHelper.delegate = nil
         }
     }
+    
+    private func notifyDfuError(
+        _ delegate: DFUHelperDelegate,
+        error: DFUError,
+        message: String
+    ) {
+        DispatchQueue.main.async {
+            delegate.dfuError(error, didOccurWithMessage: message)
+        }
+    }
+
 }
 
 /// 第三方 dfu library wrapper
@@ -149,18 +209,6 @@ final class DFUHelper {
     
     deinit {
         L.d("updateFirmware", "deinit")
-    }
-}
-
-// MARK: Device get name & path
-extension DFUHelper {
-    // MARK: - Devices
-    static func getDfuFilePath(_ device: CHDevice) -> URL {
-        return  device.getFirZip()
-    }
-
-    static func getDfuFileName(_ device: CHDevice) -> String {
-        device.getFirZip().lastPathComponent
     }
 }
 
