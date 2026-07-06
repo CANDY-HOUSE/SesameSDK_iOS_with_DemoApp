@@ -12,13 +12,9 @@ import SesameSDK
 
 class PushNotificationManager {
     static let shared = PushNotificationManager()
-    
-    private let prefs = UserDefaults.standard
-    private let topics = ["app_announcements"]
-    
-    private let PREF_APP_VERSION = "last_subscription_app_version"
-    private let SUBSCRIPTION_REFRESH_INTERVAL: TimeInterval = 30 * 24 * 60 * 60
-    
+
+    private let topic = "app_announcements"
+
     var platform: String {
 #if DEBUG
         return "ios_sandbox"
@@ -26,127 +22,55 @@ class PushNotificationManager {
         return "ios"
 #endif
     }
-    
-    private var subscribingTokens = Set<String>()
-    
-    func checkAndSubscribeToTopics() {
-        guard let token = UserDefaults.standard.string(forKey: "devicePushToken") else {
-            L.d("sf", "无token，需要注册推送...")
-            registerForPushNotifications()
-            return
-        }
-        
-        if shouldRefreshSubscriptions() {
-            L.d("sf", "需要更新订阅...")
-            forceRefreshSubscriptions(token: token)
-        } else {
-            L.d("sf", "检查现有订阅...")
-            subscribeToTopicsIfNeeded(token: token)
-        }
-    }
-    
-    private func shouldRefreshSubscriptions() -> Bool {
-        let lastSubscriptionTime = prefs.double(forKey: "last_subscription_time")
-        let lastAppVersion = prefs.string(forKey: PREF_APP_VERSION) ?? "0"
-        let currentTime = Date().timeIntervalSince1970
-        let currentAppVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
-        L.d("sf", "currentAppVersion=\(currentAppVersion)")
-        
-        return currentAppVersion != lastAppVersion ||
-        (currentTime - lastSubscriptionTime) > SUBSCRIPTION_REFRESH_INTERVAL
-    }
-    
-    private func forceRefreshSubscriptions(token: String) {
-        clearAllTokenSubscriptions()
-        subscribeToTopicsIfNeeded(token: token)
-    }
-    
-    private func clearAllTokenSubscriptions() {
-        prefs.dictionaryRepresentation()
-            .keys
-            .filter { $0.hasPrefix("topic_") }
-            .forEach { prefs.removeObject(forKey: $0) }
-        
-        L.d("sf", "已清除所有订阅记录，将强制重新订阅")
-    }
-    
-    private func subscribeToTopicsIfNeeded(token: String) {
-        // 防止重复订阅
-        if subscribingTokens.contains(token) {
-            L.d("sf", "正在订阅中，跳过。Token:\(token.suffix(10))")
-            return
-        }
-        
-        subscribingTokens.insert(token)
-        
-        topics.forEach { topic in
-            if !isTopicSubscribed(topic: topic, token: token){
-                subscribeToTopic(topic: topic, token: token)
-            } else {
-                L.d("sf", "Topic:\(topic) Token:\(token.suffix(10)) 已经订阅过了")
-            }
-        }
-    }
-    
-    private func isTopicSubscribed(topic: String, token: String) -> Bool {
-        let tokenSuffix = String(token.suffix(10))
-        let key = "topic_\(topic)_\(tokenSuffix)"
-        return prefs.bool(forKey: key)
-    }
-    
-    private func subscribeToTopic(topic: String, token: String) {
-        CHAPIClient.shared.subscribeToSNSTopic(
-            topicName: topic,
-            pushToken: token,
-            platform: platform
-        ) { [weak self] success in
-            guard let self = self else { return }
-            
-            if success {
-                let tokenSuffix = String(token.suffix(10))
-                let key = "topic_\(topic)_\(tokenSuffix)"
-                self.prefs.set(true, forKey: key)
-                self.prefs.set(Date().timeIntervalSince1970, forKey: "last_subscription_time")
-                self.prefs.set(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0",
-                               forKey: self.PREF_APP_VERSION)
-                L.d("sf", "订阅成功: \(topic)")
-            } else {
-                L.d("sf", "订阅失败: \(topic)")
-            }
-            
-            checkIfAllTopicsSubscribed(token: token)
-        }
-    }
-    
-    func registerForPushNotifications() {
-        L.d("sf", "注册通知……")
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
-            guard granted else { return }
+
+    /// 注册失败（如首次安装且无网，走 didFailToRegister）时调用：
+    /// 挂一次性网络监听，恢复后补注册一次 → didRegister → handleAPNsToken。
+    func registerWhenNetworkAvailable() {
+        NetworkReachabilityHelper.shared.addListener(self) { [weak self] state in
+            guard case .reachable = state, let self = self else { return }
+            NetworkReachabilityHelper.shared.removeListener(self)
             DispatchQueue.main.async {
+                L.d("sf", "网络恢复，补注册以重取 token")
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }
     }
-    
+
+    /// 拿到 / 更新 APNs token：保存并订阅（授权弹窗与注册由 AppDelegate 负责）。
     func handleAPNsToken(_ token: String) {
         L.d("sf", "handleAPNsToken=\(token)")
-        
-        let oldToken = UserDefaults.standard.string(forKey: "devicePushToken")
-        
-        if oldToken != token {
-            L.d("sf", "Token已变更，强制刷新订阅")
-            UserDefaults.standard.setValue(token, forKey: "devicePushToken")
-            forceRefreshSubscriptions(token: token)
-        } else {
-            L.d("sf", "Token未变更，跳过处理")
-        }
+        UserDefaults.standard.setValue(token, forKey: "devicePushToken")
+        subscribeToTopic(token: token)
     }
-    
-    private func checkIfAllTopicsSubscribed(token: String) {
-        let allSubscribed = topics.allSatisfy { isTopicSubscribed(topic: $0, token: token) }
-        if allSubscribed {
-            subscribingTokens.remove(token)
-            L.d("sf", ">>>> Token:\(token.suffix(10)) 的所有主题订阅完成")
+
+    // MARK: - 订阅（每次调用直接订阅，SNS 幂等，无节流 / 去重 / 状态记录）
+
+    private func subscribeToTopic(token: String) {
+        // 无网：挂一次性监听，恢复后重试自己（重试由真失败驱动，避免启动时误触发双调）
+        guard NetworkReachabilityHelper.shared.isReachable else {
+            NetworkReachabilityHelper.shared.addListener(self) { [weak self] state in
+                guard case .reachable = state, let self = self else { return }
+                NetworkReachabilityHelper.shared.removeListener(self)
+                self.subscribeToTopic(token: token)
+            }
+            return
+        }
+        AppEnvironment.collect { [weak self] env in
+            guard let self = self else { return }
+            let topic = self.topic
+            CHAPIClient.shared.subscribeToSNSTopic(
+                topicName: topic,
+                pushToken: token,
+                platform: self.platform,
+                env: env
+            ) { success, envId in
+                if success, let hisTag = envId {
+                    let ss5history = CHAWSMobileClient.shared.formatSubuuid(hisTag)
+                    Sesame2Store.shared.setEnvironmentId(ss5history)
+                    CHDeviceManager.shared.setHistoryTag()
+                }
+                L.d("sf", success ? "订阅成功: \(topic) envId=\(envId ?? "")" : "订阅失败: \(topic)")
+            }
         }
     }
 }

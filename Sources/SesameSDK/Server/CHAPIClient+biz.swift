@@ -211,33 +211,39 @@ public extension CHAPIClient {
     ///   - topicName: 主题名称
     ///   - pushToken: APNs token (iOS) 或 FCM token (Android)
     ///   - platform: 平台类型 (ios, ios_sandbox, android)
-    ///   - completion: 完成回调
+    ///   - env: App 环境信息，有序单键对象数组 [{"key": value}, ...]
+    ///   - completion: 完成回调，成功时带回服务端记录主键 envId
     func subscribeToSNSTopic(
         topicName: String,
         pushToken: String,
         platform: String,
-        completion: @escaping (Bool) -> Void
+        env: [[String: Any]],
+        completion: @escaping (_ success: Bool, _ envId: String?) -> Void
     ) {
         let parameters: [String: Any] = [
             "action": "subscribeToTopic",
             "topicName": topicName,
             "pushToken": pushToken,
-            "platform": platform
+            "platform": platform,
+            "env": env
         ]
         let payload = try! JSONSerialization.data(withJSONObject: parameters)
         API(request: .init(.post, "/device/v1/subscribe", payload)) { response in
             switch response {
             case .success(let data):
-                if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any],
+                if let data = data,
+                   let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                    let bodyString = jsonObj["body"] as? String,
-                   bodyString.contains("\"success\":true") {
-                    completion(true)
+                   let bodyData = bodyString.data(using: .utf8),
+                   let body = try? JSONSerialization.jsonObject(with: bodyData) as? [String: Any],
+                   (body["success"] as? Bool) == true {
+                    completion(true, body["envId"] as? String)
                 } else {
-                    completion(false)
+                    completion(false, nil)
                 }
             case .failure(let error):
                 L.d("sf", "Subscribe error: \(error)")
-                completion(false)
+                completion(false, nil)
             }
         }
     }

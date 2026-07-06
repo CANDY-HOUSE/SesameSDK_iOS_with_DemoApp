@@ -208,11 +208,8 @@ class MeViewController: CHBaseViewController {
                                 self.webView?.refresh()
                             }
                         }
-                        CHAWSMobileClient.shared.getSubId { subId in
-                            if let subId = subId, !subId.isEmpty {
-                                let ss5history = CHAWSMobileClient.shared.formatSubuuid(subId)
-                                Sesame2Store.shared.setSubUuid(ss5history)
-                            }
+                        if let token = UserDefaults.standard.value(forKey: "devicePushToken") as? String {
+                            PushNotificationManager.shared.handleAPNsToken(token)
                         }
                     } else {
                         executeOnMainThread {
@@ -231,9 +228,10 @@ class MeViewController: CHBaseViewController {
         let signOut = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized, style: .destructive) { _ in
             // MARK: - Log out
             CHAWSMobileClient.shared.signOut {
-                CHDeviceManager.shared.setHistoryTag()
-                Sesame2Store.shared.setSubUuid(Data())
                 CHDeviceWrapperManager.shared.clear()
+                if let token = UserDefaults.standard.value(forKey: "devicePushToken") as? String {
+                    PushNotificationManager.shared.handleAPNsToken(token)
+                }
                 executeOnMainThread { [weak self] in
                     self?.webView?.refresh()
                 }

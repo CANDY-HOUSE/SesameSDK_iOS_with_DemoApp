@@ -42,12 +42,6 @@ public class GeneralTabViewController: UITabBarController {
                     }
                 }
                 CHAPIClient.shared.uploadUserDeviceToken() { result in}
-                CHAWSMobileClient.shared.getSubId { subId in
-                    if let subId = subId, !subId.isEmpty {
-                        let ss5history = CHAWSMobileClient.shared.formatSubuuid(subId)
-                        Sesame2Store.shared.setSubUuid(ss5history)
-                    }
-                }
             }
         }
         
@@ -58,12 +52,6 @@ public class GeneralTabViewController: UITabBarController {
                 CHAWSMobileClient.shared.getName { result in
                     if case let .success(nickname) = result {
                         Sesame2Store.shared.setHistoryTag(nickname)
-                    }
-                }
-                CHAWSMobileClient.shared.getSubId { subId in
-                    if let subId = subId, !subId.isEmpty {
-                        let ss5history = CHAWSMobileClient.shared.formatSubuuid(subId)
-                        Sesame2Store.shared.setSubUuid(ss5history)
                     }
                 }
             }

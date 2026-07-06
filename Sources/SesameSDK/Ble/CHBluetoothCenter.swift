@@ -21,7 +21,7 @@ public class CHBluetoothCenter: NSObject {
     }
     public weak var statusDelegate: CHBleStatusDelegate?
 
-    var centralManager: CBCentralManager!
+    public internal(set) var centralManager: CBCentralManager!
     var deviceMap = SafeDictionary<String, CHDevice>()
 
     private var scanEnabled = false

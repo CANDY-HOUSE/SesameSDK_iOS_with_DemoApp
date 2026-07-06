@@ -35,12 +35,18 @@ class SesameHistoryViewController: CHBaseViewController {
     private func setupWebView() {
         let webView = CHWebView.instanceWithScene("history",
                                            extInfo: ["deviceUUID": sesame2.deviceId.uuidString])
+        webView.registerSchemeHandler("ssm://UI/webview/open") { [weak self] _, _, param in
+            guard let self = self, let urlStr = param["url"] else {
+                return
+            }
+            self.navigationController?.pushViewController(CHWebViewController.instanceWithURL(urlStr), animated: true)
+        }
         self.webView = webView
         view.addSubview(webView)
         webView.loadRequest()
         webView.autoPinEdgesToSuperview()
     }
-    
+
     @objc private func navigateToSesame2SettingView(_ sender: Any) {
         settingClickHandler?()
     }

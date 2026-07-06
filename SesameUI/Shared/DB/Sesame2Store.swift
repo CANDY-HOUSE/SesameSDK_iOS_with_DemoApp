@@ -243,7 +243,7 @@ extension Sesame2Store {
         return (CLLocation(latitude: property.latitude, longitude: property.longitude), property.radius)
     }
     
-    func getSubUuid() -> Data {
+    func getEnvironmentId() -> Data {
         if let historyTag = UserDefaults.standard.value(forKey: "cognitoSubuuid") as? Data,
            !historyTag.isEmpty{
             return historyTag
@@ -252,7 +252,7 @@ extension Sesame2Store {
         }
     }
     
-    func setSubUuid(_ subUuid: Data) {
+    func setEnvironmentId(_ subUuid: Data) {
         UserDefaults.standard.setValue(subUuid, forKey: "cognitoSubuuid")
     }
 

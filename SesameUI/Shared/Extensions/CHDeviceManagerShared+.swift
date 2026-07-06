@@ -17,7 +17,7 @@ extension CHDeviceManager {
     /// 設定所有Sesame device的 history tag
     func setHistoryTag() {
         let historyTag = Sesame2Store.shared.getHistoryTag()// for os2
-        let userSubTag = Sesame2Store.shared.getSubUuid()// for os3
+        let userSubTag = Sesame2Store.shared.getEnvironmentId()// for os3
         CHDeviceManager.shared.getCHDevices { getResult in
             if case let .success(chDevices) = getResult {
                 for sesameLock in chDevices.data.compactMap({ $0 as? CHSesameLock }) {

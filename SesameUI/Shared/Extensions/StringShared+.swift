@@ -25,7 +25,7 @@ extension String {
                                  comment: "")
     }
     
-    func localizedTime(dateFormat: String = "yyyy-MM-dd@HH:mm:ss") -> String? {
+    func localizedTime(dateFormat: String = "yyyy-MM-dd HH:mm:ss") -> String? {
          guard let milliseconds = Int64(self) else {
              print("Invalid milliseconds timestamp")
              return nil

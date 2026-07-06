@@ -67,13 +67,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = rootNavigationController
         window!.makeKeyAndVisible()
-        // 检查订阅
-        PushNotificationManager.shared.checkAndSubscribeToTopics()
         return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         PushNotificationManager.shared.handleAPNsToken(deviceToken.toHexString())
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        PushNotificationManager.shared.registerWhenNetworkAvailable()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
