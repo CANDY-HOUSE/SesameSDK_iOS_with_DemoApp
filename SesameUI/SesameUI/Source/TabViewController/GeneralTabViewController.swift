@@ -28,6 +28,7 @@ public class GeneralTabViewController: UITabBarController {
         AWSMobileClient.default().initialize { (userState, error) in
             // 1. 設定並啟動 API manager
             CHAPIClient.initialize(credentialsProvider: AWSMobileClient.default())
+            AppPromotionManager.shared.refresh()
             
             // 2. 判斷是否第一次安裝
             if UserDefaults.standard.bool(forKey: "HasInstalled") == false {
@@ -49,6 +50,7 @@ public class GeneralTabViewController: UITabBarController {
         AWSMobileClient.default().addUserStateListener(self) { state, dic in
             if state == .signedIn {
                 CHAPIClient.shared.uploadUserDeviceToken() { _ in }
+                AppPromotionManager.shared.refresh()
                 CHAWSMobileClient.shared.getName { result in
                     if case let .success(nickname) = result {
                         Sesame2Store.shared.setHistoryTag(nickname)
@@ -56,6 +58,14 @@ public class GeneralTabViewController: UITabBarController {
                 }
             }
         }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handlePromotionChanged(_:)),
+            name: AppPromotionManager.promotionChangedNotification,
+            object: nil
+        )
+        updatePromotionBadge(AppPromotionManager.shared.currentPromotion)
     }
     
     public override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -63,6 +73,19 @@ public class GeneralTabViewController: UITabBarController {
             tabBar.barTintColor = .sesame2Gray
         } else {
             tabBar.barTintColor = .white
+        }
+    }
+
+    @objc private func handlePromotionChanged(_ notification: Notification) {
+        let promotion = notification.object as? AppPromotion
+        updatePromotionBadge(promotion)
+    }
+
+    private func updatePromotionBadge(_ promotion: AppPromotion?) {
+        executeOnMainThread { [weak self] in
+            guard let self = self else { return }
+            self.meTabBarItem?.badgeColor = .red
+            self.meTabBarItem?.badgeValue = promotion?.visible == true ? "" : nil
         }
     }
 }
@@ -98,6 +121,7 @@ extension GeneralTabViewController {
         meViewController.tabBarItem = meItem
 
         let entryViewController = GeneralTabViewController(nibName: nil, bundle: nil)
+        entryViewController.meTabBarItem = meItem
         entryViewController.setViewControllers([
             sesame2ListViewController.navigationController!,
             visionViewController.navigationController!,

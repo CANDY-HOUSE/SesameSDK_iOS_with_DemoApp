@@ -228,6 +228,10 @@ extension CHWebView: WKScriptMessageHandler {
 // MARK: - Public Methods
 extension CHWebView {
     func callH5(funcName: String, data: Any? = nil) {
+        guard funcName.isSafeJavaScriptCallbackName else {
+            return
+        }
+
         do {
             var jsonString = ""
             if let cbData = data {
@@ -244,6 +248,15 @@ extension CHWebView {
         } catch {
             print("回调数据序列化失败: \(error)")
         }
+    }
+}
+
+private extension String {
+    var isSafeJavaScriptCallbackName: Bool {
+        range(
+            of: #"^[A-Za-z_$][A-Za-z0-9_$]*(\.[A-Za-z_$][A-Za-z0-9_$]*)*$"#,
+            options: .regularExpression
+        ) != nil
     }
 }
 

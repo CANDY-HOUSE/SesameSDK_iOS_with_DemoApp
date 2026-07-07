@@ -19,6 +19,8 @@ enum WebViewMessageType: String {
     case requestPushToken = "requestPushToken"// 检查匿名 token 是否上云
     case requestNotificationStatus = "requestNotificationStatus"
     case requestNotificationSettings = "requestNotificationSettings"
+    case requestActivePromotion = "requestActivePromotion"
+    case requestMarkPromotionRead = "requestMarkPromotionRead"
     case requestBLEConnect = "requestBLEConnect"
     case requestConfigureInternet = "requestConfigureInternet"
     case requestMonitorInternet = "requestMonitorInternet"
@@ -85,6 +87,41 @@ extension CHWebView {
                 )
             }
         }
+
+        registerMessageHandler(WebViewMessageType.requestActivePromotion.rawValue) { webView, data in
+            guard let params = data as? [String: Any],
+                  let callbackName = params["callbackName"] as? String else {
+                return
+            }
+
+            AppPromotionManager.shared.refresh { promotion in
+                webView.callH5(
+                    funcName: callbackName,
+                    data: promotion.responseData
+                )
+            }
+        }
+
+        registerMessageHandler(WebViewMessageType.requestMarkPromotionRead.rawValue) { webView, data in
+            guard let params = data as? [String: Any],
+                  let callbackName = params["callbackName"] as? String else {
+                return
+            }
+
+            guard let promotionId = params["promotionId"] as? String,
+                  promotionId.isEmpty == false else {
+                webView.callH5(funcName: callbackName, data: ["success": false])
+                return
+            }
+
+            let targetUrl = params["targetUrl"] as? String
+            AppPromotionManager.shared.markRead(promotionId: promotionId, targetUrl: targetUrl) { promotion in
+                webView.callH5(
+                    funcName: callbackName,
+                    data: promotion.responseData
+                )
+            }
+        }
     }
     
     func registerSchemeHandlers() {
@@ -99,5 +136,21 @@ extension CHWebView {
         if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
             listViewController.getKeysFromServer()
         }
+    }
+}
+
+private extension Optional where Wrapped == AppPromotion {
+    var responseData: [String: Any] {
+        guard let promotion = self else {
+            return ["success": false]
+        }
+
+        return [
+            "success": true,
+            "promotionId": promotion.promotionId,
+            "enabled": promotion.enabled,
+            "visible": promotion.visible,
+            "targetUrl": promotion.targetUrl
+        ]
     }
 }

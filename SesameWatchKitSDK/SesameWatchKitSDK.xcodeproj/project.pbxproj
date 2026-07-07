@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B1545BB2FFCE81E006F89CB /* AppPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1545BA2FFCE81E006F89CB /* AppPromotion.swift */; };
 		3B74ACBE2F0E63B100EDAF1B /* AWSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74ACBD2F0E63B100EDAF1B /* AWSConfig.swift */; };
 		3B7D7E652F35EE2700F3D79B /* CHSesameBike3Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D7E642F35EE2500F3D79B /* CHSesameBike3Device.swift */; };
 		3B7D7E672F35F35200F3D79B /* CHFingerPrintHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D7E662F35F34F00F3D79B /* CHFingerPrintHost.swift */; };
@@ -307,6 +308,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B1545BA2FFCE81E006F89CB /* AppPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPromotion.swift; sourceTree = "<group>"; };
 		3B74ACBD2F0E63B100EDAF1B /* AWSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfig.swift; sourceTree = "<group>"; };
 		3B7D7E642F35EE2500F3D79B /* CHSesameBike3Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHSesameBike3Device.swift; sourceTree = "<group>"; };
 		3B7D7E662F35F34F00F3D79B /* CHFingerPrintHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHFingerPrintHost.swift; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 		3B8D5D972E2D176D00FE456E /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				3B1545BA2FFCE81E006F89CB /* AppPromotion.swift */,
 				3BA495542F6ADD1C002C3C3A /* CHBotScriptModels.swift */,
 				3B9977A62FF4FFD600451FEE /* FirmwareZipUrlResponse.swift */,
 				3B8D5D962E2D176D00FE456E /* Keys */,
@@ -1706,6 +1709,7 @@
 				3B8D5DF52E2D176D00FE456E /* CHWifiModule2Device+Gatt.swift in Sources */,
 				3B8D5DF62E2D176D00FE456E /* CHAPIClient+Request.swift in Sources */,
 				3B8D5DF72E2D176D00FE456E /* Sesame2Payload.swift in Sources */,
+				3B1545BB2FFCE81E006F89CB /* AppPromotion.swift in Sources */,
 				3B8D5DF82E2D176D00FE456E /* SesameBotProtocols.swift in Sources */,
 				3B8D5DF92E2D176D00FE456E /* CHHub3.swift in Sources */,
 				3B8D5DFA2E2D176D00FE456E /* CHBikeLockDevice+Gatt.swift in Sources */,

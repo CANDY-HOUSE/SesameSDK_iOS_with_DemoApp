@@ -247,6 +247,59 @@ public extension CHAPIClient {
             }
         }
     }
+
+    // MARK: - App Promotion
+    func getActivePromotion(_ result: @escaping CHResult<AppPromotion>) {
+        API(
+            request: .init(
+                .get,
+                "/device/v1/appPromotionReads",
+                queryParameters: ["action": "getActivePromotion"]
+            )
+        ) { response in
+            switch response {
+            case .success(let data):
+                self.parsePromotionResponse(data, result)
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+
+    func markPromotionRead(
+        promotionId: String,
+        targetUrl: String?,
+        _ result: @escaping CHResult<AppPromotion>
+    ) {
+        let request = AppPromotionReadRequest(promotionId: promotionId, targetUrl: targetUrl)
+        let jsonData = try! JSONEncoder().encode(request)
+
+        API(request: .init(.post, "/device/v1/appPromotionReads", jsonData)) { response in
+            switch response {
+            case .success(let data):
+                self.parsePromotionResponse(data, result)
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+
+    private func parsePromotionResponse(
+        _ data: Data?,
+        _ result: @escaping CHResult<AppPromotion>
+    ) {
+        guard let data = data else {
+            result(.failure(NSError.noDataError))
+            return
+        }
+
+        do {
+            let response = try JSONDecoder().decode(AppPromotionResponse.self, from: data)
+            result(.success(.init(input: response.promotion)))
+        } catch {
+            result(.failure(error))
+        }
+    }
     
     // MARK: - IoT
     /// 获取设备影子数据 (watchOS)
