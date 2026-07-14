@@ -173,9 +173,7 @@ class BikeLock2SettingViewController: CHBaseViewController, CHDeviceStatusDelega
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
 
         // MARK: UUID
-        let uuidView = CHUIViewGenerator.plain ()
-        uuidView.title = "UUID".localized
-        uuidView.value = mBikeLock2.deviceId.uuidString
+        let uuidView = deviceFactoryInfoView(mBikeLock2)
         contentStackView.addArrangedSubview(uuidView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         

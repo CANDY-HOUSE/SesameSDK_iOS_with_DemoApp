@@ -377,7 +377,12 @@ final class CHUIArrowSettingView: UIView, CHUIView {
         titleLabel.textAlignment = .left
         valueLabel.textAlignment = .right
         valueLabel.textColor = .secondaryLabelColor
-        valueLabel.autoPinWidthLessThanOrEqual(titleLabel)
+        titleLabel.setContentHuggingPriority(.required, for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        valueLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        valueLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        contentView.alignment = .center
+        valueLabel.baselineAdjustment = .alignCenters
         valueLabel.adjustsFontSizeToFitWidth = true
         valueLabel.numberOfLines = 1
         valueLabel.minimumScaleFactor = 0.1

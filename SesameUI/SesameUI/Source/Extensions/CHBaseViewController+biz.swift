@@ -80,6 +80,18 @@ extension CHBaseViewController {
         batteryView.value = device.batteryPercentage().map { "\($0)%" } ?? ""
         return batteryView
     }
+
+    func deviceFactoryInfoView(_ device: CHDevice) -> CHUIArrowSettingView {
+        let factoryInfoView = CHUIViewGenerator.arrow() { [unowned self] sender,event in
+            navigationController?.pushViewController(CHWebViewController.instanceWithScene("factory-info", extInfo: [
+                "deviceUUID": device.deviceId.uuidString,
+                "deviceName": "\(device.deviceName)"
+            ]), animated: true)
+        }
+        factoryInfoView.title = "UUID".localized
+        factoryInfoView.value = device.deviceId.uuidString
+        return factoryInfoView
+    }
 }
 
 // HomePage Popup

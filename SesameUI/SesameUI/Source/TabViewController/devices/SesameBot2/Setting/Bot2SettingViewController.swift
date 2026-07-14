@@ -218,9 +218,7 @@ class Bot2SettingViewController: CHBaseViewController, CHDeviceStatusDelegate, D
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
 
         // MARK: UUID
-        let uuidView = CHUIViewGenerator.plain ()
-        uuidView.title = "UUID".localized
-        uuidView.value = bot2.deviceId.uuidString
+        let uuidView = deviceFactoryInfoView(bot2)
         contentStackView.addArrangedSubview(uuidView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         

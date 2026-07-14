@@ -313,9 +313,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: UUID
-        let uuidView = CHUIViewGenerator.plain ()
-        uuidView.title = "UUID".localized
-        uuidView.value = sesame5.deviceId.uuidString
+        let uuidView = deviceFactoryInfoView(sesame5)
         contentStackView.addArrangedSubview(uuidView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
         

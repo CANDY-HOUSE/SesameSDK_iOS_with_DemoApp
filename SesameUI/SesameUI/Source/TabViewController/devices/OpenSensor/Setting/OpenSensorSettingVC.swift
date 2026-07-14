@@ -249,9 +249,7 @@ class OpenSensorSettingVC: CHBaseViewController, CHDeviceStatusDelegate,CHSesame
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
         // MARK: UUID
-        let uuidView = CHUIViewGenerator.plain ()
-        uuidView.title = "UUID".localized
-        uuidView.value = mDevice.deviceId.uuidString
+        let uuidView = deviceFactoryInfoView(mDevice)
         contentStackView.addArrangedSubview(uuidView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick))
 
