@@ -139,6 +139,7 @@
 		3BA7D8D02F7FD83E00024C2F /* CHSesameBiometricEventHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7D8CF2F7FD83D00024C2F /* CHSesameBiometricEventHost.swift */; };
 		64140F472F0A46F100549C14 /* CHAPIClient+biz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64140F462F0A46EF00549C14 /* CHAPIClient+biz.swift */; };
 		64140F492F0B507700549C14 /* CHAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64140F482F0B507700549C14 /* CHAPIClient.swift */; };
+		645FDE633008AAA000093E24 /* CHKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645FDE623008AAA000093E24 /* CHKeychain.swift */; };
 		BEE459C7248500D600A886D5 /* SesameWatchKitSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEF8F72B24C69E6800650CAD /* AWSAPIGatewayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF8F66024C69E6600650CAD /* AWSAPIGatewayModel.m */; };
 		BEF8F72C24C69E6800650CAD /* AWSAPIGatewayClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF8F66124C69E6600650CAD /* AWSAPIGatewayClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -440,6 +441,7 @@
 		64140F462F0A46EF00549C14 /* CHAPIClient+biz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHAPIClient+biz.swift"; sourceTree = "<group>"; };
 		64140F482F0B507700549C14 /* CHAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAPIClient.swift; sourceTree = "<group>"; };
 		644E3DC52BC2A4D200385BE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		645FDE623008AAA000093E24 /* CHKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHKeychain.swift; sourceTree = "<group>"; };
 		B1429442231F8F98006AA64C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		BEE459C3248500D500A886D5 /* SesameWatchKitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SesameWatchKitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE459C5248500D600A886D5 /* SesameWatchKitSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SesameWatchKitSDK.h; sourceTree = "<group>"; };
@@ -1049,6 +1051,7 @@
 				3B8D5DA52E2D176D00FE456E /* AES.swift */,
 				3B8D5DA62E2D176D00FE456E /* CHConfiguration.swift */,
 				3B8D5DA72E2D176D00FE456E /* CHExtensionListener.swift */,
+				645FDE623008AAA000093E24 /* CHKeychain.swift */,
 				3B8D5DA82E2D176D00FE456E /* CHMulticastDelegate.swift */,
 				3B8D5DA92E2D176D00FE456E /* Data+.swift */,
 				3B8D5DAA2E2D176D00FE456E /* ECC.swift */,
@@ -1745,6 +1748,7 @@
 				3B8D5E1D2E2D176D00FE456E /* CHBikeLockDevice+Register.swift in Sources */,
 				3B8D5E1E2E2D176D00FE456E /* CHBikeLockDevice.swift in Sources */,
 				3B8D5E202E2D176D00FE456E /* CHRemoteBaseTriggerSettings.swift in Sources */,
+				645FDE633008AAA000093E24 /* CHKeychain.swift in Sources */,
 				3B8D5E212E2D176D00FE456E /* CHBikeLockDevice+Login.swift in Sources */,
 				3BA7D8CE2F7FD55B00024C2F /* CHSesameBiometricDeviceImpl+Settings.swift in Sources */,
 				3B8D5E222E2D176D00FE456E /* CHAPICallObject.swift in Sources */,

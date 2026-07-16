@@ -393,16 +393,16 @@ class SesameDeviceListViewController: CHBaseViewController {
             queryDevicesHandler()
             return
         }
-        let keychain = (ins: AWSUICKeyChainStore.instance(), key: "guestUploadDevice")
-        if !keychain.ins.boolValue(forKey: keychain.key) {
+        let guestUploadKey = "guestUploadDeviceKey"
+        if !CHKeychain.boolValue(forKey: guestUploadKey) {
             getKeysFromCache { devices in
                 if devices.count < 1 {
-                    keychain.ins.setBool(true, forKey: keychain.key)
+                    CHKeychain.setBool(true, forKey: guestUploadKey)
                     return
                 }
                 CHAPIClient.shared.postCHUserKeys(devices.map { CHUserKey.fromCHDevice($0) }.toData()) { result in
                     if case .success(_) = result {
-                        keychain.ins.setBool(true, forKey: keychain.key)
+                        CHKeychain.setBool(true, forKey: guestUploadKey)
                     }
                 }
             }

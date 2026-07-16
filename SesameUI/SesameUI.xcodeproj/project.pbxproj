@@ -89,7 +89,6 @@
 		647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647A276F2B2C42220013308C /* Bot2ScriptActionCell.xib */; };
 		647C9F482F0C8FED00F9283C /* CHAWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C9F472F0C8FED00F9283C /* CHAWSMobileClient.swift */; };
 		648461BC2BC7B6370000E9A7 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648461BB2BC7B6370000E9A7 /* UITableView+.swift */; };
-		649315312EF24557002D0EC0 /* AWSUICKeyChainStore+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649315302EF2454C002D0EC0 /* AWSUICKeyChainStore+.swift */; };
 		649315F42EFBEB9D002D0EC0 /* RemoteBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649315F22EFBEB9D002D0EC0 /* RemoteBean.swift */; };
 		649465CA2E84E7920072F7F4 /* CHWebview+RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */; };
 		649AE8312B677CEF00FBF095 /* ChangeIRControlDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */; };
@@ -494,7 +493,6 @@
 		647C9F472F0C8FED00F9283C /* CHAWSMobileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAWSMobileClient.swift; sourceTree = "<group>"; };
 		647DF0B42CB6664200A02F47 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		648461BB2BC7B6370000E9A7 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
-		649315302EF2454C002D0EC0 /* AWSUICKeyChainStore+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AWSUICKeyChainStore+.swift"; sourceTree = "<group>"; };
 		649315F22EFBEB9D002D0EC0 /* RemoteBean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBean.swift; sourceTree = "<group>"; };
 		649465C92E84E78C0072F7F4 /* CHWebview+RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+RefreshControl.swift"; sourceTree = "<group>"; };
 		649AE8302B677CEF00FBF095 /* ChangeIRControlDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIRControlDialog.swift; sourceTree = "<group>"; };
@@ -788,7 +786,6 @@
 			isa = PBXGroup;
 			children = (
 				3B1545BC2FFCE8A4006F89CB /* AppPromotionManager.swift */,
-				649315302EF2454C002D0EC0 /* AWSUICKeyChainStore+.swift */,
 				3BA495502F6AB2AE002C3C3A /* BotScriptStore.swift */,
 				647C9F472F0C8FED00F9283C /* CHAWSMobileClient.swift */,
 				645211E42B27F2F00091DDE3 /* CHRouteCoordinator.swift */,
@@ -2119,7 +2116,6 @@
 				BE9C6C9724B3378B00C7318B /* Sesame2Store.swift in Sources */,
 				64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */,
 				64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */,
-				649315312EF24557002D0EC0 /* AWSUICKeyChainStore+.swift in Sources */,
 				BE5E268325623D0B00F8B0DD /* CHDeviceShared+.swift in Sources */,
 				4102FAF323C2E17A00ECA735 /* ScanAnimationView.swift in Sources */,
 				E8A6F1D62A61361800AED9AD /* OpenSensorResetHintVC.swift in Sources */,
