@@ -430,6 +430,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                     left.compare(right)
                 }
                 completion?(self.allDevices)
+                self.refreshBatteryFromShadowIfNeeded(for: self.allDevices)
                 // 如果有搜索词，重新过滤
                 if !self.lastSearchQuery.isEmpty {
                     self.performSearch(query: self.lastSearchQuery)
@@ -448,6 +449,16 @@ class SesameDeviceListViewController: CHBaseViewController {
                     self.isInitialLoading = false
                 }
             }
+        }
+    }
+
+    private func refreshBatteryFromShadowIfNeeded(for devices: [CHDevice]) {
+        for device in devices {
+            guard device.isLockDevice,
+                  let lock = device as? CHSesameLock else {
+                continue
+            }
+            lock.refreshBatteryFromShadow { _ in }
         }
     }
     
