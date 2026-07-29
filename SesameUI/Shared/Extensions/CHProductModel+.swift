@@ -7,10 +7,8 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
+#if os(watchOS)
 import WatchKit
 #endif
 

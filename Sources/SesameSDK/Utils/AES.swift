@@ -41,6 +41,9 @@ class AES {
         }
 
         static func decrypt(key: [UInt8], nonce: [UInt8], aad: [UInt8], tagLength: Int, ciphertext: [UInt8]) throws -> [UInt8] {
+            guard tagLength >= 0, ciphertext.count >= tagLength else {
+                throw AESError.DecryptError
+            }
 
             let keyRef = UnsafePointer<UInt8>(key)
             let nonceRef = UnsafePointer<UInt8>(nonce)

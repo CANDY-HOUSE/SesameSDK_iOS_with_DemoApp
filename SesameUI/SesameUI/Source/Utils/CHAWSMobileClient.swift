@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import AWSMobileClientXCF
 import SesameSDK
 
 /// 用戶登出登入變化事件介面
@@ -33,17 +32,13 @@ extension CHAWSMobileClient {
     
     // MARK: - SignUp
     func signUpWithEmail(_ email: String, _ result: @escaping ((SignUpResult?, Error?) -> Void)) {
-        AWSMobileClient.default().signUp(username: email,
-                                         password: "dummypwk",
-                                         userAttributes: ["email": email]) { signUpResult, signUpError in
-            result(signUpResult, signUpError)
-        }
+        CHAWSManager.signUp(username: email, password: "dummypwk", attributes: [Constant.email: email], completion: result)
     }
     
     // MARK: - SignIn
     func signInWithEmail(_ email: String) {
-        AWSMobileClient.default().signIn(username: email, password: "dummypwk") { signInResult, error in
-            if let signInState = signInResult?.signInState {
+        CHAWSManager.signIn(username: email, password: "dummypwk") { signInState, error in
+            if let signInState {
                 self.delegate?.signInStatusDidChanged(signInState)
             }
             if let error = error {
@@ -54,16 +49,16 @@ extension CHAWSMobileClient {
     
     // MARK: - Verify
     func verifySMS(_ sms: String, ofEmail email: String) {
-        AWSMobileClient.default().confirmSignIn(challengeResponse: sms) { signInResult, error in
-            if let signInState = signInResult?.signInState {
+        CHAWSManager.confirmSignIn(challengeResponse: sms) { signInState, error in
+            if let signInState {
                 self.delegate?.signInStatusDidChanged(signInState)
             }
             if let error = error {
-                if case AWSMobileClientError.invalidState(message: "Please call `signIn` before calling this method.") = error {
+                if let authError = error as? CHAuthError, case .invalidState = authError {
                     self.signInWithEmail(email)
-                    let error = AWSMobileClientError.notAuthorized(message: "Incorrect username or password.")
+                    let error = CHAuthError.notAuthorized("Incorrect username or password.")
                     self.delegate?.signInCompleteHandler(.failure(error))
-                } else if case AWSMobileClientError.notAuthorized(message: "Incorrect username or password.") = error {
+                } else if let authError = error as? CHAuthError, case .notAuthorized = authError {
                     self.signInWithEmail(email)
                     self.delegate?.signInCompleteHandler(.failure(error))
                 } else {
@@ -78,19 +73,20 @@ extension CHAWSMobileClient {
     
     // MARK: - SignOut
     func signOut(_ completeHandler: (()->Void)? = nil) {
-        AWSMobileClient.default().signOut()
         subId = nil
         name = nil
         email = nil
-        completeHandler?()
+        CHAWSManager.signOut(completion: completeHandler)
     }
 
     func getSubId(_ handler: @escaping (String?)->Void) {
         if let subId = subId {
             handler(subId)
         } else {
-            self.subId = AWSMobileClient.default().userSub
-            handler(self.subId)
+            CHAWSManager.userSub { subId in
+                self.subId = subId
+                handler(subId)
+            }
         }
     }
     
@@ -110,7 +106,7 @@ extension CHAWSMobileClient {
     }
 
     public func updateName(_ nickname: String, _ result: @escaping (Result<String, Error>) -> Void) {
-        AWSMobileClient.default().updateUserAttributes(attributeMap: [Constant.name: nickname]) { deliverDetails, error in
+        CHAWSManager.updateUserAttribute(key: Constant.name, value: nickname) { error in
             if let error = error {
                 result(.failure(error))
             } else {
@@ -128,16 +124,17 @@ extension CHAWSMobileClient {
             result(.success(nickName))
             return nickName
         }
-        AWSMobileClient.default().getUserAttributes { attributes, error in
-            if let error = error {
+        CHAWSManager.fetchUserAttributes { attributesResult in
+            switch attributesResult {
+            case .failure(let error):
                 result(.failure(error))
-            } else {
+            case .success(let attributes):
                 // MARK: 更新缓存的昵称
-                self.name = attributes?[Constant.name]
+                self.name = attributes[Constant.name]
                 
-                UserDefaults.standard.setValue(attributes?[Constant.name], forKey: Constant.name)
-                UserDefaults.standard.setValue(attributes?[Constant.email], forKey: Constant.email)
-                result(.success(attributes?[Constant.name]))
+                UserDefaults.standard.setValue(attributes[Constant.name], forKey: Constant.name)
+                UserDefaults.standard.setValue(attributes[Constant.email], forKey: Constant.email)
+                result(.success(attributes[Constant.name]))
             }
         }
         return UserDefaults.standard.string(forKey: Constant.name) ?? "User"
@@ -149,15 +146,16 @@ extension CHAWSMobileClient {
             result(.success(email))
             return email
         }
-        AWSMobileClient.default().getUserAttributes { attributes, error in
-            if let error = error {
+        CHAWSManager.fetchUserAttributes { attributesResult in
+            switch attributesResult {
+            case .failure(let error):
                 result(.failure(error))
-            } else {
-                let emailFromAtt = attributes?[Constant.email]
-                UserDefaults.standard.setValue(attributes?[Constant.name], forKey: Constant.name)
+            case .success(let attributes):
+                let emailFromAtt = attributes[Constant.email]
+                UserDefaults.standard.setValue(attributes[Constant.name], forKey: Constant.name)
                 UserDefaults.standard.setValue(emailFromAtt, forKey: Constant.email)
                 self.email = emailFromAtt
-                result(.success(attributes?[Constant.email]))
+                result(.success(attributes[Constant.email]))
             }
         }
         return UserDefaults.standard.string(forKey: Constant.email) ?? ""

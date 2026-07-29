@@ -7,11 +7,10 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
+#if os(iOS)
 import UIKit.UIColor
 #else
-import SesameWatchKitSDK
 import WatchKit
 #endif
 

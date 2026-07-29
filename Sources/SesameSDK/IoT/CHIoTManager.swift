@@ -6,46 +6,138 @@
 //  Copyright © 2020 CandyHouse. All rights reserved.
 //
 
-#if os(iOS)
-import AWSIoT
-import AWSCognitoIdentityProvider
 import Foundation
 
-private let AWSManagerKey = "IoTDataManager"
-extension AWSIoTMQTTStatus {
-    func description() -> String {
+#if os(iOS)
+import AWSCognitoIdentity
+import AWSIoTDataPlane
+import AWSSDKIdentity
+import AwsIotDeviceSdkSwift
+
+private enum CHIoTCredentialsError: LocalizedError {
+    case missingIdentityId
+    case missingCredentials
+
+    var errorDescription: String? {
         switch self {
-        case .unknown:
-            return "unknown"
-        case .connecting:
-            return "connecting"
-        case .connected:
-            return "connected"
-        case .disconnected:
-            return "disconnected"
-        case .connectionRefused:
-            return "connectionRefused"
-        case .connectionError:
-            return "connectionError"
-        case .protocolError:
-            return "protocolError"
-        @unknown default:
-            return "default"
+        case .missingIdentityId:
+            return "The IoT identity pool did not return an identity ID."
+        case .missingCredentials:
+            return "The IoT identity pool did not return complete AWS credentials."
         }
     }
 }
 
-extension AWSServiceConfiguration {
-    static var chIoTConfiguration: AWSServiceConfiguration = {
-        let cognitoCredentialsProvider = AWSCognitoCredentialsProvider(regionType: CHConfiguration.shared.region(),
-                                                                       identityPoolId: CHConfiguration.shared.clientId)
-        let anonymous = AWSAnonymousCredentialsProvider()
-        let endpoint = AWSEndpoint(urlString: AWSConfig.iotEndpoint)
-        let serviceConfiguration = AWSServiceConfiguration(region: .APNortheast1,
-                                                           endpoint: endpoint,
-                                                           credentialsProvider: cognitoCredentialsProvider)!
-        return serviceConfiguration
-    }()
+private actor CHIoTCredentialsProvider: CredentialsProviding {
+    private let identityPoolId = CHConfiguration.shared.clientId
+    private let identityClient: CognitoIdentityClient
+    private var cachedIdentityId: String?
+    private var cachedCredentials: Credentials?
+    private var dataPlaneClient: IoTDataPlaneClient?
+
+    private var identityIdKey: String {
+        "co.candyhouse.sesame.iot.identity.\(identityPoolId)"
+    }
+
+    init() throws {
+        identityClient = try CognitoIdentityClient(region: CHConfiguration.shared.regionName)
+    }
+
+    func getCredentials() async throws -> Credentials {
+        if let cachedCredentials,
+           let expiration = cachedCredentials.getExpiration(),
+           expiration.timeIntervalSinceNow > 300 {
+            return cachedCredentials
+        }
+
+        let identityId = try await getIdentityId()
+        do {
+            return try await fetchCredentials(identityId: identityId)
+        } catch is NotAuthorizedException {
+            cachedIdentityId = nil
+            CHKeychain.remove(forKey: identityIdKey)
+            return try await fetchCredentials(identityId: try await getIdentityId())
+        }
+    }
+
+    func getThingShadow(thingName: String, shadowName: String) async throws -> Data {
+        let client = try await getDataPlaneClient()
+        let output = try await client.getThingShadow(
+            input: GetThingShadowInput(shadowName: shadowName, thingName: thingName)
+        )
+        guard let payload = output.payload else {
+            throw NSError.noDataError
+        }
+        return payload
+    }
+
+    private func getIdentityId() async throws -> String {
+        if let cachedIdentityId {
+            return cachedIdentityId
+        }
+        if let storedIdentityId = CHKeychain.string(forKey: identityIdKey),
+           !storedIdentityId.isEmpty {
+            cachedIdentityId = storedIdentityId
+            return storedIdentityId
+        }
+
+        let response = try await identityClient.getId(
+            input: GetIdInput(identityPoolId: identityPoolId)
+        )
+        guard let identityId = response.identityId, !identityId.isEmpty else {
+            throw CHIoTCredentialsError.missingIdentityId
+        }
+        cachedIdentityId = identityId
+        CHKeychain.setString(identityId, forKey: identityIdKey)
+        return identityId
+    }
+
+    private func fetchCredentials(identityId: String) async throws -> Credentials {
+        let response = try await identityClient.getCredentialsForIdentity(
+            input: GetCredentialsForIdentityInput(identityId: identityId)
+        )
+        guard let credentials = response.credentials,
+              let accessKey = credentials.accessKeyId,
+              let secretKey = credentials.secretKey else {
+            throw CHIoTCredentialsError.missingCredentials
+        }
+        let result = try Credentials(
+            accessKey: accessKey,
+            secret: secretKey,
+            sessionToken: credentials.sessionToken,
+            expiration: credentials.expiration
+        )
+        cachedCredentials = result
+        return result
+    }
+
+    private func getDataPlaneClient() async throws -> IoTDataPlaneClient {
+        if let dataPlaneClient {
+            return dataPlaneClient
+        }
+        let identityId = try await getIdentityId()
+        let resolver = try CognitoAWSCredentialIdentityResolver(
+            identityId: identityId,
+            identityPoolRegion: CHConfiguration.shared.regionName
+        )
+        let config = try await IoTDataPlaneClient.IoTDataPlaneClientConfig(
+            awsCredentialIdentityResolver: resolver,
+            region: CHConfiguration.shared.regionName,
+            signingRegion: CHConfiguration.shared.regionName,
+            endpoint: AWSConfig.iotEndpoint
+        )
+        let client = IoTDataPlaneClient(config: config)
+        dataPlaneClient = client
+        return client
+    }
+}
+
+private enum CHIoTConnectionStatus: String {
+    case unknown
+    case connecting
+    case connected
+    case disconnected
+    case connectionError
 }
 
 extension CHDevice {
@@ -60,43 +152,149 @@ extension CHDevice {
     }
 }
 
-final class CHIoTManager {
-    static let shared = CHIoTManager()
-    lazy var awsIoTDataManager: AWSIoTDataManager = {  return AWSIoTDataManager(forKey: AWSManagerKey) }()
-    lazy var awsIoTData: AWSIoTData = { return AWSIoTData(forKey: AWSManagerKey) }()
-
-    var connectionStatus: AWSIoTMQTTStatus = .unknown
-    
-    private init() {
-//        L.d("[iot]CHIoTManager,init =>")
-        let mqttConfig = AWSIoTMQTTConfiguration(keepAliveTimeInterval: 60.0,
-                                                 baseReconnectTimeInterval: 1.0,
-                                                 minimumConnectionTimeInterval: 20.0,
-                                                 maximumReconnectTimeInterval: 128.0,
-                                                 runLoop: RunLoop.current,
-                                                 runLoopMode: RunLoop.Mode.default.rawValue,
-                                                 autoResubscribe: true,
-                                                 lastWillAndTestament: AWSIoTMQTTLastWillAndTestament())
-        AWSIoTDataManager.register(with: AWSServiceConfiguration.chIoTConfiguration,
-                                   with: mqttConfig,
-                                   forKey: AWSManagerKey)
-        AWSIoTData.register(with: AWSServiceConfiguration.chIoTConfiguration,
-                            forKey: AWSManagerKey)
-        let _ = NetworkReachabilityHelper.shared
+final class CHIoTManager: @unchecked Sendable {
+    private struct TopicHandler {
+        let subscriptionID: UUID
+        var callback: (Data) -> Void
     }
-    
+
+    static let shared = CHIoTManager()
+    private let lock = NSLock()
+    private let clientCreationLock = NSLock()
+    private let callbackQueue = DispatchQueue(label: "co.candyhouse.sesame.iot.callback")
+    private let credentialsProvider: CHIoTCredentialsProvider?
+    private var client: Mqtt5Client?
+    private var topicHandlers: [String: TopicHandler] = [:]
+    private var connectionStatus: CHIoTConnectionStatus = .unknown
+    private var clientStarted = false
+    private var networkAvailable = true
+    private var consecutiveWebSocketFailures = 0
+    private var clientRecoveryRequested = false
+    private var lastClientRecoveryAt: Date?
+    private let clientRecoveryCooldown: TimeInterval = 60
+    private let maximumSubscriptionAttempts = 3
+
+    private init() {
+        credentialsProvider = try? CHIoTCredentialsProvider()
+        IotDeviceSdk.initialize()
+        let reachability = NetworkReachabilityHelper.shared
+        networkAvailable = reachability.currentState != .notReachable
+        reachability.addListener(self) { [weak self] status in
+            self?.networkStatusChanged(status)
+        }
+    }
+
     func reconnect() {
         L.d("[iot]CHIoTManager,reconnect =>")
-        self.awsIoTDataManager
-            .connectUsingWebSocket(withClientId: UUID().uuidString,
-                                   cleanSession: true,
-                                   statusCallback: self.statusCallback)
+        do {
+            let mqttClient = try mqttClient()
+            let shouldStart = lock.chIoTWithLock { () -> Bool in
+                guard networkAvailable, !clientStarted else { return false }
+                clientStarted = true
+                return true
+            }
+            guard shouldStart else { return }
+            enqueueStatus(.connecting)
+            try mqttClient.start()
+        } catch {
+            lock.chIoTWithLock { clientStarted = false }
+            enqueueStatus(.connectionError)
+            L.d("[iot]CHIoTManager,reconnect error =>", error)
+        }
     }
-    
-    func statusCallback(_ status: AWSIoTMQTTStatus) {
-//        L.d("[iot]CHIoTManager, MQTTStatus=>", status.description())
-        // Disconnected
-        if status != connectionStatus, connectionStatus == .connected {
+
+    private func networkStatusChanged(_ status: NetworkReachabilityStatus) {
+        callbackQueue.async { [weak self] in
+            guard let self else { return }
+            switch status {
+            case .notReachable:
+                let shouldStop = self.lock.chIoTWithLock { () -> Bool in
+                    guard self.networkAvailable else { return false }
+                    self.networkAvailable = false
+                    return true
+                }
+                guard shouldStop else { return }
+                L.d("[iot] network unavailable, stopping MQTT")
+                self.statusCallback(.disconnected)
+                do {
+                    try self.lock.chIoTWithLock { self.client }?.stop()
+                } catch {
+                    L.d("[iot] stop MQTT error =>", error)
+                }
+            case .reachable:
+                let shouldReconnect = self.lock.chIoTWithLock { () -> Bool in
+                    self.networkAvailable = true
+                    return !self.clientStarted
+                }
+                L.d("[iot] network available")
+                if shouldReconnect {
+                    self.reconnect()
+                }
+            case .unknown:
+                break
+            }
+        }
+    }
+
+    private func enqueueStatus(_ status: CHIoTConnectionStatus) {
+        callbackQueue.async { [weak self] in
+            self?.statusCallback(status)
+        }
+    }
+
+    private func handleConnectionFailure(code: Int) {
+        callbackQueue.async { [weak self] in
+            guard let self else { return }
+            self.statusCallback(.connectionError)
+
+            let clientToStop = self.lock.chIoTWithLock { () -> Mqtt5Client? in
+                guard code == 2065 else {
+                    self.consecutiveWebSocketFailures = 0
+                    return nil
+                }
+                self.consecutiveWebSocketFailures += 1
+                guard self.consecutiveWebSocketFailures >= 3,
+                      self.networkAvailable,
+                      self.clientStarted,
+                      !self.clientRecoveryRequested else {
+                    return nil
+                }
+                let now = Date()
+                if let lastRecoveryAt = self.lastClientRecoveryAt,
+                   now.timeIntervalSince(lastRecoveryAt) < self.clientRecoveryCooldown {
+                    return nil
+                }
+                self.consecutiveWebSocketFailures = 0
+                self.clientRecoveryRequested = true
+                self.lastClientRecoveryAt = now
+                return self.client
+            }
+            guard let clientToStop else { return }
+
+            L.d("[iot] rebuilding MQTT client after repeated WebSocket failures")
+            do {
+                try clientToStop.stop()
+            } catch {
+                self.lock.chIoTWithLock {
+                    self.clientRecoveryRequested = false
+                }
+                L.d("[iot] stop failed MQTT client error =>", error)
+            }
+        }
+    }
+
+    private func statusCallback(_ status: CHIoTConnectionStatus) {
+        let previousStatus = lock.chIoTWithLock { () -> CHIoTConnectionStatus in
+            let previousStatus = connectionStatus
+            connectionStatus = status
+            if status == .connected {
+                consecutiveWebSocketFailures = 0
+            }
+            return previousStatus
+        }
+        guard status != previousStatus else { return }
+        L.d("[iot] MQTT status =>", previousStatus.rawValue, status.rawValue)
+        if status != previousStatus, previousStatus == .connected {
             CHDeviceManager.shared.getCHDevices { getResult in
                 if case let .success(devices) = getResult {
                     for device in devices.data {
@@ -105,40 +303,30 @@ final class CHIoTManager {
                     }
                 }
             }
-            // Connected
-        } else if status != connectionStatus, status == .connected {
+        } else if status != previousStatus, status == .connected {
+            lock.chIoTWithLock { topicHandlers.removeAll() }
             CHDeviceManager.shared.getCHDevices { getResult in
                 if case let .success(devices) = getResult {
                     for device in devices.data {
-                        if let wifiModule2 = device as? CHWifiModule2 {
-                            self.unsubscribeWifiModule2Shadow(wifiModule2)
-                        } else {
-                            self.unsubscribeCHDeviceShadow(device)
-                        }
                         (device as? CHDeviceUtil)?.goIOT()
                     }
                 }
             }
         }
-        connectionStatus = status
     }
 
     // MARK: - Get wm2 shadow
     func getWifiModule2Shadow(_ wifiModule2: CHWifiModule2, onResponse: (CHResult<WifiModuleShadow>)? = nil) {
-        let request = AWSIoTDataGetThingShadowRequest()!
-        request.thingName = "wm2"
-        request.shadowName = "\(wifiModule2.deviceId.uuidString.split(separator: "-").last!)"
         let parserGet: WifiModuleShadow.Type? = wifiModule2.productModel == .hub3 ? nil : WifiModule2Shadow.self
-        if let parser = parserGet {
-            awsIoTData.getThingShadow(request) { response, error in
-                if let payload = response?.payload as? Data {
-                    let shadow = parser.fromData(payload)
-                    onResponse?(.success(.init(input: shadow)))
-                } else if let error = error {
-                    onResponse?(.failure(error))
-                } else {
-                    onResponse?(.failure(NSError.noDataError))
-                }
+        guard let parser = parserGet else { return }
+        let shadowName = String(wifiModule2.deviceId.uuidString.split(separator: "-").last!)
+        Task {
+            do {
+                let payload = try await getShadow(thingName: "wm2", shadowName: shadowName)
+                onResponse?(.success(.init(input: parser.fromData(payload))))
+            } catch {
+                L.d("[iot] get WM2 shadow error =>", error)
+                onResponse?(.failure(error))
             }
         }
     }
@@ -147,22 +335,77 @@ final class CHIoTManager {
     func subscribeWifiModule2Shadow(_ wifiModule2: CHWifiModule2,
                                     onResponse: @escaping (CHResult<WifiModuleShadow>)) {
         let shadowName = wifiModule2.deviceId.uuidString.split(separator: "-").last!
-        self.awsIoTDataManager
-            .subscribe(toTopic: "$aws/things/wm2/shadow/name/\(shadowName)/update/accepted",
-                       qoS: .messageDeliveryAttemptedAtMostOnce) { data in
-                let parser: WifiModuleShadow.Type = wifiModule2.productModel == .hub3 ? Hub3Shadow.self : WifiModule2Shadow.self
-                let shadow = parser.fromData(data)
-                onResponse(.success(.init(input: shadow)))
-            }
+        subscribeTopic("$aws/things/wm2/shadow/name/\(shadowName)/update/accepted") { data in
+            let parser: WifiModuleShadow.Type = wifiModule2.productModel == .hub3 ? Hub3Shadow.self : WifiModule2Shadow.self
+            onResponse(.success(.init(input: parser.fromData(data))))
+        }
         self.getWifiModule2Shadow(wifiModule2, onResponse: onResponse)
     }
-    
+
     func subscribeTopic(_ topic: String, callback: @escaping (Data) -> Void) {
-        self.awsIoTDataManager.subscribe(toTopic: topic, qoS: .messageDeliveryAttemptedAtMostOnce, messageCallback: callback)
+        let subscriptionID = UUID()
+        let shouldSubscribe = lock.chIoTWithLock { () -> Bool in
+            if var handler = topicHandlers[topic] {
+                handler.callback = callback
+                topicHandlers[topic] = handler
+                return false
+            }
+            topicHandlers[topic] = TopicHandler(
+                subscriptionID: subscriptionID,
+                callback: callback
+            )
+            return true
+        }
+        guard shouldSubscribe else { return }
+        Task {
+            await subscribe(
+                topic: topic,
+                subscriptionID: subscriptionID
+            )
+        }
     }
-    
+
+    private func subscribe(topic: String, subscriptionID: UUID) async {
+        for attempt in 1...maximumSubscriptionAttempts {
+            let isCurrentSubscription = lock.chIoTWithLock {
+                topicHandlers[topic]?.subscriptionID == subscriptionID
+            }
+            guard isCurrentSubscription else { return }
+
+            do {
+                let mqttClient = try mqttClient()
+                let suback = try await mqttClient.subscribe(
+                    subscribePacket: SubscribePacket(topicFilter: topic, qos: .atMostOnce)
+                )
+                if suback.reasonCodes.contains(where: { $0.rawValue >= 128 }) {
+                    removeTopicHandler(topic, subscriptionID: subscriptionID)
+                    L.d("[iot] subscribe rejected =>", topic, suback.reasonCodes, suback.reasonString ?? "")
+                }
+                return
+            } catch {
+                guard attempt < maximumSubscriptionAttempts else {
+                    removeTopicHandler(topic, subscriptionID: subscriptionID)
+                    L.d("[iot]subscribe error =>", topic, error)
+                    return
+                }
+                L.d("[iot]subscribe retry =>", topic, attempt, error)
+                try? await Task.sleep(nanoseconds: UInt64(attempt) * 1_000_000_000)
+            }
+        }
+    }
+
     func unsubscribeTopic(_ topic: String) {
-        self.awsIoTDataManager.unsubscribeTopic(topic)
+        lock.chIoTWithLock { topicHandlers.removeValue(forKey: topic) }
+        Task {
+            do {
+                let mqttClient = try mqttClient()
+                _ = try await mqttClient.unsubscribe(
+                    unsubscribePacket: UnsubscribePacket(topicFilter: topic)
+                )
+            } catch {
+                L.d("[iot]unsubscribe error =>", topic, error)
+            }
+        }
     }
 
     // MARK: - Unsubscribe WM2
@@ -171,37 +414,32 @@ final class CHIoTManager {
             return
         }
         let shadowName = uuid.split(separator: "-").last!
-        awsIoTDataManager
-            .unsubscribeTopic("$aws/things/wm2/shadow/name/\(shadowName)/update/accepted")
+        unsubscribeTopic("$aws/things/wm2/shadow/name/\(shadowName)/update/accepted")
     }
-    
+
     // MARK: - Subscribe Sesame2
     func subscribeCHDeviceShadow(_ device: CHDevice,
                                  onResponse: @escaping (CHResult<CHDeviceShadow>)) {
         func subscirbe() {
             L.d("[iot]subscirbeCHDeviceShadow =>",device.deviceId.uuidString)
-            self.awsIoTDataManager
-                .subscribe(toTopic: "$aws/things/sesame2/shadow/name/\(device.deviceId.uuidString)/update/documents",
-                           qoS: .messageDeliveryAttemptedAtMostOnce) { data in
+            self.subscribeTopic("$aws/things/sesame2/shadow/name/\(device.deviceId.uuidString)/update/documents") { data in
 //                    L.d("[iot]subscirbe data =>", data.toHexLog())
-                    let shadow = CHDeviceShadow.fromData(data)
-//                    L.d("[iot]subscirbe 影子 =>",shadow)
-                    onResponse(.success(.init(input: shadow)))
-                }
-
-            let request = AWSIoTDataGetThingShadowRequest()!
-            request.thingName = "sesame2"
-            request.shadowName = device.deviceId.uuidString
-            self.awsIoTData.getThingShadow(request) { response, error in
-                guard let data = response?.payload as? Data else {
-                    onResponse(.failure(NSError.noDataError))
-                    return
-                }
                 let shadow = CHDeviceShadow.fromData(data)
+//                    L.d("[iot]subscirbe 影子 =>",shadow)
                 onResponse(.success(.init(input: shadow)))
             }
+            Task {
+                do {
+                    let data = try await self.getShadow(thingName: "sesame2",
+                                                        shadowName: device.deviceId.uuidString)
+                    onResponse(.success(.init(input: CHDeviceShadow.fromData(data))))
+                } catch {
+                    L.d("[iot] get device shadow error =>", error)
+                    onResponse(.failure(error))
+                }
+            }
         }
-        if awsIoTDataManager.getConnectionStatus() == .disconnected {
+        if lock.chIoTWithLock({ connectionStatus }) != .connected {
             reconnect()
             return
         }
@@ -213,16 +451,116 @@ final class CHIoTManager {
         guard let uuid = device.deviceId?.uuidString else {
             return
         }
-        awsIoTDataManager
-            .unsubscribeTopic("$aws/things/sesame2/shadow/name/\(uuid)/update/documents")
+        unsubscribeTopic("$aws/things/sesame2/shadow/name/\(uuid)/update/documents")
+    }
+
+    private func mqttClient() throws -> Mqtt5Client {
+        clientCreationLock.lock()
+        defer { clientCreationLock.unlock() }
+        if let client = lock.chIoTWithLock({ client }) {
+            return client
+        }
+
+        let endpoint = URL(string: AWSConfig.iotEndpoint)?.host ?? AWSConfig.iotEndpoint
+        guard let credentialsProvider else {
+            throw CHIoTCredentialsError.missingCredentials
+        }
+        let mqttCredentialsProvider = try CredentialsProvider(provider: credentialsProvider)
+        let builder = try Mqtt5ClientBuilder.websocketsWithDefaultAwsSigning(
+            endpoint: endpoint,
+            region: CHConfiguration.shared.regionName,
+            credentialsProvider: mqttCredentialsProvider
+        )
+        builder.withClientId(UUID().uuidString)
+        builder.withClientSessionBehaviorType(.clean)
+        builder.withKeepAliveInterval(60)
+        builder.withMinReconnectDelay(1)
+        builder.withMaxReconnectDelay(128)
+        builder.withMinConnectedTimeToResetReconnectDelay(20)
+        builder.withCallbacks(
+            onPublishReceived: { [weak self] data in
+                self?.callbackQueue.async { [weak self] in
+                    self?.handlePublish(topic: data.publishPacket.topic,
+                                        payload: data.publishPacket.payload)
+                }
+            },
+            onLifecycleEventAttemptingConnect: { [weak self] _ in
+                self?.enqueueStatus(.connecting)
+            },
+            onLifecycleEventConnectionSuccess: { [weak self] data in
+                L.d("[iot] MQTT connected, rejoined session =>", data.negotiatedSettings.rejoinedSession)
+                self?.enqueueStatus(.connected)
+            },
+            onLifecycleEventConnectionFailure: { [weak self] data in
+                L.d("[iot] MQTT connection failure =>", data.crtError.code, data.crtError.message)
+                self?.handleConnectionFailure(code: Int(data.crtError.code))
+            },
+            onLifecycleEventDisconnection: { [weak self] data in
+                L.d("[iot] MQTT disconnected =>", data.crtError.code, data.crtError.message)
+                self?.enqueueStatus(.disconnected)
+            },
+            onLifecycleEventStopped: { [weak self] _ in
+                self?.callbackQueue.async { [weak self] in
+                    guard let self else { return }
+                    let shouldRestart = self.lock.chIoTWithLock { () -> Bool in
+                        self.clientStarted = false
+                        self.client = nil
+                        self.consecutiveWebSocketFailures = 0
+                        self.clientRecoveryRequested = false
+                        return self.networkAvailable
+                    }
+                    self.statusCallback(.disconnected)
+                    if shouldRestart {
+                        self.reconnect()
+                    }
+                }
+            }
+        )
+
+        let newClient = try builder.build()
+        lock.chIoTWithLock {
+            client = newClient
+        }
+        return newClient
+    }
+
+    private func getShadow(thingName: String, shadowName: String) async throws -> Data {
+        guard let credentialsProvider else {
+            throw CHIoTCredentialsError.missingCredentials
+        }
+        return try await credentialsProvider.getThingShadow(
+            thingName: thingName,
+            shadowName: shadowName
+        )
+    }
+
+    private func handlePublish(topic: String, payload: Data?) {
+        guard let payload,
+              let callback = lock.chIoTWithLock({ topicHandlers[topic]?.callback }) else {
+            return
+        }
+        callback(payload)
+    }
+
+    private func removeTopicHandler(_ topic: String, subscriptionID: UUID) {
+        lock.chIoTWithLock {
+            guard topicHandlers[topic]?.subscriptionID == subscriptionID else { return }
+            topicHandlers.removeValue(forKey: topic)
+        }
     }
 }///end
+
+private extension NSLock {
+    func chIoTWithLock<T>(_ body: () throws -> T) rethrows -> T {
+        lock()
+        defer { unlock() }
+        return try body()
+    }
+}
 
 #endif
 
 #if os(watchOS)
-//import Foundation
-
 final class CHIoTManager {
     static let shared = CHIoTManager()
     func getCHDeviceShadow(_ sesameLock: CHSesameLock, onResponse: (CHResult<CHDeviceShadow>)? = nil) {

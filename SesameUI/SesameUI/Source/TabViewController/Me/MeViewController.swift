@@ -8,7 +8,6 @@
 
 import UIKit
 import SesameSDK
-import AWSMobileClientXCF
 import UserNotifications
 
 extension UIApplication {
@@ -71,7 +70,7 @@ class MeViewController: CHBaseViewController {
         scrollView.addSubview(contentStackView)
         UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
         arrangeSubview()
-        AWSMobileClient.default().addUserStateListener(self) { state, _ in
+        CHAWSManager.addUserStateListener(self) { state in
             executeOnMainThread { [self] in
                 userState = state
                 userStateView.text = userState.rawValue
@@ -79,7 +78,7 @@ class MeViewController: CHBaseViewController {
                 delAccountView?.isHidden = userState != .signedIn
             }
         }
-        userState = AWSMobileClient.default().currentUserState
+        userState = CHAWSManager.currentUserState
         userStateView.text = userState.rawValue
         logOutView?.isHidden = userState != .signedIn
         delAccountView?.isHidden = userState != .signedIn
@@ -96,7 +95,7 @@ class MeViewController: CHBaseViewController {
         // MARK: - User state
         contentStackView.addArrangedSubview(userStateView)
         userStateView.autoLayoutHeight(30)
-        userStateView.text = AWSMobileClient.default().currentUserState.rawValue
+        userStateView.text = CHAWSManager.currentUserState.rawValue
         userStateView.sizeToFit()
         // MARK: - Version Tag
         contentStackView.addArrangedSubview(versionLabel)

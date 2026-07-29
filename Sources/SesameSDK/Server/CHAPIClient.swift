@@ -6,11 +6,7 @@
 //  Copyright © 2019 CandyHouse. All rights reserved.
 //
 
-#if os(iOS)
-import AWSCore
-import AWSAPIGateway
-import AWSIoT
-#endif
+import Amplify
 import Foundation
 
 #if DEBUG
@@ -22,11 +18,14 @@ let awsApiGatewayBaseUrl = "https://app.candyhouse.co/prod"
 enum CHAppIdentify {
     private static let keyTag = "co.candyhouse.sesame2.AppIdentifyID"
     static let current: String = {
+        let id: String
         if let existing = CHKeychain.string(forKey: keyTag), !existing.isEmpty {
-            return existing
+            id = existing
+        } else {
+            id = generate()
+            CHKeychain.setString(id, forKey: keyTag)
         }
-        let id = generate()
-        CHKeychain.setString(id, forKey: keyTag)
+        L.d("[AppIdentifyID] =>", id)
         return id
     }()
 
@@ -37,60 +36,16 @@ enum CHAppIdentify {
     }
 }
 
-class CustomHeaderInterceptor: NSObject, AWSNetworkingRequestInterceptorProtocol {
-    func interceptRequest(_ request: NSMutableURLRequest!) -> AWSTask<AnyObject>! {
-        request.setValue(CHAppIdentify.current, forHTTPHeaderField: "AppIdentifyID")
-        return AWSTask(result: request)
-    }
-}
-
 public class CHAPIClient {
-    private static var _shared: CHAPIClient?
-    public let apiGatewayClient: AWSAPIGatewayClient = AWSAPIGatewayClient()
-    static let defaultCredentialsProvider = AWSCognitoCredentialsProvider(
-        regionType: CHConfiguration.shared.region(),
-        identityPoolId: CHConfiguration.shared.clientId
-    )
-
-    public static var shared: CHAPIClient {
-        if _shared == nil {
-            _shared = CHAPIClient(credentialsProvider: defaultCredentialsProvider)
-        }
-        return _shared!
-    }
+    public static let shared = CHAPIClient()
+    let apiKey: String
     
     @discardableResult
-    public static func initialize(credentialsProvider: AWSCredentialsProvider? = nil,
-                                  region: AWSRegionType = .APNortheast1,
-                                  apiKey: String? = nil,
-                                  baseUrl: String? = nil) -> CHAPIClient {
-        guard _shared == nil else {
-            return _shared!
-        }
-        _shared = CHAPIClient(
-            credentialsProvider: credentialsProvider ?? defaultCredentialsProvider,
-            region: region,
-            apiKey: apiKey,
-            baseUrl: baseUrl
-        )
-        return _shared!
+    public static func initialize() -> CHAPIClient {
+        shared
     }
     
-    public init(credentialsProvider: AWSCredentialsProvider,
-                region: AWSRegionType = .APNortheast1,
-                apiKey: String? = nil,
-                baseUrl: String? = nil) {
-        let serviceConfiguration = AWSServiceConfiguration(region: region, credentialsProvider: credentialsProvider)
-        let apiBaseUrl = baseUrl ?? awsApiGatewayBaseUrl
-        let signer = AWSSignatureV4Signer(
-              credentialsProvider: credentialsProvider,
-              endpoint: AWSEndpoint(region: region,
-                                    service: .APIGateway,
-                                    url: NSURL.fileURL(withPath: apiBaseUrl)))
-        
-        apiGatewayClient.configuration = serviceConfiguration!
-        apiGatewayClient.configuration.requestInterceptors = [CustomHeaderInterceptor(), AWSNetworkingRequestInterceptor(), signer] as? [AWSNetworkingRequestInterceptorProtocol]
-        apiGatewayClient.apiKey = apiKey ?? CHConfiguration.shared.apiKey
-        apiGatewayClient.configuration.baseURL = URL(string: apiBaseUrl)
+    public init(apiKey: String = CHConfiguration.shared.apiKey) {
+        self.apiKey = apiKey
     }
 }

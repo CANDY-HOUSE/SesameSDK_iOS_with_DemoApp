@@ -7,7 +7,6 @@
 //
 import UIKit
 import WebKit
-import AWSMobileClientXCF
 import SesameSDK
 
 typealias CHWebViewSchemeHandler = (CHWebView, URL, [String: String]) -> Void
@@ -161,15 +160,15 @@ class CHWebView: UIView {
                     }
                 }
             }
-            if AWSMobileClient.default().isSignedIn {
-                AWSMobileClient.default().getTokens { (tokens, error) in
-                    if let error = error {
-                        self.makeToast(error.localizedDescription)
-                        return
+            if CHAWSManager.isSignedIn {
+                CHAWSManager.idToken { result in
+                    switch result {
+                    case .success(let token): sendRequest(token)
+                    case .failure(let error):
+                        executeOnMainThread {
+                            self.makeToast(error.localizedDescription)
+                        }
                     }
-                    
-                    let jwtToken = tokens?.idToken?.tokenString
-                    sendRequest(jwtToken)
                 }
             } else {
                 sendRequest(nil)

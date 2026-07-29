@@ -7,11 +7,7 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
-#endif
 
 extension URL {
     

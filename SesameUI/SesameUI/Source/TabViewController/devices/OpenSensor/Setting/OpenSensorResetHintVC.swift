@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import AWSMobileClientXCF
 import SesameSDK
 import NordicDFU
 import CoreBluetooth
@@ -218,4 +217,3 @@ extension OpenSensorResetHintVC{
         return vc
     }
 }
-

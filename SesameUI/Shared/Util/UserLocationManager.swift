@@ -8,11 +8,7 @@
 
 import Foundation
 import CoreLocation
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
-#endif
 
 class UserLocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = UserLocationManager()

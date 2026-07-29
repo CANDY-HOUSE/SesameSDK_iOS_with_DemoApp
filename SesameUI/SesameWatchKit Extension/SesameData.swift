@@ -8,7 +8,7 @@
 
 import Foundation
 import Combine
-import SesameWatchKitSDK
+import SesameSDK
 
 final class SesameData: ObservableObject {
     static let shared = SesameData()

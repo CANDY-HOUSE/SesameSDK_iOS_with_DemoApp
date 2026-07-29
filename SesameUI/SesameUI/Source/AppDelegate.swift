@@ -8,10 +8,10 @@
 
 import UserNotifications
 import SesameSDK
-import AWSCognitoIdentityProvider
 import WatchConnectivity
 import CoreLocation
 import SwiftUI
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.setValue(true, forKey: "refreshDevice")
+        do {
+            try CHAWSManager.configure()
+        } catch {
+            L.d("Amplify configure failed", error.localizedDescription)
+        }
         // 啟動通知
         let center = UNUserNotificationCenter.current()
         center.delegate = self

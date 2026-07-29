@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AWSMobileClientXCF
+import SesameSDK
 
 extension FriendViewController {
     static func instance() -> FriendViewController {
@@ -44,19 +44,19 @@ class FriendViewController: CHBaseViewController {
     }
     
     func monitorAWSMobileClientUserState() {
-        let statusChangeHandler: (_ state: AWSMobileClientXCF.UserState) -> Void = { [weak self] state in
+        let statusChangeHandler: (_ state: UserState) -> Void = { [weak self] state in
             if (state == .signedIn && self?.userState == .signedOut) ||
                (state == .signedOut && self?.userState == .signedIn) {
                 self?.webView.refresh()
             }
             self?.userState = state
         }
-        AWSMobileClient.default().addUserStateListener(self) { state, dic in
+        CHAWSManager.addUserStateListener(self) { state in
             executeOnMainThread {
                 statusChangeHandler(state)
             }
         }
-        userState = AWSMobileClient.default().currentUserState
+        userState = CHAWSManager.currentUserState
     }
     
     private func setupWebView() {

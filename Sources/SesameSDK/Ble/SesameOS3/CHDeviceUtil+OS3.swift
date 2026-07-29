@@ -30,6 +30,11 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
     /// - Parameter res: response
     func handleLoginReceived(_ res: SesameOS3CmdResponsePayload) {
         guard let _ = self as? CHSesame5 else { return }
+        guard res.cmdResultCode == .success,
+              res.data.count >= MemoryLayout<Sesame5Time>.size else {
+            L.d("[os3][login] skip time sync", res.cmdResultCode.plainName, res.data.count)
+            return
+        }
         let  time = Sesame5Time.fromData(res.data).time
         let sesameTime = Date(timeIntervalSince1970: TimeInterval(time))
         let timeErrorInterval = sesameTime.timeIntervalSince1970 - Date().timeIntervalSince1970

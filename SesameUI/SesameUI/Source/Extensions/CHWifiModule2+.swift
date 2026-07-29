@@ -7,12 +7,11 @@
 //
 
 import Foundation
+import SesameSDK
 #if os(iOS)
 import UIKit
-import SesameSDK
 #elseif os(watchOS)
 import WatchKit
-import SesameWatchKitSDK
 #endif
 
 extension CHWifiModule2 {

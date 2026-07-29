@@ -8,7 +8,7 @@
 
 import Foundation
 import SesameSDK
-import AWSMobileClientXCF
+import UIKit
 
 protocol DeviceControllerHolder: AnyObject, ShareAlertConfigurator {
     

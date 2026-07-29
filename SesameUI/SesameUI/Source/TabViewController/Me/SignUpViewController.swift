@@ -8,7 +8,6 @@
 
 import UIKit
 import SesameSDK
-import AWSMobileClientXCF
 
 protocol TouchViewDelegate: AnyObject {
     func touched()
@@ -121,7 +120,7 @@ class SignUpViewController: CHBaseViewController, TouchViewDelegate {
                     self.navigateToSignIn()
                     ViewHelper.hideLoadingView(view: self.view)
                 }
-            } else if case .usernameExists(_) = signUpError as? AWSMobileClientError {
+            } else if let authError = signUpError as? CHAuthError, case .usernameExists = authError {
                 executeOnMainThread {
                     self.navigateToSignIn()
                     ViewHelper.hideLoadingView(view: self.view)
@@ -134,7 +133,7 @@ class SignUpViewController: CHBaseViewController, TouchViewDelegate {
             } else {
                 executeOnMainThread {
                     ViewHelper.hideLoadingView(view: self.view)
-                    let errorMessage = (signUpError as? AWSMobileClientError)?.errorDescription()
+                    let errorMessage = signUpError?.localizedDescription
                     self.view.makeToast(errorMessage ?? (signUpError! as NSError).errorDescription())
                 }
             }

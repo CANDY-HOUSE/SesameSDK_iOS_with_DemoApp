@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CustomInputDialog: View {
     var nameLabel: String = "co.candyhouse.sesame2.ssm_name".localized

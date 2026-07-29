@@ -1,17 +1,20 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
     name: "SesameSDK",
     platforms: [
-        .iOS(.v12)
+        .iOS(.v16),
+        .watchOS(.v9)
     ],
     products: [
         .library(name: "SesameSDK", targets: ["SesameSDK"]),
         .library(name: "AESc", targets: ["AESc"])
     ],
     dependencies: [
-        .package(url: "https://github.com/aws-amplify/aws-sdk-ios-spm", .upToNextMajor(from: "2.0.0"))
+        .package(url: "https://github.com/aws-amplify/amplify-swift", exact: "2.58.3"),
+        .package(url: "https://github.com/awslabs/aws-sdk-swift", exact: "1.6.71"),
+        .package(url: "https://github.com/aws/aws-iot-device-sdk-swift", exact: "0.6.0")
     ],
     targets: [
         .target(
@@ -23,9 +26,14 @@ let package = Package(
             name: "SesameSDK",
             dependencies: [
                 "AESc",
-                .product(name: "AWSCore", package: "aws-sdk-ios-spm"),
-                .product(name: "AWSAPIGateway", package: "aws-sdk-ios-spm"),
-                .product(name: "AWSIoT", package: "aws-sdk-ios-spm")
+                .product(name: "Amplify", package: "amplify-swift"),
+                .product(name: "AWSAPIPlugin", package: "amplify-swift"),
+                .product(name: "AWSCognitoAuthPlugin", package: "amplify-swift"),
+                .product(name: "AWSPluginsCore", package: "amplify-swift"),
+                .product(name: "AWSCognitoIdentity", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
+                .product(name: "AWSSDKIdentity", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
+                .product(name: "AWSIoTDataPlane", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
+                .product(name: "AwsIotDeviceSdkSwift", package: "aws-iot-device-sdk-swift", condition: .when(platforms: [.iOS])),
             ],
             path: "Sources/SesameSDK",
             resources: [

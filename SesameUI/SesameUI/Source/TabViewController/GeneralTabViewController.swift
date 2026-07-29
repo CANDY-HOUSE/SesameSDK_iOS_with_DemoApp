@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import SesameSDK
-import AWSAPIGateway
-import AWSMobileClientXCF
 
 public class GeneralTabViewController: UITabBarController {
     
@@ -25,9 +23,9 @@ public class GeneralTabViewController: UITabBarController {
         tabBar.selectedItem?.title = "selected"
         
         // 當 AWS Mobile 啟動時 執行以下服務
-        AWSMobileClient.default().initialize { (userState, error) in
+        CHAWSManager.initialize { userState, error in
             // 1. 設定並啟動 API manager
-            CHAPIClient.initialize(credentialsProvider: AWSMobileClient.default())
+            CHAPIClient.initialize()
             AppPromotionManager.shared.refresh()
             
             // 2. 判斷是否第一次安裝
@@ -47,7 +45,7 @@ public class GeneralTabViewController: UITabBarController {
         }
         
         // 當用戶登出登入時，執行以下服務
-        AWSMobileClient.default().addUserStateListener(self) { state, dic in
+        CHAWSManager.addUserStateListener(self) { state in
             if state == .signedIn {
                 CHAPIClient.shared.uploadUserDeviceToken() { _ in }
                 AppPromotionManager.shared.refresh()

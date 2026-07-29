@@ -123,6 +123,24 @@ class CHDeviceCenter {
     func getDevice(deviceID: UUID?) -> CHDeviceMO? {
         return self.cacheDevices.first { $0.deviceUUID == deviceID?.uuidString }
     }
+
+    func updateHistoryTag(_ historyTag: Data, deviceID: UUID) {
+        guard let context = self.backgroundContext else { return }
+        context.performAndWait {
+            guard let device = self.cacheDevices.first(where: {
+                $0.deviceUUID == deviceID.uuidString
+            }) else {
+                return
+            }
+            device.historyTag = historyTag
+            guard context.hasChanges else { return }
+            do {
+                try context.save()
+            } catch {
+                L.d("[core data] Error saving history tag: \(error)")
+            }
+        }
+    }
     
     // MARK: - Delete
     func deleteDevice(_ deviceUUID: UUID?) {

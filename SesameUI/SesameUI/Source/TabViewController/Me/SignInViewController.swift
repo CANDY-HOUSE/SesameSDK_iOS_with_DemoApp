@@ -8,7 +8,6 @@
 
 import UIKit
 import SesameSDK
-import AWSMobileClientXCF
 
 class SignInViewController: CHBaseViewController, TouchViewDelegate {
     
@@ -124,7 +123,7 @@ extension SignInViewController: CHUserManagerSignInDelegate {
     func signInCompleteHandler(_ result: Result<NSNull, Error>) {
         executeOnMainThread {
             if case .failure(let error) = result {
-                if case AWSMobileClientError.notAuthorized(message: "Incorrect username or password.") = error {
+                if let authError = error as? CHAuthError, case .notAuthorized = authError {
                     self.view.makeToast(NSError.verificationCodeError.errorDescription())
                 } else if (error as NSError).code == -1009 {
                     self.view.makeToast((error as NSError).errorDescription())

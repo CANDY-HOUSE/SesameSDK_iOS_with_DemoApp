@@ -9,11 +9,7 @@
 import Foundation
 import CoreData
 import CoreLocation
-#if os(iOS)
 import SesameSDK
-#elseif os(watchOS)
-import SesameWatchKitSDK
-#endif
 
 /// UI 層 DB
 class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
@@ -46,8 +42,14 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
     
     private var memoryCache = NSCache<NSString, SesameDeviceMO>()
 
-    private func cacheDevice(_ device: SesameDeviceMO) {
-        memoryCache.setObject(device, forKey: device.deviceID!.uuidString as NSString)
+    @discardableResult
+    private func cacheDevice(_ device: SesameDeviceMO) -> Bool {
+        guard let deviceID = device.deviceID else {
+            L.d("[Sesame2Store] skip caching device without deviceID")
+            return false
+        }
+        memoryCache.setObject(device, forKey: deviceID.uuidString as NSString)
+        return true
     }
 
     private func getDeviceFromCache(deviceID: UUID) -> SesameDeviceMO? {
@@ -102,11 +104,11 @@ class Sesame2Store: NSObject, NSFetchedResultsControllerDelegate {
         if let property = getDeviceFromCache(deviceID: device.deviceId) {
             deviceMO = property
         } else if let property = getPropertyById(device.deviceId.uuidString) {
-            cacheDevice(property)
+            guard cacheDevice(property) else { return nil }
             deviceMO = property
         } else  {
             let property = createCHDeviceProperty(device)
-            cacheDevice(property)
+            guard cacheDevice(property) else { return nil }
             deviceMO = property
         }
         return deviceMO

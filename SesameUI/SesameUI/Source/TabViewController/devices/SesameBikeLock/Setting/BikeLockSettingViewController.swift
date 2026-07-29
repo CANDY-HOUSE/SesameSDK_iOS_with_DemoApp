@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AWSMobileClientXCF
 import SesameSDK
 //import iOSDFULibrary
 import NordicDFU

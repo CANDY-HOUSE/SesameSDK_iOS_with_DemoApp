@@ -7,7 +7,7 @@
 //
 
 import Intents
-import SesameWatchKitSDK
+import SesameSDK
 
 class IntentHandler: INExtension {
 

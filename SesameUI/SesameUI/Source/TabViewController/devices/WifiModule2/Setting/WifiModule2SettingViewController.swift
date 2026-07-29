@@ -8,7 +8,6 @@
 
 import UIKit
 import SesameSDK
-import AWSMobileClientXCF
 import CoreBluetooth
 
 

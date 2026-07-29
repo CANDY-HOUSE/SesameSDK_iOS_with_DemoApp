@@ -8,7 +8,6 @@
 
 import UIKit
 import SesameSDK
-import AWSMobileClient
 
 public final class SSMSettingViewModel: ViewModel {
     private let id = UUID()
@@ -429,7 +428,7 @@ extension SSMSettingViewModel {
     public func deleteSeesameAction() {
         statusUpdated?(.loading)
         
-        guard AWSMobileClient.default().isSignedIn == true else {
+        guard CHAWSManager.isSignedIn else {
             // Delete local key
             ssm.unregister()
             CHAccountManager.shared.deleteCHDeviceByBleID(ssm.deviceId!)

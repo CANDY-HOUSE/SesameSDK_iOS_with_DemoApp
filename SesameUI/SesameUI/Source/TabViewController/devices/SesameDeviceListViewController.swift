@@ -2,7 +2,6 @@
 
 import UIKit
 import SesameSDK
-import AWSMobileClientXCF
 import SafariServices
 import SwiftUI
 import Combine
@@ -124,7 +123,7 @@ class SesameDeviceListViewController: CHBaseViewController {
     }
     
     func monitorAWSMobileClientUserState() {
-        let statusChangeHandler: (_ state: AWSMobileClientXCF.UserState) -> Void = { [self] state in
+        let statusChangeHandler: (_ state: UserState) -> Void = { [self] state in
             if (state == .signedIn) {
                 CHAWSMobileClient.shared.getSubId { subId in
                     guard let _ = subId else { return }
@@ -148,12 +147,12 @@ class SesameDeviceListViewController: CHBaseViewController {
                 }
             } else { L.d("[mUserState]=>??", state)}
         }
-        AWSMobileClient.default().addUserStateListener(self) { state, dic in
+        CHAWSManager.addUserStateListener(self) { state in
             L.d("[mUserState][listener]",state)
             statusChangeHandler(state)
             self.lastUserState = state
         }
-        self.lastUserState = AWSMobileClient.default().currentUserState
+        self.lastUserState = CHAWSManager.currentUserState
     }
     
     func configureTable() {
@@ -337,7 +336,12 @@ class SesameDeviceListViewController: CHBaseViewController {
     
     @objc func getKeysFromServer() {
         let queryDevicesHandler: () -> Void = {
+            let requestUserState = CHAWSManager.currentUserState
             CHAPIClient.shared.getCHUserKeys { result in
+                guard requestUserState == CHAWSManager.currentUserState else {
+                    L.d("[DeviceList] ignore stale user keys response")
+                    return
+                }
                 if case let .failure(error) = result {
                     executeOnMainThread {
                         self.tableViewProxy.handleFailedDataSource(error)
@@ -389,7 +393,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                 }
             }
         }
-        if AWSMobileClient.default().currentUserState == .signedIn {
+        if CHAWSManager.currentUserState == .signedIn {
             queryDevicesHandler()
             return
         }

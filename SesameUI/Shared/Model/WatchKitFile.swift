@@ -7,11 +7,7 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
-#endif
 
 /// 手機傳送到手錶的 Data model
 struct WatchKitFile: Codable {

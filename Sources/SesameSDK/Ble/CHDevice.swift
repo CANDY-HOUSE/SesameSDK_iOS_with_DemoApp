@@ -204,8 +204,7 @@ internal extension CHDevice {
         let historyTag = (tag.count > 21) ? tag[0...20].copyData : tag
 //        L.d("標籤, setHistoryTag=>", historyTag)
         (self as? CHDeviceUtil)?.sesame2KeyData?.historyTag = historyTag
-        CHDeviceCenter.shared.getDevice(deviceID: deviceId)?.historyTag = historyTag
-        CHDeviceCenter.shared.saveifNeed()
+        CHDeviceCenter.shared.updateHistoryTag(historyTag, deviceID: deviceId)
         result(.success(CHResultStateNetworks(input: CHEmpty())))
     }
 

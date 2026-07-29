@@ -2,7 +2,6 @@
 
 import UIKit
 import SesameSDK
-import AWSMobileClientXCF
 //import iOSDFULibrary
 import NordicDFU
 import CoreBluetooth
@@ -615,4 +614,3 @@ extension Sesame5SettingViewController {
         return sesame5SettingViewController
     }
 }
-

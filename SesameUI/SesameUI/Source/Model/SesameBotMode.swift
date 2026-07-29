@@ -7,11 +7,7 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
-#endif
 
 /// 切換SesameBot模式: 普通，轉圈，長壓
 enum SesameBotClickMode: Int, CaseIterable {

@@ -9,8 +9,6 @@
 import UIKit
 import SesameSDK
 import WebKit
-import AWSCognitoIdentityProvider
-import AWSMobileClient
 
 class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDelegate{
 
@@ -30,21 +28,18 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
             "family_name": userTF.text!
         ]
         
-        AWSMobileClient
-            .default()
-            .signUp(username: emailTF.text!.toMail(),
-                    password: passwordTF.text!,
-                    userAttributes: userAttributes) { result, error in
+        CHAWSManager.signUp(username: emailTF.text!.toMail(),
+                            password: passwordTF.text!,
+                            attributes: userAttributes) { result, error in
                         DispatchQueue.main.async {
-                            if let error = error as? AWSMobileClientError {
+                            if let error {
                                 // TODO: Error Handle
                                 L.d(ErrorMessage.descriptionFromError(error: error))
                                 self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
                             } else if let result = result {
-                                switch result.signUpConfirmationState {
-                                case .confirmed:
+                                if result.isSignUpComplete {
                                     self.view.makeToast("confirmed")
-                                case .unconfirmed:
+                                } else {
                                     self.view.makeToast("unconfirmed")
                                     
                                     //view group 1
@@ -65,14 +60,11 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
                                     //end view group 2
 
                                     let alertController = UIAlertController(title: "Code Sent",
-                                                                            message: "Code sent to \(result.codeDeliveryDetails?.destination ?? "no message")",
+                                                                            message: "Code sent to \(result.destination ?? "no message")",
                                         preferredStyle: .alert)
                                     let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
                                     alertController.addAction(okAction)
                                     self.present(alertController, animated: true, completion: nil)
-                                    
-                                case .unknown:
-                                    self.view.makeToast("unknown")
                                 }
                             } else {
                                 self.view.makeToast("Unknow error")
@@ -82,10 +74,8 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
     }
 
     @IBAction func confirmuser(_ sender: Any) {
-        AWSMobileClient
-            .default()
-            .confirmSignUp(username: emailTF.text!.toMail(),
-                           confirmationCode: self.cinfirmTF.text!) { signUpResult, error in
+        CHAWSManager.confirmSignUp(username: emailTF.text!.toMail(),
+                                  code: self.cinfirmTF.text!) { error in
                             DispatchQueue.main.async {
                                 if let error = error {
                                     self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
@@ -100,15 +90,13 @@ class SignUpViewController: CHBaseViewController , WKNavigationDelegate, WKUIDel
     
     @IBAction func reSendEmail(_ sender: Any) {
         
-        AWSMobileClient
-            .default()
-            .resendSignUpCode(username: emailTF.text!.toMail()) { signUpResult, error in
+        CHAWSManager.resendSignUpCode(username: emailTF.text!.toMail()) { destination, error in
                 DispatchQueue.main.async {
                     if let error = error {
                         self.view.makeToast(ErrorMessage.descriptionFromError(error: error))
-                    } else if let result = signUpResult {
+                    } else if let destination {
                         let alertController = UIAlertController(title: "Code Sent",
-                                                                message: "Code resent to \(result.codeDeliveryDetails?.destination! ?? " no message")",
+                                                                message: "Code resent to \(destination)",
                             preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
                         alertController.addAction(okAction)
@@ -198,4 +186,3 @@ extension SignUpViewController:UITextFieldDelegate{
         self.view.endEditing(true)
     }
 }
-

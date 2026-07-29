@@ -6,63 +6,45 @@
 //  Copyright © 2020 CandyHouse. All rights reserved.
 //
 
-#if os(iOS)
-import AWSCore
-import AWSAPIGateway
-#elseif os(watchOS)
-import WatchKit
-#endif
+import Amplify
+import AWSAPIPlugin
 import Foundation
 
 extension CHAPIClient {
     func API(request: CHAPICallObject,
                          handler: @escaping (Result<Data?, Error>) -> Void) {
 
-        let awsTask = apiGatewayClient.invoke(request.toAWSGatewayRequest())
-        awsTask.continueWith( block: { (task: AWSTask) -> Any? in
-            
-            if let error = task.error {
-                handler(.failure(error))
-                return nil
-            }
-            
-            guard let response = task.result else {
-                handler(.success(nil))
-                return nil
-            }
-            
-            switch response.statusCode {
-            case 200, 204:
-                handler(.success(response.responseData))
-            case 404, 401, 403, 409, 502:
-                guard let _ = response.responseData else {
-                    let error = NSError(domain: "Sesame2SDK", code: response.statusCode, userInfo: ["message": response.rawResponse])
-                    handler(.failure(error))
-                    return nil
+        Task {
+            do {
+                try CHAWSManager.configure()
+                let restRequest = try request.toRESTRequest(apiKey: apiKey)
+                let data: Data
+                switch request.method {
+                case .get:
+                    data = try await Amplify.API.get(request: restRequest)
+                case .post:
+                    data = try await Amplify.API.post(request: restRequest)
+                case .put:
+                    data = try await Amplify.API.put(request: restRequest)
+                case .delete:
+                    data = try await Amplify.API.delete(request: restRequest)
                 }
-                let error = self.errorFromResponse(response)
-                handler(.failure(error))
-            default:
-                guard let _ = response.responseData else {
-                    let error = NSError(domain: "Sesame2SDK", code: response.statusCode, userInfo: ["message": response.rawResponse])
-                    handler(.failure(error))
-                    return nil
-                }
-                let error = self.errorFromResponse(response)
-                handler(.failure(error))
+                handler(.success(data.isEmpty ? nil : data))
+            } catch {
+                handler(.failure(errorFromAmplify(error)))
             }
-            return nil
-        })
+        }
 
     }
 
-    private func errorFromResponse(_ response: AWSAPIGatewayResponse) -> Error {
-        do {
-            let errorFromServer = try JSONDecoder().decode(CHServerError.self, from: response.responseData!)
-            return NSError(domain: "Sesame2SDK", code: response.statusCode, userInfo: ["message": errorFromServer.message])
-        } catch {
-            return NSError(domain: "Sesame2SDK", code: response.statusCode, userInfo: ["message": response.rawResponse])
-        }
+    private func errorFromAmplify(_ error: Error) -> Error {
+        guard let apiError = error as? APIError,
+              case let .httpStatusError(statusCode, response) = apiError else { return error }
+        let data = (response as? AWSHTTPURLResponse)?.body
+        let message = data.flatMap { try? JSONDecoder().decode(CHServerError.self, from: $0).message }
+            ?? data.flatMap { String(data: $0, encoding: .utf8) }
+            ?? HTTPURLResponse.localizedString(forStatusCode: statusCode)
+        return NSError(domain: "Sesame2SDK", code: statusCode, userInfo: ["message": message])
     }
 }
 

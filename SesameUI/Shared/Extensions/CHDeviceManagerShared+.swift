@@ -7,11 +7,7 @@
 //
 
 import Foundation
-#if os(iOS)
 import SesameSDK
-#else
-import SesameWatchKitSDK
-#endif
 
 extension CHDeviceManager {
     /// 設定所有Sesame device的 history tag

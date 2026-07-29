@@ -8,7 +8,7 @@
 
 import WatchKit
 import WatchConnectivity
-import SesameWatchKitSDK
+import SesameSDK
 import CoreFoundation
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
@@ -38,6 +38,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         L.d("⌚️", "applicationDidFinishLaunching")
+        do {
+            try CHAWSManager.configure()
+        } catch {
+            L.d("Amplify configure failed", error.localizedDescription)
+        }
     }
     
     func applicationWillEnterForeground() {

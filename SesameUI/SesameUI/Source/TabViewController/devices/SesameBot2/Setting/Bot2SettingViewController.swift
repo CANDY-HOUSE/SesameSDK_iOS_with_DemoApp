@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import SesameSDK
-import AWSMobileClientXCF
 //import iOSDFULibrary
 import NordicDFU
 import CoreBluetooth

@@ -9,7 +9,6 @@
 import UIKit
 import SesameSDK
 import AVFoundation
-import AWSMobileClientXCF
 
 class QRCodeScanViewController: CHBaseViewController {
 

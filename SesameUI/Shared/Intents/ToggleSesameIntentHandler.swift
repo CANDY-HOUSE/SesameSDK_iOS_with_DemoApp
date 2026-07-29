@@ -7,12 +7,7 @@
 //
 
 import Intents
-#if os(iOS)
 import SesameSDK
-//import Reachability
-#else
-import SesameWatchKitSDK
-#endif
 
 class ToggleSesameIntentHandler: NSObject, ToggleSesameIntentHandling {
     
