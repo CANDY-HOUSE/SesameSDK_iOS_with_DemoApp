@@ -32,7 +32,7 @@ private actor CHIoTCredentialsProvider: CredentialsProviding {
     private let identityPoolId = CHConfiguration.shared.clientId
     private let identityClient: CognitoIdentityClient
     private var cachedIdentityId: String?
-    private var cachedCredentials: Credentials?
+    private var resolver: CognitoAWSCredentialIdentityResolver?
     private var dataPlaneClient: IoTDataPlaneClient?
 
     private var identityIdKey: String {
@@ -44,20 +44,24 @@ private actor CHIoTCredentialsProvider: CredentialsProviding {
     }
 
     func getCredentials() async throws -> Credentials {
-        if let cachedCredentials,
-           let expiration = cachedCredentials.getExpiration(),
-           expiration.timeIntervalSinceNow > 300 {
-            return cachedCredentials
-        }
-
-        let identityId = try await getIdentityId()
         do {
-            return try await fetchCredentials(identityId: identityId)
+            return try await makeCredentials()
         } catch is NotAuthorizedException {
+            // identityId 失效：清持久化 + resolver，重取
             cachedIdentityId = nil
+            resolver = nil
             CHKeychain.remove(forKey: identityIdKey)
-            return try await fetchCredentials(identityId: try await getIdentityId())
+            return try await makeCredentials()
         }
+    }
+
+    /// 用共享 resolver 取凭证并转成 CRT 凭证（resolver 内部自动缓存 / 到期刷新）
+    private func makeCredentials() async throws -> Credentials {
+        let identity = try await credentialResolver().getIdentity(identityProperties: nil)
+        return try Credentials(accessKey: identity.accessKey,
+                               secret: identity.secret,
+                               sessionToken: identity.sessionToken,
+                               expiration: identity.expiration)
     }
 
     func getThingShadow(thingName: String, shadowName: String) async throws -> Data {
@@ -92,36 +96,26 @@ private actor CHIoTCredentialsProvider: CredentialsProviding {
         return identityId
     }
 
-    private func fetchCredentials(identityId: String) async throws -> Credentials {
-        let response = try await identityClient.getCredentialsForIdentity(
-            input: GetCredentialsForIdentityInput(identityId: identityId)
-        )
-        guard let credentials = response.credentials,
-              let accessKey = credentials.accessKeyId,
-              let secretKey = credentials.secretKey else {
-            throw CHIoTCredentialsError.missingCredentials
+    /// 共享的 Cognito 凭证 resolver：MQTT 与 HTTP 数据面共用同一个实例
+    /// （身份 = getId+Keychain 稳定；凭证由 SDK 内部自动缓存 / 到期刷新）
+    private func credentialResolver() async throws -> CognitoAWSCredentialIdentityResolver {
+        if let resolver {
+            return resolver
         }
-        let result = try Credentials(
-            accessKey: accessKey,
-            secret: secretKey,
-            sessionToken: credentials.sessionToken,
-            expiration: credentials.expiration
+        let newResolver = try CognitoAWSCredentialIdentityResolver(
+            identityId: try await getIdentityId(),
+            identityPoolRegion: CHConfiguration.shared.regionName
         )
-        cachedCredentials = result
-        return result
+        resolver = newResolver
+        return newResolver
     }
 
     private func getDataPlaneClient() async throws -> IoTDataPlaneClient {
         if let dataPlaneClient {
             return dataPlaneClient
         }
-        let identityId = try await getIdentityId()
-        let resolver = try CognitoAWSCredentialIdentityResolver(
-            identityId: identityId,
-            identityPoolRegion: CHConfiguration.shared.regionName
-        )
         let config = try await IoTDataPlaneClient.IoTDataPlaneClientConfig(
-            awsCredentialIdentityResolver: resolver,
+            awsCredentialIdentityResolver: try await credentialResolver(),
             region: CHConfiguration.shared.regionName,
             signingRegion: CHConfiguration.shared.regionName,
             endpoint: AWSConfig.iotEndpoint
