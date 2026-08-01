@@ -42,7 +42,11 @@ class CHSesameOS3LockBase: CHSesameOS3, CHDeviceUtil, CHSesameLock {
 
         switch itemCode {
         case .SSM3_ITEM_CODE_BATTERY_VOLTAGE:
-            postBatteryData(data.toHexString()) { _ in }
+            postBatteryData(data.toHexString()) { res in
+                if case .success(let resp) = res {
+                    self.notifyBatteryPercentageChanged(percentage: resp.data)
+                }
+            }
 
         case .SSM3_ITEM_CODE_BLE_TX_POWER_SETTING:
             guard let value = data.first else { return }

@@ -247,6 +247,29 @@ public protocol CHSesameLock: CHDevice {
 }
 
 public extension CHSesameLock {
+    /// BLE 未ログインかつ WiFi モジュール経由でオンラインのとき、Shadow からバッテリー残量を更新する。
+    func refreshBatteryFromShadow(result: @escaping CHResult<CHEmpty>) {
+        CHIoTManager.shared.getCHDeviceShadow(self) { shadowResult in
+            switch shadowResult {
+            case .success(let shadow):
+                self.applyShadowBatteryPercentageIfNeeded(shadow)
+                result(.success(.init(input: .init())))
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+
+    func applyShadowBatteryPercentageIfNeeded(_ shadow: CHDeviceShadow) {
+        let isConnectedByWM2 = shadow.data.wifiModule2s?.contains(where: { $0.isConnected == true }) ?? false
+        guard isConnectedByWM2,
+              deviceStatus.loginStatus == .unlogined,
+              let percentage = shadow.data.batteryPercentage else {
+            return
+        }
+        (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: percentage)
+    }
+
 #if os(watchOS)
     func getSesameLockStatus(result: @escaping CHResult<CHEmpty>) {
         CHIoTManager.shared.getCHDeviceShadow(self) { shadowResult in
@@ -265,7 +288,7 @@ public extension CHSesameLock {
                         if(isConnectedByWM2){
                             if( self.deviceStatus.loginStatus == .unlogined){
                                 self.mechStatus = mechStatus
-                                (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
+                                self.applyShadowBatteryPercentageIfNeeded(shadow)
                             }
                         }
                     }
@@ -275,7 +298,7 @@ public extension CHSesameLock {
                         if(isConnectedByWM2){
                             if( self.deviceStatus.loginStatus == .unlogined){
                                 self.mechStatus = mechStatus
-                                (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
+                                self.applyShadowBatteryPercentageIfNeeded(shadow)
                             }
                         }
                     }
@@ -285,7 +308,7 @@ public extension CHSesameLock {
                             if (isConnectedByWM2) {
                                 if( self.deviceStatus.loginStatus == .unlogined){
                                     self.mechStatus = mechStatus
-                                    (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
+                                    self.applyShadowBatteryPercentageIfNeeded(shadow)
                                 }
                             }
                         }

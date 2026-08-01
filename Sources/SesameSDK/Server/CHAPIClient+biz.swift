@@ -343,6 +343,7 @@ public extension CHAPIClient {
                 guard let data = data,
                       let jsonDict = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                       let batteryPercentage = jsonDict["batteryPercentage"] as? Int else {
+                    result(.failure(NSError(domain: "SesameSDK", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid battery response"])))
                     return
                 }
                 result(.success(.init(input: batteryPercentage)))
