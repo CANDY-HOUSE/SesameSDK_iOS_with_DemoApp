@@ -303,6 +303,10 @@ public extension CHAPIClient {
     
     // MARK: - IoT
     /// 获取设备影子数据 (watchOS)
+    ///
+    /// Uses the authenticated SDK route `/device/v1/sesame2/{deviceId}` (Cognito),
+    /// not the public Web API `GET https://app.candyhouse.co/api/sesame2/{UUID}` (`X-API-KEY`).
+    /// For public Web API 500 errors, see `doc/public-web-api-troubleshooting.ja.md`.
     func getCHDeviceShadow(deviceId: String, result: @escaping CHResult<Data>) {
         API(request: .init(.get, "/device/v1/sesame2/\(deviceId)")) { apiResult in
             switch apiResult {
