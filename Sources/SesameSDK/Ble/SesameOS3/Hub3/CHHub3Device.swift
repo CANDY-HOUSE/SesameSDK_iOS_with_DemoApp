@@ -36,7 +36,6 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     
     func goIOT() {
 #if os(iOS)
-        getHub3StatusFromIot()
         subscribeRelayStatus()
         CHIoTManager.shared.subscribeWifiModule2Shadow(self) { result in
             switch result {
@@ -210,18 +209,6 @@ extension CHHub3Device {
         }
     }
     
-    private func getHub3StatusFromIot() {
-        CHAPIClient.shared.getHub3Status(deviceId: deviceId.uuidString) { [self] response in
-            switch response {
-            case .success(let data):
-                let hub3Status = try! JSONDecoder().decode(Hub3Status.self, from: data.data)
-                updateMechSettingStatusAndKeys(hub3Status)
-                L.d("response string", hub3Status)
-            case .failure(let error):
-                L.d("getHub3StatusFromIot error", error)
-            }
-        }
-    }
 
     /// 觸發繼電器開關（Hub3 LTE）
     func toggle(historytag: Data?, result: @escaping CHResult<CHEmpty>) {

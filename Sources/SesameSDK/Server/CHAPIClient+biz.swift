@@ -49,6 +49,8 @@ public extension CHAPIClient {
                         )
                     }
                     CHDeviceManager.shared.receiveCHDeviceKeys(keys) { _ in }
+                    // list 已带回等价快照:直接写入各设备状态,替代冷启动的 IoT getShadow
+                    Self.applyServerStates(from: jsonArray)
                     result(.success(CHResultStateNetworks(input: jsonArray)))
                 } catch let error {
                     L.d(error.localizedDescription)
@@ -60,7 +62,27 @@ public extension CHAPIClient {
             }
         }
     }
-    
+
+    /// 把 list 返回的每台设备 stateInfo 写入设备状态,替代冷启动的 IoT getShadow 快照
+    static func applyServerStates(from jsonArray: [[String: Any]]) {
+        CHDeviceManager.shared.getCHDevices { getResult in
+            guard case let .success(devices) = getResult else { return }
+            var deviceMap = [String: CHDevice]()
+            for device in devices.data {
+                deviceMap[device.deviceId.uuidString] = device
+            }
+            for dict in jsonArray {
+                guard let uuidString = dict["deviceUUID"] as? String,
+                      let normalizedId = UUID(uuidString: uuidString)?.uuidString,
+                      let device = deviceMap[normalizedId],
+                      let stateInfo = dict["stateInfo"] as? [String: Any] else {
+                    continue
+                }
+                device.applyServerState(stateInfo)
+            }
+        }
+    }
+
     /// 发送網路鑰匙
     func postCHUserKeys(_ jsonData: Data, _ result: @escaping CHResult<NSNull>) {
         L.d("postCHUserKeys")
@@ -383,22 +405,6 @@ public extension CHAPIClient {
     }
     
     // MARK: - Hub3
-    /// 获取Hub3状态
-    func getHub3Status(deviceId: String, result: @escaping CHResult<Data>) {
-        API(request: .init(.get, "/device/v1/wifi_module/\(deviceId)/status")) { response in
-            switch response {
-            case .success(let data):
-                if let data = data {
-                    result(.success(.init(input: data)))
-                } else {
-                    result(.failure(NSError.noDataError))
-                }
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-    
     /// 觸發 Hub3 LTE 繼電器開關（IoT 透傳指令）
     /// 對應 server: POST /device/v1/wifi_module/{device_id}/switch
     func updateHub3LTERelay(_ hub3LTE: CHHub3, result: @escaping CHResult<CHEmpty>) {

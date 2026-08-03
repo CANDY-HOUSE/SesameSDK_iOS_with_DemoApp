@@ -10,7 +10,6 @@ import Foundation
 
 #if os(iOS)
 import AWSCognitoIdentity
-import AWSIoTDataPlane
 import AWSSDKIdentity
 import AwsIotDeviceSdkSwift
 
@@ -33,7 +32,6 @@ private actor CHIoTCredentialsProvider: CredentialsProviding {
     private let identityClient: CognitoIdentityClient
     private var cachedIdentityId: String?
     private var resolver: CognitoAWSCredentialIdentityResolver?
-    private var dataPlaneClient: IoTDataPlaneClient?
 
     private var identityIdKey: String {
         "co.candyhouse.sesame.iot.identity.\(identityPoolId)"
@@ -62,17 +60,6 @@ private actor CHIoTCredentialsProvider: CredentialsProviding {
                                secret: identity.secret,
                                sessionToken: identity.sessionToken,
                                expiration: identity.expiration)
-    }
-
-    func getThingShadow(thingName: String, shadowName: String) async throws -> Data {
-        let client = try await getDataPlaneClient()
-        let output = try await client.getThingShadow(
-            input: GetThingShadowInput(shadowName: shadowName, thingName: thingName)
-        )
-        guard let payload = output.payload else {
-            throw NSError.noDataError
-        }
-        return payload
     }
 
     private func getIdentityId() async throws -> String {
@@ -108,21 +95,6 @@ private actor CHIoTCredentialsProvider: CredentialsProviding {
         )
         resolver = newResolver
         return newResolver
-    }
-
-    private func getDataPlaneClient() async throws -> IoTDataPlaneClient {
-        if let dataPlaneClient {
-            return dataPlaneClient
-        }
-        let config = try await IoTDataPlaneClient.IoTDataPlaneClientConfig(
-            awsCredentialIdentityResolver: try await credentialResolver(),
-            region: CHConfiguration.shared.regionName,
-            signingRegion: CHConfiguration.shared.regionName,
-            endpoint: AWSConfig.iotEndpoint
-        )
-        let client = IoTDataPlaneClient(config: config)
-        dataPlaneClient = client
-        return client
     }
 }
 
@@ -307,21 +279,9 @@ final class CHIoTManager: @unchecked Sendable {
                 }
             }
         }
-    }
-
-    // MARK: - Get wm2 shadow
-    func getWifiModule2Shadow(_ wifiModule2: CHWifiModule2, onResponse: (CHResult<WifiModuleShadow>)? = nil) {
-        let parserGet: WifiModuleShadow.Type? = wifiModule2.productModel == .hub3 ? nil : WifiModule2Shadow.self
-        guard let parser = parserGet else { return }
-        let shadowName = String(wifiModule2.deviceId.uuidString.split(separator: "-").last!)
-        Task {
-            do {
-                let payload = try await getShadow(thingName: "wm2", shadowName: shadowName)
-                onResponse?(.success(.init(input: parser.fromData(payload))))
-            } catch {
-                L.d("[iot] get WM2 shadow error =>", error)
-                onResponse?(.failure(error))
-            }
+        // 断线重连,快照由 App 启动时的 getKeysFromServer 提供,避免重复。
+        if previousStatus == .disconnected && status == .connecting {
+            CHAPIClient.shared.getCHUserKeys { _ in }
         }
     }
 
@@ -333,7 +293,6 @@ final class CHIoTManager: @unchecked Sendable {
             let parser: WifiModuleShadow.Type = wifiModule2.productModel == .hub3 ? Hub3Shadow.self : WifiModule2Shadow.self
             onResponse(.success(.init(input: parser.fromData(data))))
         }
-        self.getWifiModule2Shadow(wifiModule2, onResponse: onResponse)
     }
 
     func subscribeTopic(_ topic: String, callback: @escaping (Data) -> Void) {
@@ -417,20 +376,8 @@ final class CHIoTManager: @unchecked Sendable {
         func subscirbe() {
             L.d("[iot]subscirbeCHDeviceShadow =>",device.deviceId.uuidString)
             self.subscribeTopic("$aws/things/sesame2/shadow/name/\(device.deviceId.uuidString)/update/documents") { data in
-//                    L.d("[iot]subscirbe data =>", data.toHexLog())
                 let shadow = CHDeviceShadow.fromData(data)
-//                    L.d("[iot]subscirbe 影子 =>",shadow)
                 onResponse(.success(.init(input: shadow)))
-            }
-            Task {
-                do {
-                    let data = try await self.getShadow(thingName: "sesame2",
-                                                        shadowName: device.deviceId.uuidString)
-                    onResponse(.success(.init(input: CHDeviceShadow.fromData(data))))
-                } catch {
-                    L.d("[iot] get device shadow error =>", error)
-                    onResponse(.failure(error))
-                }
             }
         }
         if lock.chIoTWithLock({ connectionStatus }) != .connected {
@@ -518,16 +465,6 @@ final class CHIoTManager: @unchecked Sendable {
         return newClient
     }
 
-    private func getShadow(thingName: String, shadowName: String) async throws -> Data {
-        guard let credentialsProvider else {
-            throw CHIoTCredentialsError.missingCredentials
-        }
-        return try await credentialsProvider.getThingShadow(
-            thingName: thingName,
-            shadowName: shadowName
-        )
-    }
-
     private func handlePublish(topic: String, payload: Data?) {
         guard let payload,
               let callback = lock.chIoTWithLock({ topicHandlers[topic]?.callback }) else {
@@ -550,33 +487,6 @@ private extension NSLock {
         defer { unlock() }
         return try body()
     }
-}
-
-#endif
-
-#if os(watchOS)
-final class CHIoTManager {
-    static let shared = CHIoTManager()
-    func getCHDeviceShadow(_ sesameLock: CHSesameLock, onResponse: (CHResult<CHDeviceShadow>)? = nil) {
-        func getShadow() {
-            CHAPIClient.shared.getCHDeviceShadow(deviceId: sesameLock.deviceId.uuidString) { apiResult in
-                switch apiResult {
-                case .success(let data):
-                    L.d("⌚️ API getShadow ok", data)
-                    if let shadow = CHDeviceShadow.fromRESTFulData(data.data) {
-                        onResponse?(.success(.init(input: shadow)))
-                    }
-                case .failure(let error):
-                    L.d("⌚️ API error", error)
-                    onResponse?(.failure(error))
-                }
-            }
-        }
-        getShadow()
-    }
-    
-    func subscribeTopic(_ topic: String, callback: @escaping (Data) -> Void) { }
-    func unsubscribeTopic(_ topic: String) { }
 }
 
 #endif
@@ -616,3 +526,12 @@ extension CHIoTManager { // [joi todo] 注意historyTag的設置機制，需優�
         }
     }
 }
+
+#if os(watchOS)
+final class CHIoTManager {
+    static let shared = CHIoTManager()
+    func subscribeTopic(_ topic: String, callback: @escaping (Data) -> Void) { }
+    func unsubscribeTopic(_ topic: String) { }
+}
+
+#endif

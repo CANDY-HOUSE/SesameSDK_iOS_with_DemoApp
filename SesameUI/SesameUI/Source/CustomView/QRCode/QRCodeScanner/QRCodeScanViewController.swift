@@ -296,6 +296,7 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
                         self.qrCodeType = .sesameKey
                         self.dismissSelf()
                     }
+                    CHAPIClient.shared.getCHUserKeys { _ in }
                 }
             case .failure(_):
                 executeOnMainThread {
@@ -337,6 +338,7 @@ extension QRCodeScanViewController {
                     var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel.rawValue)
                     CHAPIClient.shared.putCHUserKey(userKey.toData()) { _ in
                         handler(.success(.sesameKey))
+                        CHAPIClient.shared.getCHUserKeys { _ in }
                     }
                 case .failure(_):
                     handler(.failure(NSError.invalidQRCode))

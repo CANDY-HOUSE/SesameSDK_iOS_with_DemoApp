@@ -30,9 +30,7 @@ class LockSesameIntentHandler: NSObject, LockSesameIntentHandling {
         CHDeviceManager.shared.getCHDevices { getResult in
             if case let .success(devices) = getResult,
                let device = devices.data.filter({$0.deviceName.lowercased() == intent.name?.lowercased() && $0 is CHSesameLock}).first, let sesameLock = device as? CHSesameLock {
-                #if os(watchOS)
                 sesameLock.getSesameLockStatus { _ in }
-                #endif
                 let startTime = Date().timeIntervalSince1970
                 Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                     if Date().timeIntervalSince1970 - startTime > 10 {

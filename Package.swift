@@ -32,7 +32,6 @@ let package = Package(
                 .product(name: "AWSPluginsCore", package: "amplify-swift"),
                 .product(name: "AWSCognitoIdentity", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
                 .product(name: "AWSSDKIdentity", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
-                .product(name: "AWSIoTDataPlane", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
                 .product(name: "AwsIotDeviceSdkSwift", package: "aws-iot-device-sdk-swift", condition: .when(platforms: [.iOS])),
             ],
             path: "Sources/SesameSDK",

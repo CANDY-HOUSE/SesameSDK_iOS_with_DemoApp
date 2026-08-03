@@ -129,7 +129,67 @@ public extension CHDevice {
 }
 
 public extension CHDevice {
-    
+
+    /// 用服务端 list 的 stateInfo 直接写入设备状态,替代冷启动的 IoT 快照拉取
+    /// (锁的 getShadow、Hub3 的 getHub3Status)。stateInfo 不含 isStop/target 等精确位,
+    /// 只能近似,等 BLE/MQTT 补精。
+    func applyServerState(_ stateInfo: [String: Any]) {
+        let wm2Connected = stateInfo["wm2State"] as? Bool ?? false
+
+        // Hub3:网络连接(isIoTWork)+ 继电器开关
+        if let hub3 = self as? CHHub3Device {
+            hub3.mechStatus = CHWifiModule2NetworkStatus(isAPWork: wm2Connected,
+                                                         isNetwork: wm2Connected,
+                                                         isIoTWork: wm2Connected,
+                                                         isBindingAPWork: false,
+                                                         isConnectingNetwork: false,
+                                                         isConnectingIoT: false)
+            if let relayStatus = stateInfo["relayStatus"] as? Int {
+                hub3.isRelayOn = (relayStatus == 1)
+            }
+            return
+        }
+
+        // 锁类:角度 + 锁态
+        applyServerWM2Connected(wm2Connected)
+        guard wm2Connected else {
+            deviceShadowStatus = nil
+            return
+        }
+        let isLocked: Bool?
+        switch stateInfo["CHSesame2Status"] as? String {
+        case "locked": isLocked = true
+        case "unlocked": isLocked = false
+        default: isLocked = nil
+        }
+        guard let isLocked = isLocked else { return }
+        let flags: UInt8 = isLocked ? 2 : 4 // bit1 isInLockRange / bit2 isInUnlockRange
+        let position = stateInfo["position"] as? Int
+        let serverMechStatus: CHSesameProtocolMechStatus?
+        if self is CHSesame5 {
+            let pos = Int16(truncatingIfNeeded: position ?? 0)
+            serverMechStatus = Sesame5MechStatus(battery: 0, target: pos, position: pos, flags: flags)
+        } else if self is CHSesameBike2 {
+            serverMechStatus = CHSesameBike2MechStatus(battery: 0, flags: flags)
+        } else {
+            serverMechStatus = nil // Bot2 等无角度环,仅用 deviceShadowStatus
+        }
+        if let serverMechStatus = serverMechStatus {
+            applyIotMechStatusIfNeeded(serverMechStatus)
+        }
+        deviceShadowStatus = isLocked ? .locked() : .unlocked()
+    }
+
+    private func applyServerWM2Connected(_ connected: Bool) {
+        if let device = self as? CHSesame5Device {
+            device.isConnectedByWM2 = connected
+        } else if let device = self as? CHSesameBike2Device {
+            device.isConnectedByWM2 = connected
+        } else if let device = self as? CHSesameBot2Device {
+            device.isConnectedByWM2 = connected
+        }
+    }
+
     func isBleAvailable() -> Bool  {
         var isOK = true
         if (CHBluetoothCenter.shared.centralManager.state == .unauthorized) {
@@ -247,70 +307,60 @@ public protocol CHSesameLock: CHDevice {
 }
 
 public extension CHSesameLock {
-#if os(watchOS)
     func getSesameLockStatus(result: @escaping CHResult<CHEmpty>) {
-        CHIoTManager.shared.getCHDeviceShadow(self) { shadowResult in
-            switch shadowResult {
-            case .success(let shadow):
-                
+        CHAPIClient.shared.getCHDeviceShadow(deviceId: self.deviceId.uuidString) { apiResult in
+            switch apiResult {
+            case .success(let data):
+                guard let shadow = CHDeviceShadow.fromRESTFulData(data.data) else {
+                    self.deviceShadowStatus = nil
+                    result(.failure(NSError.noDataError))
+                    return
+                }
+
                 var isConnectedByWM2 = false
-                if let wm2s = shadow.data.wifiModule2s {
+                if let wm2s = shadow.wifiModule2s {
                     isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
                 }
-                
-                if (self.productModel == .sesame5 || self.productModel == .sesame5Pro || self.productModel == .sesame5US || self.productModel == .sesameMiwa){
-                    if let mechStatusData = shadow.data.mechStatus?.hexStringtoData(),
+
+                if (self.productModel == .sesame5 || self.productModel == .sesame5Pro || self.productModel == .sesame5US || self.productModel == .sesameMiwa) {
+                    if let mechStatusData = shadow.mechStatus?.hexStringtoData(),
                        let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
-                        //                    L.d("[ss5][iot] isInLockRange",mechStatus.isInLockRange,mechStatus.position)
-                        if(isConnectedByWM2){
-                            if( self.deviceStatus.loginStatus == .unlogined){
-                                self.mechStatus = mechStatus
-                                (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
-                            }
+                        if isConnectedByWM2, self.deviceStatus.loginStatus == .unlogined {
+                            self.mechStatus = mechStatus
+                            (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.batteryPercentage ?? 0)
                         }
                     }
-                }else if (self.productModel == .bikeLock2 || self.productModel == .bikeLock3){
-                    if let mechStatusData = shadow.data.mechStatus?.hexStringtoData(),
-                       let mechStatus = CHSesameBike2MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()){
-                        if(isConnectedByWM2){
-                            if( self.deviceStatus.loginStatus == .unlogined){
-                                self.mechStatus = mechStatus
-                                (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
-                            }
+                } else if (self.productModel == .bikeLock2 || self.productModel == .bikeLock3) {
+                    if let mechStatusData = shadow.mechStatus?.hexStringtoData(),
+                       let mechStatus = CHSesameBike2MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
+                        if isConnectedByWM2, self.deviceStatus.loginStatus == .unlogined {
+                            self.mechStatus = mechStatus
+                            (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.batteryPercentage ?? 0)
                         }
                     }
-                }else{
-                        if let mechStatusData = shadow.data.mechStatus?.hexStringtoData(),
-                           let mechStatus = Sesame2MechStatus.fromData(mechStatusData) {
-                            if (isConnectedByWM2) {
-                                if( self.deviceStatus.loginStatus == .unlogined){
-                                    self.mechStatus = mechStatus
-                                    (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.data.batteryPercentage ?? 0)
-                                }
-                            }
+                } else {
+                    if let mechStatusData = shadow.mechStatus?.hexStringtoData(),
+                       let mechStatus = Sesame2MechStatus.fromData(mechStatusData) {
+                        if isConnectedByWM2, self.deviceStatus.loginStatus == .unlogined {
+                            self.mechStatus = mechStatus
+                            (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.batteryPercentage ?? 0)
                         }
                     }
-                    
-                    if isConnectedByWM2 { //
-                        self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
-                    }else{
-                        self.deviceShadowStatus = nil
-                    }
-                    L.d("⌚️iot",isConnectedByWM2,self.deviceStatus,self.deviceShadowStatus,(self.mechStatus?.isInLockRange == true) )
-                    //                self.delegate?.onBleDeviceStatusChanged(device: self, status: self.deviceStatus, shadowStatus: self.deviceShadowStatus)
-                    
-                    result(.success(.init(input: .init())))
-                case .failure(let error):
-                    L.d("⌚️ error",error)
-                    self.deviceShadowStatus = nil
-                    //               self.delegate?.onBleDeviceStatusChanged(device: self, status: self.deviceStatus, shadowStatus: self.deviceShadowStatus)
-                    
-                    result(.failure(error))
                 }
+
+                if isConnectedByWM2 {
+                    self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
+                } else {
+                    self.deviceShadowStatus = nil
+                }
+                result(.success(.init(input: .init())))
+            case .failure(let error):
+                self.deviceShadowStatus = nil
+                result(.failure(error))
             }
         }
-#endif 
     }
+}
 
 public protocol CHSesameConnector {
     var sesame2Keys: [String: String] { get }
