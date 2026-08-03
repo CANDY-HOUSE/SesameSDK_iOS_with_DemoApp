@@ -263,7 +263,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
     case sesameMiwa = 29
     case sesameFace2AI = 30
     case sesameFace2ProAI = 31
-    case sesame6ProSLiDingDoor = 32
+    case sesame6ProSlidingDoor = 32
     case bikeLock3 = 33
     case sesameBot3 = 35
     case hub3LTE = 36
@@ -297,7 +297,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesameFace2Pro: return "ssm_face_2_pro"
         case .sesame6: return "sesame_6"
         case .sesame6Pro: return "sesame_6_pro"
-        case .sesame6ProSLiDingDoor: return "sesame_6_pro_slidingdoor"
+        case .sesame6ProSlidingDoor: return "sesame_6_pro_slidingdoor"
         case .sesameFaceProAI: return "sesame_face_pro_ai"
         case .sesameFace2ProAI: return "sesame_face_2_pro_ai"
         case .sesameFaceAI: return "sesame_face_ai"
@@ -336,7 +336,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .sesameFace2Pro: return "Sesame Face 2 Pro"
         case .sesame6: return "Sesame 6"
         case .sesame6Pro: return "Sesame 6 Pro"
-        case .sesame6ProSLiDingDoor: return "Sesame 6 Pro SLiDingDoor"
+        case .sesame6ProSlidingDoor: return "Sesame 6 Pro SlidingDoor"
         case .sesameFaceProAI: return "Sesame Face 1 Pro AI"
         case .sesameFace2ProAI: return "Sesame Face 2 Pro AI"
         case .sesameFaceAI: return "Sesame Face 1 AI"
@@ -358,7 +358,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .bikeLock3: return CHSesameBike3Device()
         case .sesameMiwa,.bleConnector,.sesame5,
                 .sesame5US,.sesame5Pro,.sesame6,.sesame6Pro,
-                .sesame6ProSLiDingDoor: return CHSesame5Device()
+                .sesame6ProSlidingDoor: return CHSesame5Device()
         case .sesameBot2,.sesameBot3: return CHSesameBot2Device()
         case .openSensor:
             return CHSesameBiometricDeviceImpl(
@@ -478,7 +478,7 @@ internal class BleAdv {
                     isRegistered = manufacturerData[3] & 1 > 0
                     let macAddress = manufacturerData.copyData[4...9].toHexString()
                     deviceID = ("00000000055afd810d00" + macAddress).noDashtoUUID()
-                case .sesame5, .sesame5Pro, .sesameTouchPro, .sesameTouch2Pro, .sesameTouch, .sesameTouch2, .bikeLock2, .bikeLock3, .openSensor, .bleConnector, .remote, .remoteNano, .sesame5US, .sesameBot2, .sesameBot3, .sesameFace, .sesameFace2, .sesameFacePro, .sesameFace2Pro, .sesame6, .sesame6Pro, .sesame6ProSLiDingDoor, .sesameFaceAI, .sesameFace2AI, .sesameFaceProAI, .sesameFace2ProAI, .openSensor2, .sesameMiwa:
+                case .sesame5, .sesame5Pro, .sesameTouchPro, .sesameTouch2Pro, .sesameTouch, .sesameTouch2, .bikeLock2, .bikeLock3, .openSensor, .bleConnector, .remote, .remoteNano, .sesame5US, .sesameBot2, .sesameBot3, .sesameFace, .sesameFace2, .sesameFacePro, .sesameFace2Pro, .sesame6, .sesame6Pro, .sesame6ProSlidingDoor, .sesameFaceAI, .sesameFace2AI, .sesameFaceProAI, .sesameFace2ProAI, .openSensor2, .sesameMiwa:
                     deviceID = manufacturerData[5...20].toHexString().noDashtoUUID()
                 }
             }

@@ -486,7 +486,7 @@ class SesameDeviceListViewController: CHBaseViewController {
                 navigateToSesame2History(sesame2)
             }
 
-        case .sesame5, .sesame5Pro, .sesame5US, .sesame6, .sesame6Pro, .sesame6ProSLiDingDoor, .bleConnector, .sesameMiwa:
+        case .sesame5, .sesame5Pro, .sesame5US, .sesame6, .sesame6Pro, .sesame6ProSlidingDoor, .bleConnector, .sesameMiwa:
             guard let sesame5 = device as? CHSesame5 else { return }
             if sesame5.keyLevel == KeyLevel.guest.rawValue {
                 navigateToSesame5Setting(sesame5)

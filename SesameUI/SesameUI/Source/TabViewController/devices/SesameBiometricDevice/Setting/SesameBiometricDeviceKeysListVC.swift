@@ -40,7 +40,7 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
             .bleConnector,
             .sesame6,
             .sesame6Pro,
-            .sesame6ProSLiDingDoor,
+            .sesame6ProSlidingDoor,
             .sesameMiwa
         ]
         

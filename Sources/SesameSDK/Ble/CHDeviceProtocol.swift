@@ -164,7 +164,7 @@ enum SesameItemCode: UInt8 {
     // 不支持该设备
     case SSM3_ITEM_CODE_SESAME_UNSUPPORT = 204
     
-    // sesame6ProSLiDingDoor切换UI
+    // sesame6ProSlidingDoor切换UI
     case SS3_ITEM_CODE_SET_ADV_PRODUCT_TYPE = 205
     
     // 蓝牙发射功率

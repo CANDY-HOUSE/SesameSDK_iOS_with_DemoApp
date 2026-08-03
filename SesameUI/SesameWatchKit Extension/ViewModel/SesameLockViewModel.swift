@@ -36,7 +36,7 @@ class SesameLockViewModel: ObservableObject {
             CHProductModel.sesame5US,
             CHProductModel.sesame6,
             CHProductModel.sesame6Pro,
-            CHProductModel.sesame6ProSLiDingDoor,
+            CHProductModel.sesame6ProSlidingDoor,
             CHProductModel.sesameMiwa
         ].contains(device.productModel)
     }()
@@ -87,7 +87,7 @@ class SesameLockViewModel: ObservableObject {
         guard let mechStatus = sesame5.mechStatus else {
             return
         }
-        if (sesame5.productModel == .sesame5 || sesame5.productModel == .sesame5Pro || sesame5.productModel == .sesame5US || sesame5.productModel == .sesame6 || sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSLiDingDoor || sesame5.productModel == .sesameMiwa){
+        if (sesame5.productModel == .sesame5 || sesame5.productModel == .sesame5Pro || sesame5.productModel == .sesame5US || sesame5.productModel == .sesame6 || sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSlidingDoor || sesame5.productModel == .sesameMiwa){
             let toRadians = reverseDegree(angle: Int16(mechStatus.position))
             radians = CGFloat(toRadians)
         }else{

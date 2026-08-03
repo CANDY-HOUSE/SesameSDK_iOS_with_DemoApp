@@ -152,7 +152,7 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             return
         }
         currentDegree = status.position
-        useSlidingDoorUI = (sesame5.productModel == .sesame6ProSLiDingDoor)
+        useSlidingDoorUI = (sesame5.productModel == .sesame6ProSlidingDoor)
         self.refreshUIView()
     }
 
@@ -186,7 +186,7 @@ class Sesame5LockAngleViewController: CHBaseViewController {
         guard g.state == .began else { return }
         didTrigger2s = true
         
-        guard sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSLiDingDoor else {
+        guard sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSlidingDoor else {
             return
         }
         
@@ -195,7 +195,7 @@ class Sesame5LockAngleViewController: CHBaseViewController {
         
         let advType: UInt8
         let targetUseSliding: Bool
-        if sesame5.productModel == .sesame6ProSLiDingDoor {
+        if sesame5.productModel == .sesame6ProSlidingDoor {
             advType = 21
             targetUseSliding = false
         } else {
