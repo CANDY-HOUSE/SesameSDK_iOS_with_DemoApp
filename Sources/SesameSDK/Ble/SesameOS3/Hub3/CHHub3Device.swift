@@ -11,9 +11,6 @@ import CoreBluetooth
 
 class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     var sesame2Keys: [String : String] = [:]
-    var status: Hub3Status = Hub3Status(
-        eventType: "disconnected",
-    )
     /// 繼電器是否開啟（true=打開，false=關閉）
     var isRelayOn: Bool = false
     

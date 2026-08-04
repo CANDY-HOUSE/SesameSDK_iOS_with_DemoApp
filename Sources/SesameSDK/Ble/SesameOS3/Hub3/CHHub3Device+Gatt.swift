@@ -50,17 +50,4 @@ extension CHHub3Device {
             L.d("!![hub3][pub][\(itemCode.rawValue)]")
         }
     }
-    
-    func updateMechSettingStatusAndKeys(_ status: Hub3Status) {
-        self.status = status
-        let isConnectIOT = status.eventType == "connected" // 判断是否连接到IOT
-        mechStatus = CHWifiModule2NetworkStatus(
-            isAPWork: isConnectIOT,
-            isNetwork: isConnectIOT,
-            isIoTWork: isConnectIOT,
-            isBindingAPWork: false,
-            isConnectingNetwork: false,
-            isConnectingIoT: false
-        )
-    }
 }

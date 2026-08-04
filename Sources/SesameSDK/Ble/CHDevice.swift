@@ -135,16 +135,15 @@ public extension CHDevice {
     /// 只能近似,等 BLE/MQTT 补精。
     func applyServerState(_ stateInfo: [String: Any]) {
         let wm2Connected = stateInfo["wm2State"] as? Bool ?? false
-
-        // Hub3:网络连接(isIoTWork)+ 继电器开关
-        if let hub3 = self as? CHHub3Device {
-            hub3.mechStatus = CHWifiModule2NetworkStatus(isAPWork: wm2Connected,
+        if self is CHWifiModule2 {
+            self.mechStatus = CHWifiModule2NetworkStatus(isAPWork: wm2Connected,
                                                          isNetwork: wm2Connected,
                                                          isIoTWork: wm2Connected,
                                                          isBindingAPWork: false,
                                                          isConnectingNetwork: false,
                                                          isConnectingIoT: false)
-            if let relayStatus = stateInfo["relayStatus"] as? Int {
+            if let hub3 = self as? CHHub3Device,
+               let relayStatus = stateInfo["relayStatus"] as? Int {
                 hub3.isRelayOn = (relayStatus == 1)
             }
             return
@@ -167,7 +166,7 @@ public extension CHDevice {
         let position = stateInfo["position"] as? Int
         let serverMechStatus: CHSesameProtocolMechStatus?
         if self is CHSesame5 {
-            let pos = Int16(truncatingIfNeeded: position ?? 0)
+            let pos = Int16(truncatingIfNeeded: (position ?? 0) * 360 / 1024)
             serverMechStatus = Sesame5MechStatus(battery: 0, target: pos, position: pos, flags: flags)
         } else if self is CHSesameBike2 {
             serverMechStatus = CHSesameBike2MechStatus(battery: 0, flags: flags)

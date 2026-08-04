@@ -222,14 +222,13 @@ extension CHDeviceMO {
     }
     
     private func ifIgnoreUpdate(_ deviceKey: CHDeviceKey) -> Bool {
-        return self.deviceUUID == deviceKey.deviceUUID.uuidString && self.deviceModel == deviceKey.deviceModel && self.historyTag == deviceKey.historyTag && self.keyIndex == deviceKey.keyIndex && self.secretKey == deviceKey.secretKey && self.sesame2PublicKey == deviceKey.sesame2PublicKey
+        return self.deviceUUID == deviceKey.deviceUUID.uuidString && self.deviceModel == deviceKey.deviceModel && self.keyIndex == deviceKey.keyIndex && self.secretKey == deviceKey.secretKey && self.sesame2PublicKey == deviceKey.sesame2PublicKey
     }
     
     fileprivate func updateDeviceKey(_ deviceKey: CHDeviceKey) {
         guard !ifIgnoreUpdate(deviceKey) else { return }
         self.deviceUUID = deviceKey.deviceUUID.uuidString
         self.deviceModel = deviceKey.deviceModel
-        self.historyTag = deviceKey.historyTag
         self.keyIndex = deviceKey.keyIndex
         self.secretKey = deviceKey.secretKey
         self.sesame2PublicKey = deviceKey.sesame2PublicKey
@@ -238,7 +237,6 @@ extension CHDeviceMO {
     fileprivate func updateDeviceKey(_ deviceKey: CHDeviceMO) {
         self.deviceUUID = deviceKey.deviceUUID
         self.deviceModel = deviceKey.deviceModel
-        self.historyTag = deviceKey.historyTag
         self.keyIndex = deviceKey.keyIndex
         self.secretKey = deviceKey.secretKey
         self.sesame2PublicKey = deviceKey.sesame2PublicKey
