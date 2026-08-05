@@ -167,9 +167,9 @@ public extension CHDevice {
         let serverMechStatus: CHSesameProtocolMechStatus?
         if self is CHSesame5 {
             let pos = Int16(truncatingIfNeeded: (position ?? 0) * 360 / 1024)
-            serverMechStatus = Sesame5MechStatus(battery: 0, target: pos, position: pos, flags: flags)
+            serverMechStatus = Sesame5MechStatus(battery: 0, target: pos, position: pos, flags: flags | 16)
         } else if self is CHSesameBike2 {
-            serverMechStatus = CHSesameBike2MechStatus(battery: 0, flags: flags)
+            serverMechStatus = CHSesameBike2MechStatus(battery: 0, flags: flags | 4)
         } else {
             serverMechStatus = nil // Bot2 等无角度环,仅用 deviceShadowStatus
         }
