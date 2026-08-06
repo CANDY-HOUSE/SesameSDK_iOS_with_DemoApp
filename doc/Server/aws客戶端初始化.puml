@@ -1,8 +1,0 @@
-@startuml
-
-title:"AWSMobileClient初始化(.initialize)"
-note left of APP: GeneralTabVewVC
-
-APP -> APP: 設定客戶端\n並啟動CHUserAPIManager\n\n1.服務配置(憑證)\n2.請求攔截器(包含網絡請求攔截器和簽名)\n3.URL
-
-@enduml

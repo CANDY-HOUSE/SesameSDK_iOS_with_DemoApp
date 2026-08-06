@@ -1,134 +1,180 @@
-![SesameSDK](https://github.com/CANDY-HOUSE/.github/blob/main/profile/images/SesameSDK.png?raw=true)
-# SesameSDK3.0 for iOS
+![Sesame SDK](https://raw.githubusercontent.com/CANDY-HOUSE/.github/refs/heads/main/profile/images/SesameSDK.png)
 
-- Sesame app on [![App Store](https://img.shields.io/badge/App_Store-000000?logo=apple&logoColor=white)](https://apps.apple.com/app/id1532692301/)
-- Sesame app on [![TestFlight](https://img.shields.io/badge/TestFlight-0D96F6?logo=app-store&logoColor=white)](https://testflight.apple.com/join/Rok4GOFD/)
-- ![CandyHouse](https://jp.candyhouse.co/cdn/shop/files/3_eea4302e-b1ab-435d-8112-f97d85d5eda2.png?v=1682502225&width=18)[CANDY HOUSE Official Site](https://jp.candyhouse.co/)
+# SesameOS3 iOS
 
-## Contents
-- [Overview](#overview)
-- [Disclaimer](#disclaimer)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Design](#design)
-- [Terms of Use](#sesamesdk-terms-of-use)
+日本語 | [简体中文](README_zh-CN.md) | [English](README_en.md)
 
-## Overview
+CANDY HOUSE の iOS / watchOS Demo App と Swift 製 Sesame SDK を収録したオープンソースプロジェクトです。現在は Sesame OS3 デバイスを中心に、BLE 接続、登録、操作、状態同期、ファームウェア更新を提供しています。
 
-#### SesameSDK is an open-source, free, easy-to-use, and powerful Bluetooth/AIoT library for Apps on iOS/macOS/watchOS/iPadOS. The official Sesame application also uses this SesameSDK to build and realize all its features. Things you can do with SesameSDK:
+- [CANDY HOUSE 公式サイト](https://jp.candyhouse.co/)
+- [App Store](https://apps.apple.com/app/id1532692301/)
+- [TestFlight](https://testflight.apple.com/join/Rok4GOFD/)
 
-- Register Sesame devices (Sesame 5, Sesame 5 pro, Sesame Bike2, BLE Connector1, Open Sensor1, Sesame Touch 1 Pro, Sesame Touch 1, Sesame Bot1, WIFI Module2, Sesame 4, Sesame 3, Sesame Bike1)
-- Lock, unlock, or operate
-- Obtain historical records
-- Update SesameOS over the air(OTA)
-- Various device settings
-- Get battery level
+## SDK の導入
 
-## Requirements
+### 動作環境
 
-<img src="https://img.shields.io/badge/Swift-5.3-FA7343" />.  
-<img src="https://img.shields.io/badge/Bluetooth-4.0LE +-0082FC" />  
-<img src="https://img.shields.io/badge/iOS-12.0 +-000000" /><img src="https://img.shields.io/badge/macOS-10.15 +-000000" /><img src="https://img.shields.io/badge/watchOS-7.0 +-000000" /><img src="https://img.shields.io/badge/iPadOS-12.0 +-000000" />  
-<img src="https://img.shields.io/badge/Xcode-11.0 +-1575F9" />  
+- Xcode 15 以降
+- Swift 5.9 以降
+- iOS 16 以降 / watchOS 9 以降
 
+### 1. Swift Package Manager で追加する
 
-## Installation
-### Swift Package Manager
-[Swift Package Manager](https://www.swift.org/package-manager/) is a tool for managing the distribution of Swift code. It integrates with the Swift build system to automatically carry out the process of downloading, compiling, and linking dependencies.
-To integrate SesameSDK into your Xcode project using Swift Package Manager:
+Xcode の **File > Add Package Dependencies...** から、次の URL を追加します。
 
+```text
+https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git
 ```
+
+`Package.swift` から追加する場合は、`<version>` を [Tags](https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/tags) にある利用したいバージョンタグへ置き換えてください。
+
+```swift
 dependencies: [
-    .package(url: "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git", .upToNextMajor(from: "3.0.1"))
+    .package(
+        url: "https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp.git",
+        from: "<version>"
+    )
 ]
 ```
-![img](./doc/src/resources/spm_add.png)
-![img](./doc/src/resources/spm.png)
 
-## Usage
-### 1. Add Permissions
+利用するターゲットに `SesameSDK` を追加し、Swift ファイルで読み込みます。
+
+```swift
+import SesameSDK
 ```
+
+### 2. Bluetooth 権限を設定する
+
+アプリの `Info.plist` に Bluetooth の利用目的を追加してください。バックグラウンドで BLE 接続を継続する場合は、Background Modes の `bluetooth-central` も有効にします。
+
+```xml
 <key>NSBluetoothAlwaysUsageDescription</key>
-<string>To connect Sesame Smart Lock and lock/unlock the door.</string>
+<string>Sesame デバイスへの接続に Bluetooth を使用します。</string>
 <key>NSBluetoothPeripheralUsageDescription</key>
-<string>This app would like to make data available to nearby bluetooth devices even when you're not using the app.</string>
+<string>Sesame デバイスとの Bluetooth 通信に使用します。</string>
 ```
 
-### 2. Initialization
-SesameSDK requires AWS services. We provide free configuration parameters. <br>
-[AWSConfig.swift](https://github.com/CANDY-HOUSE/SesameSDK_iOS_with_DemoApp/blob/master/Sources/SesameSDK/Configuration/AWSConfig.swift)
+### 3. CANDY HOUSE サービスを初期化する
+
+Sesame OS3 の登録やクラウド機能を使用する場合、アプリの Bundle に `awsconfiguration.json` を追加し、起動時にサービスを初期化します。
+
 ```swift
-public struct AWSConfig {
-    // AWS API
-    public static let apiKey = "iGgXj9GorS4PeH90mAysg1l7kdvoIPxM25mPFl3k"
-    
-    // AWS IoT
-    public static let iotEndpoint = "https://d06107753ay3c67v7y9pa-ats.iot.ap-northeast-1.amazonaws.com"
+CHAWSManager.initialize { _, error in
+    guard error == nil else { return }
+    CHAPIClient.initialize()
 }
 ```
-Please start the Bluetooth scan at the appropriate time
+
+完全な実装は Demo App の [`AppDelegate.swift`](SesameUI/SesameUI/Source/AppDelegate.swift) と [`GeneralTabViewController.swift`](SesameUI/SesameUI/Source/TabViewController/GeneralTabViewController.swift) を参照してください。
+
+公開 Demo の CANDY HOUSE サービス設定は評価用途であり、リクエスト数などに制限が設けられる場合があります。本番環境では独自の AWS / Push Notification 設定を使用し、認証情報をリポジトリへコミットしないでください。
+
+### 4. デバイスを検出・登録する
+
 ```swift
-CHBluetoothCenter.shared.enableScan { res in }
-```
-Callback when the Bluetooth status changes
-```swift
-public protocol CHBleStatusDelegate: AnyObject {
-    func didScanChange(status: CHScanStatus)
-}
-```
-The list of scanned Sesame devices will be passed back to the caller at a frequency of once per second.
-```swift
-public protocol CHBleManagerDelegate: AnyObject {
-    func didDiscoverUnRegisteredCHDevices(_ devices: [CHDevice])
-}
-```
-### 3. Connect to Device
-Before establishing a connection, you should first confirm that the device's status is connectable
-```swift
-if sesame5.deviceStatus == .receivedBle() {
-    sesame5.connect() { _ in }
-}
-```
-At this point, you will receive the Sesame device's connection status callback
-```swift
-public protocol CHDeviceStatusDelegate: AnyObject {
-    func onBleDeviceStatusChanged(device: CHDevice, status: CHDeviceStatus, shadowStatus: CHDeviceStatus?)
-    func onMechStatus(device: CHDevice)
-}
-```
-### 4. Register Device
-When the connection status changes to ready to register, you can register the device to complete the pairing. Registration is a necessary step to bind the device
-```swift
-if device.deviceStatus == .readyToRegister() {
-    device.register( _ in )
-}
-```
-After registration, you can get paired devices through the CHDeviceManager
-```swift
-var chDevices = [CHDevice]()
-CHDeviceManager.shared.getCHDevices { result in
-    if case let .success(devices) = result {
-        chDevices = devices.data
+final class DeviceScanner: CHBleManagerDelegate, CHDeviceStatusDelegate {
+    private var target: CHDevice?
+
+    func start() {
+        CHBluetoothCenter.shared.delegate = self
+        CHBluetoothCenter.shared.enableScan { _ in }
+    }
+
+    func didDiscoverUnRegisteredCHDevices(_ devices: [CHDevice]) {
+        guard let device = devices.first else { return }
+        target = device
+        device.delegate = self
+        if device.deviceStatus == .receivedBle() {
+            device.connect { _ in }
+        }
+    }
+
+    func onBleDeviceStatusChanged(
+        device: CHDevice,
+        status: CHDeviceStatus,
+        shadowStatus: CHDeviceStatus?
+    ) {
+        guard status == .readyToRegister(), device.deviceId == target?.deviceId else { return }
+        device.register { result in
+            if case .failure(let error) = result {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 ```
-After completing the registration and pairing, you can now control the Sesame device via Bluetooth
 
-## Design
-Regarding the design details of SesameSDK, please refer to the following design diagrams and flowcharts.
+登録済みデバイスは `CHDeviceManager` から取得できます。
 
-### Bluetooth State Transition Flow Chart
-![BleConnect](./doc/ref/BleConnect.svg)
+```swift
+CHDeviceManager.shared.getCHDevices { result in
+    if case let .success(devices) = result {
+        let pairedDevices = devices.data
+    }
+}
+```
 
-### Framework Diagram
-![framework_diagram](./doc/src/resources/framework_diagram.png)
+## プロジェクト構成
 
+| パス | 説明 |
+| --- | --- |
+| `Package.swift` | `SesameSDK` と `AESc` を公開する Swift Package 定義 |
+| `Sources/SesameSDK` | BLE、OS3 デバイス、ローカル DB、クラウド通信 |
+| `Sources/SesameSDK/Ble/SesameOS3` | 現在メンテナンスしている OS3 実装 |
+| `SesameUI` | iOS / watchOS Demo App、Widget、Intent、Notification Extension |
 
-### Sequence Diagram
-![Sequence_diagram](./doc/src/resources/sequence_diagram.svg)
+## OS3 デバイス構成
 
-### Class Diagram
-![Class_diagram](./doc/src/resources/class_diagram.svg)
+```mermaid
+flowchart TB
+    Device[CHDevice]
 
+    Device --> Lock[CHSesameLock]
+    Lock --> LockBase[CHSesameOS3LockBase]
+    LockBase --> S5[CHSesame5Device]
+    LockBase --> Bike2[CHSesameBike2Device]
+    Bike2 --> Bike3[CHSesameBike3Device<br/>+ Fingerprint capability]
+    LockBase --> Bot2[CHSesameBot2Device]
 
+    Device --> Connector[CHSesameConnector]
+    Connector --> Bio[CHSesameBiometricDevice]
+    Bio --> BioImpl[CHSesameBiometricDeviceImpl<br/>Capabilities by product profile]
+
+    Device --> Hub[CHHub3 / CHHub3Device]
+```
+
+### メンテナンス対象製品
+
+製品範囲は `CHProductModel` を基準とし、実際の Device 実装ごとに分類しています。
+
+| Device 実装 | 製品 |
+| --- | --- |
+| `CHSesame5Device` | Sesame 5、Sesame 5 Pro、Sesame 5 US、Sesame 6、Sesame 6 Pro、Sesame 6 Pro SlidingDoor、Sesame miwa、BLE Connector 1 |
+| `CHSesameBike2Device` | Sesame Bike 2 |
+| `CHSesameBike3Device` | Sesame Bike 3（指紋機能） |
+| `CHSesameBot2Device` | Sesame Bot 2、Sesame Bot 3 |
+| `CHSesameBiometricDeviceImpl` | Open Sensor 1/2、Remote、Remote Nano、Sesame Touch 1/1 Pro/2/2 Pro、Sesame Face 1/1 Pro/1 AI/1 Pro AI/2/2 Pro/2 AI/2 Pro AI |
+| `CHHub3Device` | Hub 3、Hub 3 LTE |
+
+> メンテナンス終了：Sesame 3（`sesame2`）、WiFi Module 2（`wifiModule2`）、Sesame Bot 1（`sesameBot`）、Sesame Bike 1（`bikeLock`）、Sesame 4（`sesame4`）。SesameOS2 実装もメンテナンス対象外です。
+
+### 生体認証 Capability
+
+`CHSesameBiometricDeviceImpl` は製品 Profile に応じて Capability を組み合わせます。
+
+| 製品シリーズ | Capability |
+| --- | --- |
+| Touch | Card、Fingerprint |
+| Touch Pro | Card、Fingerprint、Passcode |
+| Face | Card、Fingerprint、Palm、Face |
+| Face Pro | Card、Fingerprint、Passcode、Palm、Face |
+| Face AI | Palm、Face |
+| Face Pro AI | Passcode、Palm、Face |
+
+関連 API：`CHCardCapable`、`CHFingerPrintCapable`、`CHPassCodeCapable`、`CHPalmCapable`、`CHFaceCapable`、`CHRemoteNanoCapable`。
+
+## メンテナンス方針
+
+- 新製品は `CHProductModel` に追加し、対応する OS3 Device 実装へマッピングします。
+- 共通処理は基底クラスへ集約し、製品差分は専用実装または Capability の組み合わせで表現します。
+- `Sources/SesameSDK/Ble/SesameOS2` は互換性維持のための旧実装であり、現在のメンテナンス対象外です。
