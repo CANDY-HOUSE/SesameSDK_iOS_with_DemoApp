@@ -149,6 +149,19 @@ public extension CHDevice {
             return
         }
 
+        // Touch / Face 连接器:用服务端状态恢复 WiFi 在线状态
+        if let biometricDevice = self as? CHSesameBiometricDevice {
+            switch biometricDevice.deviceType {
+            case .sesameTouch, .sesameTouchPro, .sesameFace, .sesameFacePro, .sesameFaceAI, .sesameFaceProAI:
+                deviceShadowStatus = wm2Connected
+                    ? ((mechStatus?.isInLockRange == true) ? .locked() : .unlocked())
+                    : nil
+                return
+            default:
+                break
+            }
+        }
+
         // 锁类:角度 + 锁态
         applyServerWM2Connected(wm2Connected)
         guard wm2Connected else {
