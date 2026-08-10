@@ -193,10 +193,10 @@ public final class CHAWSManager {
             do {
                 let session = try await Amplify.Auth.fetchAuthSession()
                 let newState: UserState = session.isSignedIn ? .signedIn : .signedOut
-                updateState(newState)
+                lock.chWithLock { state = newState }
                 completion(newState, nil)
             } catch {
-                updateState(.signedOut)
+                lock.chWithLock { state = .signedOut }
                 completion(.signedOut, error)
             }
         }

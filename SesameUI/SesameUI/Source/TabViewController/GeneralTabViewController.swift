@@ -33,6 +33,15 @@ public class GeneralTabViewController: UITabBarController {
                 UserDefaults.standard.set(true, forKey: "HasInstalled")
                 CHAWSMobileClient.shared.signOut()
             }
+            if userState == .signedIn {
+                CHAWSMobileClient.shared.getName { result in
+                    if case let .success(nickname) = result {
+                        Sesame2Store.shared.setHistoryTag(nickname)
+                    }
+                }
+                CHAPIClient.shared.uploadUserDeviceToken() { result in}
+            }
+
         }
         
         // 當用戶登出登入時，執行以下服務
