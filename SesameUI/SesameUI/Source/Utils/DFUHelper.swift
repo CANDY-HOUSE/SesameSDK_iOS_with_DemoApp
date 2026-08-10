@@ -227,8 +227,12 @@ extension DFUHelper: LoggerDelegate, DFUServiceDelegate, DFUProgressDelegate {
             L.d("DFUHelper", "completed")
         case .connecting:
             L.d("DFUHelper", "connecting")
+        case .connected:
+            L.d("DFUHelper", "connected")
         case .disconnecting:
             L.d("DFUHelper", "disconnecting")
+        case .disconnected:
+            L.d("DFUHelper", "disconnected")
         case .enablingDfuMode:
             L.d("DFUHelper", "enablingDfuMode")
         case .starting:
