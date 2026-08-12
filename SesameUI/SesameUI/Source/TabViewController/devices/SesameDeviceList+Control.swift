@@ -387,13 +387,15 @@ extension SesameDeviceListViewController {
     }
     
     func migrateOrderKeysIfNeeded() {
-        let migratedFlagKey = "orderKeyMigrated"
-        guard !UserDefaults.standard.bool(forKey: migratedFlagKey) else { return }
-        CHAPIClient.shared.mergeDeviceOrder { [weak self] mergeResult in
-            guard case .success = mergeResult else { return }
-            UserDefaults.standard.set(true, forKey: migratedFlagKey)
-            self?.getKeysFromServer()
-        }
+        CHAWSMobileClient.shared.getSubId { subId in
+            let subId = subId ?? ""
+            let migratedFlagKey = "orderKeyMigrated_\(subId)"
+            guard !UserDefaults.standard.bool(forKey: migratedFlagKey) else { return }
+            CHAPIClient.shared.mergeDeviceOrder { [weak self] mergeResult in
+                guard case .success = mergeResult else { return }
+                UserDefaults.standard.set(true, forKey: migratedFlagKey)
+                self?.getKeysFromServer()
+             }
+         }
     }
-
 }
