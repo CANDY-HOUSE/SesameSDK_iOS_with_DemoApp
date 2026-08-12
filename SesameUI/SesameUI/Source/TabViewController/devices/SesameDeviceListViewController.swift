@@ -387,6 +387,11 @@ class SesameDeviceListViewController: CHBaseViewController {
                         if let rank = userKey.rank {
                             device?.setRank(level: rank)
                         }
+                        device?.setOrderKey(userKey.orderKey)
+                    }
+                    // 迁移：延后到本轮 Core Data 写库处理之后再执行，避免重入变更通知触发崩溃
+                    DispatchQueue.main.async { [weak self] in
+                        self?.migrateOrderKeysIfNeeded()
                     }
                     WatchKitFileTransfer.shared.transferKeysToWatch()
                     self.getKeysFromCache()

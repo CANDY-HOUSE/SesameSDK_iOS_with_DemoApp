@@ -356,19 +356,22 @@ extension SesameDeviceListViewController {
         
         // 原有设备排序逻辑
         isDraggingCell = true
-        for (index, device) in devices.enumerated() {
-            device.setRank(level: -index)
-        }
-        
-        let newKeys = CHAWSMobileClient.shared.getLocalUserKeys()
-        CHAPIClient.shared.postCHUserKeys(newKeys.toData()) { [weak self] result in
+        let row = finalIndex.row
+        guard row >= 0, row < devices.count else { isDraggingCell = false; return }
+        let moved = devices[row]
+        let prevKey = row > 0 ? devices[row - 1].getOrderKey() : nil
+        let nextKey = row < devices.count - 1 ? devices[row + 1].getOrderKey() : nil
+        let oldKey = moved.getOrderKey()
+        CHAPIClient.shared.moveDeviceOrder(deviceUUID: moved.deviceId.uuidString, prevKey: prevKey, nextKey: nextKey) { [weak self] result in
             guard let self = self else { return }
             self.isDraggingCell = false
             switch result {
-            case .success(_):
+            case .success(let state):
+                if !state.data.isEmpty { moved.setOrderKey(state.data) }
                 self.rebuildData()
             case .failure(_):
                 DispatchQueue.main.async {
+                    moved.setOrderKey(oldKey) // 回滚该项排序键
                     guard finalIndex.row >= 0, finalIndex.row < self.devices.count,
                           initialIndex.row >= 0, initialIndex.row <= self.devices.count else {
                         self.rebuildData()
@@ -380,6 +383,16 @@ extension SesameDeviceListViewController {
                     self.rebuildData()
                 }
             }
+        }
+    }
+    
+    func migrateOrderKeysIfNeeded() {
+        let migratedFlagKey = "orderKeyMigrated"
+        guard !UserDefaults.standard.bool(forKey: migratedFlagKey) else { return }
+        CHAPIClient.shared.mergeDeviceOrder { [weak self] mergeResult in
+            guard case .success = mergeResult else { return }
+            UserDefaults.standard.set(true, forKey: migratedFlagKey)
+            self?.getKeysFromServer()
         }
     }
 

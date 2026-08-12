@@ -162,7 +162,16 @@ class RegisterSesameDeviceViewController: CHBaseViewController { //[joi todo]改
             (device as? CHSesame2)?.configureLockPosition(lockTarget: 0, unlockTarget: 256) { _ in }
             device.setKeyLevel(KeyLevel.owner.rawValue)
             device.setDeviceName(device.deviceName)
-            CHAPIClient.shared.putCHUserKey(CHUserKey.fromCHDevice(device).toData()) { _ in }
+            CHAPIClient.shared.putCHUserKey(CHUserKey.from(device).toData()) { result in
+                if case .success = result {
+                    DispatchQueue.main.async {
+                        if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController,
+                           let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+                            listViewController.getKeysFromServer()
+                        }
+                    }
+                }
+            }
             executeOnMainThread {
                 L.d("[註冊]2")
                 ViewHelper.hideLoadingView(view: self.view)

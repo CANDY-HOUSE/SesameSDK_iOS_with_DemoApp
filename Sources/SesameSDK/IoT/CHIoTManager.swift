@@ -9,94 +9,8 @@
 import Foundation
 
 #if os(iOS)
-import AWSCognitoIdentity
-import AWSSDKIdentity
+import AWSPluginsCore
 import AwsIotDeviceSdkSwift
-
-private enum CHIoTCredentialsError: LocalizedError {
-    case missingIdentityId
-    case missingCredentials
-
-    var errorDescription: String? {
-        switch self {
-        case .missingIdentityId:
-            return "The IoT identity pool did not return an identity ID."
-        case .missingCredentials:
-            return "The IoT identity pool did not return complete AWS credentials."
-        }
-    }
-}
-
-private actor CHIoTCredentialsProvider: CredentialsProviding {
-    private let identityPoolId = CHConfiguration.shared.clientId
-    private let identityClient: CognitoIdentityClient
-    private var cachedIdentityId: String?
-    private var resolver: CognitoAWSCredentialIdentityResolver?
-
-    private var identityIdKey: String {
-        "co.candyhouse.sesame.iot.identity.\(identityPoolId)"
-    }
-
-    init() throws {
-        identityClient = try CognitoIdentityClient(region: CHConfiguration.shared.regionName)
-    }
-
-    func getCredentials() async throws -> Credentials {
-        do {
-            return try await makeCredentials()
-        } catch is NotAuthorizedException {
-            // identityId 失效：清持久化 + resolver，重取
-            cachedIdentityId = nil
-            resolver = nil
-            CHKeychain.remove(forKey: identityIdKey)
-            return try await makeCredentials()
-        }
-    }
-
-    /// 用共享 resolver 取凭证并转成 CRT 凭证（resolver 内部自动缓存 / 到期刷新）
-    private func makeCredentials() async throws -> Credentials {
-        let identity = try await credentialResolver().getIdentity(identityProperties: nil)
-        return try Credentials(accessKey: identity.accessKey,
-                               secret: identity.secret,
-                               sessionToken: identity.sessionToken,
-                               expiration: identity.expiration)
-    }
-
-    private func getIdentityId() async throws -> String {
-        if let cachedIdentityId {
-            return cachedIdentityId
-        }
-        if let storedIdentityId = CHKeychain.string(forKey: identityIdKey),
-           !storedIdentityId.isEmpty {
-            cachedIdentityId = storedIdentityId
-            return storedIdentityId
-        }
-
-        let response = try await identityClient.getId(
-            input: GetIdInput(identityPoolId: identityPoolId)
-        )
-        guard let identityId = response.identityId, !identityId.isEmpty else {
-            throw CHIoTCredentialsError.missingIdentityId
-        }
-        cachedIdentityId = identityId
-        CHKeychain.setString(identityId, forKey: identityIdKey)
-        return identityId
-    }
-
-    /// 共享的 Cognito 凭证 resolver：MQTT 与 HTTP 数据面共用同一个实例
-    /// （身份 = getId+Keychain 稳定；凭证由 SDK 内部自动缓存 / 到期刷新）
-    private func credentialResolver() async throws -> CognitoAWSCredentialIdentityResolver {
-        if let resolver {
-            return resolver
-        }
-        let newResolver = try CognitoAWSCredentialIdentityResolver(
-            identityId: try await getIdentityId(),
-            identityPoolRegion: CHConfiguration.shared.regionName
-        )
-        resolver = newResolver
-        return newResolver
-    }
-}
 
 private enum CHIoTConnectionStatus: String {
     case unknown
@@ -128,7 +42,7 @@ final class CHIoTManager: @unchecked Sendable {
     private let lock = NSLock()
     private let clientCreationLock = NSLock()
     private let callbackQueue = DispatchQueue(label: "co.candyhouse.sesame.iot.callback")
-    private let credentialsProvider: CHIoTCredentialsProvider?
+    private let credentialsProvider: any CredentialsProviding
     private var client: Mqtt5Client?
     private var topicHandlers: [String: TopicHandler] = [:]
     private var connectionStatus: CHIoTConnectionStatus = .unknown
@@ -141,7 +55,7 @@ final class CHIoTManager: @unchecked Sendable {
     private let maximumSubscriptionAttempts = 3
 
     private init() {
-        credentialsProvider = try? CHIoTCredentialsProvider()
+        credentialsProvider = AWSAuthService().getCredentialsProvider()
         IotDeviceSdk.initialize()
         let reachability = NetworkReachabilityHelper.shared
         networkAvailable = reachability.currentState != .notReachable
@@ -403,9 +317,6 @@ final class CHIoTManager: @unchecked Sendable {
         }
 
         let endpoint = URL(string: AWSConfig.iotEndpoint)?.host ?? AWSConfig.iotEndpoint
-        guard let credentialsProvider else {
-            throw CHIoTCredentialsError.missingCredentials
-        }
         let mqttCredentialsProvider = try CredentialsProvider(provider: credentialsProvider)
         let builder = try Mqtt5ClientBuilder.websocketsWithDefaultAwsSigning(
             endpoint: endpoint,

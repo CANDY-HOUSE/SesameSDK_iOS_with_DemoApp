@@ -13,7 +13,6 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/aws-amplify/amplify-swift", exact: "2.58.3"),
-        .package(url: "https://github.com/awslabs/aws-sdk-swift", exact: "1.6.71"),
         .package(url: "https://github.com/aws/aws-iot-device-sdk-swift", exact: "0.6.0")
     ],
     targets: [
@@ -30,8 +29,6 @@ let package = Package(
                 .product(name: "AWSAPIPlugin", package: "amplify-swift"),
                 .product(name: "AWSCognitoAuthPlugin", package: "amplify-swift"),
                 .product(name: "AWSPluginsCore", package: "amplify-swift"),
-                .product(name: "AWSCognitoIdentity", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
-                .product(name: "AWSSDKIdentity", package: "aws-sdk-swift", condition: .when(platforms: [.iOS])),
                 .product(name: "AwsIotDeviceSdkSwift", package: "aws-iot-device-sdk-swift", condition: .when(platforms: [.iOS])),
             ],
             path: "Sources/SesameSDK",

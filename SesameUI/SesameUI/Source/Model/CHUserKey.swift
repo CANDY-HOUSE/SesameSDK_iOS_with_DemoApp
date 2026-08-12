@@ -18,7 +18,8 @@ struct CHUserKey: Codable {
     var secretKey: String?
     let sesame2PublicKey: String?
     var deviceName: String?
-    var rank: Int?
+    var rank: Int? // deprecated
+    var orderKey: String?
     var stateInfo: StateInfo?
 
     func toCHDevice() -> CHDevice? {
@@ -52,10 +53,16 @@ struct CHUserKey: Codable {
     }
     
     static func fromCHDevice(_ device: CHDevice) -> CHUserKey {
-        return userKeyFromCHDevice(device, keyLevel: device.keyLevel,rank: device.getRank())
+        return userKeyFromCHDevice(device, keyLevel: device.keyLevel)
     }
-    
-    static func userKeyFromCHDevice(_ device: CHDevice, keyLevel: Int,rank:Int? = nil) -> CHUserKey {
+
+    static func from(_ device: CHDevice) -> CHUserKey {
+        var key = userKeyFromCHDevice(device, keyLevel: device.keyLevel)
+        key.orderKey = nil
+        return key
+    }
+
+    static func userKeyFromCHDevice(_ device: CHDevice, keyLevel: Int) -> CHUserKey {
         guard let deviceKey = device.getKey() else {
             return CHUserKey(deviceModel: nil,
                              deviceUUID: device.deviceId.uuidString,
@@ -65,7 +72,7 @@ struct CHUserKey: Codable {
                              secretKey: nil,
                              sesame2PublicKey: nil,
                              deviceName: device.deviceName,
-                             rank: rank
+                             orderKey: device.getOrderKey()
             )
         }
         var userKey = CHUserKey(deviceModel: deviceKey.deviceModel,
@@ -76,7 +83,7 @@ struct CHUserKey: Codable {
                             secretKey: deviceKey.secretKey,
                             sesame2PublicKey: deviceKey.sesame2PublicKey,
                             deviceName: device.deviceName,
-                                rank: rank
+                            orderKey: device.getOrderKey()
         )
         
         if let device = userKey.toCHDevice(), let deviceName = Sesame2Store.shared.propertyFor(device)?.name {
@@ -106,7 +113,7 @@ extension CHUserKey {
     func toData() -> Data {
         return try! JSONEncoder().encode(self)
     }
-    
+
     func deviceUUIDData() -> Data {
         let jsonText = "\"" + deviceUUID + "\""
         return jsonText.data(using: .utf8)!

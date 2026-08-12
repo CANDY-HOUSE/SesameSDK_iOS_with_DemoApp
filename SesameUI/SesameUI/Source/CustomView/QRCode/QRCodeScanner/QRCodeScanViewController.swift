@@ -252,56 +252,20 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            if let _ = scanSchema.schemaShareKeyValue() {
-                ViewHelper.showLoadingInView(view: self.view)
-                let keyLevelValue = Int(scanSchema.getQuery(name: "l")) ?? 1
-                //            let keyLevel = KeyLevel(rawValue: keyLevelValue)
-                let deviceName = scanSchema.getQuery(name: "n")
-                self.saveKeysAndUpload(scanSchema, keyLevel: keyLevelValue, deviceName: deviceName)
-            } else if let friend = scanSchema.schemaFriendValue() {
-                CHAPIClient.shared.postFriend(friend) { result in
-                    executeOnMainThread {
-                        self.qrCodeType = .friend
-                        self.dismissSelf()
-                    }
-                }
-            }
-        }
-    }
-    
-    private func saveKeysAndUpload(_ qrCodeURL: URL, keyLevel: Int, deviceName: String? = nil) {
-        guard let deviceKey = qrCodeURL.deviceKeyFromQRCodeURL() else {
-            return
-        }
-        CHDeviceManager.shared.receiveCHDeviceKeys([deviceKey]) { result in
-            switch result {
-            case .success(let devices):
-
-                guard let device = devices.data.first else {
-                    return
-                }
-                // Set KeyLevel
-                Sesame2Store.shared.deletePropertyFor(device)
-                device.setKeyLevel(keyLevel)
-                // Set Device Name
-                if let deviceName = deviceName {
-                    device.setDeviceName(deviceName)
-                }
-                // Set History Tag
-                CHDeviceManager.shared.setHistoryTag()
-                var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel)
-                CHAPIClient.shared.putCHUserKey(userKey.toData()) { _ in
-                    executeOnMainThread {
-                        ViewHelper.hideLoadingView(view: self.view)
-                        self.qrCodeType = .sesameKey
-                        self.dismissSelf()
-                    }
-                    CHAPIClient.shared.getCHUserKeys { _ in }
-                }
-            case .failure(_):
+            ViewHelper.showLoadingInView(view: self.view)
+            Self.parseSesameQRCode(urlString) { [weak self] result in
+                guard let self = self else { return }
                 executeOnMainThread {
                     ViewHelper.hideLoadingView(view: self.view)
-                    self.view.makeToast("Scan QR code failed")
+                    switch result {
+                    case .success(let type):
+                        self.qrCodeType = type
+                        self.dismissSelf()
+                    case .failure(let error):
+                        self.view.makeToast(error.errorDescription(), duration: 1.0) { didTap in
+                            self.dismissSelf()
+                        }
+                    }
                 }
             }
         }
@@ -311,37 +275,52 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
 extension QRCodeScanViewController {
     static func parseSesameQRCode(_ qrCodeURL: String, handler: @escaping ((Result<QRcodeType, Error>)->Void)) {
         guard let scanSchema = URL(string: qrCodeURL) else {
-                return
+            handler(.failure(NSError.invalidQRCode))
+            return
         }
         if let _ = scanSchema.schemaShareKeyValue() {
-            let keyLevelValue = Int(scanSchema.getQuery(name: "l")) ?? 1
-            let keyLevel = KeyLevel(rawValue: keyLevelValue) ?? .guest
-            let deviceName = scanSchema.getQuery(name: "n")
-            guard let deviceKey = scanSchema.deviceKeyFromQRCodeURL() else {
-                return
-            }
-
-            CHDeviceManager.shared.receiveCHDeviceKeys([deviceKey]) { result in
-                switch result {
-                case .success(let devices):
-
-                    guard let device = devices.data.first else {
+            CHAPIClient.shared.redeemQR(qrToken: qrCodeURL) { redeemResult in
+                switch redeemResult {
+                case .failure(let error):
+                    handler(.failure(error))
+                case .success(let state):
+                    guard let redeemedURL = URL(string: state.data),
+                          let deviceKey = redeemedURL.deviceKeyFromQRCodeURL() else {
+                        handler(.failure(NSError.invalidQRCode))
                         return
                     }
-                    // Set KeyLevel
-                    Sesame2Store.shared.deletePropertyFor(device)
-                    device.setKeyLevel(keyLevel.rawValue)
-                    // Set Device Name
-                    device.setDeviceName(deviceName)
-                    // Set History Tag
-                    CHDeviceManager.shared.setHistoryTag()
-                    var userKey = CHUserKey.userKeyFromCHDevice(device, keyLevel: keyLevel.rawValue)
-                    CHAPIClient.shared.putCHUserKey(userKey.toData()) { _ in
-                        handler(.success(.sesameKey))
-                        CHAPIClient.shared.getCHUserKeys { _ in }
+                    CHDeviceManager.shared.receiveCHDeviceKeys([deviceKey]) { result in
+                        switch result {
+                        case .success(let devices):
+                            guard let device = devices.data.first else {
+                                handler(.failure(NSError.invalidQRCode))
+                                return
+                            }
+                            Sesame2Store.shared.deletePropertyFor(device)
+                            let keyLevelValue = Int(redeemedURL.getQuery(name: "l")) ?? 1
+                            let keyLevel = KeyLevel(rawValue: keyLevelValue) ?? .guest
+                            let deviceName = redeemedURL.getQuery(name: "n")
+                            Sesame2Store.shared.saveAttributes([
+                                "keyLevel": keyLevel.rawValue,
+                                "name": deviceName
+                            ], for: device)
+                            // Set History Tag
+                            CHDeviceManager.shared.setHistoryTag()
+                            CHAPIClient.shared.putCHUserKey(CHUserKey.from(device).toData()) { result in
+                                handler(.success(.sesameKey))
+                                if case .success = result {
+                                    DispatchQueue.main.async {
+                                        if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController,
+                                           let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+                                            listViewController.getKeysFromServer()
+                                        }
+                                    }
+                                }
+                            }
+                        case .failure(_):
+                            handler(.failure(NSError.invalidQRCode))
+                        }
                     }
-                case .failure(_):
-                    handler(.failure(NSError.invalidQRCode))
                 }
             }
         } else if let friend = scanSchema.schemaFriendValue() {
@@ -353,6 +332,8 @@ extension QRCodeScanViewController {
                     handler(.failure(error))
                 }
             }
+        } else {
+            handler(.failure(NSError.invalidQRCode))
         }
     }
 }

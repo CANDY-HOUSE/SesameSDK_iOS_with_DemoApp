@@ -110,7 +110,14 @@ extension CHDevice {
         return value
     }
 
-    func compare(_ device: CHDevice) -> Bool {  /// 設備排序
+    // todo: 将来应保留一种排序模式
+    func compare(_ device: CHDevice) -> Bool {  /// 設備排序：分数排序键(orderKey)升序，缺失回退旧 rank（迁移种子）
+        let a = getOrderKey(), b = device.getOrderKey()
+        if let a = a, let b = b {
+            return a == b ? self.deviceName < device.deviceName : a < b
+        }
+        if a != nil { return true }
+        if b != nil { return false }
         if self.getRank() == device.getRank(){
             return self.deviceName < device.deviceName //改为升序
         }else{
@@ -123,6 +130,21 @@ extension CHDevice {
 
     func getRank() -> Int {
         return UserDefaults(suiteName: "group.candyhouse.widget")!.integer(forKey: self.deviceId.uuidString)
+    }
+    // MARK: - 分数排序键(orderKey)
+    private var orderKeyStoreKey: String { "order_\(self.deviceId.uuidString)" }
+
+    func setOrderKey(_ key: String?) {
+        let store = UserDefaults(suiteName: "group.candyhouse.widget")!
+        if let key = key {
+            store.set(key, forKey: orderKeyStoreKey)
+        } else {
+            store.removeObject(forKey: orderKeyStoreKey)
+        }
+    }
+
+    func getOrderKey() -> String? {
+        UserDefaults(suiteName: "group.candyhouse.widget")!.string(forKey: orderKeyStoreKey)
     }
 }
 extension CHDevice {

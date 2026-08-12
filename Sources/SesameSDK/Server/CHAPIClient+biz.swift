@@ -270,6 +270,70 @@ public extension CHAPIClient {
         }
     }
 
+    /// 兑换扫码：把扫到的分享钥匙二维码全文作为 qrToken 上报，成功回传服务端下发的新 URL，失败回传 error（供外部展示）。
+    func redeemQR(qrToken: String, _ result: @escaping CHResult<String>) {
+        let parameters: [String: Any] = [
+            "qrToken": qrToken,
+            "op": "redeemQRToken"
+        ]
+        let payload = try! JSONSerialization.data(withJSONObject: parameters)
+        API(request: .init(.post, "/device/v1/redeem_qr", payload)) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data,
+                      let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    result(.failure(NSError(domain: "CHAPIClient", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])))
+                    return
+                }
+                if let url = jsonObj["data"] as? String, !url.isEmpty {
+                    result(.success(.init(input: url)))
+                } else {
+                    let message = (jsonObj["message"] as? String) ?? (jsonObj["error"] as? String) ?? "Redeem QR failed"
+                    result(.failure(NSError(domain: "CHAPIClient", code: -1, userInfo: [NSLocalizedDescriptionKey: message])))
+                }
+            case .failure(let error):
+                L.d("sf", "redeemQR error: \(error)")
+                result(.failure(error))
+            }
+        }
+    }
+
+    // MARK: - 设备排序（服务端 orderKey）
+    /// migrate：服务端为缺 orderKey 的设备按旧规则(rank/名)补键
+    func mergeDeviceOrder(_ result: @escaping CHResult<NSNull>) {
+        let payload = try! JSONSerialization.data(withJSONObject: ["op": "merge"])
+        API(request: .init(.post, "/device/v1/reorder", payload)) { response in
+            switch response {
+            case .success(_):
+                result(.success(.init(input: NSNull())))
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+
+    /// reorder：服务端在 prevKey、nextKey 之间生成 orderKey 并只更新该设备，返回新 orderKey
+    func moveDeviceOrder(deviceUUID: String, prevKey: String?, nextKey: String?, _ result: @escaping CHResult<String>) {
+        var parameters: [String: Any] = ["op": "move", "deviceUUID": deviceUUID]
+        if let prevKey = prevKey { parameters["prevKey"] = prevKey }
+        if let nextKey = nextKey { parameters["nextKey"] = nextKey }
+        let payload = try! JSONSerialization.data(withJSONObject: parameters)
+        API(request: .init(.post, "/device/v1/reorder", payload)) { response in
+            switch response {
+            case .success(let data):
+                var orderKey = ""
+                if let data = data,
+                   let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let key = obj["orderKey"] as? String {
+                    orderKey = key
+                }
+                result(.success(.init(input: orderKey)))
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
+    }
+
     // MARK: - App Promotion
     func getActivePromotion(_ result: @escaping CHResult<AppPromotion>) {
         API(
