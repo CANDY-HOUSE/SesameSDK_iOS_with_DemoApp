@@ -1,5 +1,5 @@
 {
-  "originHash" : "fdf18396c5cf810aac9bb55979943128020d9b10d52e1e0f394d0a81e430cc3e",
+  "originHash" : "9b55f7790e7ec961095aad40302aad5e9e653cedc90576cc4f4e00c9849f823f",
   "pins" : [
     {
       "identity" : "amplify-swift",
@@ -267,8 +267,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-system",
       "state" : {
-        "revision" : "704705c5c51156ede21172a38654d522ce487074",
-        "version" : "1.8.0"
+        "revision" : "869129b7bf4ecc57b97d0193ad29690ca2134750",
+        "version" : "1.8.1"
       }
     },
     {
