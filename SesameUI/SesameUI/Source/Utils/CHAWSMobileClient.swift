@@ -9,15 +9,8 @@
 import Foundation
 import SesameSDK
 
-/// 用戶登出登入變化事件介面
-protocol CHUserManagerSignInDelegate: AnyObject {
-    func signInCompleteHandler(_ result: Result<NSNull, Error>)
-    func signInStatusDidChanged(_ status: SignInState)
-}
-
 class CHAWSMobileClient {
     static let shared = CHAWSMobileClient()
-    weak var delegate: CHUserManagerSignInDelegate?
     var subId: String?
     var name: String?
     var email: String?
@@ -33,42 +26,6 @@ extension CHAWSMobileClient {
     // MARK: - SignUp
     func signUpWithEmail(_ email: String, _ result: @escaping ((SignUpResult?, Error?) -> Void)) {
         CHAWSManager.signUp(username: email, password: "dummypwk", attributes: [Constant.email: email], completion: result)
-    }
-    
-    // MARK: - SignIn
-    func signInWithEmail(_ email: String) {
-        CHAWSManager.signIn(username: email, password: "dummypwk") { signInState, error in
-            if let signInState {
-                self.delegate?.signInStatusDidChanged(signInState)
-            }
-            if let error = error {
-                self.delegate?.signInCompleteHandler(.failure(error))
-            }
-        }
-    }
-    
-    // MARK: - Verify
-    func verifySMS(_ sms: String, ofEmail email: String) {
-        CHAWSManager.confirmSignIn(challengeResponse: sms) { signInState, error in
-            if let signInState {
-                self.delegate?.signInStatusDidChanged(signInState)
-            }
-            if let error = error {
-                if let authError = error as? CHAuthError, case .invalidState = authError {
-                    self.signInWithEmail(email)
-                    let error = CHAuthError.notAuthorized("Incorrect username or password.")
-                    self.delegate?.signInCompleteHandler(.failure(error))
-                } else if let authError = error as? CHAuthError, case .notAuthorized = authError {
-                    self.signInWithEmail(email)
-                    self.delegate?.signInCompleteHandler(.failure(error))
-                } else {
-                    self.delegate?.signInCompleteHandler(.failure(error))
-                }
-            } else {
-                UserDefaults.standard.setValue(email, forKey: Constant.email)
-                self.delegate?.signInCompleteHandler(.success(NSNull()))
-            }
-        }
     }
     
     // MARK: - SignOut

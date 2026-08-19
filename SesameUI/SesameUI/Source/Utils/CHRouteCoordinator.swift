@@ -111,7 +111,7 @@ public extension CHRouteCoordinator where Self: UIViewController {
             } else if qrCodeType == .friend {
                 if let nav = GeneralTabViewController.switchTabByIndex(2) as? UINavigationController,
                    let friendViewController = nav.viewControllers.first as? FriendViewController {
-                    friendViewController.reloadFriends()
+                    friendViewController.reloadWeb()
                 }
             }
         }

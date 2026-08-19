@@ -13,7 +13,6 @@ class CHWebViewController: CHBaseViewController,UIGestureRecognizerDelegate {
     private var sceneInfo: (scene: String, extInfo: [String: String]?)!
     private weak var webView: CHWebView!
     var onWebViewReady: ((CHWebViewController?) -> Void)?
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
         webView?.cleanup()

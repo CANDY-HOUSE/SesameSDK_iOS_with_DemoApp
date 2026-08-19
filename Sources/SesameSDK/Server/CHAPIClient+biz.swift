@@ -205,7 +205,8 @@ public extension CHAPIClient {
                 if let jsonData = data,
                    let json = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any],
                    let urlString = json["url"] as? String {
-                    result(.success(.init(input: urlString)))
+                    let url = urlString.replacingOccurrences(of: "https://biz.candyhouse.co", with: "http://localhost:3000")
+                    result(.success(.init(input: url)))
                 } else {
                     result(.failure(NSError(domain: "ParseError", code: -1)))
                 }

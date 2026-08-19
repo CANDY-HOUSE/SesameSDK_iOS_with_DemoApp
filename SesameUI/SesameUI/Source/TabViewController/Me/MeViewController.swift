@@ -1,7 +1,7 @@
 //
 //  MeViewController.swift
 //  SesameUI
-//  [joi] [logout] 觀察
+//
 //  Created by Wayne Hsiao on 2020/9/14.
 //  Copyright © 2020 CandyHouse. All rights reserved.
 //
@@ -9,15 +9,6 @@
 import UIKit
 import SesameSDK
 import UserNotifications
-
-extension UIApplication {
-    var statusBarHeight: CGFloat {
-        connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .first { $0.activationState == .foregroundActive }?
-            .statusBarManager?.statusBarFrame.height ?? 0
-    }
-}
 
 extension MeViewController {
     static func instance() -> MeViewController {
@@ -27,220 +18,135 @@ extension MeViewController {
     }
 }
 
-class MeViewController: CHBaseViewController {
-    private weak var webView: CHWebView!
-    var userState: UserState = .unknown
-    lazy var userStateView = {
-        let userStateView = UILabel(frame: .zero)
-        userStateView.textAlignment = .center
-        userStateView.translatesAutoresizingMaskIntoConstraints = false
-        userStateView.font = UIFont(name: "TrebuchetMS", size: 15)
-        userStateView.textColor = UIColor.placeHolderColor
-        return userStateView
-    }()
-    lazy var scrollView = {
-        let scroll = UIScrollView(frame: .zero)
-        let refreshControl: UIRefreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshMe), for: .valueChanged)
-        scroll.refreshControl = refreshControl
-        scroll.showsVerticalScrollIndicator = false
-        return scroll
-    }()
-    lazy var contentStackView = {
-        let stack = UIStackView(frame: .zero)
-        stack.axis = .vertical
-        stack.alignment = .fill
-        stack.spacing = 0
-        stack.distribution = .fill
-        return stack
-    }()
-    lazy var versionLabel = {
-        let lab = VersionLabel(downloadURL: "https://testflight.apple.com/join/Rok4GOFD")
-        return lab
-    }()
-    var logOutView: CHUICallToActionView?
-    var delAccountView: CHUICallToActionView?
+class MeViewController: CHWebHostViewController {
 
-    // MARK: - Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setNavigationItemRightMenu()
-        view.backgroundColor = .white
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentStackView)
-        UIView.autoLayoutStackView(contentStackView, inScrollView: scrollView)
-        arrangeSubview()
-        CHAWSManager.addUserStateListener(self) { state in
-            executeOnMainThread { [self] in
-                userState = state
-                userStateView.text = userState.rawValue
-                logOutView?.isHidden = userState != .signedIn
-                delAccountView?.isHidden = userState != .signedIn
-            }
+    override var webScene: String? { "me-homepage" }
+    lazy var appVersionInfo: [String: Any] = {
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+        var revision = ""
+        if let path = Bundle.main.path(forResource: "git", ofType: "plist"),
+           let dict = NSDictionary(contentsOfFile: path) as? [String: Any] {
+            revision = dict["GitCommit"] as? String ?? ""
         }
-        userState = CHAWSManager.currentUserState
-        userStateView.text = userState.rawValue
-        logOutView?.isHidden = userState != .signedIn
-        delAccountView?.isHidden = userState != .signedIn
-    }
+        return [
+            "display": "\(appVersion)(\(bundleVersion)) - \(revision)"
+        ]
+    }()
     
-    @objc func refreshMe() {
-        scrollView.refreshControl?.endRefreshing()
-        webView?.reload()
+    override func didFinishInitialSetup() {
+        CHAWSManager.addUserStateListener(self) { [weak self] _ in
+            executeOnMainThread { self?.webView?.refresh() }
+        }
     }
 
-    func arrangeSubview() {
-        // MARK: Web content
-        contentStackView.addArrangedSubview(setupWebView())
-        // MARK: - User state
-        contentStackView.addArrangedSubview(userStateView)
-        userStateView.autoLayoutHeight(30)
-        userStateView.text = CHAWSManager.currentUserState.rawValue
-        userStateView.sizeToFit()
-        // MARK: - Version Tag
-        contentStackView.addArrangedSubview(versionLabel)
-        versionLabel.autoLayoutHeight(30)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .group,separatorViewBackgroundColor: .white))
-        // MARK: - 登出
-        let logoutTitle = "co.candyhouse.sesame2.LogOut".localized
-        logOutView = CHUICallToActionView { [unowned self] sender,_ in
-            guard let button = sender as? UIButton else {
-                L.d("Error: logOutView sender is not a UIButton")
-                return
-            }
-            self.performLogout(logOutTitle: logoutTitle, sender: button)
+    override func registerExtraHandlers(on web: CHWebView) {
+        web.registerMessageHandler(WebViewMessageType.requestLogin.rawValue) { [weak self] _, data in
+            guard let urlString = (data as? [String: Any])?["url"] as? String else { return }
+            self?.presentBizLoginWebView(urlString: urlString)
         }
-        logOutView!.title = logoutTitle
-        logOutView?.backgroundColor = .sesame2Gray
-        contentStackView.addArrangedSubview(logOutView!)
-        contentStackView.addArrangedSubview(CHUISeperatorView(style: .thick,separatorViewBackgroundColor: .white))
-         //與刪除按鈕的距離
-        let spacerView = UIView()
-        contentStackView.addArrangedSubview(spacerView)
-        NSLayoutConstraint.activate([
-            spacerView.heightAnchor.constraint(equalTo: view.heightAnchor)
-        ])
-        // MARK: - 刪除帳號
-        let delTitle = "co.candyhouse.sesame2.AccountDeletion".localized
-        delAccountView = CHUICallToActionView { [unowned self] sender,_ in
-            guard let button = sender as? UIButton else {
-                L.d("Error: delAccountView sender is not a UIButton")
-                return
-            }
-            self.performLogout(logOutTitle: delTitle, sender: button)
-        }
-        delAccountView!.title = delTitle
-        delAccountView?.backgroundColor = .sesame2Gray
-        contentStackView.addArrangedSubview(delAccountView!)
-    }
-    
-    private func setupWebView() -> UIView {
-        let collectionViewContainer = UIView(frame: .zero)
-        let contentHeight = 60.0 + CGRectGetHeight(tabBarController!.tabBar.frame) + CGRectGetHeight(navigationController!.navigationBar.frame) + UIApplication.shared.statusBarHeight + 20
-        collectionViewContainer.autoLayoutHeight(CGRectGetHeight(view.bounds) - contentHeight)
-        let web = CHWebView.instanceWithScene("me-index")
-        self.webView = web
-        web.registerSchemeHandler("ssm://UI/webview/open") { [weak self] view, url, param in
-            guard let self = self else {
-                return
-            }
-            guard let urlStr = param["url"] else {
-                return
-            }
-            if let notifyName = param["notifyName"] {
-                NotificationCenter.default.addObserver(self, selector: #selector(refreshMe), name: Notification.Name(notifyName), object: nil)
-            }
-            self.navigationController?.pushViewController(CHWebViewController.instanceWithURL(urlStr), animated:true)
-        }
-        web.registerMessageHandler(WebViewMessageType.requestLogin.rawValue) { webView, data in
-            if let _ = data as? [String: Any] {
-                self.performLogin()
+        // 登出（确认交互由 H5 actionSheet 处理，native 只执行登出）
+        web.registerMessageHandler(WebViewMessageType.requestSignOut.rawValue) { [weak self] webView, data in
+            let callbackName = (data as? [String: Any])?["callbackName"] as? String
+            self?.signOut {
+                if let cb = callbackName {
+                    webView.callH5(funcName: cb, data: ["success": true])
+                }
             }
         }
+        // 登录态查询
+        web.registerMessageHandler(WebViewMessageType.requestAuthState.rawValue) { webView, data in
+            guard let cb = (data as? [String: Any])?["callbackName"] as? String else { return }
+            webView.callH5(funcName: cb, data: [
+                "signedIn": CHAWSManager.isSignedIn,
+                "state": CHAWSManager.currentUserState.rawValue
+            ])
+        }
+        // 版本号
+        web.registerMessageHandler(WebViewMessageType.requestAppVersion.rawValue) { [weak self] webView, data in
+            guard let self = self, let cb = (data as? [String: Any])?["callbackName"] as? String else { return }
+            webView.callH5(funcName: cb, data: self.appVersionInfo)
+        }
+        // 外部浏览器打开 URL
+        web.registerMessageHandler(WebViewMessageType.requestOpenExternalURL.rawValue) { _, data in
+            guard let urlString = (data as? [String: Any])?["url"] as? String,
+                  let url = URL(string: urlString) else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        // 推送 token（供 H5 检查匿名 token 是否上云）
         web.registerMessageHandler(WebViewMessageType.requestPushToken.rawValue) { webView, data in
-            if let requestData = data as? [String: Any],
-               let callbackName = requestData["callbackName"] as? String {
-                let token: String = UserDefaults.standard.string(forKey: "devicePushToken") ?? ""
-                webView.callH5(funcName: callbackName, data: [
-                    "pushToken": token
-                ])
-            }
+            guard let cb = (data as? [String: Any])?["callbackName"] as? String else { return }
+            let token = UserDefaults.standard.string(forKey: "devicePushToken") ?? ""
+            webView.callH5(funcName: cb, data: ["pushToken": token])
         }
+        // 通知授权状态
         web.registerMessageHandler(WebViewMessageType.requestNotificationStatus.rawValue) { webView, data in
-            if let requestData = data as? [String: Any],
-               let callbackName = requestData["callbackName"] as? String {
-                UNUserNotificationCenter.current().getNotificationSettings { settings in
-                    let isEnabled = settings.authorizationStatus == .authorized
-                    webView.callH5(funcName: callbackName, data: [
-                        "enabled": isEnabled
-                    ])
-                }
+            guard let cb = (data as? [String: Any])?["callbackName"] as? String else { return }
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                let isEnabled = settings.authorizationStatus == .authorized
+                webView.callH5(funcName: cb, data: ["enabled": isEnabled])
             }
         }
-        collectionViewContainer.addSubview(web)
-        web.autoPinEdgesToSuperview(safeArea: false)
-        web.loadRequest()
-        web.registerMessageHandlers()
-        return collectionViewContainer
+        // 获取红点状态
+        web.registerMessageHandler(WebViewMessageType.requestActivePromotion.rawValue) { webView, data in
+            guard let params = data as? [String: Any], let callbackName = params["callbackName"] as? String else { return }
+            AppPromotionManager.shared.refresh { promotion in
+                webView.callH5(
+                    funcName: callbackName,
+                    data: promotion.responseData
+                )
+            }
+        }
+        // 标记红点为已读
+        web.registerMessageHandler(WebViewMessageType.requestMarkPromotionRead.rawValue) { webView, data in
+            guard let params = data as? [String: Any], let callbackName = params["callbackName"] as? String else { return }
+            guard let promotionId = params["promotionId"] as? String,
+                  promotionId.isEmpty == false else {
+                webView.callH5(funcName: callbackName, data: ["success": false])
+                return
+            }
+            let targetUrl = params["targetUrl"] as? String
+            AppPromotionManager.shared.markRead(promotionId: promotionId, targetUrl: targetUrl) { promotion in
+                webView.callH5(
+                    funcName: callbackName,
+                    data: promotion.responseData
+                )
+            }
+        }
     }
 
-    
-    func performLogin() {
-        let loginViewController = SignUpViewController.instance { isLoggedIn in
-            if isLoggedIn {
-                CHAWSMobileClient.shared.getName { result in
-                    // Set History tag
-                    if case let .success(nickname) = result {
-                        if nickname == nil {
-                            CHAWSMobileClient.shared.getEmail { getEmailResult in
-                                if case let .success(email) = getEmailResult {
-                                    let emailId = String(email!.split(separator: "@").first!)
-                                    CHAWSMobileClient.shared.updateName(emailId) { updateResult in
-                                        executeOnMainThread {
-                                            self.webView?.refresh()
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            executeOnMainThread {
-                                self.webView?.refresh()
-                            }
-                        }
-                        if let token = UserDefaults.standard.value(forKey: "devicePushToken") as? String {
-                            PushNotificationManager.shared.handleAPNsToken(token)
-                        }
-                    } else {
-                        executeOnMainThread {
-                            self.webView?.refresh()
-                        }
-                    }
-                }
-            }
-        }
-        navigationController?.pushViewController(loginViewController, animated: true)
+    // MARK: - 登录
+    private func presentBizLoginWebView(urlString: String) {
+        let loginVC = LoginViewController.instance(urlString: urlString)
+        navigationController?.pushViewController(loginVC, animated: true)
     }
-    
-    func performLogout(logOutTitle: String, sender: UIButton) {
-        let preferredStyle: UIAlertController.Style = .actionSheet
-        let alertController = UIAlertController(title: logOutTitle, message: nil, preferredStyle: preferredStyle)
-        let signOut = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized, style: .destructive) { _ in
-            // MARK: - Log out
-            CHAWSMobileClient.shared.signOut {
-                CHDeviceWrapperManager.shared.clear()
-                if let token = UserDefaults.standard.value(forKey: "devicePushToken") as? String {
-                    PushNotificationManager.shared.handleAPNsToken(token)
-                }
-                executeOnMainThread { [weak self] in
-                    self?.webView?.refresh()
-                }
+
+    // MARK: - 登出
+    private func signOut(completion: @escaping () -> Void) {
+        CHAWSMobileClient.shared.signOut {
+            CHDeviceWrapperManager.shared.clear()
+            if let token = UserDefaults.standard.value(forKey: "devicePushToken") as? String {
+                PushNotificationManager.shared.handleAPNsToken(token)
             }
+            executeOnMainThread { completion() }
         }
-        let cancel = UIAlertAction(title: "co.candyhouse.sesame2.Cancel".localized, style: .cancel, handler: nil)
-        alertController.addAction(signOut)
-        alertController.addAction(cancel)
-        alertController.popoverPresentationController?.sourceView = sender
-        present(alertController, animated: true)
     }
-    
+}
+
+
+private extension Optional where Wrapped == AppPromotion {
+    var responseData: [String: Any] {
+        guard let promotion = self else {
+            return ["success": false]
+        }
+        return [
+            "success": true,
+            "promotionId": promotion.promotionId,
+            "enabled": promotion.enabled,
+            "visible": promotion.visible,
+            "targetUrl": promotion.targetUrl
+        ]
+    }
 }

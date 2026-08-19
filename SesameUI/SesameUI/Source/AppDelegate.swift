@@ -187,7 +187,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 //            L.d("[noti][willPresent] event:",event)
             if (event == "friend"){
                 if let navController = GeneralTabViewController.switchTabByIndex(2) as? UINavigationController, let listViewController = navController.viewControllers.first as? FriendViewController {
-                    listViewController.reloadFriends()
+                    listViewController.reloadWeb()
                 }
                 completionHandler([])
                 return
@@ -374,7 +374,7 @@ extension AppDelegate {
                     case .friend:
                         if let nav = GeneralTabViewController.switchTabByIndex(2) as? UINavigationController,
                            let friendViewController = nav.viewControllers.first as? FriendViewController {
-                            friendViewController.reloadFriends()
+                            friendViewController.reloadWeb()
                         }
                     case .matter: break
                     }
