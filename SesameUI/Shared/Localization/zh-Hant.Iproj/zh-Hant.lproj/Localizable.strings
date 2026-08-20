@@ -23,13 +23,6 @@
 "co.candyhouse.sesame2.AutoUnlock" = "自動解鎖";
 "co.candyhouse.sesame2.Contacts" = "聯絡人";
 "co.candyhouse.sesame2.Me" = "我";
-"co.candyhouse.sesame2.LogOut" = "登出";
-"co.candyhouse.sesame2.LogIn" = "登入";
-"co.candyhouse.sesame2.sendSMS" = "登入 / 註冊";
-"co.candyhouse.sesame2.Logging" = "Logging";
-"co.candyhouse.sesame2.Password" = "密碼";
-"co.candyhouse.sesame2.SignUp" = "註冊";
-"co.candyhouse.sesame2.AccountDeletion" = "刪除帳號";
 "co.candyhouse.sesame2.ConfigureAngles" = "設定角度";
 "co.candyhouse.sesame2.ResetThisSesame" = "重設芝麻";
 "co.candyhouse.sesame2.manualOperated" = "被轉到了";
@@ -42,9 +35,7 @@
 "co.candyhouse.sesame2.TapToAdjust" = "點擊調整";
 "co.candyhouse.sesame2.Cancel" = "取消";
 "co.candyhouse.sesame2.Delete" = "刪除";
-"co.candyhouse.sesame2.Email" = "信箱";
 "co.candyhouse.sesame2.UUID" = "UUID";
-"co.candyhouse.sesame2.VerificationCode" = "已發到您的信箱的驗證碼";
 "co.candyhouse.sesame2.ResetSesame" = "重設芝麻設備並丟棄鑰匙";
 "co.candyhouse.sesame2.ResetWifiModule2" = "重設WiFi模塊並丟棄鑰匙";
 "co.candyhouse.sesame2.ResetHub3Module" = "重置Hub3並丟棄鑰匙";
@@ -180,7 +171,6 @@
 "co.candyhouse.hub3.bindIRDeviceTitle" = "添加紅外線數據...";
 "co.candyhouse.hub3.ssmDetail" = "细节";
 "co.candyhouse.hub3.matterPairingHint" = "已進入Matter配網模式，請於%@分鐘內完成配網，萬一失敗 請重新進入此頁以重新進入Matter配網模式";
-"co.candyhouse.sesame2.inputEMailWarn" = "請輸入正確的電子郵件";
 "co.candyhouse.sesame2.nonetwork" = "似乎已斷開與互聯網的連接。";
 "co.candyhouse.sesame2.SSMFacePro" = "Sesame Face Pro";
 "co.candyhouse.sesame2.SSMFacePro2" = "Sesame Face 2 Pro";

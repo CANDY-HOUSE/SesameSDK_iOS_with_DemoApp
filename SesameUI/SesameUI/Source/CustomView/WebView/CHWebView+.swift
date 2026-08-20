@@ -40,8 +40,13 @@ enum WebViewSchemeType: String {
 }
 
 extension CHWebView {
+
+    var currentViewController: UIViewController? {
+        (UIApplication.shared.delegate as? AppDelegate)?.iterateViewControllers()
+    }
+
     func registerMessageHandlers() {
-        
+
         registerMessageHandler(WebViewMessageType.requestEnablePullRefresh.rawValue) { webView, data in
             webView.enablePullToRefresh {
                 webView.refresh()

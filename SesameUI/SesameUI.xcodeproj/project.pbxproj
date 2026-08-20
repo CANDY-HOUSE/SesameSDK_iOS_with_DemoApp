@@ -90,14 +90,11 @@
 		64AE88342B1F699C00E2278A /* CHCellDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */; };
 		64AE883E2B2065FA00E2278A /* Sesame5ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */; };
 		64AE883F2B2065FA00E2278A /* Sesame5ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */; };
-		64D18DE52EEAC12D00C70B98 /* CHWebview+BLEConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */; };
+		64D18DE52EEAC12D00C70B98 /* CHWebHostViewController+BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D18DE42EEAC12200C70B98 /* CHWebHostViewController+BLE.swift */; };
 		64D5B3A72CBA78A100C7AF5A /* CHSesameOpensenor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5B3A62CBA78A100C7AF5A /* CHSesameOpensenor+.swift */; };
 		64DA7F0A2B185C6800A96188 /* CHTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */; };
 		64DE18CD2CB4DB50004ADC9B /* SesameDeviceList+Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */; };
 		64E854372E7A85A400399FED /* CHWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854362E7A85A300399FED /* CHWebView.swift */; };
-		64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E854382E7A99B300399FED /* CHWebViewController.swift */; };
-		AC30AC30AC30AC30AC30AC02 /* WebHostingCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30AC30AC30AC30AC30AC01 /* WebHostingCapabilities.swift */; };
-		AC20AC20AC20AC20AC20AC02 /* CHWebHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20AC20AC20AC20AC20AC01 /* CHWebHostViewController.swift */; };
 		64E8543B2E7B972100399FED /* CHBaseViewController+biz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E8543A2E7B971200399FED /* CHBaseViewController+biz.swift */; };
 		64EC068A2E7C00EA0047ED13 /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06872E7C00EA0047ED13 /* RefreshHeaderView.swift */; };
 		64EC068B2E7C00EA0047ED13 /* IndicatorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC06842E7C00EA0047ED13 /* IndicatorGenerator.swift */; };
@@ -115,6 +112,8 @@
 		890D330B2DA0E7FF0031F0AF /* PassCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D33002DA0E7FF0031F0AF /* PassCodeVC.swift */; };
 		890D330E2DA0E85A0031F0AF /* PalmListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D330D2DA0E85A0031F0AF /* PalmListVC.swift */; };
 		890D330F2DA0E85A0031F0AF /* FaceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D330C2DA0E85A0031F0AF /* FaceListVC.swift */; };
+		AC20AC20AC20AC20AC20AC02 /* CHWebHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20AC20AC20AC20AC20AC01 /* CHWebHostViewController.swift */; };
+		AD40AD40AD40AD40AD40AD02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD40AD40AD40AD40AD40AD01 /* LoginViewController.swift */; };
 		B01728D1250C700500F87ED6 /* SesameDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D0250C700500F87ED6 /* SesameDeviceListViewController.swift */; };
 		B01728D3250C78D200F87ED6 /* CHBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D2250C78D200F87ED6 /* CHBaseTableViewController.swift */; };
 		B01728D9250CA67D00F87ED6 /* RegisterSesameDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01728D8250CA67D00F87ED6 /* RegisterSesameDeviceViewController.swift */; };
@@ -140,7 +139,6 @@
 		B09F5831250F36930034759A /* LockAngleSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F5830250F36930034759A /* LockAngleSettingViewController.swift */; };
 		B09F5835250F47FC0034759A /* LockAngleSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */; };
 		B09F5837250F5D3B0034759A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F5836250F5D3B0034759A /* MeViewController.swift */; };
-		AD40AD40AD40AD40AD40AD02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD40AD40AD40AD40AD40AD01 /* LoginViewController.swift */; };
 		B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6138F247680FD00A797E5 /* VersionLabel.swift */; };
 		B0DF09252522F878005E17BD /* ToggleSesameIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF09242522F878005E17BD /* ToggleSesameIntentHandler.swift */; };
 		B0FB248924D81BA7006F47C2 /* WatchKitFileTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FB248824D81BA6006F47C2 /* WatchKitFileTransfer.swift */; };
@@ -466,14 +464,11 @@
 		64AE88332B1F699C00E2278A /* CHCellDisplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCellDisplayProtocol.swift; sourceTree = "<group>"; };
 		64AE883C2B2065FA00E2278A /* Sesame5ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sesame5ListCell.swift; sourceTree = "<group>"; };
 		64AE883D2B2065FA00E2278A /* Sesame5ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sesame5ListCell.xib; sourceTree = "<group>"; };
-		64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebview+BLEConnect.swift"; sourceTree = "<group>"; };
+		64D18DE42EEAC12200C70B98 /* CHWebHostViewController+BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHWebHostViewController+BLE.swift"; sourceTree = "<group>"; };
 		64D5B3A62CBA78A100C7AF5A /* CHSesameOpensenor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHSesameOpensenor+.swift"; sourceTree = "<group>"; };
 		64DA7F092B185C6800A96188 /* CHTableViewProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTableViewProxy.swift; sourceTree = "<group>"; };
 		64DE18CC2CB4DB50004ADC9B /* SesameDeviceList+Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SesameDeviceList+Control.swift"; sourceTree = "<group>"; };
 		64E854362E7A85A300399FED /* CHWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebView.swift; sourceTree = "<group>"; };
-		64E854382E7A99B300399FED /* CHWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebViewController.swift; sourceTree = "<group>"; };
-		AC30AC30AC30AC30AC30AC01 /* WebHostingCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebHostingCapabilities.swift; sourceTree = "<group>"; };
-		AC20AC20AC20AC20AC20AC01 /* CHWebHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebHostViewController.swift; sourceTree = "<group>"; };
 		64E8543A2E7B971200399FED /* CHBaseViewController+biz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBaseViewController+biz.swift"; sourceTree = "<group>"; };
 		64EC06812E7C00EA0047ED13 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		64EC06822E7C00EA0047ED13 /* BallClipRotatePulseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallClipRotatePulseAnimation.swift; sourceTree = "<group>"; };
@@ -494,6 +489,8 @@
 		96B2196629111F26006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Sesame2Intents.strings"; sourceTree = "<group>"; };
 		96B2197929111F55006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		96B2198929112461006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		AC20AC20AC20AC20AC20AC01 /* CHWebHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebHostViewController.swift; sourceTree = "<group>"; };
+		AD40AD40AD40AD40AD40AD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B01728AD250B6D7E00F87ED6 /* SiriShortCutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortCutViewController.swift; sourceTree = "<group>"; };
 		B01728AF250B8AEF00F87ED6 /* GPSMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSMapViewController.swift; sourceTree = "<group>"; };
 		B01728D0250C700500F87ED6 /* SesameDeviceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesameDeviceListViewController.swift; sourceTree = "<group>"; };
@@ -527,7 +524,6 @@
 		B09F5830250F36930034759A /* LockAngleSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAngleSettingViewController.swift; sourceTree = "<group>"; };
 		B09F5834250F47FC0034759A /* LockAngleSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockAngleSettingViewController.xib; sourceTree = "<group>"; };
 		B09F5836250F5D3B0034759A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
-		AD40AD40AD40AD40AD40AD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0A6138F247680FD00A797E5 /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
 		B0D669BF253951BD002602F4 /* BikeLockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeLockSettingViewController.swift; sourceTree = "<group>"; };
 		B0DF091C2522F82C005E17BD /* UnlockSesameIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockSesameIntentHandler.swift; sourceTree = "<group>"; };
@@ -1022,9 +1018,7 @@
 			children = (
 				64E854362E7A85A300399FED /* CHWebView.swift */,
 				649CEA582EB2218F00BF9A5D /* CHWebView+.swift */,
-				64D18DE42EEAC12200C70B98 /* CHWebview+BLEConnect.swift */,
-				64E854382E7A99B300399FED /* CHWebViewController.swift */,
-				AC30AC30AC30AC30AC30AC01 /* WebHostingCapabilities.swift */,
+				64D18DE42EEAC12200C70B98 /* CHWebHostViewController+BLE.swift */,
 				AC20AC20AC20AC20AC20AC01 /* CHWebHostViewController.swift */,
 			);
 			path = WebView;
@@ -2007,8 +2001,6 @@
 				64E854372E7A85A400399FED /* CHWebView.swift in Sources */,
 				3B5873412FDBF73F009D56C6 /* FixedStatusScrollContainerView.swift in Sources */,
 				645B1B2C2BDB4C0100D5E491 /* Array.swift in Sources */,
-				64E854392E7A99B900399FED /* CHWebViewController.swift in Sources */,
-				AC30AC30AC30AC30AC30AC02 /* WebHostingCapabilities.swift in Sources */,
 				AC20AC20AC20AC20AC20AC02 /* CHWebHostViewController.swift in Sources */,
 				645B1B2B2BDB4C0100D5E491 /* GIFImageView.swift in Sources */,
 				BE8F9214264A1364001DF645 /* UserLocationManager.swift in Sources */,
@@ -2133,7 +2125,7 @@
 				BE6EE4CA259990F000C77E99 /* SesameBotMode.swift in Sources */,
 				E8A6F1D42A60E56800AED9AD /* OpenSensorSettingVC.swift in Sources */,
 				B0A61390247680FD00A797E5 /* VersionLabel.swift in Sources */,
-				64D18DE52EEAC12D00C70B98 /* CHWebview+BLEConnect.swift in Sources */,
+				64D18DE52EEAC12D00C70B98 /* CHWebHostViewController+BLE.swift in Sources */,
 				3B1545BD2FFCE8A6006F89CB /* AppPromotionManager.swift in Sources */,
 				BE6978DD2483E30F0089141E /* ToastUtil.swift in Sources */,
 				41ACFD0429B86A07001153DB /* Sesame5SettingViewController.swift in Sources */,

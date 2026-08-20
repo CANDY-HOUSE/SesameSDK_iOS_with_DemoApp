@@ -39,7 +39,7 @@ extension CHBaseViewController {
             if let notifyName = param["notifyName"] {
                 NotificationCenter.default.addObserver(self, selector: #selector(onReceiveNotification(notify:)), name: Notification.Name(notifyName), object: nil)
             }
-            self.navigationController?.pushViewController(CHWebViewController.instanceWithURL(urlStr), animated:true)
+            self.navigationController?.pushViewController(CHWebHostViewController.instanceWithURL(urlStr), animated:true)
         }
         web.registerMessageHandler(WebViewMessageType.requestAutoLayoutHeight.rawValue) { webView, data in
             if let requestData = data as? [String: Any],
@@ -71,7 +71,7 @@ extension CHBaseViewController {
     
     func deviceBatteryView(_ device: CHDevice) -> CHUIArrowSettingView {
         let batteryView = CHUIViewGenerator.arrow() { [unowned self] sender,event in
-            navigationController?.pushViewController(CHWebViewController.instanceWithScene("battery-trend", extInfo: [
+            navigationController?.pushViewController(CHWebHostViewController.instanceWithScene("battery-trend", extInfo: [
                 "deviceUUID": device.deviceId.uuidString,
                 "deviceName": "\(device.deviceName)"
             ]), animated: true)
@@ -83,7 +83,7 @@ extension CHBaseViewController {
 
     func deviceFactoryInfoView(_ device: CHDevice) -> CHUIArrowSettingView {
         let factoryInfoView = CHUIViewGenerator.arrow() { [unowned self] sender,event in
-            navigationController?.pushViewController(CHWebViewController.instanceWithScene("factory-info", extInfo: [
+            navigationController?.pushViewController(CHWebHostViewController.instanceWithScene("factory-info", extInfo: [
                 "deviceUUID": device.deviceId.uuidString,
                 "deviceName": "\(device.deviceName)"
             ]), animated: true)

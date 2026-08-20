@@ -248,10 +248,12 @@ public extension CHRouteCoordinator where Self: UIViewController {
     }
     
     func navigateToHub3SettingViewController(_ hub3: CHHub3, isFromRegister: Bool = false) {
-        navigationController?.pushViewController(CHWebViewController.instanceWithScene("wifi-module", extInfo: [
+        navigationController?.pushViewController(CHWebHostViewController.instanceWithScene("wifi-module", extInfo: [
             "deviceUUID": hub3.deviceId.uuidString,
             "keyLevel": "\(hub3.keyLevel)"
-        ]), animated: true)
+        ], registerHandlers: { host, web in
+            host.registerBLEMessageHandlers(on: web)
+        }), animated: true)
     }
     
     

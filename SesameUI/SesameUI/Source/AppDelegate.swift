@@ -246,12 +246,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                             let deviceUUID = components.queryItems?.first(where: { $0.name == "deviceUUID" })?.value ?? ""
                             let deviceName = components.queryItems?.first(where: { $0.name == "deviceName" })?.value ?? ""
                             
-                            webVC = CHWebViewController.instanceWithScene("battery-trend", extInfo: [
+                            webVC = CHWebHostViewController.instanceWithScene("battery-trend", extInfo: [
                                 "deviceUUID": deviceUUID,
                                 "deviceName": deviceName
                             ])
                         } else {
-                            webVC = CHWebViewController.instanceWithURL(urlString)
+                            webVC = CHWebHostViewController.instanceWithURL(urlString)
                         }
                         
                         if let navController = topVC.navigationController {

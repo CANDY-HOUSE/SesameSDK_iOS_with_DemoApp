@@ -24,13 +24,6 @@
 "co.candyhouse.sesame2.Contacts" = "联系人";
 "co.candyhouse.sesame2.Vision" = "视觉";
 "co.candyhouse.sesame2.Me" = "我";
-"co.candyhouse.sesame2.LogOut" = "登出";
-"co.candyhouse.sesame2.LogIn" = "登入";
-"co.candyhouse.sesame2.sendSMS" = "登入 / 注册";
-"co.candyhouse.sesame2.Logging" = "Logging";
-"co.candyhouse.sesame2.Password" = "密码";
-"co.candyhouse.sesame2.SignUp" = "注册";
-"co.candyhouse.sesame2.AccountDeletion" = "删除账号";
 "co.candyhouse.sesame2.ConfigureAngles" = "设置角度";
 "co.candyhouse.sesame2.ResetThisSesame" = "重置芝麻";
 "co.candyhouse.sesame2.manualOperated" = "被转到了";
@@ -43,9 +36,7 @@
 "co.candyhouse.sesame2.TapToAdjust" = "点击调整";
 "co.candyhouse.sesame2.Cancel" = "取消";
 "co.candyhouse.sesame2.Delete" = "删除";
-"co.candyhouse.sesame2.Email" = "邮箱";
 "co.candyhouse.sesame2.UUID" = "UUID";
-"co.candyhouse.sesame2.VerificationCode" = "已发到您邮箱的验证码";
 "co.candyhouse.sesame2.ResetSesame" = "重置芝麻设备并丢弃钥匙";
 "co.candyhouse.sesame2.ResetWifiModule2" = "重置WiFi模块并丢弃钥匙";
 "co.candyhouse.sesame2.ResetHub3Module" = "重置Hub3并丢弃钥匙";
@@ -183,7 +174,6 @@
 "co.candyhouse.hub3.bindIRDeviceTitle" = "添加红外线数据...";
 "co.candyhouse.hub3.ssmDetail" = "详情";
 "co.candyhouse.hub3.matterPairingHint" = "已进入Matter配网模式，请于%@分钟内完成配网，万一失败 请重新进入此页以重新进入Matter配网模式";
-"co.candyhouse.sesame2.inputEMailWarn" = "请输入正确的邮箱";
 "co.candyhouse.sesame2.nonetwork" = "似乎已断开与互联网的连接。";
 "co.candyhouse.sesame2.SSMFacePro" = "Sesame Face Pro";
 "co.candyhouse.sesame2.SSMFacePro2" = "Sesame Face 2 Pro";

@@ -22,13 +22,6 @@
 "co.candyhouse.sesame2.EditName" = "名前を変更";
 "co.candyhouse.sesame2.NewSesame" = "新規デバイス";
 "co.candyhouse.sesame2.scanQRCode" = "QRコードのスキャン";
-"co.candyhouse.sesame2.LogOut" = "ログアウト";
-"co.candyhouse.sesame2.LogIn" = "ログイン";
-"co.candyhouse.sesame2.sendSMS" = "ログイン/登録";
-"co.candyhouse.sesame2.Logging" = "Logging";
-"co.candyhouse.sesame2.Password" = "パスワード";
-"co.candyhouse.sesame2.SignUp" = "登録";
-"co.candyhouse.sesame2.AccountDeletion" = "アカウントを削除する";
 "co.candyhouse.sesame2.ConfigureAngles" = "角度の設定";
 "co.candyhouse.sesame2.ResetThisSesame" = "セサミを削除";
 "co.candyhouse.sesame2.AutoLock" = "タイマー式のオートロック";
@@ -43,9 +36,7 @@
 "co.candyhouse.sesame2.TapToAdjust" = "Tap to adjust";
 "co.candyhouse.sesame2.Cancel" = "キャンセル";
 "co.candyhouse.sesame2.Delete" = "削除";
-"co.candyhouse.sesame2.Email" = "Eメール";
 "co.candyhouse.sesame2.UUID" = "UUID";
-"co.candyhouse.sesame2.VerificationCode" = "メールで届いた認証コード";
 "co.candyhouse.sesame2.ResetSesame" = "このセサミを初期化、そしてこのセサミの鍵を捨てる";
 "co.candyhouse.sesame2.ResetWifiModule2" = "このWiFiモジュールを初期化、そして鍵を捨てる";
 "co.candyhouse.sesame2.TrashTheKey" = "このセサミを削除する";
@@ -183,7 +174,6 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.hub3.ssmDetail" = "詳細";
 "co.candyhouse.hub3.matterPairingHint" = "Matterペアリングモードに入りました。%@分以内にMatterペアリングを完了してください。万が一失敗した場合は、このページに戻ってきて再度Matterペアリングモードに入ってくださいませ";
 "co.candyhouse.sesame2.ResetHub3Module" = "このHub3を初期化、そして鍵を捨てる";
-"co.candyhouse.sesame2.inputEMailWarn" = "正しいメールアドレスを入力してください";
 "co.candyhouse.sesame2.nonetwork" = "インターネットとの接続が切断されたようです";
 "co.candyhouse.sesame2.SSMFacePro" = "セサミフェイス Pro";
 "co.candyhouse.sesame2.SSMFacePro2" = "セサミフェイス 2 Pro";

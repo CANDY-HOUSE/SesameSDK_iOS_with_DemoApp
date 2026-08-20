@@ -47,6 +47,8 @@ class CHWebView: UIView {
     private var configuration: Configuration!
     weak var webView: WKWebView!
     private var schemeHandlers: [String: CHWebViewSchemeHandler] = [:]
+    private var isContentProcessRecoveryPending = false
+    private var isWaitingForRecoveryNetwork = false
     
     // MARK: - Callbacks
     var didCreated: ((CHWebView) -> Void)?
@@ -56,12 +58,19 @@ class CHWebView: UIView {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupLifecycleObservers()
         setupView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setupLifecycleObservers()
         setupView()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        NetworkReachabilityHelper.shared.removeListener(self)
     }
     
     convenience init(configuration: Configuration) {
@@ -98,6 +107,19 @@ class CHWebView: UIView {
         addSubview(webView)
         webView.autoPinEdgesToSuperview(safeArea: false)
     }
+
+    private func setupLifecycleObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+    }
+
+    @objc private func applicationDidBecomeActive() {
+        recoverContentProcessWhenPossible()
+    }
     
     // MARK: - Public Methods
     func registerSchemeHandler(_ scheme: String, handler: @escaping CHWebViewSchemeHandler) {
@@ -121,6 +143,7 @@ class CHWebView: UIView {
     }
     
     func refresh() {
+        stopWaitingForRecoveryNetwork()
         cleanup()
         setupView()
         loadRequest()
@@ -197,6 +220,34 @@ class CHWebView: UIView {
         
         webView.removeFromSuperview()
     }
+
+    private func recoverContentProcessWhenPossible() {
+        guard isContentProcessRecoveryPending, UIApplication.shared.applicationState == .active, window != nil else { return }
+        guard NetworkReachabilityHelper.shared.isReachable else {
+            waitForRecoveryNetworkOnce()
+            return
+        }
+        stopWaitingForRecoveryNetwork()
+        isContentProcessRecoveryPending = false
+        refresh()
+    }
+
+    private func waitForRecoveryNetworkOnce() {
+        guard !isWaitingForRecoveryNetwork else { return }
+        isWaitingForRecoveryNetwork = true
+        NetworkReachabilityHelper.shared.addListener(self) { [weak self] state in
+            guard case .reachable = state else { return }
+            executeOnMainThread {
+                self?.recoverContentProcessWhenPossible()
+            }
+        }
+    }
+
+    private func stopWaitingForRecoveryNetwork() {
+        guard isWaitingForRecoveryNetwork else { return }
+        isWaitingForRecoveryNetwork = false
+        NetworkReachabilityHelper.shared.removeListener(self)
+    }
 }
 
 // MARK: - WebView Setup
@@ -261,6 +312,11 @@ private extension String {
 
 // MARK: - WKNavigationDelegate
 extension CHWebView: WKNavigationDelegate {
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        isContentProcessRecoveryPending = true
+        recoverContentProcessWhenPossible()
+    }
+
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         showLoading()
     }

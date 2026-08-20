@@ -24,13 +24,6 @@
 "co.candyhouse.sesame2.Contacts" = "Contacts";
 "co.candyhouse.sesame2.Vision" = "Vision";
 "co.candyhouse.sesame2.Me" = "Me";
-"co.candyhouse.sesame2.LogOut" = "Log Out";
-"co.candyhouse.sesame2.LogIn" = "Log In";
-"co.candyhouse.sesame2.sendSMS" = "Log In / Sign Up";
-"co.candyhouse.sesame2.Logging" = "Logging";
-"co.candyhouse.sesame2.Password" = "Password";
-"co.candyhouse.sesame2.SignUp" = "Sign up";
-"co.candyhouse.sesame2.AccountDeletion" = "Delete account";
 "co.candyhouse.sesame2.ConfigureAngles" = "Configure Angles";
 "co.candyhouse.sesame2.ResetThisSesame" = "Reset this Sesame";
 "co.candyhouse.sesame2.manualOperated" = "Movement in Thumbturn";
@@ -43,9 +36,7 @@
 "co.candyhouse.sesame2.TapToAdjust" = "Tap to adjust";
 "co.candyhouse.sesame2.Cancel" = "Cancel";
 "co.candyhouse.sesame2.Delete" = "Delete";
-"co.candyhouse.sesame2.Email" = "Email";
 "co.candyhouse.sesame2.UUID" = "UUID";
-"co.candyhouse.sesame2.VerificationCode" = "Verification code sent to your email";
 "co.candyhouse.sesame2.ResetSesame" = "Reset the Sesame and trash the key";
 "co.candyhouse.sesame2.ResetWifiModule2" = "Reset the WiFi Module and trash the key";
 "co.candyhouse.sesame2.TrashTheKey" = "Delete the Sesame";
@@ -183,7 +174,6 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.hub3.ssmDetail" = "Details";
 "co.candyhouse.hub3.matterPairingHint" = "Hub3 has entered Matter Pairing Mode. Please complete the Matter Pairing within %@ minutes. If the setup fails, please return to this page to re-enter Matter Pairing Mode.";
 "co.candyhouse.sesame2.ResetHub3Module" = "Reset the Hub3 and trash the key";
-"co.candyhouse.sesame2.inputEMailWarn" = "Please enter a valid email address";
 "co.candyhouse.sesame2.nonetwork" = "No internet connection";
 "co.candyhouse.sesame2.SSMFacePro" = "Sesame Face Pro";
 "co.candyhouse.sesame2.SSMFacePro2" = "Sesame Face 2 Pro";

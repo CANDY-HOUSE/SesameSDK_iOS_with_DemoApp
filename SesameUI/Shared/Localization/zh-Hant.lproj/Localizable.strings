@@ -11,9 +11,7 @@
 "co.candyhouse.sesame2.Vision" = "視覺";
 "co.candyhouse.sesame2.WifiModule2" = "WiFi Module";
 "co.candyhouse.sesame2.Me" = "Me";
-"co.candyhouse.sesame2.LogOut" = "Log Out";
 "co.candyhouse.sesame2.LogIn" = "Log In";
-"co.candyhouse.sesame2.sendSMS" = "Log In / Sign Up";
 "co.candyhouse.sesame2.Logging" = "Logging";
 "co.candyhouse.sesame2.FullName" = "Full Name";
 "co.candyhouse.sesame2.Password" = "Password";
@@ -37,7 +35,6 @@
 "co.candyhouse.sesame2.LastName" = "Last Name";
 "co.candyhouse.sesame2.NickName" = "Nick Name";
 "co.candyhouse.sesame2.UUID" = "UUID";
-"co.candyhouse.sesame2.VerificationCode" = "Verification code sent to your email";
 "co.candyhouse.sesame2.ResetSesame" = "Reset the Sesame and trash the key";
 "co.candyhouse.sesame2.ResetWifiModule2" = "Reset the WiFi Module and trash the key";
 "co.candyhouse.sesame2.TrashTheKey" = "Delete the Sesame";

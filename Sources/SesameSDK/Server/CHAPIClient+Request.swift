@@ -38,13 +38,43 @@ extension CHAPIClient {
     }
 
     private func errorFromAmplify(_ error: Error) -> Error {
-        guard let apiError = error as? APIError,
-              case let .httpStatusError(statusCode, response) = apiError else { return error }
-        let data = (response as? AWSHTTPURLResponse)?.body
-        let message = data.flatMap { try? JSONDecoder().decode(CHServerError.self, from: $0).message }
-            ?? data.flatMap { String(data: $0, encoding: .utf8) }
-            ?? HTTPURLResponse.localizedString(forStatusCode: statusCode)
-        return NSError(domain: "Sesame2SDK", code: statusCode, userInfo: ["message": message])
+        guard let apiError = error as? APIError else {
+            let ns = error as NSError
+            return makeError(code: ns.code, message: error.localizedDescription)
+        }
+        switch apiError {
+        case let .httpStatusError(statusCode, response):
+            let data = (response as? AWSHTTPURLResponse)?.body
+            let message = serverMessage(from: data)
+                ?? HTTPURLResponse.localizedString(forStatusCode: statusCode)
+            return makeError(code: statusCode, message: message)
+
+        case let .networkError(description, _, underlyingError):
+            let code = (underlyingError as NSError?)?.code ?? -1
+            let message = underlyingError?.localizedDescription ?? description
+            return makeError(code: code, message: message)
+
+        default:
+            let underlying = apiError.underlyingError
+            let code = (underlying as NSError?)?.code ?? -1
+            let message = underlying?.localizedDescription
+                ?? apiError.errorDescription
+                ?? "\(apiError)"
+            return makeError(code: code, message: message)
+        }
+    }
+
+    private func serverMessage(from data: Data?) -> String? {
+        guard let data = data, !data.isEmpty else { return nil }
+        if let message = try? JSONDecoder().decode(CHServerError.self, from: data).message,
+           !message.isEmpty {
+            return message
+        }
+        return String(data: data, encoding: .utf8)
+    }
+
+    private func makeError(code: Int, message: String) -> NSError {
+        NSError(domain: "Sesame2SDK", code: code, userInfo: ["message": message])
     }
 }
 

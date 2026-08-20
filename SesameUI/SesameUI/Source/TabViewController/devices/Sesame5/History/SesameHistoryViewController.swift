@@ -39,7 +39,7 @@ class SesameHistoryViewController: CHBaseViewController {
             guard let self = self, let urlStr = param["url"] else {
                 return
             }
-            self.navigationController?.pushViewController(CHWebViewController.instanceWithURL(urlStr), animated: true)
+            self.navigationController?.pushViewController(CHWebHostViewController.instanceWithURL(urlStr), animated: true)
         }
         self.webView = webView
         view.addSubview(webView)
