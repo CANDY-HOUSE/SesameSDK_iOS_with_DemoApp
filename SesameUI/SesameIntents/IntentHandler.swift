@@ -12,6 +12,11 @@ import SesameSDK
 class IntentHandler: INExtension {
 
     override func handler(for intent: INIntent) -> Any {
+        do {
+            try CHAWSManager.configure()
+        } catch {
+            L.d("Amplify configure failed in SesameIntents", error.localizedDescription)
+        }
         Sesame2Store.shared.refreshDB()
         CHExtensionListener.post(notification: CHExtensionListener.shortcutDidBecomeActive)
         if let _ = intent as? UnlockSesameIntent {
