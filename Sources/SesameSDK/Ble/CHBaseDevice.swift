@@ -140,15 +140,15 @@ class CHBaseDevice: NSObject, CBPeripheralDelegate {
     }
     public func dropKey(result: @escaping (CHResult<CHEmpty>))  {
         L.d("dropKey!!!")
+#if os(iOS)
+        CHIoTManager.shared.unsubscribeDevice(deviceId)
+#endif
         delegate = nil
         multicastDelegate.removeAll()
         CHDeviceCenter.shared.deleteDevice(self.deviceId)
         deviceStatus = .noBleSignal()
         disconnect(){res in}
         sesame2KeyData = nil
-//        #if os(iOS)
-//        CHIoTManager.shared.unsubscribeCHDeviceShadow(self)
-//        #endif
         result(.success(CHResultStateBLE(input: CHEmpty())))
     }
 
@@ -222,4 +222,3 @@ extension CHBaseDevice {
         }
     }
 }
-

@@ -161,8 +161,15 @@ public final class CHAWSManager {
                 case HubPayload.EventName.Auth.signedIn:
                     updateState(.signedIn)
                 case HubPayload.EventName.Auth.signedOut,
-                     HubPayload.EventName.Auth.sessionExpired,
                      HubPayload.EventName.Auth.userDeleted:
+#if os(iOS)
+                    CHIoTManager.shared.stopConnectionPool()
+#endif
+                    updateState(.signedOut)
+                case HubPayload.EventName.Auth.sessionExpired:
+#if os(iOS)
+                    CHIoTManager.shared.restartConnectionPool()
+#endif
                     updateState(.signedOut)
                 default:
                     break
@@ -312,6 +319,9 @@ public final class CHAWSManager {
     }
 
     public static func signOut(completion: (() -> Void)? = nil) {
+#if os(iOS)
+        CHIoTManager.shared.stopConnectionPool()
+#endif
         Task {
             try? configure()
             _ = await Amplify.Auth.signOut()

@@ -59,7 +59,7 @@ extension CHSesameBiometricDeviceImpl {
 
     func goIoTWithOpenSensor() {
         let topic = "opensensor/\(deviceId.uuidString.uppercased())"
-        CHIoTManager.shared.subscribeTopic(topic) { data in
+        CHIoTManager.shared.subscribeTopic(topic, device: self) { data in
             do {
                 let state = try JSONDecoder().decode(OpenSensorData.self, from: data)
                 let mechState = OpensensorMechStatus.fromData(state)

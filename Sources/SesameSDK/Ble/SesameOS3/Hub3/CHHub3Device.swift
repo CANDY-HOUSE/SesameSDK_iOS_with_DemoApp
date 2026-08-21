@@ -51,7 +51,7 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
         guard productModel == .hub3LTE else { return }
         guard let deviceId = deviceId else { return }
         let topic = "up/iot/device/\(deviceId.uuidString.uppercased())/cmd"
-        CHIoTManager.shared.subscribeTopic(topic) { [weak self] data in
+        CHIoTManager.shared.subscribeTopic(topic, device: self) { [weak self] data in
             guard let self = self else { return }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
