@@ -41,7 +41,8 @@ class SesameBiometricDeviceKeysListVC: UITableViewController {
             .sesame6,
             .sesame6Pro,
             .sesame6ProSlidingDoor,
-            .sesameMiwa
+            .sesameMiwa,
+            .hub3LTE
         ]
         
         CHDeviceManager.shared.getCHDevices { [self] result in
