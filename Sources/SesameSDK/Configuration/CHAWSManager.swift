@@ -16,11 +16,6 @@ public enum SignInState {
     case unknown
 }
 
-public struct SignUpResult {
-    public let isSignUpComplete: Bool
-    public let destination: String?
-}
-
 public enum CHAuthError: LocalizedError {
     case usernameExists(String)
     case notAuthorized(String)
@@ -221,69 +216,6 @@ public final class CHAWSManager {
     public static func removeUserStateListener(_ owner: AnyObject) {
         lock.chWithLock {
             listeners.removeValue(forKey: ObjectIdentifier(owner))
-        }
-    }
-
-    public static func signUp(
-        username: String,
-        password: String,
-        attributes: [String: String],
-        completion: @escaping (SignUpResult?, Error?) -> Void
-    ) {
-        Task {
-            do {
-                try configure()
-                let userAttributes = attributes.map {
-                    AuthUserAttribute(AuthUserAttributeKey(rawValue: $0.key), value: $0.value)
-                }
-                let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
-                let result = try await Amplify.Auth.signUp(
-                    username: username,
-                    password: password,
-                    options: options
-                )
-                let destination: String?
-                switch result.nextStep {
-                case .confirmUser(let deliveryDetails, _, _):
-                    destination = deliveryDetails.flatMap { destinationString($0.destination) }
-                default:
-                    destination = nil
-                }
-                completion(SignUpResult(isSignUpComplete: result.isSignUpComplete, destination: destination), nil)
-            } catch {
-                completion(nil, CHAuthError.wrap(error))
-            }
-        }
-    }
-
-    public static func confirmSignUp(
-        username: String,
-        code: String,
-        completion: @escaping (Error?) -> Void
-    ) {
-        Task {
-            do {
-                try configure()
-                _ = try await Amplify.Auth.confirmSignUp(for: username, confirmationCode: code)
-                completion(nil)
-            } catch {
-                completion(CHAuthError.wrap(error))
-            }
-        }
-    }
-
-    public static func resendSignUpCode(
-        username: String,
-        completion: @escaping (String?, Error?) -> Void
-    ) {
-        Task {
-            do {
-                try configure()
-                let result = try await Amplify.Auth.resendSignUpCode(for: username)
-                completion(destinationString(result.destination), nil)
-            } catch {
-                completion(nil, CHAuthError.wrap(error))
-            }
         }
     }
 

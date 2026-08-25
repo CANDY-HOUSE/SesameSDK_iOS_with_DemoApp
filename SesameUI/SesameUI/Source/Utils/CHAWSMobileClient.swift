@@ -23,11 +23,6 @@ extension CHAWSMobileClient {
         static let sub = "sub"
     }
     
-    // MARK: - SignUp
-    func signUpWithEmail(_ email: String, _ result: @escaping ((SignUpResult?, Error?) -> Void)) {
-        CHAWSManager.signUp(username: email, password: "dummypwk", attributes: [Constant.email: email], completion: result)
-    }
-    
     // MARK: - SignOut
     func signOut(_ completeHandler: (()->Void)? = nil) {
         subId = nil
