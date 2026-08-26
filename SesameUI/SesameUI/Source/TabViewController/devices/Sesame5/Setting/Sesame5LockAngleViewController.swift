@@ -33,7 +33,6 @@ class Sesame5LockAngleViewController: CHBaseViewController {
     private var currentDegree: Int16 = 0
     
     private var useSlidingDoorUI: Bool = false
-    private var didTrigger2s: Bool = false
 
     private lazy var slidingDoorView: SlidingDoorAngleView = {
         let v = SlidingDoorAngleView(frame: .zero)
@@ -106,7 +105,6 @@ class Sesame5LockAngleViewController: CHBaseViewController {
             setMagnetButton.setTitle("co.candyhouse.sesame2.SetMagnetPosition".localized,
                                        for: .normal)
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(magnetLongPressed(_:)))
-            longPress.minimumPressDuration = 2.0
             setMagnetButton.addGestureRecognizer(longPress)
         }
     }
@@ -184,7 +182,6 @@ class Sesame5LockAngleViewController: CHBaseViewController {
     }
     @objc private func magnetLongPressed(_ g: UILongPressGestureRecognizer) {
         guard g.state == .began else { return }
-        didTrigger2s = true
         
         guard sesame5.productModel == .sesame6Pro || sesame5.productModel == .sesame6ProSlidingDoor else {
             return
@@ -194,21 +191,22 @@ class Sesame5LockAngleViewController: CHBaseViewController {
         gen.notificationOccurred(.success)
         
         let advType: UInt8
-        let targetUseSliding: Bool
+        let targetModel: CHProductModel
         if sesame5.productModel == .sesame6ProSlidingDoor {
             advType = 21
-            targetUseSliding = false
+            targetModel = .sesame6Pro
         } else {
             advType = 32
-            targetUseSliding = true
+            targetModel = .sesame6ProSlidingDoor
         }
         
         sesame5.sendAdvProductTypeCommand(data: Data([advType])) { res in
             executeOnMainThread {
                 switch res {
                 case .success:
-                    self.useSlidingDoorUI = targetUseSliding
+                    self.useSlidingDoorUI = (targetModel == .sesame6ProSlidingDoor)
                     self.refreshUIView()
+                    self.syncProductModel(targetModel)
                 case .failure(let err):
                     L.d("Sesame5LockAngle", "sendAdvProductTypeCommand fail: \(err)")
                 }
@@ -216,15 +214,37 @@ class Sesame5LockAngleViewController: CHBaseViewController {
         }
     }
     @objc func setMAgnetPositionTapped() {
-        if didTrigger2s {
-            didTrigger2s = false
-            return
-        }
         ViewHelper.showLoadingInView(view: self.view)
         self.sesame5?.magnet { _ in
             executeOnMainThread {
                 ViewHelper.hideLoadingView(view: self.view)
                 self.refreshUIView()
+            }
+        }
+    }
+
+    private func syncProductModel(_ productModel: CHProductModel) {
+        guard let updatedKey = sesame5.getKey()?.copy() as? CHDeviceKey else {
+            L.d("Sesame5LockAngle", "sync product model failed: device key is missing")
+            return
+        }
+
+        let deviceModel = productModel.deviceModel()
+        updatedKey.deviceModel = deviceModel
+        CHDeviceManager.shared.receiveCHDeviceKeys(updatedKey) { result in
+            switch result {
+            case .success:
+                let updatedUserKey = CHUserKey.from(self.sesame5)
+                CHAPIClient.shared.putCHUserKey(updatedUserKey.toData()) { result in
+                    switch result {
+                    case .success:
+                        L.d("Sesame5LockAngle", "sync product model success: \(deviceModel)")
+                    case .failure(let error):
+                        L.d("Sesame5LockAngle", "sync product model failed: \(error)")
+                    }
+                }
+            case .failure(let error):
+                L.d("Sesame5LockAngle", "save product model locally failed: \(error)")
             }
         }
     }

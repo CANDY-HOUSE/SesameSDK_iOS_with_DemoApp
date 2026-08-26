@@ -32,6 +32,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
     var opsLockView: CHUIExpandableSettingView!
     var autoUnLockView: CHUIArrowSettingView!
     var batteryView: CHUIArrowSettingView!
+    var modelView: CHUIPlainSettingView!
     var voiceShortcutButton: CHUISettingButtonView?
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var isReset: Bool = false
@@ -117,6 +118,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         }
         getVersionTag()
         autoUnLockView.value = self.sesame5.autoUnlockStatus() == true ? "co.candyhouse.sesame2.on".localized : "co.candyhouse.sesame2.off".localized
+        modelView?.value = sesame5.productModel.deviceModelName()
         showStatusViewIfNeeded()
     }
     
@@ -144,7 +146,7 @@ class Sesame5SettingViewController: CHBaseViewController, CHDeviceStatusDelegate
         scrollView.refreshControl = refreshControl
 
         // MARK: 機種
-        let modelView = CHUIViewGenerator.plain()
+        modelView = CHUIViewGenerator.plain()
         modelView.title = "co.candyhouse.sesame2.model".localized
         modelView.value = sesame5.productModel.deviceModelName()
         contentStackView.addArrangedSubview(modelView)

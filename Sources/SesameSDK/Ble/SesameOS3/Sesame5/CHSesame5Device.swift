@@ -152,6 +152,10 @@ extension CHSesame5Device {
         
         sendCommand(.init(.SS3_ITEM_CODE_SET_ADV_PRODUCT_TYPE, data)) { responsePayload in
             if responsePayload.cmdResultCode == .success {
+                if let productType = data.first,
+                   let productModel = CHProductModel(rawValue: UInt16(productType)) {
+                    self.productModel = productModel
+                }
                 result(.success(CHResultStateBLE(input: CHEmpty())))
             } else {
                 result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
