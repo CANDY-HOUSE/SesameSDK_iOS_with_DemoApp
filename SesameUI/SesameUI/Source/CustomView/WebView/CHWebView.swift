@@ -183,18 +183,16 @@ class CHWebView: UIView {
                     }
                 }
             }
-            if CHAWSManager.isSignedIn {
-                CHAWSManager.idToken { result in
+            CHAWSManager.idToken { result in
+                executeOnMainThread {
                     switch result {
-                    case .success(let token): sendRequest(token)
+                    case .success(let token):
+                        sendRequest(token)
                     case .failure(let error):
-                        executeOnMainThread {
-                            self.makeToast(error.localizedDescription)
-                        }
+                        self.hideLoading()
+                        self.makeToast(error.errorDescription())
                     }
                 }
-            } else {
-                sendRequest(nil)
             }
         }
     }

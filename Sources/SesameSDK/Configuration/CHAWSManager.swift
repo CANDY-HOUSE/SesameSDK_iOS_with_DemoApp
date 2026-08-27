@@ -306,11 +306,15 @@ public final class CHAWSManager {
         }
     }
 
-    public static func idToken(completion: @escaping (Result<String, Error>) -> Void) {
+    public static func idToken(completion: @escaping (Result<String?, Error>) -> Void) {
         Task {
             do {
                 try configure()
                 let session = try await Amplify.Auth.fetchAuthSession()
+                guard session.isSignedIn else {
+                    completion(.success(nil))
+                    return
+                }
                 guard let provider = session as? AuthCognitoTokensProvider else {
                     throw CHAuthError.service("Cognito tokens are unavailable.", nil)
                 }
