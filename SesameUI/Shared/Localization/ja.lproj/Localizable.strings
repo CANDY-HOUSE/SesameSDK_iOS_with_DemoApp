@@ -31,7 +31,7 @@
 "co.candyhouse.sesame2.manualUnlock" = "手動解錠";
 "co.candyhouse.sesame2.SetLockedPosition" = "施錠の位置を固定する";
 "co.candyhouse.sesame2.SetUnlockedPosition" = "解錠の位置を固定する";
-"co.candyhouse.sesame2.SetMagnetPosition" = "水平の調整";
+"co.candyhouse.sesame2.SetMagnetPosition" = "水平の校正";
 "co.candyhouse.sesame2.AdjustSesameBot" = "Adjust SesameBot";
 "co.candyhouse.sesame2.TapToAdjust" = "Tap to adjust";
 "co.candyhouse.sesame2.Cancel" = "キャンセル";
