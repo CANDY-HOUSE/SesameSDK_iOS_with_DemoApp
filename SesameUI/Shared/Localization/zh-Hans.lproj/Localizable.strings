@@ -221,5 +221,5 @@
 "co.candyhouse.sesame2.dfu_busy" = "其他CANDY HOUSE产品正在进行升级, 请稍候。";
 "co.candyhouse.sesame5.switchPoint" = "设置上锁・解锁的分界";
 "co.candyhouse.sesame5.sensorDetectFrequency" = "角度的检测频率";
-"co.candyhouse.sesame5.stopDetection" = "停止检测";
+"co.candyhouse.sesame5.stopDetection" = "省电模式";
 "co.candyhouse.sesame5.timesPerSecond" = "%d 次/秒";
