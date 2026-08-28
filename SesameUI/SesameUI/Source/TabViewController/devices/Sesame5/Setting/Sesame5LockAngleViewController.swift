@@ -17,7 +17,7 @@ class Sesame5LockAngleViewController: CHBaseViewController {
         var frequencyOrder: [Int] = []
         var intervalsByFrequency: [Int: [Int]] = [:]
 
-        for intervalMs in stride(from: 0, through: 1000, by: 50) {
+        for intervalMs in stride(from: 50, through: 1000, by: 50) {
             let frequency = intervalMs == 0
                 ? 0
                 : Int((1000.0 / Double(intervalMs)).rounded())
