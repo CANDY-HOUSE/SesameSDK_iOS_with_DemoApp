@@ -13,12 +13,19 @@
             <connections>
                 <outlet property="bottomHintLabel" destination="IkE-rI-8hp" id="0uD-nS-2jG"/>
                 <outlet property="lockView" destination="Our-AJ-v5B" id="YK5-r3-dDJ"/>
+                <outlet property="scrollView" destination="51z-in-YyV" id="scr-out-1"/>
                 <outlet property="scrollViewTopConstraint" destination="v85-I0-JzW" id="svT-op-Cst"/>
+                <outlet property="sensorDetectContainer" destination="sdc-01-row" id="sdc-out-1"/>
+                <outlet property="sensorDetectSeparator" destination="sep-sd-01" id="sds-out-1"/>
                 <outlet property="setLockedButton" destination="WbU-p9-gRO" id="HUg-YC-GtN"/>
                 <outlet property="setLockedImageview" destination="lrh-ub-Fd8" id="BMn-1G-MES"/>
                 <outlet property="setMagnetButton" destination="Mdf-0k-KUA" id="n7g-OH-5nv"/>
                 <outlet property="setUnlockImageView" destination="ufl-mP-i4P" id="aMK-Pz-N4m"/>
                 <outlet property="setUnlockedButton" destination="NhO-IU-buj" id="1jt-Lp-eAQ"/>
+                <outlet property="switchPointButton" destination="spb-01-btn" id="spb-out-1"/>
+                <outlet property="switchPointContainer" destination="spc-01-row" id="spc-out-1"/>
+                <outlet property="switchPointImageView" destination="spi-01-img" id="spi-out-1"/>
+                <outlet property="switchPointSeparator" destination="sep-sp-01" id="sps-out-1"/>
                 <outlet property="topAngleLabel" destination="GcG-eK-W2e" id="4Cd-ch-EKg"/>
                 <outlet property="topHintLabel" destination="3SI-0s-ftW" id="kCq-3s-a3s"/>
                 <outlet property="view" destination="H2J-6s-JRh" id="red-3Z-kzq"/>
@@ -159,11 +166,56 @@
                                         <constraint firstItem="NhO-IU-buj" firstAttribute="leading" secondItem="Tz4-1z-ipb" secondAttribute="leading" id="x1j-62-KGi"/>
                                     </constraints>
                                 </view>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sep-sp-01" userLabel="switch point separator">
+                                    <rect key="frame" x="0.0" y="541" width="393" height="1"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="sep-sp-h"/>
+                                    </constraints>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spc-01-row" userLabel="switch point container">
+                                    <rect key="frame" x="0.0" y="542" width="393" height="60"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="spi-01-img" userLabel="switch point icon">
+                                            <rect key="frame" x="64" y="12.5" width="25" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="spi-w-01"/>
+                                                <constraint firstAttribute="height" constant="35" id="spi-h-01"/>
+                                            </constraints>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spb-01-btn">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                            <state key="normal" title="Switch point">
+                                                <color key="titleColor" systemColor="darkTextColor"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="spc-h-01"/>
+                                        <constraint firstItem="spi-01-img" firstAttribute="centerX" secondItem="spc-01-row" secondAttribute="centerX" constant="-120" id="spi-cx-01"/>
+                                        <constraint firstItem="spi-01-img" firstAttribute="centerY" secondItem="spc-01-row" secondAttribute="centerY" id="spi-cy-01"/>
+                                        <constraint firstItem="spb-01-btn" firstAttribute="leading" secondItem="spc-01-row" secondAttribute="leading" id="spb-l-01"/>
+                                        <constraint firstItem="spb-01-btn" firstAttribute="top" secondItem="spc-01-row" secondAttribute="top" id="spb-t-01"/>
+                                        <constraint firstAttribute="trailing" secondItem="spb-01-btn" secondAttribute="trailing" id="spb-r-01"/>
+                                        <constraint firstAttribute="bottom" secondItem="spb-01-btn" secondAttribute="bottom" id="spb-b-01"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1F-1h-CRt" userLabel="padding">
                                     <rect key="frame" x="0.0" y="541" width="393" height="360"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="360" id="gl9-Yt-q5k"/>
+                                    </constraints>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdc-01-row" userLabel="sensor detect frequency container">
+                                    <rect key="frame" x="0.0" y="962" width="393" height="50"/>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sep-sd-01" userLabel="sensor separator">
+                                    <rect key="frame" x="0.0" y="1012" width="393" height="1"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="sep-sd-h"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2O-XM-Z1G" userLabel="set magnet container">

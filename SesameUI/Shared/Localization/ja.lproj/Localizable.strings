@@ -219,3 +219,7 @@ WiFiパスワードを再度確かめるか、WiFiルーターとの距離を近
 "co.candyhouse.sesame2.Hub3LTE" = "ハブ3 LTE";
 "co.candyhouse.sesame2.Downloading" = "ダウンロード中…";
 "co.candyhouse.sesame2.dfu_busy" = "他のCANDY HOUSE製品を更新中、お待ち下さいませ。";
+"co.candyhouse.sesame5.switchPoint" = "施解錠の境界を固定する";
+"co.candyhouse.sesame5.sensorDetectFrequency" = "角度の検知頻度";
+"co.candyhouse.sesame5.stopDetection" = "検知を停止";
+"co.candyhouse.sesame5.timesPerSecond" = "1秒あたり%d回";

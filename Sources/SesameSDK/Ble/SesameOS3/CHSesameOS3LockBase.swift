@@ -12,6 +12,18 @@ import CoreBluetooth
 class CHSesameOS3LockBase: CHSesameOS3, CHDeviceUtil, CHSesameLock {
 
     var isConnectedByWM2 = false
+    private(set) var sensorDetectIntervalMs: Int16 = CHDeviceUnsetSensorDetectInterval {
+        didSet {
+            guard oldValue != sensorDetectIntervalMs,
+                  let device = self as? CHSesame5 else { return }
+            (delegate as? CHSesame5Delegate)?.onSensorDetectIntervalReceive(
+                device: device,
+                intervalMs: sensorDetectIntervalMs
+            )
+        }
+    }
+    private(set) var lockUnlockSwitchPoint: Int16 = 0
+    private(set) var hasLockUnlockSwitchPointSetting = false
 
     public var isHistory: Bool = false {
         didSet {
@@ -47,6 +59,20 @@ class CHSesameOS3LockBase: CHSesameOS3, CHDeviceUtil, CHSesameLock {
         case .SSM3_ITEM_CODE_BLE_TX_POWER_SETTING:
             guard let value = data.first else { return }
             bleTxPower = value
+
+        case .SSM3_ITEM_CODE_SENSOR_DETECT_INTERVAL_SETTING:
+            guard let intervalMs = int16Value(from: data) else {
+                L.d("SesameOS3LockBase", "invalid sensor interval payload: \(data.count)")
+                return
+            }
+            sensorDetectIntervalMs = intervalMs
+
+        case .SSM3_ITEM_CODE_LOCK_UNLOCK_SWITCH_POINT_SETTING:
+            guard let point = int16Value(from: data) else {
+                L.d("SesameOS3LockBase", "invalid switch point payload: \(data.count)")
+                return
+            }
+            updateLockUnlockSwitchPointSetting(point)
 
         default:
             handleLockDevicePublish(payload)
@@ -105,5 +131,47 @@ class CHSesameOS3LockBase: CHSesameOS3, CHDeviceUtil, CHSesameLock {
                 result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
             }
         }
+    }
+
+    func setSensorDetectInterval(intervalMs: Int16, result: @escaping (CHResult<CHEmpty>)) {
+        if !isBleAvailable(result) { return }
+
+        sendCommand(.init(.SSM3_ITEM_CODE_SENSOR_DETECT_INTERVAL_SETTING, intervalMs.littleEndian.data)) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                self.sensorDetectIntervalMs = intervalMs
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+
+    func setLockUnlockSwitchPoint(point: Int16, result: @escaping (CHResult<CHEmpty>)) {
+        if !isBleAvailable(result) { return }
+
+        sendCommand(.init(.SSM3_ITEM_CODE_LOCK_UNLOCK_SWITCH_POINT_SETTING, point.littleEndian.data)) { responsePayload in
+            if responsePayload.cmdResultCode == .success {
+                self.updateLockUnlockSwitchPointSetting(point)
+                result(.success(CHResultStateBLE(input: CHEmpty())))
+            } else {
+                result(.failure(self.errorFromResultCode(responsePayload.cmdResultCode)))
+            }
+        }
+    }
+
+    private func updateLockUnlockSwitchPointSetting(_ point: Int16) {
+        guard !hasLockUnlockSwitchPointSetting || lockUnlockSwitchPoint != point else { return }
+        lockUnlockSwitchPoint = point
+        hasLockUnlockSwitchPointSetting = true
+
+        guard let device = self as? CHSesame5 else { return }
+        (delegate as? CHSesame5Delegate)?.onLockUnlockSwitchPointReceive(device: device, point: point)
+    }
+
+    private func int16Value(from data: Data) -> Int16? {
+        guard data.count >= 2 else { return nil }
+        let rawValue = UInt16(data[data.startIndex]) |
+            (UInt16(data[data.index(after: data.startIndex)]) << 8)
+        return Int16(bitPattern: rawValue)
     }
 }

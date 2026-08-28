@@ -30,6 +30,7 @@ class LockViewSS5: UIControl {
         layer.addSublayer(renderer.centerBigLayer)
         layer.addSublayer(renderer.lockImgLyer)
         layer.addSublayer(renderer.unlockImgLyer)
+        layer.addSublayer(renderer.switchPointLayer)
         renderer.updateBounds(bounds)
     }
 
@@ -53,6 +54,14 @@ class LockViewSS5: UIControl {
         renderer.updateLockImage(lockPositionDegree)
         renderer.updateUnlockImage(unlockPositionDegree)
     }
+
+    func setSwitchPoint(_ angle: Int16) {
+        renderer.updateSwitchPoint(CGFloat(reverseDegree(angle: angle)))
+    }
+
+    func clearSwitchPoint() {
+        renderer.clearSwitchPoint()
+    }
 }
 
 private class LockViewKnobRenderer {
@@ -64,6 +73,7 @@ private class LockViewKnobRenderer {
     let centerBigLayer = CALayer()
     let lockImgLyer = CALayer()
     let unlockImgLyer = CALayer()
+    let switchPointLayer = CAShapeLayer()
 
     init() {
         trackLayer.fillColor = UIColor.clear.cgColor
@@ -71,6 +81,11 @@ private class LockViewKnobRenderer {
         lockLayer.fillColor = UIColor.clear.cgColor
         lockLayer.strokeColor = UIColor(rgb: 0x28aeb1).cgColor
         trackLayer.lineWidth = 20
+        switchPointLayer.fillColor = UIColor.clear.cgColor
+        switchPointLayer.strokeColor = UIColor.placeholderText.cgColor
+        switchPointLayer.lineWidth = 2
+        switchPointLayer.lineCap = .round
+        switchPointLayer.lineDashPattern = [4, 3]
     }
 
     func updateBounds(_ bounds: CGRect) {
@@ -89,6 +104,9 @@ private class LockViewKnobRenderer {
 
         unlockImgLyer.bounds = bounds
         unlockImgLyer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+
+        switchPointLayer.bounds = bounds
+        switchPointLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
 
         updateTrackLayerPath()
         updatePointerLayerPath()
@@ -169,6 +187,30 @@ private class LockViewKnobRenderer {
          
          let centerBigLayerTranslation = CGAffineTransform(rotationAngle: ww)
          centerBigLayer.setAffineTransform(centerBigLayerTranslation)
+    }
+
+    func updateSwitchPoint(_ angle: CGFloat) {
+        let radians = CGFloat.pi * 2 / 360 * angle
+        let bounds = switchPointLayer.bounds
+        let center = CGPoint(x: bounds.midX, y: bounds.midY)
+        let radius = min(bounds.width, bounds.height) / 2
+        let halfLength = bounds.width / 14
+        let dx = cos(radians)
+        let dy = sin(radians)
+        let path = UIBezierPath()
+        path.move(to: CGPoint(
+            x: center.x + (radius - halfLength) * dx,
+            y: center.y + (radius - halfLength) * dy
+        ))
+        path.addLine(to: CGPoint(
+            x: center.x + (radius + halfLength) * dx,
+            y: center.y + (radius + halfLength) * dy
+        ))
+        switchPointLayer.path = path.cgPath
+    }
+
+    func clearSwitchPoint() {
+        switchPointLayer.path = nil
     }
 
     private func updateTrackLayerPath() {

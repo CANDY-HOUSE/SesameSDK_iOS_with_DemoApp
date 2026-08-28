@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		0A0B3FED278D4D8700BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
 		0A0B3FEE278D4D8F00BEDFB0 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */; };
+		3B1061F730413535004201A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B1061F530413535004201A4 /* InfoPlist.strings */; };
+		3B1061F830413535004201A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B1061F530413535004201A4 /* InfoPlist.strings */; };
+		3B1061F930413535004201A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B1061F530413535004201A4 /* InfoPlist.strings */; };
+		3B1061FA30413535004201A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B1061F530413535004201A4 /* InfoPlist.strings */; };
+		3B106209304136F6004201A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B106207304136F6004201A4 /* Localizable.strings */; };
+		3B10620A304136F6004201A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B106207304136F6004201A4 /* Localizable.strings */; };
+		3B10620B304136F6004201A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B106207304136F6004201A4 /* Localizable.strings */; };
+		3B10620C304136F6004201A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B106207304136F6004201A4 /* Localizable.strings */; };
 		3B1545BD2FFCE8A6006F89CB /* AppPromotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1545BC2FFCE8A4006F89CB /* AppPromotionManager.swift */; };
 		3B1D80482E2A2DB600C90D01 /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9DC5952E2DE4F8008EBF76 /* SesameSDK */; };
 		3B203FDE2E3CF307004E2606 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */; };
@@ -263,7 +271,6 @@
 		E84262D22913736A0064163D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED74C4F24AC760E0052F04D /* Assets.xcassets */; };
 		E84262D32913736F0064163D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED74C4F24AC760E0052F04D /* Assets.xcassets */; };
 		E86587F62A2768150091D77F /* BikeLock2SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86587F52A2768150091D77F /* BikeLock2SettingViewController.swift */; };
-		E8819C0A291357F200431939 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
 		E8819C0B29135D2E00431939 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
 		E8819C0C291360D800431939 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94886238B6CB2009469B0 /* Localizable.strings */; };
 		E8819C0F2913630D00431939 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41C94889238B6D58009469B0 /* Localizable.strings */; };
@@ -280,13 +287,6 @@
 		E8F2B7CF2937085600970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
 		E8F2B7D02937085700970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
 		E8F2B7D12937085700970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD142911053A00E46793 /* Localizable.strings */; };
-		E8F2B7D32937088000970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
-		E8F2B7D42937088000970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
-		E8F2B7D52937088100970E10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2197A29111F55006B68AB /* Localizable.strings */; };
-		E8F2B7D6293708A500970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
-		E8F2B7D7293708A500970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
-		E8F2B7D8293708A600970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
-		E8F2B7DA293708A700970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B2198A29112461006B68AB /* InfoPlist.strings */; };
 		E8F2B7DB293708B000970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
 		E8F2B7DC293708B100970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
 		E8F2B7DD293708B100970E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E811CD082910FF8600E46793 /* InfoPlist.strings */; };
@@ -385,6 +385,8 @@
 
 /* Begin PBXFileReference section */
 		0A0B3FEC278D4D8700BEDFB0 /* BleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleHelper.swift; sourceTree = "<group>"; };
+		3B1061F430413535004201A4 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = InfoPlist.strings; sourceTree = "<group>"; };
+		3B106206304136F6004201A4 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = Localizable.strings; sourceTree = "<group>"; };
 		3B1545BC2FFCE8A4006F89CB /* AppPromotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPromotionManager.swift; sourceTree = "<group>"; };
 		3B203FDD2E3CF303004E2606 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3B3275092E7957320076DCBC /* CHDeviceWrapperManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDeviceWrapperManager.swift; sourceTree = "<group>"; };
@@ -487,8 +489,6 @@
 		890D330C2DA0E85A0031F0AF /* FaceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceListVC.swift; sourceTree = "<group>"; };
 		890D330D2DA0E85A0031F0AF /* PalmListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmListVC.swift; sourceTree = "<group>"; };
 		96B2196629111F26006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Sesame2Intents.strings"; sourceTree = "<group>"; };
-		96B2197929111F55006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		96B2198929112461006B68AB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		AC20AC20AC20AC20AC20AC01 /* CHWebHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHWebHostViewController.swift; sourceTree = "<group>"; };
 		AD40AD40AD40AD40AD40AD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B01728AD250B6D7E00F87ED6 /* SiriShortCutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortCutViewController.swift; sourceTree = "<group>"; };
@@ -684,6 +684,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1061F630413535004201A4 /* zh-Hant.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				3B1061F530413535004201A4 /* InfoPlist.strings */,
+			);
+			path = "zh-Hant.lproj";
+			sourceTree = "<group>";
+		};
+		3B106208304136F6004201A4 /* zh-Hant.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				3B106207304136F6004201A4 /* Localizable.strings */,
+			);
+			path = "zh-Hant.lproj";
+			sourceTree = "<group>";
+		};
 		4103032E237902C700785311 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,7 +727,7 @@
 		4103033F23790D0300785311 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				96B2196529111EE6006B68AB /* zh-Hant.Iproj */,
+				3B106208304136F6004201A4 /* zh-Hant.lproj */,
 				E811CD132911052300E46793 /* zh-Hans.lproj */,
 				418FA1EB237C04EF00C7C408 /* en.lproj */,
 				418FA1F1237C04EF00C7C408 /* ja.lproj */,
@@ -1078,22 +1094,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		96B2196529111EE6006B68AB /* zh-Hant.Iproj */ = {
-			isa = PBXGroup;
-			children = (
-				96B2197A29111F55006B68AB /* Localizable.strings */,
-			);
-			path = "zh-Hant.Iproj";
-			sourceTree = "<group>";
-		};
-		96B2197B2911242F006B68AB /* zh-Hant.Iproj */ = {
-			isa = PBXGroup;
-			children = (
-				96B2198A29112461006B68AB /* InfoPlist.strings */,
-			);
-			path = "zh-Hant.Iproj";
-			sourceTree = "<group>";
-		};
 		B027BB8B2508DE4500391DC0 /* SesameIntents */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,7 +1191,7 @@
 		B0FDDA04248CDEFF00DD72B7 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				96B2197B2911242F006B68AB /* zh-Hant.Iproj */,
+				3B1061F630413535004201A4 /* zh-Hant.lproj */,
 				E811CD072910FF5E00E46793 /* zh-Hans.lproj */,
 				B0FDDA03248CDEF000DD72B7 /* en.lproj */,
 				B0FDDA02248CDEF000DD72B7 /* ja.lproj */,
@@ -1768,11 +1768,11 @@
 				E8F2B7C72937080C00970E10 /* Localizable.strings in Resources */,
 				D0424E33295A908300C3FB9D /* InfoPlist.strings in Resources */,
 				E8F2B7DF293708B600970E10 /* InfoPlist.strings in Resources */,
+				3B106209304136F6004201A4 /* Localizable.strings in Resources */,
 				E8F2B7DB293708B000970E10 /* InfoPlist.strings in Resources */,
-				E8F2B7D42937088000970E10 /* Localizable.strings in Resources */,
 				E8F2B7D02937085700970E10 /* Localizable.strings in Resources */,
+				3B1061F730413535004201A4 /* InfoPlist.strings in Resources */,
 				E8F2B7CC2937084D00970E10 /* Localizable.strings in Resources */,
-				E8F2B7D6293708A500970E10 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,8 +1784,8 @@
 				E8819C0F2913630D00431939 /* Localizable.strings in Resources */,
 				E8819C0C291360D800431939 /* Localizable.strings in Resources */,
 				E8819C0B29135D2E00431939 /* Localizable.strings in Resources */,
+				3B10620C304136F6004201A4 /* Localizable.strings in Resources */,
 				E84262D32913736F0064163D /* Assets.xcassets in Resources */,
-				E8819C0A291357F200431939 /* Localizable.strings in Resources */,
 				BE70FBEF2558D4B000B38D54 /* WifiModule2SettingViewController.xib in Resources */,
 				647A27712B2C42220013308C /* Bot2ScriptActionCell.xib in Resources */,
 				647719252BAADF72003D0405 /* PrivacyInfo.xcprivacy in Resources */,
@@ -1795,8 +1795,8 @@
 				B01728DD250CA8D300F87ED6 /* RegisterSesameDeviceCell.xib in Resources */,
 				419FE7862446BADF000D31CD /* awsconfiguration.json in Resources */,
 				E811CD0A2910FF8600E46793 /* InfoPlist.strings in Resources */,
-				E8F2B7DA293708A700970E10 /* InfoPlist.strings in Resources */,
 				419F15582363E48400C09D62 /* bee.mp3 in Resources */,
+				3B1061F930413535004201A4 /* InfoPlist.strings in Resources */,
 				BE85D3052580A8030091D3A6 /* WifiModule2SSIDScanCell.xib in Resources */,
 				BED189F725591C72006544A0 /* WifiModule2SesameCell.xib in Resources */,
 				B179691022F7CE9300E91996 /* Main.storyboard in Resources */,
@@ -1814,9 +1814,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B10620A304136F6004201A4 /* Localizable.strings in Resources */,
 				C0A000032F12340300000003 /* awsconfiguration.json in Resources */,
 				E8F2B7C82937080E00970E10 /* Localizable.strings in Resources */,
-				E8F2B7D52937088100970E10 /* Localizable.strings in Resources */,
 				E8F2B7D12937085700970E10 /* Localizable.strings in Resources */,
 				E8F2B7CD2937084E00970E10 /* Localizable.strings in Resources */,
 			);
@@ -1827,12 +1827,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8F2B80D293717CC00970E10 /* Sesame2Intents.intentdefinition in Resources */,
+				3B1061FA30413535004201A4 /* InfoPlist.strings in Resources */,
 				D0424E31295A908100C3FB9D /* InfoPlist.strings in Resources */,
 				E84262D22913736A0064163D /* Assets.xcassets in Resources */,
 				E8F2B7E1293708B700970E10 /* InfoPlist.strings in Resources */,
 				41A0F59729FAB3D4008CEB0C /* Interface.storyboard in Resources */,
 				E8F2B7DD293708B100970E10 /* InfoPlist.strings in Resources */,
-				E8F2B7D8293708A600970E10 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1841,17 +1841,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0A000042F12340400000004 /* awsconfiguration.json in Resources */,
+				3B10620B304136F6004201A4 /* Localizable.strings in Resources */,
+				3B1061F830413535004201A4 /* InfoPlist.strings in Resources */,
 				E8F2B7C62937080C00970E10 /* Localizable.strings in Resources */,
 				643F06892BCD10810045D789 /* PrivacyInfo.xcprivacy in Resources */,
 				E8F2B7E0293708B700970E10 /* InfoPlist.strings in Resources */,
 				E8F2B7DC293708B100970E10 /* InfoPlist.strings in Resources */,
-				E8F2B7D32937088000970E10 /* Localizable.strings in Resources */,
 				E8F2B7CF2937085600970E10 /* Localizable.strings in Resources */,
 				E8F2B7CB2937084D00970E10 /* Localizable.strings in Resources */,
 				E8F2B80F2937318C00970E10 /* Assets.xcassets in Resources */,
 				D0424E32295A908100C3FB9D /* InfoPlist.strings in Resources */,
 				41A0F59829FAB3D6008CEB0C /* Interface.storyboard in Resources */,
-				E8F2B7D7293708A500970E10 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2236,6 +2236,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3B1061F530413535004201A4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B1061F430413535004201A4 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3B106207304136F6004201A4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B106206304136F6004201A4 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		418FA1EC237C04EF00C7C408 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2266,22 +2282,6 @@
 				41C9488A238B6D58009469B0 /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		96B2197A29111F55006B68AB /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				96B2197929111F55006B68AB /* zh-Hant */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		96B2198A29112461006B68AB /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				96B2198929112461006B68AB /* zh-Hant */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		B081437125270E1C00A634C8 /* Sesame2Intents.intentdefinition */ = {

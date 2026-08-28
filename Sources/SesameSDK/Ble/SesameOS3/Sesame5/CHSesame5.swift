@@ -8,16 +8,25 @@
 
 import CoreBluetooth
 
+public let CHDeviceUnsetSensorDetectInterval: Int16 = -1
+
 // https://github.com/CANDY-HOUSE/API_document/blob/master/SesameOS3/4_history.md
 public protocol CHSesame5Delegate: CHDeviceStatusDelegate {
     func onHistoryReceived(device: CHSesame5, result: Result<CHResultState<Data>, Error>)
+    func onSensorDetectIntervalReceive(device: CHSesame5, intervalMs: Int16)
+    func onLockUnlockSwitchPointReceive(device: CHSesame5, point: Int16)
 }
 public extension CHSesame5Delegate {
     func onHistoryReceived(device: CHSesame5, result: Result<CHResultState<Data>, Error>) {}
+    func onSensorDetectIntervalReceive(device: CHSesame5, intervalMs: Int16) {}
+    func onLockUnlockSwitchPointReceive(device: CHSesame5, point: Int16) {}
 }
 public protocol CHSesame5: CHSesameLock {
     var mechSetting: CHSesame5MechSettings? { get }
     var opsSetting: CHSesame5OpsSettings? { get }
+    var sensorDetectIntervalMs: Int16 { get }
+    var lockUnlockSwitchPoint: Int16 { get }
+    var hasLockUnlockSwitchPointSetting: Bool { get }
     func getVersionTag(result: @escaping (CHResult<String>))
     func lock(historytag:Data? ,result: @escaping (CHResult<CHEmpty>))
     func unlock(historytag:Data? ,result: @escaping (CHResult<CHEmpty>))
@@ -26,6 +35,8 @@ public protocol CHSesame5: CHSesameLock {
     func configureLockPosition(lockTarget: Int16, unlockTarget: Int16,result: @escaping (CHResult<CHEmpty>))
     func magnet(result: @escaping (CHResult<CHEmpty>))
     func opSensorControl(delay: Int, result: @escaping (CHResult<Int>))
+    func setSensorDetectInterval(intervalMs: Int16, result: @escaping (CHResult<CHEmpty>))
+    func setLockUnlockSwitchPoint(point: Int16, result: @escaping (CHResult<CHEmpty>))
     func sendAdvProductTypeCommand(data: Data,result: @escaping (CHResult<CHEmpty>))
 }
 

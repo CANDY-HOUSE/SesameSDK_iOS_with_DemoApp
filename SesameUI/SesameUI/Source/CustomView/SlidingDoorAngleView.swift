@@ -38,9 +38,13 @@ final class SlidingDoorAngleView: UIView {
     private var progress: CGFloat = 0
     private var lockProgress: CGFloat = 0.5
     private var unlockProgress: CGFloat = 0.5
+    private var switchPointProgress: CGFloat = 0.5
+    private var switchPoint: Int16?
     
     private var observedMin: CGFloat?
     private var observedMax: CGFloat?
+    private var scaleMin: CGFloat = -10
+    private var scaleMax: CGFloat = 10
     private var lastLock: Int16?
     private var lastUnlock: Int16?
     
@@ -80,6 +84,8 @@ final class SlidingDoorAngleView: UIView {
             minV = c - minSpan / 2
             maxV = c + minSpan / 2
         }
+        scaleMin = minV
+        scaleMax = maxV
         
         progress = norm(p, minV, maxV)
         
@@ -92,7 +98,21 @@ final class SlidingDoorAngleView: UIView {
             unlockProgress = norm(up, minV, maxV)
             lastUnlock = unlock
         }
+        if let switchPoint {
+            switchPointProgress = norm(CGFloat(switchPoint), minV, maxV)
+        }
         
+        setNeedsDisplay()
+    }
+
+    func setSwitchPoint(_ point: Int16) {
+        switchPoint = point
+        switchPointProgress = norm(CGFloat(point), scaleMin, scaleMax)
+        setNeedsDisplay()
+    }
+
+    func clearSwitchPoint() {
+        switchPoint = nil
         setNeedsDisplay()
     }
     
@@ -158,6 +178,19 @@ final class SlidingDoorAngleView: UIView {
         
         drawIcon(unlockImage, p: unlockProgress)
         drawIcon(lockImage, p: lockProgress)
+
+        if switchPoint != nil {
+            let p = max(min(switchPointProgress, 1), 0)
+            let y = trackTop + (trackBottom - trackTop) * (1 - p) + sliderH / 2
+            ctx.setStrokeColor(UIColor.placeholderText.cgColor)
+            ctx.setLineWidth(2)
+            ctx.setLineCap(.round)
+            ctx.setLineDash(phase: 0, lengths: [4, 3])
+            ctx.move(to: CGPoint(x: bodyRect.maxX + 8, y: y))
+            ctx.addLine(to: CGPoint(x: bodyRect.maxX + 58, y: y))
+            ctx.strokePath()
+            ctx.setLineDash(phase: 0, lengths: [])
+        }
         
         ctx.restoreGState()
     }

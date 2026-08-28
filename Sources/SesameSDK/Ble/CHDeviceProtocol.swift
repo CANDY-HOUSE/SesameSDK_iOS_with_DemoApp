@@ -26,6 +26,8 @@ enum SesameItemCode: UInt8 {
     case timeNoSig = 16
     case magnet = 17
     case historyDelete = 18
+    case SSM3_ITEM_CODE_SENSOR_DETECT_INTERVAL_SETTING = 19
+    case SSM3_ITEM_CODE_LOCK_UNLOCK_SWITCH_POINT_SETTING = 20
     /*
      * Mechanic-dependent commands
      */
