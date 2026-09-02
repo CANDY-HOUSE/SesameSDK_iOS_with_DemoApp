@@ -251,14 +251,25 @@ public final class CHAWSManager {
     }
 
     public static func signOut(completion: (() -> Void)? = nil) {
-#if os(iOS)
-        CHIoTManager.shared.stopConnectionPool()
-#endif
+        signOutWithResult { _ in completion?() }
+    }
+
+    public static func signOutWithResult(completion: @escaping (Bool) -> Void) {
         Task {
-            try? configure()
-            _ = await Amplify.Auth.signOut()
+            do {
+                try configure()
+            } catch {
+                completion(false)
+                return
+            }
+            let result = await Amplify.Auth.signOut()
+            guard let signOutResult = result as? AWSCognitoSignOutResult,
+                  signOutResult.signedOutLocally else {
+                completion(false)
+                return
+            }
             updateState(.signedOut)
-            completion?()
+            completion(true)
         }
     }
 

@@ -40,6 +40,7 @@ class PushNotificationManager {
     func handleAPNsToken(_ token: String) {
         L.d("sf", "handleAPNsToken=\(token)")
         UserDefaults.standard.setValue(token, forKey: "devicePushToken")
+        guard UserDefaults.standard.bool(forKey: "HasInstalled") else { return }
         subscribeToTopic(token: token)
     }
 

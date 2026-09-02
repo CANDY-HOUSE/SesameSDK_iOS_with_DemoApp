@@ -13,6 +13,22 @@ import CoreLocation
 import SwiftUI
 import UIKit
 
+private final class AWSPreparationViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.color = .lockGray
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.startAnimating()
+        view.addSubview(indicator)
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private struct AutoUnlockRegionStatus {
@@ -30,11 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.setValue(true, forKey: "refreshDevice")
-        do {
-            try CHAWSManager.configure()
-        } catch {
-            L.d("Amplify configure failed", error.localizedDescription)
-        }
         // 啟動通知
         let center = UNUserNotificationCenter.current()
         center.delegate = self
@@ -58,21 +69,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.activityType = .fitness
-        
-        // 清除 auto unlock flag
-        CHDeviceManager.shared.getCHDevices(result: {
-            if case let .success(devices) = $0 {
-                self.autoUnlockDevices = devices.data.compactMap({ device in device as? CHSesameLock }).filter({ $0.autoUnlockStatus() == true })
-                for device in self.autoUnlockDevices { device.setAutoUnlockFlag(false) } // auto unlock 完清除 auto unlock flag
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if !UserDefaults.standard.bool(forKey: "HasInstalled") {
+            window?.rootViewController = AWSPreparationViewController()
+            window?.makeKeyAndVisible()
+        }
+        prepareRootIfNeeded()
+        return true
+    }
+
+    private func prepareRootIfNeeded() {
+        guard !UserDefaults.standard.bool(forKey: "HasInstalled") else {
+            installRootViewController()
+            return
+        }
+        CHAWSManager.signOutWithResult { [weak self] success in
+            executeOnMainThread {
+                guard let self else { return }
+                guard success else {
+                    L.d("Unable to clear Amplify Auth after install")
+                    return
+                }
+                UserDefaults.standard.set(true, forKey: "HasInstalled")
+                L.d("Clear Amplify successfully!")
+                if let token = UserDefaults.standard.string(forKey: "devicePushToken") {
+                    PushNotificationManager.shared.handleAPNsToken(token)
+                }
+                self.installRootViewController()
             }
-        })
+        }
+    }
+
+    private func installRootViewController() {
+        do {
+            try CHAWSManager.configure()
+        } catch {
+            L.d("Amplify configure failed", error.localizedDescription)
+        }
+        CHDeviceManager.shared.getCHDevices { [weak self] result in
+            guard let self, case let .success(devices) = result else { return }
+            self.autoUnlockDevices = devices.data
+                .compactMap { $0 as? CHSesameLock }
+                .filter { $0.autoUnlockStatus() }
+            for device in self.autoUnlockDevices {
+                device.setAutoUnlockFlag(false)
+            }
+        }
         // 設定顯示初始畫面
         let rootNavigationController = UINavigationController(rootViewController: GeneralTabViewController.instance())
         rootNavigationController.setNavigationBarHidden(true, animated: false)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = rootNavigationController
-        window!.makeKeyAndVisible()
-        return true
+        window?.rootViewController = rootNavigationController
+        window?.makeKeyAndVisible()
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

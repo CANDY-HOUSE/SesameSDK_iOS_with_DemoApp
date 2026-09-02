@@ -27,12 +27,6 @@ public class GeneralTabViewController: UITabBarController {
             // 1. 設定並啟動 API manager
             CHAPIClient.initialize()
             AppPromotionManager.shared.refresh()
-            
-            // 2. 判斷是否第一次安裝
-            if UserDefaults.standard.bool(forKey: "HasInstalled") == false {
-                UserDefaults.standard.set(true, forKey: "HasInstalled")
-                CHAWSMobileClient.shared.signOut()
-            }
             if userState == .signedIn {
                 CHAWSMobileClient.shared.getName { result in
                     if case let .success(nickname) = result {
