@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Security
 
 public enum CHKeychain {
     public static func setString(_ value: String, forKey key: String) {
@@ -27,5 +28,18 @@ public enum CHKeychain {
 
     public static func remove(forKey key: String) {
         try? SwKeyStore.delKey(key)
+    }
+
+    static func removeGenericPasswords(forServices services: [String]) throws {
+        for service in services {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrService as String: service
+            ]
+            let status = SecItemDelete(query as CFDictionary)
+            guard status == errSecSuccess || status == errSecItemNotFound else {
+                throw NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: [NSLocalizedDescriptionKey: service])
+            }
+        }
     }
 }

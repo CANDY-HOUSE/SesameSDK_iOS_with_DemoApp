@@ -83,21 +83,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             installRootViewController()
             return
         }
-        CHAWSManager.signOutWithResult { [weak self] success in
-            executeOnMainThread {
-                guard let self else { return }
-                guard success else {
-                    L.d("Unable to clear Amplify Auth after install")
-                    return
-                }
-                UserDefaults.standard.set(true, forKey: "HasInstalled")
-                L.d("Clear Amplify successfully!")
-                if let token = UserDefaults.standard.string(forKey: "devicePushToken") {
-                    PushNotificationManager.shared.handleAPNsToken(token)
-                }
-                self.installRootViewController()
-            }
+        guard UIApplication.shared.isProtectedDataAvailable else {
+            NotificationCenter.default.addObserver(self, selector: #selector(protectedDataDidBecomeAvailable), name: UIApplication.protectedDataDidBecomeAvailableNotification, object: nil)
+            return
         }
+        NotificationCenter.default.removeObserver(self, name: UIApplication.protectedDataDidBecomeAvailableNotification, object: nil)
+        do {
+            try CHAWSManager.clearAuthKeychainForReinstall()
+        } catch {
+            L.d("Unable to clear AWS Auth Keychain after install", error.localizedDescription)
+            return
+        }
+        UserDefaults.standard.set(true, forKey: "HasInstalled")
+        L.d("Clear AWS Auth Keychain successfully!")
+        if let token = UserDefaults.standard.string(forKey: "devicePushToken") {
+            PushNotificationManager.shared.handleAPNsToken(token)
+        }
+        installRootViewController()
+    }
+
+    @objc private func protectedDataDidBecomeAvailable() {
+        prepareRootIfNeeded()
     }
 
     private func installRootViewController() {

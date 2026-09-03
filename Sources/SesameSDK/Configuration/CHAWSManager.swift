@@ -57,6 +57,40 @@ public enum CHAuthError: LocalizedError {
 public final class CHAWSManager {
     public static let apiName = "sesameAPI"
 
+    public static func clearAuthKeychainForReinstall(bundle: Bundle = .main) throws {
+        guard let bundleIdentifier = bundle.bundleIdentifier else {
+            throw CHAuthError.service("Missing bundle identifier.", nil)
+        }
+        guard let url = bundle.url(forResource: "awsconfiguration", withExtension: "json") else {
+            throw CHAuthError.service("Missing awsconfiguration.json in the current target.", nil)
+        }
+        let data = try Data(contentsOf: url)
+        guard
+            let configuration = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+            let credentialsProvider = configuration["CredentialsProvider"] as? [String: Any],
+            let cognitoIdentity = credentialsProvider["CognitoIdentity"] as? [String: Any],
+            let identityDefaults = cognitoIdentity["Default"] as? [String: Any],
+            let identityPoolId = identityDefaults["PoolId"] as? String
+        else {
+            throw CHAuthError.service("Invalid Cognito Identity configuration.", nil)
+        }
+        let legacyIdentityPoolIds = [
+            "ap-northeast-1:33a5a21f-3c79-439f-98a9-9fdbbff04e19",
+        ]
+        let services = [
+            "com.amplify.awsCognitoAuthPlugin",
+            "Optional(\"\(bundleIdentifier)\").AWSMobileClient",
+            "\(bundleIdentifier).AWSCognitoIdentityUserPool"
+        ] + ([identityPoolId] + legacyIdentityPoolIds).map {
+            "\(bundleIdentifier).AWSCognitoCredentialsProvider.\($0)"
+        }
+        do {
+            try CHKeychain.removeGenericPasswords(forServices: services)
+        } catch {
+            throw CHAuthError.service("Unable to clear AWS Auth Keychain.", error)
+        }
+    }
+
     private enum ConfigurationState {
         case notConfigured
         case configuring
