@@ -267,6 +267,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
     case bikeLock3 = 33
     case sesameBot3 = 35
     case hub3LTE = 36
+    case sesameFace3 = 37
 
     public func deviceModel() -> String {///絕對不要動。ios/server/android必須一致
         switch self {
@@ -305,6 +306,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .openSensor2: return "open_sensor_2"
         case .sesameMiwa: return "sesame_miwa"
         case .hub3LTE: return "hub_3_lte"
+        case .sesameFace3: return "sesame_face_3"
         }
     }
     public func deviceModelName() -> String {//android必須一致
@@ -344,6 +346,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         case .openSensor2: return "Open Sensor 2"
         case .sesameMiwa: return "Sesame miwa"
         case .hub3LTE: return "Hub 3 LTE"
+        case .sesameFace3: return "Sesame Face 3"
         }
     }
 
@@ -390,7 +393,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
                 deviceType: .sesameTouchPro,
                 supportedCapabilities: [.fingerPrint, .card, .passCode]
             )
-        case .sesameFace,.sesameFace2:
+        case .sesameFace,.sesameFace2,.sesameFace3:
             return CHSesameBiometricDeviceImpl(
                 deviceType: .sesameFace,
                 supportedCapabilities: [.fingerPrint, .card, .palm, .face]
@@ -478,7 +481,7 @@ internal class BleAdv {
                     isRegistered = manufacturerData[3] & 1 > 0
                     let macAddress = manufacturerData.copyData[4...9].toHexString()
                     deviceID = ("00000000055afd810d00" + macAddress).noDashtoUUID()
-                case .sesame5, .sesame5Pro, .sesameTouchPro, .sesameTouch2Pro, .sesameTouch, .sesameTouch2, .bikeLock2, .bikeLock3, .openSensor, .bleConnector, .remote, .remoteNano, .sesame5US, .sesameBot2, .sesameBot3, .sesameFace, .sesameFace2, .sesameFacePro, .sesameFace2Pro, .sesame6, .sesame6Pro, .sesame6ProSlidingDoor, .sesameFaceAI, .sesameFace2AI, .sesameFaceProAI, .sesameFace2ProAI, .openSensor2, .sesameMiwa:
+                case .sesame5, .sesame5Pro, .sesameTouchPro, .sesameTouch2Pro, .sesameTouch, .sesameTouch2, .bikeLock2, .bikeLock3, .openSensor, .bleConnector, .remote, .remoteNano, .sesame5US, .sesameBot2, .sesameBot3, .sesameFace, .sesameFace2, .sesameFace3, .sesameFacePro, .sesameFace2Pro, .sesame6, .sesame6Pro, .sesame6ProSlidingDoor, .sesameFaceAI, .sesameFace2AI, .sesameFaceProAI, .sesameFace2ProAI, .openSensor2, .sesameMiwa:
                     deviceID = manufacturerData[5...20].toHexString().noDashtoUUID()
                 }
             }

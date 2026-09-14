@@ -106,9 +106,7 @@ class FaceListVC: CHBaseTableVC ,CHFaceDelegate, CHDeviceStatusDelegate{
                               arguments:[mDevice.deviceName])
         let imageName: String
         switch self.mDevice.productModel {
-        case .sesameFace:
-            imageName = "face_tips"
-        case .sesameFace2:
+        case .sesameFace, .sesameFace2, .sesameFace3:
             imageName = "face_tips"
         default:
             imageName = "facepro_tips"

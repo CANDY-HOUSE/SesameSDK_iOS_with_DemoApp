@@ -561,6 +561,7 @@ class SesameDeviceListViewController: CHBaseViewController {
              .sesameFace2Pro,
              .sesameFace,
              .sesameFace2,
+             .sesameFace3,
              .sesameFaceAI,
              .sesameFace2AI,
              .sesameFaceProAI,

@@ -14,8 +14,9 @@ class QRCodeScanViewController: CHBaseViewController {
 
     let qrScannerView = QRScannerView(frame: .zero)
     let scanAnimationView = ScanAnimationView(frame: .zero)
-    var dismissHandler: ((QRcodeType?)->Void)?
+    var dismissHandler: ((QRcodeType?, CHProductModel?)->Void)?
     private var qrCodeType: QRcodeType?
+    private var scannedProductModel: CHProductModel?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -208,7 +209,7 @@ class QRCodeScanViewController: CHBaseViewController {
     // MARK: dismissSelf
     @objc func dismissSelf() {
         dismiss(animated: true, completion: nil)
-        dismissHandler?(self.qrCodeType)
+        dismissHandler?(self.qrCodeType, self.scannedProductModel)
     }
 }
 
@@ -258,8 +259,9 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
                 executeOnMainThread {
                     ViewHelper.hideLoadingView(view: self.view)
                     switch result {
-                    case .success(let type):
-                        self.qrCodeType = type
+                    case .success(let result):
+                        self.qrCodeType = result.type
+                        self.scannedProductModel = result.productModel
                         self.dismissSelf()
                     case .failure(let error):
                         self.view.makeToast(error.errorDescription(), duration: 1.0) { didTap in
@@ -273,7 +275,10 @@ extension QRCodeScanViewController: QRScannerViewDelegate {
 }
 
 extension QRCodeScanViewController {
-    static func parseSesameQRCode(_ qrCodeURL: String, handler: @escaping ((Result<QRcodeType, Error>)->Void)) {
+    static func parseSesameQRCode(
+        _ qrCodeURL: String,
+        handler: @escaping ((Result<(type: QRcodeType, productModel: CHProductModel?), Error>)->Void)
+    ) {
         guard let scanSchema = URL(string: qrCodeURL) else {
             handler(.failure(NSError.invalidQRCode))
             return
@@ -307,7 +312,7 @@ extension QRCodeScanViewController {
                             // Set History Tag
                             CHDeviceManager.shared.setHistoryTag()
                             CHAPIClient.shared.putCHUserKey(CHUserKey.from(device).toData()) { result in
-                                handler(.success(.sesameKey))
+                                handler(.success((.sesameKey, device.productModel)))
                                 if case .success = result {
                                     DispatchQueue.main.async {
                                         if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController,
@@ -327,7 +332,7 @@ extension QRCodeScanViewController {
             CHAPIClient.shared.postFriend(friend) { postResult in
                 switch postResult {
                 case .success(_):
-                    handler(.success(.friend))
+                    handler(.success((.friend, nil)))
                 case .failure(let error):
                     handler(.failure(error))
                 }
@@ -340,7 +345,7 @@ extension QRCodeScanViewController {
 
 // MARK: - Designated Initializer
 extension QRCodeScanViewController {
-    static func instance(dismissHandler: ((QRcodeType?)->Void)? = nil) -> QRCodeScanViewController {
+    static func instance(dismissHandler: ((QRcodeType?, CHProductModel?)->Void)? = nil) -> QRCodeScanViewController {
         let qrCodeScanViewController = QRCodeScanViewController(nibName: nil, bundle: nil)
         qrCodeScanViewController.dismissHandler = dismissHandler
         return qrCodeScanViewController

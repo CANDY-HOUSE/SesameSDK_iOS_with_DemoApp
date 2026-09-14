@@ -101,11 +101,15 @@ public protocol CHRouteCoordinator {
 
 public extension CHRouteCoordinator where Self: UIViewController {
     func presentScanViewController() {
-        let qrCodeScanViewController = QRCodeScanViewController.instance() { qrCodeType in
+        let qrCodeScanViewController = QRCodeScanViewController.instance() { qrCodeType, productModel in
             if qrCodeType == .sesameKey {
-                executeOnMainThread {
-                    if let navController = GeneralTabViewController.switchTabByIndex(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                        listViewController.getKeysFromCache()
+                if productModel == .sesameFace3 {
+                    GeneralTabViewController.switchTabByIndex(1)
+                } else {
+                    executeOnMainThread {
+                        if let navController = GeneralTabViewController.switchTabByIndex(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+                            listViewController.getKeysFromCache()
+                        }
                     }
                 }
             } else if qrCodeType == .friend {

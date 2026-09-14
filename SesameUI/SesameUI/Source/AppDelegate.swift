@@ -418,10 +418,13 @@ extension AppDelegate {
         
         QRCodeScanViewController.parseSesameQRCode(url.absoluteString) { parseResult in
             executeOnMainThread {
-                if case let .success(qrCodeType) = parseResult {
+                if case let .success(result) = parseResult {
+                    let qrCodeType = result.type
                     switch qrCodeType {
                     case .sesameKey:
-                        if let navController = GeneralTabViewController.switchTabByIndex(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+                        if result.productModel == .sesameFace3 {
+                            GeneralTabViewController.switchTabByIndex(1)
+                        } else if let navController = GeneralTabViewController.switchTabByIndex(0) as? UINavigationController, let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
                             listViewController.getKeysFromCache()
                         }
                     case .friend:

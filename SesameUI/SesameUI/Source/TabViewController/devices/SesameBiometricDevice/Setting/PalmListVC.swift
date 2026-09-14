@@ -107,9 +107,7 @@ class PalmListVC: CHBaseTableVC ,CHPalmDelegate, CHDeviceStatusDelegate{
                               arguments:[mDevice.deviceName])
         let imageName: String
         switch self.mDevice.productModel {
-        case .sesameFace:
-            imageName = "palm_tips"
-        case .sesameFace2:
+        case .sesameFace, .sesameFace2, .sesameFace3:
             imageName = "palm_tips"
         default:
             imageName = "palmpro_tips"
