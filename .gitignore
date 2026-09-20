@@ -117,5 +117,8 @@ SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes
 .DS_Store
 **/.DS_Store
 
+## Xcode Cloud generated metadata
+SesameUI/SesameUI.xcodeproj/xcshareddata/xcodecloud/manifest.json
+
 .swiftpm/
 

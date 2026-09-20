@@ -69,13 +69,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.activityType = .fitness
-        window = UIWindow(frame: UIScreen.main.bounds)
+        return true
+    }
+
+    fileprivate func connectSceneWindow(_ window: UIWindow) {
+        self.window = window
         if !UserDefaults.standard.bool(forKey: "HasInstalled") {
-            window?.rootViewController = AWSPreparationViewController()
-            window?.makeKeyAndVisible()
+            window.rootViewController = AWSPreparationViewController()
+            window.makeKeyAndVisible()
         }
         prepareRootIfNeeded()
-        return true
     }
 
     private func prepareRootIfNeeded() {
@@ -136,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PushNotificationManager.shared.registerWhenNetworkAvailable()
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
+    fileprivate func sceneDidEnterBackground() {
         // 啟動 auto unlock
         CHDeviceManager.shared.getCHDevices(result: {
             if case let .success(devices) = $0 {
@@ -179,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
+    fileprivate func sceneDidBecomeActive() {
         // [系統級通知] 通知 app 要回到前景
         CHBluetoothCenter.shared.enableScan { res in }
         Sesame2Store.shared.refreshDB() // 刷新 DB
@@ -392,6 +395,52 @@ extension AppDelegate {
                                             content: content,
                                             trigger: trigger)
         center.add(request)
+    }
+}
+
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var window: UIWindow?
+
+    func scene(_ scene: UIScene,
+               willConnectTo session: UISceneSession,
+               options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = scene as? UIWindowScene,
+              let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        appDelegate.connectSceneWindow(window)
+
+        for urlContext in connectionOptions.urlContexts {
+            appDelegate.parserQRCodeURL(urlContext.url)
+        }
+        for userActivity in connectionOptions.userActivities
+            where userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            if let url = userActivity.webpageURL {
+                appDelegate.parserQRCodeURL(url)
+            }
+        }
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        (UIApplication.shared.delegate as? AppDelegate)?.sceneDidBecomeActive()
+    }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        (UIApplication.shared.delegate as? AppDelegate)?.sceneDidEnterBackground()
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        for urlContext in URLContexts {
+            appDelegate.parserQRCodeURL(urlContext.url)
+        }
+    }
+
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+              let url = userActivity.webpageURL else { return }
+        (UIApplication.shared.delegate as? AppDelegate)?.parserQRCodeURL(url)
     }
 }
 
