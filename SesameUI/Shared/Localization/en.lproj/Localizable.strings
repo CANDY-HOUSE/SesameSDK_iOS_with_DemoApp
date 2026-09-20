@@ -217,7 +217,7 @@ Please double check your WiFi password, or put WiFi Module as close to the WiFi 
 "co.candyhouse.sesame2.SSMMiwa" = "Sesame miwa";
 "co.candyhouse.sesame2.Unsupport" = "Device not supported";
 "co.candyhouse.sesame2.BleTxPower" = "BLE TX power";
-"co.candyhouse.sesame2.Hub3LTE" = "Hub3 LTE";
+"co.candyhouse.sesame2.Hub3Pro" = "Hub3 Pro";
 "co.candyhouse.sesame2.Downloading" = "Downloading…";
 "co.candyhouse.sesame2.dfu_busy" = "Updating another CANDY HOUSE product. Please wait...";
 "co.candyhouse.sesame5.switchPoint" = "Set the lock/unlock boundary";

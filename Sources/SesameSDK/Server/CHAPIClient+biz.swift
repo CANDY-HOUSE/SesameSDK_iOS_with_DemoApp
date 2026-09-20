@@ -469,10 +469,10 @@ public extension CHAPIClient {
     }
     
     // MARK: - Hub3
-    /// 觸發 Hub3 LTE 繼電器開關（IoT 透傳指令）
+    /// 觸發 Hub3 Pro 繼電器開關（IoT 透傳指令）
     /// 對應 server: POST /device/v1/wifi_module/{device_id}/switch
-    func updateHub3LTERelay(_ hub3LTE: CHHub3, result: @escaping CHResult<CHEmpty>) {
-        guard let secretKey = (hub3LTE as? CHDeviceUtil)?.sesame2KeyData?.secretKey.hexStringtoData() else {
+    func updateHub3ProRelay(_ hub3Pro: CHHub3, result: @escaping CHResult<CHEmpty>) {
+        guard let secretKey = (hub3Pro as? CHDeviceUtil)?.sesame2KeyData?.secretKey.hexStringtoData() else {
             result(.failure(NSError.noDataError))
             return
         }
@@ -487,7 +487,7 @@ public extension CHAPIClient {
         let sign = CC.CMAC.AESCMAC(msg, key: secretKey).prefix(4)
 
         let cmd = SesameItemCode.HUB3_ITEM_CODE_RELAY_SWITCH.rawValue
-        let hub3DeviceId = hub3LTE.deviceId.uuidString.uppercased()
+        let hub3DeviceId = hub3Pro.deviceId.uuidString.uppercased()
         let deviceIdBytes = Data(hub3DeviceId.utf8)
         let op: UInt8 = 0x01 // 保留字節，目前固定為 0x01，代表開關操作
 
@@ -499,13 +499,14 @@ public extension CHAPIClient {
         payloadBytes.append(op)
 
         let payload = payloadBytes.base64EncodedString()
-        let lastSegment = (hub3DeviceId.components(separatedBy: "-").last ?? "").uppercased()
+        // 舊 Hub 3 用末段 MAC，Hub 3 Pro 用完整 uuid —— 與韌體訂閱的 topic 一致
+        let topicId = chHub3TopicId(hub3Pro.deviceId, productModel: hub3Pro.productModel)
 
         let sendMap: [String: Any] = [
             "action": "biz3OperateIoT",
             "op": "cmd",
             "payload": payload,
-            "topic": "wm2\(lastSegment)cmd"
+            "topic": "wm2\(topicId)cmd"
         ]
 
         API(request: .init(.post, "/device/v1/wifi_module/\(hub3DeviceId)/switch", sendMap)) { response in

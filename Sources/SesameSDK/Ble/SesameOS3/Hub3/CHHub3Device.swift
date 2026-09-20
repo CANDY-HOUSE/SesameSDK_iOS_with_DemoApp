@@ -48,7 +48,7 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     /// 侦听繼電器（relay）開關狀態變化
     private func subscribeRelayStatus() {
 #if os(iOS)
-        guard productModel == .hub3LTE else { return }
+        guard productModel == .hub3Pro else { return }
         guard let deviceId = deviceId else { return }
         let topic = "up/iot/device/\(deviceId.uuidString.uppercased())/cmd"
         CHIoTManager.shared.subscribeTopic(topic, device: self) { [weak self] data in
@@ -83,7 +83,7 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
     deinit {
 #if os(iOS)
         CHIoTManager.shared.unsubscribeWifiModule2Shadow(self)
-        if productModel == .hub3LTE, let deviceId = deviceId {
+        if productModel == .hub3Pro, let deviceId = deviceId {
             CHIoTManager.shared.unsubscribeTopic("up/iot/device/\(deviceId.uuidString.uppercased())/cmd")
         }
 #endif
@@ -207,8 +207,8 @@ extension CHHub3Device {
     }
     
 
-    /// 觸發繼電器開關（Hub3 LTE）
+    /// 觸發繼電器開關（Hub3 Pro）
     func toggle(historytag: Data?, result: @escaping CHResult<CHEmpty>) {
-        CHAPIClient.shared.updateHub3LTERelay(self, result: result)
+        CHAPIClient.shared.updateHub3ProRelay(self, result: result)
     }
 }

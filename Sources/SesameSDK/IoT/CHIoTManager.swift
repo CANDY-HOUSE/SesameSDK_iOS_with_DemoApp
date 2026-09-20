@@ -272,7 +272,8 @@ final class CHIoTManager: @unchecked Sendable {
     // MARK: - Subscribe wm2 shadow
     func subscribeWifiModule2Shadow(_ wifiModule2: CHWifiModule2,
                                     onResponse: @escaping (CHResult<WifiModuleShadow>)) {
-        let shadowName = wifiModule2.deviceId.uuidString.split(separator: "-").last!
+        // Hub 3 Pro 的影子名是完整 uuid，WM2 / 舊 Hub 3 是末段 MAC —— 與韌體上報的 shadow name 一致
+        let shadowName = chHub3TopicId(wifiModule2.deviceId, productModel: wifiModule2.productModel)
         subscribeTopic("$aws/things/wm2/shadow/name/\(shadowName)/update/accepted",
                        device: wifiModule2) { data in
             let parser: WifiModuleShadow.Type = wifiModule2.productModel == .hub3 ? Hub3Shadow.self : WifiModule2Shadow.self
@@ -440,10 +441,11 @@ final class CHIoTManager: @unchecked Sendable {
 
     // MARK: - Unsubscribe WM2
     func unsubscribeWifiModule2Shadow(_ device: CHWifiModule2) {
-        guard let uuid = device.deviceId?.uuidString else {
+        guard let deviceId = device.deviceId else {
             return
         }
-        let shadowName = uuid.split(separator: "-").last!
+        // 必須與 subscribeWifiModule2Shadow 用同一個標識，否則取消訂閱會落空
+        let shadowName = chHub3TopicId(deviceId, productModel: device.productModel)
         unsubscribeTopic("$aws/things/wm2/shadow/name/\(shadowName)/update/accepted")
     }
 
