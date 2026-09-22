@@ -29,7 +29,7 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
     var uuidView: CHUIPlainSettingView!
     var versionView: CHUIPlainSettingView!
     var statusView: CHUIPlainSettingView!
-    var versionTag = ""
+    private var isVersionLoaded = false
     @IBOutlet var networkStatusView: UIView!
     @IBOutlet weak var networkStatusTitleLabel: UILabel! {
         didSet {
@@ -74,6 +74,7 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
     var wifiSSIDView: CHUIPlainSettingView!
     var wifiPasswordView: CHUIPlainSettingView!
     var wifiExclamationContainerView: UIView!
+    var versionExclamationContainerView: UIView!
     var sesameExclamationContainerView: UIView!
     
     var ssidScanViewController: WifiModule2SSIDScanViewController?
@@ -103,17 +104,7 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         sesame2ListView.isScrollEnabled = false
         
         if wifiModule2.deviceStatus.loginStatus == .logined {
-            wifiModule2.getVersionTag() { result in
-                switch result {
-                case .success(let versionTag):
-                    executeOnMainThread {
-                        self.versionTag = versionTag.data
-                        self.versionView.value = versionTag.data
-                    }
-                case .failure(_):
-                    break
-                }
-            }
+            getVersionTag()
         }
         
         refreshControl.attributedTitle = NSAttributedString(string: "co.candyhouse.sesame2.PullToRefresh".localized)
@@ -201,6 +192,15 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
         }
         versionView.title = "co.candyhouse.sesame2.WM2OSUpdate".localized
         versionView.value = ""
+        versionExclamationContainerView = UIView(frame: .zero)
+        let versionExclamation = UIImageView(image: UIImage.SVGImage(named: "exclamation", fillColor: .lockRed))
+        versionExclamation.contentMode = .scaleAspectFit
+        versionExclamationContainerView.addSubview(versionExclamation)
+        versionView.appendViewToTitle(versionExclamationContainerView)
+        versionExclamation.autoLayoutWidth(20)
+        versionExclamation.autoLayoutHeight(20)
+        versionExclamation.autoPinCenterY()
+        versionExclamationContainerView.isHidden = true
         contentStackView.addArrangedSubview(versionView)
         contentStackView.addArrangedSubview(CHUISeperatorView(style: .thin))
         
@@ -368,10 +368,24 @@ class WifiModule2SettingViewController: CHBaseViewController, UICollectionViewDe
     @IBAction func networkStatusDidTapped(_ sender: Any) {
     }
     
+    private func getVersionTag() {
+        refreshCloudOTAVersionTag(
+            device: wifiModule2,
+            setVersionStr: { [weak self] text in
+                guard let self = self else { return }
+                self.isVersionLoaded = true
+                self.versionView.value = text
+            },
+            setExclamationHidden: { [weak self] isHidden in
+                self?.versionExclamationContainerView.isHidden = isHidden
+            }
+        )
+    }
+
     @objc func updateFirmware(_ button: UIButton) {
         let alertController = UIAlertController(title: "", message: "co.candyhouse.sesame2.WM2OSUpdate".localized, preferredStyle: .actionSheet)
         let ok = UIAlertAction(title: "co.candyhouse.sesame2.OK".localized, style: .default) { _ in
-            self.versionTag = ""
+            self.isVersionLoaded = false
             self.wifiModule2.updateFirmware { result in
                 if case let .failure(error) = result {
                     L.d(error.errorDescription())
@@ -489,20 +503,8 @@ extension WifiModule2SettingViewController: CHWifiModule2Delegate {
             device.connect() { _ in }
         }
         
-        if status.loginStatus == .logined {
-            if versionTag == "" {
-                wifiModule2.getVersionTag() { result in
-                    switch result {
-                    case .success(let versionTag):
-                        executeOnMainThread {
-                            self.versionTag = versionTag.data
-                            self.versionView.value = versionTag.data
-                        }
-                    case .failure(_):
-                        break
-                    }
-                }
-            }
+        if status.loginStatus == .logined, !isVersionLoaded {
+            getVersionTag()
         }
 
         executeOnMainThread {
@@ -531,6 +533,10 @@ extension WifiModule2SettingViewController: CHWifiModule2Delegate {
     func onOTAProgress(device: CHWifiModule2, percent: UInt8) {
         executeOnMainThread {
             self.versionView.value = "\(percent) %"
+            if percent >= 100 {
+                self.isVersionLoaded = false
+                self.getVersionTag()
+            }
         }
     }
     

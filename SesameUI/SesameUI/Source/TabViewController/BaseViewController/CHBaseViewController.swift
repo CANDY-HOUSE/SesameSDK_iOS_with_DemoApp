@@ -289,4 +289,45 @@ public class CHBaseViewController: UIViewController, CHRouteCoordinator {
         return false
     }
 
+    /// Cloud OTA devices (e.g. WiFi Module 2) have no bundled DFU zip; compare against server `latestFwVer`.
+    func refreshCloudOTAVersionTag(
+        device: CHDevice,
+        setVersionStr: @escaping (String) -> Void,
+        setExclamationHidden: @escaping (Bool) -> Void
+    ) {
+        device.getVersionTag { result in
+            switch result {
+            case .success(let status):
+                let currentVersion = status.data
+                let latestVersion = device.stateInfo?.latestFwVer
+                let isNewest = latestVersion.map {
+                    currentVersion.contains($0) || $0.contains(currentVersion)
+                } ?? false
+                let versionText = "\(currentVersion)\(isNewest ? "co.candyhouse.sesame2.latest".localized : "")"
+                let hideExclamation = isNewest || latestVersion == nil
+
+                executeOnMainThread {
+                    setVersionStr(versionText)
+                    setExclamationHidden(hideExclamation)
+                }
+
+                CHDeviceWrapperManager.shared.updateCurrentFwVer(
+                    for: device.deviceId.uuidString,
+                    currentFwVer: currentVersion
+                ) {
+                    NotificationCenter.default.post(
+                        name: .firmwareVersionUpdated,
+                        object: nil,
+                        userInfo: [
+                            "deviceId": device.deviceId.uuidString
+                        ]
+                    )
+                }
+
+            case .failure(let error):
+                L.d("[refreshCloudOTAVersionTag]", error.errorDescription())
+            }
+        }
+    }
+
 }
