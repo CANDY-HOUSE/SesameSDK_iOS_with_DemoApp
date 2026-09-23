@@ -290,42 +290,21 @@ extension QRCodeScanViewController {
                     handler(.failure(error))
                 case .success(let state):
                     guard let redeemedURL = URL(string: state.data),
-                          let deviceKey = redeemedURL.deviceKeyFromQRCodeURL() else {
+                          redeemedURL.deviceKeyFromQRCodeURL() != nil else {
                         handler(.failure(NSError.invalidQRCode))
                         return
                     }
-                    CHDeviceManager.shared.receiveCHDeviceKeys([deviceKey]) { result in
-                        switch result {
-                        case .success(let devices):
-                            guard let device = devices.data.first else {
-                                handler(.failure(NSError.invalidQRCode))
-                                return
-                            }
-                            Sesame2Store.shared.deletePropertyFor(device)
-                            let keyLevelValue = Int(redeemedURL.getQuery(name: "l")) ?? 1
-                            let keyLevel = KeyLevel(rawValue: keyLevelValue) ?? .guest
-                            let deviceName = redeemedURL.getQuery(name: "n")
-                            Sesame2Store.shared.saveAttributes([
-                                "keyLevel": keyLevel.rawValue,
-                                "name": deviceName
-                            ], for: device)
-                            // Set History Tag
-                            CHDeviceManager.shared.setHistoryTag()
-                            CHAPIClient.shared.putCHUserKey(CHUserKey.from(device).toData()) { result in
-                                handler(.success((.sesameKey, device.productModel)))
-                                if case .success = result {
-                                    DispatchQueue.main.async {
-                                        if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController,
-                                           let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
-                                            listViewController.getKeysFromServer()
-                                        }
-                                    }
-                                }
-                            }
-                        case .failure(_):
-                            handler(.failure(NSError.invalidQRCode))
+                    let productModel = redeemedURL.schemaShareKeyValue()
+                        .flatMap { Data(base64Encoded: $0) }
+                        .flatMap { $0.first }
+                        .flatMap { CHProductModel(rawValue: UInt16($0)) }
+                    DispatchQueue.main.async {
+                        if let navController = GeneralTabViewController.getTabViewControllersBy(0) as? UINavigationController,
+                           let listViewController = navController.viewControllers.first as? SesameDeviceListViewController {
+                            listViewController.getKeysFromServer()
                         }
                     }
+                    handler(.success((.sesameKey, productModel)))
                 }
             }
         } else if let friend = scanSchema.schemaFriendValue() {
