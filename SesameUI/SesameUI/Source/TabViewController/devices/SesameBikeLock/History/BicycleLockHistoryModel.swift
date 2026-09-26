@@ -101,11 +101,11 @@ extension BikeLockHistory {
     
     var dateTime: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss a"
+        // 24時間表記（HH + AM/PM の併用は ja_JP で "AM 8:45:43" のように不自然になる）
+        // 24 小時制（HH 與 AM/PM 併用時，ja_JP 會顯示成 "AM 8:45:43" 等不自然格式）
+        dateFormatter.dateFormat = "HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
-        return "\(dateFormatter.string(from: date))"
+        return dateFormatter.string(from: date)
     }
     
     
