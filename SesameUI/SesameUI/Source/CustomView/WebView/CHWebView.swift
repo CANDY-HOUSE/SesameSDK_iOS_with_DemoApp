@@ -94,6 +94,7 @@ class CHWebView: UIView {
         let webView = WKWebView(frame: .zero, configuration: configuration)
         self.webView = webView
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = false
         if #available(iOS 17.4, *) {
@@ -297,6 +298,18 @@ extension CHWebView {
         } catch {
             print("回调数据序列化失败: \(error)")
         }
+    }
+}
+
+// MARK: - WKUIDelegate
+extension CHWebView: WKUIDelegate {
+    @available(iOS 15.0, *)
+    func webView(_ webView: WKWebView,
+                 requestMediaCapturePermissionFor origin: WKSecurityOrigin,
+                 initiatedByFrame frame: WKFrameInfo,
+                 type: WKMediaCaptureType,
+                 decisionHandler: @escaping (WKPermissionDecision) -> Void) {
+        decisionHandler(type == .microphone ? .grant : .deny)
     }
 }
 

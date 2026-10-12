@@ -41,6 +41,8 @@
 	<string>This app would like to make data available to nearby bluetooth devices even when you're not using the app.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>To scan QR code</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>To talk through your Face device.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Auto unlock</string>
 	<key>NSLocationAlwaysUsageDescription</key>
