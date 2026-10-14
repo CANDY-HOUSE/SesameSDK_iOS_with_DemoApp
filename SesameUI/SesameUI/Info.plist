@@ -40,7 +40,7 @@
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>This app would like to make data available to nearby bluetooth devices even when you're not using the app.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>To scan QR code</string>
+	<string>To scan QR codes and send video during Face calls.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>To talk through your Face device.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

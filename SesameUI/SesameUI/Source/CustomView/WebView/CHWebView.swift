@@ -309,7 +309,12 @@ extension CHWebView: WKUIDelegate {
                  initiatedByFrame frame: WKFrameInfo,
                  type: WKMediaCaptureType,
                  decisionHandler: @escaping (WKPermissionDecision) -> Void) {
-        decisionHandler(type == .microphone ? .grant : .deny)
+        switch type {
+        case .camera, .microphone, .cameraAndMicrophone:
+            decisionHandler(.grant)
+        @unknown default:
+            decisionHandler(.deny)
+        }
     }
 }
 

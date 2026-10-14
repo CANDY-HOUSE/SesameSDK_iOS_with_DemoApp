@@ -1,5 +1,6 @@
 "CFBundleDisplayName" = "セサミ";
-"NSCameraUsageDescription" = "QRコードをスキャンする";
+"NSCameraUsageDescription" = "QRコードのスキャンとFace通話で映像を送信するために使用します";
+"NSMicrophoneUsageDescription" = "Faceデバイスとの通話に使用します";
 "NSPhotoLibraryUsageDescription" = "QRコードをアルバムから読み取る";
 "NSBluetoothPeripheralUsageDescription" = "セサミデバイスとのBluthtooh接続を許可してください。";
 "NSBluetoothAlwaysUsageDescription" = "セサミデバイスとのBluthtooh接続を許可してください。";

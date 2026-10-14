@@ -1,5 +1,6 @@
 "CFBundleDisplayName" = "芝麻";
-"NSCameraUsageDescription" = "掃描 QR Code";
+"NSCameraUsageDescription" = "用於掃描 QR Code 及在 Face 通話中傳送影片";
+"NSMicrophoneUsageDescription" = "用於與 Face 裝置通話";
 "NSPhotoLibraryUsageDescription" = "從相簿裡掃描 QR Code";
 "NSBluetoothPeripheralUsageDescription" = "芝麻app需要透過藍芽連接芝麻設備";
 "NSBluetoothAlwaysUsageDescription" = "芝麻app需要透過藍芽連接芝麻設備";
