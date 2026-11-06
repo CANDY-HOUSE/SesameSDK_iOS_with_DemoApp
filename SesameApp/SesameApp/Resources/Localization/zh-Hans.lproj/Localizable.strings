@@ -1,0 +1,16 @@
+"Toggle Sesame" = "上锁或解锁芝麻";
+"Lock Sesame" = "上锁芝麻";
+"Unlock Sesame" = "解锁芝麻";
+"Sesame Device" = "芝麻设备";
+"Device" = "设备";
+"Name" = "名称";
+"Toggle ${device}" = "上锁或解锁${device}";
+"Lock ${device}" = "上锁${device}";
+"Unlock ${device}" = "解锁${device}";
+"Toggled %@" = "已操作%@";
+"Locked %@" = "已上锁%@";
+"Unlocked %@" = "已解锁%@";
+"This device does not support this action" = "此设备不支持该操作";
+"Unable to connect to %@" = "无法连接%@";
+"Failed to operate %@" = "操作%@失败";
+"Open Sesame" = "芝麻开门";

@@ -57,18 +57,6 @@ extension CHSesameBiometricDeviceImpl {
         }
     }
 
-    func goIoTWithOpenSensor() {
-        let topic = "opensensor/\(deviceId.uuidString.uppercased())"
-        CHIoTManager.shared.subscribeTopic(topic, device: self) { data in
-            do {
-                let state = try JSONDecoder().decode(OpenSensorData.self, from: data)
-                let mechState = OpensensorMechStatus.fromData(state)
-                self.mechStatus = mechState
-            } catch {
-                L.d("CHSesameBiometricDeviceImpl", "Failed to decode: \(error)")
-            }
-        }
-    }
 
     func setRadarSensitivity(payload: Data, result: @escaping CHResult<CHEmpty>) {
         if (!self.isBleAvailable(result)) { return }

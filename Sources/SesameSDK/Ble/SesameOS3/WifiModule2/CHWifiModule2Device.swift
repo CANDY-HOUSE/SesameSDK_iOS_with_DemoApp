@@ -70,12 +70,7 @@ final class CHWifiModule2Device: CHBaseDevice, CHWifiModule2, CHDeviceUtil {
             if response.cmdResultCode == .success {
                 let versionTag = String(data: response.data, encoding: .utf8) ?? ""
                 result(.success(.init(input: versionTag)))
-#if os(iOS)
-                CHAPIClient.shared.postFirmwareVersion(
-                    deviceId: self.deviceId.uuidString,
-                    versionTag: versionTag
-                ) {response in}
-#endif
+                CHBleSupport.host.postFirmwareVersion(deviceId: self.deviceId, versionTag: versionTag) { _ in }
             } else {
                 result(.failure(NSError.getVersionTagFailed))
             }
@@ -103,12 +98,7 @@ final class CHWifiModule2Device: CHBaseDevice, CHWifiModule2, CHDeviceUtil {
         return isOK
 
     }
-    
-    deinit {
-#if os(iOS)
-        CHIoTManager.shared.unsubscribeWifiModule2Shadow(self)
-#endif
-    }
+
 }
 
 extension CHWifiModule2Device {
@@ -201,7 +191,7 @@ extension CHWifiModule2Device {
     // MARK: - connectWifi
     func connectWifi(result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
-        let poolId = CHConfiguration.shared.clientId
+        let poolId = CHBleSupport.gatewayTenantId
         var register_company = poolId.replacingOccurrences(of: ":", with: "")
         register_company = register_company.replacingOccurrences(of: "-", with: "")
         let shodowName = "\(deviceId.uuidString.split(separator: "-").last!)"
@@ -224,33 +214,5 @@ extension CHWifiModule2Device {
             result(.success(.init(input: CHEmpty())))
         }
     }
-    
-    func goIOT() {
-#if os(iOS)
-        CHIoTManager.shared.subscribeWifiModule2Shadow(self) { result in
-            switch result {
-            case .success(let result):
-                self.wifiModule2ShadowCompleteHandler(result: result.data)
-            case .failure(let error):
-                L.d(error)
-            }
-        }
-#endif
-    }
-    
-    private func wifiModule2ShadowCompleteHandler(result: WifiModuleShadow) {
-        let networkStatus = (self.mechStatus as? CHWifiModule2NetworkStatus)
-        self.mechStatus = CHWifiModule2NetworkStatus(isAPWork: networkStatus?.isAPWork,
-                                                        isNetwork: networkStatus?.isNetwork,
-                                                        isIoTWork: result.isConnected,
-                                                        isBindingAPWork: false,
-                                                        isConnectingNetwork: false,
-                                                        isConnectingIoT: false)
-        
-        if CHBluetoothCenter.shared.scanning == .bleClose() ||
-            self.deviceStatus.loginStatus == .unlogined {
-            self.sesame2Keys = result.sesame2Keys
-            (self.delegate as? CHWifiModule2Delegate)?.onSesame2KeysChanged(device: self, sesame2keys: self.sesame2Keys)
-        }
-    }
+
 }

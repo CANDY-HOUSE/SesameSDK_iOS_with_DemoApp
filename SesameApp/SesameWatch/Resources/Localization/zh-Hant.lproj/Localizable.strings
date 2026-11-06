@@ -1,0 +1,16 @@
+"Toggle Sesame" = "上鎖或解鎖芝麻";
+"Lock Sesame" = "上鎖芝麻";
+"Unlock Sesame" = "解鎖芝麻";
+"Sesame Device" = "芝麻裝置";
+"Device" = "裝置";
+"Name" = "名稱";
+"Toggle ${device}" = "上鎖或解鎖${device}";
+"Lock ${device}" = "上鎖${device}";
+"Unlock ${device}" = "解鎖${device}";
+"Toggled %@" = "已操作%@";
+"Locked %@" = "已上鎖%@";
+"Unlocked %@" = "已解鎖%@";
+"This device does not support this action" = "此裝置不支援該操作";
+"Unable to connect to %@" = "無法連接%@";
+"Failed to operate %@" = "操作%@失敗";
+"Open Sesame on your iPhone to sync your devices" = "請在 iPhone 上打開芝麻 App 以同步設備";

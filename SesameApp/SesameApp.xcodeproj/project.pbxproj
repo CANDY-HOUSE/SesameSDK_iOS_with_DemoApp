@@ -1,0 +1,789 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2944C84A5239C17630303281 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6910E5613CF7AED52E0FBF27 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3247B51695527D4BAAFE53CC /* NordicDFU in Frameworks */ = {isa = PBXBuildFile; productRef = 830B5E1EB6AEBD436F5C2D61 /* NordicDFU */; };
+		404A21E9322C8D7E28A7BCFF /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E3C2C30A807FD657AB1943EC /* SesameSDK */; };
+		5B5E470E67B7F77A9D229286 /* SesameGateway in Frameworks */ = {isa = PBXBuildFile; productRef = 229BEA64A18FBAF3C7A8A55E /* SesameGateway */; };
+		6A1E5D2B9C3F4A7E8B0D1C23 /* SesameGateway in Frameworks */ = {isa = PBXBuildFile; productRef = 6A1E5D2B9C3F4A7E8B0D1C22 /* SesameGateway */; };
+		82276D4474FBE5169EDADCEB /* SesameSDK in Frameworks */ = {isa = PBXBuildFile; productRef = A8EC01A32AE6A80222F3DC78 /* SesameSDK */; };
+		87BC4CBC7EB59120B44557D1 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = E2BED6613F8C6440DAB4B1C2 /* Amplify */; };
+		93DBD5EB58EA88EBD1CC51BC /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 844AD3D391F6574DF3F9E05C /* AWSCognitoAuthPlugin */; };
+		E310D67C17BDF27ED6DD4651 /* SesameWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2D4018CF227A768C18992BBB /* SesameWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C5A33772FAF24048B72AD0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81C62A005C2263D556D9276D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23557491303BA20C04E50BEA;
+			remoteInfo = NotificationService;
+		};
+		A3333BA3FFDF8D8A2F478DF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81C62A005C2263D556D9276D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03313EDCDB3BA4A9114FD15C;
+			remoteInfo = SesameWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A81BF9D11C41BD4754EA06CE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2944C84A5239C17630303281 /* NotificationService.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B089239A43F6C6248292EF22 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E310D67C17BDF27ED6DD4651 /* SesameWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2D4018CF227A768C18992BBB /* SesameWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesameWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B672C432E170A9789B065FB /* App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = App.xcconfig; sourceTree = "<group>"; };
+		5222556115F818DD3B26BB77 /* Sesame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sesame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6910E5613CF7AED52E0FBF27 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3D14ABC10BBEC74FFEB224DF /* Exceptions for "SesameApp" folder in "SesameApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = EECAC12B7C7AE483C4384CC1 /* SesameApp */;
+		};
+		56505F3F9ACA5265137E26D8 /* Exceptions for "SesameApp" folder in "SesameWatch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppIntents/SesameDeviceEntity.swift,
+				AppIntents/SesameIntents.swift,
+				AppIntents/SesameShortcuts.swift,
+				Data/KeyStore.swift,
+				Resources/awsconfiguration.json,
+				Resources/sesamegateway.json,
+			);
+			target = 03313EDCDB3BA4A9114FD15C /* SesameWatch */;
+		};
+		A481F910219C0177C2FA554C /* Exceptions for "NotificationService" folder in "NotificationService" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 23557491303BA20C04E50BEA /* NotificationService */;
+		};
+		AD17C552B5CB212AD7976295 /* Exceptions for "SesameWatch" folder in "SesameWatch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 03313EDCDB3BA4A9114FD15C /* SesameWatch */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1ECC0F9EB0779473F695FEDA /* NotificationService */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A481F910219C0177C2FA554C /* Exceptions for "NotificationService" folder in "NotificationService" target */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
+		2151B8D6B72A69905BEACB94 /* SesameApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3D14ABC10BBEC74FFEB224DF /* Exceptions for "SesameApp" folder in "SesameApp" target */,
+				56505F3F9ACA5265137E26D8 /* Exceptions for "SesameApp" folder in "SesameWatch" target */,
+			);
+			path = SesameApp;
+			sourceTree = "<group>";
+		};
+		F2C2818AA051BA06EB01267F /* SesameWatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AD17C552B5CB212AD7976295 /* Exceptions for "SesameWatch" folder in "SesameWatch" target */,
+			);
+			path = SesameWatch;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B42C4FE7B2CB7D3EAD8C144 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				404A21E9322C8D7E28A7BCFF /* SesameSDK in Frameworks */,
+				5B5E470E67B7F77A9D229286 /* SesameGateway in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		484FE570ACF4CAD814BB4A69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82276D4474FBE5169EDADCEB /* SesameSDK in Frameworks */,
+				87BC4CBC7EB59120B44557D1 /* Amplify in Frameworks */,
+				93DBD5EB58EA88EBD1CC51BC /* AWSCognitoAuthPlugin in Frameworks */,
+				3247B51695527D4BAAFE53CC /* NordicDFU in Frameworks */,
+				6A1E5D2B9C3F4A7E8B0D1C23 /* SesameGateway in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98F5B1DE38158B04F3EACDF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DC83A02C95B51DD6792C443 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3B672C432E170A9789B065FB /* App.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		76F347511774CB214209C1B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5222556115F818DD3B26BB77 /* Sesame.app */,
+				6910E5613CF7AED52E0FBF27 /* NotificationService.appex */,
+				2D4018CF227A768C18992BBB /* SesameWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		78C8FD1C9DE2363905236206 = {
+			isa = PBXGroup;
+			children = (
+				2151B8D6B72A69905BEACB94 /* SesameApp */,
+				F2C2818AA051BA06EB01267F /* SesameWatch */,
+				1ECC0F9EB0779473F695FEDA /* NotificationService */,
+				4DC83A02C95B51DD6792C443 /* Config */,
+				76F347511774CB214209C1B1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03313EDCDB3BA4A9114FD15C /* SesameWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AA7BCA5034C3CB74486F8C7 /* Build configuration list for PBXNativeTarget "SesameWatch" */;
+			buildPhases = (
+				5D6F79D76D9EF1A6A7E11ED1 /* Sources */,
+				2B42C4FE7B2CB7D3EAD8C144 /* Frameworks */,
+				BFE02BB316A1BB603EA51ED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F2C2818AA051BA06EB01267F /* SesameWatch */,
+			);
+			name = SesameWatch;
+			packageProductDependencies = (
+				E3C2C30A807FD657AB1943EC /* SesameSDK */,
+				229BEA64A18FBAF3C7A8A55E /* SesameGateway */,
+			);
+			productName = SesameWatch;
+			productReference = 2D4018CF227A768C18992BBB /* SesameWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23557491303BA20C04E50BEA /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F45F123828849B4F0302F8E /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				E754C3ED0953595BE0C4AB34 /* Sources */,
+				98F5B1DE38158B04F3EACDF7 /* Frameworks */,
+				DFDE45568BF8CCCD22EBAE6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1ECC0F9EB0779473F695FEDA /* NotificationService */,
+			);
+			name = NotificationService;
+			packageProductDependencies = (
+			);
+			productName = NotificationService;
+			productReference = 6910E5613CF7AED52E0FBF27 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		EECAC12B7C7AE483C4384CC1 /* SesameApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E49D3B8E20B316038056E9FC /* Build configuration list for PBXNativeTarget "SesameApp" */;
+			buildPhases = (
+				E2041300F9FADEC65FA665B1 /* Sources */,
+				484FE570ACF4CAD814BB4A69 /* Frameworks */,
+				4954E22BEE8F70D96668C040 /* Resources */,
+				17957A007E3E98ADC728F6BC /* Write git.plist */,
+				A81BF9D11C41BD4754EA06CE /* Embed Foundation Extensions */,
+				B089239A43F6C6248292EF22 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD0A2CDA393DBF088A96AE0E /* PBXTargetDependency */,
+				E189D342FDDF0C61601188F4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2151B8D6B72A69905BEACB94 /* SesameApp */,
+			);
+			name = SesameApp;
+			packageProductDependencies = (
+				A8EC01A32AE6A80222F3DC78 /* SesameSDK */,
+				E2BED6613F8C6440DAB4B1C2 /* Amplify */,
+				844AD3D391F6574DF3F9E05C /* AWSCognitoAuthPlugin */,
+				830B5E1EB6AEBD436F5C2D61 /* NordicDFU */,
+				6A1E5D2B9C3F4A7E8B0D1C22 /* SesameGateway */,
+			);
+			productName = SesameApp;
+			productReference = 5222556115F818DD3B26BB77 /* Sesame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81C62A005C2263D556D9276D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				ORGANIZATIONNAME = CandyHouse;
+				TargetAttributes = {
+					03313EDCDB3BA4A9114FD15C = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					23557491303BA20C04E50BEA = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					EECAC12B7C7AE483C4384CC1 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = A1C1894CA657FEDE5F37D258 /* Build configuration list for PBXProject "SesameApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+				"zh-Hans",
+				"zh-Hant",
+			);
+			mainGroup = 78C8FD1C9DE2363905236206;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1400E93A3331B0AA24AED1A8 /* XCLocalSwiftPackageReference ".." */,
+				6A1E5D2B9C3F4A7E8B0D1C21 /* XCLocalSwiftPackageReference "SesameGateway" */,
+				5C71DD7F598BDC2D479FFB88 /* XCRemoteSwiftPackageReference "amplify-swift" */,
+				935C441ACF84004E338FA9A0 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 76F347511774CB214209C1B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EECAC12B7C7AE483C4384CC1 /* SesameApp */,
+				03313EDCDB3BA4A9114FD15C /* SesameWatch */,
+				23557491303BA20C04E50BEA /* NotificationService */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4954E22BEE8F70D96668C040 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFE02BB316A1BB603EA51ED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFDE45568BF8CCCD22EBAE6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		17957A007E3E98ADC728F6BC /* Write git.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Write git.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "revision=$(git -C \"$SRCROOT\" rev-parse --short HEAD 2>/dev/null || echo unknown)\nplist=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/git.plist\"\nrm -f \"$plist\"\n/usr/libexec/PlistBuddy -c \"Add :GitCommit string $revision\" \"$plist\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D6F79D76D9EF1A6A7E11ED1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2041300F9FADEC65FA665B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E754C3ED0953595BE0C4AB34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD0A2CDA393DBF088A96AE0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23557491303BA20C04E50BEA /* NotificationService */;
+			targetProxy = 2C5A33772FAF24048B72AD0E /* PBXContainerItemProxy */;
+		};
+		E189D342FDDF0C61601188F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03313EDCDB3BA4A9114FD15C /* SesameWatch */;
+			targetProxy = A3333BA3FFDF8D8A2F478DF5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3E951D2FA9D90C7774986371 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59M5HB7F95;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SesameWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Sesame;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0.158;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		534E950FFD97888F4B05C16A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F7FF25FE71997EC9961EC15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		717528983AEFC696C6D2BD29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B672C432E170A9789B065FB /* App.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SesameApp/SesameApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59M5HB7F95;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SesameApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0.158;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
+				PRODUCT_NAME = Sesame;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		78F6BECBD03BCA9849C8E783 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59M5HB7F95;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SesameWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Sesame;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0.158;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		85A676F708E7914C305EC204 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B672C432E170A9789B065FB /* App.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SesameApp/SesameApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59M5HB7F95;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SesameApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0.158;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2;
+				PRODUCT_NAME = Sesame;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DEF7F5FD29B69135DAA69C57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59M5HB7F95;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 CandyHouse. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0.158;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E8901F5BCDE86C822CE6FA58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59M5HB7F95;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 CandyHouse. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0.158;
+				PRODUCT_BUNDLE_IDENTIFIER = co.candyhouse.sesame2.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F45F123828849B4F0302F8E /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEF7F5FD29B69135DAA69C57 /* Debug */,
+				E8901F5BCDE86C822CE6FA58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AA7BCA5034C3CB74486F8C7 /* Build configuration list for PBXNativeTarget "SesameWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E951D2FA9D90C7774986371 /* Debug */,
+				78F6BECBD03BCA9849C8E783 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1C1894CA657FEDE5F37D258 /* Build configuration list for PBXProject "SesameApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F7FF25FE71997EC9961EC15 /* Debug */,
+				534E950FFD97888F4B05C16A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E49D3B8E20B316038056E9FC /* Build configuration list for PBXNativeTarget "SesameApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				717528983AEFC696C6D2BD29 /* Debug */,
+				85A676F708E7914C305EC204 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		1400E93A3331B0AA24AED1A8 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+		6A1E5D2B9C3F4A7E8B0D1C21 /* XCLocalSwiftPackageReference "SesameGateway" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SesameGateway;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C71DD7F598BDC2D479FFB88 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 2.58.3;
+			};
+		};
+		935C441ACF84004E338FA9A0 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NordicSemiconductor/IOS-DFU-Library";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.10.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		229BEA64A18FBAF3C7A8A55E /* SesameGateway */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SesameGateway;
+		};
+		6A1E5D2B9C3F4A7E8B0D1C22 /* SesameGateway */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SesameGateway;
+		};
+		830B5E1EB6AEBD436F5C2D61 /* NordicDFU */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 935C441ACF84004E338FA9A0 /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */;
+			productName = NordicDFU;
+		};
+		844AD3D391F6574DF3F9E05C /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C71DD7F598BDC2D479FFB88 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		A8EC01A32AE6A80222F3DC78 /* SesameSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SesameSDK;
+		};
+		E2BED6613F8C6440DAB4B1C2 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C71DD7F598BDC2D479FFB88 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
+		};
+		E3C2C30A807FD657AB1943EC /* SesameSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SesameSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 81C62A005C2263D556D9276D /* Project object */;
+}

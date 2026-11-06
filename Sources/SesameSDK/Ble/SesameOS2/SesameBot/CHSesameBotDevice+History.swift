@@ -13,7 +13,8 @@ extension CHSesameBotDevice {
     func readHistoryCommand(_ result: @escaping (CHResult<CHEmpty>))  {
         if (!self.isBleAvailable(result)) { return }
 //        L.d("🌇 讀取歷史")
-        URLSession.isInternetReachable { isInternetReachable in
+        do {
+            let isInternetReachable = CHBleSupport.host.isNetworkAvailable()
             let deleteHistory = isInternetReachable == true ? "01":"00"
             
             self.sendCommand(.init(.read, .history, deleteHistory.hexStringtoData())) { (result) in
@@ -42,20 +43,6 @@ extension CHSesameBotDevice {
     }
     
     func postProcessHistory(_ historyData: Data) {
-        let request: CHAPICallObject = .init(.post, "/device/v1/sesame2/historys", [
-            "s": self.deviceId.uuidString,
-            "v": historyData.toHexString()
-        ])
-        
-        CHAPIClient
-            .shared
-            .API(request: request) { result in
-                switch result {
-                case .success(_): break
-                    
-                case .failure(let error):
-                    L.d("上傳歷史失敗,掉歷史  : \(error)")
-                }
-            }
+        CHBleSupport.host.postHistory(deviceId: deviceId, historyHex: historyData.toHexString(), os3: false) { _ in }
     }
 }

@@ -52,64 +52,6 @@ public protocol CHDevice: AnyObject {
 public extension CHDevice {
     func getKey() -> CHDeviceKey? { return ( self as? CHDeviceUtil)?.sesame2KeyData?.copy()  as? CHDeviceKey }
     
-    func getCloudFirmwareZipInfo(
-        _ result: @escaping CHResult<FirmwareZipUrlResponse>
-    ) {
-        guard let productModel = productModel else {
-            result(.failure(NSError(
-                domain: "Firmware",
-                code: -1,
-                userInfo: [NSLocalizedDescriptionKey: "Missing product model"]
-            )))
-            return
-        }
-
-        CHAPIClient.shared.getFirmwareZipUrl(
-            productType: Int(productModel.rawValue),
-            deviceId: deviceId.uuidString,
-            result: result
-        )
-    }
-    
-    func getCloudFirmwareZip(
-        _ result: @escaping CHResult<URL>
-    ) {
-        getCloudFirmwareZipInfo { infoResult in
-            switch infoResult {
-            case .success(let info):
-                let response = info.data
-                
-                guard let zipUrl = response.zipUrl,
-                      !zipUrl.isEmpty,
-                      let fileName = response.fileName,
-                      !fileName.isEmpty else {
-                    result(.failure(NSError(
-                        domain: "Firmware",
-                        code: -2,
-                        userInfo: [NSLocalizedDescriptionKey: "Firmware zip url is empty"]
-                    )))
-                    return
-                }
-                
-                FirmwareZipRuntimeCache.shared.getFirmwarePath(
-                    zipUrl: zipUrl,
-                    fileName: fileName
-                ) { downloadResult in
-                    switch downloadResult {
-                    case .success(let localURL):
-                        result(.success(.init(input: localURL)))
-                        
-                    case .failure(let error):
-                        result(.failure(error))
-                    }
-                }
-                
-            case .failure(let error):
-                result(.failure(error))
-            }
-        }
-    }
-    
     /// 规则：
     /// - 仅 CHSesame5：BLE 不可用才允许用 IoT mechStatus 覆盖
     /// - 其他设备：直接用 IoT mechStatus 覆盖
@@ -275,8 +217,10 @@ internal extension CHDevice {
     func setHistoryTag(_ tag: Data, result: @escaping (CHResult<CHEmpty>)) {
         let historyTag = (tag.count > 21) ? tag[0...20].copyData : tag
 //        L.d("標籤, setHistoryTag=>", historyTag)
-        (self as? CHDeviceUtil)?.sesame2KeyData?.historyTag = historyTag
-        CHDeviceCenter.shared.updateHistoryTag(historyTag, deviceID: deviceId)
+        if let key = (self as? CHDeviceUtil)?.sesame2KeyData {
+            key.historyTag = historyTag
+            CHBleSupport.keys.save(key)
+        }
         result(.success(CHResultStateNetworks(input: CHEmpty())))
     }
 
@@ -285,29 +229,15 @@ internal extension CHDevice {
     }
     
     func postBatteryData(_ payload: String, result: @escaping CHResult<Int>) {
-        CHAPIClient.shared.postBatteryData(deviceId: deviceId.uuidString, payload: payload, result: result)
+        CHBleSupport.host.postBatteryData(deviceId: deviceId, payload: payload, result: result)
     }
-    
-    // 訪客鑰匙調用, 取session token並上傳server以secretKey簽章後得到login token
+
     func sign(token: String, result: @escaping CHResult<String>) {
         guard let keyData = getKey() else {
+            result(.failure(NSError.noDataError))
             return
         }
-        L.d("API:/device/v1/sesame2/sign", token, deviceId.uuidString, keyData.secretKey)
-        
-        CHAPIClient.shared.signDeviceToken(
-            deviceId: deviceId.uuidString,
-            token: token,
-            secretKey: keyData.secretKey
-        ) { serverResult in
-            switch serverResult {
-            case .success(let signedToken):
-                result(.success(.init(input: signedToken.data)))
-            case .failure(let error):
-                L.d("sign error!")
-                result(.failure(error))
-            }
-        }
+        CHBleSupport.host.signGuestKey(deviceId: deviceId, token: token, secretKey: keyData.secretKey, result: result)
     }
 }
 
@@ -316,62 +246,6 @@ public protocol CHSesameLock: CHDevice {
     var mechStatus: CHSesameProtocolMechStatus? { get set }
     func getHistoryTag() -> Data?
     func setHistoryTag(_ tag: Data, result: @escaping (CHResult<CHEmpty>))
-}
-
-public extension CHSesameLock {
-    func getSesameLockStatus(result: @escaping CHResult<CHEmpty>) {
-        CHAPIClient.shared.getCHDeviceShadow(deviceId: self.deviceId.uuidString) { apiResult in
-            switch apiResult {
-            case .success(let data):
-                guard let shadow = CHDeviceShadow.fromRESTFulData(data.data) else {
-                    self.deviceShadowStatus = nil
-                    result(.failure(NSError.noDataError))
-                    return
-                }
-
-                var isConnectedByWM2 = false
-                if let wm2s = shadow.wifiModule2s {
-                    isConnectedByWM2 = wm2s.filter({ $0.isConnected == true }).count > 0
-                }
-
-                if (self.productModel == .sesame5 || self.productModel == .sesame5Pro || self.productModel == .sesame5US || self.productModel == .sesameMiwa) {
-                    if let mechStatusData = shadow.mechStatus?.hexStringtoData(),
-                       let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
-                        if isConnectedByWM2, self.deviceStatus.loginStatus == .unlogined {
-                            self.mechStatus = mechStatus
-                            (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.batteryPercentage ?? 0)
-                        }
-                    }
-                } else if (self.productModel == .bikeLock2 || self.productModel == .bikeLock3) {
-                    if let mechStatusData = shadow.mechStatus?.hexStringtoData(),
-                       let mechStatus = CHSesameBike2MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
-                        if isConnectedByWM2, self.deviceStatus.loginStatus == .unlogined {
-                            self.mechStatus = mechStatus
-                            (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.batteryPercentage ?? 0)
-                        }
-                    }
-                } else {
-                    if let mechStatusData = shadow.mechStatus?.hexStringtoData(),
-                       let mechStatus = Sesame2MechStatus.fromData(mechStatusData) {
-                        if isConnectedByWM2, self.deviceStatus.loginStatus == .unlogined {
-                            self.mechStatus = mechStatus
-                            (self as? CHBaseDevice)?.notifyBatteryPercentageChanged(percentage: shadow.batteryPercentage ?? 0)
-                        }
-                    }
-                }
-
-                if isConnectedByWM2 {
-                    self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
-                } else {
-                    self.deviceShadowStatus = nil
-                }
-                result(.success(.init(input: .init())))
-            case .failure(let error):
-                self.deviceShadowStatus = nil
-                result(.failure(error))
-            }
-        }
-    }
 }
 
 public protocol CHSesameConnector {

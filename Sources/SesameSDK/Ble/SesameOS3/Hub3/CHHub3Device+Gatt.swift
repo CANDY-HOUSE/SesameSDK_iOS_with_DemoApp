@@ -13,11 +13,10 @@ extension CHHub3Device {
     func onGattHub3Publish(_ payload: SesameOS3PublishPayload) {
         let itemCode = payload.itemCode
         let data = payload.payload
-        L.d("[Hub3][onGattHub3Publish]itemCode:",itemCode.rawValue,"data:", data.bytes)
         switch itemCode {
         case .mechSetting:
-            guard data.count > 0 else { break }
             let endIndex = data.count == 60 ? 30 : 32
+            guard data.count >= endIndex else { break }
             mechSetting?.wifiSSID = String(data: data[0..<endIndex], encoding: .utf8)
             mechSetting?.wifiPassword = String(data: data[endIndex...], encoding: .utf8)
             (delegate as? CHWifiModule2Delegate)?.onAPSettingChanged(device: self, settings: mechSetting!)
@@ -31,11 +30,13 @@ extension CHHub3Device {
             let isNETConnecting: Bool = (content[0...0].toInt8() & 64) > 0
             let isIOTConnecting: Bool = content[0...0].toInt8() < 0
             mechStatus = CHWifiModule2NetworkStatus(isAPWork: isAp, isNetwork: isNet, isIoTWork: isIoT, isBindingAPWork: isAPConnecting, isConnectingNetwork: isNETConnecting, isConnectingIoT: isIOTConnecting)
-        case .HUB3_ITEM_CODE_SSID_FIRST:break
-        case .HUB3_ITEM_CODE_SSID_LAST: break
+        case .HUB3_ITEM_CODE_SSID_FIRST:
+            (delegate as? CHWifiModule2Delegate)?.onWifiScanStarted(device: self)
+        case .HUB3_ITEM_CODE_SSID_LAST:
+            (delegate as? CHWifiModule2Delegate)?.onWifiScanFinished(device: self)
         case .HUB3_ITEM_CODE_SSID_NOTIFY:
             guard data.count > 1 else { break }
-            var rssiData = data[safeBound: 0...1]!.copyData
+            var rssiData = data.copyData[0...1].copyData
             let ssidData = data[2...]
             let rssi = rssiData.toInt16()
             if let ssid = String(data: ssidData.copyData, encoding: .utf8) {
@@ -43,7 +44,6 @@ extension CHHub3Device {
             }
         case .moveTo:
             if var percentage = data[safeBound: 0...0]?.copyData {
-                L.d("[hub3 ] ota ",percentage)
                 (delegate as? CHWifiModule2Delegate)?.onOTAProgress(device: self, percent: percentage.toUInt8())
             }
         default:

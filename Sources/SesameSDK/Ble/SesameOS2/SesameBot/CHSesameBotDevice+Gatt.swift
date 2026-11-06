@@ -18,8 +18,7 @@ extension CHSesameBotDevice {
             }
         }
         
-        if sesameBotNotify.opCode == .response {
-            let responsePayload = Sesame2CmdResponsePayload(sesameBotNotify.payload)
+        if sesameBotNotify.opCode == .response, let responsePayload = Sesame2CmdResponsePayload(sesameBotNotify.payload) {
             onGattSwitchResponse(responsePayload)
         }
     }

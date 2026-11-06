@@ -17,12 +17,10 @@ class CHSesameBike2Device: CHSesameOS3LockBase, CHSesameBike2 {
         
         switch itemCode {
         case .mechStatus:
-            if data.count == 7 {
-                mechStatus = Sesame5MechStatus.fromData(data)!
-            } else {
-                mechStatus = CHSesameBike2MechStatus.fromData(data)!
-            }
-            self.deviceStatus = mechStatus!.isInLockRange ? .locked() : .unlocked()
+            let parsed: CHSesameProtocolMechStatus? = data.count == 7 ? Sesame5MechStatus.fromData(data) : CHSesameBike2MechStatus.fromData(data)
+            guard let status = parsed else { return }
+            mechStatus = status
+            self.deviceStatus = status.isInLockRange ? .locked() : .unlocked()
             postBatteryData(data[0..<2].toHexString()) { res in
                 if case .success(let resp) = res {
                     self.notifyBatteryPercentageChanged(percentage: resp.data)
@@ -42,19 +40,7 @@ class CHSesameBike2Device: CHSesameOS3LockBase, CHSesameBike2 {
 extension CHSesameBike2Device {
     
     public func unlock(historytag: Data?, result: @escaping (CHResult<CHEmpty>))  {
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            CHIoTManager.shared.sendCommandToWM2(SesameItemCode.unlock, historytag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
-        if (!self.isBleAvailable(result)) {
-            CHIoTManager.shared.sendCommandToWM2(SesameItemCode.unlock, historytag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
+        if (!self.isBleAvailable(result)) { return }
         sendCommand(.init(.unlock,historytag)) { responsePayload in
             //L.d("[bk2][unlock][sendCommand] res =>",responsePayload.cmdResultCode)
             if responsePayload.cmdResultCode == .success {

@@ -41,22 +41,6 @@ class CHSesameBiometricDeviceImpl: CHSesameOS3,
             notifyRadarReceive(payload: _radarPayload)
         }
     }
-
-    private let iotDeviceModels: Set<CHProductModel> = [
-        .sesameTouch,
-        .sesameTouch2,
-        .sesameTouchPro,
-        .sesameTouch2Pro,
-        .sesameFace,
-        .sesameFace2,
-        .sesameFaceAI,
-        .sesameFace2AI,
-        .sesameFacePro,
-        .sesameFace2Pro,
-        .sesameFaceProAI,
-        .sesameFace2ProAI
-    ]
-
     init(deviceType: BiometricDeviceType, supportedCapabilities: Set<BiometricCapability>) {
         self.deviceType = deviceType
         self.supportedCapabilities = supportedCapabilities
@@ -144,40 +128,4 @@ class CHSesameBiometricDeviceImpl: CHSesameOS3,
         delegateManager.notify(type, handler: handler)
     }
 
-    public func goIOT() {
-        if self.isGuestKey { return }
-
-        guard self.productModel != nil else {
-            L.d("[goIOT] productModel is nil, skipping IoT setup")
-            return
-        }
-
-        #if os(iOS)
-        if productModel == .openSensor || productModel == .openSensor2 {
-            goIoTWithOpenSensor()
-            return
-        }
-
-        if iotDeviceModels.contains(productModel) {
-            CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
-                switch result {
-                case .success(let content):
-                    var isConnectedByWM2 = false
-                    if let wm2s = content.data.wifiModule2s {
-                        isConnectedByWM2 = wm2s.contains { $0.isConnected == true }
-                    }
-
-                    if isConnectedByWM2 {
-                        self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
-                    } else {
-                        self.deviceShadowStatus = nil
-                    }
-
-                case .failure(_):
-                    break
-                }
-            }
-        }
-        #endif
-    }
 }

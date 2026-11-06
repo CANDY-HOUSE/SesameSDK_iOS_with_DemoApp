@@ -46,10 +46,11 @@ struct WifiModule2PublishPayload {
     let actionCode: UInt8
     let payload: Data
     
-    init(data: Data) {
-        var content = data.copyData
-        self.actionCode = content[0...0].toUInt8()
-        self.payload = data[1...].copyData
+    init?(data: Data) {
+        let content = data.copyData
+        guard let first = content.first else { return nil }
+        self.actionCode = first
+        self.payload = content.dropFirst().copyData
     }
 }
 
@@ -58,10 +59,11 @@ struct WifiModule2CmdResponsePayload {
     let cmdResultCode: SesameResultCode
     let data: Data
     
-    init(_ data: Data) {
-        var content = data.copyData
-        self.actionCode = WifiModule2ActionCode(rawValue: content[0...0].toUInt8())!
-        self.cmdResultCode = SesameResultCode(rawValue: content[1...1].toUInt8())!
+    init?(_ data: Data) {
+        let content = data.copyData
+        guard content.count >= 2, let actionCode = WifiModule2ActionCode(rawValue: content[0]) else { return nil }
+        self.actionCode = actionCode
+        self.cmdResultCode = SesameResultCode(rawValue: content[1]) ?? .unknown
         self.data = content[2...].copyData
     }
 }

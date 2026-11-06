@@ -14,7 +14,7 @@ class CHFingerPrintEventHandlers {
         // 指纹更改事件
         device.registerEventHandler(for: .SSM_OS3_FINGERPRINT_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
-            let card = CHSesameTouchCard(data: data)
+            guard let card = CHSesameTouchCard(data: data) else { return }
             device.notifyProtocolDelegates(CHFingerPrintDelegate.self) { delegate in
                 delegate.onFingerPrintChanged(device: device, id: card.cardID, hexName: card.cardName, type: card.cardType)
             }
@@ -70,7 +70,7 @@ class CHFingerPrintEventHandlers {
             if cards.isEmpty { break }
             
             let cardData = Data(cards)
-            let card = CHSesameTouchCard(data: cardData)
+            guard let card = CHSesameTouchCard(data: cardData) else { break }
             cardDataSize = Int(1 + 1 + card.idLength + 1 + card.nameLength)
             
             notifyCardReceived(device: device, card: card)

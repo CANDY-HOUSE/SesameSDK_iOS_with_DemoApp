@@ -16,8 +16,9 @@ struct SesameOS3Payload {
     }
 
     init(_ payload: Data) {
-        itemCode = SesameItemCode(rawValue: payload[0] ) ?? SesameItemCode.none
-        data = payload[1...].copyData
+        let content = payload.copyData
+        itemCode = content.first.flatMap { SesameItemCode(rawValue: $0) } ?? SesameItemCode.none
+        data = content.count > 1 ? content[1...].copyData : Data()
     }
 
     func toDataWithHeader() -> Data {
@@ -43,9 +44,10 @@ struct SesameOS3CmdResponsePayload {
     let cmdResultCode: SesameResultCode
     var data: Data
     init?(_ data: Data) {
-        guard data.count >= 2 else { return nil }
-        self.cmdItCode = SesameItemCode(rawValue: data[0]) ?? SesameItemCode.none
-        self.cmdResultCode = SesameResultCode(rawValue: data[1])!
-        self.data = data[2...].copyData
+        let content = data.copyData
+        guard content.count >= 2 else { return nil }
+        self.cmdItCode = SesameItemCode(rawValue: content[0]) ?? SesameItemCode.none
+        self.cmdResultCode = SesameResultCode(rawValue: content[1]) ?? .unknown
+        self.data = content[2...].copyData
     }
 }

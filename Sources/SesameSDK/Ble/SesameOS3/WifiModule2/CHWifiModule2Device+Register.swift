@@ -26,9 +26,10 @@ extension CHWifiModule2Device {
             if response.cmdResultCode == .success {
 //                L.d("wm2 註冊 ok")
                 
-                let ecdhSecret = Data(self.appKeyPair.ecdh(remotePublicKey: response.data.bytes))
-                
-                guard let ecdh_secret_pre16 = ecdhSecret[safeBound: 0...15]?.copyData else {
+                guard let shared = try? self.appKeyPair.ecdh(remotePublicKey: response.data.bytes),
+                      let ecdh_secret_pre16 = Data(shared)[safeBound: 0...15]?.copyData else {
+                    self.disconnect { _ in }
+                    result(.failure(NSError.registerError))
                     return
                 }
                 
@@ -49,9 +50,8 @@ extension CHWifiModule2Device {
                     sesame2PublicKey: ""
                 )
                 self.sesame2KeyData = deviceKey
-                CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!)
+                CHBleSupport.keys.save(deviceKey)
                 result(.success(CHResultStateNetworks(input: CHEmpty())))
-                self.goIOT ()
             } 
         }
     }

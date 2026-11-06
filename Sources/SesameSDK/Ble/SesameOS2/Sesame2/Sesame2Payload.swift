@@ -8,7 +8,7 @@
 import Foundation
 
 func to<T>(_ buf: Data) -> T? {
-    return buf.withUnsafeBytes({ $0.bindMemory(to: T.self).first })
+    return buf.loadStruct(T.self)
 }
 
 // MARK: - Request
@@ -24,13 +24,10 @@ struct Sesame2Payload {
     }
 
     init(_ payload: Data) {
-        var content = payload.copyData
-        let opCodeData = content[0...0].toUInt8()
-        let itCodeData = content[1...1].toUInt8()
-
-        opCode = Sesame2OpCode(rawValue: opCodeData) ?? Sesame2OpCode.undefine
-        itemCode = SesameItemCode(rawValue: itCodeData ) ?? SesameItemCode.none
-        data = content[2...].copyData
+        let content = payload.copyData
+        opCode = content.count > 0 ? Sesame2OpCode(rawValue: content[0]) ?? .undefine : .undefine
+        itemCode = content.count > 1 ? SesameItemCode(rawValue: content[1]) ?? .none : .none
+        data = content.count > 2 ? content[2...].copyData : Data()
     }
 
     func toDataWithHeader() -> Data {
@@ -70,11 +67,12 @@ struct Sesame2CmdResponsePayload {
     let cmdResultCode: SesameResultCode
     let data: Data
     
-    init(_ data: Data) {
-        var content = data.copyData
-        self.cmdItCode = SesameItemCode(rawValue: content[0...0].toUInt8()) ?? SesameItemCode.none
-        self.cmdOpCode = Sesame2OpCode(rawValue: content[1...1].toUInt8())!
-        self.cmdResultCode = SesameResultCode(rawValue: content[2...2].toUInt8())!
+    init?(_ data: Data) {
+        let content = data.copyData
+        guard content.count >= 3 else { return nil }
+        self.cmdItCode = SesameItemCode(rawValue: content[0]) ?? SesameItemCode.none
+        self.cmdOpCode = Sesame2OpCode(rawValue: content[1]) ?? .undefine
+        self.cmdResultCode = SesameResultCode(rawValue: content[2]) ?? .unknown
         self.data = content[3...].copyData
     }
 }

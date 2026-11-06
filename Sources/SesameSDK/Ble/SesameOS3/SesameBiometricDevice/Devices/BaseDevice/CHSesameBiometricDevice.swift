@@ -43,6 +43,4 @@ public protocol CHSesameBiometricDevice:
     var mechSetting: CHSesameBaseMechSettings? { get set }
     var triggerDelaySetting: CHRemoteBaseTriggerSettings? { get set }
     var radarPayload: Data { get set }
-
-    func goIOT()
 }

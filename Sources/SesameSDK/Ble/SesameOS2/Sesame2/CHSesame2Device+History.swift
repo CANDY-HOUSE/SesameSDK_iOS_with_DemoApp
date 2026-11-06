@@ -17,7 +17,8 @@ extension CHSesame2Device {
 //            L.d("藍芽", "版本==0")
             return
         }
-        URLSession.isInternetReachable { isInternetReachable in
+        do {
+            let isInternetReachable = CHBleSupport.host.isNetworkAvailable()
             let deleteHistory = isInternetReachable == true ? "01":"00"
             self.sendCommand(.init(.read, .history, deleteHistory.hexStringtoData())) { (result) in
                 if result.cmdResultCode == .success {
@@ -41,24 +42,7 @@ extension CHSesame2Device {
 
 extension CHSesame2Device {
     func postProcessHistory(_ historyData: Data) {
-//        L.d("postProcessHistory =>")
-        let request: CHAPICallObject = .init(.post, "/device/v1/sesame2/historys", [
-            "s": self.deviceId.uuidString,
-            "v": historyData.toHexString()
-        ])
-        
-        CHAPIClient
-            .shared
-            .API(request: request) { result in
-                switch result {
-                case .success(_):
-                    L.d("藍芽", "上傳歷史成功")
-                    break
-                case .failure(let error):
-                    L.d("藍芽", "上傳歷史失敗,掉歷史  : \(error)")
-                    break
-            }
-        }
+        CHBleSupport.host.postHistory(deviceId: deviceId, historyHex: historyData.toHexString(), os3: false) { _ in }
     }
 }
 

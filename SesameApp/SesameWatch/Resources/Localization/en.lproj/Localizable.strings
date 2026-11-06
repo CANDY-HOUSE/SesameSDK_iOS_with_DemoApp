@@ -1,0 +1,16 @@
+"Toggle Sesame" = "Toggle Sesame";
+"Lock Sesame" = "Lock Sesame";
+"Unlock Sesame" = "Unlock Sesame";
+"Sesame Device" = "Sesame Device";
+"Device" = "Device";
+"Name" = "Name";
+"Toggle ${device}" = "Toggle ${device}";
+"Lock ${device}" = "Lock ${device}";
+"Unlock ${device}" = "Unlock ${device}";
+"Toggled %@" = "Toggled %@";
+"Locked %@" = "Locked %@";
+"Unlocked %@" = "Unlocked %@";
+"This device does not support this action" = "This device does not support this action";
+"Unable to connect to %@" = "Unable to connect to %@";
+"Failed to operate %@" = "Failed to operate %@";
+"Open Sesame on your iPhone to sync your devices" = "Open the Sesame app on your iPhone to sync your devices";

@@ -9,14 +9,6 @@ import Foundation
 extension CHSesame2Device {
     
     public func toggle(historytag: Data?, result: @escaping (CHResult<CHEmpty>))  {
-        if deviceShadowStatus != nil,
-//           CHIoTManager.shared.awsIoTDataManager.getConnectionStatus() == .connected,
-           deviceStatus.loginStatus == .unlogined {
-            CHIoTManager.shared.sendCommandToWM2(.toggle, historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
         
         guard let isLocked = mechStatus?.isInLockRange  else {
             result(.failure(NSError.sesameLockNotInLockRangeError))
@@ -29,15 +21,6 @@ extension CHSesame2Device {
         
         let tagCount_hisTag = Data.createHistag(historytag ?? self.sesame2KeyData?.historyTag)
         
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            L.d("📡 lock by IoT")
-//            L.d("⚠️ \(deviceId.uuidString) lock by IoT")
-            CHIoTManager.shared.sendCommandToWM2(.lock, historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
         
         if (!self.isBleAvailable(result)) { return }
 //        L.d("📡 lock by ble")
@@ -55,15 +38,6 @@ extension CHSesame2Device {
 
     public func unlock(historytag: Data?,result: @escaping (CHResult<CHEmpty>))  {
         let tagCount_hisTag = Data.createHistag(historytag ?? self.sesame2KeyData?.historyTag)
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            L.d("📡 unlock by IoT")
-//            L.d("⚠️ \(deviceId.uuidString) unlock by IoT")
-            CHIoTManager.shared.sendCommandToWM2(.unlock, historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
         
         if (!self.isBleAvailable(result)) { return }
 //        L.d("📡 unlock by ble")

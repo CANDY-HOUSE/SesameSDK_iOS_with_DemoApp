@@ -49,12 +49,7 @@ extension CHSesameBotDevice {
             if let tag = Sesame2VersionTag.fromData(payload.data) {
                 if payload.cmdResultCode == .success {
                     result(.success(CHResultStateNetworks(input: tag.gitRevision)))
-                    #if os(iOS)
-                    CHAPIClient.shared.postFirmwareVersion(
-                        deviceId: self.deviceId.uuidString,
-                        versionTag: tag.gitRevision
-                    ) {response in}
-                    #endif
+                    CHBleSupport.host.postFirmwareVersion(deviceId: self.deviceId, versionTag: tag.gitRevision) { _ in }
                 } else {
                     result(.failure(self.errorFromResultCode(payload.cmdResultCode)))
                 }

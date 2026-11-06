@@ -12,12 +12,10 @@ extension CHWifiModule2Device {
     
     func parseNotifyPayload(_ data: Data) {
         let sesame2Notify = Sesame2NotifyPayload(data: data)
-        if sesame2Notify.opCode == .publish {
-            let publishPayload = WifiModule2PublishPayload(data: sesame2Notify.payload)
+        if sesame2Notify.opCode == .publish, let publishPayload = WifiModule2PublishPayload(data: sesame2Notify.payload) {
             onGattWifiModule2Publish(action: publishPayload.actionCode, data: publishPayload.payload)
         }
-        if sesame2Notify.opCode == .response {
-            let responsePayload = WifiModule2CmdResponsePayload(sesame2Notify.payload)
+        if sesame2Notify.opCode == .response, let responsePayload = WifiModule2CmdResponsePayload(sesame2Notify.payload) {
             onGattSesame2Response(responsePayload)
         }
     }
@@ -30,7 +28,8 @@ extension CHWifiModule2Device {
     
     private func onGattWifiModule2Publish(action: UInt8, data: Data) {
 
-        switch WifiModule2ActionCode(rawValue: action)! {
+        guard let actionCode = WifiModule2ActionCode(rawValue: action) else { return }
+        switch actionCode {
         case .sesame2Keys:
             var sesame2Keys = [String: String]()
             let byteArray: Array = [UInt8](data)
@@ -38,11 +37,12 @@ extension CHWifiModule2Device {
                 Array(byteArray[$0 ..< Swift.min($0 + 23, byteArray.count)])
             }
 //            L.d("data:" + data.toHexString())
-            for keyData in keyDatas {
+            for keyData in keyDatas where keyData.count >= 23 {
                 let content = Data(bytes: keyData, count: keyData.count)
                 let sesame2IR = content[0...21]
                 let lockStatus = content[22...22]
-                let base64EncodedIR = String(data: sesame2IR, encoding: .utf8)! + "=="
+                guard let ir = String(data: sesame2IR, encoding: .utf8) else { continue }
+                let base64EncodedIR = ir + "=="
                 if let sesame2DeviceId = Data(base64Encoded: base64EncodedIR)?.toHexString().noDashtoUUID() {
                     var lockStatusBool = lockStatus.copyData
                     sesame2Keys[sesame2DeviceId.uuidString] = "\(lockStatusBool.toUInt8())"
@@ -60,6 +60,7 @@ extension CHWifiModule2Device {
             (delegate as? CHWifiModule2Delegate)?.onAPSettingChanged(device: self, settings: mechSetting!)
         case .networkStatus:
             var content = data.copyData
+            guard !content.isEmpty else { break }
             let isAp: Bool = (content[0...0].toInt8() & 2) > 0
             let isNet: Bool = (content[0...0].toInt8() & 4) > 0
             let isIoT: Bool = (content[0...0].toInt8() & 8) > 0
@@ -115,11 +116,10 @@ extension CHWifiModule2Device {
             }
         case .scanWifiSSID:
             
-            var rssiData = data[safeBound: 0...1]!.copyData
-            let ssidData = data[2...]
-            let rssi = rssiData.toInt16()
-            let ssid = String(data: ssidData.copyData, encoding: .utf8)
-            (delegate as? CHWifiModule2Delegate)?.onScanWifiSID(device: self, ssid: CHSSID(name: ssid!, rssi: rssi))
+            let content = data.copyData
+            guard content.count >= 2, let ssid = String(data: content[2...].copyData, encoding: .utf8) else { break }
+            var rssiData = content[0...1].copyData
+            (delegate as? CHWifiModule2Delegate)?.onScanWifiSID(device: self, ssid: CHSSID(name: ssid, rssi: rssiData.toInt16()))
         }
     }
 }

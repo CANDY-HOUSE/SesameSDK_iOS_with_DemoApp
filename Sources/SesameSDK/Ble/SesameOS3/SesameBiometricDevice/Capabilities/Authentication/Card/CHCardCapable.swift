@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol CHCardCapable: CHDevice ,CHSesameConnector, CHServerCapableHandler {
+public protocol CHCardCapable: CHDevice ,CHSesameConnector {
     
     func cards(result: @escaping(CHResult<CHEmpty>))
     func cardDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))

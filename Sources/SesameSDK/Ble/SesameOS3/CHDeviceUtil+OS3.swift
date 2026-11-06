@@ -30,12 +30,10 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
     /// - Parameter res: response
     func handleLoginReceived(_ res: SesameOS3CmdResponsePayload) {
         guard let _ = self as? CHSesame5 else { return }
-        guard res.cmdResultCode == .success,
-              res.data.count >= MemoryLayout<Sesame5Time>.size else {
+        guard res.cmdResultCode == .success, let time = Sesame5Time.fromData(res.data)?.time else {
             L.d("[os3][login] skip time sync", res.cmdResultCode.plainName, res.data.count)
             return
         }
-        let  time = Sesame5Time.fromData(res.data).time
         let sesameTime = Date(timeIntervalSince1970: TimeInterval(time))
         let timeErrorInterval = sesameTime.timeIntervalSince1970 - Date().timeIntervalSince1970
         if abs(timeErrorInterval) > 3 {
@@ -47,60 +45,63 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
         }
     }
     
-    /// 註冊配對
-    /// - Parameter result: 返回結果
     func register(result: @escaping CHResult<CHEmpty>)  {
-        if deviceStatus != .readyToRegister() {
+        guard deviceStatus == .readyToRegister(), let sessionToken = mSesameToken, let productType = advertisement?.productType else {
             result(.failure(NSError.deviceStatusNotReadyToRegister))
             return
         }
         deviceStatus = .registering()
-        
-        let date = Date()
-        var timestamp: UInt32 = UInt32(date.timeIntervalSince1970)
+
+        var timestamp: UInt32 = UInt32(Date().timeIntervalSince1970)
         let timestampData = Data(bytes: &timestamp,count: MemoryLayout.size(ofValue: timestamp))
         let payload = Data(appKeyPair.publicKey)+timestampData
         self.commandQueue = DispatchQueue(label:deviceId.uuidString, qos: .userInitiated)
-        
-        CHAPIClient.shared.registerDevice(
-            deviceId: self.deviceId.uuidString,
-            productType: Int(advertisement!.productType!.rawValue),
-            publicKey: self.mSesameToken!.toHexString()
-        ) { response in
+
+        CHBleSupport.host.registerOs3(deviceId: deviceId, productType: Int(productType.rawValue), publicKey: sessionToken.toHexString()) { response in
             switch response {
             case .success(_):
                 self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
-                    // 检查是否为错误响应 长度为4且最后一位为09（错误标记位）
-                    // [1001297]嵌入设备在多App同时并发注册时，后注册的设备会返回4个字节长度且最后一位为09的数据。
-                    if(response.data.count == 4 && response.data[3] == 0x09){
+                    // A device registered concurrently by another app answers 4 bytes ending in 0x09.
+                    if(response.data.count == 4 && response.data[response.data.startIndex + 3] == 0x09){
                         return
                     }
-                    var ecdhSecretPre16 = Data()
-                    if (self.appKeyPair.havePubKey(remotePublicKey: response.data[13...76].bytes)) { // 新协议
-                        ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[13...76].bytes))[0...15]
-                        self.mechStatus = Sesame5MechStatus.fromData(response.data[0...6])!
-                    } else {
-                        ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[3...66].bytes))[0...15]
-                        self.mechStatus = CHSesameBike2MechStatus.fromData(response.data[0...2])!
+                    let data = Data(response.data)
+                    let secret: Data
+                    let mechStatus: CHSesameProtocolMechStatus
+                    do {
+                        if data.count >= 77, self.appKeyPair.havePubKey(remotePublicKey: data[13...76].bytes),
+                           let status = Sesame5MechStatus.fromData(data[0...6]) {
+                            secret = Data(try self.appKeyPair.ecdh(remotePublicKey: data[13...76].bytes))[0...15]
+                            mechStatus = status
+                            if let sesame5Device = self as? CHSesame5Device {
+                                sesame5Device.mechSetting = CHSesame5MechSettings.fromData(data[7...12])
+                            }
+                        } else if data.count >= 67, let status = CHSesameBike2MechStatus.fromData(data[0...2]) {
+                            secret = Data(try self.appKeyPair.ecdh(remotePublicKey: data[3...66].bytes))[0...15]
+                            mechStatus = status
+                        } else {
+                            throw NSError.parseError
+                        }
+                    } catch {
+                        self.deviceStatus = .readyToRegister()
+                        self.disconnect { _ in }
+                        result(.failure(error))
+                        return
                     }
-                    
-                    if let sesame5Device = self as? CHSesame5Device {
-                        sesame5Device.mechSetting = CHSesame5MechSettings.fromData(response.data[7...12])!
-                    }
-                    self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString, sessionKey: CC.CMAC.AESCMAC(self.mSesameToken!, key: ecdhSecretPre16),sessionToken: ("00"+self.mSesameToken!.toHexString()).hexStringtoData())
-                    
-                    self.sesame2KeyData = CHDeviceKey(// 建立設備
+                    self.mechStatus = mechStatus
+                    self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString, sessionKey: CC.CMAC.AESCMAC(sessionToken, key: secret),sessionToken: ("00"+sessionToken.toHexString()).hexStringtoData())
+                    let key = CHDeviceKey(
                         deviceUUID: self.deviceId,
                         deviceModel: self.productModel.deviceModel(),
                         historyTag: nil,
                         keyIndex: "0000",
-                        secretKey: ecdhSecretPre16.toHexString(),
-                        sesame2PublicKey: self.mSesameToken!.toHexString()
+                        secretKey: secret.toHexString(),
+                        sesame2PublicKey: sessionToken.toHexString()
                     )
-                    self.isRegistered = true // 設定為已註冊
-                    self.goIOT()
-                    self.deviceStatus = self.mechStatus!.isInLockRange  ? .locked() :.unlocked()
-                    CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!) // 存到SDK層的DB中
+                    self.sesame2KeyData = key
+                    self.isRegistered = true
+                    self.deviceStatus = mechStatus.isInLockRange  ? .locked() :.unlocked()
+                    CHBleSupport.keys.save(key)
                     result(.success(CHResultStateNetworks(input: CHEmpty())))
                 }
             case .failure(let error):
@@ -110,53 +111,7 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
             }
         }
     }
-    
-    func goIOT() {
-        if( self.isGuestKey){ return }
-        
-#if os(iOS)
-        CHIoTManager.shared.subscribeCHDeviceShadow(self) { result in
-            switch result {
-            case .success(let content):
-                var isConnectedByWM2 = false
-                if let wm2s = content.data.wifiModule2s {
-                    isConnectedByWM2 = wm2s.contains(where: { $0.isConnected })
-                }
-                
-                if isConnectedByWM2,
-                   let mechStatusData = content.data.mechStatus?.hexStringtoData() {
-                    if mechStatusData.count >= 7 { // 新固件蓝牙上报长度为7，iot下发的长度为8
-                        if let mechStatus = Sesame5MechStatus.fromData(Sesame2MechStatus.fromData(mechStatusData)!.ss5Adapter()) {
-                            self.applyIotMechStatusIfNeeded(mechStatus)
-                        }
-                    } else {
-                        if let mechStatus = CHSesameBike2MechStatus.fromData(mechStatusData) {
-                            self.applyIotMechStatusIfNeeded(mechStatus)
-                        }
-                    }
-                }
-                
-                if isConnectedByWM2 {
-                    self.deviceShadowStatus = (self.mechStatus?.isInLockRange == true) ? .locked() : .unlocked()
-                } else {
-                    self.deviceShadowStatus = nil
-                }
-                
-                if let sesame5Device = self as? CHSesame5Device {
-                    sesame5Device.isConnectedByWM2 = isConnectedByWM2
-                }
-                if let sesameBike2Device = self as? CHSesameBike2Device {
-                    sesameBike2Device.isConnectedByWM2 = isConnectedByWM2
-                }
-                if let sesameBot2Device = self as? CHSesameBot2Device {
-                    sesameBot2Device.isConnectedByWM2 = isConnectedByWM2
-                }
-            case .failure( _): break
-            }
-        }
-#endif
-    }
-    
+
     /// 更新固件
     /// - Parameter result: 返回 peripheral
     func updateFirmware(result: @escaping CHResult<CBPeripheral?>) {
@@ -171,14 +126,7 @@ extension CHDeviceUtil where Self: CHSesameOS3 & CHDevice {
             if response.cmdResultCode == .success {
                 let versionTag = String(data: response.data, encoding: .utf8) ?? ""
                 result(.success(CHResultStateNetworks(input: versionTag)))
-                CHAPIClient.shared.postFirmwareVersion(
-                    deviceId: self.deviceId.uuidString,
-                    versionTag: versionTag
-                ) { response in
-                    if case .failure(let err) = response  {
-                        L.d("fwVer post err", err)
-                    }
-                }
+                CHBleSupport.host.postFirmwareVersion(deviceId: self.deviceId, versionTag: versionTag) { _ in }
             } else {
                 result(.failure(self.errorFromResultCode(response.cmdResultCode)))
             }

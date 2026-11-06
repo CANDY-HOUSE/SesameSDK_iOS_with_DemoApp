@@ -25,59 +25,49 @@ extension CHSesame2Device {
     }
     
     func onRegisterStage1(er: String, result: @escaping CHResult<CHEmpty>) {
-        L.d("[s2註冊][Stage1]")
-        let request = CHAPICallObject(.post, "/device/v1/sesame2/\(self.deviceId.uuidString)", [
-            "s1": [
-                "ak": (Data(appKeyPair.publicKey).base64EncodedString()),
-                "n": sesame2SessionToken!.base64EncodedString(),
-                "e": er,
-                "t": advertisement!.productType!.rawValue
-            ] as [String : Any]
-        ]
-        )
-        
-        CHAPIClient
-            .shared
-            .API(request: request) { response in
-                L.d("[s2註冊][CHAccountManager]API")
-                switch response {
-                case .success(let data):
-                    guard let data = data else {
-                        result(.failure(NSError.noContent))
-                        return
-                    }
-                    // todo kill this parcer with json decoder
-                    if let dict = try? data.decodeJsonDictionary() as? [String: String],
-                        let b64Sig1 = dict["sig1"],
-                        let b64ServerToken = dict["st"],
-                        let b64SesamePublicKey = dict["pubkey"],
-                        let sig1 = Data(base64Encoded: b64Sig1),
-                        let serverToken = Data(base64Encoded: b64ServerToken),
-                        let sesamePublicKey = Data(base64Encoded: b64SesamePublicKey) {
-                        
-                        self.deviceStatus = .registering()
-                        
-                        self.onRegisterStage2 (
-                            appKey: self.appKeyPair,
-                            sig1: sig1,
-                            serverToken: serverToken,
-                            sesame2PublicKey: sesamePublicKey,
-                            result: result
-                        )
-                    } else {
-                        result(.failure(NSError.parseError))
-                    }
-                case .failure(let error):
-                    result(.failure(error))
+        guard let sessionToken = sesame2SessionToken else {
+            result(.failure(NSError.deviceStatusNotReadyToRegister))
+            return
+        }
+        CHBleSupport.host.registerOs2(
+            deviceId: deviceId,
+            appKey: Data(appKeyPair.publicKey).base64EncodedString(),
+            nonce: sessionToken.base64EncodedString(),
+            registrationKey: er,
+            productType: String((advertisement?.productType ?? productModel).rawValue)
+        ) { response in
+            switch response {
+            case .success(let registration):
+                guard let sig1 = Data(base64Encoded: registration.data.signature),
+                      let serverToken = Data(base64Encoded: registration.data.token),
+                      let sesamePublicKey = Data(base64Encoded: registration.data.publicKey) else {
+                    self.deviceStatus = .readyToRegister()
+                    result(.failure(NSError.parseError))
+                    return
                 }
+                self.deviceStatus = .registering()
+                self.onRegisterStage2(
+                    appKey: self.appKeyPair,
+                    sig1: sig1,
+                    serverToken: serverToken,
+                    sesame2PublicKey: sesamePublicKey,
+                    result: result
+                )
+            case .failure(let error):
+                self.deviceStatus = .readyToRegister()
+                result(.failure(error))
             }
+        }
     }
     
     func getIRER(_ result: @escaping CHResult<CHSesameBotFICR>) {
         L.d("[s2註冊][發給設備的指令]")
         sendCommand(.init(.read, .IRER), isCipher: .plaintext) { response in
             if response.cmdResultCode == .success {
-                let switchFicr = CHSesameBotFICR.fromData(response.data)!
+                guard let switchFicr = CHSesameBotFICR.fromData(response.data) else {
+                    result(.failure(NSError.parseError))
+                    return
+                }
                 result(.success(.init(input: switchFicr)))
             } else {
                 result(.failure(NSError.readIrErError))
@@ -93,10 +83,15 @@ extension CHSesame2Device {
         sesame2PublicKey: Data,
         result: @escaping CHResult<CHEmpty>) {
         L.d("[s2註冊][Stage2]")
-        let ecdhSecret = appKey.ecdh(remotePublicKey: sesame2PublicKey.bytes)
+        guard let ecdhSecret = try? appKey.ecdh(remotePublicKey: sesame2PublicKey.bytes), let sessionToken = sesame2SessionToken else {
+            deviceStatus = .readyToRegister()
+            disconnect { _ in }
+            result(.failure(NSError.registerError))
+            return
+        }
         let ecdh_secret_pre16 = Data(bytes: ecdhSecret, count: 16)
 
-        let session_token = serverToken + sesame2SessionToken!
+        let session_token = serverToken + sessionToken
         let reg_key = CC.CMAC.AESCMAC(session_token, key: ecdh_secret_pre16)//registerKey
         let owner_key = CC.CMAC.AESCMAC(Data("owner_key".bytes) , key: reg_key)
         let session_key = CC.CMAC.AESCMAC( session_token, key: reg_key)
@@ -122,17 +117,16 @@ extension CHSesame2Device {
         self.sendCurrentTime { res in
             let deviceKey = CHDeviceKey(
                 deviceUUID: self.deviceId,
-                deviceModel: self.advertisement!.productType!.deviceModel(),
+                deviceModel: self.productModel.deviceModel(),
                 historyTag:Data(),
                 keyIndex: "0000",
                 secretKey: owner_key.toHexString(),
                 sesame2PublicKey: sesame2PublicKey.toHexString()
             )
             self.sesame2KeyData = deviceKey
-            CHDeviceCenter.shared.appendDevice(deviceKey)
+            CHBleSupport.keys.save(deviceKey)
             self.deviceStatus = .noSettings()
             self.isRegistered = true
-            self.goIOT()
             
             result(.success(CHResultStateNetworks(input:CHEmpty())))
         }

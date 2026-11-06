@@ -10,15 +10,6 @@ import Foundation
 
 extension CHSesameBikeDevice {
     public func unlock(historytag: Data?, result: @escaping (CHResult<CHEmpty>))  {
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            L.d("📡 unlock by IoT")
-            CHIoTManager.shared.sendCommandToWM2(.unlock,historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            
-            return
-        }
         
         if (!self.isBleAvailable(result)) { return }
 //        L.d("📡 unlock by ble")

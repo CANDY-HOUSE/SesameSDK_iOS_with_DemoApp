@@ -425,3 +425,11 @@ extension Data {
         return result
     }
 }
+
+extension Data {
+    /// Reads a fixed-layout struct only when enough bytes arrived; BLE payloads come from any nearby device.
+    func loadStruct<T>(_ type: T.Type) -> T? {
+        guard count >= MemoryLayout<T>.size else { return nil }
+        return Data(self).withUnsafeBytes { $0.load(as: T.self) }
+    }
+}

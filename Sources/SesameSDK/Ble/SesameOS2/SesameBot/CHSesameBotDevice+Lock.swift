@@ -11,14 +11,6 @@ import Foundation
 extension CHSesameBotDevice {
     
     public func lock(historytag: Data? ,result: @escaping (CHResult<CHEmpty>))  {
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            L.d("📡 unlock by IoT")
-            CHIoTManager.shared.sendCommandToWM2(.lock, historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
         
         if (!self.isBleAvailable(result)) { return }
 //        L.d("📡 unlock by ble")
@@ -33,14 +25,6 @@ extension CHSesameBotDevice {
     }
     
     public func unlock(historytag: Data?,result: @escaping (CHResult<CHEmpty>))  {
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            L.d("📡 unlock by IoT")
-            CHIoTManager.shared.sendCommandToWM2(.unlock, historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
         
         if (!self.isBleAvailable(result)) { return }
 //        L.d("📡 unlock by ble")
@@ -55,14 +39,6 @@ extension CHSesameBotDevice {
     }
     
     public func click(historytag: Data?,result: @escaping (CHResult<CHEmpty>))  {
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            L.d("📡 unlock by IoT")
-            CHIoTManager.shared.sendCommandToWM2(.click, historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
         
         if (!self.isBleAvailable(result)) { return }
 //        L.d("📡 unlock by ble")
@@ -79,14 +55,6 @@ extension CHSesameBotDevice {
     public func toggle(historytag: Data?, result: @escaping (CHResult<CHEmpty>))  {
         let tag = Data.createHistag(historytag ?? self.sesame2KeyData?.historyTag)
         #if os(iOS)
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            L.d("📡 unlock by IoT")
-            CHIoTManager.shared.sendCommandToWM2(.toggle, historytag ?? self.sesame2KeyData?.historyTag ?? Data(), self) { _ in
-                result(.success(CHResultStateBLE(input: CHEmpty())))
-            }
-            return
-        }
         #endif
         
         if (!self.isBleAvailable(result)) { return }

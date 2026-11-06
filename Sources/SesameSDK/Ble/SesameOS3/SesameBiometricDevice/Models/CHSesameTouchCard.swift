@@ -14,7 +14,9 @@ public class CHSesameTouchCard {
     let nameLength: UInt8
     let cardName: String
 
-    init(data: Data) {
+    init?(data: Data) {
+        let data = data.copyData
+        guard data.count >= 3, data.count >= Int(data[1]) + 3, data.count >= Int(data[1]) + 3 + Int(data[Int(data[1]) + 2]) else { return nil }
         cardType = data[0]
         idLength = data[1]
         cardID = data.subdata(in: 2..<(Int(idLength) + 2)).toHexString()

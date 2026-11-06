@@ -23,6 +23,7 @@ public class CHBluetoothCenter: NSObject {
 
     public internal(set) var centralManager: CBCentralManager!
     var deviceMap = SafeDictionary<String, CHDevice>()
+    private var advertisedAt = SafeDictionary<String, Date>()
 
     private var scanEnabled = false
     private var discoverUnregisterTimer: Timer?
@@ -100,6 +101,25 @@ public class CHBluetoothCenter: NSObject {
         }
     }
 
+    /// Creates or updates the device for a stored key; nil for an unknown model.
+    public func restoreDevice(_ key: CHDeviceKey) -> CHDevice? {
+        guard let model = CHProductModel.deviceModeulFromString(key.deviceModel),
+              var device = deviceMap.getOrPut(key.deviceUUID.uuidString, backup: model.chDeviceFactory()) as? CHDeviceUtil else {
+            return nil
+        }
+        device.sesame2KeyData = key.copy() as? CHDeviceKey
+        if device.productModel == nil { device.productModel = model }
+        return device as? CHDevice
+    }
+
+    public func scannedDevice(_ deviceId: UUID) -> CHDevice? {
+        deviceMap.filterValues { $0.deviceId == deviceId }.first
+    }
+
+    public func lastAdvertisedAt(_ deviceId: UUID) -> Date? {
+        advertisedAt[deviceId.uuidString]
+    }
+
     // MARK: - disConnectAll
     public func disConnectAll(result: @escaping (CHResult<CHEmpty>)) {
         guard centralManager.state == .poweredOn else {
@@ -146,8 +166,9 @@ extension CHBluetoothCenter: CBPeripheralDelegate {
     public func centralManager(_ central: CBCentralManager,  didDiscover peripheral: CBPeripheral,advertisementData: [String: Any],  rssi RSSI: NSNumber) {/// 收廣播
 
         let deviceAdv = BleAdv(advertisementData: advertisementData, rssi: RSSI, peripheral: peripheral)
-        guard let deviceId = deviceAdv.deviceID else { return }
-        var device = deviceMap.getOrPut(deviceId.uuidString, backup: deviceAdv.productType!.chDeviceFactory()) as? CHDeviceUtil
+        guard let deviceId = deviceAdv.deviceID, let productType = deviceAdv.productType else { return }
+        advertisedAt[deviceId.uuidString] = Date()
+        var device = deviceMap.getOrPut(deviceId.uuidString, backup: productType.chDeviceFactory()) as? CHDeviceUtil
         device?.advertisement = deviceAdv
 
     }
@@ -416,7 +437,7 @@ public enum CHProductModel: UInt16 ,CaseIterable{
         }
     }
     
-    static func deviceModeulFromString(_ type: String) -> CHProductModel? {
+    public static func deviceModeulFromString(_ type: String) -> CHProductModel? {
         for model in CHProductModel.allCases {
             if(type == model.deviceModel()){
                 return model
@@ -449,7 +470,8 @@ internal class BleAdv {
         if let connectable = advertisementData[CBAdvertisementDataIsConnectable] as? Int {
             self.isConnectable = (connectable == 0) ? false : true
         }
-        if let manufacturerData = advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data {
+        if let advertised = advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data, advertised.count >= 5 {
+            let manufacturerData = Data(advertised)
             self.manufacturerData = manufacturerData
 
             isRegistered = manufacturerData[4] & 1 > 0
@@ -467,9 +489,9 @@ internal class BleAdv {
                         }
                     }
                 case .wifiModule2:
-                    if let advData = advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data,
-                       advData.count >= 8 {
-                        let macAddress = advData.copyData[5...10].toHexString()
+                    if manufacturerData.count >= 11 {
+                        let advData = manufacturerData
+                        let macAddress = advData[5...10].toHexString()
                         deviceID = ("00000000055afd810001" + macAddress).noDashtoUUID()
                         if advData.count == 12 {
                             connectCount = advData.last
@@ -478,10 +500,12 @@ internal class BleAdv {
                         deviceID = "00000000055afd810001000000000000".noDashtoUUID()
                     }
                 case .hub3:
+                    guard manufacturerData.count >= 10 else { break }
                     isRegistered = manufacturerData[3] & 1 > 0
-                    let macAddress = manufacturerData.copyData[4...9].toHexString()
+                    let macAddress = manufacturerData[4...9].toHexString()
                     deviceID = ("00000000055afd810d00" + macAddress).noDashtoUUID()
                 case .sesame5, .sesame5Pro, .sesameTouchPro, .sesameTouch2Pro, .sesameTouch, .sesameTouch2, .bikeLock2, .bikeLock3, .openSensor, .bleConnector, .remote, .remoteNano, .sesame5US, .sesameBot2, .sesameBot3, .sesameFace, .sesameFace2, .sesameFace3, .sesameFacePro, .sesameFace2Pro, .sesame6, .sesame6Pro, .sesame6ProSlidingDoor, .sesameFaceAI, .sesameFace2AI, .sesameFaceProAI, .sesameFace2ProAI, .openSensor2, .sesameMiwa, .hub3Pro:
+                    guard manufacturerData.count >= 21 else { break }
                     deviceID = manufacturerData[5...20].toHexString().noDashtoUUID()
                 }
             }

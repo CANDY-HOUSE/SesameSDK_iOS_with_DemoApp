@@ -34,6 +34,56 @@ class CHSesameOS3: CHBaseDevice ,CHSesameOS3Publish{
         }
     }
 
+    /// Hub3 and biometric devices answer registration with their 64-byte public key first.
+    func registerWithDevicePublicKey(result: @escaping CHResult<CHEmpty>) {
+        guard deviceStatus == .readyToRegister(), let sessionToken = mSesameToken, let deviceId else {
+            result(.failure(NSError.deviceStatusNotReadyToRegister))
+            return
+        }
+        deviceStatus = .registering()
+        var timestamp: UInt32 = UInt32(Date().timeIntervalSince1970)
+        let timestampData = Data(bytes: &timestamp, count: MemoryLayout.size(ofValue: timestamp))
+        let payload = Data(appKeyPair.publicKey) + timestampData
+        commandQueue = DispatchQueue(label: deviceId.uuidString, qos: .userInitiated)
+        let productType = (self as? CHDeviceUtil)?.advertisement?.productType ?? productModel!
+        CHBleSupport.host.registerOs3(deviceId: deviceId, productType: Int(productType.rawValue), publicKey: sessionToken.toHexString()) { response in
+            switch response {
+            case .success(_):
+                self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
+                    let data = Data(response.data)
+                    guard data.count >= 64, let shared = try? self.appKeyPair.ecdh(remotePublicKey: data[0...63].bytes) else {
+                        self.deviceStatus = .readyToRegister()
+                        self.disconnect { _ in }
+                        result(.failure(NSError.registerError))
+                        return
+                    }
+                    let secret = Data(shared)[0...15]
+                    self.cipher = SesameOS3BleCipher(
+                        name: deviceId.uuidString,
+                        sessionKey: CC.CMAC.AESCMAC(sessionToken, key: secret),
+                        sessionToken: ("00\(sessionToken.toHexString())").hexStringtoData()
+                    )
+                    let key = CHDeviceKey(
+                        deviceUUID: deviceId,
+                        deviceModel: self.productModel.deviceModel(),
+                        historyTag: nil,
+                        keyIndex: "0000",
+                        secretKey: secret.toHexString(),
+                        sesame2PublicKey: sessionToken.toHexString()
+                    )
+                    self.sesame2KeyData = key
+                    self.isRegistered = true
+                    CHBleSupport.keys.save(key)
+                    self.deviceStatus = .unlocked()
+                    result(.success(CHResultStateNetworks(input: CHEmpty())))
+                }
+            case .failure(let error):
+                result(.failure(error))
+                self.disconnect { _ in }
+            }
+        }
+    }
+
 //    var delegateGatt: CHSesameOS3Publish?
     var mSesameToken: Data?
     var cipher: SesameOS3BleCipher?
@@ -87,7 +137,6 @@ class CHSesameOS3: CHBaseDevice ,CHSesameOS3Publish{
 
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         guard let value = characteristic.value else { return }
-        L.d("[ssm][say]: \(value.toHexLog())")
         if var mesg = gattRxBuffer.feed(value) {
             if mesg.type == .ciphertext {
                 if let cipher = cipher {
@@ -119,10 +168,5 @@ class CHSesameOS3: CHBaseDevice ,CHSesameOS3Publish{
         gattTxBuffer = nil
     }
 
-#if os(iOS)
-    deinit {
-        CHIoTManager.shared.unsubscribeCHDeviceShadow(self as! CHDevice)
-    }
-#endif
 
 }

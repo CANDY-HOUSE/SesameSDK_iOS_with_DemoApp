@@ -24,7 +24,7 @@ class SesameOS3BleCipher {
     }
 
     public func encrypt(_ plaintext: Data)  -> Data {
-        let ret = try! AES.CCM.encrypt(key: sessionKey, nonce: (encryptCounter.data + sessionToken).bytes,aad:[0], tagLength:4,plaintext: plaintext.bytes)
+        guard let ret = try? AES.CCM.encrypt(key: sessionKey, nonce: (encryptCounter.data + sessionToken).bytes,aad:[0], tagLength:4,plaintext: plaintext.bytes) else { return Data() }
         encryptCounter = encryptCounter + 1
         return Data(ret)
     }

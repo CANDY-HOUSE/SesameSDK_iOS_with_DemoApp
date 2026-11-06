@@ -88,30 +88,29 @@ class CHSesameOS3LockBase: CHSesameOS3, CHDeviceUtil, CHSesameLock {
     }
 
     func readHistoryCommand(_ result: @escaping (CHResult<CHEmpty>)) {
-        URLSession.isInternetReachable { isInternetReachable in
-            self.sendCommand(.init(.history, "01".hexStringtoData())) { response in
-                if response.cmdResultCode == .success {
-                    let histItem = response.data.copyData
-                    self.notifyHistoryReceived(.success(CHResultStateBLE(input: histItem)))
+        self.sendCommand(.init(.history, "01".hexStringtoData())) { response in
+            if response.cmdResultCode == .success {
+                let histItem = response.data.copyData
+                self.notifyHistoryReceived(.success(CHResultStateBLE(input: histItem)))
 
-                    guard isInternetReachable && !self.isConnectedByWM2 else { return }
+                guard histItem.count >= 4, CHBleSupport.host.isNetworkAvailable(),
+                      CHBleSupport.host.shouldUploadHistory(deviceId: self.deviceId) else { return }
 
-                    self.postProcessHistory(response.data.copyData) { res in
-                        if case .success(_) = res {
-                            let recordId = response.data.copyData[0...3].copyData
-                            self.sendCommand(.init(SesameItemCode.historyDelete, recordId)) { _ in }
-                        }
+                self.postProcessHistory(response.data.copyData) { res in
+                    if case .success(_) = res {
+                        let recordId = response.data.copyData[0...3].copyData
+                        self.sendCommand(.init(SesameItemCode.historyDelete, recordId)) { _ in }
                     }
-                } else {
-                    self.notifyHistoryReceived(.failure(self.errorFromResultCode(response.cmdResultCode)))
-                    self.isHistory = false
                 }
+            } else {
+                self.notifyHistoryReceived(.failure(self.errorFromResultCode(response.cmdResultCode)))
+                self.isHistory = false
             }
         }
     }
 
     func postProcessHistory(_ historyData: Data, _ callback: @escaping CHResult<CHEmpty>) {
-        CHAPIClient.shared.postHistory(deviceId: self.deviceId.uuidString, payload: historyData.toHexString(), t: "5") { result in
+        CHBleSupport.host.postHistory(deviceId: deviceId, historyHex: historyData.toHexString(), os3: true) { result in
             switch result {
             case .success(_):
                 callback(.success(CHResultStateNetworks(input: CHEmpty())))

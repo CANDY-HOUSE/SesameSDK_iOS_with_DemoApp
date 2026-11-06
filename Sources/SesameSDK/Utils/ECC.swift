@@ -43,48 +43,30 @@ class ECC {
 
     }
 
-    public func ecdh(remotePublicKey: [UInt8]) -> [UInt8] {
-        var error: Unmanaged<CFError>?
-
-        let secpubKey = SecKeyCreateWithData(Data(hex: "04") + Data(remotePublicKey) as CFData, [
-            kSecAttrKeyType as String: kSecAttrKeyTypeEC,
-            kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
-            SecKeyKeyExchangeParameter.requestedSize.rawValue as String: 32
-
-            ] as CFDictionary, nil)
-
-        let rollBackKey = SecKeyCreateWithData(ecckeydata as CFData, [
-            kSecAttrKeyType as String: kSecAttrKeyTypeEC,
-            SecKeyKeyExchangeParameter.requestedSize.rawValue as String: 32,
-            kSecAttrKeyClass as String: kSecAttrKeyClassPrivate,
-            ] as CFDictionary, nil)
-
-
-        let keyPairAttr: [String: Any] = [
-            kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
-            SecKeyKeyExchangeParameter.requestedSize.rawValue as String: 32,
-            kSecPrivateKeyAttrs as String: [kSecAttrIsPermanent as String: false],
-            kSecPublicKeyAttrs as String:[kSecAttrIsPermanent as String: false],
-        ]
-
-
-        if(rollBackKey == nil){
-//            CandyhouseKeychainManager.shared.keychain.clear()
-            return "0000000000000000000000000000".bytes
-        }
-        // todo tse  secpubKey!   在鑰匙錯誤下。解包異常。
-        let shared1 = SecKeyCopyKeyExchangeResult(rollBackKey!,
-                                                  SecKeyAlgorithm.ecdhKeyExchangeStandard,
-                                                  secpubKey!,
-                                                  keyPairAttr as CFDictionary,
-                                                  &error)
-
-        let bytes = [UInt8](shared1! as Data)
-
-        return bytes
-
+    enum ECDHError: Error {
+        case invalidKey, exchangeFailed
     }
-    
+
+    func ecdh(remotePublicKey: [UInt8]) throws -> [UInt8] {
+        guard let remoteKey = SecKeyCreateWithData(Data(hex: "04") + Data(remotePublicKey) as CFData, [
+            kSecAttrKeyType as String: kSecAttrKeyTypeEC,
+            kSecAttrKeyClass as String: kSecAttrKeyClassPublic
+        ] as CFDictionary, nil),
+              let privateKey = SecKeyCreateWithData(ecckeydata as CFData, [
+                kSecAttrKeyType as String: kSecAttrKeyTypeEC,
+                kSecAttrKeyClass as String: kSecAttrKeyClassPrivate
+              ] as CFDictionary, nil) else {
+            throw ECDHError.invalidKey
+        }
+        let parameters = [SecKeyKeyExchangeParameter.requestedSize.rawValue as String: 32] as CFDictionary
+        var error: Unmanaged<CFError>?
+        guard let shared = SecKeyCopyKeyExchangeResult(privateKey, .ecdhKeyExchangeStandard, remoteKey, parameters, &error) as Data?,
+              shared.count >= 16 else {
+            throw ECDHError.exchangeFailed
+        }
+        return [UInt8](shared)
+    }
+
     public func havePubKey(remotePublicKey: [UInt8]) -> Bool {
         return SecKeyCreateWithData(Data(hex: "04") + Data(remotePublicKey) as CFData, [
                 kSecAttrKeyType as String: kSecAttrKeyTypeEC,

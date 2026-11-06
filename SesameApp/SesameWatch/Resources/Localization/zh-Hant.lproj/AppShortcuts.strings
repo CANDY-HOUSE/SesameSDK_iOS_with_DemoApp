@@ -1,0 +1,6 @@
+"Unlock ${applicationName}" = "解鎖${applicationName}";
+"Unlock ${device} with ${applicationName}" = "用${applicationName}解鎖${device}";
+"Lock ${applicationName}" = "上鎖${applicationName}";
+"Lock ${device} with ${applicationName}" = "用${applicationName}上鎖${device}";
+"Toggle ${applicationName}" = "上鎖或解鎖${applicationName}";
+"Toggle ${device} with ${applicationName}" = "用${applicationName}上鎖或解鎖${device}";

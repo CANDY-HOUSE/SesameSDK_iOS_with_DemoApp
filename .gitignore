@@ -1,124 +1,17 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
-.bundle/
-
-## User settings
-xcuserdata/
-
-## Build generated
-build/ixguard
-build/*.zip
-build/DerivedData
-build/obfuscated/BCSymbolMaps
-build/obfuscated/SesameSDK.framework.zip
-DerivedData/
-vendor/
-SesameUI/git.plist
-
-## Various settings
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata/
-!xcshareddata/swiftpm/Package.resolved
-
-## Other
-*.moved-aside
-*.xccheckout
-*.xcscmblueprint
-
-## Obj-C/Swift specific
-*.hmap
-*.ipa
-*.dSYM.zip
-*.dSYM
-
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
-
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-.build/
-build/
-sdk/
-
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-Carthage/Build
-
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
-
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
-
-iXGuard/
-ixguard.log
-mapping.yml
-statistics.yml
-
-git.plist
-
-#amplify
-.graphqlconfig.yml
-amplify/
-graphql/
-schema.graphql
-schema.json
-amplify/\#current-cloud-backend
-amplify/.config/local-*
-amplify/mock-data
-amplify/backend/amplify-meta.json
-amplify/backend/awscloudformation
-build/
-dist/
-node_modules/
-aws-exports.js
-amplifyconfiguration.json
-amplify-build-config.json
-amplify-gradle-config.json
-amplifyxc.config
-
-## 開發手錶之後每次編譯都會自動更改這兩個檔案  忽略之
-SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes/SesameWatchKit Extension.xcscheme
-SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes/SesameWatchKit.xcscheme
-SesameUI/SesameUI.xcodeproj/xcshareddata/xcschemes
-
 # macOS
 .DS_Store
-**/.DS_Store
 
-## Xcode Cloud generated metadata
-SesameUI/SesameUI.xcodeproj/xcshareddata/xcodecloud/manifest.json
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
 
+# Swift Package Manager
+.build/
 .swiftpm/
 
+# Archives / symbols
+*.ipa
+*.dSYM
+*.dSYM.zip

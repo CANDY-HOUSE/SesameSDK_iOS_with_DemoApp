@@ -6,7 +6,7 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 
-public protocol CHPalmCapable: CHDevice ,CHSesameConnector, CHServerCapableHandler {
+public protocol CHPalmCapable: CHDevice ,CHSesameConnector {
     
     func palms(result: @escaping(CHResult<CHEmpty>))
     func palmDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))

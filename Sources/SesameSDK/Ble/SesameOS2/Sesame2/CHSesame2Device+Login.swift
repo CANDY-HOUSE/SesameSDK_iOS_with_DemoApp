@@ -36,7 +36,11 @@ extension CHSesame2Device {
             sessionAuth = CC.CMAC.AESCMAC(signPayload, key: userKey)
         }
 
-        let sharedSecret = Data(appKeyPair.ecdh(remotePublicKey: sesame2PublicKey.bytes))[0...15]
+        guard let secret = try? appKeyPair.ecdh(remotePublicKey: sesame2PublicKey.bytes) else {
+            disconnect { _ in }
+            return
+        }
+        let sharedSecret = Data(secret)[0...15]
         let sessionKey = CC.CMAC.AESCMAC( sessionToken, key: sharedSecret)
 
         self.cipher = Sesame2BleCipher(name: deviceId.uuidString,
@@ -65,53 +69,18 @@ extension CHSesame2Device {
 //                    self.historyCnt = UInt16(payload.historyCnt)
                     if abs(timeErrorInterval) > 3 {
                         if let fwVersion = self.fwVersion, fwVersion > 0 {
-//                            L.d("time", "sendCurrentTime")
                             self.sendCurrentTime { _ in }
-                        } else {
-                            self.requestSyncTime { _ in }
                         }
                     }
 
-                    self.deviceStatus = self.mechSetting!.isConfigured() ?  (self.mechStatus!.isInLockRange ? .locked() : .unlocked()) : .noSettings()
+                    self.deviceStatus = payload.mechSetting.isConfigured() ?  (payload.mechStatus.isInLockRange ? .locked() : .unlocked()) : .noSettings()
                 }
             } else {
 //                L.d("🚢->","Login failed")
             }
         }
     }
-    
-    func requestSyncTime( _ result: @escaping CHResult<Any>) {
-        if let sessionToken = self.cipher?.sessionToken {
-            let reqBody: NSDictionary = [
-                "st": sessionToken.base64EncodedString()
-            ]
-            
-            CHAPIClient
-                .shared
-                .API(request: .init(.post, "/device/v1/sesame2/\(deviceId.uuidString)/time", reqBody)) { response in
-                    switch response {
-                    case .success(let data):
-                        guard let data = data else {
-                            L.d("🕒", NSError.noContent)
-                            return
-                        }
-                        // todo kill this parcer
-                        guard let dict = try? data.decodeJsonDictionary() as? NSDictionary,
-                              let b64Payload = dict["r"] as? String,
-                              let payload = Data(base64Encoded: b64Payload) else {
-                            L.d("🕒Parse data failed.")
-                            return
-                        }
-                        self.sendSyncTime(payload: payload){ res in
-                            result(.success(CHResultStateBLE(input: CHEmpty())))
-                            
-                        }
-                    case .failure(let error):
-                        L.d("🕒",error)
-                    }
-                }
-        }
-    }
+
 
     func sendSyncTime(payload: Data, _ result: @escaping CHResult<Any>) {
         let cmdPayload = Sesame2Payload(.update, .time, payload)

@@ -393,6 +393,5 @@ protocol CHDeviceUtil {
     var deviceStatus: CHDeviceStatus { get set }
 //    var lastLiveTime: TimeInterval? { get set }
     var productModel: CHProductModel! { get set }
-    func goIOT()
     func login(token: String?)
 }

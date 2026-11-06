@@ -1,0 +1,16 @@
+"Toggle Sesame" = "セサミを施錠・解錠する";
+"Lock Sesame" = "セサミを施錠する";
+"Unlock Sesame" = "セサミを解錠する";
+"Sesame Device" = "セサミデバイス";
+"Device" = "デバイス";
+"Name" = "名前";
+"Toggle ${device}" = "${device}を施錠・解錠";
+"Lock ${device}" = "${device}を施錠";
+"Unlock ${device}" = "${device}を解錠";
+"Toggled %@" = "%@を操作しました";
+"Locked %@" = "%@を施錠しました";
+"Unlocked %@" = "%@を解錠しました";
+"This device does not support this action" = "このデバイスはこの操作に対応していません";
+"Unable to connect to %@" = "%@に接続できません";
+"Failed to operate %@" = "%@の操作に失敗しました";
+"Open Sesame" = "オープン セサミ";

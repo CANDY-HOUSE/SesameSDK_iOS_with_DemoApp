@@ -7,7 +7,7 @@
 //
 import Foundation
 
-public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector, CHServerCapableHandler {
+public protocol CHPassCodeCapable: CHDevice ,CHSesameConnector {
     
     func passCodes(result: @escaping(CHResult<CHEmpty>))
     func passCodeDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))

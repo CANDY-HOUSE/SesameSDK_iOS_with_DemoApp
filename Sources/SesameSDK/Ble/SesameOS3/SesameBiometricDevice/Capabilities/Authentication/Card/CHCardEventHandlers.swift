@@ -14,7 +14,7 @@ class CHCardEventHandlers {
         // 卡片更改事件
         device.registerEventHandler(for: .SSM_OS3_CARD_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
-            let card = CHSesameTouchCard(data: data)
+            guard let card = CHSesameTouchCard(data: data) else { return }
             device.notifyProtocolDelegates(CHCardDelegate.self) { delegate in
                 delegate.onCardChanged(device: device, id: card.cardID, hexName: card.cardName, type: card.cardType)
             }
@@ -53,9 +53,10 @@ class CHCardEventHandlers {
         // 卡片删除事件
         device.registerEventHandler(for: .SSM_OS3_CARD_DELETE) { [weak device] _, data in
             guard let device = device else { return }
+            let data = data.copyData
+            guard data.count >= 3, data.count >= Int(data[2]) + 3 else { return }
             device.notifyProtocolDelegates(CHCardDelegate.self) { delegate in
-                let payload = [UInt8](data)
-                let cardIdLen = Int(payload[2])
+                let cardIdLen = Int(data[2])
                 let cardIdData = data.subdata(in: 3..<(cardIdLen + 3))
                 let cardId = cardIdData.toHexString()
                 delegate.onCardDelete(device: device, id:cardId)
@@ -73,7 +74,7 @@ class CHCardEventHandlers {
             if cards.isEmpty { break }
             
             let cardData = Data(cards)
-            let card = CHSesameTouchCard(data: cardData)
+            guard let card = CHSesameTouchCard(data: cardData) else { break }
             cardDataSize = Int(1 + 1 + card.idLength + 1 + card.nameLength)
             
             notifyCardReceived(device: device, card: card)

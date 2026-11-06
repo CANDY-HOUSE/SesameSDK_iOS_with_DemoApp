@@ -1,0 +1,3 @@
+SESAME_WEB_HOST[config=Debug] = localhost
+SESAME_WEB_HOST[config=Release] = biz.candyhouse.co
+SESAME_DEV_MAC_IP[config=Debug] =

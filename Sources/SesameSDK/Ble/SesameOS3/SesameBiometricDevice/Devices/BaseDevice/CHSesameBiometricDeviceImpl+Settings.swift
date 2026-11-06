@@ -16,7 +16,8 @@ extension CHSesameBiometricDeviceImpl {
         switch itemCode {
         case .mechStatus:
             handle = true
-            mechStatus = CHSesameTouchProMechStatus.fromData(payload)!
+            guard let status = CHSesameTouchProMechStatus.fromData(payload), payload.count >= 2 else { return handle }
+            mechStatus = status
             postBatteryData(payload[0..<2].toHexString()) { res in
                 if case .success(let resp) = res {
                     self.notifyBatteryPercentageChanged(percentage: resp.data)
@@ -31,7 +32,7 @@ extension CHSesameBiometricDeviceImpl {
             var sesame2Keys = [String: String]()
             let dividedData = payload.divideArray(chunkSize: 23)
 
-            for keyData in dividedData {
+            for keyData in dividedData where keyData.count >= 23 {
                 let lockStatus = keyData[22]
                 if lockStatus != 0 {
                     if keyData[21] == 0x00 {
@@ -41,7 +42,7 @@ extension CHSesameBiometricDeviceImpl {
                         }
                     } else {
                         let ss2Ir22 = keyData[0...21]
-                        if let decodedData = Data(base64Encoded: (String(data: ss2Ir22, encoding: .utf8)! + "==")) {
+                        if let ir = String(data: ss2Ir22, encoding: .utf8), let decodedData = Data(base64Encoded: ir + "==") {
                             if let sesame2DeviceId = decodedData.toHexString().noDashtoUUID() {
                                 sesame2Keys[sesame2DeviceId.uuidString] = "04"
                             }
@@ -66,8 +67,9 @@ extension CHSesameBiometricDeviceImpl {
 
         case .REMOTE_NANO_ITEM_CODE_PUB_TRIGGER_DELAYTIME:
             handle = true
-            triggerDelaySetting = CHRemoteBaseTriggerSettings.fromData(payload)!
-            (self.delegate as? CHRemoteNanoDelegate)?.onTriggerDelaySecondReceived(device: self, setting: triggerDelaySetting!)
+            guard let setting = CHRemoteBaseTriggerSettings.fromData(payload) else { return handle }
+            triggerDelaySetting = setting
+            (self.delegate as? CHRemoteNanoDelegate)?.onTriggerDelaySecondReceived(device: self, setting: setting)
 
         case .SSM_OS3_RADAR_PARAM_PUBLISH:
             handle = true

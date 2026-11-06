@@ -1,0 +1,6 @@
+"Unlock ${applicationName}" = "Unlock ${applicationName}";
+"Unlock ${device} with ${applicationName}" = "Unlock ${device} with ${applicationName}";
+"Lock ${applicationName}" = "Lock ${applicationName}";
+"Lock ${device} with ${applicationName}" = "Lock ${device} with ${applicationName}";
+"Toggle ${applicationName}" = "Toggle ${applicationName}";
+"Toggle ${device} with ${applicationName}" = "Toggle ${device} with ${applicationName}";

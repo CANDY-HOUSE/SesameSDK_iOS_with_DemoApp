@@ -33,7 +33,11 @@ extension CHSesameBotDevice {
             sessionAuth = CC.CMAC.AESCMAC(signPayload, key: userKey)
         }
 
-        let sharedSecret = Data(appKeyPair.ecdh(remotePublicKey: sesame2PublicKey.bytes))[0...15]
+        guard let secret = try? appKeyPair.ecdh(remotePublicKey: sesame2PublicKey.bytes) else {
+            disconnect { _ in }
+            return
+        }
+        let sharedSecret = Data(secret)[0...15]
         let sessionKey = CC.CMAC.AESCMAC( sessionToken, key: sharedSecret)
 
         self.cipher = Sesame2BleCipher(name: deviceId.uuidString,

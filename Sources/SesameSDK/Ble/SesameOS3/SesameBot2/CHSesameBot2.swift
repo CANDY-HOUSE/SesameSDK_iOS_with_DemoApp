@@ -44,24 +44,23 @@ public struct CHSesamebot2Event{
 
 // 從data恢復結構體
 public extension CHSesamebot2Event {
-    static func fromData(_ buf: Data) -> CHSesamebot2Event? {
-        let startIdx = 0
-        var cursor = startIdx
+    static func fromData(_ data: Data) -> CHSesamebot2Event? {
+        let buf = data.copyData
+        var cursor = 0
+        guard buf.count >= 22, buf[0] >= 1, Int(buf[0]) <= 20 else { return nil }
         let nameLength = buf[cursor]
-        if nameLength < 1 { return nil }
         cursor += 1
-        let name = buf[safeBound: cursor ... (cursor + Int(nameLength)) - 1]!.bytes
+        let name = buf[cursor ..< cursor + Int(nameLength)].bytes
         cursor += 20
         var event = CHSesamebot2Event(nameLength: nameLength, name: name)
         let actionLength = buf[cursor]
         guard actionLength > 0 else { return event }
         var actions = [Bot2Action]()
-        while cursor < buf.count - 1 {
+        while cursor + 2 < buf.count {
             cursor += 1
-            let action = BotActionType(rawValue: buf[cursor])
+            guard let action = BotActionType(rawValue: buf[cursor]) else { return nil }
             cursor += 1
-            let time = buf[cursor]
-            actions.append(Bot2Action(action: action!, time: time))
+            actions.append(Bot2Action(action: action, time: buf[cursor]))
         }
         event.actionLength = actionLength
         event.actions = actions
@@ -92,7 +91,9 @@ public struct CHSesamebot2Status {
 }
 
 public extension CHSesamebot2Status {
-    static func fromData(_ buf: Data) -> CHSesamebot2Status? {
+    static func fromData(_ data: Data) -> CHSesamebot2Status? {
+        let buf = data.copyData
+        guard buf.count >= 2 else { return nil }
         var cursor = 0
         let curIdx = buf[cursor]
         cursor += 1
@@ -102,9 +103,10 @@ public extension CHSesamebot2Status {
         var events = [CHSesamebot2Event]()
         for _ in 0 ..< eventLength {
             // [eddy todo] 可能某个剧本的 nameLength 为0，这会导致下面的crash，打补丁至少1。【固件未按协议给数据】
-            let nameLength = max(buf[cursor], 1)
+            guard cursor + 21 <= buf.count else { return nil }
+            let nameLength = min(max(buf[cursor], 1), 20)
             cursor += 1
-            let name = buf[safeBound: cursor ... (cursor + Int(nameLength)) - 1]!.bytes
+            let name = buf[cursor ..< cursor + Int(nameLength)].bytes
             events.append(CHSesamebot2Event(nameLength: nameLength, name: name))
             cursor += 20
         }

@@ -86,6 +86,7 @@ struct CHSesameBotFICR {
 
     static func fromData(_ buf: Data) -> CHSesameBotFICR? {
         let copy = buf.copyData
+        guard copy.count > 16 else { return nil }
         let ir = copy[0...15].toHexString()
         let er = copy[16...].toHexString()
         return CHSesameBotFICR(ir: ir, er: er)

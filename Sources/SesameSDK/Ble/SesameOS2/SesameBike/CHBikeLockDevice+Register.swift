@@ -28,57 +28,38 @@ extension CHSesameBikeDevice {
     }
     
     func onRegisterStage1(er: String, result: @escaping CHResult<CHEmpty>) {
-
-        L.d("[bike][register]onRegisterStage1")
-
-        let request = CHAPICallObject(.post, "/device/v1/sesame2/\(self.deviceId.uuidString)", [
-            "s1": [
-                "ak": (Data(appKeyPair.publicKey).base64EncodedString()),
-                "n": bikeLockSessionToken!.base64EncodedString(),
-                "e": er,
-                "t": CHProductModel.bikeLock.rawValue
-            ]
-            ]
-        )
-        
-        CHAPIClient
-            .shared
-            .API(request: request) { response in
-                switch response {
-                case .success(let data):
-                    L.d("[bike][request]success")
-
-                    guard let data = data else {
-                        result(.failure(NSError.noContent))
-                        return
-                    }
-                    // todo kill this parcer with json decoder
-                    if let dict = try? data.decodeJsonDictionary() as? [String: String],
-//                        let b64PayloadTime = dict["r"],
-//                        let timePayload = Data(base64Encoded: b64PayloadTime) ,
-                        let b64Sig1 = dict["sig1"],
-                        let b64ServerToken = dict["st"],
-                        let b64SesamePublicKey = dict["pubkey"],
-                        let sig1 = Data(base64Encoded: b64Sig1),
-                        let serverToken = Data(base64Encoded: b64ServerToken),
-                        let sesamePublicKey = Data(base64Encoded: b64SesamePublicKey) {
-                        
-                        self.deviceStatus = .registering()
-                        
-                        self.onRegisterStage2(
-                            appKey: self.appKeyPair,
-                            sig1: sig1,
-                            serverToken: serverToken,
-                            sesame2PublicKey: sesamePublicKey,
-                            result: result
-                        )
-                    } else {
-                        result(.failure(NSError.parseError))
-                        self.deviceStatus = .readyToRegister()
-                    }
-                case .failure(let error):
-                    result(.failure(error))
+        guard let sessionToken = bikeLockSessionToken else {
+            result(.failure(NSError.deviceStatusNotReadyToRegister))
+            return
+        }
+        CHBleSupport.host.registerOs2(
+            deviceId: deviceId,
+            appKey: Data(appKeyPair.publicKey).base64EncodedString(),
+            nonce: sessionToken.base64EncodedString(),
+            registrationKey: er,
+            productType: String(CHProductModel.bikeLock.rawValue)
+        ) { response in
+            switch response {
+            case .success(let registration):
+                guard let sig1 = Data(base64Encoded: registration.data.signature),
+                      let serverToken = Data(base64Encoded: registration.data.token),
+                      let sesamePublicKey = Data(base64Encoded: registration.data.publicKey) else {
+                    self.deviceStatus = .readyToRegister()
+                    result(.failure(NSError.parseError))
+                    return
                 }
+                self.deviceStatus = .registering()
+                self.onRegisterStage2(
+                    appKey: self.appKeyPair,
+                    sig1: sig1,
+                    serverToken: serverToken,
+                    sesame2PublicKey: sesamePublicKey,
+                    result: result
+                )
+            case .failure(let error):
+                self.deviceStatus = .readyToRegister()
+                result(.failure(error))
+            }
         }
     }
 
@@ -89,10 +70,15 @@ extension CHSesameBikeDevice {
         sesame2PublicKey: Data,
         result: @escaping CHResult<CHEmpty>) {
 
-        let ecdhSecret = appKey.ecdh(remotePublicKey: sesame2PublicKey.bytes)
+        guard let ecdhSecret = try? appKey.ecdh(remotePublicKey: sesame2PublicKey.bytes), let sessionToken = bikeLockSessionToken else {
+            deviceStatus = .readyToRegister()
+            disconnect { _ in }
+            result(.failure(NSError.registerError))
+            return
+        }
         let ecdh_secret_pre16 = Data(bytes: ecdhSecret, count: 16)
 
-        let session_token = serverToken + bikeLockSessionToken!
+        let session_token = serverToken + sessionToken
         let reg_key = CC.CMAC.AESCMAC(session_token, key: ecdh_secret_pre16)//registerKey
         let owner_key = CC.CMAC.AESCMAC(Data("owner_key".bytes) , key: reg_key)
         let session_key = CC.CMAC.AESCMAC( session_token, key: reg_key)
@@ -126,7 +112,7 @@ extension CHSesameBikeDevice {
             L.d("[bike]註冊完畢收到設定完時間",res)
             let deviceKey = CHDeviceKey(
                 deviceUUID: self.deviceId,
-                deviceModel: self.advertisement!.productType!.deviceModel(),
+                deviceModel: self.productModel.deviceModel(),
                 historyTag: Data(),
                 keyIndex: "0000",
                 secretKey: owner_key.toHexString(),
@@ -139,8 +125,7 @@ extension CHSesameBikeDevice {
                 self.deviceStatus = .noSettings()
             }
             self.isRegistered = true
-            CHDeviceCenter.shared.appendDevice(deviceKey)
-            self.goIOT()
+            CHBleSupport.keys.save(deviceKey)
             result(.success(CHResultStateNetworks(input:CHEmpty())))
         }
     }
@@ -171,7 +156,10 @@ extension CHSesameBikeDevice {
             if response.cmdResultCode == .success {
                 L.d("[bike][register]getIRER success")
 
-                let switchFicr = CHSesameBotFICR.fromData(response.data)!
+                guard let switchFicr = CHSesameBotFICR.fromData(response.data) else {
+                    result(.failure(NSError.parseError))
+                    return
+                }
                 result(.success(.init(input: switchFicr)))
             } else {
                 result(.failure(self.errorFromResultCode(response.cmdResultCode)))

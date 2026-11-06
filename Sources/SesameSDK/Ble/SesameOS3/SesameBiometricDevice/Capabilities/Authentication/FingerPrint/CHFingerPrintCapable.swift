@@ -6,7 +6,7 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 
-public protocol CHFingerPrintCapable: CHDevice ,CHSesameConnector, CHServerCapableHandler {
+public protocol CHFingerPrintCapable: CHDevice ,CHSesameConnector {
     
     func fingerPrints(result: @escaping(CHResult<CHEmpty>))
     func fingerPrintDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))

@@ -18,8 +18,7 @@ extension CHSesameBikeDevice {
             }
         }
         
-        if notify.opCode == .response {
-            let responsePayload = Sesame2CmdResponsePayload(notify.payload)
+        if notify.opCode == .response, let responsePayload = Sesame2CmdResponsePayload(notify.payload) {
             onGattResponse(responsePayload)
         }
     }

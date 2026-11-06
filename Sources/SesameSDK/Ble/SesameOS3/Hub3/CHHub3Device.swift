@@ -30,64 +30,7 @@ class CHHub3Device: CHSesameOS3, CHHub3, CHDeviceUtil {
         super.onGattSesamePublish(payload)
         onGattHub3Publish(payload)
     }
-    
-    func goIOT() {
-#if os(iOS)
-        subscribeRelayStatus()
-        CHIoTManager.shared.subscribeWifiModule2Shadow(self) { result in
-            switch result {
-            case .success(let result):
-                self.wifiModule2ShadowCompleteHandler(result: result.data)
-            case .failure(let error):
-                L.d(error)
-            }
-        }
-#endif
-    }
 
-    /// 侦听繼電器（relay）開關狀態變化
-    private func subscribeRelayStatus() {
-#if os(iOS)
-        guard productModel == .hub3Pro else { return }
-        guard let deviceId = deviceId else { return }
-        let topic = "up/iot/device/\(deviceId.uuidString.uppercased())/cmd"
-        CHIoTManager.shared.subscribeTopic(topic, device: self) { [weak self] data in
-            guard let self = self else { return }
-            do {
-                guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                      let op = json["op"] as? Int,
-                      op == Int(SesameItemCode.HUB3_ITEM_CODE_RELAY_SWITCH.rawValue),
-                      let payload = json["payload"] as? [String: Any],
-                      let status = payload["status"] as? Int, status != -1 else {
-                    return
-                }
-                self.isRelayOn = (status == 1)
-                self.notifyMechStatusChanged()
-            } catch {
-                L.d("[hub3][subscribeRelayStatus] parse error", error)
-            }
-        }
-#endif
-    }
-    
-    private func wifiModule2ShadowCompleteHandler(result: WifiModuleShadow) {
-        let networkStatus = (self.mechStatus as? CHWifiModule2NetworkStatus)
-        self.mechStatus = CHWifiModule2NetworkStatus(isAPWork: networkStatus?.isAPWork,
-                                                        isNetwork: networkStatus?.isNetwork,
-                                                        isIoTWork: result.isConnected,
-                                                        isBindingAPWork: false,
-                                                        isConnectingNetwork: false,
-                                                        isConnectingIoT: false)
-    }
-    
-    deinit {
-#if os(iOS)
-        CHIoTManager.shared.unsubscribeWifiModule2Shadow(self)
-        if productModel == .hub3Pro, let deviceId = deviceId {
-            CHIoTManager.shared.unsubscribeTopic("up/iot/device/\(deviceId.uuidString.uppercased())/cmd")
-        }
-#endif
-    }
 }
 
 // register
@@ -107,54 +50,8 @@ extension CHHub3Device {
         }
     }
     
-    public func register(result: @escaping CHResult<CHEmpty>)  {
-        if deviceStatus != .readyToRegister() {
-            result(.failure(NSError.deviceStatusNotReadyToRegister))
-            return
-        }
-        deviceStatus = .registering()
-
-        let date = Date()
-        var timestamp: UInt32 = UInt32(date.timeIntervalSince1970)
-        let timestampData = Data(bytes: &timestamp,count: MemoryLayout.size(ofValue: timestamp))
-        let payload = Data(appKeyPair.publicKey)+timestampData
-        self.commandQueue = DispatchQueue(label:deviceId.uuidString, qos: .userInitiated)
-
-        CHAPIClient.shared.registerDevice(
-            deviceId: self.deviceId.uuidString,
-            productType: Int(advertisement!.productType!.rawValue),
-            publicKey: self.mSesameToken!.toHexString()
-        ) { response in
-            switch response {
-            case .success(_):
-                self.sendCommand(.init(.registration, payload), isCipher: .plaintext) { response in
-                    let ecdhSecretPre16 = Data(self.appKeyPair.ecdh(remotePublicKey: response.data[0...63].bytes))[0...15]
-                    let sessionAuth = CC.CMAC.AESCMAC(self.mSesameToken!, key: ecdhSecretPre16)
-
-                    self.cipher = SesameOS3BleCipher(name: self.deviceId.uuidString,
-                                         sessionKey: sessionAuth,
-                                                       sessionToken: ("00\(self.mSesameToken!.toHexString())").hexStringtoData())
-
-                    self.sesame2KeyData = CHDeviceKey(// 建立設備
-                        deviceUUID: self.deviceId,
-                        deviceModel: self.productModel.deviceModel(),
-                        historyTag: nil,
-                        keyIndex: "0000",
-                        secretKey: ecdhSecretPre16.toHexString(),
-                        sesame2PublicKey: self.mSesameToken!.toHexString()
-                    )
-                    self.isRegistered = true // 設定為已註冊
-                    self.goIOT()
-                    CHDeviceCenter.shared.appendDevice(self.sesame2KeyData!) // 存到SDK層的DB中
-                    self.deviceStatus = .unlocked()
-                    result(.success(CHResultStateNetworks(input: CHEmpty())))
-                }
-            case .failure(let error):
-                L.d("[ss5]register error", error)
-                result(.failure(error))
-                self.disconnect(){_ in}
-            }
-        }
+    public func register(result: @escaping CHResult<CHEmpty>) {
+        registerWithDevicePublicKey(result: result)
     }
 }
 
@@ -184,7 +81,6 @@ extension CHHub3Device {
     
     func setWifiSSID(_ ssid: String, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
-        L.d("[hub3][setWifiSSID]", ssid)
         sendCommand(.init(SesameItemCode.HUB3_UPDATE_WIFI_SSID, ssid.data(using: .utf8))) { payload in
             if payload.cmdResultCode == .success {
                 result(.success(CHResultStateBLE(input:CHEmpty())))
@@ -196,7 +92,6 @@ extension CHHub3Device {
     
     func setWifiPassword(_ password: String, result: @escaping (CHResult<CHEmpty>)) {
         if (!self.isBleAvailable(result)) { return }
-        L.d("[hub3][setWifiPassword]", password)
         sendCommand(.init(SesameItemCode.HUB3_ITEM_CODE_WIFI_PASSWORD, password.data(using: .utf8))) { payload in
             if payload.cmdResultCode == .success {
                 result(.success(CHResultStateBLE(input:CHEmpty())))
@@ -205,10 +100,5 @@ extension CHHub3Device {
             }
         }
     }
-    
 
-    /// 觸發繼電器開關（Hub3 Pro）
-    func toggle(historytag: Data?, result: @escaping CHResult<CHEmpty>) {
-        CHAPIClient.shared.updateHub3ProRelay(self, result: result)
-    }
 }

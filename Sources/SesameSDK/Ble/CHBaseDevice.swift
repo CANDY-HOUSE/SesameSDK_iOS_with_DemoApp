@@ -110,12 +110,10 @@ class CHBaseDevice: NSObject, CBPeripheralDelegate {
 
         if let secretKey = sesame2KeyData?.secretKey, String(secretKey.substring(to: 16)) == "0000000000000000" {
             self.isGuestKey = true
-            URLSession.isInternetReachable { isAvailable in
-                if isAvailable == false {
-                    self.deviceStatus = .waitingForAuth()
-                } else {
-                    self.connect(peripheral, result: result)
-                }
+            if CHBleSupport.host.isNetworkAvailable() {
+                connect(peripheral, result: result)
+            } else {
+                deviceStatus = .waitingForAuth()
             }
         } else {
             self.isGuestKey = false
@@ -139,13 +137,9 @@ class CHBaseDevice: NSObject, CBPeripheralDelegate {
         }
     }
     public func dropKey(result: @escaping (CHResult<CHEmpty>))  {
-        L.d("dropKey!!!")
-#if os(iOS)
-        CHIoTManager.shared.unsubscribeDevice(deviceId)
-#endif
         delegate = nil
         multicastDelegate.removeAll()
-        CHDeviceCenter.shared.deleteDevice(self.deviceId)
+        if let deviceId { CHBleSupport.keys.delete(deviceId: deviceId) }
         deviceStatus = .noBleSignal()
         disconnect(){res in}
         sesame2KeyData = nil
@@ -160,12 +154,8 @@ class CHBaseDevice: NSObject, CBPeripheralDelegate {
         deviceId = advertisement.deviceID
         productModel = advertisement.productType!
         txPowerLevel = advertisement.txPowerLevel 
-        if deviceStatus == .waitingForAuth() {
-            URLSession.isInternetReachable { isAvailable in
-                if isAvailable == true {
-                    self.deviceStatus = .receivedBle()
-                }
-            }
+        if deviceStatus == .waitingForAuth(), CHBleSupport.host.isNetworkAvailable() {
+            deviceStatus = .receivedBle()
         }
         if deviceStatus == .noBleSignal() {
             deviceStatus = .receivedBle()

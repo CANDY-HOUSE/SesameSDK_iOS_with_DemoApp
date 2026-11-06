@@ -13,7 +13,7 @@ class CHPalmEventHandlers {
     public  static func registerHandlers(for device: CHSesameBiometricDeviceImpl) {
         device.registerEventHandler(for: .SSM_OS3_PALM_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
-            let card = CHSesameTouchCard(data: data)
+            guard let card = CHSesameTouchCard(data: data) else { return }
             device.notifyProtocolDelegates(CHPalmDelegate.self) { delegate in
                 delegate.onPalmChanged(device: device, id: card.cardID, name: card.cardName, type: card.cardType)
             }
@@ -67,7 +67,7 @@ class CHPalmEventHandlers {
             if cards.isEmpty { break }
             
             let cardData = Data(cards)
-            let card = CHSesameTouchCard(data: cardData)
+            guard let card = CHSesameTouchCard(data: cardData) else { break }
             cardDataSize = Int(1 + 1 + card.idLength + 1 + card.nameLength)
             
             notifyCardReceived(device: device, card: card)

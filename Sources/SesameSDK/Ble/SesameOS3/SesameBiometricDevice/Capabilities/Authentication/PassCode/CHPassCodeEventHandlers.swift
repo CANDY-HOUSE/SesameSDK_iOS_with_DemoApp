@@ -14,7 +14,7 @@ class CHPassCodeEventHandlers {
         // 密码更改事件
         device.registerEventHandler(for: .SSM_OS3_PASSCODE_CHANGE) { [weak device] _, data in
             guard let device = device else { return }
-            let card = CHSesameTouchCard(data: data)
+            guard let card = CHSesameTouchCard(data: data) else { return }
             device.notifyProtocolDelegates(CHPassCodeDelegate.self) { delegate in
                 delegate.onPassCodeChanged(device: device, id: card.cardID, hexName: card.cardName, type: card.cardType)
             }
@@ -53,9 +53,10 @@ class CHPassCodeEventHandlers {
         // 密码删除事件
         device.registerEventHandler(for: .SSM_OS3_PASSCODE_DELETE) { [weak device] _, data in
             guard let device = device else { return }
+            let data = data.copyData
+            guard data.count >= 3, data.count >= Int(data[2]) + 3 else { return }
             device.notifyProtocolDelegates(CHPassCodeDelegate.self) { delegate in
-                let payload = [UInt8](data)
-                let passCodeIdLen = Int(payload[2])
+                let passCodeIdLen = Int(data[2])
                 let passCodeIdData = data.subdata(in: 3..<(passCodeIdLen + 3))
                 let passCodeId = passCodeIdData.toHexString()
                 delegate.onPassCodeDelete(device: device, id:passCodeId)
@@ -73,7 +74,7 @@ class CHPassCodeEventHandlers {
             if cards.isEmpty { break }
             
             let cardData = Data(cards)
-            let card = CHSesameTouchCard(data: cardData)
+            guard let card = CHSesameTouchCard(data: cardData) else { break }
             cardDataSize = Int(1 + 1 + card.idLength + 1 + card.nameLength)
             
             notifyCardReceived(device: device, card: card)

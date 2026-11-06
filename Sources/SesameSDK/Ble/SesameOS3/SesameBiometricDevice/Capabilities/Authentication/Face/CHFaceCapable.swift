@@ -6,7 +6,7 @@
 //  Copyright © 2025 CandyHouse. All rights reserved.
 //
 
-public protocol CHFaceCapable: CHDevice, CHServerCapableHandler {
+public protocol CHFaceCapable: CHDevice {
     
     func faces(result: @escaping(CHResult<CHEmpty>))
     func faceDelete(ID: String, result  : @escaping(CHResult<CHEmpty>))

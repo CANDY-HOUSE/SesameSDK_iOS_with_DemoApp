@@ -19,9 +19,10 @@ class CHSesame5Device: CHSesameOS3LockBase, CHSesame5 {
         
         switch itemCode {
         case .mechStatus:
-            mechStatus = Sesame5MechStatus.fromData(data)!
+            guard let status = Sesame5MechStatus.fromData(data) else { return }
+            mechStatus = status
             self.readHistoryCommand { _ in }
-            self.deviceStatus = mechStatus!.isInLockRange ? .locked() : .unlocked()
+            self.deviceStatus = status.isInLockRange ? .locked() : .unlocked()
             postBatteryData(data[0..<2].toHexString()) { res in
                 if case .success(let resp) = res {
                     self.notifyBatteryPercentageChanged(percentage: resp.data)
@@ -29,10 +30,10 @@ class CHSesame5Device: CHSesameOS3LockBase, CHSesame5 {
             }
             
         case .mechSetting:
-            mechSetting = CHSesame5MechSettings.fromData(data)!
+            mechSetting = CHSesame5MechSettings.fromData(data) ?? mechSetting
             
         case .OPS_CONTROL:
-            opsSetting = CHSesame5OpsSettings.fromData(data)!
+            opsSetting = CHSesame5OpsSettings.fromData(data) ?? opsSetting
             
         default:
             L.d("!![ss5][pub][\(itemCode.rawValue)]")
@@ -53,13 +54,7 @@ extension CHSesame5Device {
     ///   - 1. 设备有影子、未登录，IoT开关锁toggle  2. 如果是在上锁的范围，则开锁   否则，关锁
     ///
     public func toggle(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
-        if deviceShadowStatus != nil,
-           deviceStatus.loginStatus == .unlogined {
-            CHIoTManager.shared.sendCommandToWM2(.toggle, historytag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
+        if !isBleAvailable(result) { return }
         (mechStatus?.isInLockRange == true) ? unlock(historytag:historytag,result: result) : lock(historytag:historytag,result: result)
     }
     
@@ -70,12 +65,7 @@ extension CHSesame5Device {
     ///   - 1. 设备有影子、未登录，IoT开锁  2. 蓝牙未启用，未登录，IoT开锁  3.  蓝牙启用，直接开关锁
     ///
     public func unlock(historytag: Data?, result: @escaping (CHResult<CHEmpty>)) {
-        if ((deviceShadowStatus != nil && deviceStatus.loginStatus == .unlogined) || !self.isBleAvailable()) {
-            CHIoTManager.shared.sendCommandToWM2(.unlock, historytag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
+        if !isBleAvailable(result) { return }
         sendCommand(.init(.unlock,historytag)) { responsePayload in
             if responsePayload.cmdResultCode == .success {
                 result(.success(CHResultStateBLE(input: CHEmpty())))
@@ -92,12 +82,7 @@ extension CHSesame5Device {
     ///   - 逻辑同上 unlock
     ///
     public func lock(historytag: Data? = Data(), result: @escaping (CHResult<CHEmpty>)) {
-        if ((deviceShadowStatus != nil && deviceStatus.loginStatus == .unlogined) || !self.isBleAvailable()) {
-            CHIoTManager.shared.sendCommandToWM2(.lock, historytag ?? Data(), self) { _ in
-                result(.success(CHResultStateNetworks(input: CHEmpty())))
-            }
-            return
-        }
+        if !isBleAvailable(result) { return }
         sendCommand(.init(.lock,historytag ?? Data())) { responsePayload in
             if responsePayload.cmdResultCode == .success {
                 result(.success(CHResultStateBLE(input: CHEmpty())))
@@ -191,6 +176,6 @@ struct Sesame5MechStatus: CHSesameProtocolMechStatus {
     var isCritical: Bool? { return flags & 8 > 0 }
     
     static func fromData(_ buf: Data) -> Sesame5MechStatus? {
-        return  buf.withUnsafeBytes({ $0.load(as: self) })
+        return buf.loadStruct(self)
     }
 }

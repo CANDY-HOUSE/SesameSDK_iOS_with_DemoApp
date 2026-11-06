@@ -65,8 +65,7 @@ public struct CHSesame5MechSettings {
   public var autoLockSecond: Int16
 
     static func fromData(_ buf: Data) -> CHSesame5MechSettings? {
-        let content = buf.copyData
-        return  content.withUnsafeBytes({ $0.load(as: self) })
+        return buf.loadStruct(self)
 //        return to(buf)
     }
     
@@ -79,8 +78,7 @@ public struct CHSesame5OpsSettings {
     public var opsLockSecond: UInt16 //android的toShort:前兩個byte
     
     static func fromData(_ buf: Data) -> CHSesame5OpsSettings? {
-        let content = buf.copyData
-        return content.withUnsafeBytes({ $0.load(as: self) })
+        return buf.loadStruct(self)
     }
 }
 
@@ -101,7 +99,7 @@ struct CHSesame5LockPositionConfiguration {
 struct Sesame5Time {
     let time: UInt32
 
-    static func fromData(_ buf: Data) -> Sesame5Time {
-        return  buf.withUnsafeBytes({ $0.load(as: self) })
+    static func fromData(_ buf: Data) -> Sesame5Time? {
+        return buf.loadStruct(self)
     }
 }

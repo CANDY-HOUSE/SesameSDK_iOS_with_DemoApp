@@ -19,6 +19,6 @@ struct CHSesameTouchProMechStatus: CHSesameProtocolMechStatus {
     var isBatteryCritical: Bool { return false}
 
     static func fromData(_ buf: Data) -> CHSesameTouchProMechStatus? {
-        return  buf.withUnsafeBytes({ $0.load(as: self) })
+        return buf.loadStruct(self)
     }
 }

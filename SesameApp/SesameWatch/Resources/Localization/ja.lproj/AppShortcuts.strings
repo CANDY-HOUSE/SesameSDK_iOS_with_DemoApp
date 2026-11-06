@@ -1,0 +1,6 @@
+"Unlock ${applicationName}" = "${applicationName}を解錠";
+"Unlock ${device} with ${applicationName}" = "${applicationName}で${device}を解錠";
+"Lock ${applicationName}" = "${applicationName}を施錠";
+"Lock ${device} with ${applicationName}" = "${applicationName}で${device}を施錠";
+"Toggle ${applicationName}" = "${applicationName}を施錠・解錠";
+"Toggle ${device} with ${applicationName}" = "${applicationName}で${device}を施錠・解錠";

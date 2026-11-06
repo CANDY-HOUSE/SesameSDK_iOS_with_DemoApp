@@ -13,12 +13,16 @@ public protocol CHWifiModule2Delegate: CHDeviceStatusDelegate,CHSesameConnectorD
     func onAPSettingChanged(device: CHWifiModule2, settings: CHWifiModule2MechSettings)
     func onOTAProgress(device: CHWifiModule2, percent: UInt8)
     func onScanWifiSID(device: CHWifiModule2, ssid: CHSSID)
+    func onWifiScanStarted(device: CHWifiModule2)
+    func onWifiScanFinished(device: CHWifiModule2)
 }
 
 public extension CHWifiModule2Delegate {
     func onAPSettingChanged(device: CHWifiModule2, settings: CHWifiModule2MechSettings){}
     func onOTAProgress(device: CHWifiModule2, percent: UInt8) {}
     func onScanWifiSID(device: CHWifiModule2, ssid: CHSSID) {}
+    func onWifiScanStarted(device: CHWifiModule2) {}
+    func onWifiScanFinished(device: CHWifiModule2) {}
 }
 
 public protocol CHWifiModule2: CHDevice,CHSesameConnector {
