@@ -16,7 +16,7 @@ flowchart LR
   Biz <-->|WebSocket| AWS[Cloud services]
 ```
 
-> Migration status: everything the Android Web App offers is implemented (BLE list, registration, lock commands, per-model settings, credentials, firmware update, push, auto unlock, internal test). The SDK is BLE only; cloud steps go to Biz through `CHBleHost`. Siri and Shortcuts run as App Intents in the main app (legacy phrases still work) and fall back to the gateway through `SesameGateway` (`SesameApp/SesameGateway`) when Bluetooth is unavailable.
+> iOS-only features: Siri and Shortcuts (App Intents, legacy phrases still work) and Apple Watch (`SesameWatch`). Both run without the WebView and fall back to the gateway through `SesameGateway` when Bluetooth is unavailable.
 
 - [CANDY HOUSE official website](https://jp.candyhouse.co/)
 - [App Store](https://apps.apple.com/app/id1532692301/)
@@ -129,6 +129,8 @@ if let device = CHBluetoothCenter.shared.restoreDevice(savedKey) {
 | `Sources/SesameSDK/Ble/SesameOS3` | Currently maintained OS3 implementations |
 | `SesameApp/SesameApp` | iOS app: WKWebView host (`App`), Bridge (`Bridge`), BLE and settings (`Ble`), keys and legacy data (`Data`), push (`Push`), auto unlock (`AutoUnlock`), external page and startup cover (`UI`) |
 | `SesameApp/NotificationService` | Notification Service Extension for push image attachments |
+| `SesameApp/SesameWatch` | Apple Watch app |
+| `SesameApp/SesameGateway` | Gateway REST client for Siri and Watch (Swift Package) |
 | `SesameApp/Config` | Biz page domain (xcconfig) |
 
 ## OS3 device architecture
@@ -161,8 +163,8 @@ The product range is defined by `CHProductModel` and grouped by the actual Devic
 | `CHSesameBike2Device` | Sesame Bike 2 |
 | `CHSesameBike3Device` | Sesame Bike 3 (with fingerprint capability) |
 | `CHSesameBot2Device` | Sesame Bot 2, Sesame Bot 3 |
-| `CHSesameBiometricDeviceImpl` | Open Sensor 1/2, Remote, Remote Nano, Sesame Touch 1/1 Pro/2/2 Pro, Sesame Face 1/1 Pro/1 AI/1 Pro AI/2/2 Pro/2 AI/2 Pro AI |
-| `CHHub3Device` | Hub 3, Hub 3 LTE |
+| `CHSesameBiometricDeviceImpl` | Open Sensor 1/2, Remote, Remote Nano, Sesame Touch 1/1 Pro/2/2 Pro, Sesame Face 1/1 Pro/1 AI/1 Pro AI/2/2 Pro/2 AI/2 Pro AI/3 |
+| `CHHub3Device` | Hub 3, Hub 3 Pro |
 
 > No longer maintained: Sesame 3 (`sesame2`), WiFi Module 2 (`wifiModule2`), Sesame Bot 1 (`sesameBot`), Sesame Bike 1 (`bikeLock`), and Sesame 4 (`sesame4`). SesameOS2 implementations are also outside the current maintenance scope.
 

@@ -16,7 +16,7 @@ flowchart LR
   Biz <-->|WebSocket| AWS[Cloud services]
 ```
 
-> 移行状況：Android Web App と同じ機能（BLE 一覧・登録・開閉、各機種の設定・認証情報・ファームウェア更新、プッシュ、自動解錠、内部テスト）を実装済みです。SDK は BLE のみとなり、クラウド処理は `CHBleHost` 経由で Biz に委ねます。Siri／ショートカットはメイン App 内の App Intents に移行済み（旧フレーズ互換）で、Bluetooth が使えない場合は `SesameGateway`（`SesameApp/SesameGateway`）経由でゲートウェイから操作します。
+> iOS 固有機能：Siri／ショートカット（App Intents、旧フレーズ互換）、Apple Watch（`SesameWatch`）。いずれも WebView を介さず、Bluetooth が使えない場合は `SesameGateway` 経由でゲートウェイから操作します。
 
 - [CANDY HOUSE 公式サイト](https://jp.candyhouse.co/)
 - [App Store](https://apps.apple.com/app/id1532692301/)
@@ -129,6 +129,8 @@ if let device = CHBluetoothCenter.shared.restoreDevice(savedKey) {
 | `Sources/SesameSDK/Ble/SesameOS3` | 現在メンテナンスしている OS3 実装 |
 | `SesameApp/SesameApp` | iOS アプリ：WKWebView ホスト（`App`）、Bridge（`Bridge`）、BLE と設定（`Ble`）、鍵と旧データ（`Data`）、プッシュ（`Push`）、自動解錠（`AutoUnlock`）、外部ページ・起動カバー（`UI`） |
 | `SesameApp/NotificationService` | プッシュ画像添付の Notification Service Extension |
+| `SesameApp/SesameWatch` | Apple Watch アプリ |
+| `SesameApp/SesameGateway` | Siri・Watch 用ゲートウェイ REST クライアント（Swift Package） |
 | `SesameApp/Config` | Biz ページのドメイン（xcconfig） |
 
 ## OS3 デバイス構成
@@ -161,8 +163,8 @@ flowchart TB
 | `CHSesameBike2Device` | Sesame Bike 2 |
 | `CHSesameBike3Device` | Sesame Bike 3（指紋機能） |
 | `CHSesameBot2Device` | Sesame Bot 2、Sesame Bot 3 |
-| `CHSesameBiometricDeviceImpl` | Open Sensor 1/2、Remote、Remote Nano、Sesame Touch 1/1 Pro/2/2 Pro、Sesame Face 1/1 Pro/1 AI/1 Pro AI/2/2 Pro/2 AI/2 Pro AI |
-| `CHHub3Device` | Hub 3、Hub 3 LTE |
+| `CHSesameBiometricDeviceImpl` | Open Sensor 1/2、Remote、Remote Nano、Sesame Touch 1/1 Pro/2/2 Pro、Sesame Face 1/1 Pro/1 AI/1 Pro AI/2/2 Pro/2 AI/2 Pro AI/3 |
+| `CHHub3Device` | Hub 3、Hub 3 Pro |
 
 > メンテナンス終了：Sesame 3（`sesame2`）、WiFi Module 2（`wifiModule2`）、Sesame Bot 1（`sesameBot`）、Sesame Bike 1（`bikeLock`）、Sesame 4（`sesame4`）。SesameOS2 実装もメンテナンス対象外です。
 

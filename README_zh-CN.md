@@ -16,7 +16,7 @@ flowchart LR
   Biz <-->|WebSocket| AWS[Cloud services]
 ```
 
-> 迁移状态：已实现与 Android Web App 相同的功能（BLE 列表、注册、开关锁，各机型设置、凭证、固件升级，推送、自动解锁、内测页）。SDK 只保留 BLE，云端步骤经 `CHBleHost` 交给 Biz。Siri／快捷指令已改为主 App 内的 App Intents（旧短语兼容），蓝牙不可用时经 `SesameGateway`（`SesameApp/SesameGateway`）走网关。
+> iOS 专属功能：Siri／快捷指令（App Intents，兼容旧短语）、Apple Watch（`SesameWatch`）。二者不经 WebView，蓝牙不可用时经 `SesameGateway` 走网关。
 
 - [CANDY HOUSE 官网](https://jp.candyhouse.co/)
 - [App Store](https://apps.apple.com/app/id1532692301/)
@@ -129,6 +129,8 @@ if let device = CHBluetoothCenter.shared.restoreDevice(savedKey) {
 | `Sources/SesameSDK/Ble/SesameOS3` | 当前维护的 OS3 实现 |
 | `SesameApp/SesameApp` | iOS App：WKWebView 宿主（`App`）、Bridge（`Bridge`）、BLE 与设置（`Ble`）、钥匙与旧数据（`Data`）、推送（`Push`）、自动解锁（`AutoUnlock`）、外部网页与启动遮罩（`UI`） |
 | `SesameApp/NotificationService` | 推送图片附件的 Notification Service 扩展 |
+| `SesameApp/SesameWatch` | Apple Watch App |
+| `SesameApp/SesameGateway` | Siri、Watch 使用的网关 REST 客户端（Swift Package） |
 | `SesameApp/Config` | Biz 页面域名（xcconfig） |
 
 ## OS3 设备架构
@@ -161,8 +163,8 @@ flowchart TB
 | `CHSesameBike2Device` | Sesame Bike 2 |
 | `CHSesameBike3Device` | Sesame Bike 3（指纹能力） |
 | `CHSesameBot2Device` | Sesame Bot 2、Sesame Bot 3 |
-| `CHSesameBiometricDeviceImpl` | Open Sensor 1/2、Remote、Remote Nano、Sesame Touch 1/1 Pro/2/2 Pro、Sesame Face 1/1 Pro/1 AI/1 Pro AI/2/2 Pro/2 AI/2 Pro AI |
-| `CHHub3Device` | Hub 3、Hub 3 LTE |
+| `CHSesameBiometricDeviceImpl` | Open Sensor 1/2、Remote、Remote Nano、Sesame Touch 1/1 Pro/2/2 Pro、Sesame Face 1/1 Pro/1 AI/1 Pro AI/2/2 Pro/2 AI/2 Pro AI/3 |
+| `CHHub3Device` | Hub 3、Hub 3 Pro |
 
 > 不再维护：Sesame 3（`sesame2`）、WiFi Module 2（`wifiModule2`）、Sesame Bot 1（`sesameBot`）、Sesame Bike 1（`bikeLock`）、Sesame 4（`sesame4`）。SesameOS2 实现同样不在维护范围内。
 
