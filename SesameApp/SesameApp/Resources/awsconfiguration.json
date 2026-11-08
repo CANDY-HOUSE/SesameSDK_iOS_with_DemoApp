@@ -1,0 +1,26 @@
+{
+  "Version": "1.0",
+  "CredentialsProvider": {
+    "CognitoIdentity": {
+      "Default": {
+        "PoolId": "ap-northeast-1:0a1820f1-dbb3-4bca-9227-2a92f6abf0ae",
+        "Region": "ap-northeast-1"
+      }
+    }
+  },
+  "IdentityManager": {
+    "Default": {}
+  },
+  "CognitoUserPool": {
+    "Default": {
+      "AppClientId": "6ialca0p8u0lsgvbmvsljfm305",
+      "PoolId": "ap-northeast-1_bY2byhlCa",
+      "Region": "ap-northeast-1"
+    }
+  },
+  "Auth": {
+   "Default": {
+        "authenticationFlowType": "CUSTOM_AUTH"
+    }
+  }
+}

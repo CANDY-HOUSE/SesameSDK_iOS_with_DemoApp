@@ -1,0 +1,6 @@
+{
+  "region": "ap-northeast-1",
+  "apiKey": "iGgXj9GorS4PeH90mAysg1l7kdvoIPxM25mPFl3k",
+  "debugEndpoint": "https://app.candyhouse.co/dev",
+  "releaseEndpoint": "https://app.candyhouse.co/prod"
+}
