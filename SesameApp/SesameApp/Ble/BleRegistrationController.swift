@@ -50,7 +50,8 @@ final class BleRegistrationController: NSObject {
 
     private func seenThisSession(_ device: CHDevice) -> Bool {
         Self.connectedStatuses.contains(device.deviceStatus) ||
-            (CHBluetoothCenter.shared.lastAdvertisedAt(device.deviceId) ?? .distantPast) >= sessionStartedAt
+            // 勿用 Date >=：iOS 27.2 系统缺该符号会崩溃
+            (CHBluetoothCenter.shared.lastAdvertisedAt(device.deviceId) ?? .distantPast).timeIntervalSince(sessionStartedAt) >= 0
     }
 
     private func publishDevices() {
