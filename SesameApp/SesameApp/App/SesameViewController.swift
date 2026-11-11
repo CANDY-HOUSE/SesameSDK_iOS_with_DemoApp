@@ -1,4 +1,5 @@
 import CoreBluetooth
+import Network
 import SesameSDK
 import UIKit
 import WebKit
@@ -17,6 +18,7 @@ final class SesameViewController: UIViewController, WKNavigationDelegate, WKUIDe
     private var bleRequested = false
     private var webReady = false
     private var discovering = false
+    private let network = NWPathMonitor()
 #if DEBUG
     private var devServerForwarder: DevServerForwarder?
 #endif
@@ -27,14 +29,11 @@ final class SesameViewController: UIViewController, WKNavigationDelegate, WKUIDe
         connectBridge()
         createWebView()
         startupCover = StartupCover(in: view) { [weak self] in
-            guard let self else { return }
-            self.startupDocumentFailed = false
-            self.bridge.reset()
-            self.web.stopLoading()
-            self.web.load(URLRequest(url: AppConfig.entry))
+            self?.reloadEntry()
         }
         addBackGesture()
         observeLifecycle()
+        retryStartupWhenOnline()
 #if DEBUG
         if let macIP = AppConfig.devMacIP {
             devServerForwarder = DevServerForwarder(macIP: macIP) { [weak self] in
@@ -48,6 +47,26 @@ final class SesameViewController: UIViewController, WKNavigationDelegate, WKUIDe
 
     deinit {
         observers.forEach(NotificationCenter.default.removeObserver)
+        network.cancel()
+    }
+
+    private func reloadEntry() {
+        startupDocumentFailed = false
+        bridge.reset()
+        web.stopLoading()
+        web.load(URLRequest(url: AppConfig.entry))
+    }
+
+    // On a fresh install the entry load fails while the system network permission prompt is still open.
+    private func retryStartupWhenOnline() {
+        network.pathUpdateHandler = { [weak self] path in
+            guard path.status == .satisfied else { return }
+            DispatchQueue.main.async {
+                guard let self, self.startupCover.active, self.startupDocumentFailed else { return }
+                self.reloadEntry()
+            }
+        }
+        network.start(queue: DispatchQueue(label: "SesameViewController.network"))
     }
 
     private func connectBridge() {
