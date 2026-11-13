@@ -48,9 +48,10 @@ final class BleController: NSObject {
         var keys: [CHDeviceKey] = []
         for row in rows {
             guard let id = (row["deviceUUID"] as? String).flatMap(UUID.init(uuidString:)),
-                  let model = row["deviceModel"] as? String, CHProductModel.deviceModeulFromString(model) != nil,
+                  let model = row["deviceModel"] as? String,
                   let keyIndex = row["keyIndex"] as? String, let secretKey = row["secretKey"] as? String,
                   let publicKey = row["sesame2PublicKey"] as? String else { return }
+            guard CHProductModel.deviceModeulFromString(model) != nil else { continue }
             keys.append(CHDeviceKey(deviceUUID: id, deviceModel: model, historyTag: nil, keyIndex: keyIndex, secretKey: secretKey, sesame2PublicKey: publicKey))
         }
         guard Set(keys.map(\.deviceUUID)).count == keys.count else { return }
