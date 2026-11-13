@@ -218,7 +218,7 @@ final class BleController: NSObject {
     }
 
     private func publishSnapshot() {
-        let bluetoothOff = CHBluetoothCenter.shared.scanning == .bleClose()
+        let bluetoothOff = CHBluetoothCenter.shared.scanning.bleStatus == .closed
         let rows: [[String: Any]] = order.compactMap { id in
             guard let device = devices[id] else { return nil }
             let connected = device.deviceStatus.loginStatus == .logined

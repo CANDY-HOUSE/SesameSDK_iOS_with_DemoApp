@@ -18,11 +18,13 @@ final class BleRegistrationController: NSObject {
         .bleConnecting(), .waitingGatt(), .bleLogining(), .readyToRegister(), .waitingForAuth(), .registering()
     ]
 
-    private var bluetoothOff: Bool { CHBluetoothCenter.shared.scanning == .bleClose() }
+    private var bluetoothOff: Bool { CHBluetoothCenter.shared.scanning.bleStatus == .closed }
 
     func start() {
         guard registering == nil else { return }
         let restarting = active
+        // 蓝牙关闭时重启会清空列表且收不到新广播；与 Android 一致，保留已列出的设备
+        if restarting && bluetoothOff { return publishDevices() }
         sessionStartedAt = Date()
         active = true
         CHBluetoothCenter.shared.delegate = self
