@@ -19,6 +19,8 @@ enum LockSettings {
         } else if let lock = device as? CHSesame2, let setting = lock.mechSetting {
             data["lockPosition"] = Int(setting.lockPosition)
             data["unlockPosition"] = Int(setting.unlockPosition)
+        } else if let bot = device as? CHSesameBot, let setting = bot.mechSetting {
+            data["botMode"] = botMode(setting)
         }
         if let lock = device as? CHSesame5 {
             if let ops = lock.opsSetting { data["sensorLockSeconds"] = Int(ops.opsLockSecond) }
@@ -35,7 +37,9 @@ enum LockSettings {
         guard let device = ble.device(json["deviceUUID"] as? String ?? "") else { throw BleError.unavailable }
         try require(device.loggedIn)
         let operation = json["operation"] as? String ?? ""
-        try require(device is CHSesame2 || device is CHSesame5 || (device is CHSesameLock && ["txPower", "version"].contains(operation)))
+        try require(device is CHSesame2 || device is CHSesame5 ||
+                    (device is CHSesameBot && ["read", "botMode"].contains(operation)) ||
+                    (device is CHSesameLock && ["txPower", "version"].contains(operation)))
         switch operation {
         case "txPower":
             let value = json["value"] as? Int ?? .min
@@ -110,10 +114,37 @@ enum LockSettings {
             let interval = json["value"] as? Int ?? -1
             try require(interval == 0 || ((50...1000).contains(interval) && interval % 50 == 0))
             let _: CHEmpty = try await bleResult(timeout: readTimeout) { lock.setSensorDetectInterval(intervalMs: Int16(interval), result: $0) }
+        case "botMode":
+            guard let bot = device as? CHSesameBot, var setting = bot.mechSetting else { throw BleError.unsupported }
+            switch json["value"] as? String {
+            case "normal":
+                setting.userPrefDir = .normal
+                setting.lockSecConfig.clickLockSeconds = 10
+                setting.lockSecConfig.clickHoldSeconds = 10
+                setting.lockSecConfig.clickUnlockSeconds = 8
+            case "circle":
+                setting.userPrefDir = .normal
+                setting.lockSecConfig.clickLockSeconds = 20
+                setting.lockSecConfig.clickHoldSeconds = 0
+                setting.lockSecConfig.clickUnlockSeconds = 0
+            case "longPress":
+                setting.userPrefDir = .reversed
+                setting.lockSecConfig.clickLockSeconds = 10
+                setting.lockSecConfig.clickHoldSeconds = 20
+                setting.lockSecConfig.clickUnlockSeconds = 15
+            default:
+                throw BleError.invalid
+            }
+            let _: CHEmpty = try await bleResult(timeout: readTimeout) { bot.updateSetting(historytag: ble.os2HistoryTag(), setting: setting, result: $0) }
         default:
             throw BleError.unsupported
         }
         ble.snapshot()
         return snapshot(device)
+    }
+
+    private static func botMode(_ setting: CHSesameBotMechSettings) -> String {
+        if setting.lockSecConfig.clickLockSeconds == 20 { return "circle" }
+        return setting.lockSecConfig.clickHoldSeconds == 20 ? "longPress" : "normal"
     }
 }
