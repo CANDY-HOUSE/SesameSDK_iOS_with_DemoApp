@@ -43,6 +43,8 @@
 	<string>Auto unlock</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>To talk through your Face device.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To save photos and videos from your Face devices to your album.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Save QR image into your album.</string>
 	<key>NSUserActivityTypes</key>

@@ -2,6 +2,7 @@
 "NSCameraUsageDescription" = "用於掃描 QR Code 及在 Face 通話中傳送影片";
 "NSMicrophoneUsageDescription" = "用於與 Face 裝置通話";
 "NSPhotoLibraryUsageDescription" = "從相簿裡掃描 QR Code";
+"NSPhotoLibraryAddUsageDescription" = "用於將 Face 裝置的照片和影片儲存到相簿";
 "NSBluetoothPeripheralUsageDescription" = "芝麻app需要透過藍芽連接芝麻設備";
 "NSBluetoothAlwaysUsageDescription" = "芝麻app需要透過藍芽連接芝麻設備";
 "NSLocationAlwaysUsageDescription" = "回來後自動解鎖芝麻設備的功能 需要最精准的手機位置訊息";

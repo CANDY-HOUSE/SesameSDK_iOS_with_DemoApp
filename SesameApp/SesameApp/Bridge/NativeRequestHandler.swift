@@ -19,12 +19,13 @@ final class NativeRequestHandler {
         var presenter: () -> UIViewController?
     }
 
-    static let capabilities = ["voiceShortcut"]
+    static let capabilities = ["voiceShortcut", "saveImage", "saveVideo"]
 
     private let host: Host
     private let ble: BleController
     private let registration: BleRegistrationController
     private let network = NWPathMonitor()
+    private let media = MediaSaver()
 
     init(host: Host, ble: BleController, registration: BleRegistrationController) {
         self.host = host
@@ -210,6 +211,14 @@ final class NativeRequestHandler {
                 }
                 reply(true, nil, nil)
 
+            case "home.saveMedia":
+                do {
+                    reply(true, try await media.handle(json), nil)
+                } catch {
+                    L.d("saveMedia \(json["operation"] as? String ?? "") failed: \(error)", tag: "Media")
+                    throw error
+                }
+
             case "home.firmwareTrace":
 #if DEBUG
                 let transport = json["transport"] as? String ?? ""
@@ -224,6 +233,8 @@ final class NativeRequestHandler {
                 reply(false, nil, "This native capability is not available in this version")
             }
         } catch is CancellationError {
+        } catch MediaSaver.SaveError.permissionDenied {
+            reply(false, nil, "Media permission denied")
         } catch {
             reply(false, nil, "Native request failed; retry when connected")
         }

@@ -2,6 +2,7 @@
 "NSCameraUsageDescription" = "To scan QR codes and send video during Face calls";
 "NSMicrophoneUsageDescription" = "To talk through your Face device";
 "NSPhotoLibraryUsageDescription" = "To scan QR Cdoe from your album";
+"NSPhotoLibraryAddUsageDescription" = "To save photos and videos from your Face devices to your album";
 "NSBluetoothPeripheralUsageDescription" = "Sesame app has to access Sesame devices via Bluetooth.";
 "NSBluetoothAlwaysUsageDescription" = "Sesame app has to access Sesame devices via Bluetooth.";
 "NSLocationAlwaysUsageDescription" = "The Auto-Unlock feature which automatically unlocks the door for you when you are back, needs the precise location all the time";

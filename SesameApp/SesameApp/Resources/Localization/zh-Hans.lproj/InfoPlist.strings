@@ -2,6 +2,7 @@
 "NSCameraUsageDescription" = "用于扫描二维码及在 Face 通话中发送视频";
 "NSMicrophoneUsageDescription" = "用于与 Face 设备通话";
 "NSPhotoLibraryUsageDescription" = "从相簿里扫描二维码";
+"NSPhotoLibraryAddUsageDescription" = "用于将 Face 设备的照片和视频保存到相册";
 "NSBluetoothPeripheralUsageDescription" = "芝麻app需要透过蓝牙连接芝麻设备";
 "NSBluetoothAlwaysUsageDescription" = "芝麻app需要透过蓝牙连接芝麻设备";
 "NSLocationAlwaysUsageDescription" = "回来后自动解锁芝麻设备的功能 需要最精准的手机位置信息";

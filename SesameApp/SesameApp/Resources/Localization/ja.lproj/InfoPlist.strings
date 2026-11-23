@@ -2,6 +2,7 @@
 "NSCameraUsageDescription" = "QRコードのスキャンとFace通話で映像を送信するために使用します";
 "NSMicrophoneUsageDescription" = "Faceデバイスとの通話に使用します";
 "NSPhotoLibraryUsageDescription" = "QRコードをアルバムから読み取る";
+"NSPhotoLibraryAddUsageDescription" = "Faceデバイスの写真やビデオをアルバムに保存するために使用します";
 "NSBluetoothPeripheralUsageDescription" = "セサミデバイスとのBluthtooh接続を許可してください。";
 "NSBluetoothAlwaysUsageDescription" = "セサミデバイスとのBluthtooh接続を許可してください。";
 "NSLocationAlwaysUsageDescription" = "手ぶら解錠をご使用の場合、正確な位置情報を「常に許可」にしてください。";
