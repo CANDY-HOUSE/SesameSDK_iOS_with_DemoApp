@@ -50,9 +50,10 @@ final class BleController: NSObject {
             guard let id = (row["deviceUUID"] as? String).flatMap(UUID.init(uuidString:)),
                   !keys.contains(where: { $0.deviceUUID == id }),
                   let model = row["deviceModel"] as? String, CHProductModel.deviceModeulFromString(model) != nil,
-                  let keyIndex = row["keyIndex"] as? String, !keyIndex.isEmpty,
+                  // WM2 keys have empty keyIndex and sesame2PublicKey; other models need both.
+                  let keyIndex = row["keyIndex"] as? String, !keyIndex.isEmpty || model == "wm_2",
                   let secretKey = row["secretKey"] as? String, !secretKey.isEmpty,
-                  let publicKey = row["sesame2PublicKey"] as? String, !publicKey.isEmpty else { continue }
+                  let publicKey = row["sesame2PublicKey"] as? String, !publicKey.isEmpty || model == "wm_2" else { continue }
             keys.append(CHDeviceKey(deviceUUID: id, deviceModel: model, historyTag: nil, keyIndex: keyIndex, secretKey: secretKey, sesame2PublicKey: publicKey))
         }
         let incoming = Set(keys.map { $0.deviceUUID.uuidString.uppercased() })

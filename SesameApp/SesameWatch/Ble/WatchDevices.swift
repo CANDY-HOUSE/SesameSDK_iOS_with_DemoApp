@@ -1,6 +1,5 @@
 import Combine
 import Foundation
-import Network
 import SesameGateway
 import SesameSDK
 
@@ -180,18 +179,38 @@ extension WatchDevices: CHDeviceStatusAndKeysDelegate {
 /// keys are signed by the server, and history and battery voltage read over Bluetooth are uploaded. Firmware versions are not.
 /// Without network or gateway configuration the SDK keeps history on the device for the iPhone to upload later.
 private final class WatchBleHost: CHBleHost {
-    private let monitor = NWPathMonitor()
+    private let lock = NSLock()
     private var networkAvailable = false
+    private var probing = false
+    private let session: URLSession = {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.timeoutIntervalForRequest = 3
+        return URLSession(configuration: configuration)
+    }()
 
-    init() {
-        monitor.pathUpdateHandler = { [weak self] path in
-            self?.networkAvailable = path.status == .satisfied
-        }
-        monitor.start(queue: DispatchQueue(label: "WatchBleHost.network"))
+    /// Returns the last probe's result and starts another, as the native Watch app checked on every call.
+    func isNetworkAvailable() -> Bool {
+        guard (try? WatchGateway.configure()) != nil, let endpoint = WatchGateway.endpoint else { return false }
+        lock.lock()
+        let available = networkAvailable
+        let start = !probing
+        probing = true
+        lock.unlock()
+        if start { probe(endpoint) }
+        return available
     }
 
-    func isNetworkAvailable() -> Bool {
-        networkAvailable && (try? WatchGateway.configure()) != nil
+    /// NWPathMonitor always reports no network on a real Watch (TN3135), which kept guest keys from ever connecting.
+    private func probe(_ endpoint: URL) {
+        session.dataTask(with: endpoint) { [weak self] _, _, error in
+            let code = (error as? URLError)?.code
+            let available = code != .notConnectedToInternet && code != .networkConnectionLost
+            guard let self else { return }
+            self.lock.lock()
+            self.networkAvailable = available
+            self.probing = false
+            self.lock.unlock()
+        }.resume()
     }
 
     /// As on the iPhone: a device with a gateway has its history uploaded by the gateway.

@@ -15,6 +15,8 @@ enum WatchGateway {
         }, api: api)
     }
 
+    static let endpoint: URL? = api().flatMap { URL(string: $0.endpoint) }
+
     static func configure() throws {
         try configuration.get()
     }
