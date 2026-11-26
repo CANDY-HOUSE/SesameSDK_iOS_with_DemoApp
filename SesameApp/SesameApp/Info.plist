@@ -22,19 +22,12 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>To connect Sesame Smart Lock and lock/unlock the door.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>This app would like to make data available to nearby bluetooth devices even when you're not using the app.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>To scan QR codes and send video during Face calls.</string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Connect to the development server on your local network.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Auto unlock</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -53,8 +46,6 @@
 		<string>ToggleSesameIntent</string>
 		<string>UnlockSesameIntent</string>
 	</array>
-	<key>SesameDevMacIP</key>
-	<string>$(SESAME_DEV_MAC_IP)</string>
 	<key>SesameWebHost</key>
 	<string>$(SESAME_WEB_HOST)</string>
 	<key>UIApplicationSceneManifest</key>

@@ -30,6 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EECAC12B7C7AE483C4384CC1"
                BuildableName = "Sesame.app"
+               BlueprintName = "SesameApp"
                ReferencedContainer = "container:SesameApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
