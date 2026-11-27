@@ -37,7 +37,7 @@ extension Data {
     
     static func createHistag(_ keyData: Data?) ->Data{
         var tagCount_hisTag = Data()
-        let histag = keyData ?? Data()
+        let histag = (keyData ?? Data()).prefix(21)
         let tagCount = histag.count
         let ss = 22 - tagCount  - 1// -1 for tagCount need onebyte
         tagCount_hisTag = UInt8(tagCount).data + histag + Data(count: ss)
