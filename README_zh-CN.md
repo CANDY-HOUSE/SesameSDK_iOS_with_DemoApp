@@ -4,7 +4,7 @@
 
 [日本語](README.md) | 简体中文 | [English](README_en.md)
 
-iOS Web App 宿主与 Swift Sesame SDK 开源项目。页面、账号与云端业务由 Biz3 负责，WebView、蓝牙与系统能力由 iOS 负责（与 Android Web App 架构相同）。
+iOS Web App 宿主与 Swift Sesame SDK 开源项目。页面、账号与云端业务由 [Biz3](https://github.com/CANDY-HOUSE/biz.candyhouse.co) 负责，WebView、蓝牙与系统能力由 iOS 负责（与 Android Web App 架构相同）。
 
 **Biz 负责业务逻辑，iOS 负责原生能力，Bridge 负责通信。**
 
@@ -21,6 +21,8 @@ flowchart LR
 - [CANDY HOUSE 官网](https://jp.candyhouse.co/)
 - [App Store](https://apps.apple.com/app/id1532692301/)
 - [TestFlight](https://testflight.apple.com/join/Rok4GOFD/)
+
+运行 App 需要 [Biz](https://github.com/CANDY-HOUSE/biz.candyhouse.co)（App 启动时加载该页面）。
 
 ## 接入 SDK
 
@@ -193,7 +195,9 @@ flowchart TB
 
 Biz 页面域名由 `SesameApp/Config/App.xcconfig` 中的 `SESAME_WEB_HOST` 指定，写入 Info.plist 的 `SesameWebHost` 与 `WKAppBoundDomains`。Release 为 `biz.candyhouse.co`（HTTPS）。Debug 由开发者自行设置为 `localhost`（本地 Biz 开发服务器 `http://localhost:3000`）或预发环境域名（HTTPS）。真机上的 `localhost` 是手机自身：真机连本地时，把 `SESAME_DEV_MAC_IP` 填为 Mac 的局域网 IP。App（仅 Debug）会在手机的 `localhost:3000` 上监听并转发到 Mac 的 `IP:3000`（类似 `adb reverse`），页面地址仍是 `http://localhost:3000`。首次运行需允许“本地网络”权限，手机与 Mac 需在同一局域网。模拟器和预发域名保持 `SESAME_DEV_MAC_IP` 为空。改动不要提交。
 
-在 Web APP 根目录下分别打开终端执行。Biz 开发服务器保持运行。
+不修改 Biz 时，把 Debug 的 `SESAME_WEB_HOST` 设为 `biz.candyhouse.co` 即加载正式环境的 Biz，无需启动 Biz。
+
+需要修改 Biz 时，用 `git clone https://github.com/CANDY-HOUSE/biz.candyhouse.co.git Biz3` 克隆到与本仓库同级的目录，再从上级目录在两个终端中分别运行；保持 Biz 开发服务运行：
 
 ```bash
 # Terminal 1: Biz3

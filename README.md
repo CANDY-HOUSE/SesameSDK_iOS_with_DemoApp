@@ -4,7 +4,7 @@
 
 日本語 | [简体中文](README_zh-CN.md) | [English](README_en.md)
 
-iOS Web App のホストと Swift 製 Sesame SDK を収録したオープンソースプロジェクトです。画面・アカウント・クラウド業務は Biz3、WebView・Bluetooth・OS 機能は iOS が担当します（Android Web App と同じ構成）。
+iOS Web App のホストと Swift 製 Sesame SDK を収録したオープンソースプロジェクトです。画面・アカウント・クラウド業務は [Biz3](https://github.com/CANDY-HOUSE/biz.candyhouse.co)、WebView・Bluetooth・OS 機能は iOS が担当します（Android Web App と同じ構成）。
 
 **Biz は業務ロジック、iOS はネイティブ機能、Bridge は通信を担当します。**
 
@@ -21,6 +21,8 @@ flowchart LR
 - [CANDY HOUSE 公式サイト](https://jp.candyhouse.co/)
 - [App Store](https://apps.apple.com/app/id1532692301/)
 - [TestFlight](https://testflight.apple.com/join/Rok4GOFD/)
+
+App の実行には [Biz](https://github.com/CANDY-HOUSE/biz.candyhouse.co) が必要です（App は起動時にこのページを読み込みます）。
 
 ## SDK の導入
 
@@ -193,7 +195,9 @@ flowchart TB
 
 Biz ページのドメインは `SesameApp/Config/App.xcconfig` の `SESAME_WEB_HOST` で指定し、Info.plist の `SesameWebHost` と `WKAppBoundDomains` に反映されます。Release は `biz.candyhouse.co`（HTTPS）です。Debug は `localhost`（Biz 開発サーバー `http://localhost:3000`）または検証環境のドメイン（HTTPS）を各自で設定します。実機の `localhost` は端末自身です。実機からローカルに接続する場合は `SESAME_DEV_MAC_IP` に Mac の LAN IP を設定します。App（Debug のみ）が端末の `localhost:3000` で待ち受け、Mac の `IP:3000` へ転送するため（`adb reverse` と同様）、ページのアドレスは `http://localhost:3000` のままです。初回は「ローカルネットワーク」の許可が必要で、端末と Mac は同じ LAN に接続します。シミュレーターと検証環境では `SESAME_DEV_MAC_IP` を空のままにします。変更はコミットしません。
 
-Web APP ルートから、それぞれ別のターミナルで実行します。Biz の開発サーバーは起動したままにします。
+Biz を変更しない場合は、Debug の `SESAME_WEB_HOST` を `biz.candyhouse.co` にすると本番の Biz を読み込むため、Biz の起動は不要です。
+
+Biz も変更する場合は、`git clone https://github.com/CANDY-HOUSE/biz.candyhouse.co.git Biz3` で本リポジトリと同じ階層に clone し、親ディレクトリから、それぞれ別のターミナルで実行します。Biz の開発サーバーは起動したままにします。
 
 ```bash
 # Terminal 1: Biz3

@@ -4,7 +4,7 @@
 
 [日本語](README.md) | [简体中文](README_zh-CN.md) | English
 
-The iOS Web App host and the Swift-based Sesame SDK. Pages, accounts and cloud business logic live in Biz3; the WebView, Bluetooth and OS features live in iOS (the same architecture as the Android Web App).
+The iOS Web App host and the Swift-based Sesame SDK. Pages, accounts and cloud business logic live in [Biz3](https://github.com/CANDY-HOUSE/biz.candyhouse.co); the WebView, Bluetooth and OS features live in iOS (the same architecture as the Android Web App).
 
 **Biz owns business logic, iOS owns native capabilities, and the Bridge owns communication.**
 
@@ -21,6 +21,8 @@ flowchart LR
 - [CANDY HOUSE official website](https://jp.candyhouse.co/)
 - [App Store](https://apps.apple.com/app/id1532692301/)
 - [TestFlight](https://testflight.apple.com/join/Rok4GOFD/)
+
+Running the app requires [Biz](https://github.com/CANDY-HOUSE/biz.candyhouse.co) (the app loads this page at startup).
 
 ## Integrating the SDK
 
@@ -193,7 +195,9 @@ Related APIs: `CHCardCapable`, `CHFingerPrintCapable`, `CHPassCodeCapable`, `CHP
 
 The Biz page domain is `SESAME_WEB_HOST` in `SesameApp/Config/App.xcconfig`, written to `SesameWebHost` and `WKAppBoundDomains` in Info.plist. Release uses `biz.candyhouse.co` (HTTPS). For Debug, set either `localhost` (the Biz dev server at `http://localhost:3000`) or a staging domain (HTTPS) yourself. On a device, `localhost` is the phone itself: to reach the local server, set `SESAME_DEV_MAC_IP` to the Mac's LAN IP. The app (Debug only) then listens on the phone's `localhost:3000` and forwards to the Mac's `IP:3000` (like `adb reverse`), so the page stays at `http://localhost:3000`. Allow the Local Network permission on first run; the phone and the Mac must be on the same LAN. Leave `SESAME_DEV_MAC_IP` empty for the simulator and staging domains. Do not commit these edits.
 
-From the Web APP root, run each in its own terminal. Keep the Biz dev server running.
+If you are not changing Biz, set the Debug `SESAME_WEB_HOST` to `biz.candyhouse.co` to load production Biz; you then do not need to run Biz.
+
+To change Biz as well, clone it next to this repository with `git clone https://github.com/CANDY-HOUSE/biz.candyhouse.co.git Biz3`, then run these in two terminals from the parent directory. Keep the Biz dev server running:
 
 ```bash
 # Terminal 1: Biz3
